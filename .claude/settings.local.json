@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx:*)",
+      "Bash(yes \"\")",
+      "Bash(npm install:*)",
+      "Bash(npm cache:*)",
+      "Bash(npm run:*)",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/match-centre\")",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/schedule\")",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://www.foxsports.com/soccer/2026-fifa-world-cup/schedule\")",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://www.espn.com/soccer/schedule/_/league/FIFA.WORLD/season/2026\")",
+      "WebSearch",
+      "WebFetch(domain:www.foxsports.com)",
+      "WebFetch(domain:www.espn.com)",
+      "WebFetch(domain:www.fifaworldcupnews.com)",
+      "WebFetch(domain:www.soccergraph.com)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:inside.fifa.com)",
+      "WebFetch(domain:www.mlssoccer.com)",
+      "WebFetch(domain:www.nbcsports.com)",
+      "Bash(git status:*)",
+      "Bash(gh auth:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

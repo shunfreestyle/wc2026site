@@ -1,0 +1,291 @@
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { teams, getTeamById } from "@/data/teams";
+import { getMatchesByTeam } from "@/data/matches";
+import MatchCard from "@/components/MatchCard";
+import PlayerAvatar from "@/components/PlayerAvatar";
+import type { Metadata } from "next";
+
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateStaticParams() {
+  return teams.map((team) => ({ id: team.id }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const team = getTeamById(id);
+  if (!team) return { title: "チームが見つかりません" };
+  return {
+    title: `${team.nameJa} | FIFA World Cup 2026`,
+    description: team.description,
+  };
+}
+
+export default async function TeamDetailPage({ params }: Props) {
+  const { id } = await params;
+  const team = getTeamById(id);
+
+  if (!team) {
+    notFound();
+  }
+
+  const teamMatches = getMatchesByTeam(id);
+
+  const positionLabel = (pos: string) => {
+    switch (pos) {
+      case "GK": return { label: "GK", color: "bg-amber-100 text-amber-800" };
+      case "DF": return { label: "DF", color: "bg-blue-100 text-blue-800" };
+      case "MF": return { label: "MF", color: "bg-emerald-100 text-emerald-800" };
+      case "FW": return { label: "FW", color: "bg-red-100 text-red-800" };
+      default: return { label: pos, color: "bg-gray-100 text-gray-800" };
+    }
+  };
+
+  return (
+    <div>
+      {/* Hero */}
+      <div className="hero-gradient hero-pattern text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <Link
+            href="/teams"
+            className="inline-flex items-center gap-1 text-sm text-white/80 hover:text-white mb-6 transition-colors"
+          >
+            ← 出場チーム一覧
+          </Link>
+          <div className="flex items-center gap-5">
+            <span className="text-6xl sm:text-8xl">{team.flag}</span>
+            <div>
+              <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
+                {team.nameJa}
+              </h1>
+              <p className="text-white/80 text-lg mt-1">{team.name}</p>
+              <div className="flex flex-wrap items-center gap-3 mt-3">
+                <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
+                  Group {team.group}
+                </span>
+                <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
+                  FIFA #{team.fifaRanking}
+                </span>
+                <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
+                  {team.confederation}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        {/* Team Info Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 -mt-6">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <h3 className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">チーム情報</h3>
+            <dl className="space-y-3">
+              <div className="flex justify-between">
+                <dt className="text-sm text-gray-600">W杯出場回数</dt>
+                <dd className="text-sm font-semibold text-gray-900">{team.wcAppearances}回</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="text-sm text-gray-600">最高成績</dt>
+                <dd className="text-sm font-semibold text-gray-900">{team.bestResult}</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="text-sm text-gray-600">所属連盟</dt>
+                <dd className="text-sm font-semibold text-gray-900">{team.confederation}</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:col-span-2">
+            <h3 className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">概要</h3>
+            <p className="text-gray-700 leading-relaxed">{team.description}</p>
+          </div>
+        </div>
+
+        {/* Coach Section */}
+        <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-10">
+          <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <span className="w-1 h-6 bg-[#8B1538] rounded-full" />
+            監督情報
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900">{team.coach.nameJa}</h3>
+              <p className="text-gray-600 mb-4">{team.coach.name}</p>
+              <dl className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <dt className="text-sm text-gray-600 w-20">国籍</dt>
+                  <dd className="text-sm font-medium text-gray-900">{team.coach.nationality}</dd>
+                </div>
+                <div className="flex items-center gap-3">
+                  <dt className="text-sm text-gray-600 w-20">年齢</dt>
+                  <dd className="text-sm font-medium text-gray-900">{team.coach.age}歳</dd>
+                </div>
+                <div className="flex items-center gap-3">
+                  <dt className="text-sm text-gray-600 w-20">スタイル</dt>
+                  <dd className="text-sm font-medium text-gray-900">{team.coach.style}</dd>
+                </div>
+              </dl>
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">
+                経歴
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {team.coach.careerHistory.map((club, i) => (
+                  <span
+                    key={i}
+                    className="inline-block bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-full"
+                  >
+                    {club}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Players Section */}
+        <section className="mb-10">
+          <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <span className="w-1 h-6 bg-[#8B1538] rounded-full" />
+            登録選手
+          </h2>
+          {team.players.length > 0 ? (
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+              {/* Desktop Table */}
+              <div className="hidden md:block overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="bg-gray-50 border-b border-gray-200">
+                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">背番号</th>
+                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">選手名</th>
+                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">ポジション</th>
+                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">所属クラブ</th>
+                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">年齢</th>
+                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">身長</th>
+                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">代表</th>
+                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">得点</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {team.players.map((player) => {
+                      const pos = positionLabel(player.position);
+                      return (
+                        <tr key={player.id} className="hover:bg-gray-50 transition-colors">
+                          <td className="px-6 py-4 text-sm font-bold text-gray-900">
+                            #{player.number}
+                          </td>
+                          <td className="px-6 py-4">
+                            <Link href={`/players/${player.id}`} className="flex items-center gap-3 group">
+                              <PlayerAvatar player={player} size="sm" />
+                              <div>
+                                <p className="text-sm font-semibold text-gray-900 group-hover:text-[#8B1538] transition-colors">
+                                  {player.nameJa}
+                                  {player.isCaptain && (
+                                    <span className="ml-1.5 inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded">
+                                      C
+                                    </span>
+                                  )}
+                                </p>
+                                <p className="text-xs text-gray-500">{player.name}</p>
+                              </div>
+                            </Link>
+                          </td>
+                          <td className="px-6 py-4">
+                            <span className={`inline-block text-xs font-bold px-2 py-0.5 rounded ${pos.color}`}>
+                              {pos.label}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4 text-sm text-gray-700">{player.club}</td>
+                          <td className="px-6 py-4 text-sm text-gray-700">{player.age}歳</td>
+                          <td className="px-6 py-4 text-sm text-gray-700">{player.height}cm</td>
+                          <td className="px-6 py-4 text-sm text-gray-700">{player.caps}試合</td>
+                          <td className="px-6 py-4 text-sm font-semibold text-gray-900">{player.goals}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Mobile Cards */}
+              <div className="md:hidden divide-y divide-gray-100">
+                {team.players.map((player) => {
+                  const pos = positionLabel(player.position);
+                  return (
+                    <Link key={player.id} href={`/players/${player.id}`} className="block p-4 hover:bg-gray-50 transition-colors">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-3">
+                          <PlayerAvatar player={player} size="sm" />
+                          <div>
+                            <p className="font-semibold text-gray-900">
+                              {player.nameJa}
+                              {player.isCaptain && (
+                                <span className="ml-1 inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded">
+                                  C
+                                </span>
+                              )}
+                            </p>
+                            <p className="text-xs text-gray-500">{player.name}</p>
+                          </div>
+                        </div>
+                        <span className={`text-xs font-bold px-2 py-0.5 rounded ${pos.color}`}>
+                          {pos.label}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-gray-600 ml-11">
+                        <p>所属: {player.club}</p>
+                        <p>年齢: {player.age}歳</p>
+                        <p>身長: {player.height}cm</p>
+                        <p>代表: {player.caps}試合 / {player.goals}得点</p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          ) : (
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center text-gray-600">
+              選手情報は後日更新されます
+            </div>
+          )}
+        </section>
+
+        {/* Team Matches */}
+        {teamMatches.length > 0 && (
+          <section className="mb-10">
+            <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              <span className="w-1 h-6 bg-[#8B1538] rounded-full" />
+              対戦日程
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {teamMatches.map((match) => (
+                <MatchCard key={match.id} match={match} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Navigation */}
+        <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+          <Link
+            href="/teams"
+            className="text-sm font-medium text-[#8B1538] hover:underline"
+          >
+            ← チーム一覧に戻る
+          </Link>
+          <Link
+            href="/matches"
+            className="text-sm font-medium text-[#8B1538] hover:underline"
+          >
+            試合日程を見る →
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
