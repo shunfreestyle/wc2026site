@@ -23,6 +23,7 @@ export default function Footer() {
               <li><Link href="/" className="hover:text-white transition-colors">ホーム</Link></li>
               <li><Link href="/teams" className="hover:text-white transition-colors">出場チーム一覧</Link></li>
               <li><Link href="/matches" className="hover:text-white transition-colors">試合日程・結果</Link></li>
+              <li><Link href="/japan" className="hover:text-white transition-colors">🇯🇵 日本代表特設ページ</Link></li>
             </ul>
           </div>
           <div>

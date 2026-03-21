@@ -31,6 +31,12 @@ export default function Header() {
             >
               試合日程
             </Link>
+            <Link
+              href="/japan"
+              className="px-4 py-2 rounded-lg text-sm font-bold hover:bg-white/10 transition-colors text-amber-300"
+            >
+              🇯🇵 日本代表
+            </Link>
           </nav>
           {/* Mobile menu */}
           <nav className="flex sm:hidden items-center gap-1">
@@ -39,6 +45,9 @@ export default function Header() {
             </Link>
             <Link href="/matches" className="px-3 py-2 rounded-lg text-xs font-medium hover:bg-white/10">
               試合
+            </Link>
+            <Link href="/japan" className="px-3 py-2 rounded-lg text-xs font-bold hover:bg-white/10 text-amber-300">
+              🇯🇵
             </Link>
           </nav>
         </div>
