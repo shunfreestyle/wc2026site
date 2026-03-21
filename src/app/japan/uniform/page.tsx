@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { uniforms } from "@/data/uniforms";
-import type { BuyLink, RakutenBanner } from "@/data/uniforms";
+import type { BuyLink } from "@/data/uniforms";
 
 export const metadata: Metadata = {
   title: "🇯🇵 日本代表ユニフォーム一覧 | FIFA World Cup 2026",
@@ -17,7 +17,6 @@ const typeBadge: Record<string, { label: string; cls: string }> = {
 };
 
 function storeStyle(store: string) {
-  if (store.includes("楽天")) return "bg-[#BF0000] hover:bg-[#a00000] text-white";
   if (store.includes("adidas")) return "bg-gray-900 hover:bg-gray-800 text-white";
   if (store.includes("KAMO")) return "bg-[#003087] hover:bg-[#002266] text-white";
   return "bg-gray-600 hover:bg-gray-500 text-white";
@@ -28,67 +27,10 @@ function BuyButton({ link }: { link: BuyLink }) {
     <a
       href={link.url}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="nofollow sponsored noopener"
       className={`inline-flex items-center justify-center px-3 py-2 rounded-lg text-xs font-bold transition-colors ${storeStyle(link.store)}`}
     >
       {link.label}
-    </a>
-  );
-}
-
-/* ── Rakuten Banner ───────────────────────────── */
-function RakutenBannerCard({
-  rakuten,
-  name,
-}: {
-  rakuten: RakutenBanner;
-  name: string;
-}) {
-  return (
-    <a
-      href={rakuten.affiliateUrl}
-      target="_blank"
-      rel="nofollow sponsored noopener"
-      className="block rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg hover:opacity-90 transition-all relative group"
-    >
-      {/* PR badge */}
-      <span className="absolute top-2 right-2 z-10 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-700/70 text-white backdrop-blur-sm">
-        PR
-      </span>
-
-      {/* Header */}
-      <div className="bg-[#BF0020] px-4 py-2.5 flex items-center gap-2">
-        <span className="text-white text-sm font-bold">
-          🛒 楽天市場で購入する
-        </span>
-      </div>
-
-      {/* Body */}
-      <div className="flex bg-white">
-        {/* Image */}
-        <div className="w-[120px] sm:w-[160px] shrink-0 bg-gray-50 flex items-center justify-center p-3">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={rakuten.imageUrl}
-            alt={name}
-            width={240}
-            height={240}
-            className="w-full h-auto object-contain"
-            loading="lazy"
-          />
-        </div>
-
-        {/* Info */}
-        <div className="flex-1 p-4 flex flex-col justify-center">
-          <p className="text-base font-bold text-gray-900 mb-1">{name}</p>
-          <p className="text-sm font-bold text-[#BF0020] mb-3">
-            {rakuten.price}
-          </p>
-          <span className="inline-flex items-center justify-center w-fit px-4 py-2 rounded-lg bg-[#BF0020] text-white text-xs font-bold group-hover:bg-[#a00000] transition-colors">
-            今すぐ楽天で見る →
-          </span>
-        </div>
-      </div>
     </a>
   );
 }
@@ -156,29 +98,67 @@ export default function UniformPage() {
           <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {g.items.map((u) => {
               const badge = typeBadge[u.type];
+              const hasRakutenImage = u.rakuten?.imageUrl;
+              const nonRakutenLinks = u.buyLinks.filter(
+                (l) => !l.store.includes("楽天")
+              );
+
               return (
                 <div
                   key={u.id}
                   className="rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col"
                 >
-                  {/* Color banner */}
-                  <div
-                    className="h-24 relative"
-                    style={{
-                      background: `linear-gradient(135deg, ${u.colorMain} 0%, ${u.colorMain} 60%, ${u.colorSub} 100%)`,
-                    }}
-                  >
-                    <div className="absolute bottom-3 left-4 flex items-center gap-2">
-                      <span
-                        className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.cls}`}
-                      >
-                        {badge.label}
+                  {/* Image area or color banner */}
+                  {hasRakutenImage ? (
+                    <a
+                      href={u.rakuten!.affiliateUrl}
+                      target="_blank"
+                      rel="nofollow sponsored noopener"
+                      className="block h-48 relative hover:opacity-90 transition-opacity"
+                      style={{ backgroundColor: `${u.colorMain}15` }}
+                    >
+                      <span className="absolute top-2 right-2 z-10 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-700/70 text-white backdrop-blur-sm">
+                        PR
                       </span>
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">
-                        {u.brand}
-                      </span>
+                      <div className="absolute bottom-3 left-4 z-10 flex items-center gap-2">
+                        <span
+                          className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.cls}`}
+                        >
+                          {badge.label}
+                        </span>
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">
+                          {u.brand}
+                        </span>
+                      </div>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={u.rakuten!.imageUrl}
+                        alt={u.name}
+                        width={240}
+                        height={240}
+                        className="absolute inset-0 w-full h-full object-contain p-4"
+                        loading="lazy"
+                      />
+                    </a>
+                  ) : (
+                    <div
+                      className="h-24 relative"
+                      style={{
+                        background: `linear-gradient(135deg, ${u.colorMain} 0%, ${u.colorMain} 60%, ${u.colorSub} 100%)`,
+                      }}
+                    >
+                      <div className="absolute bottom-3 left-4 flex items-center gap-2">
+                        <span
+                          className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.cls}`}
+                        >
+                          {badge.label}
+                        </span>
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">
+                          {u.brand}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   <div className="p-5 flex-1 flex flex-col">
                     {/* Title + swatches */}
@@ -192,11 +172,13 @@ export default function UniformPage() {
                           style={{ background: u.colorMain }}
                           title={`メインカラー ${u.colorMain}`}
                         />
-                        <span
-                          className="w-5 h-5 rounded-full border-2 border-gray-200"
-                          style={{ background: u.colorSub }}
-                          title={`サブカラー ${u.colorSub}`}
-                        />
+                        {u.colorSub !== "#FFFFFF" && (
+                          <span
+                            className="w-5 h-5 rounded-full border-2 border-gray-200"
+                            style={{ background: u.colorSub }}
+                            title={`サブカラー ${u.colorSub}`}
+                          />
+                        )}
                       </div>
                     </div>
 
@@ -217,25 +199,29 @@ export default function UniformPage() {
                       ))}
                     </div>
 
-                    {/* Buy links */}
+                    {/* Buy buttons */}
                     <div className="mt-auto pt-3 border-t border-gray-100">
-                      <p className="text-[10px] text-gray-400 font-medium mb-2 uppercase tracking-wider">
-                        購入リンク
+                      {u.rakuten ? (
+                        <a
+                          href={u.rakuten.affiliateUrl}
+                          target="_blank"
+                          rel="nofollow sponsored noopener"
+                          className="flex items-center justify-center w-full px-4 py-3 rounded-lg bg-[#BF0000] hover:bg-[#a00000] text-white text-sm font-bold transition-colors"
+                        >
+                          🛒 購入はこちら（楽天市場）
+                        </a>
+                      ) : (
+                        <div className="flex flex-wrap gap-2">
+                          {nonRakutenLinks.map((link) => (
+                            <BuyButton key={link.store} link={link} />
+                          ))}
+                        </div>
+                      )}
+                      <p className="text-[10px] text-gray-400 mt-2 text-center">
+                        ※広告・アフィリエイトリンクを含みます
                       </p>
-                      <div className="flex flex-wrap gap-2">
-                        {u.buyLinks.map((link) => (
-                          <BuyButton key={link.store} link={link} />
-                        ))}
-                      </div>
                     </div>
                   </div>
-
-                  {/* Rakuten Banner */}
-                  {u.rakuten && (
-                    <div className="px-5 pb-5">
-                      <RakutenBannerCard rakuten={u.rakuten} name={u.name} />
-                    </div>
-                  )}
                 </div>
               );
             })}
