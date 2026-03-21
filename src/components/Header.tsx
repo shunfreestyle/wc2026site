@@ -37,6 +37,12 @@ export default function Header() {
             >
               🇯🇵 日本代表
             </Link>
+            <Link
+              href="/japan/uniform"
+              className="px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/10 transition-colors"
+            >
+              ユニフォーム
+            </Link>
           </nav>
           {/* Mobile menu */}
           <nav className="flex sm:hidden items-center gap-1">
@@ -48,6 +54,9 @@ export default function Header() {
             </Link>
             <Link href="/japan" className="px-3 py-2 rounded-lg text-xs font-medium hover:bg-white/10">
               🇯🇵
+            </Link>
+            <Link href="/japan/uniform" className="px-3 py-2 rounded-lg text-xs font-medium hover:bg-white/10">
+              👕
             </Link>
           </nav>
         </div>
