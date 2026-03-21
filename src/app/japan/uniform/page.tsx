@@ -133,28 +133,26 @@ export default function UniformPage() {
                 >
                   {/* Image area */}
                   {rakutenImages[u.id] ? (
-                    <div className="relative bg-gray-50">
-                      <span className="absolute top-2 right-2 z-10 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-700/70 text-white backdrop-blur-sm">
+                    <div className="bg-gray-50" style={{ position: "relative", width: "400px", height: "400px", margin: "0 auto", maxWidth: "100%" }}>
+                      <a
+                        href={rakutenImages[u.id].href}
+                        target="_blank"
+                        rel="nofollow sponsored noopener"
+                        className="block hover:opacity-90 transition-opacity"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={rakutenImages[u.id].src}
+                          alt={rakutenImages[u.id].alt}
+                          style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
+                        />
+                      </a>
+                      <span style={{ position: "absolute", top: "8px", right: "8px" }} className="z-10 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-700/70 text-white backdrop-blur-sm">
                         PR
                       </span>
-                      <div className="absolute bottom-3 left-4 z-10 flex items-center gap-2">
+                      <div style={{ position: "absolute", bottom: "8px", left: "8px", display: "flex", gap: "6px" }} className="z-10">
                         <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.cls}`}>{badge.label}</span>
                         <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">{u.brand}</span>
-                      </div>
-                      <div style={{ width: "400px", height: "400px", margin: "0 auto", maxWidth: "100%" }}>
-                        <a
-                          href={rakutenImages[u.id].href}
-                          target="_blank"
-                          rel="nofollow sponsored noopener"
-                          className="block hover:opacity-90 transition-opacity"
-                        >
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={rakutenImages[u.id].src}
-                            alt={rakutenImages[u.id].alt}
-                            style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
-                          />
-                        </a>
                       </div>
                     </div>
                   ) : (
