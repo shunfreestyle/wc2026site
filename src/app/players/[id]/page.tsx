@@ -84,6 +84,11 @@ export default async function PlayerDetailPage({ params }: Props) {
                     キャプテン
                   </span>
                 )}
+                {player.isNew && (
+                  <span className="bg-emerald-400 text-emerald-950 text-xs font-bold px-3 py-1 rounded-full">
+                    初招集
+                  </span>
+                )}
               </div>
             </div>
           </div>

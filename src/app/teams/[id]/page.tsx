@@ -195,6 +195,11 @@ export default async function TeamDetailPage({ params }: Props) {
                                       C
                                     </span>
                                   )}
+                                  {player.isNew && (
+                                    <span className="ml-1.5 inline-block bg-emerald-100 text-emerald-800 text-[10px] font-bold px-1.5 py-0.5 rounded">
+                                      初
+                                    </span>
+                                  )}
                                 </p>
                                 <p className="text-xs text-gray-500">{player.name}</p>
                               </div>
@@ -232,6 +237,11 @@ export default async function TeamDetailPage({ params }: Props) {
                               {player.isCaptain && (
                                 <span className="ml-1 inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded">
                                   C
+                                </span>
+                              )}
+                              {player.isNew && (
+                                <span className="ml-1 inline-block bg-emerald-100 text-emerald-800 text-[10px] font-bold px-1.5 py-0.5 rounded">
+                                  初
                                 </span>
                               )}
                             </p>

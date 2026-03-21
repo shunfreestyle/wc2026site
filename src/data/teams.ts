@@ -43,6 +43,7 @@ export type Player = {
   height: number;
   imageUrl?: string;
   isCaptain?: boolean;
+  isNew?: boolean;
   description?: string;
 };
 
@@ -341,10 +342,36 @@ export const teams: Team[] = [
       style: "堅守・組織的サッカー",
     },
     players: [
+      // ── GK (3) ──
+      { id: "scotland-gunn", name: "Angus Gunn", nameJa: "アンガス・ガン", number: 1, position: "GK", club: "ノッティンガム・フォレスト", birthDate: "1996-01-22", age: 30, caps: 15, goals: 0, height: 192, description: "長身を活かしたセービングと安定したハイボール処理が武器。ユーロ2024でスタメンGKを務めた。" },
+      { id: "scotland-bain", name: "Scott Bain", nameJa: "スコット・ベイン", number: 12, position: "GK", club: "フォルカーク", birthDate: "1991-11-22", age: 34, caps: 5, goals: 0, height: 183, description: "国内リーグで安定したパフォーマンスを見せるベテランGK。経験値でチームを支える。" },
+      { id: "scotland-kelly", name: "Liam Kelly", nameJa: "リアム・ケリー", number: 23, position: "GK", club: "レンジャーズ", birthDate: "1996-01-23", age: 30, caps: 3, goals: 0, height: 188, description: "レンジャーズで安定したプレーを見せるGK。代表バックアップとして信頼される存在。" },
+      // ── DF (10) ──
       { id: "scotland-robertson", name: "Andrew Robertson", nameJa: "アンドリュー・ロバートソン", number: 3, position: "DF", club: "リバプール", birthDate: "1994-03-11", age: 32, caps: 75, goals: 3, height: 178, isCaptain: true, description: "豊富な運動量と正確なクロスで左サイドを支配する。リバプールで磨かれた攻撃的サイドバック。" },
-      { id: "scotland-mcginn", name: "John McGinn", nameJa: "ジョン・マッギン", number: 7, position: "MF", club: "アストンヴィラ", birthDate: "1994-10-18", age: 31, caps: 65, goals: 18, height: 178, description: "ダイナミックな飛び出しとミドルシュートが武器のボックス・トゥ・ボックスMF。闘志溢れるプレーが魅力。" },
-      { id: "scotland-gilmour", name: "Billy Gilmour", nameJa: "ビリー・ギルモア", number: 14, position: "MF", club: "ナポリ", birthDate: "2001-06-11", age: 24, caps: 30, goals: 1, height: 170, description: "正確なパスとビジョンで中盤を操るスコットランドの若きゲームメイカー。プレス耐性も高い。" },
-      { id: "scotland-adams", name: "Che Adams", nameJa: "チェ・アダムス", number: 9, position: "FW", club: "トリノ", birthDate: "1996-07-13", age: 29, caps: 30, goals: 8, height: 175, description: "スピードとフィジカルを兼ね備えたストライカー。裏への飛び出しとプレスバックの献身性が光る。" },
+      { id: "scotland-tierney", name: "Kieran Tierney", nameJa: "キーラン・ティアニー", number: 2, position: "DF", club: "セルティック", birthDate: "1997-06-05", age: 28, caps: 45, goals: 1, height: 178, description: "アーセナルからセルティックに復帰。左SBの名手、代表歴10年超のベテラン。" },
+      { id: "scotland-hanley", name: "Grant Hanley", nameJa: "グラント・ハンリー", number: 5, position: "DF", club: "ハイバーニアン", birthDate: "1991-11-20", age: 34, caps: 45, goals: 2, height: 185, description: "経験豊富なCB。スコットランドの守備の要として長年貢献。" },
+      { id: "scotland-hendry", name: "Jack Hendry", nameJa: "ジャック・ヘンドリー", number: 4, position: "DF", club: "アル・イテファク", birthDate: "1995-10-07", age: 30, caps: 25, goals: 2, height: 187, description: "サウジアラビアリーグで活躍する大型CB。フィジカルの強さが武器。" },
+      { id: "scotland-patterson", name: "Nathan Patterson", nameJa: "ネイサン・パターソン", number: 22, position: "DF", club: "エバートン", birthDate: "2001-10-16", age: 24, caps: 20, goals: 1, height: 183, description: "右SBのレギュラー候補。エバートンで安定した活躍を見せる。" },
+      { id: "scotland-mckenna", name: "Scott McKenna", nameJa: "スコット・マッケンナ", number: 6, position: "DF", club: "ディナモ・ザグレブ", birthDate: "1996-11-12", age: 29, caps: 35, goals: 1, height: 191, description: "クロアチアリーグで主力を張る左利きのCB。" },
+      { id: "scotland-mccrorie", name: "Ross McCrorie", nameJa: "ロス・マクローリー", number: 16, position: "DF", club: "ブリストル・シティ", birthDate: "1998-03-18", age: 28, caps: 10, goals: 0, height: 183, description: "右SBもこなせるユーティリティDF。" },
+      { id: "scotland-hyam", name: "Dominic Hyam", nameJa: "ドミニク・ヒアム", number: 15, position: "DF", club: "レクサム", birthDate: "1995-12-20", age: 30, caps: 5, goals: 0, height: 190, description: "チャンピオンシップで安定感を発揮するCB。" },
+      { id: "scotland-ralston", name: "Anthony Ralston", nameJa: "アンソニー・ラルスン", number: 14, position: "DF", club: "セルティック", birthDate: "1998-11-16", age: 27, caps: 15, goals: 1, height: 178, description: "セルティックの右SBとして国内屈指のパフォーマンス。" },
+      { id: "scotland-curtis", name: "Findlay Curtis", nameJa: "フィンドレー・カーティス", number: 24, position: "DF", club: "キルマーノック", birthDate: "2005-08-10", age: 20, caps: 0, goals: 0, height: 180, isNew: true, description: "20歳のサプライズ招集。スティーブ・クラーク監督が直接視察して選んだ若手DF。" },
+      // ── MF (7) ──
+      { id: "scotland-mctominay", name: "Scott McTominay", nameJa: "スコット・マクトミネイ", number: 10, position: "MF", club: "ナポリ", birthDate: "1996-12-08", age: 29, caps: 55, goals: 10, height: 191, description: "セリエA MVP級の活躍。コンテ監督の下で覚醒した別格の存在。" },
+      { id: "scotland-mcginn", name: "John McGinn", nameJa: "ジョン・マクギン", number: 7, position: "MF", club: "アストン・ヴィラ", birthDate: "1994-10-18", age: 31, caps: 65, goals: 18, height: 178, description: "代表の心臓部。90分間走り続けるスタミナと豊富な運動量が武器。" },
+      { id: "scotland-gilmour", name: "Billy Gilmour", nameJa: "ビリー・ギルモア", number: 8, position: "MF", club: "ナポリ", birthDate: "2001-06-11", age: 24, caps: 30, goals: 1, height: 170, description: "正確なパスとビジョンで中盤を操るスコットランドの若きゲームメイカー。" },
+      { id: "scotland-mcgregor", name: "Callum McGregor", nameJa: "カラム・マクレガー", number: 11, position: "MF", club: "セルティック", birthDate: "1993-06-14", age: 32, caps: 50, goals: 5, height: 176, description: "セルティックの主将として国内リーグを牽引する中盤の司令塔。" },
+      { id: "scotland-ferguson", name: "Lewis Ferguson", nameJa: "ルイス・ファーガソン", number: 18, position: "MF", club: "ボローニャ", birthDate: "1999-08-24", age: 26, caps: 15, goals: 3, height: 183, description: "セリエAで台頭した新世代MF。ゴール・アシスト両面で存在感。" },
+      { id: "scotland-armstrong", name: "Stuart Armstrong", nameJa: "スチュアート・アームストロング", number: 17, position: "MF", club: "ボローニャ", birthDate: "1992-03-30", age: 34, caps: 40, goals: 5, height: 183, description: "豊富な運動量と的確なポジショニングでチームを支えるベテランMF。" },
+      { id: "scotland-miller", name: "Lennon Miller", nameJa: "レノン・ミラー", number: 19, position: "MF", club: "ウディネーゼ", birthDate: "2006-10-28", age: 19, caps: 5, goals: 0, height: 180, description: "セリエAで成長著しい19歳の新星。スコットランド期待の未来。" },
+      // ── FW (6) ──
+      { id: "scotland-shankland", name: "Lawrence Shankland", nameJa: "ローレンス・シャンクランド", number: 9, position: "FW", club: "ハーツ", birthDate: "1995-08-10", age: 30, caps: 15, goals: 6, height: 180, description: "国内リーグで得点を量産するゴールハンター。決定力の高さが武器。" },
+      { id: "scotland-poku", name: "Kwame Poku", nameJa: "クワメ・ペッファー", number: 20, position: "FW", club: "スパルタ・プラハ", birthDate: "2002-07-25", age: 23, caps: 3, goals: 0, height: 175, description: "スピードとテクニックを兼ね備えた若手アタッカー。" },
+      { id: "scotland-conway", name: "Tom Conway", nameJa: "トム・コンウェイ", number: 13, position: "FW", club: "ミドルズブラ", birthDate: "2002-04-10", age: 23, caps: 5, goals: 1, height: 178, description: "チャンピオンシップで躍動する若手FW。切れ味鋭いドリブルが武器。" },
+      { id: "scotland-donnelly", name: "Jake Donnelly", nameJa: "ジェイク・ドネリー", number: 25, position: "FW", club: "イプスウィッチ", birthDate: "2003-02-15", age: 23, caps: 2, goals: 0, height: 182, description: "プレミアリーグで出場機会を掴んだ若手ストライカー。" },
+      { id: "scotland-scally", name: "Liam Scally", nameJa: "リアム・スカリー", number: 26, position: "FW", club: "チャールトン", birthDate: "2003-09-08", age: 22, caps: 1, goals: 0, height: 179, description: "チャールトンで結果を出し代表に初招集された若手FW。" },
+      { id: "scotland-adams", name: "Che Adams", nameJa: "チェ・アダムス", number: 21, position: "FW", club: "トリノ", birthDate: "1996-07-13", age: 29, caps: 30, goals: 8, height: 175, description: "イタリアでゴールを量産するスコットランドの主軸FW。フィジカルと技術を兼備。" },
     ],
     description: "1998年フランス大会以来のW杯出場。タータン・アーミーの熱狂的応援を背に戦う。",
   },
@@ -1270,13 +1297,45 @@ export const teams: Team[] = [
       style: "戦術的柔軟性・堅守",
     },
     players: [
+      // ── GK (5) ──
       { id: "england-pickford", name: "Jordan Pickford", nameJa: "ジョーダン・ピックフォード", number: 1, position: "GK", club: "エバートン", birthDate: "1994-03-07", age: 32, caps: 65, goals: 0, height: 185, description: "大舞台で力を発揮するイングランドの守護神。PK戦でのセーブと正確なキックが武器。" },
-      { id: "england-kane", name: "Harry Kane", nameJa: "ハリー・ケイン", number: 9, position: "FW", club: "バイエルン・ミュンヘン", birthDate: "1993-07-28", age: 32, caps: 100, goals: 68, height: 188, isCaptain: true, description: "イングランド代表歴代最多得点記録保持者。ポストプレーとシュート精度に優れた完全型ストライカー。" },
-      { id: "england-bellingham", name: "Jude Bellingham", nameJa: "ジュード・ベリンガム", number: 10, position: "MF", club: "レアル・マドリード", birthDate: "2003-06-29", age: 22, caps: 45, goals: 8, height: 186, description: "ダイナミックな飛び出しと得点力を持つボックス・トゥ・ボックスMF。リーダーシップも備える。" },
-      { id: "england-saka", name: "Bukayo Saka", nameJa: "ブカヨ・サカ", number: 7, position: "FW", club: "アーセナル", birthDate: "2001-09-05", age: 24, caps: 50, goals: 14, height: 178, description: "鋭いドリブルと正確なクロスを武器にサイドを制圧するウインガー。大舞台での決定力も高い。" },
-      { id: "england-foden", name: "Phil Foden", nameJa: "フィル・フォーデン", number: 11, position: "MF", club: "マンチェスター・シティ", birthDate: "2000-05-28", age: 25, caps: 40, goals: 5, height: 171, description: "繊細なボールタッチと狭いスペースでの創造性が光る天才型プレイメイカー。得点力も持つ。" },
-      { id: "england-rice", name: "Declan Rice", nameJa: "デクラン・ライス", number: 4, position: "MF", club: "アーセナル", birthDate: "1999-01-14", age: 27, caps: 55, goals: 5, height: 185, description: "広い守備範囲とボール奪取力に優れたアンカー。ボールの持ち運びとミドルシュートも魅力。" },
+      { id: "england-henderson-d", name: "Dean Henderson", nameJa: "ディーン・ヘンダーソン", number: 13, position: "GK", club: "クリスタル・パレス", birthDate: "1997-03-12", age: 29, caps: 10, goals: 0, height: 188, description: "プレミアリーグで安定したパフォーマンスを誇るNo.2候補。" },
+      { id: "england-ramsdale", name: "Aaron Ramsdale", nameJa: "アーロン・ラムズデール", number: 23, position: "GK", club: "ニューカッスル", birthDate: "1998-05-14", age: 27, caps: 8, goals: 0, height: 190, description: "アーセナルから移籍後、ニューカッスルで復活を遂げた実力派。" },
+      { id: "england-trafford", name: "James Trafford", nameJa: "ジェームス・トラッフォード", number: 22, position: "GK", club: "マンチェスター・シティ", birthDate: "2003-10-29", age: 22, caps: 2, goals: 0, height: 196, description: "シティが誇る次世代GK。将来の正GK候補。" },
+      { id: "england-steele", name: "Jason Steele", nameJa: "ジェイソン・スティール", number: 30, position: "GK", club: "ブライトン", birthDate: "1990-08-18", age: 35, caps: 1, goals: 0, height: 190, description: "経験豊富なチーム貢献型GK。" },
+      // ── DF (11) ──
       { id: "england-stones", name: "John Stones", nameJa: "ジョン・ストーンズ", number: 5, position: "DF", club: "マンチェスター・シティ", birthDate: "1994-05-28", age: 31, caps: 75, goals: 3, height: 188, description: "ビルドアップ能力に優れた技巧派センターバック。中盤に上がってのプレーもこなすインテリジェンスの持ち主。" },
+      { id: "england-guehi", name: "Marc Guehi", nameJa: "マーク・ゲイ", number: 6, position: "DF", club: "マンチェスター・シティ", birthDate: "2000-07-13", age: 25, caps: 25, goals: 1, height: 182, description: "代表のCBの柱。落ち着いたビルドアップと対人守備が光る。" },
+      { id: "england-maguire", name: "Harry Maguire", nameJa: "ハリー・マグワイア", number: 15, position: "DF", club: "マンチェスター・ユナイテッド", birthDate: "1993-03-05", age: 33, caps: 65, goals: 7, height: 194, description: "セットプレーの切り札。空中戦の強さとリーダーシップでチームを牽引。" },
+      { id: "england-konsa", name: "Ezri Konsa", nameJa: "エズリ・コンサ", number: 16, position: "DF", club: "アストン・ヴィラ", birthDate: "1997-10-23", age: 28, caps: 10, goals: 0, height: 183, description: "ビラで急成長を遂げた若手CB。スピードと読みが武器。" },
+      { id: "england-quansah", name: "Jarell Quansah", nameJa: "ジャレル・クアンサー", number: 17, position: "DF", club: "レバークーゼン", birthDate: "2003-01-31", age: 23, caps: 5, goals: 0, height: 185, description: "ドイツで揉まれた逸材CB。リバプール育ちの将来性豊かなDF。" },
+      { id: "england-burn", name: "Dan Burn", nameJa: "ダン・バーン", number: 3, position: "DF", club: "ニューカッスル", birthDate: "1992-05-09", age: 33, caps: 8, goals: 0, height: 198, description: "長身CBとして安定感抜群。セットプレーでの存在感も大きい。" },
+      { id: "england-hall", name: "Lewis Hall", nameJa: "ルイス・ホール", number: 24, position: "DF", club: "ニューカッスル", birthDate: "2004-09-08", age: 21, caps: 5, goals: 0, height: 180, description: "左SBの新星。ニューカッスルで躍動中。" },
+      { id: "england-livramento", name: "Tino Livramento", nameJa: "ティノ・リブラメント", number: 2, position: "DF", club: "ニューカッスル", birthDate: "2002-11-12", age: 23, caps: 8, goals: 0, height: 179, description: "右SBの有望株。リース・ジェームス不在の穴を埋める。" },
+      { id: "england-tomori", name: "Fikayo Tomori", nameJa: "フィカヨ・トモリ", number: 14, position: "DF", club: "ミラン", birthDate: "1997-12-19", age: 28, caps: 15, goals: 0, height: 185, description: "ミランで存在感を取り戻した大型CB。2023年以来の代表復帰。" },
+      { id: "england-spence", name: "Djed Spence", nameJa: "ジェド・スペンス", number: 18, position: "DF", club: "トッテナム", birthDate: "2000-08-08", age: 25, caps: 3, goals: 0, height: 180, description: "右SBをこなせるユーティリティDF。" },
+      { id: "england-oreilly", name: "Nico O'Reilly", nameJa: "ニコ・オライリー", number: 25, position: "DF", club: "マンチェスター・シティ", birthDate: "2004-07-18", age: 21, caps: 2, goals: 0, height: 178, description: "中盤もこなせる万能型。シティの若手として台頭。" },
+      // ── MF (8) ──
+      { id: "england-rice", name: "Declan Rice", nameJa: "デクラン・ライス", number: 4, position: "MF", club: "アーセナル", birthDate: "1999-01-14", age: 27, caps: 55, goals: 5, height: 185, description: "広い守備範囲とボール奪取力に優れたアンカー。ボールの持ち運びとミドルシュートも魅力。" },
+      { id: "england-bellingham", name: "Jude Bellingham", nameJa: "ジュード・ベリンガム", number: 10, position: "MF", club: "レアル・マドリード", birthDate: "2003-06-29", age: 22, caps: 45, goals: 8, height: 186, description: "ダイナミックな飛び出しと得点力を持つボックス・トゥ・ボックスMF。リーダーシップも備える。" },
+      { id: "england-mainoo", name: "Kobbie Mainoo", nameJa: "コビー・マイヌー", number: 8, position: "MF", club: "マンチェスター・ユナイテッド", birthDate: "2005-04-19", age: 20, caps: 15, goals: 2, height: 178, description: "ユナイテッドで復活した天才MF。ユーロ2024準優勝の立役者。" },
+      { id: "england-palmer", name: "Cole Palmer", nameJa: "コール・パーマー", number: 20, position: "MF", club: "チェルシー", birthDate: "2002-05-06", age: 23, caps: 15, goals: 5, height: 185, description: "チェルシーの絶対的エース。ラストパスとシュートの精度が別格。" },
+      { id: "england-anderson", name: "Elliott Anderson", nameJa: "エリオット・アンダーソン", number: 26, position: "MF", club: "ノッティンガム・フォレスト", birthDate: "2002-11-06", age: 23, caps: 5, goals: 0, height: 175, description: "フォレストで頭角を現した新鋭MF。ライスのパートナー候補。" },
+      { id: "england-henderson", name: "Jordan Henderson", nameJa: "ジョーダン・ヘンダーソン", number: 19, position: "MF", club: "アヤックス", birthDate: "1990-06-17", age: 35, caps: 80, goals: 3, height: 182, description: "元リバプール主将。アヤックスで経験をもたらすベテラン。" },
+      { id: "england-garner", name: "James Garner", nameJa: "ジェームズ・ガーナー", number: 28, position: "MF", club: "エバートン", birthDate: "2001-03-13", age: 25, caps: 0, goals: 0, height: 180, isNew: true, description: "エバートンで中盤の要として活躍。初の代表招集を勝ち取った実力派MF。" },
+      { id: "england-wharton", name: "Adam Wharton", nameJa: "アダム・ウォートン", number: 21, position: "MF", club: "クリスタル・パレス", birthDate: "2004-10-04", age: 21, caps: 5, goals: 0, height: 180, description: "守備的MFの新星。冷静な判断力と豊富な運動量が武器。" },
+      // ── FW (11) ──
+      { id: "england-kane", name: "Harry Kane", nameJa: "ハリー・ケイン", number: 9, position: "FW", club: "バイエルン・ミュンヘン", birthDate: "1993-07-28", age: 32, caps: 100, goals: 68, height: 188, isCaptain: true, description: "イングランド代表歴代最多得点記録保持者。ポストプレーとシュート精度に優れた完全型ストライカー。" },
+      { id: "england-saka", name: "Bukayo Saka", nameJa: "ブカヨ・サカ", number: 7, position: "FW", club: "アーセナル", birthDate: "2001-09-05", age: 24, caps: 50, goals: 14, height: 178, description: "鋭いドリブルと正確なクロスを武器にサイドを制圧するウインガー。大舞台での決定力も高い。" },
+      { id: "england-foden", name: "Phil Foden", nameJa: "フィル・フォーデン", number: 11, position: "FW", club: "マンチェスター・シティ", birthDate: "2000-05-28", age: 25, caps: 40, goals: 5, height: 171, description: "繊細なボールタッチと狭いスペースでの創造性が光る天才型プレイメイカー。得点力も持つ。" },
+      { id: "england-rashford", name: "Marcus Rashford", nameJa: "マーカス・ラッシュフォード", number: 12, position: "FW", club: "マンチェスター・ユナイテッド", birthDate: "1997-10-31", age: 28, caps: 60, goals: 17, height: 180, description: "スピードと突破力は健在。左足のシュートは世界レベルの破壊力。" },
+      { id: "england-watkins", name: "Ollie Watkins", nameJa: "オリー・ワトキンス", number: 27, position: "FW", club: "アストン・ヴィラ", birthDate: "1995-12-30", age: 30, caps: 20, goals: 5, height: 180, description: "プレミアリーグで得点を量産するストライカー。献身的なプレスも魅力。" },
+      { id: "england-gordon", name: "Anthony Gordon", nameJa: "アンソニー・ゴードン", number: 29, position: "FW", club: "ニューカッスル", birthDate: "2001-02-24", age: 25, caps: 10, goals: 2, height: 180, description: "ニューカッスルの快速ウインガー。縦への推進力が魅力。" },
+      { id: "england-rogers", name: "Morgan Rogers", nameJa: "モルガン・ロジャーズ", number: 31, position: "FW", club: "アストン・ヴィラ", birthDate: "2002-07-26", age: 23, caps: 5, goals: 1, height: 185, description: "アストン・ビラで急成長。創造性豊かなアタッカー。" },
+      { id: "england-madueke", name: "Noni Madueke", nameJa: "ノニ・マドゥエケ", number: 32, position: "FW", club: "チェルシー", birthDate: "2002-03-10", age: 24, caps: 10, goals: 3, height: 179, description: "ドリブルとシュートで違いを生み出すチェルシーのアタッカー。" },
+      { id: "england-calvert-lewin", name: "Dominic Calvert-Lewin", nameJa: "ドミニク・カルバート＝ルーウィン", number: 33, position: "FW", club: "リーズ", birthDate: "1997-03-16", age: 29, caps: 15, goals: 5, height: 187, description: "リーズ昇格に貢献したゴールゲッター。ポストプレーと決定力が高い。" },
+      { id: "england-bowen", name: "Jarrod Bowen", nameJa: "ジャロッド・ボーウェン", number: 34, position: "FW", club: "ウェストハム", birthDate: "1996-12-20", age: 29, caps: 12, goals: 2, height: 175, description: "ウェストハムの顔。ハードワークと得点力を兼備するWG。" },
+      { id: "england-eze", name: "Eberechi Eze", nameJa: "エベレチ・エゼ", number: 35, position: "FW", club: "アーセナル", birthDate: "1998-06-29", age: 27, caps: 10, goals: 2, height: 178, description: "アーセナル移籍後も輝きを放つ技巧派アタッカー。" },
     ],
     description: "母国開催以外では未だ優勝なし。タレント豊富なチームで悲願の戴冠を目指す。",
   },
