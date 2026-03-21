@@ -14,45 +14,64 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="hero-gradient hero-pattern text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 relative z-10">
+      <section className="relative overflow-hidden text-white" style={{ background: "#1A1A2E" }}>
+        {/* Decorative stripes */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div
+            className="absolute -top-20 right-[10%] h-[150%]"
+            style={{ width: "120px", background: "#E8192C", opacity: 0.06, transform: "rotate(15deg)" }}
+          />
+          <div
+            className="absolute -bottom-20 left-[5%] h-[150%]"
+            style={{ width: "100px", background: "#00843D", opacity: 0.07, transform: "rotate(-12deg)" }}
+          />
+          <div
+            className="absolute -top-10 left-[35%] h-[150%]"
+            style={{ width: "60px", background: "#0057A8", opacity: 0.05, transform: "rotate(8deg)" }}
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-28 relative z-10">
           <div className="text-center">
-            <div className="inline-block mb-6">
-              <span className="text-6xl sm:text-8xl">⚽</span>
+            <div className="inline-block mb-4 sm:mb-6">
+              <span className="text-5xl sm:text-8xl">⚽</span>
             </div>
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
+            <h1 className="text-2xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight mb-4">
               FIFA World Cup
-              <span className="block text-amber-300 mt-2">2026</span>
+              <span className="block mt-2">
+                <span className="text-[#E8192C]">20</span>
+                <span className="text-[#0057A8]">2</span>
+                <span className="text-[#00843D]">6</span>
+              </span>
             </h1>
-            <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-3">
+            <p className="text-base sm:text-xl text-white/80 max-w-2xl mx-auto mb-2 sm:mb-3">
               アメリカ・メキシコ・カナダ 3カ国共同開催
             </p>
-            <p className="text-sm text-white/80 mb-8">
+            <p className="text-xs sm:text-sm text-white/60 mb-6 sm:mb-8">
               2026年6月11日 - 7月19日 | 48チーム | 16都市
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-row gap-2 sm:gap-4 justify-center">
               <Link
                 href="/teams"
-                className="inline-flex items-center justify-center px-8 py-3 bg-white text-[#E8192C] font-bold rounded-full hover:bg-amber-50 transition-colors shadow-lg"
+                className="inline-flex items-center justify-center px-5 sm:px-8 py-2.5 sm:py-3 bg-[#E8192C] text-white font-bold rounded-full hover:bg-[#c81525] transition-colors shadow-lg text-sm sm:text-base"
               >
                 出場チーム一覧
               </Link>
               <Link
                 href="/matches"
-                className="inline-flex items-center justify-center px-8 py-3 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-colors"
+                className="inline-flex items-center justify-center px-5 sm:px-8 py-2.5 sm:py-3 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-colors text-sm sm:text-base"
               >
                 試合日程を見る
               </Link>
             </div>
           </div>
         </div>
-        {/* Decorative elements */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#f8f9fa] to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#F5F5F5] to-transparent" />
       </section>
 
       {/* Stats Bar */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20 mb-16">
-        <div className="bg-white rounded-2xl shadow-lg p-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20 mb-12 sm:mb-16">
+        <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 grid grid-cols-4 gap-2 sm:gap-6">
           {[
             { value: "48", label: "出場チーム", icon: "🏆" },
             { value: "3", label: "開催国", icon: "🌎" },
@@ -60,9 +79,9 @@ export default function Home() {
             { value: "104", label: "試合数", icon: "📅" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <span className="text-2xl mb-1 block">{stat.icon}</span>
-              <p className="text-3xl font-extrabold text-[#E8192C]">{stat.value}</p>
-              <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
+              <span className="text-lg sm:text-2xl mb-0.5 sm:mb-1 block">{stat.icon}</span>
+              <p className="text-xl sm:text-3xl font-extrabold text-[#E8192C]">{stat.value}</p>
+              <p className="text-[10px] sm:text-sm text-gray-500 mt-0.5 sm:mt-1">{stat.label}</p>
             </div>
           ))}
         </div>

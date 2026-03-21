@@ -121,7 +121,7 @@ export default function UniformPage() {
       </section>
 
       {/* Country Navigation */}
-      <div className="sticky top-16 z-40 bg-gray-50/95 backdrop-blur-sm border-b border-gray-200">
+      <div className="sticky top-14 sm:top-16 z-40 bg-gray-50/95 backdrop-blur-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
             {NATIONAL_TEAMS.map((team) => (
@@ -158,7 +158,7 @@ export default function UniformPage() {
         <section
           key={team.id}
           id={`team-${team.id}`}
-          className="border-t border-gray-200 scroll-mt-32"
+          className="border-t border-gray-200 scroll-mt-28 sm:scroll-mt-32"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 flex items-center gap-2">
@@ -166,7 +166,7 @@ export default function UniformPage() {
               {team.name}
             </h2>
 
-            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
               {team.uniforms.map((item) => (
                 <UniformCard key={item.id} item={item} team={team} />
               ))}
