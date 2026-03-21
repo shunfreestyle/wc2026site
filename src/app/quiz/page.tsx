@@ -323,6 +323,14 @@ export default function QuizPage() {
                       {current.note}
                     </p>
                   )}
+                  {current.explanation && (
+                    <div className="mt-4 mb-4 p-4 bg-blue-900/30 border border-blue-500/20 rounded-xl text-left">
+                      <p className="text-xs font-bold text-blue-400 mb-1">📖 解説</p>
+                      <p className="text-sm text-blue-200 leading-relaxed">
+                        {current.explanation}
+                      </p>
+                    </div>
+                  )}
                   <div>
                     <button
                       onClick={handleNext}

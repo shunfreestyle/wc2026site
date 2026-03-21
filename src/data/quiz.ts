@@ -4,85 +4,21 @@ export type QuizQuestion = {
   question: string;
   options: string[];
   correct: number;
+  explanation: string;
   note?: string;
 };
 
 export const QUIZ_BEGINNER: QuizQuestion[] = [
-  {
-    id: 1,
-    question: "2026年ワールドカップの開幕日はいつ？",
-    options: ["6月11日", "7月1日", "5月20日", "6月1日"],
-    correct: 0,
-  },
-  {
-    id: 2,
-    question: "2026年ワールドカップの開催国は？",
-    options: [
-      "アメリカのみ",
-      "アメリカ・メキシコ・カナダ",
-      "アメリカ・ブラジル・メキシコ",
-      "カナダ・メキシコのみ",
-    ],
-    correct: 1,
-  },
-  {
-    id: 3,
-    question: "2026年ワールドカップに出場するチーム数は？",
-    options: ["32チーム", "36チーム", "40チーム", "48チーム"],
-    correct: 3,
-  },
-  {
-    id: 4,
-    question: "日本代表の監督は誰？（2025年現在）",
-    options: ["森保一", "西野朗", "ハリルホジッチ", "岡田武史"],
-    correct: 0,
-  },
-  {
-    id: 5,
-    question: "2026年W杯の決勝戦が行われるスタジアムがある都市は？",
-    options: ["ロサンゼルス", "ニューヨーク", "メキシコシティ", "トロント"],
-    correct: 1,
-  },
-  {
-    id: 6,
-    question: "W杯の歴代最多優勝国は？",
-    options: ["ドイツ", "アルゼンチン", "イタリア", "ブラジル"],
-    correct: 3,
-  },
-  {
-    id: 7,
-    question: "日本代表のユニフォームサプライヤーは？",
-    options: ["ナイキ", "プーマ", "アディダス", "アンブロ"],
-    correct: 2,
-  },
-  {
-    id: 8,
-    question: "2026年W杯の決勝トーナメントは何チームから行われる？",
-    options: ["16チーム", "32チーム", "24チーム", "48チーム"],
-    correct: 1,
-  },
-  {
-    id: 9,
-    question: "日本代表の愛称は？",
-    options: [
-      "サムライブルー",
-      "ブルーサムライ",
-      "ブレイブブロッサムズ",
-      "ブルードラゴン",
-    ],
-    correct: 0,
-  },
-  {
-    id: 10,
-    question: "カタール大会で日本が破った強豪2カ国の組み合わせは？",
-    options: [
-      "フランス・スペイン",
-      "ドイツ・スペイン",
-      "ドイツ・ブラジル",
-      "フランス・ドイツ",
-    ],
-    correct: 1,
-  },
+  { id: 1, question: "2026年ワールドカップの開幕日はいつ？", options: ["6月11日", "7月1日", "5月20日", "6月1日"], correct: 0, explanation: "2026年FIFAワールドカップの開幕日は6月11日。アメリカ・メキシコ・カナダの3カ国共催で、決勝は7月19日にニューヨーク・ニュージャージーのメットライフ・スタジアムで開催される。" },
+  { id: 2, question: "2026年ワールドカップの開催国は？", options: ["アメリカのみ", "アメリカ・メキシコ・カナダ", "アメリカ・ブラジル・メキシコ", "カナダ・メキシコのみ"], correct: 1, explanation: "史上初の3カ国共催。アメリカが主催の中心で試合数が最多。1994年アメリカ大会以来32年ぶり、メキシコは1986年以来40年ぶり、カナダは初開催。" },
+  { id: 3, question: "2026年ワールドカップに出場する国の数は？", options: ["32カ国", "40カ国", "48カ国", "64カ国"], correct: 2, explanation: "1998年から続いた32カ国制から48カ国制へ拡大。12グループ×4チームで行い、各グループ上位2チームと8つの3位チームが新設のラウンド32に進む。" },
+  { id: 4, question: "前回2022年カタールW杯で優勝したチームは？", options: ["ブラジル", "フランス", "アルゼンチン", "スペイン"], correct: 2, explanation: "アルゼンチンがフランスとの決勝をPK戦で制し1986年以来36年ぶり3度目の優勝。MVPはリオネル・メッシ。エムバペは決勝でハットトリックも惜敗し得点王。" },
+  { id: 5, question: "日本代表がW杯2026グループFで最初に戦う相手は？", options: ["チュニジア", "欧州PO勝者", "オランダ", "スウェーデン"], correct: 2, explanation: "日本はグループFでオランダ、チュニジア、UEFAプレーオフB勝者と同組。初戦はダラスのAT&Tスタジアムでオランダと対戦する。" },
+  { id: 6, question: "日本代表の森保一監督が初めてW杯でベスト16に導いたのはいつ？", options: ["2018年ロシア", "2022年カタール", "2014年ブラジル", "2010年南アフリカ"], correct: 1, explanation: "森保一監督は2022年カタールW杯でドイツ・スペインを破る「死の組」突破を達成。続投が決まり2026年大会でも指揮を執る。" },
+  { id: 7, question: "2026年W杯の公式球メーカーは？", options: ["ナイキ", "プーマ", "アディダス", "ミズノ"], correct: 2, explanation: "アディダスは2026年大会公式ボール「トリオンダ」も製造。赤・緑・青の3色はカナダ・メキシコ・アメリカを表す。日本代表2026ユニフォームのコンセプトは「水平線」。" },
+  { id: 8, question: "2026年W杯のラウンド32は何チームで争われる？", options: ["16チーム", "32チーム", "24チーム", "48チーム"], correct: 1, explanation: "2026年大会から「ラウンド32」が新設。48チーム中32チームが進出し、ラウンド32→ラウンド16→QF→SF→決勝の5ステージで戦う。" },
+  { id: 9, question: "日本代表の愛称は？", options: ["サムライブルー", "ブルーサムライ", "ブレイブブロッサムズ", "ブルードラゴン"], correct: 0, explanation: "「サムライブルー」はJFA公式の愛称。ユニフォームの紺色と武士道精神に由来。「ブレイブブロッサムズ」はラグビー日本代表の愛称。" },
+  { id: 10, question: "2026年W杯決勝が行われるスタジアムは？", options: ["ソフィ・スタジアム", "メットライフ・スタジアム", "アステカ・スタジアム", "ローズボウル"], correct: 1, explanation: "決勝はニューヨーク・ニュージャージー州のメットライフ・スタジアムで開催。収容人数約82,500人。1994年W杯決勝が行われたローズボウルは今大会不使用。" },
 ];
 
 export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
@@ -93,6 +29,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回のイギリス遠征で招集された日本代表の人数は？",
     options: ["23名", "26名", "28名", "30名"],
     correct: 2,
+    explanation: "2026年3月時点の招集は28名。従来の23名より多く、W杯本番を見据えた広範なテストの意図がある。",
   },
   {
     id: 2,
@@ -100,6 +37,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回招集されたGKで鹿島アントラーズ所属の選手は？",
     options: ["鈴木彩艶", "大迫敬介", "早川友基", "谷晃生"],
     correct: 2,
+    explanation: "早川友基は鹿島アントラーズ所属のGK。国内組として招集された3選手の1人。",
   },
   {
     id: 3,
@@ -107,6 +45,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "三笘薫が所属するクラブは？",
     options: ["リバプール", "アーセナル", "ブライトン", "チェルシー"],
     correct: 2,
+    explanation: "三笘薫はプレミアリーグ・ブライトン所属。カタールW杯での「三笘の1ミリ」で世界的に有名に。",
   },
   {
     id: 4,
@@ -114,6 +53,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回初招集された選手は？",
     options: ["田中碧", "堂安律", "塩貝健人", "中村敬斗"],
     correct: 2,
+    explanation: "塩貝健人はドイツ・ヴォルフスブルク所属で今回が初招集。ゴール前での嗅覚が評価された。",
   },
   {
     id: 5,
@@ -126,6 +66,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "アトレティコ・マドリード",
     ],
     correct: 2,
+    explanation: "久保建英はスペイン・レアル・ソシエダ所属。今回は怪我のため招集外。",
     note: "※久保は今回招集外（怪我）",
   },
   {
@@ -134,6 +75,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "前田大然が所属するクラブは？",
     options: ["レンジャーズ", "セルティック", "ハーツ", "ハイバーニアン"],
     correct: 1,
+    explanation: "グラスゴーのハムデン・パークはスコットランド代表のホーム。収容約52,000人の国立競技場。",
   },
   {
     id: 7,
@@ -146,6 +88,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "セルティック・パーク",
     ],
     correct: 2,
+    explanation: "冨安健洋はアヤックス（オランダ）所属。アーセナルから移籍し1年9ヶ月ぶりの代表復帰。",
   },
   {
     id: 8,
@@ -158,6 +101,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "エティハド・スタジアム",
     ],
     correct: 0,
+    explanation: "イングランド代表のホームスタジアムであるウェンブリーは収容約90,000人。サッカーの聖地と呼ばれる。",
   },
   {
     id: 9,
@@ -170,6 +114,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "マンチェスター・ユナイテッド",
     ],
     correct: 2,
+    explanation: "冨安健洋はアヤックス（オランダ）所属。2025年にアーセナルからアヤックスへ移籍。",
   },
   {
     id: 10,
@@ -182,6 +127,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "ウェールズとイングランド",
     ],
     correct: 1,
+    explanation: "ウェンブリー・スタジアム（ロンドン）はイングランドのホームグラウンド。1966年W杯決勝の舞台。",
   },
 
   // ━━━ レベル2（初級）10問 ━━━
@@ -191,6 +137,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "遠藤航が所属するクラブは？",
     options: ["リバプール", "マンチェスター・シティ", "トッテナム", "チェルシー"],
     correct: 0,
+    explanation: "遠藤航はリバプール所属。今回はコンディション調整のため招集外だが日本代表のキャプテン。",
   },
   {
     id: 12,
@@ -198,6 +145,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "板倉滉が所属するクラブは？",
     options: ["ボルシアMG", "シャルケ04", "ヘルタ・ベルリン", "ブレーメン"],
     correct: 0,
+    explanation: "板倉滉はドイツ・ボルシアMG所属。今回はメンバー外だが実力は折り紙つきのCB。",
   },
   {
     id: 13,
@@ -205,6 +153,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "中村敬斗が所属するクラブは？",
     options: ["スタッド・ランス", "ラツィオ", "モナコ", "リヨン"],
     correct: 1,
+    explanation: "中村敬斗はフランス・スタッド・ランス所属。左サイドからのカットインシュートが武器。",
   },
   {
     id: 14,
@@ -217,6 +166,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "レバークーゼン",
     ],
     correct: 2,
+    explanation: "伊藤洋輝はドイツ・バイエルン・ミュンヘン所属。ビッグクラブで左利きCBとして成長中。",
   },
   {
     id: 15,
@@ -229,6 +179,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "ブレントフォード",
     ],
     correct: 1,
+    explanation: "田中碧はイングランド・リーズ・ユナイテッド所属。カタールW杯スペイン戦で決勝点を決めた。",
   },
   {
     id: 16,
@@ -241,6 +192,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "ウニオン・ベルリン",
     ],
     correct: 2,
+    explanation: "佐野海舟はドイツ・マインツ所属。ボール奪取力に定評のある守備的MF。",
   },
   {
     id: 17,
@@ -253,6 +205,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "フラム",
     ],
     correct: 1,
+    explanation: "鎌田大地はプレミアリーグ・クリスタルパレス所属。ヨーロッパリーグMVP受賞の実力者。",
   },
   {
     id: 18,
@@ -265,6 +218,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "ボーフム",
     ],
     correct: 1,
+    explanation: "菅原由勢はドイツ・ブレーメン所属。右SBの主力で攻撃参加も積極的。",
   },
   {
     id: 19,
@@ -277,6 +231,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "ホッフェンハイム",
     ],
     correct: 0,
+    explanation: "堂安律はドイツ・フランクフルト所属。カタールW杯でドイツ戦・スペイン戦の両方でゴールを決めた大舞台の男。",
   },
   {
     id: 20,
@@ -284,6 +239,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回の遠征で招集されたDF登録の選手は何名？",
     options: ["7名", "8名", "9名", "10名"],
     correct: 2,
+    explanation: "28名中フィールドプレーヤーは25名。GK3名（早川・大迫・鈴木彩艶）を除いた数。",
   },
 
   // ━━━ レベル3（中級）10問 ━━━
@@ -293,6 +249,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回招集されたJリーグ所属のフィールドプレーヤーは？",
     options: ["伊東純也", "後藤啓介", "佐藤龍之介", "前田大然"],
     correct: 2,
+    explanation: "Jリーグ所属のフィールドプレーヤーは佐藤龍之介（FC東京）の1名のみ。残りは全員海外組。",
   },
   {
     id: 22,
@@ -300,6 +257,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "瀬古歩夢が所属するクラブは？",
     options: ["ニース", "ル・アーヴル", "ナント", "ストラスブール"],
     correct: 1,
+    explanation: "瀬古歩夢はフランス・ル・アーヴル所属。冷静なビルドアップが持ち味のCB。",
   },
   {
     id: 23,
@@ -307,6 +265,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "佐野航大が所属するクラブは？",
     options: ["PSV", "フェイエノールト", "NECナイメヘン", "AZ"],
     correct: 2,
+    explanation: "佐野航大はオランダ・NECナイメヘン所属。小柄ながらテクニックとゲームメイク能力が光る。",
   },
   {
     id: 24,
@@ -319,6 +278,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "ボーフム",
     ],
     correct: 1,
+    explanation: "鈴木唯人はドイツ・フライブルク所属。スピードのある仕掛けと正確なシュートが持ち味。",
   },
   {
     id: 25,
@@ -331,6 +291,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "ゲンク",
     ],
     correct: 2,
+    explanation: "谷口彰悟はベルギー・シントトロイデン所属。34歳のベテランCBでカタールW杯でもフル出場。",
   },
   {
     id: 26,
@@ -338,6 +299,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回招集された選手で最年少（2003年生まれ）は誰？",
     options: ["塩貝健人", "佐藤龍之介", "後藤啓介", "佐野航大"],
     correct: 0,
+    explanation: "佐藤龍之介はFC東京所属で19歳。今回の招集メンバー最年少。超新星として注目。",
   },
   {
     id: 27,
@@ -345,6 +307,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回のメンバーでスペインリーグ所属の選手は何名？",
     options: ["0名", "1名", "2名", "3名"],
     correct: 0,
+    explanation: "町野修斗はドイツ・ボルシアMG所属。フィジカルを生かした力強い突破が武器。",
     note: "※久保建英は怪我で招集外",
   },
   {
@@ -353,6 +316,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回の招集メンバーで最もキャップ数が多い選手は？",
     options: ["伊東純也", "遠藤航", "鎌田大地", "板倉滉"],
     correct: 1,
+    explanation: "小川航基はオランダ・NECナイメヘン所属。ヘディングの強さと裏抜けが持ち味。",
   },
   {
     id: 29,
@@ -365,6 +329,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "スパルタ・ロッテルダム",
     ],
     correct: 1,
+    explanation: "渡辺剛はフェイエノールト所属。上田綺世と同じオランダのクラブでプレー。",
   },
   {
     id: 30,
@@ -372,6 +337,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回のJリーグ所属の3選手に含まれないのは？",
     options: ["早川友基", "大迫敬介", "佐藤龍之介", "谷口彰悟"],
     correct: 3,
+    explanation: "谷口彰悟はシントトロイデン所属（ベルギー）で海外組。鹿島の早川・広島の大迫・FC東京の佐藤の3名がJリーグ組。",
   },
 
   // ━━━ レベル4（上級）10問 ━━━
@@ -386,6 +352,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "マグデブルク",
     ],
     correct: 1,
+    explanation: "安藤智哉はドイツ・ザンクトパウリ所属。藤田譲瑠チマと同クラブのチームメイト。",
   },
   {
     id: 32,
@@ -398,6 +365,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "アンデルレヒト",
     ],
     correct: 2,
+    explanation: "伊東純也はベルギー・KRCゲンク所属（2025年8月に古巣復帰）。日本最速のスピードスター。",
   },
   {
     id: 33,
@@ -410,6 +378,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "アンデルレヒト",
     ],
     correct: 3,
+    explanation: "後藤啓介はベルギー・シントトロイデン所属。190cmの大型ストライカーで20歳。",
   },
   {
     id: 34,
@@ -417,6 +386,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回のメンバーでブンデスリーガ（1部・2部合計）所属は何名？",
     options: ["6名", "8名", "10名", "12名"],
     correct: 1,
+    explanation: "ドイツ・ブンデスリーガ所属は堂安・伊藤洋輝・菅原・佐野海舟・藤田・安藤・塩貝・鈴木唯人・町野の9名。",
   },
   {
     id: 35,
@@ -424,6 +394,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "鈴木彩艶が所属するクラブは？",
     options: ["パルマ", "ジェノア", "エンポリ", "ヴェローナ"],
     correct: 0,
+    explanation: "鈴木彩艶はイタリア・パルマ所属。190cmの長身GKでセリエAで経験を積んでいる。",
   },
   {
     id: 36,
@@ -431,6 +402,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回のJリーグ所属3選手で唯一のフィールドプレーヤーは？",
     options: ["早川友基", "大迫敬介", "佐藤龍之介", "谷口彰悟"],
     correct: 2,
+    explanation: "佐藤龍之介（FC東京）が唯一のJリーグ所属フィールドプレーヤー。GK大迫（広島）とGK早川（鹿島）もJリーグ組。",
   },
   {
     id: 37,
@@ -438,6 +410,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回のメンバーで唯一サンフレッチェ広島所属なのは？",
     options: ["早川友基", "大迫敬介", "谷口彰悟", "菅原由勢"],
     correct: 1,
+    explanation: "大迫敬介はサンフレッチェ広島所属。東京五輪世代の正GK候補で安定感のあるセービングが持ち味。",
   },
   {
     id: 38,
@@ -445,6 +418,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回の招集で久しぶりに復帰した選手は？",
     options: ["伊藤洋輝", "冨安健洋", "田中碧", "瀬古歩夢"],
     correct: 1,
+    explanation: "冨安健洋は2025年にアーセナルからアヤックスへ移籍。1年9ヶ月ぶりの代表復帰を果たした。",
   },
   {
     id: 39,
@@ -457,6 +431,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "3月29日 6:00",
     ],
     correct: 1,
+    explanation: "スコットランド戦のキックオフは現地3月28日17:00、日本時間では3月29日（日）2:00。NHK総合テレビで生中継。",
   },
   {
     id: 40,
@@ -469,6 +444,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "4月1日 7:45",
     ],
     correct: 1,
+    explanation: "イングランド戦のキックオフは現地3月31日19:45、日本時間では4月1日（水）3:45。NHK Eテレで生中継。",
   },
 
   // ━━━ レベル5（超上級）10問 ━━━
@@ -478,6 +454,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回の招集メンバーでオランダリーグ（エールディヴィジ）所属の選手は何名？",
     options: ["1名", "2名", "3名", "4名"],
     correct: 1,
+    explanation: "ブンデスリーガ所属は堂安・伊藤洋輝・菅原・佐野海舟・藤田・安藤・塩貝・鈴木唯人・町野。ブンデスリーガ2部含めると更に多い。",
   },
   {
     id: 42,
@@ -485,6 +462,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回の招集メンバーで国際Aマッチ出場数が最も多いのは？",
     options: ["遠藤航", "伊東純也", "冨安健洋", "板倉滉"],
     correct: 0,
+    explanation: "オランダリーグ所属は上田綺世（フェイエノールト）・渡辺剛（フェイエノールト）・冨安健洋（アヤックス）・小川航基（NEC）・佐野航大（NEC）の5名。",
   },
   {
     id: 43,
@@ -497,6 +475,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "出場停止",
     ],
     correct: 2,
+    explanation: "守田英正の選外はコンディション調整のためで、怪我ではなく監督の判断。スポルティングCPで主力として活躍中。",
   },
   {
     id: 44,
@@ -504,6 +483,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回のメンバーでフランスリーグ所属の選手は何名？",
     options: ["1名", "2名", "3名", "4名"],
     correct: 1,
+    explanation: "フランスリーグ所属は中村敬斗（ランス）・瀬古歩夢（ル・アーヴル）の2名。",
   },
   {
     id: 45,
@@ -516,6 +496,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "W杯前最後のテストマッチ",
     ],
     correct: 1,
+    explanation: "ベルギーリーグ所属は谷口彰悟（シントトロイデン）・伊東純也（ゲンク）・後藤啓介（シントトロイデン）の3名。",
   },
   {
     id: 46,
@@ -524,6 +505,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "今回のメンバーで最もプレミアリーグに近い所属クラブの選手は？（リーズ・ユナイテッドはチャンピオンシップ）",
     options: ["田中碧", "鎌田大地", "三笘薫", "冨安健洋"],
     correct: 2,
+    explanation: "カタールW杯に出場した選手は伊東純也・鎌田大地・堂安律・田中碧・前田大然・上田綺世・谷口彰悟など多数。",
   },
   {
     id: 47,
@@ -531,6 +513,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回招集された選手のうちベルギーリーグ所属は何名？",
     options: ["2名", "3名", "4名", "5名"],
     correct: 1,
+    explanation: "伊東純也がカタールW杯メンバーの中でも最多のA代表キャップ数を持つ。33歳のベテランとして経験値はチーム随一。",
   },
   {
     id: 48,
@@ -538,6 +521,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回のメンバーで2022年カタールW杯に出場していない選手は？",
     options: ["塩貝健人", "冨安健洋", "板倉滉", "遠藤航"],
     correct: 0,
+    explanation: "鈴木淳之介はデンマーク・コペンハーゲン所属。2003年生まれの22歳で、北欧で経験を積む若手左SB。",
   },
   {
     id: 49,
@@ -545,6 +529,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     question: "今回のDF登録選手で最も国際経験が浅いのは？",
     options: ["安藤智哉", "瀬古歩夢", "渡辺剛", "菅原由勢"],
     correct: 0,
+    explanation: "久保建英はレアル・ソシエダ所属。今回は怪我のため招集外だがW杯本大会での活躍に期待。",
   },
   {
     id: 50,
@@ -557,31 +542,32 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
       "自ら辞退",
     ],
     correct: 1,
+    explanation: "南野拓実はフランス・ASモナコ所属。リバプールでのプレミアリーグ優勝経験もある実力者。今回はコンディション面の考慮。",
   },
 ];
 
 export const QUIZ_ENGLAND: QuizQuestion[] = [
-  { id: 1, question: "イングランド代表の愛称は？", options: ["スリーライオンズ", "レッドデビルズ", "ブルース", "クロスオブセントジョージ"], correct: 0 },
-  { id: 2, question: "イングランド代表監督は？", options: ["ガレス・サウスゲート", "トーマス・トゥヘル", "スティーブ・クラーク", "ペップ・グアルディオラ"], correct: 1 },
-  { id: 3, question: "イングランドのW杯優勝は何年？", options: ["1958年", "1966年", "1974年", "1982年"], correct: 1 },
-  { id: 4, question: "ハリー・ケインの所属クラブは？", options: ["マンチェスター・シティ", "アーセナル", "バイエルン・ミュンヘン", "レアル・マドリード"], correct: 2 },
-  { id: 5, question: "ジュード・ベリンガムが所属するクラブは？", options: ["マンチェスター・シティ", "レアル・マドリード", "バルセロナ", "リバプール"], correct: 1 },
-  { id: 6, question: "イングランド代表で最も得点の多い選手は？", options: ["ウェイン・ルーニー", "ハリー・ケイン", "マイケル・オーウェン", "ゲイリー・リネカー"], correct: 1 },
-  { id: 7, question: "ブカヨ・サカの所属クラブは？", options: ["チェルシー", "トッテナム", "アーセナル", "マンチェスター・ユナイテッド"], correct: 2 },
-  { id: 8, question: "イングランド代表のホームスタジアムは？", options: ["オールド・トラフォード", "エミレーツ", "ウェンブリー", "スタンフォード・ブリッジ"], correct: 2 },
-  { id: 9, question: "デクラン・ライスの所属クラブは？", options: ["アーセナル", "マンチェスター・シティ", "ウェストハム", "チェルシー"], correct: 0 },
-  { id: 10, question: "今回の日本戦でイングランドが招集した人数は？", options: ["23名", "26名", "30名", "35名"], correct: 3 },
+  { id: 1, question: "イングランド代表の愛称は？", options: ["スリーライオンズ", "レッドデビルズ", "ブルース", "クロスオブセントジョージ"], correct: 0, explanation: "「スリーライオンズ」はイングランド王室の紋章に由来。1996年ユーロのテーマソング「Three Lions」でも有名。「レッドデビルズ」はマンチェスター・ユナイテッドの愛称。" },
+  { id: 2, question: "イングランド代表監督は？", options: ["ガレス・サウスゲート", "トーマス・トゥヘル", "スティーブ・クラーク", "ペップ・グアルディオラ"], correct: 1, explanation: "トーマス・トゥヘルが2025年1月から就任。ドイツ人監督でチェルシーとCLを制した実績を持つ。前任のガレス・サウスゲートはユーロ2024準優勝後に退任。" },
+  { id: 3, question: "イングランドのW杯優勝は何年？", options: ["1958年", "1966年", "1974年", "1982年"], correct: 1, explanation: "1966年の地元イングランド大会でのみ優勝。決勝でドイツを4-2で破った。以来60年間優勝から遠ざかっている。" },
+  { id: 4, question: "ハリー・ケインの所属クラブは？", options: ["マンチェスター・シティ", "アーセナル", "バイエルン・ミュンヘン", "レアル・マドリード"], correct: 2, explanation: "ハリー・ケインは2023年夏にトッテナムからバイエルン・ミュンヘンへ移籍。イングランド代表歴代最多得点記録保持者。バイエルンで伊藤洋輝とチームメイト。" },
+  { id: 5, question: "ジュード・ベリンガムが所属するクラブは？", options: ["マンチェスター・シティ", "レアル・マドリード", "バルセロナ", "リバプール"], correct: 1, explanation: "ベリンガムは2023年にBVBからレアル・マドリードへ移籍。22歳にしてCLとラ・リーガを制覇した世界最高の若手MF。" },
+  { id: 6, question: "イングランド代表のホームカラーは？", options: ["赤", "白", "青", "黄"], correct: 1, explanation: "イングランド代表のホームは白。アウェーは伝統的に赤。1966年W杯優勝時も赤のアウェーユニで決勝に臨んだ。" },
+  { id: 7, question: "イングランド代表のホームスタジアムは？", options: ["オールド・トラフォード", "エミレーツ", "ウェンブリー", "スタンフォード・ブリッジ"], correct: 2, explanation: "ウェンブリー・スタジアムは収容約90,000人のイングランドの聖地。2024年ユーロ決勝でもスペインに敗れた。" },
+  { id: 8, question: "ブカヨ・サカの所属クラブは？", options: ["チェルシー", "マンチェスター・シティ", "アーセナル", "リバプール"], correct: 2, explanation: "サカはアーセナルのアカデミー育ち。冨安健洋と2021-25年にチームメイトだった。ユーロ2020決勝PKを外した経験を乗り越えて成長。" },
+  { id: 9, question: "デクラン・ライスの所属クラブは？", options: ["チェルシー", "アーセナル", "マンチェスター・シティ", "ウェストハム"], correct: 1, explanation: "ライスは2023年にウェストハムからアーセナルへ英国人最高額£100Mで移籍。冨安健洋とも同チームだった。" },
+  { id: 10, question: "今回の日本戦でイングランドが招集した人数は？", options: ["23名", "26名", "30名", "35名"], correct: 3, explanation: "トゥヘル体制では35名の大所帯を招集。W杯本番に向けて幅広い選手をテストする意図がある。" },
 ];
 
 export const QUIZ_SCOTLAND: QuizQuestion[] = [
-  { id: 1, question: "スコットランド代表の愛称は？", options: ["タータンアーミー", "ブレイブハーツ", "キルティーズ", "クランズマン"], correct: 0 },
-  { id: 2, question: "スコットランド代表監督は？", options: ["スティーブ・クラーク", "アレックス・マクロイシュ", "ゴードン・ストラカン", "ビリー・ギルモア"], correct: 0 },
-  { id: 3, question: "スコットランド代表のホームスタジアムは？", options: ["セルティック・パーク", "アイブロックス", "ハムデン・パーク", "タイカスルパーク"], correct: 2 },
-  { id: 4, question: "アンディ・ロバートソンの所属クラブは？", options: ["セルティック", "レンジャーズ", "リバプール", "マンチェスター・ユナイテッド"], correct: 2 },
-  { id: 5, question: "スコット・マクトミネイの所属クラブは？", options: ["マンチェスター・ユナイテッド", "ナポリ", "アストン・ビラ", "ニューカッスル"], correct: 1 },
-  { id: 6, question: "ビリー・ギルモアがブライトン時代に同チームだった日本人選手は？", options: ["冨安健洋", "三笘薫", "遠藤航", "鎌田大地"], correct: 1 },
-  { id: 7, question: "スコットランドのW杯2026のグループは？", options: ["グループA", "グループC", "グループF", "グループL"], correct: 1 },
-  { id: 8, question: "キーラン・ティアニーがアーセナル時代に同チームだった日本人選手は？", options: ["三笘薫", "遠藤航", "冨安健洋", "堂安律"], correct: 2 },
-  { id: 9, question: "スコットランド戦の日本のキックオフ（日本時間）は？", options: ["3月28日 23:00", "3月29日 2:00", "3月29日 5:00", "3月28日 20:00"], correct: 1 },
-  { id: 10, question: "前田大然が所属するセルティックはスコットランドの何都市のクラブ？", options: ["エディンバラ", "グラスゴー", "アバディーン", "ダンディー"], correct: 1 },
+  { id: 1, question: "スコットランド代表の愛称は？", options: ["タータンアーミー", "ブレイブハーツ", "キルティーズ", "クランズマン"], correct: 0, explanation: "「タータン・アーミー」はスコットランド代表サポーターの愛称。タータン柄のキルトが名前の由来。" },
+  { id: 2, question: "スコットランド代表監督は？", options: ["スティーブ・クラーク", "アレックス・マクロイシュ", "ゴードン・ストラカン", "ビリー・ギルモア"], correct: 0, explanation: "スティーブ・クラークが2019年から長期政権。ユーロ2020・2024出場に導いた実績を持つ。" },
+  { id: 3, question: "スコットランド代表のホームスタジアムは？", options: ["セルティック・パーク", "アイブロックス", "ハムデン・パーク", "タイカスルパーク"], correct: 2, explanation: "ハムデン・パークはグラスゴーにある国立競技場。収容約52,000人でスコットランド代表のホーム。" },
+  { id: 4, question: "アンディ・ロバートソンの所属クラブは？", options: ["セルティック", "レンジャーズ", "リバプール", "マンチェスター・ユナイテッド"], correct: 2, explanation: "ロバートソンはリバプール所属のキャプテン。遠藤航と2023-25年にチームメイト。スコットランド代表の主将。" },
+  { id: 5, question: "スコット・マクトミネイの所属クラブは？", options: ["マンチェスター・ユナイテッド", "ナポリ", "アストン・ビラ", "ニューカッスル"], correct: 1, explanation: "マクトミネイは2024年にユナイテッドからナポリへ移籍。セリエAで覚醒しMVP級の活躍を見せている。" },
+  { id: 6, question: "スコットランドのFIFAランキングは（2026年3月時点）？", options: ["約20位", "約36位", "約50位", "約70位"], correct: 1, explanation: "スコットランドはFIFAランキングで概ね30〜40位台。2024年ユーロにも出場した欧州中堅国。" },
+  { id: 7, question: "ビリー・ギルモアの所属クラブは？", options: ["チェルシー", "ブライトン", "ナポリ", "インテル"], correct: 2, explanation: "ギルモアはナポリ所属。ブライトン在籍時（2022-24年）は三笘薫とチームメイトだった。マクトミネイとナポリで共演中。" },
+  { id: 8, question: "キーラン・ティアニーがアーセナル時代に同チームだった日本人選手は？", options: ["三笘薫", "遠藤航", "冨安健洋", "堂安律"], correct: 2, explanation: "ティアニーは2019-25年にアーセナル所属。冨安健洋と4年間チームメイトで仲が良かった。現在はセルティックで前田大然・旗手怜央と共闘中。" },
+  { id: 9, question: "スコットランド戦の日本のキックオフ（日本時間）は？", options: ["3月28日 23:00", "3月29日 2:00", "3月29日 5:00", "3月28日 20:00"], correct: 1, explanation: "現地グラスゴーでは3月28日17:00キックオフ。日本時間では3月29日（日）2:00。NHK総合テレビで生中継。" },
+  { id: 10, question: "前田大然が所属するセルティックはスコットランドの何都市のクラブ？", options: ["エディンバラ", "グラスゴー", "アバディーン", "ダンディー"], correct: 1, explanation: "セルティックFCはグラスゴーを本拠地とするスコットランド最強クラブ。同じグラスゴーのレンジャーズとの「オールドファーム」は世界屈指の名物ダービー。" },
 ];
