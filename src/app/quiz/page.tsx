@@ -260,12 +260,24 @@ export default function QuizPage() {
             <p className="text-gray-400 text-sm text-center mb-4">
               W杯本番着用モデルが楽天市場で購入できます！
             </p>
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center gap-4 mb-4">
               <a href={rakutenAffiliateUrl} target="_blank" rel="noopener noreferrer">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={rakutenImageUrl}
-                  alt="日本代表ユニフォーム"
+                  alt="日本代表ユニフォーム（半袖）"
+                  className="rounded-lg max-h-48 object-contain"
+                />
+              </a>
+              <a
+                href="https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fjz9680%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiI0MDB4NDAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://hbb.afl.rakuten.co.jp/hgb/521aa121.b7b3d243.521aa122.9bcc9825/?me_id=1268947&item_id=10234422&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2Fp96%2Fjz9680_l.jpg%3F_ex%3D400x400&s=400x400&t=pict"
+                  alt="日本代表ユニフォーム（長袖）"
                   className="rounded-lg max-h-48 object-contain"
                 />
               </a>
