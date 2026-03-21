@@ -10,7 +10,7 @@ export default function Footer() {
               <span className="text-2xl">⚽</span>
               <div>
                 <p className="text-white font-bold">FIFA World Cup 2026</p>
-                <p className="text-xs text-amber-400">USA | Mexico | Canada</p>
+                <p className="text-xs"><span className="text-[#E8192C]">USA</span> | <span className="text-[#00843D]">Mexico</span> | <span className="text-white">Canada</span></p>
               </div>
             </div>
             <p className="text-sm leading-relaxed">
@@ -27,16 +27,16 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-white font-semibold mb-4">大会情報</h3>
+            <h3 className="text-white font-semibold mb-4">サイト情報</h3>
             <ul className="space-y-2 text-sm">
-              <li>開催期間: 2026年6月11日 - 7月19日</li>
-              <li>開催国: アメリカ・メキシコ・カナダ</li>
-              <li>出場チーム数: 48チーム</li>
+              <li><Link href="/about" className="hover:text-white transition-colors">運営者情報</Link></li>
+              <li><Link href="/privacy" className="hover:text-white transition-colors">プライバシーポリシー</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors">お問い合わせ</Link></li>
             </ul>
           </div>
         </div>
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-xs">
-          <p>&copy; 2026 FIFA World Cup 2026 Info Site. This is a fan-made site.</p>
+          <p>&copy; 2026 SAMURAI FOOTBALL. This is a fan-made site.</p>
         </div>
       </div>
     </footer>

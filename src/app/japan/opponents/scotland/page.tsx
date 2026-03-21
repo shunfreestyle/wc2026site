@@ -12,6 +12,7 @@ type Player = {
   nameJa: string;
   club: string;
   comment: string;
+  firstCallUp?: boolean;
 };
 
 const posLabel: Record<Player["position"], string> = {
@@ -36,16 +37,17 @@ const posBorder: Record<Player["position"], string> = {
 };
 
 const players: Player[] = [
-  { position: "GK", nameJa: "アンガス・ガン", club: "ノッティンガム・フォレスト", comment: "ユーロ2024のスタメンGK。負傷離脱中のクレイグ・ゴードンに代わって復帰" },
   { position: "GK", nameJa: "スコット・ベイン", club: "フォルカーク", comment: "スコットランド国内リーグで安定したパフォーマンスを見せるベテランGK" },
+  { position: "GK", nameJa: "アンガス・ガン", club: "ノッティンガム・フォレスト", comment: "ユーロ2024のスタメンGK。負傷離脱中のクレイグ・ゴードンに代わって復帰" },
+  { position: "GK", nameJa: "リアム・ケリー", club: "レンジャーズ", comment: "レンジャーズで安定したプレーを見せるGK。代表バックアップとして信頼される存在" },
   { position: "DF", nameJa: "アンディ・ロバートソン", club: "リバプール", comment: "リバプールの絶対的左SB。スコットランドの精神的支柱、60キャップ超" },
   { position: "DF", nameJa: "キーラン・ティアニー", club: "セルティック", comment: "アーセナルからセルティックに復帰。左SBの名手、代表歴10年超のベテラン" },
   { position: "DF", nameJa: "ネイサン・パターソン", club: "エヴァートン", comment: "右SBのレギュラー候補。エヴァートンで安定した活躍" },
   { position: "DF", nameJa: "グラント・ハンリー", club: "ハイバーニアン", comment: "経験豊富なCB。スコットランドの守備の要として長年貢献" },
   { position: "DF", nameJa: "ジャック・ヘンドリー", club: "アル・エティファク", comment: "サウジアラビアリーグで活躍する大型CB。フィジカルの強さが武器" },
-  { position: "DF", nameJa: "ドミニク・ハイアム", club: "レクサム", comment: "チャンピオンシップで安定感を発揮するCB" },
-  { position: "DF", nameJa: "ロス・マクロリー", club: "ブリストル・シティ", comment: "右SBもこなせるユーティリティDF" },
-  { position: "DF", nameJa: "スコット・マッケナ", club: "ディナモ・ザグレブ", comment: "クロアチアリーグで主力を張る左利きのCB" },
+  { position: "DF", nameJa: "ドミニク・ヒアム", club: "レクサム", comment: "チャンピオンシップで安定感を発揮するCB" },
+  { position: "DF", nameJa: "ロス・マクローリー", club: "ブリストル・シティ", comment: "右SBもこなせるユーティリティDF" },
+  { position: "DF", nameJa: "スコット・マッケンナ", club: "ディナモ・ザグレブ", comment: "クロアチアリーグで主力を張る左利きのCB" },
   { position: "DF", nameJa: "アンソニー・ラルストン", club: "セルティック", comment: "セルティックの右SBとして国内屈指のパフォーマンス" },
   { position: "DF", nameJa: "ジョン・サウター", club: "レンジャーズ", comment: "負傷からの復帰を経てレンジャーズで奮闘するCB" },
   { position: "MF", nameJa: "スコット・マクトミネイ", club: "ナポリ", comment: "セリエA MVP受賞の別格の存在。デンマーク戦のオーバーヘッドキックは伝説的。コンテ監督の下で覚醒" },
@@ -98,7 +100,10 @@ export default function ScotlandOpponentPage() {
                 {list.map((p) => (
                   <div key={`${pos}-${p.nameJa}`} className={`rounded-2xl border-l-4 ${posBorder[pos]} bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden`}>
                     <div className="p-5">
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">{p.nameJa}</h4>
+                      <div className="flex items-center gap-2 mb-2">
+                        <h4 className="text-lg font-bold text-gray-900">{p.nameJa}</h4>
+                        {p.firstCallUp && <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-700 border border-amber-300">初</span>}
+                      </div>
                       <p className="text-xs text-gray-400 mb-1">所属クラブ</p>
                       <p className="text-sm font-medium text-gray-800 mb-3">🏢 {p.club}</p>
                       <p className="text-sm text-gray-600 leading-relaxed">{p.comment}</p>

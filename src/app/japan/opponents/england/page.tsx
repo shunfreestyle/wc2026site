@@ -13,6 +13,7 @@ type Player = {
   club: string;
   comment: string;
   featured?: boolean;
+  firstCallUp?: boolean;
 };
 
 const posLabel: Record<Player["position"], string> = {
@@ -43,7 +44,7 @@ const players: Player[] = [
   { position: "GK", nameJa: "ジェームス・トラフォード", club: "マンチェスター・シティ", comment: "シティが誇る次世代GK。将来の正GK候補" },
   { position: "GK", nameJa: "ジェイソン・スティール", club: "ブライトン", comment: "練習用GKとしてW杯帯同も視野。経験豊富なチーム貢献型" },
   { position: "DF", nameJa: "ジョン・ストーンズ", club: "マンチェスター・シティ", comment: "シティの絶対的CBだが今季は出場機会が減少。経験値は代表随一" },
-  { position: "DF", nameJa: "マーク・ゲーイ", club: "マンチェスター・シティ", comment: "代表のCBの柱。落ち着いたビルドアップと対人守備が光る" },
+  { position: "DF", nameJa: "マーク・ゲイ", club: "マンチェスター・シティ", comment: "代表のCBの柱。落ち着いたビルドアップと対人守備が光る" },
   { position: "DF", nameJa: "ハリー・マグワイア", club: "マンチェスター・ユナイテッド", featured: true, comment: "カーリック監督の下で復活。トゥヘル体制初招集でセットプレーの切り札" },
   { position: "DF", nameJa: "エズリ・コンサ", club: "アストン・ビラ", comment: "ビラで急成長を遂げた若手CB。スピードと読みが武器" },
   { position: "DF", nameJa: "ジャレル・クアンサー", club: "バイヤー・レヴァークーゼン", comment: "ドイツで揉まれた逸材CB。リバプール育ちの将来性豊かなDF" },
@@ -55,12 +56,13 @@ const players: Player[] = [
   { position: "DF", nameJa: "ニコ・オライリー", club: "マンチェスター・シティ", comment: "中盤もこなせる万能型。シティの若手として台頭" },
   { position: "MF", nameJa: "デクラン・ライス", club: "アーセナル", featured: true, comment: "アーセナルの心臓。守備力と展開力を兼ね備えたイングランド最高のMF" },
   { position: "MF", nameJa: "ジュード・ベリンガム", club: "レアル・マドリード", featured: true, comment: "レアル・マドリードで世界最高峰の輝き。得点力も兼ね備えた次世代のスター" },
-  { position: "MF", nameJa: "コビー・メイヌー", club: "マンチェスター・ユナイテッド", featured: true, comment: "ユナイテッドで復活した21歳の天才。ユーロ2024準優勝の立役者" },
+  { position: "MF", nameJa: "コビー・マイヌー", club: "マンチェスター・ユナイテッド", featured: true, comment: "ユナイテッドで復活した21歳の天才。ユーロ2024準優勝の立役者" },
   { position: "MF", nameJa: "コール・パーマー", club: "チェルシー", comment: "チェルシーの絶対的エース。ラストパスとシュートの精度が別格" },
   { position: "MF", nameJa: "モーガン・ロジャース", club: "アストン・ビラ", comment: "アストン・ビラで急成長。創造性豊かなアタッキングMF" },
   { position: "MF", nameJa: "エリオット・アンダーソン", club: "ノッティンガム・フォレスト", comment: "フォレストで頭角を現した新鋭MF。ライスのパートナー候補" },
   { position: "MF", nameJa: "アダム・ウォートン", club: "クリスタル・パレス", comment: "守備的MFの新星。冷静な判断力と豊富な運動量が武器" },
-  { position: "MF", nameJa: "ジョーダン・ヘンダーソン", club: "ブレントフォード", comment: "元リバプール主将。ベテランとしてチームに経験をもたらす" },
+  { position: "MF", nameJa: "ジェームズ・ガーナー", club: "エバートン", firstCallUp: true, comment: "エバートンで中盤の要として活躍。初の代表招集を勝ち取った実力派MF" },
+  { position: "MF", nameJa: "ジョーダン・ヘンダーソン", club: "アヤックス", comment: "元リバプール主将。アヤックスに移籍しオランダで経験をもたらすベテラン" },
   { position: "FW", nameJa: "ハリー・ケイン", club: "バイエルン・ミュンヘン", featured: true, comment: "イングランド歴代最多71得点の絶対的エース。バイエルンでも得点王争い" },
   { position: "FW", nameJa: "ブカヨ・サカ", club: "アーセナル", comment: "アーセナルの右翼を担う快速ウインガー。代表でも不可欠な存在" },
   { position: "FW", nameJa: "フィル・フォーデン", club: "マンチェスター・シティ", comment: "シティの天才。テクニックとビジョンはイングランド随一" },
@@ -112,6 +114,7 @@ export default function EnglandOpponentPage() {
                       <div className="flex items-center gap-2 mb-2">
                         <h4 className="text-lg font-bold text-gray-900">{p.nameJa}</h4>
                         {p.featured && <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#CF2B37]/10 text-[#CF2B37]">注目</span>}
+                        {p.firstCallUp && <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-700 border border-amber-300">初</span>}
                       </div>
                       <p className="text-xs text-gray-400 mb-1">所属クラブ</p>
                       <p className="text-sm font-medium text-gray-800 mb-3">🏢 {p.club}</p>
