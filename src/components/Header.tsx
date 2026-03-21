@@ -9,6 +9,7 @@ const navLinks = [
   { href: "/matches", label: "試合日程" },
   { href: "/japan", label: "🇯🇵 日本代表" },
   { href: "/japan/uniform", label: "ユニフォーム" },
+  { href: "/quiz", label: "クイズ" },
 ];
 
 export default function Header() {
