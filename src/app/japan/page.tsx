@@ -42,6 +42,8 @@ const friendlyMatches = [
     local: "17:00 GMT",
     opponent: "🏴󠁧󠁢󠁳󠁣󠁴󠁿 スコットランド",
     opponentEn: "Scotland",
+    opponentFlag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    opponentLink: "/teams/scotland",
     venue: "ハムデン・パーク",
     city: "グラスゴー（スコットランド）",
     broadcast: "NHK総合 生中継 / U-NEXT配信",
@@ -53,6 +55,8 @@ const friendlyMatches = [
     local: "19:45 BST",
     opponent: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 イングランド",
     opponentEn: "England",
+    opponentFlag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    opponentLink: "/teams/england",
     venue: "ウェンブリー・スタジアム",
     city: "ロンドン（イングランド）",
     broadcast: "NHK Eテレ 生中継 / U-NEXT配信",
@@ -716,6 +720,23 @@ export default function JapanPage() {
                   <p>🏟️ {m.venue}（{m.city}）</p>
                   <p>📺 {m.broadcast}</p>
                 </div>
+                <div className="border-t pt-3 mt-3">
+                  <p className="text-xs text-gray-400 font-medium mb-2">メンバーを確認</p>
+                  <div className="flex gap-2">
+                    <Link
+                      href="/japan#squad"
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#003087]/10 text-[#003087] text-xs font-bold hover:bg-[#003087]/20 transition-colors"
+                    >
+                      🇯🇵 日本代表メンバー
+                    </Link>
+                    <Link
+                      href={m.opponentLink}
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-gray-100 text-gray-700 text-xs font-bold hover:bg-gray-200 transition-colors"
+                    >
+                      {m.opponentFlag} {m.opponent.split(" ").slice(1).join(" ")}
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
@@ -908,7 +929,7 @@ export default function JapanPage() {
       {/* ═══════════════════════════════════════
           FULL SQUAD
           ═══════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <section id="squad" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
           <span
             className="inline-block w-1.5 h-8 rounded-full"
