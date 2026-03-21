@@ -108,7 +108,7 @@ export default async function TeamDetailPage({ params }: Props) {
         {/* Coach Section */}
         <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-10">
           <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <span className="w-1 h-6 bg-[#8B1538] rounded-full" />
+            <span className="w-1 h-6 bg-[#E8192C] rounded-full" />
             監督情報
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -151,7 +151,7 @@ export default async function TeamDetailPage({ params }: Props) {
         {/* Players Section */}
         <section className="mb-10">
           <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <span className="w-1 h-6 bg-[#8B1538] rounded-full" />
+            <span className="w-1 h-6 bg-[#E8192C] rounded-full" />
             登録選手
           </h2>
           {team.players.length > 0 ? (
@@ -183,7 +183,7 @@ export default async function TeamDetailPage({ params }: Props) {
                             <Link href={`/players/${player.id}`} className="flex items-center gap-3 group">
                               <PlayerAvatar player={player} size="sm" />
                               <div>
-                                <p className="text-sm font-semibold text-gray-900 group-hover:text-[#8B1538] transition-colors">
+                                <p className="text-sm font-semibold text-gray-900 group-hover:text-[#E8192C] transition-colors">
                                   {player.nameJa}
                                   {player.isCaptain && (
                                     <span className="ml-1.5 inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded">
@@ -259,7 +259,7 @@ export default async function TeamDetailPage({ params }: Props) {
         {teamMatches.length > 0 && (
           <section className="mb-10">
             <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <span className="w-1 h-6 bg-[#8B1538] rounded-full" />
+              <span className="w-1 h-6 bg-[#E8192C] rounded-full" />
               対戦日程
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -274,13 +274,13 @@ export default async function TeamDetailPage({ params }: Props) {
         <div className="flex justify-between items-center pt-6 border-t border-gray-200">
           <Link
             href="/teams"
-            className="text-sm font-medium text-[#8B1538] hover:underline"
+            className="text-sm font-medium text-[#E8192C] hover:underline"
           >
             ← チーム一覧に戻る
           </Link>
           <Link
             href="/matches"
-            className="text-sm font-medium text-[#8B1538] hover:underline"
+            className="text-sm font-medium text-[#E8192C] hover:underline"
           >
             試合日程を見る →
           </Link>

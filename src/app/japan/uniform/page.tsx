@@ -101,7 +101,7 @@ export default function UniformPage() {
       <section
         className="relative text-white py-14"
         style={{
-          background: "linear-gradient(135deg, #001845 0%, #003087 50%, #001845 100%)",
+          background: "linear-gradient(135deg, #1A1A2E 0%, #0057A8 50%, #1A1A2E 100%)",
         }}
       >
         <div

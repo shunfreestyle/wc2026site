@@ -44,7 +44,7 @@ function TeamDisplay({
 export default function MatchCard({ match }: { match: Match }) {
   const stageBadge =
     match.stage === "グループステージ" && match.group ? (
-      <span className="bg-[#8B1538] text-white text-xs font-bold px-2 py-0.5 rounded">
+      <span className="bg-[#E8192C] text-white text-xs font-bold px-2 py-0.5 rounded">
         Group {match.group}
       </span>
     ) : (

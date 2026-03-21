@@ -33,7 +33,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/teams"
-                className="inline-flex items-center justify-center px-8 py-3 bg-white text-[#8B1538] font-bold rounded-full hover:bg-amber-50 transition-colors shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-3 bg-white text-[#E8192C] font-bold rounded-full hover:bg-amber-50 transition-colors shadow-lg"
               >
                 出場チーム一覧
               </Link>
@@ -61,7 +61,7 @@ export default function Home() {
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <span className="text-2xl mb-1 block">{stat.icon}</span>
-              <p className="text-3xl font-extrabold text-[#8B1538]">{stat.value}</p>
+              <p className="text-3xl font-extrabold text-[#E8192C]">{stat.value}</p>
               <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
             </div>
           ))}
@@ -77,7 +77,7 @@ export default function Home() {
           </div>
           <Link
             href="/teams"
-            className="text-sm font-medium text-[#8B1538] hover:underline hidden sm:block"
+            className="text-sm font-medium text-[#E8192C] hover:underline hidden sm:block"
           >
             全チームを見る →
           </Link>
@@ -90,7 +90,7 @@ export default function Home() {
         <div className="mt-6 text-center sm:hidden">
           <Link
             href="/teams"
-            className="text-sm font-medium text-[#8B1538] hover:underline"
+            className="text-sm font-medium text-[#E8192C] hover:underline"
           >
             全チームを見る →
           </Link>
@@ -110,9 +110,9 @@ export default function Home() {
               return (
                 <div
                   key={group}
-                  className="border border-gray-200 rounded-xl p-5 hover:border-[#8B1538]/30 hover:shadow-md transition-all"
+                  className="border border-gray-200 rounded-xl p-5 hover:border-[#E8192C]/30 hover:shadow-md transition-all"
                 >
-                  <h3 className="text-sm font-bold text-[#8B1538] mb-4 tracking-wider">
+                  <h3 className="text-sm font-bold text-[#E8192C] mb-4 tracking-wider">
                     GROUP {group}
                   </h3>
                   <div className="space-y-3">
@@ -148,7 +148,7 @@ export default function Home() {
           </div>
           <Link
             href="/matches"
-            className="text-sm font-medium text-[#8B1538] hover:underline"
+            className="text-sm font-medium text-[#E8192C] hover:underline"
           >
             全日程を見る →
           </Link>

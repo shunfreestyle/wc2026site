@@ -26,7 +26,7 @@ function groupByDate(list: typeof matches) {
 }
 
 const stageConfig: Record<string, { badge: string; color: string }> = {
-  "グループステージ": { badge: "グループステージ", color: "bg-[#8B1538]" },
+  "グループステージ": { badge: "グループステージ", color: "bg-[#E8192C]" },
   "ラウンド32":       { badge: "ラウンド32",       color: "bg-amber-600" },
   "ラウンド16":       { badge: "ラウンド16",       color: "bg-amber-600" },
   "準々決勝":         { badge: "準々決勝",         color: "bg-orange-600" },
@@ -123,7 +123,7 @@ export default function MatchesPage() {
               <p className="text-xs text-gray-500 mt-1">{item.desc}</p>
               <div className="mt-3 pt-3 border-t border-gray-200">
                 <p className="text-xs text-gray-600">{item.period}</p>
-                <p className="text-sm font-semibold text-[#8B1538] mt-1">{item.matches}</p>
+                <p className="text-sm font-semibold text-[#E8192C] mt-1">{item.matches}</p>
               </div>
             </div>
           ))}
@@ -143,7 +143,7 @@ export default function MatchesPage() {
             <div key={item.tz} className="bg-gray-50 rounded-xl p-4">
               <p className="font-bold text-gray-900">{item.tz}</p>
               <p className="text-xs text-gray-500 mt-1">{item.cities}</p>
-              <p className="text-xs text-[#8B1538] font-semibold mt-2">JST: 現地時間 {item.jst}</p>
+              <p className="text-xs text-[#E8192C] font-semibold mt-2">JST: 現地時間 {item.jst}</p>
             </div>
           ))}
         </div>

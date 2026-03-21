@@ -111,7 +111,7 @@ export default async function PlayerDetailPage({ params }: Props) {
             {/* Profile */}
             <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <span className="w-1 h-5 bg-[#8B1538] rounded-full" />
+                <span className="w-1 h-5 bg-[#E8192C] rounded-full" />
                 選手プロフィール
               </h2>
               <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
@@ -159,7 +159,7 @@ export default async function PlayerDetailPage({ params }: Props) {
             {player.description && (
               <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                 <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <span className="w-1 h-5 bg-[#8B1538] rounded-full" />
+                  <span className="w-1 h-5 bg-[#E8192C] rounded-full" />
                   プレースタイル
                 </h2>
                 <p className="text-gray-700 leading-relaxed">{player.description}</p>
@@ -169,20 +169,20 @@ export default async function PlayerDetailPage({ params }: Props) {
             {/* International Record */}
             <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <span className="w-1 h-5 bg-[#8B1538] rounded-full" />
+                <span className="w-1 h-5 bg-[#E8192C] rounded-full" />
                 代表成績
               </h2>
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div className="bg-gray-50 rounded-xl p-4">
-                  <p className="text-2xl font-extrabold text-[#8B1538]">{player.caps}</p>
+                  <p className="text-2xl font-extrabold text-[#E8192C]">{player.caps}</p>
                   <p className="text-xs text-gray-600 mt-1">出場試合</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-4">
-                  <p className="text-2xl font-extrabold text-[#8B1538]">{player.goals}</p>
+                  <p className="text-2xl font-extrabold text-[#E8192C]">{player.goals}</p>
                   <p className="text-xs text-gray-600 mt-1">得点数</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-4">
-                  <p className="text-2xl font-extrabold text-[#8B1538]">
+                  <p className="text-2xl font-extrabold text-[#E8192C]">
                     {player.caps > 0 ? (player.goals / player.caps).toFixed(2) : "0.00"}
                   </p>
                   <p className="text-xs text-gray-600 mt-1">得点率</p>
@@ -230,7 +230,7 @@ export default async function PlayerDetailPage({ params }: Props) {
                 {team.players.length > 6 && (
                   <Link
                     href={`/teams/${team.id}`}
-                    className="block text-center text-xs font-medium text-[#8B1538] hover:underline mt-4 pt-3 border-t border-gray-100"
+                    className="block text-center text-xs font-medium text-[#E8192C] hover:underline mt-4 pt-3 border-t border-gray-100"
                   >
                     全選手を見る →
                   </Link>
@@ -244,13 +244,13 @@ export default async function PlayerDetailPage({ params }: Props) {
         <div className="flex justify-between items-center pt-8 mt-8 border-t border-gray-200">
           <Link
             href={`/teams/${team.id}`}
-            className="text-sm font-medium text-[#8B1538] hover:underline"
+            className="text-sm font-medium text-[#E8192C] hover:underline"
           >
             ← {team.nameJa}に戻る
           </Link>
           <Link
             href="/teams"
-            className="text-sm font-medium text-[#8B1538] hover:underline"
+            className="text-sm font-medium text-[#E8192C] hover:underline"
           >
             全チーム一覧 →
           </Link>

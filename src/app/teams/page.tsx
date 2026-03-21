@@ -28,7 +28,7 @@ export default function TeamsPage() {
         return (
           <section key={group} className="mb-12">
             <div className="flex items-center gap-3 mb-6">
-              <span className="bg-[#8B1538] text-white text-sm font-bold px-4 py-1.5 rounded-lg">
+              <span className="bg-[#E8192C] text-white text-sm font-bold px-4 py-1.5 rounded-lg">
                 GROUP {group}
               </span>
               <div className="flex-1 h-px bg-gray-200" />
