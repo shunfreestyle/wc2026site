@@ -36,7 +36,10 @@
       "Bash(/tmp/wc2026_groups.txt:*)",
       "Read(//tmp/**)",
       "Bash(vercel --version)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(wc:*)",
+      "Bash(head:*)",
+      "Bash(grep:*)"
     ]
   }
 }

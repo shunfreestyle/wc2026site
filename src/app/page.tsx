@@ -3,6 +3,7 @@ import { teams, getGroups, getTeamsByGroup } from "@/data/teams";
 import { matches } from "@/data/matches";
 import TeamCard from "@/components/TeamCard";
 import MatchCard from "@/components/MatchCard";
+import Countdown from "@/components/Countdown";
 
 export default function Home() {
   const groups = getGroups();
@@ -44,11 +45,14 @@ export default function Home() {
                 <span className="text-[#00843D]">6</span>
               </span>
             </h1>
-            <p className="text-base sm:text-xl text-white/80 max-w-2xl mx-auto mb-2 sm:mb-3">
-              アメリカ・メキシコ・カナダ 3カ国共同開催
+            <div className="mb-6 sm:mb-8">
+              <Countdown />
+            </div>
+            <p className="text-base sm:text-xl text-white/80 max-w-2xl mx-auto mb-1 sm:mb-2">
+              2026年6月11日 開幕
             </p>
             <p className="text-xs sm:text-sm text-white/60 mb-6 sm:mb-8">
-              2026年6月11日 - 7月19日 | 48チーム | 16都市
+              アメリカ・メキシコ・カナダ | 48チーム | 16都市
             </p>
             <div className="flex flex-row gap-2 sm:gap-4 justify-center">
               <Link
