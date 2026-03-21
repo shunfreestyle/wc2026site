@@ -34,7 +34,9 @@
       "Bash(~/.ssh/known_hosts)",
       "Bash(brew install:*)",
       "Bash(/tmp/wc2026_groups.txt:*)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(vercel --version)",
+      "Bash(chmod:*)"
     ]
   }
 }

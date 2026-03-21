@@ -1,64 +1,97 @@
+"use client";
+
 import Link from "next/link";
-import type { Metadata } from "next";
-import { uniforms, countries } from "@/data/uniforms";
-import type { BuyLink } from "@/data/uniforms";
-import CountryNav from "./CountryNav";
+import { NATIONAL_TEAMS } from "@/data/uniforms";
+import type { NationalTeam, UniformItem } from "@/data/uniforms";
 
-export const metadata: Metadata = {
-  title: "2026 ワールドカップ 各国ユニフォーム | FIFA World Cup 2026",
-  description:
-    "2026 FIFA ワールドカップ各国代表ユニフォーム一覧。adidas公式ストア（楽天市場）で購入可能。",
-};
+/* ── Uniform Card ─────────────────────────────── */
+function UniformCard({
+  item,
+  team,
+}: {
+  item: UniformItem;
+  team: NationalTeam;
+}) {
+  const hasImage = item.imgSrc !== "";
+  const hasLink = item.affiliateUrl !== "";
+  const badgeCls =
+    item.type === "home"
+      ? "bg-[#003087] text-white"
+      : "bg-white text-gray-800 border border-gray-300";
+  const badgeLabel = item.type === "home" ? "ホーム" : "アウェイ";
 
-/* ── Helpers ──────────────────────────────────── */
-const typeBadge: Record<string, { label: string; cls: string }> = {
-  home: { label: "ホーム", cls: "bg-[#003087] text-white" },
-  away: { label: "アウェイ", cls: "bg-white text-gray-800 border border-gray-300" },
-  gk: { label: "GK", cls: "bg-amber-400 text-gray-900" },
-};
-
-function storeStyle(store: string) {
-  if (store.includes("adidas")) return "bg-gray-900 hover:bg-gray-800 text-white";
-  if (store.includes("KAMO")) return "bg-[#003087] hover:bg-[#002266] text-white";
-  return "bg-gray-600 hover:bg-gray-500 text-white";
-}
-
-function BuyButton({ link }: { link: BuyLink }) {
   return (
-    <a
-      href={link.url}
-      target="_blank"
-      rel="nofollow sponsored noopener"
-      className={`inline-flex items-center justify-center px-3 py-2 rounded-lg text-xs font-bold transition-colors ${storeStyle(link.store)}`}
-    >
-      {link.label}
-    </a>
+    <div className="rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col">
+      {/* Image area */}
+      {hasImage ? (
+        <div className="bg-gray-50">
+          <div style={{ position: "relative", width: "400px", maxWidth: "100%", margin: "0 auto" }}>
+            <a
+              href={item.imgHref}
+              target="_blank"
+              rel="nofollow sponsored noopener"
+              className="block hover:opacity-90 transition-opacity"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={item.imgSrc}
+                alt={`${team.name} ${item.name}`}
+                style={{ width: "100%", height: "auto", objectFit: "contain", display: "block" }}
+              />
+            </a>
+            <span style={{ position: "absolute", top: "8px", right: "8px" }} className="z-10 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-700/70 text-white backdrop-blur-sm">
+              PR
+            </span>
+          </div>
+          <div style={{ display: "flex", gap: "6px", padding: "8px", marginTop: "-40px", position: "relative", zIndex: 10 }}>
+            <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badgeCls}`}>{badgeLabel}</span>
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">{team.brand}</span>
+          </div>
+        </div>
+      ) : (
+        <div
+          className="h-48 flex items-center justify-center relative"
+          style={{ background: `linear-gradient(135deg, ${team.themeColor}20 0%, ${team.themeColor}40 100%)` }}
+        >
+          <div className="text-center">
+            <p className="text-4xl mb-2">{team.flag}</p>
+            <p className="text-sm font-bold text-gray-400">準備中</p>
+          </div>
+          <div style={{ position: "absolute", bottom: "8px", left: "8px", display: "flex", gap: "6px" }}>
+            <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badgeCls}`}>{badgeLabel}</span>
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">{team.brand}</span>
+          </div>
+        </div>
+      )}
+
+      <div className="p-5 flex-1 flex flex-col">
+        <h3 className="text-lg font-bold text-gray-900 mb-3">
+          {team.name} {item.name}
+        </h3>
+
+        <div className="mt-auto pt-3 border-t border-gray-100">
+          {hasLink ? (
+            <a
+              href={item.affiliateUrl}
+              target="_blank"
+              rel="nofollow sponsored noopener"
+              className="flex items-center justify-center w-full px-4 py-3 rounded-lg bg-[#BF0000] hover:bg-[#a00000] text-white text-sm font-bold transition-colors"
+            >
+              🛒 購入はこちら（楽天市場）
+            </a>
+          ) : (
+            <div className="flex items-center justify-center w-full px-4 py-3 rounded-lg bg-gray-200 text-gray-400 text-sm font-bold cursor-not-allowed">
+              準備中
+            </div>
+          )}
+          <p className="text-[10px] text-gray-400 mt-2 text-center">
+            ※広告・アフィリエイトリンクを含みます
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
-
-/* ── Rakuten affiliate image map (hardcoded) ──── */
-const rakutenImages: Record<number, { href: string; src: string; alt: string }> = {
-  1: {
-    href: "https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fjz9680%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiI0MDB4NDAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
-    src: "https://hbb.afl.rakuten.co.jp/hgb/521aa121.b7b3d243.521aa122.9bcc9825/?me_id=1268947&item_id=10234422&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2Fp96%2Fjz9680_l.jpg%3F_ex%3D400x400&s=400x400&t=picttext",
-    alt: "2026 ホームユニフォーム 長袖",
-  },
-  6: {
-    href: "https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fkd3345-mn1%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
-    src: "https://hbb.afl.rakuten.co.jp/hgb/521aa121.b7b3d243.521aa122.9bcc9825/?me_id=1268947&item_id=10234426&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2Fp96%2Fkd3345_l.jpg%3F_ex%3D400x400&s=400x400&t=pict",
-    alt: "2026 ホームユニフォーム 半袖",
-  },
-  2: {
-    href: "https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fjz9697%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9",
-    src: "https://hbb.afl.rakuten.co.jp/hgb/521aa121.b7b3d243.521aa122.9bcc9825/?me_id=1268947&item_id=10237312&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2Fp107%2Fjz9697_l.jpg%3F_ex%3D400x400&s=400x400&t=pict",
-    alt: "2026 アウェイユニフォーム 長袖",
-  },
-  5: {
-    href: "https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fjn1872%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiI0MDB4NDAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
-    src: "https://hbb.afl.rakuten.co.jp/hgb/521aa121.b7b3d243.521aa122.9bcc9825/?me_id=1268947&item_id=10237314&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2Fp107%2Fjn1872_l.jpg%3F_ex%3D400x400&s=400x400&t=picttext",
-    alt: "2026アウェイユニフォーム半袖",
-  },
-};
 
 /* ── Page Component ───────────────────────────── */
 export default function UniformPage() {
@@ -68,15 +101,13 @@ export default function UniformPage() {
       <section
         className="relative text-white py-14"
         style={{
-          background:
-            "linear-gradient(135deg, #001845 0%, #003087 50%, #001845 100%)",
+          background: "linear-gradient(135deg, #001845 0%, #003087 50%, #001845 100%)",
         }}
       >
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
-            backgroundImage:
-              "repeating-linear-gradient(45deg, transparent, transparent 20px, #fff 20px, #fff 21px)",
+            backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 20px, #fff 20px, #fff 21px)",
           }}
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,7 +115,7 @@ export default function UniformPage() {
             2026 ワールドカップ 各国ユニフォーム
           </h1>
           <p className="text-blue-200/70 mt-2">
-            adidas 公式ストア（楽天市場）で購入できる各国の最新ユニフォーム
+            adidas 公式ストア（楽天市場）掲載中
           </p>
         </div>
       </section>
@@ -92,154 +123,57 @@ export default function UniformPage() {
       {/* Country Navigation */}
       <div className="sticky top-16 z-40 bg-gray-50/95 backdrop-blur-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <CountryNav countries={countries} />
+          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+            {NATIONAL_TEAMS.map((team) => (
+              <button
+                key={team.id}
+                onClick={() => {
+                  const el = document.getElementById(`team-${team.id}`);
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-bold text-gray-700 hover:text-white transition-all shadow-sm"
+                style={{
+                  ["--hover-bg" as string]: team.themeColor,
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.backgroundColor = team.themeColor;
+                  (e.currentTarget as HTMLElement).style.borderColor = team.themeColor;
+                  (e.currentTarget as HTMLElement).style.color = "#fff";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.backgroundColor = "";
+                  (e.currentTarget as HTMLElement).style.borderColor = "";
+                  (e.currentTarget as HTMLElement).style.color = "";
+                }}
+              >
+                {team.flag} {team.name}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Country Sections */}
-      {countries.map((country) => {
-        const countryUniforms = uniforms.filter((u) => u.country === country.id);
-        const hasProducts = countryUniforms.some((u) => rakutenImages[u.id]);
+      {NATIONAL_TEAMS.map((team) => (
+        <section
+          key={team.id}
+          id={`team-${team.id}`}
+          className="border-t border-gray-200 scroll-mt-32"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              <span className="text-3xl">{team.flag}</span>
+              {team.name}
+            </h2>
 
-        return (
-          <section
-            key={country.id}
-            id={`country-${country.id}`}
-            className="border-t border-gray-200 scroll-mt-32"
-          >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                <span className="text-3xl">{country.flag}</span>
-                {country.name}
-              </h2>
-
-              {hasProducts ? (
-                <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                  {countryUniforms.map((u) => {
-                    const badge = typeBadge[u.type];
-                    const nonRakutenLinks = u.buyLinks.filter(
-                      (l) => !l.store.includes("楽天")
-                    );
-
-                    return (
-                      <div
-                        key={u.id}
-                        className="rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col"
-                      >
-                        {/* Image area */}
-                        {rakutenImages[u.id] ? (
-                          <div className="bg-gray-50">
-                            <div style={{ position: "relative", width: "400px", maxWidth: "100%", margin: "0 auto" }}>
-                              <a
-                                href={rakutenImages[u.id].href}
-                                target="_blank"
-                                rel="nofollow sponsored noopener"
-                                className="block hover:opacity-90 transition-opacity"
-                              >
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
-                                  src={rakutenImages[u.id].src}
-                                  alt={rakutenImages[u.id].alt}
-                                  style={{ width: "100%", height: "auto", objectFit: "contain", display: "block" }}
-                                />
-                              </a>
-                              <span style={{ position: "absolute", top: "8px", right: "8px" }} className="z-10 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-700/70 text-white backdrop-blur-sm">
-                                PR
-                              </span>
-                            </div>
-                            <div style={{ display: "flex", gap: "6px", padding: "8px", marginTop: "-40px", position: "relative", zIndex: 10 }}>
-                              <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.cls}`}>{badge.label}</span>
-                              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">{u.brand}</span>
-                            </div>
-                          </div>
-                        ) : (
-                          <div
-                            className="h-24 relative"
-                            style={{
-                              background: `linear-gradient(135deg, ${u.colorMain} 0%, ${u.colorMain} 60%, ${u.colorSub} 100%)`,
-                            }}
-                          >
-                            <div className="absolute bottom-3 left-4 flex items-center gap-2">
-                              <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.cls}`}>{badge.label}</span>
-                              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">{u.brand}</span>
-                            </div>
-                          </div>
-                        )}
-
-                        <div className="p-5 flex-1 flex flex-col">
-                          <h3 className="text-lg font-bold text-gray-900 mb-3">
-                            {u.name}
-                          </h3>
-                          <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                            {u.description}
-                          </p>
-
-                          <div className="mt-auto pt-3 border-t border-gray-100">
-                            {rakutenImages[u.id] ? (
-                              <a
-                                href={rakutenImages[u.id].href}
-                                target="_blank"
-                                rel="nofollow sponsored noopener"
-                                className="flex items-center justify-center w-full px-4 py-3 rounded-lg bg-[#BF0000] hover:bg-[#a00000] text-white text-sm font-bold transition-colors"
-                              >
-                                🛒 購入はこちら（楽天市場）
-                              </a>
-                            ) : (
-                              <div className="flex flex-wrap gap-2">
-                                {nonRakutenLinks.map((link) => (
-                                  <BuyButton key={link.store} link={link} />
-                                ))}
-                              </div>
-                            )}
-                            <p className="text-[10px] text-gray-400 mt-2 text-center">
-                              ※広告・アフィリエイトリンクを含みます
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              ) : (
-                /* Placeholder for countries without products yet */
-                <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                  {countryUniforms.map((u) => (
-                    <div
-                      key={u.id}
-                      className="rounded-2xl bg-white border border-gray-200 shadow-sm overflow-hidden flex flex-col"
-                    >
-                      <div
-                        className="h-48 flex items-center justify-center"
-                        style={{
-                          background: `linear-gradient(135deg, ${u.colorMain}20 0%, ${u.colorMain}40 100%)`,
-                        }}
-                      >
-                        <div className="text-center">
-                          <p className="text-4xl mb-2">{country.flag}</p>
-                          <p className="text-sm font-bold text-gray-400">準備中</p>
-                        </div>
-                      </div>
-                      <div className="p-5 flex-1 flex flex-col">
-                        <h3 className="text-lg font-bold text-gray-900 mb-3">
-                          {u.name}
-                        </h3>
-                        <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                          {u.description}
-                        </p>
-                        <div className="mt-auto pt-3 border-t border-gray-100">
-                          <p className="text-xs text-gray-400 text-center">
-                            商品リンクは準備中です
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
+            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {team.uniforms.map((item) => (
+                <UniformCard key={item.id} item={item} team={team} />
+              ))}
             </div>
-          </section>
-        );
-      })}
+          </div>
+        </section>
+      ))}
 
       {/* Note */}
       <section className="bg-gray-100">
