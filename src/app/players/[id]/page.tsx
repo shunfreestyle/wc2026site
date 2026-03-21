@@ -52,8 +52,13 @@ export default async function PlayerDetailPage({ params }: Props) {
   return (
     <div>
       {/* Hero */}
-      <div className="hero-gradient hero-pattern text-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div className="relative overflow-hidden text-white" style={{ background: "#1A1A2E" }}>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-20 right-[10%] h-[150%]" style={{ width: "2px", background: "#E8192C", opacity: 0.35, transform: "rotate(15deg)" }} />
+          <div className="absolute -bottom-20 left-[5%] h-[150%]" style={{ width: "2px", background: "#00843D", opacity: 0.3, transform: "rotate(-12deg)" }} />
+          <div className="absolute -top-10 left-[35%] h-[150%]" style={{ width: "2px", background: "#0057A8", opacity: 0.25, transform: "rotate(8deg)" }} />
+        </div>
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <Link
             href={`/teams/${team.id}`}
             className="inline-flex items-center gap-1 text-sm text-white/70 hover:text-white mb-6 transition-colors"

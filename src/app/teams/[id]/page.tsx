@@ -47,11 +47,16 @@ export default async function TeamDetailPage({ params }: Props) {
   return (
     <div>
       {/* Hero */}
-      <div className="hero-gradient hero-pattern text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div className="relative overflow-hidden text-white" style={{ background: "#1A1A2E" }}>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-20 right-[10%] h-[150%]" style={{ width: "2px", background: "#E8192C", opacity: 0.35, transform: "rotate(15deg)" }} />
+          <div className="absolute -bottom-20 left-[5%] h-[150%]" style={{ width: "2px", background: "#00843D", opacity: 0.3, transform: "rotate(-12deg)" }} />
+          <div className="absolute -top-10 left-[35%] h-[150%]" style={{ width: "2px", background: "#0057A8", opacity: 0.25, transform: "rotate(8deg)" }} />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <Link
             href="/teams"
-            className="inline-flex items-center gap-1 text-sm text-white/80 hover:text-white mb-6 transition-colors"
+            className="inline-flex items-center gap-1 text-sm text-white/60 hover:text-white mb-6 transition-colors"
           >
             ← 出場チーム一覧
           </Link>
@@ -61,15 +66,15 @@ export default async function TeamDetailPage({ params }: Props) {
               <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
                 {team.nameJa}
               </h1>
-              <p className="text-white/80 text-lg mt-1">{team.name}</p>
+              <p className="text-white/70 text-lg mt-1">{team.name}</p>
               <div className="flex flex-wrap items-center gap-3 mt-3">
-                <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
+                <span className="bg-white/10 border border-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
                   Group {team.group}
                 </span>
-                <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
+                <span className="bg-white/10 border border-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
                   FIFA #{team.fifaRanking}
                 </span>
-                <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
+                <span className="bg-white/10 border border-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
                   {team.confederation}
                 </span>
               </div>

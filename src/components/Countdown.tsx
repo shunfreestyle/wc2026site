@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const TARGET = new Date("2026-06-11T10:00:00Z"); // 2026/6/11 19:00 JST
 
@@ -17,23 +17,50 @@ function calcDiff() {
   };
 }
 
-function Block({ value, label, flip }: { value: string; label: string; flip?: boolean }) {
+function FadeDigit({ value }: { value: string }) {
+  const [display, setDisplay] = useState(value);
+  const [fading, setFading] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (value !== display) {
+      setDisplay(value);
+      setFading(true);
+
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => {
+        setFading(false);
+      }, 200);
+    }
+  }, [value, display]);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  return (
+    <span
+      className="block tabular-nums font-extrabold text-white text-2xl md:text-4xl leading-none"
+      style={{
+        fontVariantNumeric: "tabular-nums",
+        animation: fading ? "fadeNum 0.2s ease" : undefined,
+      }}
+    >
+      {display}
+    </span>
+  );
+}
+
+function Block({ value, label }: { value: string; label: string }) {
   return (
     <div className="flex flex-col items-center">
       <div
-        className="rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2"
+        className="w-16 h-16 md:w-20 md:h-20 rounded-lg flex items-center justify-center overflow-visible"
         style={{ background: "rgba(255,255,255,0.06)" }}
       >
-        <span
-          key={flip ? value : undefined}
-          className="block tabular-nums font-extrabold text-white text-2xl md:text-[2.5rem] leading-none"
-          style={{
-            fontVariantNumeric: "tabular-nums",
-            animation: flip ? "flipDown 0.4s ease-out" : undefined,
-          }}
-        >
-          {value}
-        </span>
+        <FadeDigit value={value} />
       </div>
       <span
         className="mt-1.5 uppercase tracking-[0.12em] text-[9px]"
@@ -48,7 +75,7 @@ function Block({ value, label, flip }: { value: string; label: string; flip?: bo
 function Colon() {
   return (
     <span
-      className="text-xl md:text-2xl font-bold self-start mt-2 sm:mt-2.5"
+      className="text-xl md:text-2xl font-bold self-start mt-6 md:mt-8"
       style={{ color: "rgba(255,255,255,0.2)" }}
     >
       :
@@ -89,7 +116,7 @@ export default function Countdown() {
         <Colon />
         <Block value={m} label="Min" />
         <Colon />
-        <Block value={s} label="Sec" flip />
+        <Block value={s} label="Sec" />
       </div>
     </div>
   );
