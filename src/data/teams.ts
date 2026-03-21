@@ -1,3 +1,8 @@
+/**
+ * 2026 FIFAワールドカップ本大会（48チーム・12組）
+ * - グループ編成・各組4枠の並び順：NBC Sports / Olympics.com 公表の抽選結果に準拠
+ * - FIFAランキング：2026年1月19日時点のユーザー指定順位（リスト外のチームは従来データを維持）
+ */
 export type Team = {
   id: string;
   name: string;
@@ -144,7 +149,7 @@ export const teams: Team[] = [
   {
     id: "playoff-uefa-d",
     name: "UEFA Playoff D Winner",
-    nameJa: "UEFA プレーオフD勝者",
+    nameJa: "UEFAプレーオフD",
     code: "TBD",
     flag: "🏳️",
     confederation: "UEFA",
@@ -241,7 +246,7 @@ export const teams: Team[] = [
   {
     id: "playoff-uefa-a",
     name: "UEFA Playoff A Winner",
-    nameJa: "UEFA プレーオフA勝者",
+    nameJa: "UEFAプレーオフA",
     code: "TBD",
     flag: "🏳️",
     confederation: "UEFA",
@@ -297,7 +302,7 @@ export const teams: Team[] = [
     flag: "🇲🇦",
     confederation: "CAF",
     group: "C",
-    fifaRanking: 13,
+    fifaRanking: 8,
     wcAppearances: 6,
     bestResult: "ベスト4 (2022)",
     coach: {
@@ -377,7 +382,7 @@ export const teams: Team[] = [
   {
     id: "usa",
     name: "United States",
-    nameJa: "アメリカ合衆国",
+    nameJa: "アメリカ",
     code: "USA",
     flag: "🇺🇸",
     confederation: "CONCACAF",
@@ -410,31 +415,6 @@ export const teams: Team[] = [
     description: "開催国の一つとして自動出場。ポチェッティーノ監督の下、若い才能豊富なチームでホームの利を活かし上位進出を目指す。",
   },
   {
-    id: "australia",
-    name: "Australia",
-    nameJa: "オーストラリア",
-    code: "AUS",
-    flag: "🇦🇺",
-    confederation: "AFC",
-    group: "D",
-    fifaRanking: 24,
-    wcAppearances: 6,
-    bestResult: "ベスト16 (2006, 2022)",
-    coach: {
-      name: "Tony Popovic",
-      nameJa: "トニー・ポポヴィッチ",
-      nationality: "オーストラリア",
-      birthDate: "1973-07-04",
-      age: 52,
-      careerHistory: ["ウェスタン・シドニー", "パース・グローリー", "メルボルン・ヴィクトリー", "オーストラリア代表"],
-      style: "堅守速攻・フィジカルサッカー",
-    },
-    players: [
-      { id: "australia-ryan", name: "Mathew Ryan", nameJa: "マシュー・ライアン", number: 1, position: "GK", club: "ローマ", birthDate: "1992-04-08", age: 33, caps: 85, goals: 0, height: 184, isCaptain: true, description: "欧州トップリーグでの経験豊富なオーストラリアの守護神。シュートストップとキックの精度が武器。" },
-    ],
-    description: "サッカルーズの愛称で知られるオーストラリア代表。タフなチームスピリットが武器。",
-  },
-  {
     id: "paraguay",
     name: "Paraguay",
     nameJa: "パラグアイ",
@@ -462,9 +442,34 @@ export const teams: Team[] = [
     description: "南米予選を勝ち抜いた伝統国。堅い守備と闘志で上位進出を目指す。",
   },
   {
+    id: "australia",
+    name: "Australia",
+    nameJa: "オーストラリア",
+    code: "AUS",
+    flag: "🇦🇺",
+    confederation: "AFC",
+    group: "D",
+    fifaRanking: 24,
+    wcAppearances: 6,
+    bestResult: "ベスト16 (2006, 2022)",
+    coach: {
+      name: "Tony Popovic",
+      nameJa: "トニー・ポポヴィッチ",
+      nationality: "オーストラリア",
+      birthDate: "1973-07-04",
+      age: 52,
+      careerHistory: ["ウェスタン・シドニー", "パース・グローリー", "メルボルン・ヴィクトリー", "オーストラリア代表"],
+      style: "堅守速攻・フィジカルサッカー",
+    },
+    players: [
+      { id: "australia-ryan", name: "Mathew Ryan", nameJa: "マシュー・ライアン", number: 1, position: "GK", club: "ローマ", birthDate: "1992-04-08", age: 33, caps: 85, goals: 0, height: 184, isCaptain: true, description: "欧州トップリーグでの経験豊富なオーストラリアの守護神。シュートストップとキックの精度が武器。" },
+    ],
+    description: "サッカルーズの愛称で知られるオーストラリア代表。タフなチームスピリットが武器。",
+  },
+  {
     id: "playoff-uefa-c",
     name: "UEFA Playoff C Winner",
-    nameJa: "UEFA プレーオフC勝者",
+    nameJa: "UEFAプレーオフC",
     code: "TBD",
     flag: "🏳️",
     confederation: "UEFA",
@@ -488,7 +493,7 @@ export const teams: Team[] = [
     flag: "🇩🇪",
     confederation: "UEFA",
     group: "E",
-    fifaRanking: 3,
+    fifaRanking: 10,
     wcAppearances: 20,
     bestResult: "優勝 (1954, 1974, 1990, 2014)",
     coach: {
@@ -510,31 +515,6 @@ export const teams: Team[] = [
       { id: "germany-sane", name: "Leroy Sané", nameJa: "ルロイ・ザネ", number: 19, position: "FW", club: "バイエルン・ミュンヘン", birthDate: "1996-01-11", age: 30, caps: 60, goals: 14, height: 183, description: "爆発的なスピードと強烈な左足シュートが武器のウインガー。カットインからのシュートは脅威。" },
     ],
     description: "4度のW杯優勝を誇る強豪。ナーゲルスマン監督の下、ムシアラ・ヴィルツの若き才能が躍動する。",
-  },
-  {
-    id: "ecuador",
-    name: "Ecuador",
-    nameJa: "エクアドル",
-    code: "ECU",
-    flag: "🇪🇨",
-    confederation: "CONMEBOL",
-    group: "E",
-    fifaRanking: 30,
-    wcAppearances: 4,
-    bestResult: "ベスト16 (2006)",
-    coach: {
-      name: "Sebastián Beccacece",
-      nameJa: "セバスティアン・ベカセセ",
-      nationality: "アルゼンチン",
-      birthDate: "1981-02-28",
-      age: 45,
-      careerHistory: ["デフェンサ", "ラシン", "エクアドル代表"],
-      style: "高強度プレス・攻撃的",
-    },
-    players: [
-      { id: "ecuador-caicedo", name: "Moisés Caicedo", nameJa: "モイセス・カイセド", number: 23, position: "MF", club: "チェルシー", birthDate: "2001-11-02", age: 24, caps: 35, goals: 3, height: 178, isCaptain: true, description: "強靭なフィジカルと広い守備範囲でボールを刈り取るアンカー。パスの配球能力も高い若きエクアドルの心臓。" },
-    ],
-    description: "南米の新興勢力。カイセドを中心に若いチームでW杯での躍進を目指す。",
   },
   {
     id: "curacao",
@@ -589,6 +569,31 @@ export const teams: Team[] = [
     ],
     description: "2024年アフリカネイションズカップ王者。自国開催で掴んだタイトルの勢いでW杯に挑む。",
   },
+  {
+    id: "ecuador",
+    name: "Ecuador",
+    nameJa: "エクアドル",
+    code: "ECU",
+    flag: "🇪🇨",
+    confederation: "CONMEBOL",
+    group: "E",
+    fifaRanking: 26,
+    wcAppearances: 4,
+    bestResult: "ベスト16 (2006)",
+    coach: {
+      name: "Sebastián Beccacece",
+      nameJa: "セバスティアン・ベカセセ",
+      nationality: "アルゼンチン",
+      birthDate: "1981-02-28",
+      age: 45,
+      careerHistory: ["デフェンサ", "ラシン", "エクアドル代表"],
+      style: "高強度プレス・攻撃的",
+    },
+    players: [
+      { id: "ecuador-caicedo", name: "Moisés Caicedo", nameJa: "モイセス・カイセド", number: 23, position: "MF", club: "チェルシー", birthDate: "2001-11-02", age: 24, caps: 35, goals: 3, height: 178, isCaptain: true, description: "強靭なフィジカルと広い守備範囲でボールを刈り取るアンカー。パスの配球能力も高い若きエクアドルの心臓。" },
+    ],
+    description: "南米の新興勢力。カイセドを中心に若いチームでW杯での躍進を目指す。",
+  },
 
   // =====================
   // Group F
@@ -601,7 +606,7 @@ export const teams: Team[] = [
     flag: "🇳🇱",
     confederation: "UEFA",
     group: "F",
-    fifaRanking: 8,
+    fifaRanking: 7,
     wcAppearances: 11,
     bestResult: "準優勝 (1974, 1978, 2010)",
     coach: {
@@ -685,7 +690,7 @@ export const teams: Team[] = [
   {
     id: "playoff-uefa-b",
     name: "UEFA Playoff B Winner",
-    nameJa: "UEFA プレーオフB勝者",
+    nameJa: "UEFAプレーオフB",
     code: "TBD",
     flag: "🏳️",
     confederation: "UEFA",
@@ -734,7 +739,7 @@ export const teams: Team[] = [
     flag: "🇧🇪",
     confederation: "UEFA",
     group: "G",
-    fifaRanking: 5,
+    fifaRanking: 9,
     wcAppearances: 14,
     bestResult: "3位 (2018)",
     coach: {
@@ -819,7 +824,7 @@ export const teams: Team[] = [
     flag: "🇪🇸",
     confederation: "UEFA",
     group: "H",
-    fifaRanking: 4,
+    fifaRanking: 1,
     wcAppearances: 16,
     bestResult: "優勝 (2010)",
     coach: {
@@ -842,6 +847,32 @@ export const teams: Team[] = [
       { id: "spain-cucurella", name: "Marc Cucurella", nameJa: "マルク・ククレジャ", number: 24, position: "DF", club: "チェルシー", birthDate: "1998-07-22", age: 27, caps: 18, goals: 0, height: 172, description: "豊富な運動量と粘り強い守備が持ち味の左サイドバック。オーバーラップからのクロスも正確。" },
     ],
     description: "2024年欧州選手権王者。ヤマルら黄金世代を擁し、EURO・W杯の連覇を狙う。",
+  },
+  {
+    id: "cape-verde",
+    name: "Cape Verde",
+    nameJa: "カーボベルデ",
+    code: "CPV",
+    flag: "🇨🇻",
+    confederation: "CAF",
+    group: "H",
+    fifaRanking: 65,
+    wcAppearances: 1,
+    bestResult: "初出場",
+    coach: {
+      name: "Pedro Brito",
+      nameJa: "ペドロ・ブリト",
+      nationality: "カーボベルデ",
+      birthDate: "1972-03-10",
+      age: 54,
+      careerHistory: ["カーボベルデU-20代表", "カーボベルデ代表"],
+      style: "堅守速攻・組織的",
+    },
+    players: [
+      { id: "cape-verde-borges", name: "Ryan Mendes", nameJa: "ライアン・メンデス", number: 10, position: "FW", club: "サンタ・クララ", birthDate: "1990-01-09", age: 36, caps: 55, goals: 12, height: 176, isCaptain: true, description: "テクニックとスピードに優れたカーボベルデのエース。経験豊富なリーダーシップでチームを牽引する。" },
+      { id: "cape-verde-nunes", name: "Garry Rodrigues", nameJa: "ガリー・ロドリゲス", number: 7, position: "FW", club: "オリンピアコス", birthDate: "1990-11-28", age: 35, caps: 45, goals: 8, height: 183, description: "スピードとドリブルでサイドを切り裂くウインガー。欧州クラブでの経験を活かしたプレーが光る。" },
+    ],
+    description: "アフリカの島国カーボベルデが悲願のW杯初出場。小さな国から大きな夢を背負って戦う。",
   },
   {
     id: "saudi-arabia",
@@ -876,7 +907,7 @@ export const teams: Team[] = [
     flag: "🇺🇾",
     confederation: "CONMEBOL",
     group: "H",
-    fifaRanking: 10,
+    fifaRanking: 20,
     wcAppearances: 14,
     bestResult: "優勝 (1930, 1950)",
     coach: {
@@ -894,32 +925,6 @@ export const teams: Team[] = [
     ],
     description: "最初のW杯王者。ビエルサ監督の攻撃的サッカーでセレステの復権を目指す。",
   },
-  {
-    id: "cape-verde",
-    name: "Cape Verde",
-    nameJa: "カーボベルデ",
-    code: "CPV",
-    flag: "🇨🇻",
-    confederation: "CAF",
-    group: "H",
-    fifaRanking: 68,
-    wcAppearances: 1,
-    bestResult: "初出場",
-    coach: {
-      name: "Pedro Brito",
-      nameJa: "ペドロ・ブリト",
-      nationality: "カーボベルデ",
-      birthDate: "1972-03-10",
-      age: 54,
-      careerHistory: ["カーボベルデU-20代表", "カーボベルデ代表"],
-      style: "堅守速攻・組織的",
-    },
-    players: [
-      { id: "cape-verde-borges", name: "Ryan Mendes", nameJa: "ライアン・メンデス", number: 10, position: "FW", club: "サンタ・クララ", birthDate: "1990-01-09", age: 36, caps: 55, goals: 12, height: 176, isCaptain: true, description: "テクニックとスピードに優れたカーボベルデのエース。経験豊富なリーダーシップでチームを牽引する。" },
-      { id: "cape-verde-nunes", name: "Garry Rodrigues", nameJa: "ガリー・ロドリゲス", number: 7, position: "FW", club: "オリンピアコス", birthDate: "1990-11-28", age: 35, caps: 45, goals: 8, height: 183, description: "スピードとドリブルでサイドを切り裂くウインガー。欧州クラブでの経験を活かしたプレーが光る。" },
-    ],
-    description: "アフリカの島国カーボベルデが悲願のW杯初出場。小さな国から大きな夢を背負って戦う。",
-  },
 
   // =====================
   // Group I
@@ -932,7 +937,7 @@ export const teams: Team[] = [
     flag: "🇫🇷",
     confederation: "UEFA",
     group: "I",
-    fifaRanking: 2,
+    fifaRanking: 3,
     wcAppearances: 16,
     bestResult: "優勝 (1998, 2018)",
     coach: {
@@ -964,7 +969,7 @@ export const teams: Team[] = [
     flag: "🇸🇳",
     confederation: "CAF",
     group: "I",
-    fifaRanking: 20,
+    fifaRanking: 19,
     wcAppearances: 3,
     bestResult: "ベスト8 (2002)",
     coach: {
@@ -1011,7 +1016,7 @@ export const teams: Team[] = [
   {
     id: "playoff-ic-2",
     name: "Intercontinental Playoff 2 Winner",
-    nameJa: "大陸間プレーオフ2勝者",
+    nameJa: "大陸間プレーオフ2",
     code: "TBD",
     flag: "🏳️",
     confederation: "TBD",
@@ -1035,7 +1040,7 @@ export const teams: Team[] = [
     flag: "🇦🇷",
     confederation: "CONMEBOL",
     group: "J",
-    fifaRanking: 1,
+    fifaRanking: 2,
     wcAppearances: 18,
     bestResult: "優勝 (1978, 1986, 2022)",
     coach: {
@@ -1152,7 +1157,7 @@ export const teams: Team[] = [
     flag: "🇵🇹",
     confederation: "UEFA",
     group: "K",
-    fifaRanking: 7,
+    fifaRanking: 6,
     wcAppearances: 8,
     bestResult: "ベスト4 (1966, 2006)",
     coach: {
@@ -1228,7 +1233,7 @@ export const teams: Team[] = [
   {
     id: "playoff-ic-1",
     name: "Intercontinental Playoff 1 Winner",
-    nameJa: "大陸間プレーオフ1勝者",
+    nameJa: "大陸間プレーオフ1",
     code: "TBD",
     flag: "🏳️",
     confederation: "TBD",
@@ -1252,7 +1257,7 @@ export const teams: Team[] = [
     flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
     confederation: "UEFA",
     group: "L",
-    fifaRanking: 6,
+    fifaRanking: 4,
     wcAppearances: 16,
     bestResult: "優勝 (1966)",
     coach: {
@@ -1283,7 +1288,7 @@ export const teams: Team[] = [
     flag: "🇭🇷",
     confederation: "UEFA",
     group: "L",
-    fifaRanking: 14,
+    fifaRanking: 13,
     wcAppearances: 6,
     bestResult: "準優勝 (2018), 3位 (2022)",
     coach: {
@@ -1351,163 +1356,6 @@ export const teams: Team[] = [
     ],
     description: "ブラックスターズ。クドゥスら若い才能でアフリカの誇りを示す。",
   },
-
-  // =====================
-  // Teams NOT in the draw (group empty)
-  // =====================
-  {
-    id: "italy",
-    name: "Italy",
-    nameJa: "イタリア",
-    code: "ITA",
-    flag: "🇮🇹",
-    confederation: "UEFA",
-    group: "",
-    fifaRanking: 9,
-    wcAppearances: 18,
-    bestResult: "優勝 (1934, 1938, 1982, 2006)",
-    coach: {
-      name: "Luciano Spalletti",
-      nameJa: "ルチアーノ・スパレッティ",
-      nationality: "イタリア",
-      birthDate: "1959-03-07",
-      age: 67,
-      careerHistory: ["ローマ", "ゼニト", "インテル", "ナポリ", "イタリア代表"],
-      style: "組織的守備・カウンター",
-    },
-    players: [
-      { id: "italy-donnarumma", name: "Gianluigi Donnarumma", nameJa: "ジャンルイジ・ドンナルンマ", number: 1, position: "GK", club: "パリ・サンジェルマン", birthDate: "1999-02-25", age: 27, caps: 65, goals: 0, height: 196, isCaptain: true, description: "196cmの長身と驚異的な反射神経を持つ守護神。EURO2020大会MVPに輝いた実力者。" },
-      { id: "italy-barella", name: "Nicolò Barella", nameJa: "ニコロ・バレッラ", number: 18, position: "MF", club: "インテル", birthDate: "1997-02-07", age: 29, caps: 55, goals: 10, height: 172, description: "ダイナミックな飛び出しとミドルシュートが武器のボックス・トゥ・ボックスMF。闘志溢れるプレーが魅力。" },
-      { id: "italy-chiesa", name: "Federico Chiesa", nameJa: "フェデリコ・キエーザ", number: 14, position: "FW", club: "リバプール", birthDate: "1997-10-25", age: 28, caps: 40, goals: 7, height: 175, description: "爆発的な加速力とドリブル突破でチャンスを作り出すウインガー。EURO決勝での活躍が記憶に残る。" },
-      { id: "italy-tonali", name: "Sandro Tonali", nameJa: "サンドロ・トナーリ", number: 8, position: "MF", club: "ニューカッスル", birthDate: "2000-05-08", age: 25, caps: 25, goals: 2, height: 181, description: "優れたパスセンスとボール奪取力を持つイタリアの次世代レジスタ。ピルロの後継者と称される。" },
-    ],
-    description: "4度のW杯優勝を誇るアッズーリ。UEFAプレーオフAに回り、出場権獲得を目指す。",
-  },
-  {
-    id: "nigeria",
-    name: "Nigeria",
-    nameJa: "ナイジェリア",
-    code: "NGA",
-    flag: "🇳🇬",
-    confederation: "CAF",
-    group: "",
-    fifaRanking: 28,
-    wcAppearances: 7,
-    bestResult: "ベスト16 (1994, 1998, 2014)",
-    coach: {
-      name: "Finidi George",
-      nameJa: "フィニディ・ジョージ",
-      nationality: "ナイジェリア",
-      birthDate: "1971-04-15",
-      age: 54,
-      careerHistory: ["エニュインバ", "ナイジェリア代表"],
-      style: "攻撃的・スピード重視",
-    },
-    players: [
-      { id: "nigeria-osimhen", name: "Victor Osimhen", nameJa: "ヴィクター・オシムヘン", number: 9, position: "FW", club: "ナポリ", birthDate: "1998-12-29", age: 27, caps: 35, goals: 20, height: 185, isCaptain: true, description: "圧倒的なフィジカルとスピードでDFを粉砕するストライカー。空中戦と裏への飛び出しが驚異的。" },
-    ],
-    description: "スーパーイーグルスの愛称。オシムヘンのゴールでアフリカの雄としての存在感を示す。",
-  },
-  {
-    id: "cameroon",
-    name: "Cameroon",
-    nameJa: "カメルーン",
-    code: "CMR",
-    flag: "🇨🇲",
-    confederation: "CAF",
-    group: "",
-    fifaRanking: 33,
-    wcAppearances: 8,
-    bestResult: "ベスト8 (1990)",
-    coach: {
-      name: "Marc Brys",
-      nameJa: "マルク・ブリス",
-      nationality: "ベルギー",
-      birthDate: "1962-05-29",
-      age: 63,
-      careerHistory: ["OHルーヴェン", "シント=トロイデン", "カメルーン代表"],
-      style: "フィジカル・規律的",
-    },
-    players: [
-      { id: "cameroon-anguissa", name: "André-Frank Zambo Anguissa", nameJa: "アンドレ＝フランク・ザンボ・アンギサ", number: 8, position: "MF", club: "ナポリ", birthDate: "1995-11-16", age: 30, caps: 60, goals: 5, height: 184, isCaptain: true, description: "フィジカルの強さとボールキープ力に優れたダイナミックなMF。ボールの持ち運びでチームに推進力を与える。" },
-    ],
-    description: "アフリカの名門。不屈のライオンの精神でW杯の舞台に挑む。",
-  },
-  {
-    id: "serbia",
-    name: "Serbia",
-    nameJa: "セルビア",
-    code: "SRB",
-    flag: "🇷🇸",
-    confederation: "UEFA",
-    group: "",
-    fifaRanking: 25,
-    wcAppearances: 3,
-    bestResult: "ベスト4 (ユーゴスラビアとして)",
-    coach: {
-      name: "Dragan Stojković",
-      nameJa: "ドラガン・ストイコビッチ",
-      nationality: "セルビア",
-      birthDate: "1965-03-03",
-      age: 61,
-      careerHistory: ["名古屋グランパス（監督）", "広州富力", "セルビア代表"],
-      style: "攻撃的・テクニカル",
-    },
-    players: [
-      { id: "serbia-vlahovic", name: "Dušan Vlahović", nameJa: "ドゥシャン・ヴラホヴィッチ", number: 9, position: "FW", club: "ユベントス", birthDate: "2000-01-28", age: 26, caps: 25, goals: 10, height: 190, isCaptain: true, description: "パワフルなシュートと空中戦の強さを持つ大型ストライカー。ペナルティエリア内での決定力が高い。" },
-    ],
-    description: "ピクシーことストイコビッチ監督率いる。日本でもおなじみの名将がW杯に挑む。",
-  },
-  {
-    id: "denmark",
-    name: "Denmark",
-    nameJa: "デンマーク",
-    code: "DEN",
-    flag: "🇩🇰",
-    confederation: "UEFA",
-    group: "",
-    fifaRanking: 17,
-    wcAppearances: 6,
-    bestResult: "ベスト8 (1998)",
-    coach: {
-      name: "Brian Riemer",
-      nameJa: "ブライアン・リーマー",
-      nationality: "デンマーク",
-      birthDate: "1978-01-08",
-      age: 48,
-      careerHistory: ["ブレントフォード（AC）", "アンデルレヒト", "デンマーク代表"],
-      style: "組織的・フィジカル",
-    },
-    players: [
-      { id: "denmark-eriksen", name: "Christian Eriksen", nameJa: "クリスティアン・エリクセン", number: 10, position: "MF", club: "マンチェスター・ユナイテッド", birthDate: "1992-02-14", age: 34, caps: 130, goals: 42, height: 182, isCaptain: true, description: "精密なパスとフリーキックを武器にするデンマークの司令塔。心臓停止からの奇跡の復帰を果たした不屈の魂。" },
-    ],
-    description: "北欧の強豪デンマーク。UEFAプレーオフDに回り、出場権獲得を目指す。",
-  },
-  {
-    id: "poland",
-    name: "Poland",
-    nameJa: "ポーランド",
-    code: "POL",
-    flag: "🇵🇱",
-    confederation: "UEFA",
-    group: "",
-    fifaRanking: 26,
-    wcAppearances: 9,
-    bestResult: "3位 (1974, 1982)",
-    coach: {
-      name: "Michał Probierz",
-      nameJa: "ミハウ・プロビエシュ",
-      nationality: "ポーランド",
-      birthDate: "1972-03-28",
-      age: 54,
-      careerHistory: ["クラコヴィア", "ヤギエロニア", "ポーランド代表"],
-      style: "攻撃的・ポゼッション重視",
-    },
-    players: [
-      { id: "poland-lewandowski", name: "Robert Lewandowski", nameJa: "ロベルト・レヴァンドフスキ", number: 9, position: "FW", club: "バルセロナ", birthDate: "1988-08-21", age: 37, caps: 155, goals: 83, height: 185, isCaptain: true, description: "世界最高のストライカーの一人。ペナルティエリア内での嗅覚と多彩なフィニッシュは芸術的。" },
-    ],
-    description: "世界屈指のストライカー・レヴァンドフスキを擁する。UEFAプレーオフBに回り、出場権獲得を目指す。",
-  },
 ];
 
 // Helper functions
@@ -1520,7 +1368,7 @@ export function getTeamsByGroup(group: string): Team[] {
 }
 
 export function getGroups(): string[] {
-  return [...new Set(teams.map((t) => t.group))].sort();
+  return [...new Set(teams.map((t) => t.group).filter(Boolean))].sort();
 }
 
 export function getPlayerById(playerId: string): { player: Player; team: Team } | undefined {
