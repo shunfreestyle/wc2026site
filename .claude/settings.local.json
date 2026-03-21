@@ -39,7 +39,12 @@
       "Bash(chmod:*)",
       "Bash(wc:*)",
       "Bash(head:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(node -e \":*)",
+      "Bash(grep -A1 'id: \"\"\"\"scotland\"\"\"\"' src/data/teams.ts)",
+      "Bash(grep 'id: \"\"\"\"scotland-' src/data/teams.ts)",
+      "Bash(grep 'id: \"\"\"\"england-' src/data/teams.ts)",
+      "Bash(vercel --prod)"
     ]
   }
 }

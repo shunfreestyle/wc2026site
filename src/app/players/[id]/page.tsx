@@ -183,19 +183,24 @@ export default async function PlayerDetailPage({ params }: Props) {
                   <span className="w-1 h-5 bg-[#E8192C] rounded-full" />
                   これまでの経歴
                 </h2>
-                <ol className="relative border-l-2 border-gray-200 ml-2 space-y-0">
+                <ol className="space-y-4">
                   {player.careerHistory.map((item, i) => (
-                    <li key={i} className="ml-5 pb-5 last:pb-0 relative">
-                      <span className="absolute -left-[9px] flex h-4 w-4 items-center justify-center rounded-full bg-[#8B1538] ring-2 ring-white">
-                        <span className="h-1.5 w-1.5 rounded-full bg-white" />
-                      </span>
-                      <p className="text-sm font-semibold text-gray-900 leading-tight">{item.club}</p>
-                      <p className="text-xs text-gray-400 mt-0.5 mb-1">{item.period}</p>
-                      {item.note && (
-                        <p className="text-xs text-gray-600 leading-relaxed bg-gray-50 rounded-lg px-3 py-2 border-l-2 border-[#8B1538]/30">
-                          {item.note}
-                        </p>
-                      )}
+                    <li key={i} className="flex gap-3">
+                      <div className="flex flex-col items-center">
+                        <div className="w-3 h-3 rounded-full bg-[#8B1538] ring-2 ring-white ring-offset-1 ring-offset-gray-100 mt-1 shrink-0" />
+                        {i < player.careerHistory!.length - 1 && (
+                          <div className="w-0.5 bg-gray-200 flex-1 mt-1" />
+                        )}
+                      </div>
+                      <div className="pb-4 min-w-0 flex-1">
+                        <p className="text-sm font-semibold text-gray-900 leading-tight">{item.club}</p>
+                        <p className="text-xs text-gray-400 mt-0.5 mb-1">{item.period}</p>
+                        {item.note && (
+                          <p className="text-xs text-gray-600 leading-relaxed bg-gray-50 rounded-lg px-3 py-2 border-l-2 border-[#8B1538]/40">
+                            {item.note}
+                          </p>
+                        )}
+                      </div>
                     </li>
                   ))}
                 </ol>
