@@ -37,14 +37,12 @@ export default function Home() {
             <div className="inline-block mb-4 sm:mb-6">
               <span className="text-5xl sm:text-8xl">⚽</span>
             </div>
-            <h1 className="text-2xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight mb-4">
-              FIFA World Cup
-              <span className="block mt-2">
-                <span className="text-[#E8192C]">20</span>
-                <span className="text-[#0057A8]">2</span>
-                <span className="text-[#00843D]">6</span>
-              </span>
+            <h1 className="text-2xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight mb-2">
+              SAMURAI FOOTBALL
             </h1>
+            <p className="text-base sm:text-xl text-white/70 mb-4">
+              サムライブルーと2026年FIFAワールドカップを追う
+            </p>
             <div className="mb-6 sm:mb-8">
               <Countdown />
             </div>

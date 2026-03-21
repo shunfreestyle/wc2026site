@@ -3,7 +3,7 @@ import TeamCard from "@/components/TeamCard";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "出場チーム一覧 | FIFA World Cup 2026",
+  title: "出場チーム一覧",
   description: "2026年FIFAワールドカップ出場48チームの情報",
 };
 

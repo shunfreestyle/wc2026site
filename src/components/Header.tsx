@@ -23,7 +23,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2 sm:gap-3 hover:opacity-90 transition-opacity">
             <span className="text-xl sm:text-2xl">⚽</span>
             <div>
-              <h1 className="text-base sm:text-lg font-bold tracking-tight leading-none">FIFA World Cup</h1>
+              <h1 className="text-base sm:text-lg font-bold tracking-tight leading-none">SAMURAI FOOTBALL</h1>
               <p className="text-[10px] sm:text-xs font-semibold tracking-widest">
                 <span className="text-[#E8192C]">USA</span> | <span className="text-[#00843D]">MEX</span> | <span className="text-white">CAN</span> 2026
               </p>

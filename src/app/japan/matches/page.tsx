@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { japanMatches } from "@/data/japan-matches";
 
 export const metadata: Metadata = {
-  title: "🇯🇵 日本代表 試合結果 | FIFA World Cup 2026",
+  title: "🇯🇵 日本代表 試合結果",
   description: "日本代表（SAMURAI BLUE）直近10試合の試合結果・スコア・得点者一覧。",
 };
 

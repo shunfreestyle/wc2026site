@@ -16,9 +16,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FIFA World Cup 2026 | 大会情報サイト",
+  title: {
+    default: "SAMURAI FOOTBALL | サムライブルーと2026年W杯を追う",
+    template: "%s | SAMURAI FOOTBALL",
+  },
   description:
-    "2026年FIFAワールドカップ（アメリカ・メキシコ・カナダ共催）の出場チーム・選手・監督・試合日程の情報サイト",
+    "サッカー日本代表・2026年FIFAワールドカップの最新情報。選手プロフィール、試合日程、チーム情報を網羅。",
+  openGraph: {
+    siteName: "SAMURAI FOOTBALL",
+  },
 };
 
 export default function RootLayout({

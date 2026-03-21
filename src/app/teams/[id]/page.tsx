@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const team = getTeamById(id);
   if (!team) return { title: "チームが見つかりません" };
   return {
-    title: `${team.nameJa} | FIFA World Cup 2026`,
+    title: team.nameJa,
     description: team.description,
   };
 }

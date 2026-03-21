@@ -3,7 +3,7 @@ import MatchCard from "@/components/MatchCard";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "試合日程・結果 | FIFA World Cup 2026",
+  title: "試合日程・結果",
   description: "2026年FIFAワールドカップ全104試合の日程と結果",
 };
 

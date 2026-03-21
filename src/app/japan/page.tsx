@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "🇯🇵 日本代表 SAMURAI BLUE イギリス遠征 | FIFA World Cup 2026",
+  title: "🇯🇵 日本代表 SAMURAI BLUE イギリス遠征",
   description:
     "2026 FIFAワールドカップ 日本代表（SAMURAI BLUE）特設ページ。イギリス遠征・グループF 試合日程・注目選手・招集メンバー28名一覧。",
 };

@@ -9,7 +9,7 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-4">
               <span className="text-2xl">⚽</span>
               <div>
-                <p className="text-white font-bold">FIFA World Cup 2026</p>
+                <p className="text-white font-bold">SAMURAI FOOTBALL</p>
                 <p className="text-xs"><span className="text-[#E8192C]">USA</span> | <span className="text-[#00843D]">Mexico</span> | <span className="text-white">Canada</span></p>
               </div>
             </div>

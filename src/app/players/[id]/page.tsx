@@ -15,10 +15,30 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const result = getPlayerById(id);
-  if (!result) return { title: "選手が見つかりません" };
+  if (!result) return { title: "選手が見つかりません | SAMURAI FOOTBALL" };
+  const { player, team } = result;
+  const title = `${player.nameJa}（${player.name}）| ${team.nameJa}代表`;
+  const description = `${team.nameJa}代表 ${player.nameJa}（${player.name}）の選手プロフィール。${player.club}所属、${player.position}、${player.height}cm。代表${player.caps}試合${player.goals}得点。${player.description ?? ""}`;
+  const keywords = player.seoKeywords ?? [player.nameJa, player.name, player.club, team.nameJa];
   return {
-    title: `${result.player.nameJa} | FIFA World Cup 2026`,
-    description: `${result.team.nameJa}代表 ${result.player.nameJa}の選手プロフィール`,
+    title,
+    description,
+    keywords,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: `https://samurai-football.jp/players/${player.id}`,
+      siteName: "SAMURAI FOOTBALL",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+    alternates: {
+      canonical: `https://samurai-football.jp/players/${player.id}`,
+    },
   };
 }
 
@@ -51,6 +71,25 @@ export default async function PlayerDetailPage({ params }: Props) {
 
   return (
     <div>
+      {/* JSON-LD 構造化データ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: player.name,
+            alternateName: player.nameJa,
+            jobTitle: positionFullName[player.position],
+            memberOf: {
+              "@type": "SportsTeam",
+              name: player.club,
+              sport: "Football",
+            },
+            url: `https://samurai-football.jp/players/${player.id}`,
+          }),
+        }}
+      />
       {/* Hero */}
       <div className="relative overflow-hidden text-white" style={{ background: "#1A1A2E" }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -173,6 +212,23 @@ export default async function PlayerDetailPage({ params }: Props) {
                   プレースタイル
                 </h2>
                 <p className="text-gray-700 leading-relaxed">{player.description}</p>
+              </section>
+            )}
+
+            {/* SEO Keywords */}
+            {player.seoKeywords && player.seoKeywords.length > 0 && (
+              <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <span className="w-1 h-5 bg-[#E8192C] rounded-full" />
+                  関連キーワード
+                </h2>
+                <div className="flex flex-wrap gap-2">
+                  {player.seoKeywords.map((kw) => (
+                    <span key={kw} className="text-xs text-gray-500 bg-gray-50 px-3 py-1 rounded-full border border-gray-200">
+                      {kw}
+                    </span>
+                  ))}
+                </div>
               </section>
             )}
 
