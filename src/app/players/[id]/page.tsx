@@ -221,25 +221,44 @@ export default async function PlayerDetailPage({ params }: Props) {
             {/* International Record */}
             <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <span className="w-1 h-5 bg-[#E8192C] rounded-full" />
+                <span className="w-1 h-5 bg-[#8B1538] rounded-full" />
                 代表成績
               </h2>
-              <div className="grid grid-cols-3 gap-4 text-center">
+              <div className="grid grid-cols-3 gap-4 text-center mb-5">
                 <div className="bg-gray-50 rounded-xl p-4">
-                  <p className="text-2xl font-extrabold text-[#E8192C]">{player.caps}</p>
+                  <p className="text-2xl font-extrabold text-[#8B1538]">{player.caps}</p>
                   <p className="text-xs text-gray-600 mt-1">出場試合</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-4">
-                  <p className="text-2xl font-extrabold text-[#E8192C]">{player.goals}</p>
+                  <p className="text-2xl font-extrabold text-[#8B1538]">{player.goals}</p>
                   <p className="text-xs text-gray-600 mt-1">得点数</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-4">
-                  <p className="text-2xl font-extrabold text-[#E8192C]">
-                    {player.caps > 0 ? (player.goals / player.caps).toFixed(2) : "0.00"}
+                  <p className="text-2xl font-extrabold text-[#8B1538]">
+                    {player.debutYear ? `${player.debutYear}年` : "—"}
                   </p>
-                  <p className="text-xs text-gray-600 mt-1">得点率</p>
+                  <p className="text-xs text-gray-600 mt-1">代表デビュー</p>
                 </div>
               </div>
+              {player.tournaments && player.tournaments.length > 0 && (
+                <div className="bg-gray-50 rounded-xl p-4">
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">出場大会</p>
+                  <div className="flex flex-wrap gap-2">
+                    {player.tournaments.map((t) => (
+                      <span
+                        key={t}
+                        className={`text-xs font-medium px-3 py-1.5 rounded-full border ${
+                          t.includes("W杯")
+                            ? "bg-[#8B1538]/10 text-[#8B1538] border-[#8B1538]/20"
+                            : "bg-gray-100 text-gray-600 border-gray-200"
+                        }`}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </section>
           </div>
 
