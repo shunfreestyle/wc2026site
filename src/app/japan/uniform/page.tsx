@@ -133,24 +133,26 @@ export default function UniformPage() {
                 >
                   {/* Image area */}
                   {rakutenImages[u.id] ? (
-                    <div className="bg-gray-50" style={{ position: "relative", width: "400px", height: "400px", margin: "0 auto", maxWidth: "100%" }}>
-                      <a
-                        href={rakutenImages[u.id].href}
-                        target="_blank"
-                        rel="nofollow sponsored noopener"
-                        className="block hover:opacity-90 transition-opacity"
-                      >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={rakutenImages[u.id].src}
-                          alt={rakutenImages[u.id].alt}
-                          style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
-                        />
-                      </a>
-                      <span style={{ position: "absolute", top: "8px", right: "8px" }} className="z-10 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-700/70 text-white backdrop-blur-sm">
-                        PR
-                      </span>
-                      <div style={{ position: "absolute", bottom: "8px", left: "8px", display: "flex", gap: "6px" }} className="z-10">
+                    <div className="bg-gray-50">
+                      <div style={{ position: "relative", width: "400px", maxWidth: "100%", margin: "0 auto" }}>
+                        <a
+                          href={rakutenImages[u.id].href}
+                          target="_blank"
+                          rel="nofollow sponsored noopener"
+                          className="block hover:opacity-90 transition-opacity"
+                        >
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={rakutenImages[u.id].src}
+                            alt={rakutenImages[u.id].alt}
+                            style={{ width: "100%", height: "auto", objectFit: "contain", display: "block" }}
+                          />
+                        </a>
+                        <span style={{ position: "absolute", top: "8px", right: "8px" }} className="z-10 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-700/70 text-white backdrop-blur-sm">
+                          PR
+                        </span>
+                      </div>
+                      <div style={{ display: "flex", gap: "6px", padding: "8px", marginTop: "-40px", position: "relative", zIndex: 10 }}>
                         <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.cls}`}>{badge.label}</span>
                         <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">{u.brand}</span>
                       </div>
