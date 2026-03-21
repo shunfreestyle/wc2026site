@@ -161,43 +161,15 @@ export default function UniformPage() {
                   )}
 
                   <div className="p-5 flex-1 flex flex-col">
-                    {/* Title + swatches */}
-                    <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-lg font-bold text-gray-900">
-                        {u.name}
-                      </h3>
-                      <div className="flex items-center gap-1.5 shrink-0 ml-2">
-                        <span
-                          className="w-5 h-5 rounded-full border-2 border-gray-200"
-                          style={{ background: u.colorMain }}
-                          title={`メインカラー ${u.colorMain}`}
-                        />
-                        {u.colorSub !== "#FFFFFF" && (
-                          <span
-                            className="w-5 h-5 rounded-full border-2 border-gray-200"
-                            style={{ background: u.colorSub }}
-                            title={`サブカラー ${u.colorSub}`}
-                          />
-                        )}
-                      </div>
-                    </div>
+                    {/* Title */}
+                    <h3 className="text-lg font-bold text-gray-900 mb-3">
+                      {u.name}
+                    </h3>
 
                     {/* Description */}
                     <p className="text-sm text-gray-600 leading-relaxed mb-4">
                       {u.description}
                     </p>
-
-                    {/* Features */}
-                    <div className="flex flex-wrap gap-1.5 mb-4">
-                      {u.features.map((f) => (
-                        <span
-                          key={f}
-                          className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-gray-100 text-gray-600"
-                        >
-                          {f}
-                        </span>
-                      ))}
-                    </div>
 
                     {/* Buy buttons */}
                     <div className="mt-auto pt-3 border-t border-gray-100">

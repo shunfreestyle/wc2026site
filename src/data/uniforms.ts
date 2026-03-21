@@ -19,7 +19,6 @@ export type Uniform = {
   description: string;
   colorMain: string;
   colorSub: string;
-  features: string[];
   buyLinks: BuyLink[];
   rakuten?: RakutenBanner;
 };
@@ -35,7 +34,6 @@ export const uniforms: Uniform[] = [
       "北中米W杯に向けた最新モデル。深い紺色をベースに、日の丸カラーの赤いアクセントが特徴。コンセプトは「COLORS」。",
     colorMain: "#002868",
     colorSub: "#BF0A30",
-    features: ["AEROREADY素材", "リサイクル素材使用", "日の丸モチーフ"],
     buyLinks: [
       { store: "楽天市場", url: "https://www.rakuten.co.jp", label: "楽天で見る" },
       { store: "adidas公式", url: "https://www.adidas.co.jp", label: "adidas公式で見る" },
@@ -47,14 +45,12 @@ export const uniforms: Uniform[] = [
     year: "2026",
     type: "away",
     brand: "adidas",
-    name: "2026 アウェイユニフォーム",
+    name: "2026 アウェイユニフォーム 長袖",
     description:
       "白をベースに水平線のグラデーションをイメージしたデザイン。コンセプトは「COLORS（カラーズ）— 水平線のその先へ」。",
     colorMain: "#FFFFFF",
     colorSub: "#002868",
-    features: ["AEROREADY素材", "リサイクル素材使用", "水平線グラデーション"],
     buyLinks: [
-      { store: "楽天市場", url: "https://www.rakuten.co.jp", label: "楽天で見る" },
       { store: "adidas公式", url: "https://www.adidas.co.jp", label: "adidas公式で見る" },
       { store: "KAMO", url: "https://www.kamo.co.jp", label: "KAMOで見る" },
     ],
@@ -67,6 +63,28 @@ export const uniforms: Uniform[] = [
     },
   },
   {
+    id: 5,
+    year: "2026",
+    type: "away",
+    brand: "adidas",
+    name: "2026 アウェイユニフォーム 半袖",
+    description:
+      "オフホワイトに全11色のストライプ。トレフォイルロゴを30年ぶりに採用した記念モデル。",
+    colorMain: "#FFFFFF",
+    colorSub: "#002868",
+    buyLinks: [
+      { store: "adidas公式", url: "https://www.adidas.co.jp", label: "adidas公式で見る" },
+      { store: "KAMO", url: "https://www.kamo.co.jp", label: "KAMOで見る" },
+    ],
+    rakuten: {
+      affiliateUrl:
+        "https://hb.afl.rakuten.co.jp/ichiba/43bcm43.b7b3d243.43bcm44.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fklg77-jn1872%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9",
+      imageUrl:
+        "https://hbb.afl.rakuten.co.jp/hgb/43bcm43.b7b3d243.43bcm44.9bcc9825/?me_id=1268947&item_id=10237400&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2F43bcm43%2Fklg77-jn1872_c2.jpg%3F_ex%3D400x400&s=400x400&t=pict",
+      price: "¥12,100〜（レプリカ）",
+    },
+  },
+  {
     id: 3,
     year: "2024",
     type: "home",
@@ -76,7 +94,6 @@ export const uniforms: Uniform[] = [
       "カタールW杯以降の主力モデル。シンプルな紺地に金のアクセント。",
     colorMain: "#002868",
     colorSub: "#FFD700",
-    features: ["AEROREADY素材"],
     buyLinks: [
       { store: "楽天市場", url: "https://www.rakuten.co.jp", label: "楽天で見る" },
       { store: "KAMO", url: "https://www.kamo.co.jp", label: "KAMOで見る" },
@@ -91,7 +108,6 @@ export const uniforms: Uniform[] = [
     description: "白地に桜をモチーフにした刺繍風デザイン。",
     colorMain: "#FFFFFF",
     colorSub: "#FF69B4",
-    features: ["AEROREADY素材", "桜モチーフ"],
     buyLinks: [
       { store: "楽天市場", url: "https://www.rakuten.co.jp", label: "楽天で見る" },
     ],
