@@ -1,5 +1,6 @@
 import { matches, getStages } from "@/data/matches";
 import MatchCard from "@/components/MatchCard";
+import StageNavigation from "@/components/StageNavigation";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -54,22 +55,12 @@ export default function MatchesPage() {
       </div>
 
       {/* Stage Navigation */}
-      <nav className="flex flex-wrap gap-2 mb-10 sticky top-16 z-40 bg-[#f8f9fa] py-3 -mx-4 px-4">
-        {stages.map((stage) => {
+      <StageNavigation
+        items={stages.map((stage) => {
           const cfg = stageConfig[stage] || { badge: stage, bg: "#F3F4F6", text: "#374151", border: "#D1D5DB" };
-          const count = matches.filter((m) => m.stage === stage).length;
-          return (
-            <a
-              key={stage}
-              href={`#stage-${stage}`}
-              style={{ background: cfg.bg, color: cfg.text, border: `1px solid ${cfg.border}` }}
-              className="text-xs font-bold px-3 py-1.5 rounded-full hover:opacity-80 transition-opacity"
-            >
-              {cfg.badge} ({count})
-            </a>
-          );
+          return { stage, badge: cfg.badge, bg: cfg.bg, text: cfg.text, border: cfg.border, count: matches.filter((m) => m.stage === stage).length };
         })}
-      </nav>
+      />
 
       {/* Matches by Stage */}
       {stages.map((stage) => {
