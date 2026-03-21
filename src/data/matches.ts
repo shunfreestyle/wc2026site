@@ -23,6 +23,7 @@ export type Match = {
   awayLabel?: string;
   homeScore?: number;
   awayScore?: number;
+  stadiumId: string;
   status: "scheduled" | "live" | "finished";
 };
 
@@ -36,25 +37,26 @@ type Venue = {
   tz: TZ;
   /** hours to add to ET to get local time */
   etToLocal: number;
+  stadiumId: string;
 };
 
 const V: Record<string, Venue> = {
-  azteca:    { nameJa: "エスタディオ・アステカ",       cityJa: "メキシコシティ",     country: "メキシコ",  tz: "CST", etToLocal: -2 },
-  akron:     { nameJa: "エスタディオ・アクロン",       cityJa: "グアダラハラ",       country: "メキシコ",  tz: "CST", etToLocal: -2 },
-  bbva:      { nameJa: "エスタディオ・BBVA",          cityJa: "モンテレイ",         country: "メキシコ",  tz: "CST", etToLocal: -2 },
-  bmo:       { nameJa: "BMOフィールド",              cityJa: "トロント",           country: "カナダ",    tz: "EDT", etToLocal: 0 },
-  bc:        { nameJa: "BCプレイス",                 cityJa: "バンクーバー",       country: "カナダ",    tz: "PDT", etToLocal: -3 },
-  metlife:   { nameJa: "メットライフ・スタジアム",     cityJa: "ニューヨーク/NJ",    country: "アメリカ",  tz: "EDT", etToLocal: 0 },
-  sofi:      { nameJa: "ソフィ・スタジアム",          cityJa: "ロサンゼルス",       country: "アメリカ",  tz: "PDT", etToLocal: -3 },
-  att:       { nameJa: "AT&Tスタジアム",             cityJa: "ダラス",             country: "アメリカ",  tz: "CDT", etToLocal: -1 },
-  nrg:       { nameJa: "NRGスタジアム",              cityJa: "ヒューストン",       country: "アメリカ",  tz: "CDT", etToLocal: -1 },
-  hardrock:  { nameJa: "ハード・ロック・スタジアム",   cityJa: "マイアミ",           country: "アメリカ",  tz: "EDT", etToLocal: 0 },
-  mercedes:  { nameJa: "メルセデス・ベンツ・スタジアム", cityJa: "アトランタ",       country: "アメリカ",  tz: "EDT", etToLocal: 0 },
-  gillette:  { nameJa: "ジレット・スタジアム",        cityJa: "ボストン",           country: "アメリカ",  tz: "EDT", etToLocal: 0 },
-  lincoln:   { nameJa: "リンカーン・ファイナンシャル・フィールド", cityJa: "フィラデルフィア", country: "アメリカ", tz: "EDT", etToLocal: 0 },
-  levis:     { nameJa: "リーバイス・スタジアム",      cityJa: "サンフランシスコ",   country: "アメリカ",  tz: "PDT", etToLocal: -3 },
-  lumen:     { nameJa: "ルーメン・フィールド",        cityJa: "シアトル",           country: "アメリカ",  tz: "PDT", etToLocal: -3 },
-  arrowhead: { nameJa: "アロウヘッド・スタジアム",    cityJa: "カンザスシティ",     country: "アメリカ",  tz: "CDT", etToLocal: -1 },
+  azteca:    { nameJa: "エスタディオ・アステカ",       cityJa: "メキシコシティ",     country: "メキシコ",  tz: "CST", etToLocal: -2, stadiumId: "azteca" },
+  akron:     { nameJa: "エスタディオ・アクロン",       cityJa: "グアダラハラ",       country: "メキシコ",  tz: "CST", etToLocal: -2, stadiumId: "akron" },
+  bbva:      { nameJa: "エスタディオ・BBVA",          cityJa: "モンテレイ",         country: "メキシコ",  tz: "CST", etToLocal: -2, stadiumId: "bbva" },
+  bmo:       { nameJa: "BMOフィールド",              cityJa: "トロント",           country: "カナダ",    tz: "EDT", etToLocal: 0, stadiumId: "bmo" },
+  bc:        { nameJa: "BCプレイス",                 cityJa: "バンクーバー",       country: "カナダ",    tz: "PDT", etToLocal: -3, stadiumId: "bc" },
+  metlife:   { nameJa: "メットライフ・スタジアム",     cityJa: "ニューヨーク/NJ",    country: "アメリカ",  tz: "EDT", etToLocal: 0, stadiumId: "metlife" },
+  sofi:      { nameJa: "ソフィ・スタジアム",          cityJa: "ロサンゼルス",       country: "アメリカ",  tz: "PDT", etToLocal: -3, stadiumId: "sofi" },
+  att:       { nameJa: "AT&Tスタジアム",             cityJa: "ダラス",             country: "アメリカ",  tz: "CDT", etToLocal: -1, stadiumId: "att" },
+  nrg:       { nameJa: "NRGスタジアム",              cityJa: "ヒューストン",       country: "アメリカ",  tz: "CDT", etToLocal: -1, stadiumId: "nrg" },
+  hardrock:  { nameJa: "ハード・ロック・スタジアム",   cityJa: "マイアミ",           country: "アメリカ",  tz: "EDT", etToLocal: 0, stadiumId: "hardrock" },
+  mercedes:  { nameJa: "メルセデス・ベンツ・スタジアム", cityJa: "アトランタ",       country: "アメリカ",  tz: "EDT", etToLocal: 0, stadiumId: "mercedes" },
+  gillette:  { nameJa: "ジレット・スタジアム",        cityJa: "ボストン",           country: "アメリカ",  tz: "EDT", etToLocal: 0, stadiumId: "gillette" },
+  lincoln:   { nameJa: "リンカーン・ファイナンシャル・フィールド", cityJa: "フィラデルフィア", country: "アメリカ", tz: "EDT", etToLocal: 0, stadiumId: "lincoln" },
+  levis:     { nameJa: "リーバイス・スタジアム",      cityJa: "サンフランシスコ",   country: "アメリカ",  tz: "PDT", etToLocal: -3, stadiumId: "levis" },
+  lumen:     { nameJa: "ルーメン・フィールド",        cityJa: "シアトル",           country: "アメリカ",  tz: "PDT", etToLocal: -3, stadiumId: "lumen" },
+  arrowhead: { nameJa: "アロウヘッド・スタジアム",    cityJa: "カンザスシティ",     country: "アメリカ",  tz: "CDT", etToLocal: -1, stadiumId: "arrowhead" },
 };
 
 // ── Time helpers ────────────────────────────────────────────
@@ -99,7 +101,7 @@ function gs(
     id: `m${num}`, matchNumber: num, stage: "グループステージ", group,
     date: local.date, localTime: local.time, jstTime: jst.time, jstDate: jst.date,
     venue: v.nameJa, city: v.cityJa, country: v.country, timezone: v.tz,
-    homeTeamId: home, awayTeamId: away, status: "scheduled",
+    homeTeamId: home, awayTeamId: away, stadiumId: v.stadiumId, status: "scheduled",
   };
 }
 
@@ -116,7 +118,7 @@ function ko(
     date: local.date, localTime: local.time, jstTime: jst.time, jstDate: jst.date,
     venue: v.nameJa, city: v.cityJa, country: v.country, timezone: v.tz,
     homeTeamId: "", awayTeamId: "",
-    homeLabel, awayLabel, status: "scheduled",
+    homeLabel, awayLabel, stadiumId: v.stadiumId, status: "scheduled",
   };
 }
 

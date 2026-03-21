@@ -13,6 +13,9 @@ export type NationalTeam = {
   flag: string;
   themeColor: string;
   brand: "adidas";
+  tagBg: string;
+  tagText: string;
+  tagBorder: string;
   uniforms: UniformItem[];
 };
 
@@ -23,6 +26,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇯🇵",
     themeColor: "#002868",
     brand: "adidas",
+    tagBg: "#EEF2FF",
+    tagText: "#1D3B8E",
+    tagBorder: "#A5B4FC",
     uniforms: [
       {
         id: 1,
@@ -64,6 +70,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇦🇷",
     themeColor: "#74ACDF",
     brand: "adidas",
+    tagBg: "#ECFEFF",
+    tagText: "#155E75",
+    tagBorder: "#67E8F9",
     uniforms: [
       {
         id: 10,
@@ -97,6 +106,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇩🇪",
     themeColor: "#000000",
     brand: "adidas",
+    tagBg: "#FEF9C3",
+    tagText: "#713F12",
+    tagBorder: "#FDE047",
     uniforms: [
       {
         id: 20,
@@ -130,6 +142,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇮🇹",
     themeColor: "#003399",
     brand: "adidas",
+    tagBg: "#EEF2FF",
+    tagText: "#1E3A8A",
+    tagBorder: "#93C5FD",
     uniforms: [
       {
         id: 30,
@@ -155,6 +170,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇪🇸",
     themeColor: "#AA151B",
     brand: "adidas",
+    tagBg: "#FEF2F2",
+    tagText: "#991B1B",
+    tagBorder: "#FECACA",
     uniforms: [
       {
         id: 40,
@@ -188,6 +206,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇲🇽",
     themeColor: "#006847",
     brand: "adidas",
+    tagBg: "#F0FDF4",
+    tagText: "#166534",
+    tagBorder: "#86EFAC",
     uniforms: [
       {
         id: 50,
@@ -221,6 +242,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇧🇪",
     themeColor: "#ED2939",
     brand: "adidas",
+    tagBg: "#FEF2F2",
+    tagText: "#991B1B",
+    tagBorder: "#FCA5A5",
     uniforms: [
       { id: 60, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 61, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
@@ -232,6 +256,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇨🇴",
     themeColor: "#FCD116",
     brand: "adidas",
+    tagBg: "#FEFCE8",
+    tagText: "#854D0E",
+    tagBorder: "#FDE047",
     uniforms: [
       { id: 70, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 71, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
@@ -243,6 +270,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
     themeColor: "#C8102E",
     brand: "adidas",
+    tagBg: "#F3F4F6",
+    tagText: "#374151",
+    tagBorder: "#D1D5DB",
     uniforms: [
       { id: 80, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 81, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
@@ -254,6 +284,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇸🇪",
     themeColor: "#006AA7",
     brand: "adidas",
+    tagBg: "#F3F4F6",
+    tagText: "#374151",
+    tagBorder: "#D1D5DB",
     uniforms: [
       { id: 90, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 91, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
@@ -265,6 +298,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇭🇺",
     themeColor: "#CE2939",
     brand: "adidas",
+    tagBg: "#F3F4F6",
+    tagText: "#374151",
+    tagBorder: "#D1D5DB",
     uniforms: [
       { id: 100, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 101, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
@@ -276,6 +312,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇬🇧",
     themeColor: "#007A33",
     brand: "adidas",
+    tagBg: "#F3F4F6",
+    tagText: "#374151",
+    tagBorder: "#D1D5DB",
     uniforms: [
       { id: 110, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 111, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
@@ -287,6 +326,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
     themeColor: "#003078",
     brand: "adidas",
+    tagBg: "#EEF2FF",
+    tagText: "#1E3A8A",
+    tagBorder: "#93C5FD",
     uniforms: [
       { id: 120, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 121, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
@@ -298,6 +340,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇻🇪",
     themeColor: "#CF142B",
     brand: "adidas",
+    tagBg: "#F3F4F6",
+    tagText: "#374151",
+    tagBorder: "#D1D5DB",
     uniforms: [
       { id: 130, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 131, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
@@ -309,6 +354,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇵🇪",
     themeColor: "#D91023",
     brand: "adidas",
+    tagBg: "#F3F4F6",
+    tagText: "#374151",
+    tagBorder: "#D1D5DB",
     uniforms: [
       { id: 140, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 141, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
@@ -320,6 +368,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇨🇱",
     themeColor: "#D52B1E",
     brand: "adidas",
+    tagBg: "#F3F4F6",
+    tagText: "#374151",
+    tagBorder: "#D1D5DB",
     uniforms: [
       { id: 150, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 151, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
@@ -331,6 +382,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇵🇾",
     themeColor: "#D52B1E",
     brand: "adidas",
+    tagBg: "#F3F4F6",
+    tagText: "#374151",
+    tagBorder: "#D1D5DB",
     uniforms: [
       { id: 160, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 161, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
@@ -342,6 +396,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇯🇲",
     themeColor: "#009B3A",
     brand: "adidas",
+    tagBg: "#F3F4F6",
+    tagText: "#374151",
+    tagBorder: "#D1D5DB",
     uniforms: [
       { id: 170, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 171, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
@@ -353,6 +410,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇨🇷",
     themeColor: "#CE1126",
     brand: "adidas",
+    tagBg: "#F3F4F6",
+    tagText: "#374151",
+    tagBorder: "#D1D5DB",
     uniforms: [
       { id: 180, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 181, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
@@ -364,6 +424,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇩🇿",
     themeColor: "#006233",
     brand: "adidas",
+    tagBg: "#F3F4F6",
+    tagText: "#374151",
+    tagBorder: "#D1D5DB",
     uniforms: [
       { id: 190, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 191, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
@@ -375,6 +438,9 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     flag: "🇹🇹",
     themeColor: "#CE1126",
     brand: "adidas",
+    tagBg: "#F3F4F6",
+    tagText: "#374151",
+    tagBorder: "#D1D5DB",
     uniforms: [
       { id: 200, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
       { id: 201, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },

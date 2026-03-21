@@ -161,10 +161,20 @@ export default function UniformPage() {
           className="border-t border-gray-200 scroll-mt-28 sm:scroll-mt-32"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <span className="text-3xl">{team.flag}</span>
-              {team.name}
-            </h2>
+            <div className="flex items-center gap-3 mb-6">
+              <span
+                style={{
+                  background: team.tagBg,
+                  color: team.tagText,
+                  border: `1.5px solid ${team.tagBorder}`,
+                }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold"
+              >
+                <span className="text-lg">{team.flag}</span>
+                {team.name}
+              </span>
+              <div className="flex-1 h-px" style={{ background: team.tagBorder }} />
+            </div>
 
             <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
               {team.uniforms.map((item) => (

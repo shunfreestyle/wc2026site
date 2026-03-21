@@ -25,14 +25,14 @@ function groupByDate(list: typeof matches) {
   return Object.entries(map).sort(([a], [b]) => a.localeCompare(b));
 }
 
-const stageConfig: Record<string, { badge: string; color: string }> = {
-  "グループステージ": { badge: "グループステージ", color: "bg-[#E8192C]" },
-  "ラウンド32":       { badge: "ラウンド32",       color: "bg-amber-600" },
-  "ラウンド16":       { badge: "ラウンド16",       color: "bg-amber-600" },
-  "準々決勝":         { badge: "準々決勝",         color: "bg-orange-600" },
-  "準決勝":           { badge: "準決勝",           color: "bg-rose-600" },
-  "3位決定戦":        { badge: "3位決定戦",        color: "bg-rose-600" },
-  "決勝":             { badge: "決勝",             color: "bg-yellow-600" },
+const stageConfig: Record<string, { badge: string; bg: string; text: string; border: string }> = {
+  "グループステージ": { badge: "グループステージ", bg: "#EEF2FF", text: "#3730A3", border: "#C7D2FE" },
+  "ラウンド32":       { badge: "ラウンド32",       bg: "#FFF7ED", text: "#9A3412", border: "#FED7AA" },
+  "ラウンド16":       { badge: "ラウンド16",       bg: "#FFF3CD", text: "#92400E", border: "#FDE68A" },
+  "準々決勝":         { badge: "準々決勝",         bg: "#FEF3C7", text: "#78350F", border: "#FCD34D" },
+  "準決勝":           { badge: "準決勝",           bg: "#FDF4FF", text: "#6B21A8", border: "#E9D5FF" },
+  "3位決定戦":        { badge: "3位決定戦",         bg: "#F0FDF4", text: "#166534", border: "#BBF7D0" },
+  "決勝":             { badge: "FINAL",            bg: "#FFFBEB", text: "#92400E", border: "#FDE68A" },
 };
 
 export default function MatchesPage() {
@@ -56,13 +56,14 @@ export default function MatchesPage() {
       {/* Stage Navigation */}
       <nav className="flex flex-wrap gap-2 mb-10 sticky top-16 z-40 bg-[#f8f9fa] py-3 -mx-4 px-4">
         {stages.map((stage) => {
-          const cfg = stageConfig[stage] || { badge: stage, color: "bg-gray-600" };
+          const cfg = stageConfig[stage] || { badge: stage, bg: "#F3F4F6", text: "#374151", border: "#D1D5DB" };
           const count = matches.filter((m) => m.stage === stage).length;
           return (
             <a
               key={stage}
               href={`#stage-${stage}`}
-              className={`${cfg.color} text-white text-xs font-bold px-3 py-1.5 rounded-lg hover:opacity-80 transition-opacity`}
+              style={{ background: cfg.bg, color: cfg.text, border: `1px solid ${cfg.border}` }}
+              className="text-xs font-bold px-3 py-1.5 rounded-full hover:opacity-80 transition-opacity"
             >
               {cfg.badge} ({count})
             </a>
@@ -73,13 +74,16 @@ export default function MatchesPage() {
       {/* Matches by Stage */}
       {stages.map((stage) => {
         const stageMatches = matches.filter((m) => m.stage === stage);
-        const cfg = stageConfig[stage] || { badge: stage, color: "bg-gray-600" };
+        const cfg = stageConfig[stage] || { badge: stage, bg: "#F3F4F6", text: "#374151", border: "#D1D5DB" };
         const byDate = groupByDate(stageMatches);
 
         return (
           <section key={stage} id={`stage-${stage}`} className="mb-14 scroll-mt-32">
             <div className="flex items-center gap-3 mb-8">
-              <span className={`${cfg.color} text-white text-sm font-bold px-4 py-1.5 rounded-lg`}>
+              <span
+                style={{ background: cfg.bg, color: cfg.text, border: `1px solid ${cfg.border}` }}
+                className="text-sm font-bold px-4 py-1.5 rounded-full"
+              >
                 {cfg.badge}
               </span>
               <span className="text-sm text-gray-500">{stageMatches.length}試合</span>
@@ -89,7 +93,7 @@ export default function MatchesPage() {
             {byDate.map(([date, dayMatches]) => (
               <div key={date} className="mb-8">
                 <h3 className="text-base font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <span className={`w-2 h-2 ${cfg.color} rounded-full`} />
+                  <span className="w-2 h-2 rounded-full" style={{ background: cfg.text }} />
                   {formatDate(date)}
                   <span className="text-xs text-gray-400 font-normal">
                     （{dayMatches.length}試合）

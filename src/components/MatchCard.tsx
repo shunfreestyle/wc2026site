@@ -42,16 +42,24 @@ function TeamDisplay({
 }
 
 export default function MatchCard({ match }: { match: Match }) {
-  const stageBadge =
-    match.stage === "グループステージ" && match.group ? (
-      <span className="bg-[#E8192C] text-white text-xs font-bold px-2 py-0.5 rounded">
-        Group {match.group}
-      </span>
-    ) : (
-      <span className="bg-amber-600 text-white text-xs font-bold px-2 py-0.5 rounded">
-        {match.stage}
-      </span>
-    );
+  const stageStyles: Record<string, { bg: string; text: string; border: string; label: string }> = {
+    "グループステージ": { bg: "#EEF2FF", text: "#3730A3", border: "#C7D2FE", label: "Group" },
+    "ラウンド32":       { bg: "#FFF7ED", text: "#9A3412", border: "#FED7AA", label: "R32" },
+    "ラウンド16":       { bg: "#FFF3CD", text: "#92400E", border: "#FDE68A", label: "R16" },
+    "準々決勝":         { bg: "#FEF3C7", text: "#78350F", border: "#FCD34D", label: "QF" },
+    "準決勝":           { bg: "#FDF4FF", text: "#6B21A8", border: "#E9D5FF", label: "SF" },
+    "3位決定戦":        { bg: "#F0FDF4", text: "#166534", border: "#BBF7D0", label: "3位決定戦" },
+    "決勝":             { bg: "#FFFBEB", text: "#92400E", border: "#FDE68A", label: "FINAL" },
+  };
+  const ss = stageStyles[match.stage] || { bg: "#F3F4F6", text: "#374151", border: "#D1D5DB", label: match.stage };
+  const stageBadge = (
+    <span
+      style={{ background: ss.bg, color: ss.text, border: `1px solid ${ss.border}` }}
+      className="text-xs font-bold px-2 py-0.5 rounded-full"
+    >
+      {match.stage === "グループステージ" && match.group ? `${ss.label} ${match.group}` : ss.label}
+    </span>
+  );
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
@@ -92,13 +100,19 @@ export default function MatchCard({ match }: { match: Match }) {
 
       {/* Venue */}
       <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
-        <div className="flex items-center gap-1.5 text-xs text-gray-600">
+        <Link
+          href={`/stadiums/${match.stadiumId}`}
+          className="flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+        >
           <svg className="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
           <span className="truncate">{match.venue}, {match.city}</span>
-        </div>
+          <svg className="w-3 h-3 shrink-0 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
         <span className="text-[11px] text-gray-500 shrink-0 ml-2">#{match.matchNumber}</span>
       </div>
     </div>
