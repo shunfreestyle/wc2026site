@@ -126,6 +126,7 @@ export const japanMatches: JapanMatch[] = [
       "韓国のホームで1-0の勝利を収め、大会優勝を決めた",
       "W杯メンバー入りを目指す国内組の選手たちが存在感をアピール",
     ],
+    highlightUrl: "",
   },
 
   // ── 2. MD10 日本 6-0 インドネシア ──
@@ -186,6 +187,7 @@ export const japanMatches: JapanMatch[] = [
       "森下龍矢・町野修斗・細谷真大と多彩な得点者が生まれた",
       "予選全10試合を8勝1分1敗の圧倒的成績で首位通過を決めた",
     ],
+    highlightUrl: "",
   },
 
   // ── 3. MD9 オーストラリア 1-0 日本 ──
@@ -240,6 +242,7 @@ export const japanMatches: JapanMatch[] = [
       "後半、久保建英を投入するも得点は奪えず",
       "90分にベヒッチに決められ、予選唯一の敗北を喫した。しかし首位通過には影響なし",
     ],
+    highlightUrl: "",
   },
 
   // ── 4. MD8 日本 0-0 サウジアラビア ──
@@ -295,6 +298,7 @@ export const japanMatches: JapanMatch[] = [
       "後半には伊東純也・堂安律・古橋亨梧ら攻撃のカードを切るも得点ならず",
       "首位通過への影響は小さいが、課題が残る試合となった",
     ],
+    highlightUrl: "",
   },
 
   // ── 5. MD7 日本 2-0 バーレーン ──
@@ -352,6 +356,7 @@ export const japanMatches: JapanMatch[] = [
       "87分、久保建英がダメ押しゴール。後半の選手交代が的中した",
       "W杯出場に大きく前進する貴重なホームでの勝利",
     ],
+    highlightUrl: "",
   },
 
   // ── 6. MD6 中国 1-3 日本 ──
@@ -411,6 +416,7 @@ export const japanMatches: JapanMatch[] = [
       "49分に中国に1点返されるも、54分に小川が2ゴール目で突き放す",
       "小川航基の2ゴールが光ったアウェイでの快勝。W杯出場に向け着実に勝ち点を積み上げた",
     ],
+    highlightUrl: "",
   },
 
   // ── 7. MD5 インドネシア 0-4 日本 ──
@@ -470,6 +476,7 @@ export const japanMatches: JapanMatch[] = [
       "82分には菅原由勢がダメ押しゴール。4-0の完勝",
       "守田英正のゴールは中盤からの果敢な飛び出しが光った見事な一撃だった",
     ],
+    highlightUrl: "",
   },
 
   // ── 8. MD4 日本 1-1 オーストラリア ──
@@ -527,6 +534,7 @@ export const japanMatches: JapanMatch[] = [
       "しかし72分にベヒッチに同点ゴールを許し、1-1のドロー",
       "勝ち切れなかった悔しさは残るが、グループ首位は維持",
     ],
+    highlightUrl: "",
   },
 
   // ── 9. MD3 サウジアラビア 0-2 日本 ──
@@ -585,6 +593,7 @@ export const japanMatches: JapanMatch[] = [
       "81分、途中出場の小川航基がダメ押しの2点目を決めて勝利を確定",
       "アウェイでの貴重な勝ち点3。グループ首位を堅持した",
     ],
+    highlightUrl: "",
   },
 
   // ── 10. MD2 バーレーン 0-5 日本 ──
@@ -648,6 +657,7 @@ export const japanMatches: JapanMatch[] = [
       "後半は守田英正が2ゴールの活躍。61分と64分に連続得点",
       "81分に小川航基もダメ押しゴール。チーム全体の得点力の高さを証明した",
     ],
+    highlightUrl: "",
   },
 
   // ── 11. MD1 日本 7-0 中国 ──
@@ -713,6 +723,7 @@ export const japanMatches: JapanMatch[] = [
       "後半は南野拓実が2ゴール、伊東純也・前田大然・久保建英も得点し7ゴールの猛攻",
       "日本サッカー史に残る圧勝劇。W杯予選の歴代最多得点差勝利を記録した",
     ],
+    highlightUrl: "https://www.youtube.com/watch?v=os3jbnGjV_4",
   },
 ];
 
