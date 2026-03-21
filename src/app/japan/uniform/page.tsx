@@ -1,12 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { uniforms } from "@/data/uniforms";
+import { uniforms, countries } from "@/data/uniforms";
 import type { BuyLink } from "@/data/uniforms";
+import CountryNav from "./CountryNav";
 
 export const metadata: Metadata = {
-  title: "🇯🇵 日本代表ユニフォーム一覧 | FIFA World Cup 2026",
+  title: "2026 ワールドカップ 各国ユニフォーム | FIFA World Cup 2026",
   description:
-    "日本代表（SAMURAI BLUE）歴代ユニフォーム一覧。2026 W杯モデル・購入リンク付き。",
+    "2026 FIFA ワールドカップ各国代表ユニフォーム一覧。adidas公式ストア（楽天市場）で購入可能。",
 };
 
 /* ── Helpers ──────────────────────────────────── */
@@ -59,20 +60,8 @@ const rakutenImages: Record<number, { href: string; src: string; alt: string }> 
   },
 };
 
-/* ── Group by year ────────────────────────────── */
-function groupByYear() {
-  const years = [...new Set(uniforms.map((u) => u.year))];
-  years.sort((a, b) => Number(b) - Number(a));
-  return years.map((year) => ({
-    year,
-    items: uniforms.filter((u) => u.year === year),
-  }));
-}
-
 /* ── Page Component ───────────────────────────── */
 export default function UniformPage() {
-  const groups = groupByYear();
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -91,126 +80,166 @@ export default function UniformPage() {
           }}
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-4">
-            <Link
-              href="/japan"
-              className="text-blue-200 hover:text-white text-sm transition-colors"
-            >
-              ← 日本代表トップ
-            </Link>
-          </div>
           <h1 className="text-3xl sm:text-4xl font-black">
-            🇯🇵 日本代表ユニフォーム
+            2026 ワールドカップ 各国ユニフォーム
           </h1>
           <p className="text-blue-200/70 mt-2">
-            SAMURAI BLUE 歴代モデル・購入リンク付き
+            adidas 公式ストア（楽天市場）で購入できる各国の最新ユニフォーム
           </p>
         </div>
       </section>
 
-      {/* Uniform Groups */}
-      {groups.map((g) => (
-        <section key={g.year} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <span
-              className="inline-block w-1.5 h-8 rounded-full"
-              style={{ background: "#003087" }}
-            />
-            {g.year} モデル
-          </h2>
+      {/* Country Navigation */}
+      <div className="sticky top-16 z-40 bg-gray-50/95 backdrop-blur-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <CountryNav countries={countries} />
+        </div>
+      </div>
 
-          <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {g.items.map((u) => {
-              const badge = typeBadge[u.type];
-              const nonRakutenLinks = u.buyLinks.filter(
-                (l) => !l.store.includes("楽天")
-              );
+      {/* Country Sections */}
+      {countries.map((country) => {
+        const countryUniforms = uniforms.filter((u) => u.country === country.id);
+        const hasProducts = countryUniforms.some((u) => rakutenImages[u.id]);
 
-              return (
-                <div
-                  key={u.id}
-                  className="rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col"
-                >
-                  {/* Image area */}
-                  {rakutenImages[u.id] ? (
-                    <div className="bg-gray-50">
-                      <div style={{ position: "relative", width: "400px", maxWidth: "100%", margin: "0 auto" }}>
-                        <a
-                          href={rakutenImages[u.id].href}
-                          target="_blank"
-                          rel="nofollow sponsored noopener"
-                          className="block hover:opacity-90 transition-opacity"
-                        >
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={rakutenImages[u.id].src}
-                            alt={rakutenImages[u.id].alt}
-                            style={{ width: "100%", height: "auto", objectFit: "contain", display: "block" }}
-                          />
-                        </a>
-                        <span style={{ position: "absolute", top: "8px", right: "8px" }} className="z-10 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-700/70 text-white backdrop-blur-sm">
-                          PR
-                        </span>
-                      </div>
-                      <div style={{ display: "flex", gap: "6px", padding: "8px", marginTop: "-40px", position: "relative", zIndex: 10 }}>
-                        <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.cls}`}>{badge.label}</span>
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">{u.brand}</span>
-                      </div>
-                    </div>
-                  ) : (
-                    <div
-                      className="h-24 relative"
-                      style={{
-                        background: `linear-gradient(135deg, ${u.colorMain} 0%, ${u.colorMain} 60%, ${u.colorSub} 100%)`,
-                      }}
-                    >
-                      <div className="absolute bottom-3 left-4 flex items-center gap-2">
-                        <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.cls}`}>{badge.label}</span>
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">{u.brand}</span>
-                      </div>
-                    </div>
-                  )}
+        return (
+          <section
+            key={country.id}
+            id={`country-${country.id}`}
+            className="border-t border-gray-200 scroll-mt-32"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                <span className="text-3xl">{country.flag}</span>
+                {country.name}
+              </h2>
 
-                  <div className="p-5 flex-1 flex flex-col">
-                    {/* Title */}
-                    <h3 className="text-lg font-bold text-gray-900 mb-3">
-                      {u.name}
-                    </h3>
+              {hasProducts ? (
+                <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                  {countryUniforms.map((u) => {
+                    const badge = typeBadge[u.type];
+                    const nonRakutenLinks = u.buyLinks.filter(
+                      (l) => !l.store.includes("楽天")
+                    );
 
-                    {/* Description */}
-                    <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                      {u.description}
-                    </p>
+                    return (
+                      <div
+                        key={u.id}
+                        className="rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col"
+                      >
+                        {/* Image area */}
+                        {rakutenImages[u.id] ? (
+                          <div className="bg-gray-50">
+                            <div style={{ position: "relative", width: "400px", maxWidth: "100%", margin: "0 auto" }}>
+                              <a
+                                href={rakutenImages[u.id].href}
+                                target="_blank"
+                                rel="nofollow sponsored noopener"
+                                className="block hover:opacity-90 transition-opacity"
+                              >
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={rakutenImages[u.id].src}
+                                  alt={rakutenImages[u.id].alt}
+                                  style={{ width: "100%", height: "auto", objectFit: "contain", display: "block" }}
+                                />
+                              </a>
+                              <span style={{ position: "absolute", top: "8px", right: "8px" }} className="z-10 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-700/70 text-white backdrop-blur-sm">
+                                PR
+                              </span>
+                            </div>
+                            <div style={{ display: "flex", gap: "6px", padding: "8px", marginTop: "-40px", position: "relative", zIndex: 10 }}>
+                              <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.cls}`}>{badge.label}</span>
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">{u.brand}</span>
+                            </div>
+                          </div>
+                        ) : (
+                          <div
+                            className="h-24 relative"
+                            style={{
+                              background: `linear-gradient(135deg, ${u.colorMain} 0%, ${u.colorMain} 60%, ${u.colorSub} 100%)`,
+                            }}
+                          >
+                            <div className="absolute bottom-3 left-4 flex items-center gap-2">
+                              <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.cls}`}>{badge.label}</span>
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">{u.brand}</span>
+                            </div>
+                          </div>
+                        )}
 
-                    {/* Buy buttons */}
-                    <div className="mt-auto pt-3 border-t border-gray-100">
-                      {rakutenImages[u.id] ? (
-                        <a
-                          href={rakutenImages[u.id].href}
-                          target="_blank"
-                          rel="nofollow sponsored noopener"
-                          className="flex items-center justify-center w-full px-4 py-3 rounded-lg bg-[#BF0000] hover:bg-[#a00000] text-white text-sm font-bold transition-colors"
-                        >
-                          🛒 購入はこちら（楽天市場）
-                        </a>
-                      ) : (
-                        <div className="flex flex-wrap gap-2">
-                          {nonRakutenLinks.map((link) => (
-                            <BuyButton key={link.store} link={link} />
-                          ))}
+                        <div className="p-5 flex-1 flex flex-col">
+                          <h3 className="text-lg font-bold text-gray-900 mb-3">
+                            {u.name}
+                          </h3>
+                          <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                            {u.description}
+                          </p>
+
+                          <div className="mt-auto pt-3 border-t border-gray-100">
+                            {rakutenImages[u.id] ? (
+                              <a
+                                href={rakutenImages[u.id].href}
+                                target="_blank"
+                                rel="nofollow sponsored noopener"
+                                className="flex items-center justify-center w-full px-4 py-3 rounded-lg bg-[#BF0000] hover:bg-[#a00000] text-white text-sm font-bold transition-colors"
+                              >
+                                🛒 購入はこちら（楽天市場）
+                              </a>
+                            ) : (
+                              <div className="flex flex-wrap gap-2">
+                                {nonRakutenLinks.map((link) => (
+                                  <BuyButton key={link.store} link={link} />
+                                ))}
+                              </div>
+                            )}
+                            <p className="text-[10px] text-gray-400 mt-2 text-center">
+                              ※広告・アフィリエイトリンクを含みます
+                            </p>
+                          </div>
                         </div>
-                      )}
-                      <p className="text-[10px] text-gray-400 mt-2 text-center">
-                        ※広告・アフィリエイトリンクを含みます
-                      </p>
-                    </div>
-                  </div>
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
-          </div>
-        </section>
-      ))}
+              ) : (
+                /* Placeholder for countries without products yet */
+                <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                  {countryUniforms.map((u) => (
+                    <div
+                      key={u.id}
+                      className="rounded-2xl bg-white border border-gray-200 shadow-sm overflow-hidden flex flex-col"
+                    >
+                      <div
+                        className="h-48 flex items-center justify-center"
+                        style={{
+                          background: `linear-gradient(135deg, ${u.colorMain}20 0%, ${u.colorMain}40 100%)`,
+                        }}
+                      >
+                        <div className="text-center">
+                          <p className="text-4xl mb-2">{country.flag}</p>
+                          <p className="text-sm font-bold text-gray-400">準備中</p>
+                        </div>
+                      </div>
+                      <div className="p-5 flex-1 flex flex-col">
+                        <h3 className="text-lg font-bold text-gray-900 mb-3">
+                          {u.name}
+                        </h3>
+                        <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                          {u.description}
+                        </p>
+                        <div className="mt-auto pt-3 border-t border-gray-100">
+                          <p className="text-xs text-gray-400 text-center">
+                            商品リンクは準備中です
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+        );
+      })}
 
       {/* Note */}
       <section className="bg-gray-100">
@@ -231,6 +260,12 @@ export default function UniformPage() {
               style={{ background: "#003087" }}
             >
               🇯🇵 日本代表トップに戻る
+            </Link>
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-100 text-gray-700 font-bold text-sm hover:bg-gray-200 transition-colors"
+            >
+              トップページ
             </Link>
           </div>
         </div>
