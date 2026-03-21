@@ -166,7 +166,7 @@ export const QUIZ_JAPAN_SQUAD: QuizQuestion[] = [
     options: [
       "トッテナム",
       "チェルシー",
-      "アーセナル",
+      "アヤックス",
       "マンチェスター・ユナイテッド",
     ],
     correct: 2,
