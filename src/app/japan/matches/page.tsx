@@ -140,9 +140,22 @@ export default function JapanMatchesPage() {
                       <span className="text-xs text-gray-400">
                         🏟️ {m.venue}（{m.city}）
                       </span>
-                      <span className="text-xs text-[#003087] font-medium group-hover:text-[#BC002D] transition-colors">
-                        詳細を見る →
-                      </span>
+                      <div className="flex items-center gap-3">
+                        {m.highlightUrl && (
+                          <a
+                            href={m.highlightUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-red-50 text-red-600 text-xs font-bold hover:bg-red-100 transition-colors"
+                          >
+                            🎬 ハイライトを見る
+                          </a>
+                        )}
+                        <span className="text-xs text-[#003087] font-medium group-hover:text-[#BC002D] transition-colors">
+                          詳細を見る →
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>

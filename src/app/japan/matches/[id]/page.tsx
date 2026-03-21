@@ -336,6 +336,18 @@ export default async function MatchDetailPage({
               </li>
             ))}
           </ul>
+          {match.highlightUrl && (
+            <div className="mt-4 pt-4 border-t border-gray-100">
+              <a
+                href={match.highlightUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-50 text-red-600 text-sm font-bold hover:bg-red-100 transition-colors"
+              >
+                🎬 ハイライトを見る（YouTube）
+              </a>
+            </div>
+          )}
         </div>
       </section>
 

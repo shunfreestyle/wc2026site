@@ -45,6 +45,7 @@ export type JapanMatch = {
   bench: MatchPlayer[];
   substitutions: Substitution[];
   highlights: string[];
+  highlightUrl?: string;
 };
 
 /* ── Formation: 3-4-2-1 ───────────────────────── */
