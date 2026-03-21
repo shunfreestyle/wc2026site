@@ -67,11 +67,8 @@ export default function JapanSquadQuizPage() {
   // Popup after result
   useEffect(() => {
     if (phase !== "result") return;
-    const alreadyShown = localStorage.getItem("quizPopupShown");
-    if (alreadyShown) return;
     const timer = setTimeout(() => {
       setShowPopup(true);
-      localStorage.setItem("quizPopupShown", "1");
     }, 1000);
     return () => clearTimeout(timer);
   }, [phase]);
