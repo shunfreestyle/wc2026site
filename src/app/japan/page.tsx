@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "🇯🇵 日本代表 SAMURAI BLUE | FIFA World Cup 2026",
+  title: "🇯🇵 日本代表 SAMURAI BLUE イギリス遠征 | FIFA World Cup 2026",
   description:
-    "2026 FIFAワールドカップ 日本代表（SAMURAI BLUE）特設ページ。グループF 試合日程・注目選手・招集メンバー一覧。",
+    "2026 FIFAワールドカップ 日本代表（SAMURAI BLUE）特設ページ。イギリス遠征・グループF 試合日程・注目選手・招集メンバー28名一覧。",
 };
 
 /* ──────────────────────────────────────────────
@@ -21,7 +21,7 @@ type SquadPlayer = {
   club: string;
   note?: string;
   description: string;
-  id?: string; // links to /players/{id}
+  id?: string;
 };
 
 type AbsentPlayer = {
@@ -33,11 +33,39 @@ type AbsentPlayer = {
 };
 
 /* ──────────────────────────────────────────────
-   Match data
+   親善試合（イギリス遠征）
    ────────────────────────────────────────────── */
-const matches = [
+const friendlyMatches = [
   {
-    num: 1,
+    date: "3/28（土）",
+    jst: "3/29（日）02:00 キックオフ",
+    local: "17:00 GMT",
+    opponent: "🏴󠁧󠁢󠁳󠁣󠁴󠁿 スコットランド",
+    opponentEn: "Scotland",
+    venue: "ハムデン・パーク",
+    city: "グラスゴー（スコットランド）",
+    broadcast: "NHK総合 生中継 / U-NEXT配信",
+    label: "キリンワールドチャレンジ 2026",
+  },
+  {
+    date: "3/31（火）",
+    jst: "4/1（水）03:45 キックオフ",
+    local: "19:45 BST",
+    opponent: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 イングランド",
+    opponentEn: "England",
+    venue: "ウェンブリー・スタジアム",
+    city: "ロンドン（イングランド）",
+    broadcast: "NHK Eテレ 生中継 / U-NEXT配信",
+    label: "キリンワールドチャレンジ 2026",
+  },
+];
+
+/* ──────────────────────────────────────────────
+   W杯グループステージ
+   ────────────────────────────────────────────── */
+const wcMatches = [
+  {
+    num: 10,
     date: "6/14（土）",
     jst: "6/15（日）05:00",
     local: "15:00 CDT",
@@ -45,10 +73,10 @@ const matches = [
     opponentEn: "Netherlands",
     venue: "AT&Tスタジアム",
     city: "ダラス（アメリカ）",
-    label: "第1節",
+    label: "グループF 第1節",
   },
   {
-    num: 2,
+    num: 33,
     date: "6/19（木）",
     jst: "6/20（金）13:00",
     local: "22:00 CST",
@@ -56,10 +84,10 @@ const matches = [
     opponentEn: "Tunisia",
     venue: "エスタディオ・BBVA",
     city: "モンテレイ（メキシコ）",
-    label: "第2節",
+    label: "グループF 第2節",
   },
   {
-    num: 3,
+    num: 57,
     date: "6/25（水）",
     jst: "6/26（木）08:00",
     local: "18:00 CDT",
@@ -67,41 +95,27 @@ const matches = [
     opponentEn: "UEFA Playoff B Winner",
     venue: "AT&Tスタジアム",
     city: "ダラス（アメリカ）",
-    label: "第3節",
+    label: "グループF 第3節",
   },
 ];
 
 /* ──────────────────────────────────────────────
-   Squad data – 26 players
+   招集メンバー 28名 – JFA公式 3月19日発表
    ────────────────────────────────────────────── */
 const squad: SquadPlayer[] = [
-  // ── GK ──
+  // ── GK (3) ──
   {
-    name: "Zion Suzuki",
-    nameJa: "鈴木彩艶",
-    birthDate: "2002-08-21",
-    age: 23,
-    height: 190,
-    weight: 88,
+    name: "Tomoki Hayakawa",
+    nameJa: "早川友基",
+    birthDate: "2001-07-29",
+    age: 24,
+    height: 185,
+    weight: 82,
     position: "GK",
-    club: "パルマ（イタリア）",
-    note: "正GK候補",
+    club: "鹿島アントラーズ",
+    note: "Jリーグ正GK",
     description:
-      "190cmの長身とバネのような反射神経を兼ね備えた次世代の守護神。セリエAで揉まれた経験値は本物。PKストップの勝負強さは、きっとW杯でも頼りになるはず。",
-  },
-  {
-    name: "Shuichi Gonda",
-    nameJa: "権田修一",
-    birthDate: "1989-03-03",
-    age: 37,
-    height: 187,
-    weight: 83,
-    position: "GK",
-    club: "清水エスパルス",
-    note: "ベテラン",
-    id: "japan-gonda",
-    description:
-      "カタールW杯でスペイン戦の歴史的勝利を支えたベテラン守護神。37歳になっても衰えないセーブ力と、チームを落ち着かせる存在感は唯一無二。",
+      "鹿島の守護神として急成長を遂げた若きGK。鋭い反射神経とハイボール処理の安定感が光り、ビルドアップにも貢献できる現代型キーパー。大舞台でのさらなる飛躍に期待。",
   },
   {
     name: "Keisuke Osako",
@@ -113,10 +127,49 @@ const squad: SquadPlayer[] = [
     position: "GK",
     club: "サンフレッチェ広島",
     description:
-      "安定感あるセービングとコーチングが持ち味。東京五輪世代のGKとして成長を続ける広島の守護神。大舞台での経験を糧にさらなる飛躍を目指す。",
+      "東京五輪世代の正GK候補として成長を続ける広島の守護神。安定感あるセービングとコーチングで最終ラインを統率。堅実なプレーでチームに安心感を与える。",
+  },
+  {
+    name: "Zion Suzuki",
+    nameJa: "鈴木彩艶",
+    birthDate: "2002-08-21",
+    age: 23,
+    height: 190,
+    weight: 88,
+    position: "GK",
+    club: "パルマ（イタリア）",
+    note: "海外組GK",
+    description:
+      "190cmの長身とバネのような反射神経を兼ね備えた次世代の守護神。セリエAの舞台で日々揉まれ、世界レベルの経験値を積み上げている。PKストップの勝負強さは、大一番でも頼りになる存在。",
   },
 
-  // ── DF ──
+  // ── DF (8) ──
+  {
+    name: "Shogo Taniguchi",
+    nameJa: "谷口彰悟",
+    birthDate: "1991-07-15",
+    age: 34,
+    height: 183,
+    weight: 75,
+    position: "DF",
+    club: "シントトロイデン（ベルギー）",
+    note: "ベテランCB",
+    description:
+      "カタールW杯でフル出場した経験豊富なCB。34歳になっても衰えない読みの鋭さとリーダーシップは、若手の多い守備陣の精神的支柱。大舞台を知る男の存在感は計り知れない。",
+  },
+  {
+    name: "Go Watanabe",
+    nameJa: "渡辺剛",
+    birthDate: "1997-03-21",
+    age: 29,
+    height: 186,
+    weight: 80,
+    position: "DF",
+    club: "フェイエノールト（オランダ）",
+    note: "欧州組CB",
+    description:
+      "フェイエノールトで主力としてチャンピオンズリーグの舞台を経験。186cmの高さと強靭なフィジカルで空中戦を制し、対人守備の強度は欧州でも折り紙つき。",
+  },
   {
     name: "Takehiro Tomiyasu",
     nameJa: "冨安健洋",
@@ -125,37 +178,24 @@ const squad: SquadPlayer[] = [
     height: 188,
     weight: 84,
     position: "DF",
-    club: "アーセナル（イングランド）",
-    note: "注目選手",
+    club: "アヤックス（オランダ）",
+    note: "1年9ヶ月ぶり復帰",
     id: "japan-tomiyasu",
     description:
-      "プレミアリーグの猛者たちを封殺するディフェンス力。右SBでもCBでも完璧にこなす万能型で、アーセナルでの経験が日本の守備に圧倒的な安定をもたらす。",
+      "アーセナルからアヤックスへ移籍し、新天地で存在感を発揮。右SBでもCBでも完璧にこなす万能型DFが、1年9ヶ月ぶりに代表復帰。怪我を乗り越えた冨安の帰還は、日本の守備力を一段階引き上げる。",
   },
   {
-    name: "Ko Itakura",
-    nameJa: "板倉滉",
-    birthDate: "1997-01-27",
-    age: 29,
-    height: 186,
-    weight: 79,
+    name: "Tomoya Ando",
+    nameJa: "安藤智哉",
+    birthDate: "2001-04-22",
+    age: 24,
+    height: 185,
+    weight: 78,
     position: "DF",
-    club: "ボルシアMG（ドイツ）",
-    id: "japan-itakura",
+    club: "ザンクトパウリ（ドイツ）",
+    note: "新戦力",
     description:
-      "空中戦の強さとビルドアップのうまさを兼ね備えたCBの柱。ブンデスリーガで鍛えた読みの鋭さで、相手の攻撃を未然に防ぐ頭脳派ディフェンダー。",
-  },
-  {
-    name: "Hiroki Machida",
-    nameJa: "町田浩樹",
-    birthDate: "1997-08-25",
-    age: 28,
-    height: 190,
-    weight: 80,
-    position: "DF",
-    club: "ユニオンSG（ベルギー）",
-    note: "急成長",
-    description:
-      "190cmの長身を活かした空中戦の強さはチーム随一。ベルギーリーグで一気に開花し、代表でも不動のレギュラーに。左利きCBという希少価値も魅力。",
+      "ブンデスリーガ昇格組のザンクトパウリで定位置を掴んだ若手CB。スピードのある攻撃的な相手にも臆せず対峙できる対人守備の強さと、落ち着いたビルドアップが持ち味。",
   },
   {
     name: "Hiroki Ito",
@@ -168,7 +208,19 @@ const squad: SquadPlayer[] = [
     club: "バイエルン（ドイツ）",
     note: "ビッグクラブ所属",
     description:
-      "バイエルン・ミュンヘンで勝者のメンタリティを身につけた左利きCB。正確な左足のロングフィードでビルドアップの起点にもなれる現代型ディフェンダー。",
+      "バイエルン・ミュンヘンで勝者のメンタリティを身につけた左利きCB。正確な左足のロングフィードでビルドアップの起点にもなれる。世界最高峰のクラブで戦う経験が、代表でも大きな武器に。",
+  },
+  {
+    name: "Ayumu Seko",
+    nameJa: "瀬古歩夢",
+    birthDate: "2000-06-07",
+    age: 25,
+    height: 183,
+    weight: 74,
+    position: "DF",
+    club: "ル・アーヴル（フランス）",
+    description:
+      "フランス・リーグアンで揉まれたインテリジェンス系CB。冷静な判断力と正確なパスでDFラインからゲームを組み立てる。カバーリング能力の高さも魅力。",
   },
   {
     name: "Yukinari Sugawara",
@@ -178,62 +230,38 @@ const squad: SquadPlayer[] = [
     height: 178,
     weight: 72,
     position: "DF",
-    club: "サウサンプトン（イングランド）",
+    club: "ブレーメン（ドイツ）",
     description:
-      "攻守にエネルギッシュな右サイドバック。果敢なオーバーラップからの正確なクロスが武器。若くしてプレミアリーグで戦う経験が、プレーに説得力を加えている。",
+      "攻守にエネルギッシュな右サイドバック。果敢なオーバーラップからの正確なクロスが武器。ブンデスリーガで攻撃力に磨きをかけ、日本の右サイドに推進力をもたらす。",
   },
   {
-    name: "Miki Yamane",
-    nameJa: "山根未来",
-    birthDate: "1993-12-22",
-    age: 32,
-    height: 178,
-    weight: 72,
+    name: "Junnosuke Suzuki",
+    nameJa: "鈴木淳之介",
+    birthDate: "2003-10-17",
+    age: 22,
+    height: 180,
+    weight: 73,
     position: "DF",
-    club: "川崎フロンターレ",
+    club: "コペンハーゲン（デンマーク）",
+    note: "若手抜擢",
     description:
-      "圧倒的な走力で右サイドを何度も上下動するダイナモ。Jリーグで磨いた献身的な守備と攻撃参加のバランスの良さが光るベテランSB。",
-  },
-  {
-    name: "Shogo Taniguchi",
-    nameJa: "谷口彰悟",
-    birthDate: "1991-07-15",
-    age: 34,
-    height: 183,
-    weight: 75,
-    position: "DF",
-    club: "シント＝トロイデン（ベルギー）",
-    note: "ベテラン・最終選考",
-    description:
-      "カタールW杯でもフル出場した経験豊富なCB。チームを統率するリーダーシップと冷静な判断力は、若手の多い守備陣の精神的支柱。",
-  },
-  {
-    name: "Yuya Hashioka",
-    nameJa: "橋岡大樹",
-    birthDate: "1999-05-17",
-    age: 27,
-    height: 182,
-    weight: 74,
-    position: "DF",
-    club: "ルートン・タウン（イングランド）",
-    description:
-      "スピードとフィジカルを活かしたダイナミックな右SB。高い位置からの守備と攻撃参加のバランスに優れ、対人守備の強度はチーム屈指。",
+      "デンマークの名門コペンハーゲンで10代からレギュラーを掴んだ逸材。左SBとしてのスピードと攻撃参加のセンスが光り、次世代の日本代表を担うサイドバック候補。",
   },
 
-  // ── MF ──
+  // ── MF (9) ──
   {
-    name: "Wataru Endo",
-    nameJa: "遠藤航",
-    birthDate: "1993-02-09",
-    age: 33,
-    height: 178,
+    name: "Daichi Kamada",
+    nameJa: "鎌田大地",
+    birthDate: "1996-08-05",
+    age: 29,
+    height: 184,
     weight: 76,
     position: "MF",
-    club: "リバプール（イングランド）",
-    note: "キャプテン",
-    id: "japan-endo",
+    club: "クリスタルパレス（イングランド）",
+    note: "司令塔",
+    id: "japan-kamada",
     description:
-      "「デュエル王」の異名は伊達じゃない。ブンデスリーガで3年連続デュエル数1位を記録し、リバプールでも中盤の番人として君臨。日本の心臓であり魂であるキャプテン。",
+      "広い視野と正確なスルーパスでゲームを支配するプレーメイカー。ヨーロッパリーグMVP受賞の実力は折り紙つき。ゴールも奪えるMFは、相手にとって最も厄介な存在。",
   },
   {
     name: "Kaoru Mitoma",
@@ -244,24 +272,10 @@ const squad: SquadPlayer[] = [
     weight: 73,
     position: "MF",
     club: "ブライトン（イングランド）",
-    note: "注目選手・エース",
+    note: "エース",
     id: "japan-mitoma",
     description:
       "「1mmの奇跡」でおなじみ、世界が恐れるドリブラー。緩急自在のステップで相手を置き去りにする姿はまさに芸術。筑波大学院で研究したドリブル理論を武器に、プレミアリーグで無双する知性派アタッカー。",
-  },
-  {
-    name: "Takefusa Kubo",
-    nameJa: "久保建英",
-    birthDate: "2001-06-04",
-    age: 24,
-    height: 173,
-    weight: 67,
-    position: "MF",
-    club: "レアル・ソシエダ（スペイン）",
-    note: "注目選手",
-    id: "japan-kubo",
-    description:
-      "かつて「日本のメッシ」と呼ばれた天才少年は、ラ・リーガで本物の才能を証明した。繊細なボールタッチと創造性あふれるプレーは、見ているだけでワクワクする。24歳にして迎える初のW杯が楽しみでならない。",
   },
   {
     name: "Ritsu Doan",
@@ -271,35 +285,10 @@ const squad: SquadPlayer[] = [
     height: 172,
     weight: 70,
     position: "MF",
-    club: "フライブルク（ドイツ）",
+    club: "フランクフルト（ドイツ）",
     id: "japan-doan",
     description:
-      "カタールW杯でドイツ戦・スペイン戦の両方でゴールを決めた大舞台の男。左足のカットインシュートは世界レベルの威力。逆境でこそ力を発揮する闘志の塊。",
-  },
-  {
-    name: "Daichi Kamada",
-    nameJa: "鎌田大地",
-    birthDate: "1996-08-05",
-    age: 29,
-    height: 184,
-    weight: 76,
-    position: "MF",
-    club: "クリスタルパレス（イングランド）",
-    id: "japan-kamada",
-    description:
-      "広い視野と正確なスルーパスでゲームを支配するプレーメイカー。ヨーロッパリーグMVP受賞の実力は折り紙つき。ゴールも奪えるMFは相手にとって最も厄介な存在。",
-  },
-  {
-    name: "Hidemasa Morita",
-    nameJa: "守田英正",
-    birthDate: "1995-05-10",
-    age: 31,
-    height: 177,
-    weight: 74,
-    position: "MF",
-    club: "スポルティング（ポルトガル）",
-    description:
-      "ボール奪取力とパスセンスを高次元で両立する万能型ボランチ。遠藤航との中盤コンビは世界と戦える強度と知性を備えた日本の生命線。",
+      "カタールW杯でドイツ戦・スペイン戦の両方でゴールを決めた大舞台の男。左足のカットインシュートは世界レベルの威力。フランクフルトで進化を続ける闘志の塊。",
   },
   {
     name: "Ao Tanaka",
@@ -311,22 +300,71 @@ const squad: SquadPlayer[] = [
     position: "MF",
     club: "リーズ・ユナイテッド（イングランド）",
     description:
-      "カタールW杯のドイツ戦で試合を決定づけるゴールを記録。ボックス・トゥ・ボックスで攻守を支え、ここぞの場面で顔を出す勝負師。イングランドでたくましく成長中。",
+      "カタールW杯のドイツ戦で試合を決定づけるゴールを記録した勝負師。ボックス・トゥ・ボックスで攻守をつなぎ、ここぞの場面で顔を出す。イングランドでたくましく成長中。",
   },
   {
-    name: "Reo Hatate",
-    nameJa: "旗手怜央",
-    birthDate: "1997-11-21",
-    age: 28,
-    height: 175,
+    name: "Kaishu Sano",
+    nameJa: "佐野海舟",
+    birthDate: "2000-12-30",
+    age: 25,
+    height: 178,
+    weight: 73,
+    position: "MF",
+    club: "マインツ（ドイツ）",
+    description:
+      "ボール奪取力に定評のある守備的MF。遠藤航不在の中盤で求められるアンカー役を担える逸材。ブンデスリーガで磨いた球際の強さとカバー範囲の広さがチームを支える。",
+  },
+  {
+    name: "Yuito Suzuki",
+    nameJa: "鈴木唯人",
+    birthDate: "2001-08-26",
+    age: 24,
+    height: 176,
     weight: 68,
     position: "MF",
-    club: "セルティック（スコットランド）",
+    club: "フライブルク（ドイツ）",
     description:
-      "セルティックでチャンピオンズリーグの舞台を経験し、インテンシティの高いプレーに磨きをかけた。左右両足を使えるユーティリティ性も魅力の技巧派MF。",
+      "フライブルクで着実に出場機会を増やしている攻撃的MF。スピードのある仕掛けと正確なシュートが持ち味。ポテンシャルの高さは欧州スカウトも注目する次世代の星。",
+  },
+  {
+    name: "Joel Chima Fujita",
+    nameJa: "藤田譲瑠チマ",
+    birthDate: "2002-02-16",
+    age: 24,
+    height: 181,
+    weight: 74,
+    position: "MF",
+    club: "ザンクトパウリ（ドイツ）",
+    description:
+      "ナイジェリアにルーツを持つハイブリッドMF。フィジカルの強さとテクニックを兼ね備え、中盤で力強くボールを運べる推進力が魅力。ブンデスリーガで急成長中の期待株。",
+  },
+  {
+    name: "Kodai Sano",
+    nameJa: "佐野航大",
+    birthDate: "2002-08-27",
+    age: 23,
+    height: 168,
+    weight: 62,
+    position: "MF",
+    club: "NEC（オランダ）",
+    description:
+      "168cmと小柄ながら、抜群のテクニックとゲームメイク能力で中盤を支配する技巧派。オランダで磨いたパスセンスと視野の広さは、攻撃のリズムを生み出す鍵。",
+  },
+  {
+    name: "Ryunosuke Sato",
+    nameJa: "佐藤龍之介",
+    birthDate: "2006-07-24",
+    age: 19,
+    height: 174,
+    weight: 64,
+    position: "MF",
+    club: "FC東京",
+    note: "最年少・19歳",
+    description:
+      "19歳にしてA代表に招集された超新星。FC東京のアカデミーが生んだ天才肌のMFで、狭いスペースでもボールを失わない技術と創造性は、将来の日本代表の中心になれる才能。",
   },
 
-  // ── FW ──
+  // ── FW (8) ──
   {
     name: "Junya Ito",
     nameJa: "伊東純也",
@@ -335,10 +373,35 @@ const squad: SquadPlayer[] = [
     height: 176,
     weight: 73,
     position: "FW",
-    club: "スタッド・ランス（フランス）",
+    club: "ゲンク（ベルギー）",
     id: "japan-ito",
     description:
-      "日本最速のスピードスターがW杯の舞台でも右サイドを切り裂く。33歳になっても衰えないスプリント力と、精度の高いクロスは日本の最大の武器のひとつ。",
+      "日本最速のスピードスターが右サイドを切り裂く。33歳になっても衰えないスプリント力と精度の高いクロスは、相手ディフェンスにとって最大の脅威。ベルギーの地で輝き続ける不屈のウインガー。",
+  },
+  {
+    name: "Koki Ogawa",
+    nameJa: "小川航基",
+    birthDate: "1997-08-08",
+    age: 28,
+    height: 186,
+    weight: 78,
+    position: "FW",
+    club: "NEC（オランダ）",
+    note: "得点ランク上位",
+    description:
+      "エールディヴィジで得点ランキング上位に名を連ねる和製ターゲットマン。186cmの高さと足元の技術を兼ね備え、日本に不足していた「高さの基準点」になれる逸材。ヘディングの強さは圧巻。",
+  },
+  {
+    name: "Daizen Maeda",
+    nameJa: "前田大然",
+    birthDate: "1997-10-20",
+    age: 28,
+    height: 173,
+    weight: 67,
+    position: "FW",
+    club: "セルティック（スコットランド）",
+    description:
+      "圧倒的な運動量と前線からの激しいプレスで相手に休む暇を与えない「走る槍」。セルティックで磨いた献身的なプレーはチーム戦術の根幹。スコットランド戦では敵地の英雄として凱旋する。",
   },
   {
     name: "Ayase Ueda",
@@ -352,56 +415,57 @@ const squad: SquadPlayer[] = [
     note: "ストライカー",
     id: "japan-ueda",
     description:
-      "エールディヴィジで得点を量産するストライカー。ゴール前での嗅覚と力強いシュートは欧州でも通用する本物の決定力。W杯でのブレイクを予感させる点取り屋。",
+      "エールディヴィジで得点を量産するストライカー。ゴール前での嗅覚と力強いシュートは欧州でも通用する本物の決定力。W杯でのブレイクを予感させる日本のエースFW候補。",
   },
   {
-    name: "Kyogo Furuhashi",
-    nameJa: "古橋亨梧",
-    birthDate: "1995-01-20",
-    age: 31,
-    height: 170,
-    weight: 63,
+    name: "Shuto Machino",
+    nameJa: "町野修斗",
+    birthDate: "1999-09-30",
+    age: 26,
+    height: 185,
+    weight: 77,
     position: "FW",
-    club: "セルティック（スコットランド）",
+    club: "ボルシアMG（ドイツ）",
     description:
-      "小柄ながら抜群のスピードと動き出しでゴールを量産するスコティッシュ・プレミアの得点王。裏への飛び出しは天下一品。見逃し厳禁のゴールハンター。",
+      "ブンデスリーガのボルシアMGで出場機会を掴んだ万能型FW。ポストプレーから裏抜けまでこなせる器用さが武器。日本の前線に新たな選択肢を与える頼れるストライカー。",
   },
   {
-    name: "Daizen Maeda",
-    nameJa: "前田大然",
-    birthDate: "1997-10-20",
-    age: 28,
-    height: 173,
-    weight: 67,
-    position: "FW",
-    club: "セルティック（スコットランド）",
-    description:
-      "圧倒的な運動量と前線からのプレスで相手に休む暇を与えない「走る槍」。セルティックで磨いた献身的なプレーは、チーム戦術の根幹を支える存在。",
-  },
-  {
-    name: "Takumi Minamino",
-    nameJa: "南野拓実",
-    birthDate: "1995-01-16",
-    age: 31,
-    height: 174,
+    name: "Keito Nakamura",
+    nameJa: "中村敬斗",
+    birthDate: "2000-07-28",
+    age: 25,
+    height: 175,
     weight: 68,
     position: "FW",
-    club: "ASモナコ（フランス）",
+    club: "ランス（フランス）",
     description:
-      "リバプールでプレミアリーグ優勝を経験した実績の持ち主。テクニカルなプレーと決定力を併せ持ち、ここぞという場面で仕事ができるビッグマッチプレーヤー。",
+      "フランス・リーグアンで結果を出し続ける左利きのアタッカー。カットインからの強烈なシュートと、サイドを突破するスピードが持ち味。三笘との左サイドコンビは脅威。",
   },
   {
-    name: "Koki Ogawa",
-    nameJa: "小川航基",
-    birthDate: "1997-08-08",
-    age: 28,
-    height: 186,
-    weight: 78,
+    name: "Kento Shiogai",
+    nameJa: "塩貝健人",
+    birthDate: "2003-12-04",
+    age: 22,
+    height: 175,
+    weight: 70,
     position: "FW",
-    club: "NEC（オランダ）",
-    note: "得点ランク上位",
+    club: "ヴォルフスブルク（ドイツ）",
+    note: "新戦力",
     description:
-      "エールディヴィジで得点ランキング上位に名を連ねる和製ターゲットマン。186cmの高さと足元の技術を兼ね備え、日本に不足していた「高さの基準点」になれる逸材。",
+      "ブンデスリーガの名門ヴォルフスブルクでチャンスを掴んだ若手アタッカー。スピードと得点感覚を兼ね備え、ドイツの舞台で急成長中。将来のエース候補として要注目。",
+  },
+  {
+    name: "Keisuke Goto",
+    nameJa: "後藤啓介",
+    birthDate: "2005-10-16",
+    age: 20,
+    height: 190,
+    weight: 82,
+    position: "FW",
+    club: "シントトロイデン（ベルギー）",
+    note: "190cm・20歳",
+    description:
+      "190cmの長身にスピードとテクニックを兼ね備えた超大型ストライカー。わずか20歳にしてベルギーリーグで結果を残し、日本サッカーの未来を背負う逸材。ポテンシャルは計り知れない。",
   },
 ];
 
@@ -410,46 +474,46 @@ const squad: SquadPlayer[] = [
    ────────────────────────────────────────────── */
 const absentPlayers: AbsentPlayer[] = [
   {
-    nameJa: "吉田麻也",
-    name: "Maya Yoshida",
-    position: "DF",
-    club: "LAギャラクシー（アメリカ）",
-    reason: "年齢を考慮し招集外。ただし精神的支柱として帯同の可能性",
-  },
-  {
-    nameJa: "長友佑都",
-    name: "Yuto Nagatomo",
-    position: "DF",
-    club: "FC東京",
-    reason: "39歳。W杯4大会出場のレジェンド、代表引退済み",
-  },
-  {
-    nameJa: "大迫勇也",
-    name: "Yuya Osako",
-    position: "FW",
-    club: "ヴィッセル神戸",
-    reason: "Jリーグでは健在だが代表からは遠ざかっている",
-  },
-  {
-    nameJa: "柴崎岳",
-    name: "Gaku Shibasaki",
+    nameJa: "遠藤航",
+    name: "Wataru Endo",
     position: "MF",
-    club: "レガネス（スペイン）",
-    reason: "近年の代表招集なし。ロシアW杯での活躍が記憶に残る",
+    club: "リバプール（イングランド）",
+    reason: "日本代表キャプテン。今回はコンディション調整のため招集外。リバプールでの出場機会確保が最優先課題",
   },
   {
-    nameJa: "浅野拓磨",
-    name: "Takuma Asano",
-    position: "FW",
-    club: "マジョルカ（スペイン）",
-    reason: "カタールW杯のドイツ戦ゴールで一躍ヒーローに。コンディション次第で復帰の可能性あり",
+    nameJa: "久保建英",
+    name: "Takefusa Kubo",
+    position: "MF",
+    club: "レアル・ソシエダ（スペイン）",
+    reason: "ラ・リーガで奮闘中のファンタジスタ。今回は招集外だがW杯本大会での活躍に期待",
   },
   {
-    nameJa: "中村敬斗",
-    name: "Keito Nakamura",
+    nameJa: "守田英正",
+    name: "Hidemasa Morita",
+    position: "MF",
+    club: "スポルティング（ポルトガル）",
+    reason: "ポルトガルの名門で中盤の要として活躍。コンディション面を考慮し今回は招集外",
+  },
+  {
+    nameJa: "板倉滉",
+    name: "Ko Itakura",
+    position: "DF",
+    club: "ボルシアMG（ドイツ）",
+    reason: "ブンデスリーガで安定したパフォーマンスを発揮するCB。今回はメンバー外も実力は折り紙つき",
+  },
+  {
+    nameJa: "南野拓実",
+    name: "Takumi Minamino",
     position: "FW",
-    club: "スタッド・ランス（フランス）",
-    reason: "怪我からの復帰途上。完全復調すれば招集の可能性大",
+    club: "ASモナコ（フランス）",
+    reason: "リバプールでプレミア優勝を経験した実績の持ち主。代表での巻き返しに期待",
+  },
+  {
+    nameJa: "古橋亨梧",
+    name: "Kyogo Furuhashi",
+    position: "FW",
+    club: "セルティック（スコットランド）",
+    reason: "スコティッシュ・プレミアの得点王経験者。圧巻のゴール嗅覚を持つが今回は招集外",
   },
 ];
 
@@ -484,7 +548,34 @@ function groupByPosition(players: SquadPlayer[]) {
   }));
 }
 
-const featuredIds = ["japan-mitoma", "japan-kubo", "japan-tomiyasu"];
+const featuredIds = ["japan-mitoma", "japan-tomiyasu", "japan-kamada"];
+
+const opponentCards = [
+  {
+    key: "scotland",
+    color: "#003F87",
+    flag: "🏴",
+    name: "スコットランド",
+    time: "3/29（日）02:00（日本時間）",
+    venue: "ハムデン・パーク（グラスゴー）",
+    badge: "メンバー発表済み（26名）",
+    footer: "監督：スティーブ・クラーク | 注目選手：マクトミネイ、ロバートソン、マクギン",
+    href: "/japan/opponents/scotland",
+    cta: "スコットランド詳細 →",
+  },
+  {
+    key: "england",
+    color: "#CF2B37",
+    flag: "🏴",
+    name: "イングランド",
+    time: "4/1（水）03:45（日本時間）",
+    venue: "ウェンブリー・スタジアム（ロンドン）",
+    badge: "メンバー発表済み（35名）",
+    footer: "監督：トーマス・トゥヘル | 注目選手：ケイン、ベリンガム、サカ",
+    href: "/japan/opponents/england",
+    cta: "イングランド詳細 →",
+  },
+];
 
 /* ──────────────────────────────────────────────
    Page Component
@@ -499,7 +590,6 @@ export default function JapanPage() {
           HERO
           ═══════════════════════════════════════ */}
       <section className="relative overflow-hidden text-white">
-        {/* Background */}
         <div
           className="absolute inset-0"
           style={{
@@ -507,7 +597,7 @@ export default function JapanPage() {
               "linear-gradient(135deg, #001845 0%, #003087 40%, #002266 70%, #001845 100%)",
           }}
         />
-        {/* 日の丸の装飾 */}
+        {/* 日の丸装飾 */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-10"
           style={{
@@ -522,7 +612,6 @@ export default function JapanPage() {
               "radial-gradient(circle, #BC002D 0%, #BC002D 35%, transparent 36%)",
           }}
         />
-        {/* Subtle pattern */}
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -542,62 +631,75 @@ export default function JapanPage() {
             SAMURAI BLUE
           </h1>
           <p className="text-xl sm:text-2xl font-light tracking-wide text-blue-200 mb-1">
-            日本代表
+            日本代表 イギリス遠征
           </p>
           <p className="text-sm text-blue-300/80 mb-8">
             監督：森保一 ｜ FIFAランキング：18位 ｜ W杯出場：7大会連続7回目
           </p>
 
-          {/* Accent line */}
           <div className="flex items-center justify-center gap-2 mb-8">
             <div className="h-0.5 w-12 bg-gradient-to-r from-transparent to-[#BC002D]" />
             <div className="h-1.5 w-1.5 rounded-full bg-[#BC002D]" />
             <div className="h-0.5 w-12 bg-gradient-to-l from-transparent to-[#BC002D]" />
           </div>
 
-          <p className="max-w-2xl mx-auto text-blue-100/80 text-sm sm:text-base leading-relaxed">
+          <p className="max-w-2xl mx-auto text-blue-100/80 text-sm sm:text-base leading-relaxed mb-8">
             2022年カタール大会ではドイツ・スペインを撃破し世界を驚かせたSAMURAI BLUE。
-            悲願のベスト8以上を目指し、北米の地で新たな歴史を刻む。
+            W杯本大会前最後の欧州遠征で、スコットランド・イングランドという強豪に挑む。
           </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/japan/matches"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-bold hover:bg-white/20 transition-colors"
+            >
+              📊 試合結果（直近10試合）
+            </Link>
+            <Link
+              href="/teams/japan"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-bold hover:bg-white/20 transition-colors"
+            >
+              📋 チーム詳細ページ
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════
-          MATCH SCHEDULE
+          イギリス遠征 親善試合
           ═══════════════════════════════════════ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
           <span
             className="inline-block w-1.5 h-8 rounded-full"
-            style={{ background: "#003087" }}
+            style={{ background: "#BC002D" }}
           />
-          グループステージ日程
+          イギリス遠征 親善試合
         </h2>
         <p className="text-sm text-gray-500 mb-8">
-          グループF — オランダ、日本、チュニジア、UEFAプレーオフB勝者
+          キリンワールドチャレンジ 2026 — W杯前最後の欧州テストマッチ
         </p>
 
-        <div className="grid gap-4 sm:grid-cols-3">
-          {matches.map((m) => (
+        <div className="grid gap-4 sm:grid-cols-2">
+          {friendlyMatches.map((m, i) => (
             <div
-              key={m.num}
-              className="rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden"
+              key={i}
+              className="rounded-2xl border-2 border-[#003087]/20 bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden"
             >
               <div
-                className="px-4 py-2 text-white text-sm font-bold flex items-center justify-between"
-                style={{ background: "#003087" }}
+                className="px-4 py-2 text-white text-sm font-bold"
+                style={{ background: "linear-gradient(90deg, #003087, #001845)" }}
               >
-                <span>{m.label}</span>
-                <span className="text-blue-200 text-xs">Match #{m.num === 1 ? 10 : m.num === 2 ? 33 : 57}</span>
+                {m.label}
               </div>
               <div className="p-5">
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center justify-between mb-4">
                   <div className="text-center flex-1">
                     <p className="text-2xl mb-1">🇯🇵</p>
                     <p className="text-sm font-bold text-gray-900">日本</p>
                   </div>
                   <div className="px-4 text-center">
-                    <p className="text-xs text-gray-400 font-bold uppercase tracking-wide">VS</p>
+                    <p className="text-lg font-black text-gray-300">VS</p>
                   </div>
                   <div className="text-center flex-1">
                     <p className="text-2xl mb-1">{m.opponent.split(" ")[0]}</p>
@@ -606,18 +708,76 @@ export default function JapanPage() {
                     </p>
                   </div>
                 </div>
-                <div className="space-y-1 text-xs text-gray-500 border-t pt-3">
-                  <p>
-                    📅 現地：{m.date} {m.local}
-                  </p>
-                  <p className="font-semibold text-[#BC002D]">
+                <div className="space-y-1.5 text-xs text-gray-500 border-t pt-3">
+                  <p>📅 現地：{m.date} {m.local}</p>
+                  <p className="font-semibold text-[#BC002D] text-sm">
                     🇯🇵 日本時間：{m.jst}
                   </p>
                   <p>🏟️ {m.venue}（{m.city}）</p>
+                  <p>📺 {m.broadcast}</p>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          W杯グループステージ
+          ═══════════════════════════════════════ */}
+      <section className="bg-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+            <span
+              className="inline-block w-1.5 h-8 rounded-full"
+              style={{ background: "#003087" }}
+            />
+            W杯グループステージ日程
+          </h2>
+          <p className="text-sm text-gray-500 mb-8">
+            グループF — オランダ、日本、チュニジア、UEFAプレーオフB勝者
+          </p>
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            {wcMatches.map((m) => (
+              <div
+                key={m.num}
+                className="rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden"
+              >
+                <div
+                  className="px-4 py-2 text-white text-sm font-bold flex items-center justify-between"
+                  style={{ background: "#003087" }}
+                >
+                  <span>{m.label}</span>
+                  <span className="text-blue-200 text-xs">Match #{m.num}</span>
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="text-center flex-1">
+                      <p className="text-2xl mb-1">🇯🇵</p>
+                      <p className="text-sm font-bold text-gray-900">日本</p>
+                    </div>
+                    <div className="px-4 text-center">
+                      <p className="text-xs text-gray-400 font-bold uppercase tracking-wide">VS</p>
+                    </div>
+                    <div className="text-center flex-1">
+                      <p className="text-2xl mb-1">{m.opponent.split(" ")[0]}</p>
+                      <p className="text-sm font-bold text-gray-900">
+                        {m.opponent.split(" ").slice(1).join(" ")}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="space-y-1 text-xs text-gray-500 border-t pt-3">
+                    <p>📅 現地：{m.date} {m.local}</p>
+                    <p className="font-semibold text-[#BC002D]">
+                      🇯🇵 日本時間：{m.jst}
+                    </p>
+                    <p>🏟️ {m.venue}（{m.city}）</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -644,7 +804,7 @@ export default function JapanPage() {
             注目選手ピックアップ
           </h2>
           <p className="text-sm text-blue-200/70 mb-8">
-            W杯で日本の命運を握るキープレーヤー
+            イギリス遠征で日本の命運を握るキープレーヤー
           </p>
 
           <div className="grid gap-6 sm:grid-cols-3">
@@ -698,6 +858,54 @@ export default function JapanPage() {
       </section>
 
       {/* ═══════════════════════════════════════
+          OPPONENT CARDS
+          ═══════════════════════════════════════ */}
+      <section className="bg-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+            <span className="inline-block w-1.5 h-8 rounded-full bg-[#003087]" />
+            対戦国メンバー情報
+          </h2>
+          <p className="text-sm text-gray-500 mb-8">
+            対戦カードから詳細ページへ移動できます
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {opponentCards.map((card) => (
+              <div key={card.key} className="rounded-2xl bg-white border border-gray-200 shadow-sm overflow-hidden">
+                <div className="flex">
+                  <div className="w-1.5 shrink-0" style={{ background: card.color }} />
+                  <div className="flex-1 p-5">
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <div>
+                        <h3 className="text-lg font-bold text-gray-900">
+                          {card.flag} {card.name}
+                        </h3>
+                        <p className="text-xs text-gray-500 mt-1">📅 {card.time}</p>
+                        <p className="text-xs text-gray-500">🏟️ {card.venue}</p>
+                      </div>
+                      <span className="inline-block px-2 py-1 rounded-full text-[10px] font-bold bg-gray-100 text-gray-700">
+                        {card.badge}
+                      </span>
+                    </div>
+                    <p className="text-xs text-gray-600 mb-4">{card.footer}</p>
+                    <div className="text-right">
+                      <Link
+                        href={card.href}
+                        className="inline-flex items-center gap-1 text-sm font-bold hover:opacity-80 transition-opacity"
+                        style={{ color: card.color }}
+                      >
+                        {card.cta}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
           FULL SQUAD
           ═══════════════════════════════════════ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -709,7 +917,7 @@ export default function JapanPage() {
           招集メンバー一覧
         </h2>
         <p className="text-sm text-gray-500 mb-8">
-          26名（GK 3名 / DF 8名 / MF 8名 / FW 7名）
+          JFA公式発表 3月19日 — 28名（GK 3名 / DF 8名 / MF 9名 / FW 8名）
         </p>
 
         {grouped.map((g) => (
