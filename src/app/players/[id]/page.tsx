@@ -176,6 +176,43 @@ export default async function PlayerDetailPage({ params }: Props) {
               </section>
             )}
 
+            {/* Career History */}
+            {player.careerHistory && player.careerHistory.length > 0 && (
+              <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <h2 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
+                  <span className="w-1 h-5 bg-[#E8192C] rounded-full" />
+                  これまでの経歴
+                </h2>
+                <ol className="relative border-l-2 border-gray-200 ml-2 space-y-0">
+                  {player.careerHistory.map((item, i) => (
+                    <li key={i} className="ml-5 pb-5 last:pb-0 relative">
+                      <span className="absolute -left-[9px] flex h-4 w-4 items-center justify-center rounded-full bg-[#8B1538] ring-2 ring-white">
+                        <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                      </span>
+                      <p className="text-sm font-semibold text-gray-900 leading-tight">{item.club}</p>
+                      <p className="text-xs text-gray-400 mt-0.5 mb-1">{item.period}</p>
+                      {item.note && (
+                        <p className="text-xs text-gray-600 leading-relaxed bg-gray-50 rounded-lg px-3 py-2 border-l-2 border-[#8B1538]/30">
+                          {item.note}
+                        </p>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            )}
+
+            {/* Japan Connection */}
+            {player.japanConnection && (
+              <section className="bg-gradient-to-br from-red-50 to-white rounded-xl shadow-sm border border-red-100 p-6">
+                <h2 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+                  <span className="text-lg">🇯🇵</span>
+                  日本代表との縁
+                </h2>
+                <p className="text-sm text-gray-700 leading-relaxed">{player.japanConnection}</p>
+              </section>
+            )}
+
             {/* International Record */}
             <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
