@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { uniforms } from "@/data/uniforms";
-import type { BuyLink } from "@/data/uniforms";
+import type { BuyLink, RakutenBanner } from "@/data/uniforms";
 
 export const metadata: Metadata = {
   title: "🇯🇵 日本代表ユニフォーム一覧 | FIFA World Cup 2026",
@@ -32,6 +32,63 @@ function BuyButton({ link }: { link: BuyLink }) {
       className={`inline-flex items-center justify-center px-3 py-2 rounded-lg text-xs font-bold transition-colors ${storeStyle(link.store)}`}
     >
       {link.label}
+    </a>
+  );
+}
+
+/* ── Rakuten Banner ───────────────────────────── */
+function RakutenBannerCard({
+  rakuten,
+  name,
+}: {
+  rakuten: RakutenBanner;
+  name: string;
+}) {
+  return (
+    <a
+      href={rakuten.affiliateUrl}
+      target="_blank"
+      rel="nofollow sponsored noopener"
+      className="block rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg hover:opacity-90 transition-all relative group"
+    >
+      {/* PR badge */}
+      <span className="absolute top-2 right-2 z-10 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-700/70 text-white backdrop-blur-sm">
+        PR
+      </span>
+
+      {/* Header */}
+      <div className="bg-[#BF0020] px-4 py-2.5 flex items-center gap-2">
+        <span className="text-white text-sm font-bold">
+          🛒 楽天市場で購入する
+        </span>
+      </div>
+
+      {/* Body */}
+      <div className="flex bg-white">
+        {/* Image */}
+        <div className="w-[120px] sm:w-[160px] shrink-0 bg-gray-50 flex items-center justify-center p-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={rakuten.imageUrl}
+            alt={name}
+            width={240}
+            height={240}
+            className="w-full h-auto object-contain"
+            loading="lazy"
+          />
+        </div>
+
+        {/* Info */}
+        <div className="flex-1 p-4 flex flex-col justify-center">
+          <p className="text-base font-bold text-gray-900 mb-1">{name}</p>
+          <p className="text-sm font-bold text-[#BF0020] mb-3">
+            {rakuten.price}
+          </p>
+          <span className="inline-flex items-center justify-center w-fit px-4 py-2 rounded-lg bg-[#BF0020] text-white text-xs font-bold group-hover:bg-[#a00000] transition-colors">
+            今すぐ楽天で見る →
+          </span>
+        </div>
+      </div>
     </a>
   );
 }
@@ -172,6 +229,13 @@ export default function UniformPage() {
                       </div>
                     </div>
                   </div>
+
+                  {/* Rakuten Banner */}
+                  {u.rakuten && (
+                    <div className="px-5 pb-5">
+                      <RakutenBannerCard rakuten={u.rakuten} name={u.name} />
+                    </div>
+                  )}
                 </div>
               );
             })}

@@ -4,6 +4,12 @@ export type BuyLink = {
   label: string;
 };
 
+export type RakutenBanner = {
+  affiliateUrl: string;
+  imageUrl: string;
+  price: string;
+};
+
 export type Uniform = {
   id: number;
   year: string;
@@ -15,6 +21,7 @@ export type Uniform = {
   colorSub: string;
   features: string[];
   buyLinks: BuyLink[];
+  rakuten?: RakutenBanner;
 };
 
 export const uniforms: Uniform[] = [
@@ -51,6 +58,13 @@ export const uniforms: Uniform[] = [
       { store: "adidas公式", url: "https://www.adidas.co.jp", label: "adidas公式で見る" },
       { store: "KAMO", url: "https://www.kamo.co.jp", label: "KAMOで見る" },
     ],
+    rakuten: {
+      affiliateUrl:
+        "https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fjz9697%2F&link_type=hybrid_url&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJoeWJyaWRfdXJsIiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9",
+      imageUrl:
+        "https://hbb.afl.rakuten.co.jp/hgb/521aa121.b7b3d243.521aa122.9bcc9825/?me_id=1268947&item_id=10002329&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2F09897244%2Fjz9697_01_laydown.jpg%3F_ex%3D240x240&s=240x240&t=pict",
+      price: "¥13,200〜（レプリカ）",
+    },
   },
   {
     id: 3,
