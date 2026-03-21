@@ -110,13 +110,7 @@ export default function UniformPage() {
                 >
                   {/* Image area or color banner */}
                   {hasRakutenImage ? (
-                    <a
-                      href={u.rakuten!.affiliateUrl}
-                      target="_blank"
-                      rel="nofollow sponsored noopener"
-                      className="block h-48 relative hover:opacity-90 transition-opacity"
-                      style={{ backgroundColor: `${u.colorMain}15` }}
-                    >
+                    <div className="relative bg-gray-50">
                       <span className="absolute top-2 right-2 z-10 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-700/70 text-white backdrop-blur-sm">
                         PR
                       </span>
@@ -130,16 +124,22 @@ export default function UniformPage() {
                           {u.brand}
                         </span>
                       </div>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={u.rakuten!.imageUrl}
-                        alt={u.name}
-                        width={240}
-                        height={240}
-                        className="absolute inset-0 w-full h-full object-contain p-4"
-                        loading="lazy"
-                      />
-                    </a>
+                      <a
+                        href={u.rakuten!.affiliateUrl}
+                        target="_blank"
+                        rel="nofollow sponsored noopener"
+                        className="flex items-center justify-center p-2 hover:opacity-90 transition-opacity"
+                        style={{ wordWrap: "break-word" }}
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={u.rakuten!.imageUrl}
+                          alt={u.name}
+                          style={{ margin: "2px" }}
+                          className="max-w-full h-auto"
+                        />
+                      </a>
+                    </div>
                   ) : (
                     <div
                       className="h-24 relative"
