@@ -24,22 +24,39 @@ export type Uniform = {
 };
 
 export const uniforms: Uniform[] = [
+  // ── 2026 ホーム長袖 ──
   {
     id: 1,
     year: "2026",
     type: "home",
     brand: "adidas",
-    name: "2026 ホームユニフォーム",
+    name: "2026 ホームユニフォーム 長袖",
     description:
-      "北中米W杯に向けた最新モデル。深い紺色をベースに、日の丸カラーの赤いアクセントが特徴。コンセプトは「COLORS」。",
+      "北中米W杯に向けた最新モデル。深い紺色をベースに、日の丸カラーの赤いアクセントが特徴。コンセプトは「COLORS」。長袖モデル。",
     colorMain: "#002868",
     colorSub: "#BF0A30",
     buyLinks: [
-      { store: "楽天市場", url: "https://www.rakuten.co.jp", label: "楽天で見る" },
       { store: "adidas公式", url: "https://www.adidas.co.jp", label: "adidas公式で見る" },
       { store: "KAMO", url: "https://www.kamo.co.jp", label: "KAMOで見る" },
     ],
   },
+  // ── 2026 ホーム半袖 ──
+  {
+    id: 6,
+    year: "2026",
+    type: "home",
+    brand: "adidas",
+    name: "2026 ホームユニフォーム 半袖",
+    description:
+      "ディープブルーに波を思わせるホワイトのグラフィック。HORIZON（水平線）コンセプト。半袖モデル。",
+    colorMain: "#002868",
+    colorSub: "#BF0A30",
+    buyLinks: [
+      { store: "adidas公式", url: "https://www.adidas.co.jp", label: "adidas公式で見る" },
+      { store: "KAMO", url: "https://www.kamo.co.jp", label: "KAMOで見る" },
+    ],
+  },
+  // ── 2026 アウェイ長袖 ──
   {
     id: 2,
     year: "2026",
@@ -54,14 +71,8 @@ export const uniforms: Uniform[] = [
       { store: "adidas公式", url: "https://www.adidas.co.jp", label: "adidas公式で見る" },
       { store: "KAMO", url: "https://www.kamo.co.jp", label: "KAMOで見る" },
     ],
-    rakuten: {
-      affiliateUrl:
-        "https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fjz9697%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9",
-      imageUrl:
-        "https://hbb.afl.rakuten.co.jp/hgb/521aa121.b7b3d243.521aa122.9bcc9825/?me_id=1268947&item_id=10237312&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2Fp107%2Fjz9697_l.jpg%3F_ex%3D400x400&s=400x400&t=pict",
-      price: "¥13,200〜（レプリカ）",
-    },
   },
+  // ── 2026 アウェイ半袖 ──
   {
     id: 5,
     year: "2026",
@@ -76,14 +87,8 @@ export const uniforms: Uniform[] = [
       { store: "adidas公式", url: "https://www.adidas.co.jp", label: "adidas公式で見る" },
       { store: "KAMO", url: "https://www.kamo.co.jp", label: "KAMOで見る" },
     ],
-    rakuten: {
-      affiliateUrl:
-        "https://hb.afl.rakuten.co.jp/ichiba/43bcm43.b7b3d243.43bcm44.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fklg77-jn1872%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9",
-      imageUrl:
-        "https://hbb.afl.rakuten.co.jp/hgb/43bcm43.b7b3d243.43bcm44.9bcc9825/?me_id=1268947&item_id=10237400&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2F43bcm43%2Fklg77-jn1872_c2.jpg%3F_ex%3D400x400&s=400x400&t=pict",
-      price: "¥12,100〜（レプリカ）",
-    },
   },
+  // ── 2024 ──
   {
     id: 3,
     year: "2024",

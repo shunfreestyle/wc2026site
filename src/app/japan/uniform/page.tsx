@@ -35,6 +35,30 @@ function BuyButton({ link }: { link: BuyLink }) {
   );
 }
 
+/* ── Rakuten affiliate image map (hardcoded) ──── */
+const rakutenImages: Record<number, { href: string; src: string; alt: string }> = {
+  1: {
+    href: "https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fkd3344%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9",
+    src: "https://hbb.afl.rakuten.co.jp/hgb/521aa121.b7b3d243.521aa122.9bcc9825/?me_id=1268947&item_id=10234427&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2Fp107%2Fkd3344_l.jpg%3F_ex%3D400x400&s=400x400&t=pict",
+    alt: "2026 ホームユニフォーム 長袖",
+  },
+  6: {
+    href: "https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fkd3345-mn1%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9",
+    src: "https://hbb.afl.rakuten.co.jp/hgb/521aa121.b7b3d243.521aa122.9bcc9825/?me_id=1268947&item_id=10234426&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2Fp107%2Fkd3345_l.jpg%3F_ex%3D400x400&s=400x400&t=pict",
+    alt: "2026 ホームユニフォーム 半袖",
+  },
+  2: {
+    href: "https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fjz9697%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9",
+    src: "https://hbb.afl.rakuten.co.jp/hgb/521aa121.b7b3d243.521aa122.9bcc9825/?me_id=1268947&item_id=10237312&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2Fp107%2Fjz9697_l.jpg%3F_ex%3D400x400&s=400x400&t=pict",
+    alt: "2026 アウェイユニフォーム 長袖",
+  },
+  5: {
+    href: "https://hb.afl.rakuten.co.jp/ichiba/521ae475.5370c756.521ae476.3fb8d512/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Freal-sports%2Fklg77-jn1872%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9",
+    src: "https://hbb.afl.rakuten.co.jp/hgb/521ae475.5370c756.521ae476.3fb8d512/?me_id=1378885&item_id=10016420&pc=https%3A%2F%2Fimage.rakuten.co.jp%2Freal-sports%2Fcabinet%2Fcm43%2Fklg77-jn1872_c2.jpg%3F_ex%3D400x400&s=400x400&t=pict",
+    alt: "2026 アウェイユニフォーム 半袖",
+  },
+};
+
 /* ── Group by year ────────────────────────────── */
 function groupByYear() {
   const years = [...new Set(uniforms.map((u) => u.year))];
@@ -108,7 +132,7 @@ export default function UniformPage() {
                   className="rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col"
                 >
                   {/* Image area */}
-                  {u.id === 2 ? (
+                  {rakutenImages[u.id] ? (
                     <div className="relative bg-gray-50">
                       <span className="absolute top-2 right-2 z-10 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-700/70 text-white backdrop-blur-sm">
                         PR
@@ -117,46 +141,21 @@ export default function UniformPage() {
                         <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.cls}`}>{badge.label}</span>
                         <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">{u.brand}</span>
                       </div>
-                      <a
-                        href="https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fjz9697%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9"
-                        target="_blank"
-                        rel="nofollow sponsored noopener"
-                        className="block hover:opacity-90 transition-opacity"
-                      >
-                        <div style={{ width: "400px", height: "400px", margin: "0 auto", maxWidth: "100%" }}>
+                      <div style={{ width: "400px", height: "400px", margin: "0 auto", maxWidth: "100%" }}>
+                        <a
+                          href={rakutenImages[u.id].href}
+                          target="_blank"
+                          rel="nofollow sponsored noopener"
+                          className="block hover:opacity-90 transition-opacity"
+                        >
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
-                            src="https://hbb.afl.rakuten.co.jp/hgb/521aa121.b7b3d243.521aa122.9bcc9825/?me_id=1268947&item_id=10237312&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2Fp107%2Fjz9697_l.jpg%3F_ex%3D400x400&s=400x400&t=pict"
-                            alt="2026 アウェイユニフォーム 長袖"
-                            style={{ width: "400px", height: "400px", objectFit: "contain", display: "block", maxWidth: "100%" }}
+                            src={rakutenImages[u.id].src}
+                            alt={rakutenImages[u.id].alt}
+                            style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
                           />
-                        </div>
-                      </a>
-                    </div>
-                  ) : u.id === 5 ? (
-                    <div className="relative bg-gray-50">
-                      <span className="absolute top-2 right-2 z-10 px-1.5 py-0.5 rounded text-[9px] font-bold bg-gray-700/70 text-white backdrop-blur-sm">
-                        PR
-                      </span>
-                      <div className="absolute bottom-3 left-4 z-10 flex items-center gap-2">
-                        <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.cls}`}>{badge.label}</span>
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-black/20 text-white backdrop-blur-sm">{u.brand}</span>
+                        </a>
                       </div>
-                      <a
-                        href="https://hb.afl.rakuten.co.jp/ichiba/521ae475.5370c756.521ae476.3fb8d512/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Freal-sports%2Fklg77-jn1872%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9"
-                        target="_blank"
-                        rel="nofollow sponsored noopener"
-                        className="block hover:opacity-90 transition-opacity"
-                      >
-                        <div style={{ width: "400px", height: "400px", margin: "0 auto", maxWidth: "100%" }}>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src="https://hbb.afl.rakuten.co.jp/hgb/521ae475.5370c756.521ae476.3fb8d512/?me_id=1378885&item_id=10016420&pc=https%3A%2F%2Fimage.rakuten.co.jp%2Freal-sports%2Fcabinet%2Fcm43%2Fklg77-jn1872_c2.jpg%3F_ex%3D400x400&s=400x400&t=pict"
-                            alt="2026 アウェイユニフォーム 半袖"
-                            style={{ width: "400px", height: "400px", objectFit: "contain", display: "block", maxWidth: "100%" }}
-                          />
-                        </div>
-                      </a>
                     </div>
                   ) : (
                     <div
@@ -185,9 +184,9 @@ export default function UniformPage() {
 
                     {/* Buy buttons */}
                     <div className="mt-auto pt-3 border-t border-gray-100">
-                      {u.rakuten ? (
+                      {rakutenImages[u.id] ? (
                         <a
-                          href={u.rakuten.affiliateUrl}
+                          href={rakutenImages[u.id].href}
                           target="_blank"
                           rel="nofollow sponsored noopener"
                           className="flex items-center justify-center w-full px-4 py-3 rounded-lg bg-[#BF0000] hover:bg-[#a00000] text-white text-sm font-bold transition-colors"
