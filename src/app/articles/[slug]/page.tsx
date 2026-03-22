@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { articles } from "@/data/articles";
 import { notFound } from "next/navigation";
 import ArticleBody from "./ArticleBody";
+import "./article.css";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -26,6 +27,17 @@ export async function generateMetadata({
   };
 }
 
+function getCategoryClass(category: string) {
+  const map: Record<string, string> = {
+    "日本代表": "japan",
+    "Jリーグ": "jleague",
+    "W杯": "wcup",
+    "海外組": "kaigai",
+    "コラム": "column",
+  };
+  return map[category] ?? "japan";
+}
+
 const categoryColors: Record<string, string> = {
   "日本代表": "bg-blue-100 text-blue-800",
   "Jリーグ": "bg-green-100 text-green-800",
@@ -33,15 +45,6 @@ const categoryColors: Record<string, string> = {
   "海外組": "bg-purple-100 text-purple-800",
   "コラム": "bg-gray-100 text-gray-800",
 };
-
-function formatDate(dateStr: string) {
-  const d = new Date(dateStr + "T00:00:00");
-  const y = d.getFullYear();
-  const m = d.getMonth() + 1;
-  const day = d.getDate();
-  const dow = ["日", "月", "火", "水", "木", "金", "土"][d.getDay()];
-  return `${y}年${m}月${day}日（${dow}）`;
-}
 
 export default async function ArticlePage({
   params,
@@ -57,52 +60,48 @@ export default async function ArticlePage({
     .slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-gradient-to-br from-[#0A1A3C] to-[#1a3570] text-white py-8 px-4">
-        <div className="max-w-3xl mx-auto">
-          <div className="flex items-center gap-3 mb-4">
-            <Link
-              href="/articles"
-              className="text-white/60 hover:text-white text-sm transition-colors"
-            >
-              ← 記事一覧
-            </Link>
-          </div>
-          <div className="flex items-center gap-2 mb-3">
-            <span
-              className={`text-xs font-bold px-2.5 py-1 rounded-full ${categoryColors[article.category] || "bg-gray-100 text-gray-800"}`}
-            >
-              {article.category}
-            </span>
-            <span className="text-xs text-white/50">{formatDate(article.publishedAt)}</span>
-          </div>
-          <h1 className="text-xl sm:text-2xl font-black leading-snug">{article.title}</h1>
-          <div className="flex flex-wrap gap-1.5 mt-3">
-            {article.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-[10px] text-white/50 bg-white/10 px-2 py-0.5 rounded-full"
-              >
-                #{tag}
-              </span>
-            ))}
-          </div>
+    <div className="min-h-screen bg-white">
+      <div className="article-page">
+        {/* Back link */}
+        <div style={{ marginBottom: "1.5rem" }}>
+          <Link
+            href="/articles"
+            className="text-gray-400 hover:text-gray-600 text-sm transition-colors"
+          >
+            ← 記事一覧
+          </Link>
         </div>
-      </div>
 
-      {/* Article Content */}
-      <div className="max-w-3xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8">
-          <ArticleBody content={article.content} />
+        {/* Category badge */}
+        <span className={`category-badge badge-${getCategoryClass(article.category)}`}>
+          {article.category}
+        </span>
+
+        {/* Title */}
+        <h1 className="article-title">{article.title}</h1>
+
+        {/* Meta */}
+        <div className="article-meta">
+          <span className="date">{article.publishedAt}</span>
+          {article.tags.map((tag) => (
+            <span key={tag} className="article-tag">
+              {tag}
+            </span>
+          ))}
         </div>
+
+        {/* Lead */}
+        <div className="article-lead">{article.excerpt}</div>
+
+        {/* Article Body */}
+        <ArticleBody content={article.content} />
 
         {/* DAZN AFFILIATE BANNER HERE */}
 
         {/* Related Articles */}
         {related.length > 0 && (
-          <div className="mt-10">
-            <h2 className="text-lg font-bold text-gray-900 mb-4">関連記事</h2>
+          <div style={{ marginTop: "3rem" }}>
+            <h2 className="article-h2">関連記事</h2>
             <div className="space-y-3">
               {related.map((r) => (
                 <Link
@@ -127,11 +126,16 @@ export default async function ArticlePage({
           </div>
         )}
 
+        {/* Source */}
+        <p className="article-source">
+          出典: JFA公式サイト、各クラブ公式サイト、Transfermarkt
+        </p>
+
         {/* Back */}
-        <div className="mt-8 text-center">
+        <div style={{ marginTop: "2rem", textAlign: "center" }}>
           <Link
             href="/articles"
-            className="text-gray-500 hover:text-gray-700 text-sm transition-colors"
+            className="text-gray-400 hover:text-gray-600 text-sm transition-colors"
           >
             ← 記事一覧に戻る
           </Link>
