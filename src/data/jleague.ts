@@ -303,7 +303,7 @@ export const jMatchDetails: JMatchDetail[] = [
       ],
     },
     goals: [],
-    matchReport: `東京ダービーは90分間スコアレスのままPK戦へ。東京VのGK長沢祐弥が2本のPKストップを見せ、4-2で東京Vが勝点2を獲得した。FC東京は野澤零温が今季初先発、佐藤龍之介もスタメンに名を連ねたが、ゴールをこじ開けることはできなかった。`,
+    matchReport: `味の素スタジアムで行われた東京ダービーはスコアレスドローとなり、PK戦で東京VのGK長沢祐弥が大活躍を見せた。ボールを保持するFC東京に対し、東京Vは前からのプレスで自由を与えなかった。前半22分に室屋成のクロスが井上竜太に当たりゴールインするも、ゴールラインを割っていたとしてノーゴール判定。後半に入り双方が決定機を掴むも両GKが好セーブでしのいだ。PK戦では長沢がショルツと山田楓喜のシュートを連続ストップし4-2で東京Vが制した。`,
   },
   // ── 第8節: 川崎F vs 横浜FM ──
   {
@@ -504,10 +504,35 @@ export const jMatchDetails: JMatchDetail[] = [
   // ── 第8節: 福岡 vs G大阪 ──
   {
     matchId: "w-r8-fuk-gam",
-    homeLineup: { formation: "不明", players: [] },
-    awayLineup: { formation: "不明", players: [] },
-    goals: [],
-    matchReport: `福岡とG大阪の一戦は2-2のまま90分で決着がつかずPK戦へ。両チームが延々とPKを決め続ける異例の展開となり、14-13で福岡がようやく勝点2を獲得した。`,
+    homeLineup: {
+      formation: "4-4-2",
+      players: [
+        { number: 50, name: "小畑裕馬", position: "GK", isStarter: true },
+      ],
+    },
+    awayLineup: {
+      formation: "4-4-2",
+      players: [
+        { number: 1,  name: "東口順昭",         position: "GK", isStarter: true },
+        { number: 3,  name: "半田陸",           position: "DF", isStarter: true },
+        { number: 4,  name: "中谷進之介",       position: "DF", isStarter: true },
+        { number: 5,  name: "三浦弦太",         position: "DF", isStarter: true },
+        { number: 21, name: "初瀬亮",           position: "DF", isStarter: true },
+        { number: 11, name: "イッサム・ジェバリ", position: "MF", isStarter: true },
+        { number: 13, name: "安部柊斗",         position: "MF", isStarter: true },
+        { number: 16, name: "鈴木徳真",         position: "MF", isStarter: true },
+        { number: 17, name: "山下諒也",         position: "MF", isStarter: true },
+        { number: 97, name: "ウェルトン",       position: "MF", isStarter: true },
+        { number: 23, name: "デニス・ヒュメット", position: "FW", isStarter: true },
+      ],
+    },
+    goals: [
+      { minute: 11, playerName: "デニス・ヒュメット", assistName: "ジェバリ", teamSide: "away" },
+      { minute: 22, playerName: "OG", teamSide: "home" },
+      { minute: 42, playerName: "ウェルトン", teamSide: "away" },
+      { minute: 90, playerName: "辻岡佑真", teamSide: "home" },
+    ],
+    matchReport: `前半11分、G大阪がジェバリのスルーパスからデニス・ヒュメットが先制。福岡は22分にCKの波状攻撃からOGで同点とするが、42分にウェルトンがGK小畑のキャッチミスを誘い勝ち越した。後半75分にG大阪GK東口がPKを止める劇的場面もあったが、福岡はアディショナルタイムに辻岡佑真の左足アウトサイドシュートで2-2に追いつく。PK戦は壮絶な14本勝負となり、GK小畑がG大阪のジェバリを止めて福岡が14-13で制し連敗を6でストップした。`,
   },
   // ── 第8節: 清水 vs 広島 ──
   {
@@ -520,13 +545,28 @@ export const jMatchDetails: JMatchDetail[] = [
   // ── 第8節: 京都 vs 名古屋 ──
   {
     matchId: "w-r8-kyt-nag",
-    homeLineup: { formation: "不明", players: [] },
+    homeLineup: {
+      formation: "4-3-3",
+      players: [
+        { number: 1,  name: "太田岳志",             position: "GK", isStarter: true },
+        { number: 22, name: "須貝英大",             position: "DF", isStarter: true },
+        { number: 34, name: "エンリケ・トレヴィザン", position: "DF", isStarter: true },
+        { number: 44, name: "佐藤響",               position: "DF", isStarter: true },
+        { number: 50, name: "鈴木義宜",             position: "DF", isStarter: true },
+        { number: 16, name: "平岡大陽",             position: "MF", isStarter: true },
+        { number: 25, name: "尹星俊",               position: "MF", isStarter: true },
+        { number: 48, name: "中野瑠馬",             position: "MF", isStarter: true },
+        { number: 7,  name: "奥川雅也",             position: "FW", isStarter: true },
+        { number: 11, name: "マルコ・トゥーリオ",   position: "FW", isStarter: true },
+        { number: 77, name: "新井晴樹",             position: "FW", isStarter: true },
+      ],
+    },
     awayLineup: { formation: "不明", players: [] },
     goals: [
       { minute: 19, playerName: "甲田英將", teamSide: "away" },
       { minute: 77, playerName: "マルコ・トゥーリオ", teamSide: "home" },
     ],
-    matchReport: `勝ち点で並ぶ京都と名古屋の直接対決。19分に名古屋の甲田英將が先制したが、77分にマルコ・トゥーリオが同点弾を決めて試合はPK戦へ。5-4で京都が勝点2を獲得し、ホームで意地を見せた。`,
+    matchReport: `勝ち点で並ぶ京都と名古屋の直接対決。19分に名古屋の甲田英將が右クロスを左ポストに当てる形で今季初ゴールを決めて先制。京都は攻め手を欠いたが、77分にマルコ・トゥーリオが同点弾を叩き込んでPK戦へ。PK戦は5-4で京都が制し、WEST首位に浮上した。`,
   },
   // ── 第8節: C大阪 vs 神戸 ──
   {
@@ -583,7 +623,7 @@ export const jMatchDetails: JMatchDetail[] = [
       { minute: 12, playerName: "井上黎生人", assistName: "柴山昌也", teamSide: "home" },
       { minute: 67, playerName: "日高光揮", teamSide: "away" },
     ],
-    matchReport: `C大阪がホームで神戸を迎えた関西ダービー。12分、柴山昌也のCKから井上黎生人がニアで合わせてC大阪が先制。しかし67分、後半から投入された日高光揮が左足の強烈なシュートで同点に追いつく。PK戦は両チーム5人が全員成功した後、6人目で神戸の濱崎健斗がクロスバーに当て失敗。C大阪が勝点2を獲得した。`,
+    matchReport: `ヨドコウ桜スタジアムで行われた一戦。C大阪は12分に柴山昌也のCKから井上黎生人がニアでヘッドを合わせて先制した。神戸はハーフタイムに乾貴士・カエターノ・山田海斗を一斉に3枚交代して反撃に転じると、67分に投入された日髙光揮が左足の強烈なシュートで同点に追いついた。PK戦は両チーム全員が決める激戦の末、6人目で神戸の濱﨑健斗がクロスバーに当てて失敗。C大阪が6-5で勝ち点2を手にした。香川真司は76分から出場した。`,
   },
 ];
 
