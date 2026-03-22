@@ -45,7 +45,8 @@
       "Bash(grep 'id: \"\"\"\"scotland-' src/data/teams.ts)",
       "Bash(grep 'id: \"\"\"\"england-' src/data/teams.ts)",
       "Bash(vercel --prod)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(grep -c '\"\"question\"\":' src/data/quiz.ts)"
     ]
   }
 }
