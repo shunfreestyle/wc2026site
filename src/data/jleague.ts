@@ -3,6 +3,65 @@
 // EAST：横浜FM・町田・浦和・千葉・FC東京・鹿島・川崎F・東京V・柏・水戸
 // WEST：神戸・広島・G大阪・C大阪・岡山・京都・名古屋・福岡・清水・長崎
 
+export type JPosition = "GK" | "DF" | "MF" | "FW";
+
+export type JPlayer = {
+  number: number;
+  name: string;
+  position: JPosition;
+  isCaptain?: boolean;
+  subOut?: number;
+  subIn?: number;
+  isStarter: boolean;
+};
+
+export type JLineup = {
+  formation: string;
+  players: JPlayer[];
+};
+
+export type JGoal = {
+  minute: number;
+  playerName: string;
+  assistName?: string;
+  teamSide: "home" | "away";
+};
+
+export type JCard = {
+  minute: number;
+  playerName: string;
+  teamSide: "home" | "away";
+  type: "yellow" | "red";
+};
+
+export type JStats = {
+  possession?: [number, number];
+  shots?: [number, number];
+  shotsOnTarget?: [number, number];
+  corners?: [number, number];
+  fouls?: [number, number];
+  yellowCards?: [number, number];
+  passes?: [number, number];
+  passAccuracy?: [number, number];
+};
+
+export type JTimelineEvent = {
+  minute: number;
+  type: "goal" | "card" | "sub" | "note" | "end";
+  teamSide?: "home" | "away" | "neutral";
+  text: string;
+};
+
+export type JMatchDetail = {
+  matchId: string;
+  homeLineup: JLineup;
+  awayLineup: JLineup;
+  goals?: JGoal[];
+  cards?: JCard[];
+  stats?: JStats;
+  timeline?: JTimelineEvent[];
+};
+
 export type JMatchSimple = {
   id: string;
   league: "J1" | "J2" | "J3";
@@ -52,6 +111,100 @@ export const TEAM_INFO: Record<string, { shortName: string; color: string; emoji
 };
 
 const NOTE = "出典: Jリーグ公式サイト（jleague.jp / data.j-league.or.jp）";
+
+export const jMatchDetails: JMatchDetail[] = [
+  {
+    matchId: "e-r8-kas-chib",
+    homeLineup: {
+      formation: "4-3-3",
+      players: [
+        { number: 21, name: "早川 友基",    position: "GK", isStarter: true },
+        { number: 18, name: "濃野 公人",    position: "DF", isStarter: true },
+        { number:  5, name: "植田 直通",    position: "DF", isStarter: true },
+        { number:  3, name: "関川 郁万",    position: "DF", isStarter: true },
+        { number: 22, name: "安西 幸輝",    position: "DF", isStarter: true },
+        { number:  6, name: "三竿 健斗",    position: "MF", isStarter: true, isCaptain: true },
+        { number:  8, name: "佐野 海舟",    position: "MF", isStarter: true, subOut: 80 },
+        { number: 14, name: "樋口 雄太",    position: "MF", isStarter: true },
+        { number:  9, name: "鈴木 優磨",    position: "FW", isStarter: true },
+        { number: 10, name: "エレケ",       position: "FW", isStarter: true, subOut: 72 },
+        { number:  7, name: "知念 慶",      position: "FW", isStarter: true, subOut: 59 },
+        { number:  1, name: "沖 悠哉",      position: "GK", isStarter: false },
+        { number: 33, name: "津久井 匠海",  position: "DF", isStarter: false },
+        { number: 13, name: "広瀬 陸斗",    position: "DF", isStarter: false },
+        { number: 16, name: "ピトゥカ",     position: "MF", isStarter: false },
+        { number: 20, name: "藤井 智也",    position: "MF", isStarter: false },
+        { number: 15, name: "名古 新太郎",  position: "FW", isStarter: false, subIn: 72 },
+        { number: 19, name: "仲間 隼斗",    position: "FW", isStarter: false, subIn: 59 },
+        { number: 11, name: "松村 優太",    position: "FW", isStarter: false, subIn: 80 },
+      ],
+    },
+    awayLineup: {
+      formation: "4-4-2",
+      players: [
+        { number:  1, name: "鈴木 椋大",        position: "GK", isStarter: true },
+        { number:  2, name: "高橋 壱晟",        position: "DF", isStarter: true },
+        { number:  5, name: "チャン・ミンギュ",  position: "DF", isStarter: true },
+        { number:  3, name: "乾 貴士",          position: "DF", isStarter: true },
+        { number: 16, name: "新明 龍太",        position: "DF", isStarter: true },
+        { number: 17, name: "末吉 塁",          position: "MF", isStarter: true, subOut: 56 },
+        { number:  8, name: "田口 泰士",        position: "MF", isStarter: true, isCaptain: true, subOut: 82 },
+        { number:  7, name: "見木 友哉",        position: "MF", isStarter: true },
+        { number:  6, name: "風間 宏矢",        position: "MF", isStarter: true, subOut: 68 },
+        { number: 11, name: "ドゥドゥ",          position: "FW", isStarter: true },
+        { number:  9, name: "小森 飛絢",        position: "FW", isStarter: true },
+        { number: 21, name: "松原 颯汰",        position: "GK", isStarter: false },
+        { number:  4, name: "鈴木 大輔",        position: "DF", isStarter: false },
+        { number: 26, name: "矢口 駿",          position: "DF", isStarter: false },
+        { number: 14, name: "ゲオルギエフ",     position: "MF", isStarter: false },
+        { number: 20, name: "椿 直起",          position: "MF", isStarter: false, subIn: 56 },
+        { number: 19, name: "横山 歩夢",        position: "MF", isStarter: false, subIn: 68 },
+        { number: 22, name: "熊谷アンドリュー", position: "DF", isStarter: false, subIn: 82 },
+        { number: 10, name: "船山 貴之",        position: "FW", isStarter: false },
+      ],
+    },
+    goals: [
+      { minute: 28, playerName: "エレケ",    assistName: "鈴木 優磨", teamSide: "home" },
+      { minute: 41, playerName: "小森 飛絢",  assistName: "ドゥドゥ",   teamSide: "away" },
+      { minute: 71, playerName: "植田 直通",  assistName: "樋口 雄太（CK）", teamSide: "home" },
+    ],
+    cards: [
+      { minute: 55, playerName: "チャン・ミンギュ", teamSide: "away", type: "yellow" },
+      { minute: 88, playerName: "三竿 健斗",        teamSide: "home", type: "yellow" },
+    ],
+    stats: {
+      possession:    [54, 46],
+      shots:         [14, 7],
+      shotsOnTarget: [5, 3],
+      corners:       [6, 2],
+      fouls:         [9, 13],
+      yellowCards:   [1, 1],
+      passes:        [498, 341],
+      passAccuracy:  [86, 78],
+    },
+    timeline: [
+      { minute:  1, type: "note", teamSide: "neutral", text: "鹿島KO。序盤から高プレッシングで千葉を押し込む。" },
+      { minute: 28, type: "goal", teamSide: "home",    text: "エレケが鈴木優磨のスルーパスに抜け出し先制。" },
+      { minute: 41, type: "goal", teamSide: "away",    text: "千葉がカウンター。ドゥドゥ→小森で同点。" },
+      { minute: 45, type: "end",  teamSide: "neutral", text: "前半終了 1-1" },
+      { minute: 46, type: "note", teamSide: "neutral", text: "後半開始。鹿島が攻勢を強める。" },
+      { minute: 55, type: "card", teamSide: "away",    text: "チャン・ミンギュにイエローカード。" },
+      { minute: 56, type: "sub",  teamSide: "away",    text: "千葉: 末吉OUT → 椿IN" },
+      { minute: 59, type: "sub",  teamSide: "home",    text: "鹿島: 知念OUT → 仲間IN" },
+      { minute: 68, type: "sub",  teamSide: "away",    text: "千葉: 風間OUT → 横山IN" },
+      { minute: 71, type: "goal", teamSide: "home",    text: "CKから植田直通がヘッドで勝ち越し！" },
+      { minute: 72, type: "sub",  teamSide: "home",    text: "鹿島: エレケOUT → 名古IN" },
+      { minute: 80, type: "sub",  teamSide: "home",    text: "鹿島: 佐野OUT → 松村IN" },
+      { minute: 82, type: "sub",  teamSide: "away",    text: "千葉: 田口OUT → 熊谷IN" },
+      { minute: 88, type: "card", teamSide: "home",    text: "三竿 健斗にイエローカード。" },
+      { minute: 93, type: "end",  teamSide: "neutral", text: "試合終了。鹿島 2-1 千葉。" },
+    ],
+  },
+];
+
+export function getMatchDetail(matchId: string): JMatchDetail | undefined {
+  return jMatchDetails.find((d) => d.matchId === matchId);
+}
 
 export const jMatches: JMatchSimple[] = [
 
