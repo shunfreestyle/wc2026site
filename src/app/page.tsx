@@ -1,15 +1,11 @@
 import Link from "next/link";
 import { teams, getGroups, getTeamsByGroup } from "@/data/teams";
 import { matches } from "@/data/matches";
-import TeamCard from "@/components/TeamCard";
 import MatchCard from "@/components/MatchCard";
 import Countdown from "@/components/Countdown";
 
 export default function Home() {
   const groups = getGroups();
-  const featuredTeams = teams.filter((t) =>
-    ["japan", "usa", "brazil", "argentina", "france", "spain", "germany", "england"].includes(t.id)
-  );
   const upcomingMatches = matches.slice(0, 4);
 
   return (
@@ -89,35 +85,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Teams */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">注目チーム</h2>
-            <p className="text-gray-500 mt-1">優勝候補と注目国をピックアップ</p>
-          </div>
-          <Link
-            href="/teams"
-            className="text-sm font-medium text-[#E8192C] hover:underline hidden sm:block"
-          >
-            全チームを見る →
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {featuredTeams.map((team) => (
-            <TeamCard key={team.id} team={team} />
-          ))}
-        </div>
-        <div className="mt-6 text-center sm:hidden">
-          <Link
-            href="/teams"
-            className="text-sm font-medium text-[#E8192C] hover:underline"
-          >
-            全チームを見る →
-          </Link>
-        </div>
-      </section>
-
       {/* Group Overview */}
       <section className="bg-white py-16 mb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -141,11 +108,11 @@ export default function Home() {
                       <Link
                         key={team.id}
                         href={`/teams/${team.id}`}
-                        className="flex items-center gap-3 hover:bg-gray-50 -mx-2 px-2 py-1 rounded-lg transition-colors"
+                        className="flex items-center gap-3 hover:bg-gray-50 -mx-2 px-2 py-1 rounded-lg transition-colors group"
                       >
                         <span className="text-xl">{team.flag}</span>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-gray-900 truncate">
+                          <p className="text-sm font-medium text-gray-900 group-hover:text-[#E8192C] transition-colors truncate">
                             {team.nameJa}
                           </p>
                         </div>

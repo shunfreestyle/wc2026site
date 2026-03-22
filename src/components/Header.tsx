@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const navLinks = [
   { href: "/", label: "ホーム" },
-  { href: "/teams", label: "出場チーム" },
   { href: "/matches", label: "試合日程" },
   { href: "/japan", label: "🇯🇵 日本代表" },
   { href: "/japan/uniform", label: "ユニフォーム" },
