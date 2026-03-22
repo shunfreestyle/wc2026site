@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Player } from "@/data/teams";
 
 const positionConfig = {
@@ -10,10 +11,10 @@ const positionConfig = {
 type Size = "sm" | "md" | "lg";
 
 const sizeConfig = {
-  sm: { container: "w-8 h-8", text: "text-[10px]", ring: "ring-1" },
-  md: { container: "w-10 h-10", text: "text-xs", ring: "ring-2" },
-  lg: { container: "w-16 h-16", text: "text-base", ring: "ring-2" },
-};
+  sm: { px: 32, container: "w-8 h-8", text: "text-[10px]", ring: "ring-1" },
+  md: { px: 40, container: "w-10 h-10", text: "text-xs", ring: "ring-2" },
+  lg: { px: 64, container: "w-16 h-16", text: "text-base", ring: "ring-2" },
+} as const;
 
 export default function PlayerAvatar({
   player,
@@ -27,11 +28,14 @@ export default function PlayerAvatar({
 
   if (player.imageUrl) {
     return (
-      <div className={`${s.container} rounded-full overflow-hidden ring ${s.ring} ${pos.ring} shrink-0`}>
-        <img
+      <div className={`${s.container} rounded-full overflow-hidden ring ${s.ring} ${pos.ring} shrink-0 relative`}>
+        <Image
           src={player.imageUrl}
           alt={player.nameJa}
-          className="w-full h-full object-cover"
+          fill
+          sizes={`${s.px}px`}
+          className="object-cover"
+          loading="lazy"
         />
       </div>
     );

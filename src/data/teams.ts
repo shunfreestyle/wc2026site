@@ -1423,8 +1423,30 @@ export const teams: Team[] = [
 ];
 
 // Helper functions
+
+// チームIDマップ（O(n)→O(1)）
+let _teamMap: Map<string, Team> | null = null;
+function getTeamMap(): Map<string, Team> {
+  if (!_teamMap) _teamMap = new Map(teams.map((t) => [t.id, t]));
+  return _teamMap;
+}
+
+// プレイヤーIDマップ（O(n×m)→O(1)）
+let _playerMap: Map<string, { player: Player; team: Team }> | null = null;
+function getPlayerMap(): Map<string, { player: Player; team: Team }> {
+  if (!_playerMap) {
+    _playerMap = new Map();
+    for (const team of teams) {
+      for (const player of team.players) {
+        _playerMap.set(player.id, { player, team });
+      }
+    }
+  }
+  return _playerMap;
+}
+
 export function getTeamById(id: string): Team | undefined {
-  return teams.find((t) => t.id === id);
+  return getTeamMap().get(id);
 }
 
 export function getTeamsByGroup(group: string): Team[] {
@@ -1436,13 +1458,9 @@ export function getGroups(): string[] {
 }
 
 export function getPlayerById(playerId: string): { player: Player; team: Team } | undefined {
-  for (const team of teams) {
-    const player = team.players.find((p) => p.id === playerId);
-    if (player) return { player, team };
-  }
-  return undefined;
+  return getPlayerMap().get(playerId);
 }
 
 export function getAllPlayers(): { player: Player; team: Team }[] {
-  return teams.flatMap((team) => team.players.map((player) => ({ player, team })));
+  return Array.from(getPlayerMap().values());
 }

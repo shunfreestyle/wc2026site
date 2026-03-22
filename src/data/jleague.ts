@@ -64,8 +64,8 @@ export type JMatchDetail = {
 
 export type JMatchSimple = {
   id: string;
-  league: "J1" | "J2" | "J3";
-  group: "EAST" | "WEST";
+  league: "J1" | "J2" | "J3" | "J2J3";
+  group: "EAST" | "WEST" | "EAST-A" | "EAST-B" | "WEST-A" | "WEST-B";
   round: number;
   date: string;
   kickoff: string;
@@ -82,7 +82,7 @@ export type JMatchSimple = {
 };
 
 export const JLEAGUE_SEASON = {
-  name: "明治安田J1百年構想リーグ",
+  name: "明治安田Jリーグ百年構想リーグ",
   year: 2026,
   officialUrl: "https://www.jleague.jp/special/2026specialseason/j1/",
 };
@@ -108,6 +108,50 @@ export const TEAM_INFO: Record<string, { shortName: string; color: string; emoji
   "福岡":    { shortName: "福岡",    color: "#003087", emoji: "🔵" },
   "清水":    { shortName: "清水",    color: "#F15A22", emoji: "🟠" },
   "長崎":    { shortName: "長崎",    color: "#003087", emoji: "🔵" },
+  // J2・J3 EAST-A
+  "仙台":    { shortName: "仙台",    color: "#003087", emoji: "🔵" },
+  "山形":    { shortName: "山形",    color: "#7B0D9E", emoji: "🟣" },
+  "秋田":    { shortName: "秋田",    color: "#E8192C", emoji: "🔴" },
+  "群馬":    { shortName: "群馬",    color: "#E8192C", emoji: "🔴" },
+  "相模原":  { shortName: "相模原",  color: "#003DA5", emoji: "🔵" },
+  "横浜FC":  { shortName: "横浜FC",  color: "#003087", emoji: "🔵" },
+  "栃木SC":  { shortName: "栃木SC",  color: "#003DA5", emoji: "🔵" },
+  "栃木C":   { shortName: "栃木C",   color: "#E8192C", emoji: "🔴" },
+  "湘南":    { shortName: "湘南",    color: "#0A8A3E", emoji: "🟢" },
+  "八戸":    { shortName: "八戸",    color: "#003087", emoji: "🔵" },
+  // J2・J3 EAST-B
+  "札幌":    { shortName: "札幌",    color: "#E8192C", emoji: "🔴" },
+  "大宮":    { shortName: "大宮",    color: "#FF6B00", emoji: "🟠" },
+  "磐田":    { shortName: "磐田",    color: "#009EE0", emoji: "🔵" },
+  "甲府":    { shortName: "甲府",    color: "#003087", emoji: "🔵" },
+  "藤枝":    { shortName: "藤枝",    color: "#003DA5", emoji: "🔵" },
+  "松本":    { shortName: "松本",    color: "#003087", emoji: "🔵" },
+  "長野":    { shortName: "長野",    color: "#003087", emoji: "🔵" },
+  "岐阜":    { shortName: "岐阜",    color: "#003087", emoji: "🔵" },
+  "いわき":  { shortName: "いわき",  color: "#E8192C", emoji: "🔴" },
+  "福島":    { shortName: "福島",    color: "#003087", emoji: "🔵" },
+  // J2・J3 WEST-A
+  "新潟":    { shortName: "新潟",    color: "#FF6B00", emoji: "🟠" },
+  "富山":    { shortName: "富山",    color: "#003087", emoji: "🔵" },
+  "金沢":    { shortName: "金沢",    color: "#003DA5", emoji: "🔵" },
+  "徳島":    { shortName: "徳島",    color: "#003087", emoji: "🔵" },
+  "讃岐":    { shortName: "讃岐",    color: "#003DA5", emoji: "🔵" },
+  "愛媛":    { shortName: "愛媛",    color: "#FF6B00", emoji: "🟠" },
+  "今治":    { shortName: "今治",    color: "#003DA5", emoji: "🔵" },
+  "高知":    { shortName: "高知",    color: "#E8192C", emoji: "🔴" },
+  "奈良":    { shortName: "奈良",    color: "#9B1B30", emoji: "🔴" },
+  "FC大阪":  { shortName: "FC大阪",  color: "#9B1B30", emoji: "🔴" },
+  // J2・J3 WEST-B
+  "宮崎":    { shortName: "宮崎",    color: "#003087", emoji: "🔵" },
+  "鹿児島":  { shortName: "鹿児島",  color: "#003DA5", emoji: "🔵" },
+  "熊本":    { shortName: "熊本",    color: "#003087", emoji: "🔵" },
+  "大分":    { shortName: "大分",    color: "#003DA5", emoji: "🔵" },
+  "北九州":  { shortName: "北九州",  color: "#003DA5", emoji: "🔵" },
+  "山口":    { shortName: "山口",    color: "#003DA5", emoji: "🔵" },
+  "琉球":    { shortName: "琉球",    color: "#003087", emoji: "🔵" },
+  "滋賀":    { shortName: "滋賀",    color: "#003087", emoji: "🔵" },
+  "鳥取":    { shortName: "鳥取",    color: "#E8192C", emoji: "🔴" },
+  "鳥栖":    { shortName: "鳥栖",    color: "#E8192C", emoji: "🔴" },
 };
 
 const NOTE = "出典: Jリーグ公式サイト（jleague.jp / data.j-league.or.jp）";
@@ -327,11 +371,136 @@ export const jMatches: JMatchSimple[] = [
   { id:"w-r8-shm-hir",   league:"J1", group:"WEST", round:8, date:"2026-03-22", kickoff:"13:00", homeTeam:"清水",   awayTeam:"広島",   homeScore:null, awayScore:null, status:"scheduled", stadium:"IAIスタジアム日本平",    referenceNote:NOTE },
   { id:"w-r8-kyt-nag",   league:"J1", group:"WEST", round:8, date:"2026-03-22", kickoff:"14:00", homeTeam:"京都",   awayTeam:"名古屋", homeScore:null, awayScore:null, status:"scheduled", stadium:"サンガスタジアム by KYOCERA", referenceNote:NOTE },
   { id:"w-r8-cos-kob",   league:"J1", group:"WEST", round:8, date:"2026-03-22", kickoff:"15:00", homeTeam:"C大阪",  awayTeam:"神戸",   homeScore:null, awayScore:null, status:"scheduled", stadium:"ヨドコウ桜スタジアム",   referenceNote:NOTE },
+
+  // ══════════════════════════════════════════
+  // J2・J3百年構想リーグ EAST-A
+  // ══════════════════════════════════════════
+  // ── EAST-A 第1節 ──
+  { id:"ea-r1-gmm-sgm",   league:"J2J3", group:"EAST-A", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"群馬",  awayTeam:"相模原", homeScore:2, awayScore:0, status:"finished", stadium:"正田醤油スタジアム群馬", referenceNote:NOTE },
+  { id:"ea-r1-tksc-hcht",  league:"J2J3", group:"EAST-A", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"栃木SC", awayTeam:"八戸",  homeScore:3, awayScore:2, status:"finished", stadium:"カンセキスタジアムとちぎ", referenceNote:NOTE },
+  { id:"ea-r1-tkvc-snd",   league:"J2J3", group:"EAST-A", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"栃木C", awayTeam:"仙台",   homeScore:1, awayScore:4, status:"finished", stadium:"栃木県グリーンスタジアム", referenceNote:NOTE },
+  { id:"ea-r1-ykfc-ymgt",  league:"J2J3", group:"EAST-A", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"横浜FC", awayTeam:"山形",   homeScore:1, awayScore:2, status:"finished", stadium:"ニッパツ三ツ沢球技場",    referenceNote:NOTE },
+  { id:"ea-r1-sho-aki",    league:"J2J3", group:"EAST-A", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"湘南",  awayTeam:"秋田",   homeScore:1, awayScore:2, status:"finished", stadium:"レモンガススタジアム平塚", referenceNote:NOTE },
+  // ── EAST-A 第2節 ──
+  { id:"ea-r2-gmm-hcht",   league:"J2J3", group:"EAST-A", round:2, date:"2026-02-14", kickoff:"14:00", homeTeam:"群馬",  awayTeam:"八戸",   homeScore:0, awayScore:1, status:"finished", stadium:"正田醤油スタジアム群馬", referenceNote:NOTE },
+  { id:"ea-r2-ykfc-snd",   league:"J2J3", group:"EAST-A", round:2, date:"2026-02-14", kickoff:"14:00", homeTeam:"横浜FC", awayTeam:"仙台",  homeScore:0, awayScore:1, status:"finished", stadium:"ニッパツ三ツ沢球技場",    referenceNote:NOTE },
+  { id:"ea-r2-sho-sgm",    league:"J2J3", group:"EAST-A", round:2, date:"2026-02-14", kickoff:"14:00", homeTeam:"湘南",  awayTeam:"相模原", homeScore:4, awayScore:0, status:"finished", stadium:"レモンガススタジアム平塚", referenceNote:NOTE },
+  { id:"ea-r2-tksc-ymgt",  league:"J2J3", group:"EAST-A", round:2, date:"2026-02-15", kickoff:"14:00", homeTeam:"栃木SC", awayTeam:"山形",  homeScore:1, awayScore:2, status:"finished", stadium:"カンセキスタジアムとちぎ", referenceNote:NOTE },
+  { id:"ea-r2-tkvc-aki",   league:"J2J3", group:"EAST-A", round:2, date:"2026-02-15", kickoff:"14:00", homeTeam:"栃木C", awayTeam:"秋田",   homeScore:0, awayScore:1, status:"finished", stadium:"栃木県グリーンスタジアム", referenceNote:NOTE },
+  // ── EAST-A 第3節 ──
+  { id:"ea-r3-gmm-ymgt",   league:"J2J3", group:"EAST-A", round:3, date:"2026-02-21", kickoff:"14:00", homeTeam:"群馬",  awayTeam:"山形",   homeScore:0, awayScore:2, status:"finished", stadium:"正田醤油スタジアム群馬", referenceNote:NOTE },
+  { id:"ea-r3-sho-hcht",   league:"J2J3", group:"EAST-A", round:3, date:"2026-02-21", kickoff:"14:00", homeTeam:"湘南",  awayTeam:"八戸",   homeScore:1, awayScore:0, status:"finished", stadium:"レモンガススタジアム平塚", referenceNote:NOTE },
+  { id:"ea-r3-sgm-aki",    league:"J2J3", group:"EAST-A", round:3, date:"2026-02-21", kickoff:"14:00", homeTeam:"相模原", awayTeam:"秋田",  homeScore:1, awayScore:2, status:"finished", stadium:"ギオンスタジアム",         referenceNote:NOTE },
+  { id:"ea-r3-tksc-snd",   league:"J2J3", group:"EAST-A", round:3, date:"2026-02-22", kickoff:"14:00", homeTeam:"栃木SC", awayTeam:"仙台",  homeScore:1, awayScore:2, status:"finished", stadium:"カンセキスタジアムとちぎ", referenceNote:NOTE },
+  { id:"ea-r3-ykfc-tkvc",  league:"J2J3", group:"EAST-A", round:3, date:"2026-02-22", kickoff:"14:00", homeTeam:"横浜FC", awayTeam:"栃木C", homeScore:5, awayScore:1, status:"finished", stadium:"ニッパツ三ツ沢球技場",    referenceNote:NOTE },
+  // ── EAST-A 第4節 ──
+  { id:"ea-r4-snd-ymgt",   league:"J2J3", group:"EAST-A", round:4, date:"2026-02-28", kickoff:"14:00", homeTeam:"仙台",  awayTeam:"山形",   homeScore:0, awayScore:0, pkHome:5, pkAway:4, status:"finished", stadium:"ユアテックスタジアム仙台", referenceNote:NOTE },
+  { id:"ea-r4-tkvc-sho",   league:"J2J3", group:"EAST-A", round:4, date:"2026-02-28", kickoff:"14:00", homeTeam:"栃木C", awayTeam:"湘南",   homeScore:1, awayScore:3, status:"finished", stadium:"栃木県グリーンスタジアム", referenceNote:NOTE },
+  { id:"ea-r4-gmm-aki",    league:"J2J3", group:"EAST-A", round:4, date:"2026-02-28", kickoff:"14:00", homeTeam:"群馬",  awayTeam:"秋田",   homeScore:3, awayScore:2, status:"finished", stadium:"正田醤油スタジアム群馬", referenceNote:NOTE },
+  { id:"ea-r4-tksc-ykfc",  league:"J2J3", group:"EAST-A", round:4, date:"2026-03-01", kickoff:"14:00", homeTeam:"栃木SC", awayTeam:"横浜FC", homeScore:4, awayScore:0, status:"finished", stadium:"カンセキスタジアムとちぎ", referenceNote:NOTE },
+  { id:"ea-r4-sgm-ymgt",   league:"J2J3", group:"EAST-A", round:4, date:"2026-03-01", kickoff:"14:00", homeTeam:"相模原", awayTeam:"山形",  homeScore:0, awayScore:3, status:"finished", stadium:"ギオンスタジアム",         referenceNote:NOTE },
+  // ── EAST-A 第7節 ──
+  { id:"ea-r7-gmm-sho",    league:"J2J3", group:"EAST-A", round:7, date:"2026-03-20", kickoff:"14:00", homeTeam:"群馬",  awayTeam:"湘南",   homeScore:0, awayScore:2, status:"finished", stadium:"正田醤油スタジアム群馬", referenceNote:NOTE },
+  { id:"ea-r7-aki-hcht",   league:"J2J3", group:"EAST-A", round:7, date:"2026-03-21", kickoff:"14:00", homeTeam:"秋田",  awayTeam:"八戸",   homeScore:null, awayScore:null, status:"finished", stadium:"ソユースタジアム",         referenceNote:NOTE },
+  { id:"ea-r7-sgm-ykfc",   league:"J2J3", group:"EAST-A", round:7, date:"2026-03-21", kickoff:"14:00", homeTeam:"相模原", awayTeam:"横浜FC", homeScore:2, awayScore:3, status:"finished", stadium:"ギオンスタジアム",         referenceNote:NOTE },
+  { id:"ea-r7-ymgt-snd",   league:"J2J3", group:"EAST-A", round:7, date:"2026-03-22", kickoff:"14:00", homeTeam:"山形",  awayTeam:"仙台",   homeScore:null, awayScore:null, status:"scheduled", stadium:"NDソフトスタジアム山形",   referenceNote:NOTE },
+  { id:"ea-r7-tksc-tkvc",  league:"J2J3", group:"EAST-A", round:7, date:"2026-03-22", kickoff:"14:00", homeTeam:"栃木SC", awayTeam:"栃木C", homeScore:null, awayScore:null, status:"scheduled", stadium:"カンセキスタジアムとちぎ", referenceNote:NOTE },
+
+  // ══════════════════════════════════════════
+  // J2・J3百年構想リーグ EAST-B
+  // ══════════════════════════════════════════
+  { id:"eb-r7-omy-jub",    league:"J2J3", group:"EAST-B", round:7, date:"2026-03-21", kickoff:"14:00", homeTeam:"大宮",  awayTeam:"磐田",   homeScore:4, awayScore:1, status:"finished", stadium:"NACK5スタジアム大宮",       referenceNote:NOTE },
+
+  // ══════════════════════════════════════════
+  // J2・J3百年構想リーグ WEST-A
+  // ══════════════════════════════════════════
+  // ── WEST-A 第1節 ──
+  { id:"wa-r1-nra-tks",    league:"J2J3", group:"WEST-A", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"奈良",  awayTeam:"徳島",   homeScore:0, awayScore:6, status:"finished", stadium:"ロートフィールド奈良",       referenceNote:NOTE },
+  { id:"wa-r1-ehm-nig",    league:"J2J3", group:"WEST-A", round:1, date:"2026-02-08", kickoff:"14:00", homeTeam:"愛媛",  awayTeam:"新潟",   homeScore:0, awayScore:1, status:"finished", stadium:"ニンジニアスタジアム",        referenceNote:NOTE },
+  { id:"wa-r1-fco-sns",    league:"J2J3", group:"WEST-A", round:1, date:"2026-02-08", kickoff:"14:00", homeTeam:"FC大阪", awayTeam:"讃岐",  homeScore:0, awayScore:1, status:"finished", stadium:"花園ラグビー場",             referenceNote:NOTE },
+  { id:"wa-r1-imi-knz",    league:"J2J3", group:"WEST-A", round:1, date:"2026-02-08", kickoff:"14:00", homeTeam:"今治",  awayTeam:"金沢",   homeScore:0, awayScore:0, pkHome:5, pkAway:3, status:"finished", stadium:"アシックス里山スタジアム",  referenceNote:NOTE },
+  { id:"wa-r1-kch-tym",    league:"J2J3", group:"WEST-A", round:1, date:"2026-02-08", kickoff:"14:00", homeTeam:"高知",  awayTeam:"富山",   homeScore:3, awayScore:1, status:"finished", stadium:"春野陸上競技場",             referenceNote:NOTE },
+  // ── WEST-A 第2節 ──
+  { id:"wa-r2-nra-imi",    league:"J2J3", group:"WEST-A", round:2, date:"2026-02-14", kickoff:"14:00", homeTeam:"奈良",  awayTeam:"今治",   homeScore:1, awayScore:0, status:"finished", stadium:"ロートフィールド奈良",       referenceNote:NOTE },
+  { id:"wa-r2-fco-kch",    league:"J2J3", group:"WEST-A", round:2, date:"2026-02-15", kickoff:"14:00", homeTeam:"FC大阪", awayTeam:"高知",  homeScore:2, awayScore:2, pkHome:5, pkAway:3, status:"finished", stadium:"花園ラグビー場",             referenceNote:NOTE },
+  { id:"wa-r2-sns-tym",    league:"J2J3", group:"WEST-A", round:2, date:"2026-02-15", kickoff:"14:00", homeTeam:"讃岐",  awayTeam:"富山",   homeScore:1, awayScore:5, status:"finished", stadium:"Pikaraスタジアム",           referenceNote:NOTE },
+  { id:"wa-r2-tks-nig",    league:"J2J3", group:"WEST-A", round:2, date:"2026-02-15", kickoff:"14:00", homeTeam:"徳島",  awayTeam:"新潟",   homeScore:0, awayScore:2, status:"finished", stadium:"鳴門・大塚スポーツパークポカリスエットスタジアム", referenceNote:NOTE },
+  { id:"wa-r2-ehm-knz",    league:"J2J3", group:"WEST-A", round:2, date:"2026-02-15", kickoff:"14:00", homeTeam:"愛媛",  awayTeam:"金沢",   homeScore:2, awayScore:2, pkHome:3, pkAway:4, status:"finished", stadium:"ニンジニアスタジアム",        referenceNote:NOTE },
+  // ── WEST-A 第3節 ──
+  { id:"wa-r3-nra-ehm",    league:"J2J3", group:"WEST-A", round:3, date:"2026-02-21", kickoff:"14:00", homeTeam:"奈良",  awayTeam:"愛媛",   homeScore:2, awayScore:2, pkHome:4, pkAway:5, status:"finished", stadium:"ロートフィールド奈良",       referenceNote:NOTE },
+  { id:"wa-r3-sns-nig",    league:"J2J3", group:"WEST-A", round:3, date:"2026-02-22", kickoff:"14:00", homeTeam:"讃岐",  awayTeam:"新潟",   homeScore:0, awayScore:3, status:"finished", stadium:"Pikaraスタジアム",           referenceNote:NOTE },
+  { id:"wa-r3-tks-tym",    league:"J2J3", group:"WEST-A", round:3, date:"2026-02-22", kickoff:"14:00", homeTeam:"徳島",  awayTeam:"富山",   homeScore:2, awayScore:0, status:"finished", stadium:"鳴門・大塚スポーツパークポカリスエットスタジアム", referenceNote:NOTE },
+  { id:"wa-r3-imi-fco",    league:"J2J3", group:"WEST-A", round:3, date:"2026-02-22", kickoff:"14:00", homeTeam:"今治",  awayTeam:"FC大阪", homeScore:2, awayScore:0, status:"finished", stadium:"アシックス里山スタジアム",  referenceNote:NOTE },
+  { id:"wa-r3-kch-knz",    league:"J2J3", group:"WEST-A", round:3, date:"2026-02-22", kickoff:"14:00", homeTeam:"高知",  awayTeam:"金沢",   homeScore:3, awayScore:2, status:"finished", stadium:"春野陸上競技場",             referenceNote:NOTE },
+  // ── WEST-A 第4節 ──
+  { id:"wa-r4-tym-fco",    league:"J2J3", group:"WEST-A", round:4, date:"2026-02-28", kickoff:"14:00", homeTeam:"富山",  awayTeam:"FC大阪", homeScore:0, awayScore:0, pkHome:10, pkAway:9, status:"finished", stadium:"富山県総合運動公園陸上競技場", referenceNote:NOTE },
+  { id:"wa-r4-ehm-tks",    league:"J2J3", group:"WEST-A", round:4, date:"2026-02-28", kickoff:"14:00", homeTeam:"愛媛",  awayTeam:"徳島",   homeScore:0, awayScore:1, status:"finished", stadium:"ニンジニアスタジアム",        referenceNote:NOTE },
+  { id:"wa-r4-knz-sns",    league:"J2J3", group:"WEST-A", round:4, date:"2026-03-01", kickoff:"14:00", homeTeam:"金沢",  awayTeam:"讃岐",   homeScore:1, awayScore:0, status:"finished", stadium:"石川県西部緑地公園陸上競技場", referenceNote:NOTE },
+  { id:"wa-r4-imi-nig",    league:"J2J3", group:"WEST-A", round:4, date:"2026-03-01", kickoff:"14:00", homeTeam:"今治",  awayTeam:"新潟",   homeScore:0, awayScore:2, status:"finished", stadium:"アシックス里山スタジアム",  referenceNote:NOTE },
+  { id:"wa-r4-kch-nra",    league:"J2J3", group:"WEST-A", round:4, date:"2026-03-01", kickoff:"14:00", homeTeam:"高知",  awayTeam:"奈良",   homeScore:2, awayScore:0, status:"finished", stadium:"春野陸上競技場",             referenceNote:NOTE },
+  // ── WEST-A 第5節 ──
+  { id:"wa-r5-fco-nra",    league:"J2J3", group:"WEST-A", round:5, date:"2026-03-06", kickoff:"19:00", homeTeam:"FC大阪", awayTeam:"奈良",  homeScore:2, awayScore:0, status:"finished", stadium:"花園ラグビー場",             referenceNote:NOTE },
+  { id:"wa-r5-nig-kch",    league:"J2J3", group:"WEST-A", round:5, date:"2026-03-07", kickoff:"14:00", homeTeam:"新潟",  awayTeam:"高知",   homeScore:2, awayScore:2, pkHome:3, pkAway:4, status:"finished", stadium:"デンカビッグスワンスタジアム", referenceNote:NOTE },
+  { id:"wa-r5-tym-ehm",    league:"J2J3", group:"WEST-A", round:5, date:"2026-03-08", kickoff:"14:00", homeTeam:"富山",  awayTeam:"愛媛",   homeScore:2, awayScore:2, pkHome:4, pkAway:3, status:"finished", stadium:"富山県総合運動公園陸上競技場", referenceNote:NOTE },
+  { id:"wa-r5-knz-tks",    league:"J2J3", group:"WEST-A", round:5, date:"2026-03-08", kickoff:"14:00", homeTeam:"金沢",  awayTeam:"徳島",   homeScore:0, awayScore:4, status:"finished", stadium:"石川県西部緑地公園陸上競技場", referenceNote:NOTE },
+  { id:"wa-r5-sns-imi",    league:"J2J3", group:"WEST-A", round:5, date:"2026-03-08", kickoff:"14:00", homeTeam:"讃岐",  awayTeam:"今治",   homeScore:1, awayScore:0, status:"finished", stadium:"Pikaraスタジアム",           referenceNote:NOTE },
+  // ── WEST-A 第7節 ──
+  { id:"wa-r7-nig-tym",    league:"J2J3", group:"WEST-A", round:7, date:"2026-03-20", kickoff:"14:00", homeTeam:"新潟",  awayTeam:"富山",   homeScore:2, awayScore:1, status:"finished", stadium:"デンカビッグスワンスタジアム", referenceNote:NOTE },
+  { id:"wa-r7-knz-fco",    league:"J2J3", group:"WEST-A", round:7, date:"2026-03-22", kickoff:"14:00", homeTeam:"金沢",  awayTeam:"FC大阪", homeScore:null, awayScore:null, status:"scheduled", stadium:"石川県西部緑地公園陸上競技場", referenceNote:NOTE },
+  { id:"wa-r7-sns-nra",    league:"J2J3", group:"WEST-A", round:7, date:"2026-03-22", kickoff:"14:00", homeTeam:"讃岐",  awayTeam:"奈良",   homeScore:null, awayScore:null, status:"scheduled", stadium:"Pikaraスタジアム",           referenceNote:NOTE },
+  { id:"wa-r7-ehm-kch",    league:"J2J3", group:"WEST-A", round:7, date:"2026-03-22", kickoff:"14:00", homeTeam:"愛媛",  awayTeam:"高知",   homeScore:null, awayScore:null, status:"scheduled", stadium:"ニンジニアスタジアム",        referenceNote:NOTE },
+  { id:"wa-r7-imi-tks",    league:"J2J3", group:"WEST-A", round:7, date:"2026-03-22", kickoff:"14:00", homeTeam:"今治",  awayTeam:"徳島",   homeScore:null, awayScore:null, status:"scheduled", stadium:"アシックス里山スタジアム",  referenceNote:NOTE },
+
+  // ══════════════════════════════════════════
+  // J2・J3百年構想リーグ WEST-B
+  // ══════════════════════════════════════════
+  // ── WEST-B 第1節 ──
+  { id:"wb-r1-kksh-ttr",   league:"J2J3", group:"WEST-B", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"北九州", awayTeam:"鳥取",  homeScore:1, awayScore:3, status:"finished", stadium:"ミクニワールドスタジアム北九州", referenceNote:NOTE },
+  { id:"wb-r1-kum-ygt",    league:"J2J3", group:"WEST-B", round:1, date:"2026-02-08", kickoff:"14:00", homeTeam:"熊本",  awayTeam:"山口",   homeScore:2, awayScore:1, status:"finished", stadium:"えがおスタジアム",            referenceNote:NOTE },
+  { id:"wb-r1-kgsh-myz",   league:"J2J3", group:"WEST-B", round:1, date:"2026-02-08", kickoff:"14:00", homeTeam:"鹿児島", awayTeam:"宮崎",  homeScore:2, awayScore:3, status:"finished", stadium:"白波スタジアム",              referenceNote:NOTE },
+  { id:"wb-r1-ryu-trs",    league:"J2J3", group:"WEST-B", round:1, date:"2026-02-08", kickoff:"14:00", homeTeam:"琉球",  awayTeam:"鳥栖",   homeScore:2, awayScore:2, pkHome:4, pkAway:3, status:"finished", stadium:"沖縄県総合運動公園陸上競技場", referenceNote:NOTE },
+  { id:"wb-r1-obs-shg",    league:"J2J3", group:"WEST-B", round:1, date:"2026-02-25", kickoff:"14:00", homeTeam:"大分",  awayTeam:"滋賀",   homeScore:2, awayScore:0, status:"finished", stadium:"OBSスタジアム大分",           referenceNote:NOTE },
+  // ── WEST-B 第2節 ──
+  { id:"wb-r2-ygt-shg",    league:"J2J3", group:"WEST-B", round:2, date:"2026-02-14", kickoff:"14:00", homeTeam:"山口",  awayTeam:"滋賀",   homeScore:2, awayScore:1, status:"finished", stadium:"みらスタ",                    referenceNote:NOTE },
+  { id:"wb-r2-trs-kum",    league:"J2J3", group:"WEST-B", round:2, date:"2026-02-15", kickoff:"14:00", homeTeam:"鳥栖",  awayTeam:"熊本",   homeScore:1, awayScore:1, pkHome:4, pkAway:3, status:"finished", stadium:"駅前不動産スタジアム",       referenceNote:NOTE },
+  { id:"wb-r2-obs-kksh",   league:"J2J3", group:"WEST-B", round:2, date:"2026-02-15", kickoff:"14:00", homeTeam:"大分",  awayTeam:"北九州", homeScore:2, awayScore:0, status:"finished", stadium:"OBSスタジアム大分",           referenceNote:NOTE },
+  { id:"wb-r2-myz-ttr",    league:"J2J3", group:"WEST-B", round:2, date:"2026-02-15", kickoff:"14:00", homeTeam:"宮崎",  awayTeam:"鳥取",   homeScore:3, awayScore:1, status:"finished", stadium:"いちごスタジアム宮崎",        referenceNote:NOTE },
+  { id:"wb-r2-kgsh-ryu",   league:"J2J3", group:"WEST-B", round:2, date:"2026-02-15", kickoff:"14:00", homeTeam:"鹿児島", awayTeam:"琉球",  homeScore:0, awayScore:1, status:"finished", stadium:"白波スタジアム",              referenceNote:NOTE },
+  // ── WEST-B 第3節 ──
+  { id:"wb-r3-myz-trs",    league:"J2J3", group:"WEST-B", round:3, date:"2026-02-21", kickoff:"14:00", homeTeam:"宮崎",  awayTeam:"鳥栖",   homeScore:2, awayScore:1, status:"finished", stadium:"いちごスタジアム宮崎",        referenceNote:NOTE },
+  { id:"wb-r3-ryu-shg",    league:"J2J3", group:"WEST-B", round:3, date:"2026-02-21", kickoff:"14:00", homeTeam:"琉球",  awayTeam:"滋賀",   homeScore:0, awayScore:0, pkHome:14, pkAway:13, status:"finished", stadium:"沖縄県総合運動公園陸上競技場", referenceNote:NOTE },
+  { id:"wb-r3-kum-kksh",   league:"J2J3", group:"WEST-B", round:3, date:"2026-02-22", kickoff:"14:00", homeTeam:"熊本",  awayTeam:"北九州", homeScore:4, awayScore:1, status:"finished", stadium:"えがおスタジアム",            referenceNote:NOTE },
+  { id:"wb-r3-obs-ttr",    league:"J2J3", group:"WEST-B", round:3, date:"2026-02-22", kickoff:"14:00", homeTeam:"大分",  awayTeam:"鳥取",   homeScore:0, awayScore:2, status:"finished", stadium:"OBSスタジアム大分",           referenceNote:NOTE },
+  { id:"wb-r3-kgsh-ygt",   league:"J2J3", group:"WEST-B", round:3, date:"2026-02-22", kickoff:"14:00", homeTeam:"鹿児島", awayTeam:"山口",  homeScore:1, awayScore:0, status:"finished", stadium:"白波スタジアム",              referenceNote:NOTE },
+  // ── WEST-B 第4節 ──
+  { id:"wb-r4-kksh-shg",   league:"J2J3", group:"WEST-B", round:4, date:"2026-02-28", kickoff:"14:00", homeTeam:"北九州", awayTeam:"滋賀",  homeScore:1, awayScore:2, status:"finished", stadium:"ミクニワールドスタジアム北九州", referenceNote:NOTE },
+  { id:"wb-r4-trs-kgsh",   league:"J2J3", group:"WEST-B", round:4, date:"2026-02-28", kickoff:"14:00", homeTeam:"鳥栖",  awayTeam:"鹿児島", homeScore:0, awayScore:1, status:"finished", stadium:"駅前不動産スタジアム",       referenceNote:NOTE },
+  { id:"wb-r4-ryu-myz",    league:"J2J3", group:"WEST-B", round:4, date:"2026-03-01", kickoff:"14:00", homeTeam:"琉球",  awayTeam:"宮崎",   homeScore:0, awayScore:2, status:"finished", stadium:"沖縄県総合運動公園陸上競技場", referenceNote:NOTE },
+  { id:"wb-r4-ygt-ttr",    league:"J2J3", group:"WEST-B", round:4, date:"2026-03-01", kickoff:"14:00", homeTeam:"山口",  awayTeam:"鳥取",   homeScore:0, awayScore:0, pkHome:3, pkAway:5, status:"finished", stadium:"みらスタ",                    referenceNote:NOTE },
+  { id:"wb-r4-kum-obs",    league:"J2J3", group:"WEST-B", round:4, date:"2026-03-01", kickoff:"14:00", homeTeam:"熊本",  awayTeam:"大分",   homeScore:3, awayScore:1, status:"finished", stadium:"えがおスタジアム",            referenceNote:NOTE },
+  // ── WEST-B 第5節 ──
+  { id:"wb-r5-ygt-trs",    league:"J2J3", group:"WEST-B", round:5, date:"2026-03-07", kickoff:"14:00", homeTeam:"山口",  awayTeam:"鳥栖",   homeScore:2, awayScore:0, status:"finished", stadium:"みらスタ",                    referenceNote:NOTE },
+  { id:"wb-r5-kksh-myz",   league:"J2J3", group:"WEST-B", round:5, date:"2026-03-07", kickoff:"14:00", homeTeam:"北九州", awayTeam:"宮崎",  homeScore:0, awayScore:2, status:"finished", stadium:"ミクニワールドスタジアム北九州", referenceNote:NOTE },
+  { id:"wb-r5-shg-kum",    league:"J2J3", group:"WEST-B", round:5, date:"2026-03-08", kickoff:"14:00", homeTeam:"滋賀",  awayTeam:"熊本",   homeScore:1, awayScore:0, status:"finished", stadium:"ハトスタ",                    referenceNote:NOTE },
+  { id:"wb-r5-ttr-ryu",    league:"J2J3", group:"WEST-B", round:5, date:"2026-03-08", kickoff:"14:00", homeTeam:"鳥取",  awayTeam:"琉球",   homeScore:0, awayScore:0, pkHome:7, pkAway:6, status:"finished", stadium:"Axis Bird Stadium",          referenceNote:NOTE },
+  { id:"wb-r5-obs-kgsh",   league:"J2J3", group:"WEST-B", round:5, date:"2026-03-08", kickoff:"14:00", homeTeam:"大分",  awayTeam:"鹿児島", homeScore:0, awayScore:0, pkHome:5, pkAway:4, status:"finished", stadium:"OBSスタジアム大分",           referenceNote:NOTE },
+  // ── WEST-B 第6節 ──
+  { id:"wb-r6-trs-kksh",   league:"J2J3", group:"WEST-B", round:6, date:"2026-03-14", kickoff:"14:00", homeTeam:"鳥栖",  awayTeam:"北九州", homeScore:2, awayScore:1, status:"finished", stadium:"駅前不動産スタジアム",       referenceNote:NOTE },
+  { id:"wb-r6-myz-obs",    league:"J2J3", group:"WEST-B", round:6, date:"2026-03-14", kickoff:"14:00", homeTeam:"宮崎",  awayTeam:"大分",   homeScore:1, awayScore:0, status:"finished", stadium:"いちごスタジアム宮崎",        referenceNote:NOTE },
+  { id:"wb-r6-ryu-ygt",    league:"J2J3", group:"WEST-B", round:6, date:"2026-03-14", kickoff:"14:00", homeTeam:"琉球",  awayTeam:"山口",   homeScore:1, awayScore:1, pkHome:4, pkAway:5, status:"finished", stadium:"沖縄県総合運動公園陸上競技場", referenceNote:NOTE },
+  { id:"wb-r6-kum-ttr",    league:"J2J3", group:"WEST-B", round:6, date:"2026-03-15", kickoff:"14:00", homeTeam:"熊本",  awayTeam:"鳥取",   homeScore:0, awayScore:1, status:"finished", stadium:"えがおスタジアム",            referenceNote:NOTE },
+  { id:"wb-r6-kgsh-shg",   league:"J2J3", group:"WEST-B", round:6, date:"2026-03-15", kickoff:"14:00", homeTeam:"鹿児島", awayTeam:"滋賀",  homeScore:1, awayScore:0, status:"finished", stadium:"白波スタジアム",              referenceNote:NOTE },
+  // ── WEST-B 第7節 ──
+  { id:"wb-r7-obs-ryu",    league:"J2J3", group:"WEST-B", round:7, date:"2026-03-21", kickoff:"14:00", homeTeam:"大分",  awayTeam:"琉球",   homeScore:2, awayScore:3, status:"finished", stadium:"OBSスタジアム大分",           referenceNote:NOTE },
+  { id:"wb-r7-myz-kum",    league:"J2J3", group:"WEST-B", round:7, date:"2026-03-21", kickoff:"14:00", homeTeam:"宮崎",  awayTeam:"熊本",   homeScore:1, awayScore:0, status:"finished", stadium:"いちごスタジアム宮崎",        referenceNote:NOTE },
+  { id:"wb-r7-ttr-kgsh",   league:"J2J3", group:"WEST-B", round:7, date:"2026-03-22", kickoff:"14:00", homeTeam:"鳥取",  awayTeam:"鹿児島", homeScore:null, awayScore:null, status:"scheduled", stadium:"Axis Bird Stadium",          referenceNote:NOTE },
+  { id:"wb-r7-ygt-kksh",   league:"J2J3", group:"WEST-B", round:7, date:"2026-03-22", kickoff:"14:00", homeTeam:"山口",  awayTeam:"北九州", homeScore:null, awayScore:null, status:"scheduled", stadium:"みらスタ",                    referenceNote:NOTE },
+  { id:"wb-r7-shg-trs",    league:"J2J3", group:"WEST-B", round:7, date:"2026-03-22", kickoff:"14:00", homeTeam:"滋賀",  awayTeam:"鳥栖",   homeScore:null, awayScore:null, status:"scheduled", stadium:"ハトスタ",                    referenceNote:NOTE },
 ];
 
 // ── ヘルパー関数 ──
 
-export function getMatchesByRound(round: number, group?: "EAST" | "WEST"): JMatchSimple[] {
+export function getMatchesByRound(round: number, group?: string): JMatchSimple[] {
   return jMatches.filter((m) => m.round === round && (group ? m.group === group : true));
 }
 

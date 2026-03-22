@@ -14,6 +14,66 @@ const LEVEL_LABELS: Record<number, { label: string; color: string }> = {
   5: { label: "Lv.5 超上級", color: "from-red-600 to-red-500" },
 };
 
+interface FeedbackPopupProps {
+  isCorrect: boolean;
+  correctAnswer: string;
+  explanation: string;
+  note?: string;
+  onNext: () => void;
+  nextLabel: string;
+}
+
+function FeedbackPopup({ isCorrect, correctAnswer, explanation, note, onNext, nextLabel }: FeedbackPopupProps) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center">
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+      <div
+        className={`relative w-full sm:max-w-lg rounded-t-3xl sm:rounded-2xl shadow-2xl overflow-hidden
+          ${isCorrect
+            ? "bg-gradient-to-br from-[#0a2e1a] to-[#0d3b22] border-t-4 sm:border-4 border-green-500"
+            : "bg-gradient-to-br from-[#2e0a0a] to-[#3b0d0d] border-t-4 sm:border-4 border-red-500"
+          }`}
+      >
+        <div className="flex justify-center pt-3 pb-1 sm:hidden">
+          <div className="w-10 h-1 rounded-full bg-white/20" />
+        </div>
+        <div className={`px-6 pt-4 pb-4 flex items-center gap-3 ${isCorrect ? "bg-green-500/10" : "bg-red-500/10"}`}>
+          <span className="text-4xl">{isCorrect ? "⭕" : "❌"}</span>
+          <div>
+            <p className={`text-xl font-extrabold ${isCorrect ? "text-green-300" : "text-red-300"}`}>
+              {isCorrect ? "正解！" : "不正解…"}
+            </p>
+            {!isCorrect && (
+              <p className="text-sm text-gray-300 mt-0.5">
+                正解は「<span className="font-bold text-green-300">{correctAnswer}</span>」でした
+              </p>
+            )}
+          </div>
+        </div>
+        <div className="px-6 py-4">
+          <p className="text-blue-400 text-sm font-bold mb-2">📖 解説</p>
+          <p className="text-sm sm:text-base text-gray-200 leading-relaxed">{explanation}</p>
+          {note && (
+            <p className="mt-3 text-xs text-yellow-400/80 bg-yellow-400/10 rounded-lg px-3 py-2">{note}</p>
+          )}
+        </div>
+        <div className="px-6 pb-8 sm:pb-6 pt-2">
+          <button
+            onClick={onNext}
+            className={`w-full py-4 rounded-2xl font-extrabold text-lg shadow-lg transition-all active:scale-95
+              ${isCorrect
+                ? "bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white"
+                : "bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white"
+              }`}
+          >
+            {nextLabel}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function JapanSquadQuizPage() {
   const [phase, setPhase] = useState<Phase>("start");
   const [selectedLevel, setSelectedLevel] = useState<number>(1);
@@ -21,7 +81,8 @@ export default function JapanSquadQuizPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
-  const [showPopup, setShowPopup] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [showAdPopup, setShowAdPopup] = useState(false);
 
   const current = questions[currentIndex];
   const total = questions.length;
@@ -37,6 +98,7 @@ export default function JapanSquadQuizPage() {
     setCurrentIndex(0);
     setScore(0);
     setSelected(null);
+    setShowFeedback(false);
     setPhase("playing");
   };
 
@@ -46,9 +108,11 @@ export default function JapanSquadQuizPage() {
     if (optionIndex === current.correct) {
       setScore((s) => s + 1);
     }
+    setTimeout(() => setShowFeedback(true), 350);
   };
 
   const handleNext = () => {
+    setShowFeedback(false);
     setSelected(null);
     if (currentIndex + 1 < total) {
       setCurrentIndex((i) => i + 1);
@@ -62,26 +126,24 @@ export default function JapanSquadQuizPage() {
     setCurrentIndex(0);
     setScore(0);
     setSelected(null);
+    setShowFeedback(false);
   };
 
-  // Popup after result
   useEffect(() => {
     if (phase !== "result") return;
     const timer = setTimeout(() => {
-      setShowPopup(true);
+      setShowAdPopup(true);
     }, 1000);
     return () => clearTimeout(timer);
   }, [phase]);
 
-  const closePopup = () => setShowPopup(false);
-
   const getResultMessage = useCallback(() => {
     const pct = score / total;
-    if (pct === 1) return "パーフェクト！代表マニア！";
-    if (pct >= 0.8) return "素晴らしい！かなりの知識です！";
-    if (pct >= 0.6) return "なかなか詳しいですね！";
-    if (pct >= 0.4) return "もう少し！復習してみよう！";
-    return "これから一緒に学んでいきましょう！";
+    if (pct === 1) return "パーフェクト！代表マニア！🏆";
+    if (pct >= 0.8) return "素晴らしい！かなりの知識です！🌟";
+    if (pct >= 0.6) return "なかなか詳しいですね！👏";
+    if (pct >= 0.4) return "もう少し！復習してみよう！💪";
+    return "これから一緒に学んでいきましょう！⚽";
   }, [score, total]);
 
   const levelInfo = LEVEL_LABELS[selectedLevel];
@@ -160,21 +222,22 @@ export default function JapanSquadQuizPage() {
                     {levelInfo.label}
                   </span>
                   <span>
-                    第{currentIndex + 1}問 / {total}問　スコア: {score}
+                    第{currentIndex + 1}問 / {total}問
+                    <span className="ml-3 text-blue-400">スコア: {score}</span>
                   </span>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-2">
                   <div
-                    className="bg-gradient-to-r from-blue-500 to-blue-400 h-2 rounded-full transition-all duration-300"
+                    className="bg-gradient-to-r from-blue-500 to-blue-400 h-2 rounded-full transition-all duration-500"
                     style={{
-                      width: `${((currentIndex + 1) / total) * 100}%`,
+                      width: `${((currentIndex) / total) * 100}%`,
                     }}
                   />
                 </div>
               </div>
 
               {/* Question */}
-              <div className="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 sm:p-8 mb-6">
+              <div className="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 sm:p-8 mb-4">
                 <h2 className="text-lg sm:text-xl font-bold text-white mb-6">
                   Q{currentIndex + 1}. {current.question}
                 </h2>
@@ -186,7 +249,7 @@ export default function JapanSquadQuizPage() {
 
                     if (selected === null) {
                       btnClass +=
-                        "border-white/20 text-gray-200 hover:border-blue-400 hover:bg-blue-500/10 cursor-pointer";
+                        "border-white/20 text-gray-200 hover:border-blue-400 hover:bg-blue-500/10 cursor-pointer active:scale-[0.98]";
                     } else if (idx === current.correct) {
                       btnClass +=
                         "border-green-400 bg-green-500/20 text-green-300";
@@ -212,38 +275,12 @@ export default function JapanSquadQuizPage() {
                     );
                   })}
                 </div>
-
-                {/* Note */}
-                {selected !== null && current.note && (
-                  <p className="mt-4 text-yellow-400/80 text-sm">
-                    {current.note}
-                  </p>
-                )}
               </div>
 
-              {/* Feedback & Next */}
-              {selected !== null && (
-                <div className="text-center">
-                  <p
-                    className={`text-lg font-bold mb-4 ${
-                      selected === current.correct
-                        ? "text-green-400"
-                        : "text-red-400"
-                    }`}
-                  >
-                    {selected === current.correct
-                      ? "⭕ 正解！"
-                      : `❌ 不正解… 正解は「${current.options[current.correct]}」`}
-                  </p>
-                  <button
-                    onClick={handleNext}
-                    className="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-xl transition-all"
-                  >
-                    {currentIndex + 1 < total
-                      ? "次の問題へ →"
-                      : "結果を見る →"}
-                  </button>
-                </div>
+              {selected === null && (
+                <p className="text-center text-gray-600 text-xs">
+                  選択肢をタップして回答してください
+                </p>
               )}
             </div>
           )}
@@ -300,12 +337,24 @@ export default function JapanSquadQuizPage() {
         </div>
       </div>
 
-      {/* Popup */}
-      {showPopup && (
+      {/* Feedback Popup */}
+      {showFeedback && current && selected !== null && (
+        <FeedbackPopup
+          isCorrect={selected === current.correct}
+          correctAnswer={current.options[current.correct]}
+          explanation={current.explanation}
+          note={current.note}
+          onNext={handleNext}
+          nextLabel={currentIndex + 1 < total ? "次の問題へ →" : "結果を見る →"}
+        />
+      )}
+
+      {/* Ad Popup */}
+      {showAdPopup && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-[#1a1a2e] border border-white/20 rounded-2xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl">
             <button
-              onClick={closePopup}
+              onClick={() => setShowAdPopup(false)}
               className="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl leading-none"
               aria-label="閉じる"
             >
@@ -330,18 +379,6 @@ export default function JapanSquadQuizPage() {
                   className="rounded-lg max-h-48 object-contain"
                 />
               </a>
-              <a
-                href="https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fjz9680%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiI0MDB4NDAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://hbb.afl.rakuten.co.jp/hgb/521aa121.b7b3d243.521aa122.9bcc9825/?me_id=1268947&item_id=10234422&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2Fp96%2Fjz9680_l.jpg%3F_ex%3D400x400&s=400x400&t=pict"
-                  alt="日本代表ユニフォーム（長袖）"
-                  className="rounded-lg max-h-48 object-contain"
-                />
-              </a>
             </div>
             <div className="flex flex-col gap-3">
               <a
@@ -353,7 +390,7 @@ export default function JapanSquadQuizPage() {
                 楽天市場で見る →
               </a>
               <button
-                onClick={closePopup}
+                onClick={() => setShowAdPopup(false)}
                 className="text-gray-400 hover:text-gray-200 text-sm transition-colors"
               >
                 閉じる
