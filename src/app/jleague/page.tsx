@@ -19,7 +19,7 @@ export default function JLeaguePage() {
             2026 特別大会
           </p>
           <h1 className="text-2xl sm:text-3xl font-black">{JLEAGUE_SEASON.name}</h1>
-          <p className="text-blue-200/60 text-sm mt-1">地域リーグラウンド 第{latestRound}節まで終了</p>
+          <p className="text-blue-200/60 text-sm mt-1">地域リーグラウンド 第8節結果更新（2026/3/22）</p>
           <p className="text-white/25 text-[10px] mt-2">
             出典: Jリーグ公式サイト（jleague.jp）
             <a href={JLEAGUE_SEASON.officialUrl} target="_blank" rel="noopener noreferrer" className="ml-1 underline text-white/35 hover:text-white/50">

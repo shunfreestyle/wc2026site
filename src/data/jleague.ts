@@ -110,8 +110,8 @@ export const jMatches: JMatchSimple[] = [
 
   // ── 第8節（3/22 本日開催） ──
   { id:"e-r8-tkv-fct",   league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"14:00", homeTeam:"東京V",  awayTeam:"FC東京", homeScore:0, awayScore:0, pkWinner:"home", status:"finished", stadium:"味の素スタジアム",     referenceNote:NOTE },
-  { id:"e-r8-kas-chib",  league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"15:00", homeTeam:"鹿島",   awayTeam:"千葉",   homeScore:3, awayScore:0, status:"finished", stadium:"カシマサッカースタジアム", referenceNote:NOTE },
-  { id:"e-r8-kaw-ymfm",  league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"15:00", homeTeam:"川崎F",  awayTeam:"横浜FM", homeScore:1, awayScore:0, status:"finished", stadium:"MUFGスタジアム(国立)", referenceNote:NOTE },
+  { id:"e-r8-kas-chib",  league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"15:00", homeTeam:"鹿島",   awayTeam:"千葉",   homeScore:2, awayScore:1, status:"finished", stadium:"カシマサッカースタジアム", referenceNote:NOTE },
+  { id:"e-r8-kaw-ymfm",  league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"15:00", homeTeam:"川崎F",  awayTeam:"横浜FM", homeScore:0, awayScore:5, status:"finished", stadium:"MUFGスタジアム(国立)", referenceNote:NOTE },
   { id:"e-r8-urw-mchd",  league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"16:00", homeTeam:"浦和",   awayTeam:"町田",   homeScore:2, awayScore:1, status:"finished", stadium:"埼玉スタジアム2002",    referenceNote:NOTE },
   { id:"e-r8-kas2-mito", league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"16:00", homeTeam:"柏",     awayTeam:"水戸",   homeScore:1, awayScore:0, status:"finished", stadium:"三協フロンテア柏スタジアム", referenceNote:NOTE },
 
