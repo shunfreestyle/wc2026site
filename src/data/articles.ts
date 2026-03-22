@@ -26,21 +26,21 @@ export const articles: Article[] = [
 3月19日、日本サッカー協会（JFA）は2026年FIFAワールドカップ前最後の強化活動となるイギリス遠征の招集メンバー28名を発表した。
 
 <div class="highlight-box">
-  <div class="point-label">POINT 1</div>
-  <div class="point-title">冨安健洋、約1年9ヶ月ぶりの"待望の復帰"</div>
-  <div class="point-body">最大のサプライズは、<strong>冨安健洋</strong>（アヤックス）の代表復帰だ。2025年にアーセナルからアヤックスへ移籍し、コンスタントに出場機会を得てきた冨安が、2024年6月以来約1年9ヶ月ぶりにサムライブルーのユニフォームに袖を通す。森保一監督は「冨安の経験値と対人守備の強さは替えが利かない。W杯本番を見据えて、チームに組み込む時間を確保したかった」とコメント。</div>
+<span class="point-label">POINT 1</span>
+<span class="point-title">冨安健洋、約1年9ヶ月ぶりの"待望の復帰"</span>
+<p class="point-body">最大のサプライズは、<strong>冨安健洋</strong>（アヤックス）の代表復帰だ。2025年にアーセナルからアヤックスへ移籍し、コンスタントに出場機会を得てきた冨安が、2024年6月以来約1年9ヶ月ぶりにサムライブルーのユニフォームに袖を通す。森保一監督は「冨安の経験値と対人守備の強さは替えが利かない。W杯本番を見据えて、チームに組み込む時間を確保したかった」とコメント。</p>
 </div>
 
 <div class="highlight-box">
-  <div class="point-label">POINT 2</div>
-  <div class="point-title">塩貝健人、20歳での"サプライズ初招集"</div>
-  <div class="point-body">もう一つの話題が、ヴォルフスブルク所属の<strong>塩貝健人</strong>（20歳）の初招集だ。森保監督は「W杯に向けて、1%でも勝つ可能性を上げていくという意味で招集した。チャレンジして舞台を変えてステップアップしているところを評価した」と語った。W杯直前のこの時期に初招集された意味は重い。</div>
+<span class="point-label">POINT 2</span>
+<span class="point-title">塩貝健人、20歳での"サプライズ初招集"——森保監督が見た「チャレンジ精神」</span>
+<p class="point-body">もう一つの話題が、ヴォルフスブルク所属の<strong>塩貝健人</strong>（20歳）の初招集だ。森保監督は「W杯に向けて、1%でも勝つ可能性を上げていくという意味で招集した。チャレンジして舞台を変えてステップアップしているところを評価した」と語った。W杯直前のこの時期に初招集された意味は重い。</p>
 </div>
 
 <div class="highlight-box">
-  <div class="point-label">POINT 3</div>
-  <div class="point-title">伊藤洋輝もバイエルンから約1年ぶりに復帰</div>
-  <div class="point-body"><strong>伊藤洋輝</strong>（バイエルン・ミュンヘン）も復帰組。左利きのCBとしてブンデスリーガ王者で定位置を確保し、約1年3ヶ月ぶりの代表復帰となった。冨安とのCBコンビは、W杯本番での守備の柱となる可能性がある。</div>
+<span class="point-label">POINT 3</span>
+<span class="point-title">伊藤洋輝もバイエルンから約1年ぶりに復帰</span>
+<p class="point-body"><strong>伊藤洋輝</strong>（バイエルン・ミュンヘン）も復帰組。左利きのCBとしてブンデスリーガ王者で定位置を確保し、約1年3ヶ月ぶりの代表復帰となった。冨安とのCBコンビは、W杯本番での守備の柱となる可能性がある。</p>
 </div>
 
 ## 招集外の主力選手
