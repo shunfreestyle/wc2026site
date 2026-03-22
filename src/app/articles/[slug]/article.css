@@ -1,52 +1,31 @@
-/* ── ページ全体 */
 .article-page { max-width:740px; margin:0 auto; padding:2rem 1.5rem 4rem; }
 
-/* ── カテゴリバッジ */
 .category-badge { display:inline-block; font-size:11px; font-weight:600; letter-spacing:.06em; padding:3px 10px; border-radius:4px; margin-bottom:14px; color:#fff; }
 .badge-japan   { background:#003087; }
-.badge-jleague { background:#006630; }
-.badge-wcup    { background:#C8A951; }
+.badge-jleague { background:#E8192C; }
+.badge-wcup    { background:#B8860B; }
 .badge-kaigai  { background:#6B21A8; }
 .badge-column  { background:#555; }
 
-/* ── タイトル */
-.article-title { font-family:'Georgia','游明朝','Yu Mincho',serif; font-size:26px; font-weight:800; line-height:1.45; color:#111; margin-bottom:16px; }
+.article-title { font-family:'Georgia','游明朝','Yu Mincho',serif; font-size:28px; font-weight:800; line-height:1.45; color:#111; margin-bottom:16px; }
 
-/* ── メタ情報 */
 .article-meta { display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding-bottom:20px; margin-bottom:28px; border-bottom:0.5px solid #e0e0e0; }
 .article-meta .date { font-size:13px; color:#888; }
 .article-tag { font-size:12px; color:#555; background:#f4f4f4; border:0.5px solid #ddd; border-radius:20px; padding:3px 10px; }
 
-/* ── リード文 */
 .article-lead { font-family:'Georgia','游明朝','Yu Mincho',serif; font-size:17px; line-height:1.95; color:#222; background:#f0f4f8; border-left:4px solid #003087; border-radius:0 8px 8px 0; padding:1.25rem 1.5rem; margin-bottom:2.5rem; }
 
-/* ── セクション見出し */
 .article-h2 { font-family:'Georgia','游明朝','Yu Mincho',serif; font-size:21px; font-weight:700; color:#111; margin:2.5rem 0 1rem; padding-bottom:8px; border-bottom:2.5px solid #003087; }
 .article-h3 { font-family:'Georgia','游明朝','Yu Mincho',serif; font-size:17px; font-weight:700; color:#222; margin:1.8rem 0 .6rem; }
 
-/* ── 本文 */
-.article-body p { font-family:'Georgia','游明朝','Yu Mincho',serif; font-size:15px; line-height:1.9; color:#333; margin-bottom:1.25rem; }
+.article-body p { font-family:'Georgia','游明朝','Yu Mincho',serif; font-size:16px; line-height:2.0; color:#222; margin-bottom:1.3rem; }
 .article-body strong { color:#111; font-weight:700; }
 .article-body a { color:#003087; text-decoration:underline; text-underline-offset:3px; }
 .article-body ul, .article-body ol { margin:1rem 0; padding-left:1.5rem; }
-.article-body li { font-size:15px; line-height:1.85; color:#333; margin-bottom:0.4rem; }
+.article-body li { font-family:'Georgia','游明朝','Yu Mincho',serif; font-size:15px; line-height:1.85; color:#333; margin-bottom:0.4rem; }
+.article-body hr { border:none; border-top:0.5px solid #e0e0e0; margin:2rem 0; }
 
-/* ── ハイライトボックス */
-.highlight-box { background:#fafafa; border:0.5px solid #e0e0e0; border-radius:10px; padding:1.25rem 1.5rem; margin:1.25rem 0; }
-.highlight-box .point-label { font-size:11px; font-weight:700; color:#003087; letter-spacing:.1em; margin-bottom:5px; }
-.highlight-box .point-title { font-size:16px; font-weight:700; color:#111; margin-bottom:6px; }
-.highlight-box .point-body  { font-size:14px; line-height:1.85; color:#444; }
-
-/* ── 招集外リスト */
-.absent-list { margin:1rem 0; }
-.absent-item { display:flex; align-items:center; gap:12px; padding:11px 0; border-bottom:0.5px solid #e8e8e8; }
-.absent-item:last-child { border-bottom:none; }
-.absent-name { font-size:15px; font-weight:600; color:#111; min-width:110px; }
-.absent-club { font-size:13px; color:#777; }
-.absent-reason { margin-left:auto; font-size:12px; color:#c0392b; background:#fdf0f0; padding:2px 9px; border-radius:4px; white-space:nowrap; }
-
-/* ── スケジュール表 */
-.schedule-table { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:14px; border-radius:8px; overflow:hidden; }
+.schedule-table { width:100%; border-collapse:collapse; margin:1rem 0 2rem; font-size:14px; border-radius:8px; overflow:hidden; }
 .schedule-table thead tr { background:#003087; color:#fff; }
 .schedule-table thead th { padding:11px 16px; text-align:left; font-weight:600; font-size:13px; }
 .schedule-table tbody tr:nth-child(odd)  { background:#fff; }
@@ -54,25 +33,20 @@
 .schedule-table tbody td { padding:11px 16px; color:#222; border-bottom:0.5px solid #e8e8e8; vertical-align:middle; }
 .live-badge { display:inline-block; background:#E8192C; color:#fff; font-size:10px; font-weight:700; padding:2px 6px; border-radius:3px; margin-left:6px; vertical-align:middle; }
 
-/* ── プロフィール表 */
 .profile-table { width:100%; border-collapse:collapse; margin:1rem 0 2rem; font-size:14px; }
 .profile-table tr { border-bottom:0.5px solid #e8e8e8; }
 .profile-table td:first-child { width:120px; padding:10px 16px 10px 0; color:#888; font-size:13px; font-weight:600; vertical-align:top; }
-.profile-table td:last-child  { padding:10px 0; color:#222; font-weight:500; line-height:1.7; }
+.profile-table td:last-child  { padding:10px 0; color:#222; font-size:14px; line-height:1.7; }
 
-/* ── まとめカード */
 .summary-card { background:#f0f4f8; border:0.5px solid #d0dae8; border-radius:10px; padding:1.5rem; margin:2rem 0; }
 .summary-card .summary-label { font-size:11px; font-weight:700; letter-spacing:.1em; color:#003087; margin-bottom:10px; }
 .summary-card p { font-size:15px; line-height:1.9; color:#333; }
 
-/* ── 出典 */
 .article-source { font-size:12px; color:#aaa; margin-top:2rem; padding-top:1rem; border-top:0.5px solid #e8e8e8; }
 
-/* ── モバイル */
 @media (max-width:640px) {
   .article-title { font-size:22px; }
   .article-lead  { font-size:15px; }
   .article-h2    { font-size:18px; }
   .schedule-table thead th, .schedule-table tbody td { padding:9px 10px; font-size:13px; }
-  .absent-name   { min-width:80px; }
 }
