@@ -15,6 +15,12 @@ const categories = [
   { key: "scotland" as Category, flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", title: "スコットランドクイズ", sub: "対戦相手を知ろう 10問" },
 ];
 
+const RAKUTEN_BUY_URL =
+  "https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fkd3345-mn1%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9";
+
+const RAKUTEN_BANNER_HTML =
+  '<a href="https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fkd3345-mn1%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiI0MDB4NDAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;display:block;text-align:center;"><img src="https://hbb.afl.rakuten.co.jp/hgb/521aa121.b7b3d243.521aa122.9bcc9825/?me_id=1278256&item_id=10122368&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2F2024fw%2Fkd3345-mn1_d.jpg%3F_ex%3D400x400&s=400x400&t=picttext" border="0" style="margin:2px;max-height:180px;width:auto;object-fit:contain;border-radius:8px;" alt="日本代表ユニフォーム 半袖" title="日本代表ユニフォーム 半袖" /></a>';
+
 function getQuestions(category: Category | null, level: number | null): QuizQuestion[] {
   if (!category) return [];
   if (category === "japan") return QUIZ_JAPAN_SQUAD.filter((q) => q.level === (level ?? 1));
@@ -166,11 +172,6 @@ export default function QuizPage() {
   const categoryLabel = categories.find((c) => c.key === category);
   const shareText = `${categoryLabel?.title ?? "W杯クイズ"}${level ? `（Lv.${level}）` : ""}で${score}/${total}問正解！\n${getResultMessage()}\n\nあなたも挑戦してみよう！`;
   const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent("https://samurai-football.jp/quiz")}`;
-
-  const rakutenAffiliateUrl =
-    "https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fkd3345-mn1%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9";
-  const rakutenImageUrl =
-    "https://hbb.afl.rakuten.co.jp/hgb/521aa121.b7b3d243.521aa122.9bcc9825/?me_id=1278256&item_id=10122368&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fadidas%2Fcabinet%2F2024fw%2Fkd3345-mn1_d.jpg%3F_ex%3D400x400&s=400x400&t=pict";
 
   return (
     <>
@@ -360,17 +361,15 @@ export default function QuizPage() {
             </button>
             <h3 className="text-xl font-bold text-white mb-2 text-center">日本代表ユニフォームはもう手に入れた？</h3>
             <p className="text-gray-400 text-sm text-center mb-4">W杯本番着用モデルが楽天市場で購入できます！</p>
-            <div className="flex justify-center mb-4">
-              <a href={rakutenAffiliateUrl} target="_blank" rel="noopener noreferrer">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={rakutenImageUrl} alt="日本代表ユニフォーム" className="rounded-lg max-h-48 object-contain" />
-              </a>
-            </div>
+            <div
+              className="flex justify-center mb-4"
+              dangerouslySetInnerHTML={{ __html: RAKUTEN_BANNER_HTML }}
+            />
             <div className="text-center">
               <a
-                href={rakutenAffiliateUrl}
+                href={RAKUTEN_BUY_URL}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="nofollow sponsored noopener"
                 className="inline-block bg-[#BF0000] hover:bg-[#a00000] text-white font-bold py-3 px-8 rounded-xl transition-colors text-sm"
               >
                 楽天市場で見る →
