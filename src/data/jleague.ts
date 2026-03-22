@@ -60,6 +60,7 @@ export type JMatchDetail = {
   cards?: JCard[];
   stats?: JStats;
   timeline?: JTimelineEvent[];
+  matchReport?: string;
 };
 
 export type JMatchSimple = {
@@ -435,6 +436,24 @@ export const jMatchDetails: JMatchDetail[] = [
     goals: [
       { minute: 93, playerName: "山﨑凌吾", teamSide: "away" },
     ],
+    timeline: [
+      { minute: 46, type: "sub", teamSide: "home", text: "岡山: 河野孝汰OUT → 一美和成IN" },
+      { minute: 59, type: "sub", teamSide: "home", text: "岡山: 本山遥OUT → 松本昌也IN" },
+      { minute: 59, type: "sub", teamSide: "away", text: "長崎: ノーマン・キャンベルOUT → 山﨑凌吾IN" },
+      { minute: 68, type: "sub", teamSide: "home", text: "岡山: 江坂任OUT → ウェリック・ポポIN / ルカオOUT → 神谷優太IN" },
+      { minute: 69, type: "sub", teamSide: "away", text: "長崎: エドゥアルドOUT → 新井一耀IN / 米田隼也OUT → 翁長聖IN" },
+      { minute: 77, type: "sub", teamSide: "home", text: "岡山: 宮本英治OUT → 木村太哉IN" },
+      { minute: 83, type: "sub", teamSide: "away", text: "長崎: ビトゥカOUT → 山田陸IN / 松本天夢OUT → 長谷川元希IN" },
+      { minute: 93, type: "goal", teamSide: "away", text: "⚽ 山﨑凌吾（長崎）ロングスローの2次攻撃からヘッドがポストに当たりゴール" },
+      { minute: 93, type: "end", teamSide: "neutral", text: "試合終了。岡山 0-1 長崎。" },
+    ],
+    matchReport: `チケット完売のJFE晴れの国スタジアムに14,150人が集まったWEST第8節。ファジレッドに染まるスタンドの前で、長崎が土壇場の一撃で2試合ぶりの白星をつかんだ。
+
+中2日の過密日程で臨んだ岡山は、前節・C大阪戦から先発を4人変更。5試合ぶりに大森博が3バックの一角に名を連ね、右ウイングバックには本山遥が今大会初先発。前線はルカオの1トップに江坂任・河野孝汰の2シャドーが並んだ。対する長崎は、第6節から中3日ながら先発変更は1人のみ。山口蛍をアンカーに据えた3-4-2-1で安定した戦いを志向した。
+
+前半は両チームともに堅い守備を見せ、スコアレスで折り返し。後半に入ると岡山は一美和成、松本昌也と攻撃的なカードを次々に切るが、GK波多野豪の好セーブに阻まれる。長崎も59分に山﨑凌吾を投入し、勝負に出た。
+
+スコアが動かないまま迎えたアディショナルタイム3分、長崎がロングスローの2次攻撃を仕掛けると、80分に投入されていた山﨑凌吾が高い打点のバックヘッドで合わせると、ふわりと上がったボールはGKレナート・モーザーを越えて右ポストに当たりゴールイン。山﨑の今季初ゴールが劇的な決勝点となり、長崎がアウェーで価値ある白星を手にした。`,
   },
   // ── 第8節: 京都 vs 名古屋 ──
   {
