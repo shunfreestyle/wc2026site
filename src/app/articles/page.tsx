@@ -5,7 +5,7 @@ import { useState, useMemo } from "react";
 import { articles } from "@/data/articles";
 import type { Article } from "@/data/articles";
 
-const CATEGORIES = ["新着", "人気", "日本代表", "Jリーグ", "W杯", "海外組", "コラム"] as const;
+const CATEGORIES = ["新着", "人気", "日本代表", "Jリーグ", "W杯", "海外組", "コラム", "選手紹介"] as const;
 type Tab = (typeof CATEGORIES)[number];
 
 const categoryColors: Record<Article["category"], string> = {
@@ -14,6 +14,7 @@ const categoryColors: Record<Article["category"], string> = {
   "W杯": "bg-amber-100 text-amber-800",
   "海外組": "bg-purple-100 text-purple-800",
   "コラム": "bg-gray-100 text-gray-800",
+  "選手紹介": "bg-indigo-100 text-indigo-800",
 };
 
 export default function ArticlesPage() {

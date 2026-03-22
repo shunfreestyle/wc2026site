@@ -16,6 +16,7 @@ function getCategoryClass(category: string) {
     "W杯": "wcup",
     "海外組": "kaigai",
     "コラム": "column",
+    "選手紹介": "player",
   };
   return map[category] ?? "japan";
 }
