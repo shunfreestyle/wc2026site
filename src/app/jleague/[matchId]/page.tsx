@@ -2,11 +2,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import {
   jMatches,
+  jMatchDetails,
   getMatchById,
   getAllMatchIds,
   getScoreDisplay,
   getRecentForm,
-  getMatchDetail,
   TEAM_INFO,
   JLEAGUE_SEASON,
 } from "@/data/jleague";
@@ -207,7 +207,7 @@ export default async function JLeagueMatchDetailPage({
         ? `PK勝ち: ${match.pkWinner === "home" ? match.homeTeam : match.awayTeam}`
         : null;
 
-  const detail = getMatchDetail(matchId);
+  const detail = jMatchDetails.find(d => d.matchId === matchId);
 
   return (
     <div className="min-h-screen bg-[#F5F0E8]">
