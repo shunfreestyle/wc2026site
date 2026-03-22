@@ -83,8 +83,12 @@ export type JMatchSimple = {
 
 export const JLEAGUE_SEASON = {
   name: "明治安田Jリーグ百年構想リーグ",
+  nameJ1: "明治安田J1百年構想リーグ",
+  nameJ23: "明治安田J2・J3百年構想リーグ",
   year: 2026,
   officialUrl: "https://www.jleague.jp/special/2026specialseason/j1/",
+  officialUrlJ1: "https://www.jleague.jp/special/2026specialseason/j1/",
+  officialUrlJ23: "https://www.jleague.jp/special/2026specialseason/j2-j3/",
 };
 
 export const TEAM_INFO: Record<string, { shortName: string; color: string; emoji: string }> = {

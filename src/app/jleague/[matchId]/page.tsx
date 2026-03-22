@@ -28,8 +28,8 @@ export function generateMetadata({
     if (!match) return { title: "試合詳細 | Jリーグ" };
     const score = getScoreDisplay(match);
     return {
-      title: `${match.homeTeam} ${score} ${match.awayTeam} | ${JLEAGUE_SEASON.name}`,
-      description: `${JLEAGUE_SEASON.name} 第${match.round}節 ${match.date} ${match.stadium}`,
+      title: `${match.homeTeam} ${score} ${match.awayTeam} | ${match.league === "J1" ? JLEAGUE_SEASON.nameJ1 : JLEAGUE_SEASON.nameJ23}`,
+      description: `${match.league === "J1" ? JLEAGUE_SEASON.nameJ1 : JLEAGUE_SEASON.nameJ23} 第${match.round}節 ${match.date} ${match.stadium}`,
     };
   });
 }
@@ -231,7 +231,7 @@ export default async function JLeagueMatchDetailPage({
               ← 試合一覧
             </Link>
             <span className="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/20 font-bold">
-              {JLEAGUE_SEASON.name} 第{match.round}節
+              {match.league === "J1" ? JLEAGUE_SEASON.nameJ1 : JLEAGUE_SEASON.nameJ23} 第{match.round}節
             </span>
             <span className="text-xs px-2 py-1 rounded-full bg-white/10 font-bold">
               {match.group}
@@ -342,7 +342,7 @@ export default async function JLeagueMatchDetailPage({
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
                 <p className="text-[10px] text-gray-400 mb-0.5">大会</p>
-                <p className="font-bold text-gray-800">{JLEAGUE_SEASON.name}</p>
+                <p className="font-bold text-gray-800">{match.league === "J1" ? JLEAGUE_SEASON.nameJ1 : JLEAGUE_SEASON.nameJ23}</p>
               </div>
               <div>
                 <p className="text-[10px] text-gray-400 mb-0.5">節</p>

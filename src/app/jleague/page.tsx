@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { jMatches, JLEAGUE_SEASON, TEAM_INFO, getAllRounds, getScoreDisplay } from "@/data/jleague";
+import { jMatches, JLEAGUE_SEASON, TEAM_INFO, getScoreDisplay } from "@/data/jleague";
 import { useState } from "react";
 
 type Division = "J1" | "J2J3";
@@ -21,7 +21,8 @@ export default function JLeaguePage() {
     1
   );
   const today = "2026-03-22";
-  const title = division === "J1" ? "明治安田J1百年構想リーグ" : "明治安田J2・J3百年構想リーグ";
+  const title = division === "J1" ? JLEAGUE_SEASON.nameJ1 : JLEAGUE_SEASON.nameJ23;
+  const officialUrl = division === "J1" ? JLEAGUE_SEASON.officialUrlJ1 : JLEAGUE_SEASON.officialUrlJ23;
 
   const handleDivisionChange = (d: Division) => {
     setDivision(d);
@@ -40,7 +41,7 @@ export default function JLeaguePage() {
           <p className="text-blue-200/60 text-sm mt-1">地域リーグラウンド 第{latestRound}節まで終了</p>
           <p className="text-white/25 text-[10px] mt-2">
             出典: Jリーグ公式サイト（jleague.jp）
-            <a href={JLEAGUE_SEASON.officialUrl} target="_blank" rel="noopener noreferrer" className="ml-1 underline text-white/35 hover:text-white/50">
+            <a href={officialUrl} target="_blank" rel="noopener noreferrer" className="ml-1 underline text-white/35 hover:text-white/50">
               公式サイト →
             </a>
           </p>
