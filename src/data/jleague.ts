@@ -303,6 +303,42 @@ export const jMatchDetails: JMatchDetail[] = [
       ],
     },
     goals: [],
+    matchReport: `東京ダービーは90分間スコアレスのままPK戦へ。東京VのGK長沢祐弥が2本のPKストップを見せ、4-2で東京Vが勝点2を獲得した。FC東京は野澤零温が今季初先発、佐藤龍之介もスタメンに名を連ねたが、ゴールをこじ開けることはできなかった。`,
+  },
+  // ── 第8節: 川崎F vs 横浜FM ──
+  {
+    matchId: "e-r8-kaw-ymfm",
+    homeLineup: { formation: "不明", players: [] },
+    awayLineup: {
+      formation: "4-2-3-1",
+      players: [
+        { number: 19, name: "朴一圭",              position: "GK", isStarter: true },
+        { number: 13, name: "ジェイソン・キニョーネス", position: "DF", isStarter: true },
+        { number: 16, name: "加藤蓮",              position: "DF", isStarter: true },
+        { number: 22, name: "角田涼太朗",          position: "DF", isStarter: true },
+        { number: 25, name: "鈴木冬一",            position: "DF", isStarter: true },
+        { number: 6,  name: "渡辺皓太",            position: "MF", isStarter: true },
+        { number: 8,  name: "喜田拓也",            position: "MF", isStarter: true, isCaptain: true },
+        { number: 14, name: "植中朝日",            position: "MF", isStarter: true },
+        { number: 17, name: "井上健太",            position: "MF", isStarter: true },
+        { number: 37, name: "ジョルディ・クルークス", position: "MF", isStarter: true },
+        { number: 26, name: "ディーン・デイビッド", position: "FW", isStarter: true },
+        { number: 31, name: "木村凌也",            position: "GK", isStarter: false },
+        { number: 33, name: "諏訪間幸成",          position: "DF", isStarter: false },
+        { number: 20, name: "天野純",              position: "MF", isStarter: false, subIn: 45 },
+        { number: 28, name: "山根陸",              position: "MF", isStarter: false },
+        { number: 23, name: "宮市亮",              position: "FW", isStarter: false },
+        { number: 48, name: "谷村海那",            position: "FW", isStarter: false },
+      ],
+    },
+    goals: [
+      { minute: 30, playerName: "谷村海那", teamSide: "away" },
+      { minute: 53, playerName: "天野純", teamSide: "away" },
+      { minute: 62, playerName: "天野純", teamSide: "away" },
+      { minute: 75, playerName: "ディーン・デイビッド", teamSide: "away" },
+      { minute: 85, playerName: "植中朝日", teamSide: "away" },
+    ],
+    matchReport: `MUFG国立スタジアムで行われた今季唯一の神奈川ダービーは、横浜FMが5-0で圧勝する衝撃の展開となった。30分に谷村海那が先制すると、前半終了間際に遠野大弥が接触なしで右アキレス腱付近を負傷し担架退場。ハーフタイムに投入された天野純がゲームチェンジャーとなり、53分と62分に立て続けにゴール。75分にディーン・デイビッド、85分に植中朝日も決めて5-0。天野純は2ゴール1アシストの大活躍で、横浜FMが神奈川ダービーを完勝で飾った。`,
   },
   // ── 第8節: 浦和 vs 町田 ──
   {
@@ -348,7 +384,12 @@ export const jMatchDetails: JMatchDetail[] = [
         { number: 9,  name: "藤尾翔太",            position: "FW", isStarter: true },
       ],
     },
-    goals: [],
+    goals: [
+      { minute: 26, playerName: "望月ヘンリー海輝", teamSide: "away" },
+      { minute: 55, playerName: "マテウス・サヴィオ", teamSide: "home" },
+      { minute: 81, playerName: "相馬勇紀", teamSide: "away" },
+    ],
+    matchReport: `浦和ホームに首位・鹿島を追う2位の町田を迎えた上位直接対決。26分、町田は望月ヘンリー海輝が先制ゴールを決めてリードを奪う。後半55分に浦和はマテウス・サヴィオが同点弾を決めて追いつくが、81分に相馬勇紀が勝ち越し点を奪い町田が試合を決めた。浦和は2連敗となり、首位・鹿島との勝ち点差はさらに広がった。`,
   },
   // ── 第8節: 柏 vs 水戸 ──
   {
@@ -378,7 +419,12 @@ export const jMatchDetails: JMatchDetail[] = [
       ],
     },
     awayLineup: { formation: "不明", players: [] },
-    goals: [],
+    goals: [
+      { minute: 15, playerName: "中川敦瑛", teamSide: "home" },
+      { minute: 31, playerName: "OG", teamSide: "home" },
+      { minute: 83, playerName: "瀬川祐輔", teamSide: "home" },
+    ],
+    matchReport: `前節PK戦で浦和を下し最下位を脱出した柏が、水戸を3-0で完封した。15分に中川敦瑛が先制すると、31分にはOGで追加点。後半83分には途中出場の瀬川祐輔がダメ押しゴールを決め、完勝で連勝を果たした。`,
   },
   // ── 第8節: 岡山 vs 長崎 ──
   {
@@ -455,6 +501,22 @@ export const jMatchDetails: JMatchDetail[] = [
 
 スコアが動かないまま迎えたアディショナルタイム3分、長崎がロングスローの2次攻撃を仕掛けると、80分に投入されていた山﨑凌吾が高い打点のバックヘッドで合わせると、ふわりと上がったボールはGKレナート・モーザーを越えて右ポストに当たりゴールイン。山﨑の今季初ゴールが劇的な決勝点となり、長崎がアウェーで価値ある白星を手にした。`,
   },
+  // ── 第8節: 福岡 vs G大阪 ──
+  {
+    matchId: "w-r8-fuk-gam",
+    homeLineup: { formation: "不明", players: [] },
+    awayLineup: { formation: "不明", players: [] },
+    goals: [],
+    matchReport: `福岡とG大阪の一戦は2-2のまま90分で決着がつかずPK戦へ。両チームが延々とPKを決め続ける異例の展開となり、14-13で福岡がようやく勝点2を獲得した。`,
+  },
+  // ── 第8節: 清水 vs 広島 ──
+  {
+    matchId: "w-r8-shm-hir",
+    homeLineup: { formation: "不明", players: [] },
+    awayLineup: { formation: "不明", players: [] },
+    goals: [],
+    matchReport: `清水がホームで広島を3-1で下した。若き指揮官バルトシュ・ガウル監督が就任後も勝ち星を重ねている清水が上位をキープする一方、広島はボール奪取ラインの低さが課題として浮き彫りになった。`,
+  },
   // ── 第8節: 京都 vs 名古屋 ──
   {
     matchId: "w-r8-kyt-nag",
@@ -464,6 +526,7 @@ export const jMatchDetails: JMatchDetail[] = [
       { minute: 19, playerName: "甲田英將", teamSide: "away" },
       { minute: 77, playerName: "マルコ・トゥーリオ", teamSide: "home" },
     ],
+    matchReport: `勝ち点で並ぶ京都と名古屋の直接対決。19分に名古屋の甲田英將が先制したが、77分にマルコ・トゥーリオが同点弾を決めて試合はPK戦へ。5-4で京都が勝点2を獲得し、ホームで意地を見せた。`,
   },
   // ── 第8節: C大阪 vs 神戸 ──
   {
@@ -520,6 +583,7 @@ export const jMatchDetails: JMatchDetail[] = [
       { minute: 12, playerName: "井上黎生人", assistName: "柴山昌也", teamSide: "home" },
       { minute: 67, playerName: "日高光揮", teamSide: "away" },
     ],
+    matchReport: `C大阪がホームで神戸を迎えた関西ダービー。12分、柴山昌也のCKから井上黎生人がニアで合わせてC大阪が先制。しかし67分、後半から投入された日高光揮が左足の強烈なシュートで同点に追いつく。PK戦は両チーム5人が全員成功した後、6人目で神戸の濱崎健斗がクロスバーに当て失敗。C大阪が勝点2を獲得した。`,
   },
 ];
 
