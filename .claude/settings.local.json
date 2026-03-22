@@ -48,7 +48,8 @@
       "Bash(cd:*)",
       "Bash(grep -c '\"\"question\"\":' src/data/quiz.ts)",
       "Bash(vercel logs:*)",
-      "Bash(vercel inspect:*)"
+      "Bash(vercel inspect:*)",
+      "Bash(sudo chown:*)"
     ]
   }
 }
