@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function JLeaguePage() {
   const [group, setGroup] = useState<"EAST" | "WEST">("EAST");
-  const rounds = getAllRounds();
+  const rounds = getAllRounds().reverse();
   const latestRound = Math.max(...jMatches.filter((m) => m.status === "finished").map((m) => m.round), 1);
   const filtered = jMatches.filter((m) => m.group === group);
   const today = "2026-03-22";

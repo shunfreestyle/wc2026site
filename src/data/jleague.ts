@@ -16,6 +16,7 @@ export type JMatchSimple = {
   awayScore: number | null;
   pkHome?: number;
   pkAway?: number;
+  pkWinner?: "home" | "away";
   status: "scheduled" | "live" | "finished";
   stadium: string;
   referenceNote: string;
@@ -108,11 +109,11 @@ export const jMatches: JMatchSimple[] = [
   { id:"e-r7-mchd-kas",  league:"J1", group:"EAST", round:7, date:"2026-03-18", kickoff:"19:30", homeTeam:"町田",   awayTeam:"鹿島",   homeScore:0,    awayScore:3,    status:"finished", stadium:"MUFGスタジアム(国立)", referenceNote:NOTE },
 
   // ── 第8節（3/22 本日開催） ──
-  { id:"e-r8-tkv-fct",   league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"14:00", homeTeam:"東京V",  awayTeam:"FC東京", homeScore:null, awayScore:null, status:"scheduled", stadium:"味の素スタジアム",     referenceNote:NOTE },
-  { id:"e-r8-kas-chib",  league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"15:00", homeTeam:"鹿島",   awayTeam:"千葉",   homeScore:null, awayScore:null, status:"scheduled", stadium:"カシマサッカースタジアム", referenceNote:NOTE },
-  { id:"e-r8-kaw-ymfm",  league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"15:00", homeTeam:"川崎F",  awayTeam:"横浜FM", homeScore:null, awayScore:null, status:"scheduled", stadium:"MUFGスタジアム(国立)", referenceNote:NOTE },
-  { id:"e-r8-urw-mchd",  league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"16:00", homeTeam:"浦和",   awayTeam:"町田",   homeScore:null, awayScore:null, status:"scheduled", stadium:"埼玉スタジアム2002",    referenceNote:NOTE },
-  { id:"e-r8-kas2-mito", league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"16:00", homeTeam:"柏",     awayTeam:"水戸",   homeScore:null, awayScore:null, status:"scheduled", stadium:"三協フロンテア柏スタジアム", referenceNote:NOTE },
+  { id:"e-r8-tkv-fct",   league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"14:00", homeTeam:"東京V",  awayTeam:"FC東京", homeScore:0, awayScore:0, pkWinner:"home", status:"finished", stadium:"味の素スタジアム",     referenceNote:NOTE },
+  { id:"e-r8-kas-chib",  league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"15:00", homeTeam:"鹿島",   awayTeam:"千葉",   homeScore:3, awayScore:0, status:"finished", stadium:"カシマサッカースタジアム", referenceNote:NOTE },
+  { id:"e-r8-kaw-ymfm",  league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"15:00", homeTeam:"川崎F",  awayTeam:"横浜FM", homeScore:1, awayScore:0, status:"finished", stadium:"MUFGスタジアム(国立)", referenceNote:NOTE },
+  { id:"e-r8-urw-mchd",  league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"16:00", homeTeam:"浦和",   awayTeam:"町田",   homeScore:2, awayScore:1, status:"finished", stadium:"埼玉スタジアム2002",    referenceNote:NOTE },
+  { id:"e-r8-kas2-mito", league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"16:00", homeTeam:"柏",     awayTeam:"水戸",   homeScore:1, awayScore:0, status:"finished", stadium:"三協フロンテア柏スタジアム", referenceNote:NOTE },
 
   // ══════════════════════════════════════════
   // WEST グループ
@@ -197,6 +198,9 @@ export function getScoreDisplay(m: JMatchSimple): string {
   let s = `${m.homeScore} - ${m.awayScore}`;
   if (m.pkHome !== undefined && m.pkAway !== undefined) {
     s += ` (PK${m.pkHome}-${m.pkAway})`;
+  } else if (m.pkWinner) {
+    const winner = m.pkWinner === "home" ? m.homeTeam : m.awayTeam;
+    s += ` (PK ${winner})`;
   }
   return s;
 }
