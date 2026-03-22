@@ -78,42 +78,42 @@ export const jMatches: JMatchSimple[] = [
   { id:"e-r3-ymfm-urw",  league:"J1", group:"EAST", round:3, date:"2026-02-21", kickoff:"14:00", homeTeam:"横浜FM", awayTeam:"浦和",   homeScore:0, awayScore:2, status:"finished", stadium:"日産スタジアム",       referenceNote:NOTE },
   { id:"e-r3-kaw-fct",   league:"J1", group:"EAST", round:3, date:"2026-02-21", kickoff:"15:00", homeTeam:"川崎F",  awayTeam:"FC東京", homeScore:1, awayScore:2, status:"finished", stadium:"Uvanceとどろきスタジアム", referenceNote:NOTE },
   { id:"e-r3-kas-kas2",  league:"J1", group:"EAST", round:3, date:"2026-02-22", kickoff:"14:00", homeTeam:"鹿島",   awayTeam:"柏",     homeScore:2, awayScore:0, status:"finished", stadium:"カシマサッカースタジアム", referenceNote:NOTE },
-  { id:"e-r3-mito-chib", league:"J1", group:"EAST", round:3, date:"2026-02-22", kickoff:"14:00", homeTeam:"水戸",   awayTeam:"千葉",   homeScore:null, awayScore:null, status:"finished", stadium:"ケーズデンキスタジアム水戸", referenceNote:NOTE },
+  { id:"e-r3-mito-chib", league:"J1", group:"EAST", round:3, date:"2026-02-22", kickoff:"14:00", homeTeam:"水戸",   awayTeam:"千葉",   homeScore:1, awayScore:0, status:"finished", stadium:"ケーズデンキスタジアム水戸", referenceNote:NOTE },
 
   // ── 第4節 ──
-  { id:"e-r4-mchd-chib", league:"J1", group:"EAST", round:4, date:"2026-02-27", kickoff:"19:00", homeTeam:"町田",   awayTeam:"千葉",   homeScore:null, awayScore:null, status:"finished", stadium:"町田GIONスタジアム",   referenceNote:NOTE },
-  { id:"e-r4-ymfm-tkv",  league:"J1", group:"EAST", round:4, date:"2026-02-28", kickoff:"13:00", homeTeam:"横浜FM", awayTeam:"東京V",  homeScore:null, awayScore:null, status:"finished", stadium:"日産スタジアム",       referenceNote:NOTE },
-  { id:"e-r4-urw-kaw",   league:"J1", group:"EAST", round:4, date:"2026-02-28", kickoff:"15:00", homeTeam:"浦和",   awayTeam:"川崎F",  homeScore:null, awayScore:null, status:"finished", stadium:"埼玉スタジアム2002",    referenceNote:NOTE },
-  { id:"e-r4-fct-kas2",  league:"J1", group:"EAST", round:4, date:"2026-02-28", kickoff:"15:00", homeTeam:"FC東京", awayTeam:"柏",     homeScore:null, awayScore:null, status:"finished", stadium:"味の素スタジアム",     referenceNote:NOTE },
-  { id:"e-r4-kaw-mito",  league:"J1", group:"EAST", round:4, date:"2026-03-01", kickoff:"16:00", homeTeam:"川崎F",  awayTeam:"水戸",   homeScore:null, awayScore:null, status:"finished", stadium:"Uvanceとどろきスタジアム", referenceNote:NOTE },
+  { id:"e-r4-mchd-chib", league:"J1", group:"EAST", round:4, date:"2026-02-27", kickoff:"19:00", homeTeam:"町田",   awayTeam:"千葉",   homeScore:2, awayScore:1, status:"finished", stadium:"町田GIONスタジアム",   referenceNote:NOTE },
+  { id:"e-r4-ymfm-tkv",  league:"J1", group:"EAST", round:4, date:"2026-02-28", kickoff:"13:00", homeTeam:"横浜FM", awayTeam:"東京V",  homeScore:3, awayScore:2, status:"finished", stadium:"日産スタジアム",       referenceNote:NOTE },
+  { id:"e-r4-urw-kaw",   league:"J1", group:"EAST", round:4, date:"2026-02-28", kickoff:"15:00", homeTeam:"浦和",   awayTeam:"川崎F",  homeScore:2, awayScore:3, status:"finished", stadium:"埼玉スタジアム2002",    referenceNote:NOTE },
+  { id:"e-r4-fct-kas2",  league:"J1", group:"EAST", round:4, date:"2026-02-28", kickoff:"15:00", homeTeam:"FC東京", awayTeam:"柏",     homeScore:0, awayScore:2, status:"finished", stadium:"味の素スタジアム",     referenceNote:NOTE },
+  { id:"e-r4-kaw-mito",  league:"J1", group:"EAST", round:4, date:"2026-03-01", kickoff:"16:00", homeTeam:"川崎F",  awayTeam:"水戸",   homeScore:2, awayScore:2, pkHome:4, pkAway:2, status:"finished", stadium:"Uvanceとどろきスタジアム", referenceNote:NOTE },
 
   // ── 第5節 ──
-  { id:"e-r5-chib-kas2", league:"J1", group:"EAST", round:5, date:"2026-03-07", kickoff:"13:00", homeTeam:"千葉",   awayTeam:"柏",     homeScore:null, awayScore:null, status:"finished", stadium:"フクダ電子アリーナ",   referenceNote:NOTE },
-  { id:"e-r5-fct-ymfm",  league:"J1", group:"EAST", round:5, date:"2026-03-07", kickoff:"14:00", homeTeam:"FC東京", awayTeam:"横浜FM", homeScore:null, awayScore:null, status:"finished", stadium:"味の素スタジアム",     referenceNote:NOTE },
-  { id:"e-r5-mchd-kaw",  league:"J1", group:"EAST", round:5, date:"2026-03-07", kickoff:"14:00", homeTeam:"町田",   awayTeam:"川崎F",  homeScore:null, awayScore:null, status:"finished", stadium:"町田GIONスタジアム",   referenceNote:NOTE },
-  { id:"e-r5-urw-mito",  league:"J1", group:"EAST", round:5, date:"2026-03-07", kickoff:"15:00", homeTeam:"浦和",   awayTeam:"水戸",   homeScore:null, awayScore:null, status:"finished", stadium:"埼玉スタジアム2002",    referenceNote:NOTE },
-  { id:"e-r5-kas-tkv",   league:"J1", group:"EAST", round:5, date:"2026-03-07", kickoff:"16:00", homeTeam:"鹿島",   awayTeam:"東京V",  homeScore:null, awayScore:null, status:"finished", stadium:"カシマサッカースタジアム", referenceNote:NOTE },
+  { id:"e-r5-chib-kas2", league:"J1", group:"EAST", round:5, date:"2026-03-07", kickoff:"13:00", homeTeam:"千葉",   awayTeam:"柏",     homeScore:2, awayScore:1, status:"finished", stadium:"フクダ電子アリーナ",   referenceNote:NOTE },
+  { id:"e-r5-fct-ymfm",  league:"J1", group:"EAST", round:5, date:"2026-03-07", kickoff:"14:00", homeTeam:"FC東京", awayTeam:"横浜FM", homeScore:3, awayScore:0, status:"finished", stadium:"味の素スタジアム",     referenceNote:NOTE },
+  { id:"e-r5-mchd-kaw",  league:"J1", group:"EAST", round:5, date:"2026-03-07", kickoff:"14:00", homeTeam:"町田",   awayTeam:"川崎F",  homeScore:1, awayScore:0, status:"finished", stadium:"町田GIONスタジアム",   referenceNote:NOTE },
+  { id:"e-r5-urw-mito",  league:"J1", group:"EAST", round:5, date:"2026-03-07", kickoff:"15:00", homeTeam:"浦和",   awayTeam:"水戸",   homeScore:3, awayScore:0, status:"finished", stadium:"埼玉スタジアム2002",    referenceNote:NOTE },
+  { id:"e-r5-kas-tkv",   league:"J1", group:"EAST", round:5, date:"2026-03-07", kickoff:"16:00", homeTeam:"鹿島",   awayTeam:"東京V",  homeScore:2, awayScore:0, status:"finished", stadium:"カシマサッカースタジアム", referenceNote:NOTE },
 
   // ── 第6節 ──
-  { id:"e-r6-ymfm-chib", league:"J1", group:"EAST", round:6, date:"2026-03-14", kickoff:"13:00", homeTeam:"横浜FM", awayTeam:"千葉",   homeScore:null, awayScore:null, status:"finished", stadium:"日産スタジアム",       referenceNote:NOTE },
-  { id:"e-r6-mito-fct",  league:"J1", group:"EAST", round:6, date:"2026-03-14", kickoff:"14:00", homeTeam:"水戸",   awayTeam:"FC東京", homeScore:null, awayScore:null, status:"finished", stadium:"ケーズデンキスタジアム水戸", referenceNote:NOTE },
-  { id:"e-r6-kas2-mchd", league:"J1", group:"EAST", round:6, date:"2026-03-14", kickoff:"14:00", homeTeam:"柏",     awayTeam:"町田",   homeScore:null, awayScore:null, status:"finished", stadium:"三協フロンテア柏スタジアム", referenceNote:NOTE },
-  { id:"e-r6-kas-kaw",   league:"J1", group:"EAST", round:6, date:"2026-03-14", kickoff:"15:00", homeTeam:"鹿島",   awayTeam:"川崎F",  homeScore:null, awayScore:null, status:"finished", stadium:"カシマサッカースタジアム", referenceNote:NOTE },
-  { id:"e-r6-tkv-urw",   league:"J1", group:"EAST", round:6, date:"2026-03-14", kickoff:"16:00", homeTeam:"東京V",  awayTeam:"浦和",   homeScore:null, awayScore:null, status:"finished", stadium:"MUFGスタジアム(国立)", referenceNote:NOTE },
+  { id:"e-r6-ymfm-chib", league:"J1", group:"EAST", round:6, date:"2026-03-14", kickoff:"13:00", homeTeam:"横浜FM", awayTeam:"千葉",   homeScore:2, awayScore:0, status:"finished", stadium:"日産スタジアム",       referenceNote:NOTE },
+  { id:"e-r6-mito-fct",  league:"J1", group:"EAST", round:6, date:"2026-03-14", kickoff:"14:00", homeTeam:"水戸",   awayTeam:"FC東京", homeScore:1, awayScore:1, pkHome:5, pkAway:6, status:"finished", stadium:"ケーズデンキスタジアム水戸", referenceNote:NOTE },
+  { id:"e-r6-kas2-mchd", league:"J1", group:"EAST", round:6, date:"2026-03-14", kickoff:"14:00", homeTeam:"柏",     awayTeam:"町田",   homeScore:0, awayScore:1, status:"finished", stadium:"三協フロンテア柏スタジアム", referenceNote:NOTE },
+  { id:"e-r6-kas-kaw",   league:"J1", group:"EAST", round:6, date:"2026-03-14", kickoff:"15:00", homeTeam:"鹿島",   awayTeam:"川崎F",  homeScore:1, awayScore:0, status:"finished", stadium:"カシマサッカースタジアム", referenceNote:NOTE },
+  { id:"e-r6-tkv-urw",   league:"J1", group:"EAST", round:6, date:"2026-03-14", kickoff:"16:00", homeTeam:"東京V",  awayTeam:"浦和",   homeScore:1, awayScore:0, status:"finished", stadium:"MUFGスタジアム(国立)", referenceNote:NOTE },
 
   // ── 第7節 ──
-  { id:"e-r7-mito-ymfm", league:"J1", group:"EAST", round:7, date:"2026-03-18", kickoff:"19:00", homeTeam:"水戸",   awayTeam:"横浜FM", homeScore:null, awayScore:null, status:"finished", stadium:"ケーズデンキスタジアム水戸", referenceNote:NOTE },
-  { id:"e-r7-chib-fct",  league:"J1", group:"EAST", round:7, date:"2026-03-18", kickoff:"19:00", homeTeam:"千葉",   awayTeam:"FC東京", homeScore:null, awayScore:null, status:"finished", stadium:"フクダ電子アリーナ",   referenceNote:NOTE },
+  { id:"e-r7-mito-ymfm", league:"J1", group:"EAST", round:7, date:"2026-03-18", kickoff:"19:00", homeTeam:"水戸",   awayTeam:"横浜FM", homeScore:0, awayScore:2, status:"finished", stadium:"ケーズデンキスタジアム水戸", referenceNote:NOTE },
+  { id:"e-r7-chib-fct",  league:"J1", group:"EAST", round:7, date:"2026-03-18", kickoff:"19:00", homeTeam:"千葉",   awayTeam:"FC東京", homeScore:1, awayScore:2, status:"finished", stadium:"フクダ電子アリーナ",   referenceNote:NOTE },
   { id:"e-r7-tkv-kaw",   league:"J1", group:"EAST", round:7, date:"2026-03-18", kickoff:"19:00", homeTeam:"東京V",  awayTeam:"川崎F",  homeScore:0,    awayScore:2,    status:"finished", stadium:"味の素スタジアム",     referenceNote:NOTE },
-  { id:"e-r7-urw-kas2",  league:"J1", group:"EAST", round:7, date:"2026-03-18", kickoff:"19:30", homeTeam:"浦和",   awayTeam:"柏",     homeScore:null, awayScore:null, status:"finished", stadium:"埼玉スタジアム2002",    referenceNote:NOTE },
+  { id:"e-r7-urw-kas2",  league:"J1", group:"EAST", round:7, date:"2026-03-18", kickoff:"19:30", homeTeam:"浦和",   awayTeam:"柏",     homeScore:1, awayScore:1, pkHome:2, pkAway:4, status:"finished", stadium:"埼玉スタジアム2002",    referenceNote:NOTE },
   { id:"e-r7-mchd-kas",  league:"J1", group:"EAST", round:7, date:"2026-03-18", kickoff:"19:30", homeTeam:"町田",   awayTeam:"鹿島",   homeScore:0,    awayScore:3,    status:"finished", stadium:"MUFGスタジアム(国立)", referenceNote:NOTE },
 
   // ── 第8節（3/22 本日開催） ──
-  { id:"e-r8-tkv-fct",   league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"14:00", homeTeam:"東京V",  awayTeam:"FC東京", homeScore:0, awayScore:0, pkWinner:"home", status:"finished", stadium:"味の素スタジアム",     referenceNote:NOTE },
+  { id:"e-r8-tkv-fct",   league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"14:00", homeTeam:"東京V",  awayTeam:"FC東京", homeScore:0, awayScore:0, pkHome:4, pkAway:2, status:"finished", stadium:"味の素スタジアム",     referenceNote:NOTE },
   { id:"e-r8-kas-chib",  league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"15:00", homeTeam:"鹿島",   awayTeam:"千葉",   homeScore:2, awayScore:1, status:"finished", stadium:"カシマサッカースタジアム", referenceNote:NOTE },
   { id:"e-r8-kaw-ymfm",  league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"15:00", homeTeam:"川崎F",  awayTeam:"横浜FM", homeScore:0, awayScore:5, status:"finished", stadium:"MUFGスタジアム(国立)", referenceNote:NOTE },
   { id:"e-r8-urw-mchd",  league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"16:00", homeTeam:"浦和",   awayTeam:"町田",   homeScore:2, awayScore:1, status:"finished", stadium:"埼玉スタジアム2002",    referenceNote:NOTE },
-  { id:"e-r8-kas2-mito", league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"16:00", homeTeam:"柏",     awayTeam:"水戸",   homeScore:1, awayScore:0, status:"finished", stadium:"三協フロンテア柏スタジアム", referenceNote:NOTE },
+  { id:"e-r8-kas2-mito", league:"J1", group:"EAST", round:8, date:"2026-03-22", kickoff:"16:00", homeTeam:"柏",     awayTeam:"水戸",   homeScore:3, awayScore:0, status:"finished", stadium:"三協フロンテア柏スタジアム", referenceNote:NOTE },
 
   // ══════════════════════════════════════════
   // WEST グループ
@@ -203,4 +203,62 @@ export function getScoreDisplay(m: JMatchSimple): string {
     s += ` (PK ${winner})`;
   }
   return s;
+}
+
+export function getMatchById(id: string): JMatchSimple | undefined {
+  return jMatches.find((m) => m.id === id);
+}
+
+export function getAllMatchIds(): string[] {
+  return jMatches.map((m) => m.id);
+}
+
+export type MatchResult = "W" | "L" | "D" | "PK+" | "PK-";
+
+export function getTeamResult(m: JMatchSimple, team: string): MatchResult | null {
+  if (m.status !== "finished" || m.homeScore === null || m.awayScore === null) return null;
+  const isHome = m.homeTeam === team;
+  const myScore = isHome ? m.homeScore : m.awayScore;
+  const oppScore = isHome ? m.awayScore : m.homeScore;
+  if (myScore > oppScore) return "W";
+  if (myScore < oppScore) return "L";
+  // Draw — check PK
+  if (m.pkHome !== undefined && m.pkAway !== undefined) {
+    const pkMy = isHome ? m.pkHome : m.pkAway;
+    const pkOpp = isHome ? m.pkAway : m.pkHome;
+    return pkMy > pkOpp ? "PK+" : "PK-";
+  }
+  if (m.pkWinner) {
+    return (m.pkWinner === "home") === isHome ? "PK+" : "PK-";
+  }
+  return "D";
+}
+
+export type RecentFormEntry = {
+  matchId: string;
+  result: MatchResult;
+  opponent: string;
+  score: string;
+  date: string;
+};
+
+export function getRecentForm(team: string, beforeMatchId: string, count: number = 5): RecentFormEntry[] {
+  const matchIndex = jMatches.findIndex((m) => m.id === beforeMatchId);
+  const teamMatches = jMatches
+    .filter((m, i) => {
+      if (i >= matchIndex && matchIndex >= 0) return false;
+      return (m.homeTeam === team || m.awayTeam === team) && m.status === "finished" && m.homeScore !== null && m.awayScore !== null;
+    })
+    .reverse(); // most recent first
+  return teamMatches.slice(0, count).map((m) => {
+    const isHome = m.homeTeam === team;
+    const opponent = isHome ? m.awayTeam : m.homeTeam;
+    return {
+      matchId: m.id,
+      result: getTeamResult(m, team)!,
+      opponent,
+      score: getScoreDisplay(m),
+      date: m.date,
+    };
+  });
 }

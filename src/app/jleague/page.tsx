@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { jMatches, JLEAGUE_SEASON, TEAM_INFO, getAllRounds, getScoreDisplay } from "@/data/jleague";
 import { useState } from "react";
 
@@ -76,7 +77,7 @@ export default function JLeaguePage() {
                   const isScheduled = m.status === "scheduled";
 
                   return (
-                    <div key={m.id} className="bg-white border border-gray-100 rounded-xl px-4 py-3 shadow-sm">
+                    <Link key={m.id} href={`/jleague/${m.id}`} className="block bg-white border border-gray-100 rounded-xl px-4 py-3 shadow-sm hover:shadow-md hover:border-gray-200 transition-all">
                       <div className="flex items-center gap-2">
                         <div className="text-[10px] text-gray-400 w-14 shrink-0 leading-tight">
                           <p>{m.date.slice(5).replace("-", "/")}</p>
@@ -103,7 +104,7 @@ export default function JLeaguePage() {
                         </div>
                       </div>
                       <p className="text-[10px] text-gray-400 mt-1 text-center">{m.stadium}</p>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>
