@@ -52,7 +52,8 @@
       "Bash(sudo chown:*)",
       "Bash(ls:*)",
       "Bash(python3:*)",
-      "Bash(xxd)"
+      "Bash(xxd)",
+      "Bash(curl -s https://fonts.google.com/metadata/fonts)"
     ]
   }
 }

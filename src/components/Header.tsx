@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import type { Locale } from "@/types/i18n";
 
@@ -9,11 +9,33 @@ const LANGS: { code: Locale; flag: string; label: string }[] = [
   { code: "ja", flag: "🇯🇵", label: "JA" },
   { code: "en", flag: "🇺🇸", label: "EN" },
   { code: "de", flag: "🇩🇪", label: "DE" },
+  { code: "fr", flag: "🇫🇷", label: "FR" },
+  { code: "es", flag: "🇪🇸", label: "ES" },
+  { code: "it", flag: "🇮🇹", label: "IT" },
+  { code: "pt", flag: "🇵🇹", label: "PT" },
+  { code: "nl", flag: "🇳🇱", label: "NL" },
+  { code: "pl", flag: "🇵🇱", label: "PL" },
+  { code: "ru", flag: "🇷🇺", label: "RU" },
+  { code: "tr", flag: "🇹🇷", label: "TR" },
 ];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
   const { locale, t, setLocale } = useLanguage();
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const currentLang = LANGS.find((l) => l.code === locale);
 
   const navLinks = [
     { href: "/", label: t.nav.home },
@@ -39,7 +61,7 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Desktop nav + lang switcher */}
+          {/* Desktop nav + lang dropdown */}
           <div className="hidden md:flex items-center">
             <nav className="flex items-center gap-1">
               {navLinks.map((link) => (
@@ -52,22 +74,31 @@ export default function Header() {
                 </Link>
               ))}
             </nav>
-            <div className="flex items-center gap-0.5 ml-3 border-l border-white/20 pl-3">
-              {LANGS.map(({ code, flag, label }) => (
-                <button
-                  key={code}
-                  onClick={() => setLocale(code)}
-                  className={`px-2 py-1 rounded text-xs font-bold transition-all ${
-                    locale === code
-                      ? "bg-white/20 text-white"
-                      : "text-white/50 hover:text-white hover:bg-white/10"
-                  }`}
-                  aria-label={`Switch to ${label}`}
-                >
-                  <span>{flag}</span>
-                  <span className="ml-0.5">{label}</span>
-                </button>
-              ))}
+            <div ref={langRef} className="relative ml-3 border-l border-white/20 pl-3">
+              <button
+                onClick={() => setLangOpen((v) => !v)}
+                className="flex items-center gap-1 px-2 py-1 rounded text-xs font-bold hover:bg-white/10 transition-colors"
+              >
+                <span>{currentLang?.flag}</span>
+                <span>{currentLang?.label}</span>
+                <span className="text-white/50 ml-0.5">{langOpen ? "▲" : "▼"}</span>
+              </button>
+              {langOpen && (
+                <div className="absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 py-1 min-w-[110px]">
+                  {LANGS.map(({ code, flag, label }) => (
+                    <button
+                      key={code}
+                      onClick={() => { setLocale(code); setLangOpen(false); }}
+                      className={`flex items-center gap-2 w-full px-3 py-1.5 text-xs hover:bg-gray-50 transition-colors ${
+                        locale === code ? "font-semibold text-[#003087]" : "text-gray-700"
+                      }`}
+                    >
+                      <span>{flag}</span>
+                      <span>{label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
@@ -98,13 +129,13 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            {/* Mobile lang switcher */}
-            <div className="flex items-center gap-1 px-4 pt-2 mt-1 border-t border-white/10">
+            {/* Mobile lang switcher - grid for 11 languages */}
+            <div className="grid grid-cols-4 gap-1 px-4 pt-2 mt-1 border-t border-white/10">
               {LANGS.map(({ code, flag, label }) => (
                 <button
                   key={code}
                   onClick={() => { setLocale(code); setMenuOpen(false); }}
-                  className={`px-3 py-1.5 rounded text-xs font-bold transition-all ${
+                  className={`px-2 py-1.5 rounded text-xs font-bold transition-all ${
                     locale === code
                       ? "bg-white/20 text-white"
                       : "text-white/50 hover:text-white hover:bg-white/10"
