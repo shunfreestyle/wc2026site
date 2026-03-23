@@ -190,7 +190,7 @@ function Pitch({
   readonly?: boolean;
 }) {
   return (
-    <div className="relative w-full h-[240px] bg-gradient-to-b from-[#2d8a4e] to-[#1e6b3a] rounded-2xl overflow-hidden border border-white/10">
+    <div className="relative w-full aspect-[5/3] bg-gradient-to-b from-[#2d8a4e] to-[#1e6b3a] rounded-2xl overflow-hidden border border-white/10">
       {/* pitch lines (half-court) */}
       <div className="absolute inset-0">
         {/* border */}
