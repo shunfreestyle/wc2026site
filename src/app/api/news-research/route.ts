@@ -1,6 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-export const maxDuration = 300;
+export const maxDuration = 60;
 
 type SearchResult = {
   url: string;
