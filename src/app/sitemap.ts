@@ -2,7 +2,7 @@ import { getAllPlayers, teams } from "@/data/teams";
 import type { MetadataRoute } from "next";
 
 const BASE = "https://samurai-football.jp";
-const LOCALES = ["ja", "en", "de", "fr", "es", "it", "pt", "nl", "pl", "ru", "tr"];
+const LOCALES = ["ja", "en"];
 
 function multiLangUrls(
   path: string,

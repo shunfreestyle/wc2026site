@@ -1,11 +1,7 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+'use client';
 
-export const metadata: Metadata = {
-  title: "🏴 イングランド代表 | 日本代表対戦国情報",
-  description:
-    "日本代表の対戦国・イングランド代表ページ。監督、FIFAランキング、W杯情報、全メンバー一覧。",
-};
+import Link from "next/link";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 type Player = {
   position: "GK" | "DF" | "MF" | "FW";
@@ -16,13 +12,6 @@ type Player = {
   firstCallUp?: boolean;
   career: string[];
   japanConnection?: string;
-};
-
-const posLabel: Record<Player["position"], string> = {
-  GK: "ゴールキーパー",
-  DF: "ディフェンダー",
-  MF: "ミッドフィルダー",
-  FW: "フォワード",
 };
 
 const posColor: Record<Player["position"], string> = {
@@ -89,7 +78,12 @@ function byPos(pos: Player["position"]) {
 }
 
 export default function EnglandOpponentPage() {
+  const { locale } = useLanguage();
   const positions: Player["position"][] = ["GK", "DF", "MF", "FW"];
+
+  const posLabel: Record<Player["position"], string> = locale === 'en'
+    ? { GK: "Goalkeeper", DF: "Defender", MF: "Midfielder", FW: "Forward" }
+    : { GK: "ゴールキーパー", DF: "ディフェンダー", MF: "ミッドフィルダー", FW: "フォワード" };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -98,14 +92,14 @@ export default function EnglandOpponentPage() {
         <div className="absolute inset-0 opacity-10" style={{ background: "radial-gradient(circle at 20% 20%, #CF2B37 0, transparent 40%), radial-gradient(circle at 80% 80%, #ffffff 0, transparent 35%)" }} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <p className="text-5xl mb-3">🏴</p>
-          <h1 className="text-4xl sm:text-6xl font-black mb-3">イングランド代表</h1>
-          <p className="text-blue-100">監督：トーマス・トゥヘル ｜ FIFAランキング：5位 ｜ W杯グループ：TBD</p>
+          <h1 className="text-4xl sm:text-6xl font-black mb-3">{locale === 'en' ? 'England' : 'イングランド代表'}</h1>
+          <p className="text-blue-100">{locale === 'en' ? 'Manager: Thomas Tuchel | FIFA Ranking: 5 | WC Group: TBD' : '監督：トーマス・トゥヘル ｜ FIFAランキング：5位 ｜ W杯グループ：TBD'}</p>
         </div>
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">全メンバー一覧</h2>
-        <p className="text-sm text-gray-500 mb-8">GK/DF/MF/FW別（選手名・所属クラブ・ひとこと紹介）</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{locale === 'en' ? 'Full Squad' : '全メンバー一覧'}</h2>
+        <p className="text-sm text-gray-500 mb-8">{locale === 'en' ? 'Listed by position (GK/DF/MF/FW)' : 'GK/DF/MF/FW別（選手名・所属クラブ・ひとこと紹介）'}</p>
         {positions.map((pos) => {
           const list = byPos(pos);
           return (
@@ -113,7 +107,7 @@ export default function EnglandOpponentPage() {
               <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
                 <span className={`inline-block px-3 py-1 rounded-lg text-xs font-bold text-white bg-gradient-to-r ${posColor[pos]}`}>{pos}</span>
                 {posLabel[pos]}
-                <span className="text-gray-400 font-normal text-sm">（{list.length}名）</span>
+                <span className="text-gray-400 font-normal text-sm">{locale === 'en' ? `(${list.length})` : `（${list.length}名）`}</span>
               </h3>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {list.map((p, idx) => (
@@ -121,18 +115,17 @@ export default function EnglandOpponentPage() {
                     <div className="p-5">
                       <div className="flex items-center gap-2 mb-2">
                         <h4 className="text-lg font-bold text-gray-900">{p.nameJa}</h4>
-                        {p.featured && <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#CF2B37]/10 text-[#CF2B37]">注目</span>}
-                        {p.firstCallUp && <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-700 border border-amber-300">初</span>}
+                        {p.featured && <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#CF2B37]/10 text-[#CF2B37]">{locale === 'en' ? 'KEY' : '注目'}</span>}
+                        {p.firstCallUp && <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-700 border border-amber-300">{locale === 'en' ? 'NEW' : '初'}</span>}
                       </div>
-                      <p className="text-xs text-gray-400 mb-1">現在所属</p>
+                      <p className="text-xs text-gray-400 mb-1">{locale === 'en' ? 'Current club' : '現在所属'}</p>
                       <p className="text-sm font-medium text-gray-800 mb-3">🏢 {p.club}</p>
                       <p className="text-sm text-gray-600 leading-relaxed mb-3">{p.comment}</p>
 
-                      {/* これまでの経歴（アコーディオン） */}
                       <details className="group border-t border-gray-100 pt-3">
                         <summary className="flex items-center gap-1.5 cursor-pointer text-xs font-bold text-gray-500 hover:text-gray-700 transition-colors select-none list-none [&::-webkit-details-marker]:hidden">
                           <span className="inline-block transition-transform group-open:rotate-90 text-[10px]">▶</span>
-                          これまでの経歴
+                          {locale === 'en' ? 'Career history' : 'これまでの経歴'}
                         </summary>
                         <ul className="mt-2 space-y-1">
                           {p.career.map((c) => (
@@ -143,10 +136,9 @@ export default function EnglandOpponentPage() {
                         </ul>
                       </details>
 
-                      {/* 日本との縁 */}
                       {p.japanConnection && (
                         <div className="mt-3 rounded-lg bg-red-50 border border-red-100 p-3">
-                          <p className="text-xs font-bold text-red-700 mb-1">💡 日本との縁</p>
+                          <p className="text-xs font-bold text-red-700 mb-1">{locale === 'en' ? '💡 Japan connection' : '💡 日本との縁'}</p>
                           <p className="text-xs text-red-600 leading-relaxed">{p.japanConnection}</p>
                         </div>
                       )}
@@ -162,7 +154,7 @@ export default function EnglandOpponentPage() {
       <section className="bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Link href="/japan" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#003087] text-white text-sm font-bold hover:bg-[#00286f] transition-colors">
-            ← 日本代表ページに戻る
+            {locale === 'en' ? '← Back to Japan NT' : '← 日本代表ページに戻る'}
           </Link>
         </div>
       </section>

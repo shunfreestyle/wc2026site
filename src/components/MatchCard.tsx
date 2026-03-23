@@ -1,15 +1,22 @@
+'use client';
+
 import Link from "next/link";
 import type { Match } from "@/data/matches";
 import { getTeamById } from "@/data/teams";
+import { useLanguage } from '@/contexts/LanguageContext';
+import { getTeamName } from '@/utils/teamName';
+import type { Locale } from '@/types/i18n';
 
 function TeamDisplay({
   teamId,
   label,
   align,
+  locale,
 }: {
   teamId: string;
   label?: string;
   align: "left" | "right";
+  locale: Locale;
 }) {
   const team = teamId ? getTeamById(teamId) : undefined;
 
@@ -18,7 +25,7 @@ function TeamDisplay({
       <div className={`flex items-center gap-2 ${align === "right" ? "flex-row-reverse" : ""}`}>
         <span className="text-2xl shrink-0">{team.flag}</span>
         <div className={`min-w-0 ${align === "right" ? "text-right" : ""}`}>
-          <p className="font-semibold text-gray-900 text-sm truncate">{team.nameJa}</p>
+          <p className="font-semibold text-gray-900 text-sm truncate">{getTeamName(team, locale)}</p>
           <p className="text-xs text-gray-500">{team.code}</p>
         </div>
       </div>
@@ -42,13 +49,14 @@ function TeamDisplay({
 }
 
 export default function MatchCard({ match }: { match: Match }) {
+  const { locale } = useLanguage();
   const stageStyles: Record<string, { bg: string; text: string; border: string; label: string }> = {
     "グループステージ": { bg: "#EEF2FF", text: "#3730A3", border: "#C7D2FE", label: "Group" },
     "ラウンド32":       { bg: "#FFF7ED", text: "#9A3412", border: "#FED7AA", label: "R32" },
     "ラウンド16":       { bg: "#FFF3CD", text: "#92400E", border: "#FDE68A", label: "R16" },
     "準々決勝":         { bg: "#FEF3C7", text: "#78350F", border: "#FCD34D", label: "QF" },
     "準決勝":           { bg: "#FDF4FF", text: "#6B21A8", border: "#E9D5FF", label: "SF" },
-    "3位決定戦":        { bg: "#F0FDF4", text: "#166534", border: "#BBF7D0", label: "3位決定戦" },
+    "3位決定戦":        { bg: "#F0FDF4", text: "#166534", border: "#BBF7D0", label: locale === 'en' ? "3rd Place" : "3位決定戦" },
     "決勝":             { bg: "#FFFBEB", text: "#92400E", border: "#FDE68A", label: "FINAL" },
   };
   const ss = stageStyles[match.stage] || { bg: "#F3F4F6", text: "#374151", border: "#D1D5DB", label: match.stage };
@@ -79,7 +87,7 @@ export default function MatchCard({ match }: { match: Match }) {
 
       {/* Teams / Score */}
       <div className="flex items-center justify-between gap-3">
-        <TeamDisplay teamId={match.homeTeamId} label={match.homeLabel} align="left" />
+        <TeamDisplay teamId={match.homeTeamId} label={match.homeLabel} align="left" locale={locale} />
 
         <div className="shrink-0">
           {match.status === "finished" ? (
@@ -95,7 +103,7 @@ export default function MatchCard({ match }: { match: Match }) {
           )}
         </div>
 
-        <TeamDisplay teamId={match.awayTeamId} label={match.awayLabel} align="right" />
+        <TeamDisplay teamId={match.awayTeamId} label={match.awayLabel} align="right" locale={locale} />
       </div>
 
       {/* Venue */}
@@ -108,7 +116,7 @@ export default function MatchCard({ match }: { match: Match }) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
-          <span className="truncate">{match.venue}, {match.city}</span>
+          <span className="truncate">{locale === 'en' ? (match.venueEn ?? match.venue) : match.venue}, {locale === 'en' ? (match.cityEn ?? match.city) : match.city}</span>
           <svg className="w-3 h-3 shrink-0 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>

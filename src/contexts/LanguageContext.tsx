@@ -6,7 +6,7 @@ import { translations } from "@/i18n/translations";
 
 const STORAGE_KEY = "sf-locale";
 
-const VALID_LOCALES: Locale[] = ["ja", "en", "de", "fr", "es", "it", "pt", "nl", "pl", "ru", "tr"];
+const VALID_LOCALES: Locale[] = ["ja", "en"];
 
 function detectLocale(): Locale {
   if (typeof window === "undefined") return "ja";
@@ -14,17 +14,7 @@ function detectLocale(): Locale {
   if (saved && VALID_LOCALES.includes(saved)) return saved;
   const lang = navigator.language.toLowerCase();
   if (lang.startsWith("ja")) return "ja";
-  if (lang.startsWith("de")) return "de";
-  if (lang.startsWith("fr")) return "fr";
-  if (lang.startsWith("es")) return "es";
-  if (lang.startsWith("it")) return "it";
-  if (lang.startsWith("pt")) return "pt";
-  if (lang.startsWith("nl")) return "nl";
-  if (lang.startsWith("pl")) return "pl";
-  if (lang.startsWith("ru")) return "ru";
-  if (lang.startsWith("tr")) return "tr";
-  if (lang.startsWith("en")) return "en";
-  return "ja";
+  return "en";
 }
 
 interface LanguageContextType {

@@ -3,14 +3,17 @@
 import Link from "next/link";
 import { NATIONAL_TEAMS } from "@/data/uniforms";
 import type { NationalTeam, UniformItem } from "@/data/uniforms";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 /* ── Uniform Card ─────────────────────────────── */
 function UniformCard({
   item,
   team,
+  locale,
 }: {
   item: UniformItem;
   team: NationalTeam;
+  locale: string;
 }) {
   const hasImage = item.imgSrc !== "";
   const hasLink = item.affiliateUrl !== "";
@@ -18,7 +21,10 @@ function UniformCard({
     item.type === "home"
       ? "bg-[#003087] text-white"
       : "bg-white text-gray-800 border border-gray-300";
-  const badgeLabel = item.type === "home" ? "ホーム" : "アウェイ";
+  const badgeLabel =
+    item.type === "home"
+      ? (locale === "en" ? "Home" : "ホーム")
+      : (locale === "en" ? "Away" : "アウェイ");
 
   return (
     <div className="rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col">
@@ -55,7 +61,7 @@ function UniformCard({
         >
           <div className="text-center">
             <p className="text-4xl mb-2">{team.flag}</p>
-            <p className="text-sm font-bold text-gray-400">準備中</p>
+            <p className="text-sm font-bold text-gray-400">{locale === "en" ? "Coming soon" : "準備中"}</p>
           </div>
           <div style={{ position: "absolute", bottom: "8px", left: "8px", display: "flex", gap: "6px" }}>
             <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${badgeCls}`}>{badgeLabel}</span>
@@ -77,11 +83,11 @@ function UniformCard({
               rel="nofollow sponsored noopener"
               className="flex items-center justify-center w-full px-4 py-3 rounded-lg bg-[#BF0000] hover:bg-[#a00000] text-white text-sm font-bold transition-colors"
             >
-              🛒 購入はこちら（楽天市場）
+              {locale === "en" ? "🛒 Buy on Rakuten" : "🛒 購入はこちら（楽天市場）"}
             </a>
           ) : (
             <div className="flex items-center justify-center w-full px-4 py-3 rounded-lg bg-gray-200 text-gray-400 text-sm font-bold cursor-not-allowed">
-              準備中
+              {locale === "en" ? "Coming soon" : "準備中"}
             </div>
           )}
           <p className="text-[10px] text-gray-400 mt-2 text-center">
@@ -95,6 +101,7 @@ function UniformCard({
 
 /* ── Page Component ───────────────────────────── */
 export default function UniformPage() {
+  const { locale } = useLanguage();
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -112,10 +119,10 @@ export default function UniformPage() {
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl sm:text-4xl font-black">
-            2026 ワールドカップ 各国ユニフォーム
+            {locale === "en" ? "2026 World Cup National Team Uniforms" : "2026 ワールドカップ 各国ユニフォーム"}
           </h1>
           <p className="text-blue-200/70 mt-2">
-            adidas 公式ストア（楽天市場）掲載中
+            {locale === "en" ? "Available on adidas official store (Rakuten)" : "adidas 公式ストア（楽天市場）掲載中"}
           </p>
         </div>
       </section>
@@ -178,7 +185,7 @@ export default function UniformPage() {
 
             <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
               {team.uniforms.map((item) => (
-                <UniformCard key={item.id} item={item} team={team} />
+                <UniformCard key={item.id} item={item} team={team} locale={locale} />
               ))}
             </div>
           </div>
@@ -189,7 +196,9 @@ export default function UniformPage() {
       <section className="bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <p className="text-xs text-gray-400 text-center">
-            ※ 購入リンクは各ストアの商品ページに遷移します。在庫状況は各ストアにてご確認ください。
+            {locale === "en"
+              ? "* Links lead to product pages. Please check stock availability at each store."
+              : "※ 購入リンクは各ストアの商品ページに遷移します。在庫状況は各ストアにてご確認ください。"}
           </p>
         </div>
       </section>
@@ -203,13 +212,13 @@ export default function UniformPage() {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold text-sm shadow-lg hover:shadow-xl transition-shadow"
               style={{ background: "#003087" }}
             >
-              🇯🇵 日本代表トップに戻る
+              {locale === "en" ? "🇯🇵 Back to Japan NT" : "🇯🇵 日本代表トップに戻る"}
             </Link>
             <Link
               href="/"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-100 text-gray-700 font-bold text-sm hover:bg-gray-200 transition-colors"
             >
-              トップページ
+              {locale === "en" ? "Home" : "トップページ"}
             </Link>
           </div>
         </div>

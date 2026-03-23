@@ -111,7 +111,7 @@ export default function TeamDetailPage() {
               <dl className="space-y-3">
                 <div className="flex items-center gap-3">
                   <dt className="text-sm text-gray-600 w-20">国籍</dt>
-                  <dd className="text-sm font-medium text-gray-900">{team.coach.nationality}</dd>
+                  <dd className="text-sm font-medium text-gray-900">{getCoachNationality(team.coach, locale)}</dd>
                 </div>
                 <div className="flex items-center gap-3">
                   <dt className="text-sm text-gray-600 w-20">年齢</dt>
@@ -119,7 +119,7 @@ export default function TeamDetailPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <dt className="text-sm text-gray-600 w-20">{t.teams.coachStyle}</dt>
-                  <dd className="text-sm font-medium text-gray-900">{team.coach.style}</dd>
+                  <dd className="text-sm font-medium text-gray-900">{getCoachStyle(team.coach, locale)}</dd>
                 </div>
               </dl>
             </div>

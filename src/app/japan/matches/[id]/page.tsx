@@ -1,32 +1,17 @@
+'use client';
+
 import Link from "next/link";
-import type { Metadata } from "next";
-import { japanMatches, getAllJapanMatchIds, getJapanMatchById } from "@/data/japan-matches";
+import { useParams } from "next/navigation";
+import { japanMatches, getJapanMatchById } from "@/data/japan-matches";
 import type { JapanMatch, MatchPlayer } from "@/data/japan-matches";
-import { notFound } from "next/navigation";
-
-/* ── Static generation ─────────────────────────── */
-export function generateStaticParams() {
-  return getAllJapanMatchIds().map((id) => ({ id }));
-}
-
-export function generateMetadata({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}): Promise<Metadata> {
-  return params.then(({ id }) => {
-    const match = getJapanMatchById(id);
-    if (!match) return { title: "試合詳細 | 日本代表" };
-    return {
-      title: `${match.home.nameJa} ${match.home.score}-${match.away.score} ${match.away.nameJa} | 日本代表`,
-      description: `${match.competition} ${match.date} ${match.venue}`,
-    };
-  });
-}
+import { useLanguage } from "@/contexts/LanguageContext";
 
 /* ── Helpers ────────────────────────────────────── */
-function formatDate(dateStr: string) {
+function formatDate(dateStr: string, loc: string) {
   const d = new Date(dateStr + "T00:00:00");
+  if (loc === 'en') {
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'short' });
+  }
   const y = d.getFullYear();
   const m = d.getMonth() + 1;
   const day = d.getDate();
@@ -42,11 +27,11 @@ const posColor: Record<string, string> = {
 };
 
 /* ── Formation Pitch ───────────────────────────── */
-function FormationPitch({ match }: { match: JapanMatch }) {
+function FormationPitch({ match, locale }: { match: JapanMatch; locale: string }) {
   if (match.formationPositions.length === 0) {
     return (
       <div className="rounded-2xl bg-gray-100 p-8 text-center text-gray-400">
-        データ取得中
+        {locale === 'en' ? "Loading data" : "データ取得中"}
       </div>
     );
   }
@@ -102,15 +87,19 @@ function FormationPitch({ match }: { match: JapanMatch }) {
 }
 
 /* ── Player row ────────────────────────────────── */
-function PlayerRow({ player }: { player: MatchPlayer }) {
+function PlayerRow({ player, locale }: { player: MatchPlayer; locale: string }) {
   return (
     <div className="flex items-center gap-3 py-2 px-3 rounded-lg hover:bg-gray-50 transition-colors">
       <span className="w-8 h-8 rounded-full bg-[#003087] text-white flex items-center justify-center text-xs font-bold shrink-0">
         {player.number}
       </span>
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-bold text-gray-900 truncate">{player.nameJa}</p>
-        <p className="text-xs text-gray-400 truncate">{player.name}</p>
+        <p className="text-sm font-bold text-gray-900 truncate">
+          {locale === 'en' ? player.name : player.nameJa}
+        </p>
+        <p className="text-xs text-gray-400 truncate">
+          {locale === 'en' ? player.nameJa : player.name}
+        </p>
       </div>
       <span className={`${posColor[player.position]} text-white text-[10px] font-bold px-1.5 py-0.5 rounded`}>
         {player.position}
@@ -120,14 +109,13 @@ function PlayerRow({ player }: { player: MatchPlayer }) {
 }
 
 /* ── Page Component ────────────────────────────── */
-export default async function MatchDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
+export default function MatchDetailPage() {
+  const params = useParams();
+  const id = params.id as string;
+  const { locale } = useLanguage();
+
   const match = getJapanMatchById(id);
-  if (!match) notFound();
+  if (!match) return null;
 
   const isJapanHome = match.home.flag === "🇯🇵";
   const japanScore = isJapanHome ? match.home.score : match.away.score;
@@ -136,12 +124,18 @@ export default async function MatchDetailPage({
     japanScore > opponentScore ? "WIN" : japanScore < opponentScore ? "LOSE" : "DRAW";
   const resultColor = result === "WIN" ? "text-green-500" : result === "LOSE" ? "text-red-500" : "text-gray-500";
   const resultBg = result === "WIN" ? "bg-green-500" : result === "LOSE" ? "bg-red-500" : "bg-gray-400";
-  const resultLabel = result === "WIN" ? "勝利" : result === "LOSE" ? "敗北" : "引分";
+  const resultLabel =
+    locale === 'en'
+      ? result
+      : result === "WIN" ? "勝利" : result === "LOSE" ? "敗北" : "引分";
 
   // Find previous / next match
   const idx = japanMatches.findIndex((m) => m.id === id);
   const prevMatch = idx < japanMatches.length - 1 ? japanMatches[idx + 1] : null;
   const nextMatch = idx > 0 ? japanMatches[idx - 1] : null;
+
+  const teamName = (team: { name: string; nameJa: string }) =>
+    locale === 'en' ? team.name : team.nameJa;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -155,7 +149,7 @@ export default async function MatchDetailPage({
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center gap-3 mb-6">
             <Link href="/japan/matches" className="text-blue-200 hover:text-white text-sm transition-colors">
-              ← 試合一覧
+              ← {locale === 'en' ? "Match List" : "試合一覧"}
             </Link>
           </div>
 
@@ -168,7 +162,7 @@ export default async function MatchDetailPage({
               {/* Home */}
               <div className="text-center flex-1">
                 <p className="text-4xl sm:text-5xl mb-2">{match.home.flag}</p>
-                <p className="text-sm sm:text-lg font-bold">{match.home.nameJa}</p>
+                <p className="text-sm sm:text-lg font-bold">{teamName(match.home)}</p>
               </div>
 
               {/* Score */}
@@ -186,12 +180,12 @@ export default async function MatchDetailPage({
               {/* Away */}
               <div className="text-center flex-1">
                 <p className="text-4xl sm:text-5xl mb-2">{match.away.flag}</p>
-                <p className="text-sm sm:text-lg font-bold">{match.away.nameJa}</p>
+                <p className="text-sm sm:text-lg font-bold">{teamName(match.away)}</p>
               </div>
             </div>
 
             <div className="text-sm text-blue-200/70 space-y-1">
-              <p>📅 {formatDate(match.date)}</p>
+              <p>📅 {formatDate(match.date, locale)}</p>
               <p>🏟️ {match.venue}（{match.city}）</p>
             </div>
           </div>
@@ -202,11 +196,13 @@ export default async function MatchDetailPage({
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
           <span className="inline-block w-1.5 h-7 rounded-full" style={{ background: "#003087" }} />
-          得点経過
+          {locale === 'en' ? "Goals" : "得点経過"}
         </h2>
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
           {match.goals.length === 0 ? (
-            <p className="p-6 text-center text-gray-400">得点なし</p>
+            <p className="p-6 text-center text-gray-400">
+              {locale === 'en' ? "No goals" : "得点なし"}
+            </p>
           ) : (
             <div className="divide-y divide-gray-100">
               {match.goals.map((g, i) => {
@@ -221,7 +217,7 @@ export default async function MatchDetailPage({
                       {g.player}
                     </span>
                     <span className="text-xs text-gray-400 ml-auto">
-                      {g.team === "home" ? match.home.nameJa : match.away.nameJa}
+                      {g.team === "home" ? teamName(match.home) : teamName(match.away)}
                     </span>
                   </div>
                 );
@@ -236,10 +232,10 @@ export default async function MatchDetailPage({
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span className="inline-block w-1.5 h-7 rounded-full" style={{ background: "#003087" }} />
-            フォーメーション
+            {locale === 'en' ? "Formation" : "フォーメーション"}
             <span className="text-gray-400 font-normal text-sm">（{match.formation}）</span>
           </h2>
-          <FormationPitch match={match} />
+          <FormationPitch match={match} locale={locale} />
         </div>
       </section>
 
@@ -250,15 +246,17 @@ export default async function MatchDetailPage({
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
               <span className="inline-block w-1.5 h-7 rounded-full" style={{ background: "#003087" }} />
-              スターティングメンバー
+              {locale === 'en' ? "Starting XI" : "スターティングメンバー"}
             </h2>
             <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-3">
               {match.starting.length === 0 ? (
-                <p className="p-4 text-center text-gray-400 text-sm">データ取得中</p>
+                <p className="p-4 text-center text-gray-400 text-sm">
+                  {locale === 'en' ? "Loading data" : "データ取得中"}
+                </p>
               ) : (
                 <div className="space-y-0.5">
                   {match.starting.map((p) => (
-                    <PlayerRow key={p.number} player={p} />
+                    <PlayerRow key={p.number} player={p} locale={locale} />
                   ))}
                 </div>
               )}
@@ -269,15 +267,17 @@ export default async function MatchDetailPage({
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
               <span className="inline-block w-1.5 h-7 rounded-full bg-gray-400" />
-              ベンチメンバー
+              {locale === 'en' ? "Bench" : "ベンチメンバー"}
             </h2>
             <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-3">
               {match.bench.length === 0 ? (
-                <p className="p-4 text-center text-gray-400 text-sm">データ取得中</p>
+                <p className="p-4 text-center text-gray-400 text-sm">
+                  {locale === 'en' ? "Loading data" : "データ取得中"}
+                </p>
               ) : (
                 <div className="space-y-0.5">
                   {match.bench.map((p) => (
-                    <PlayerRow key={p.number} player={p} />
+                    <PlayerRow key={p.number} player={p} locale={locale} />
                   ))}
                 </div>
               )}
@@ -291,11 +291,13 @@ export default async function MatchDetailPage({
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span className="inline-block w-1.5 h-7 rounded-full" style={{ background: "#BC002D" }} />
-            交代
+            {locale === 'en' ? "Substitutions" : "交代"}
           </h2>
           <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
             {match.substitutions.length === 0 ? (
-              <p className="p-6 text-center text-gray-400 text-sm">データ取得中</p>
+              <p className="p-6 text-center text-gray-400 text-sm">
+                {locale === 'en' ? "Loading data" : "データ取得中"}
+              </p>
             ) : (
               <div className="divide-y divide-gray-100">
                 {match.substitutions.map((s, i) => (
@@ -323,7 +325,7 @@ export default async function MatchDetailPage({
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
           <span className="inline-block w-1.5 h-7 rounded-full" style={{ background: "#003087" }} />
-          マッチハイライト
+          {locale === 'en' ? "Match Highlights" : "マッチハイライト"}
         </h2>
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-5">
           <ul className="space-y-3">
@@ -344,7 +346,7 @@ export default async function MatchDetailPage({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-50 text-red-600 text-sm font-bold hover:bg-red-100 transition-colors"
               >
-                🎬 ハイライトを見る（YouTube）
+                {locale === 'en' ? "Watch Highlights (YouTube)" : "🎬 ハイライトを見る（YouTube）"}
               </a>
             </div>
           )}
@@ -360,7 +362,7 @@ export default async function MatchDetailPage({
                 href={`/japan/matches/${prevMatch.id}`}
                 className="text-sm text-[#003087] hover:text-[#BC002D] font-medium transition-colors"
               >
-                ← {prevMatch.home.nameJa} {prevMatch.home.score}-{prevMatch.away.score} {prevMatch.away.nameJa}
+                ← {teamName(prevMatch.home)} {prevMatch.home.score}-{prevMatch.away.score} {teamName(prevMatch.away)}
               </Link>
             ) : (
               <div />
@@ -369,14 +371,14 @@ export default async function MatchDetailPage({
               href="/japan/matches"
               className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
             >
-              試合一覧
+              {locale === 'en' ? "Match List" : "試合一覧"}
             </Link>
             {nextMatch ? (
               <Link
                 href={`/japan/matches/${nextMatch.id}`}
                 className="text-sm text-[#003087] hover:text-[#BC002D] font-medium transition-colors"
               >
-                {nextMatch.home.nameJa} {nextMatch.home.score}-{nextMatch.away.score} {nextMatch.away.nameJa} →
+                {teamName(nextMatch.home)} {nextMatch.home.score}-{nextMatch.away.score} {teamName(nextMatch.away)} →
               </Link>
             ) : (
               <div />

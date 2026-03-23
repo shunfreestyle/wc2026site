@@ -1,52 +1,25 @@
-import { notFound } from "next/navigation";
+'use client';
+
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { getAllPlayers, getPlayerById } from "@/data/teams";
 import PlayerAvatar from "@/components/PlayerAvatar";
-import type { Metadata } from "next";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getTeamName, getPlayerDescription, getBestResult } from "@/utils/teamName";
 
-type Props = {
-  params: Promise<{ id: string }>;
-};
-
-export async function generateStaticParams() {
-  return getAllPlayers().map(({ player }) => ({ id: player.id }));
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
-  const result = getPlayerById(id);
-  if (!result) return { title: "選手が見つかりません | SAMURAI FOOTBALL" };
-  const { player, team } = result;
-  const title = `${player.nameJa}（${player.name}）| ${team.nameJa}代表`;
-  const description = `${team.nameJa}代表 ${player.nameJa}（${player.name}）の選手プロフィール。${player.club}所属、${player.position}、${player.height}cm。代表${player.caps}試合${player.goals}得点。${player.description ?? ""}`;
-  const keywords = player.seoKeywords ?? [player.nameJa, player.name, player.club, team.nameJa];
-  return {
-    title,
-    description,
-    keywords,
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      url: `https://samurai-football.jp/players/${player.id}`,
-      siteName: "SAMURAI FOOTBALL",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-    },
-    alternates: {
-      canonical: `https://samurai-football.jp/players/${player.id}`,
-    },
-  };
-}
-
-const positionFullName: Record<string, string> = {
-  GK: "ゴールキーパー",
-  DF: "ディフェンダー",
-  MF: "ミッドフィールダー",
-  FW: "フォワード",
+const positionFullName: Record<string, Record<string, string>> = {
+  ja: {
+    GK: "ゴールキーパー",
+    DF: "ディフェンダー",
+    MF: "ミッドフィールダー",
+    FW: "フォワード",
+  },
+  en: {
+    GK: "Goalkeeper",
+    DF: "Defender",
+    MF: "Midfielder",
+    FW: "Forward",
+  },
 };
 
 const positionColor: Record<string, string> = {
@@ -56,18 +29,26 @@ const positionColor: Record<string, string> = {
   FW: "bg-red-100 text-red-800 border-red-200",
 };
 
-export default async function PlayerDetailPage({ params }: Props) {
-  const { id } = await params;
+export default function PlayerDetailPage() {
+  const params = useParams();
+  const id = params.id as string;
+  const { locale } = useLanguage();
+
   const result = getPlayerById(id);
 
   if (!result) {
-    notFound();
+    return null;
   }
 
   const { player, team } = result;
 
   // Find teammates (same team, different player)
   const teammates = team.players.filter((p) => p.id !== player.id).slice(0, 5);
+
+  const playerDisplayName = locale === 'en' ? player.name : player.nameJa;
+  const teamDisplayName = getTeamName(team, locale);
+  const playerDesc = getPlayerDescription(player, locale);
+  const posNames = positionFullName[locale] ?? positionFullName.ja;
 
   return (
     <div>
@@ -80,7 +61,7 @@ export default async function PlayerDetailPage({ params }: Props) {
             "@type": "Person",
             name: player.name,
             alternateName: player.nameJa,
-            jobTitle: positionFullName[player.position],
+            jobTitle: posNames[player.position],
             memberOf: {
               "@type": "SportsTeam",
               name: player.club,
@@ -102,7 +83,7 @@ export default async function PlayerDetailPage({ params }: Props) {
             href={`/teams/${team.id}`}
             className="inline-flex items-center gap-1 text-sm text-white/70 hover:text-white mb-6 transition-colors"
           >
-            ← {team.flag} {team.nameJa}
+            ← {team.flag} {teamDisplayName}
           </Link>
           <div className="flex items-center gap-6">
             <PlayerAvatar player={player} size="lg" />
@@ -111,21 +92,23 @@ export default async function PlayerDetailPage({ params }: Props) {
                 <span className="text-3xl font-extrabold text-white/30">#{player.number}</span>
               </div>
               <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-                {player.nameJa}
+                {playerDisplayName}
               </h1>
-              <p className="text-white/70 text-lg mt-1">{player.name}</p>
+              <p className="text-white/70 text-lg mt-1">
+                {locale === 'en' ? player.nameJa : player.name}
+              </p>
               <div className="flex flex-wrap items-center gap-2 mt-3">
                 <span className={`text-xs font-bold px-3 py-1 rounded-full border ${positionColor[player.position]}`}>
-                  {positionFullName[player.position]}
+                  {posNames[player.position]}
                 </span>
                 {player.isCaptain && (
                   <span className="bg-amber-400 text-amber-950 text-xs font-bold px-3 py-1 rounded-full">
-                    キャプテン
+                    {locale === 'en' ? "Captain" : "キャプテン"}
                   </span>
                 )}
                 {player.isNew && (
                   <span className="bg-emerald-400 text-emerald-950 text-xs font-bold px-3 py-1 rounded-full">
-                    初招集
+                    {locale === 'en' ? "First call-up" : "初招集"}
                   </span>
                 )}
               </div>
@@ -138,10 +121,10 @@ export default async function PlayerDetailPage({ params }: Props) {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 -mt-6 mb-10">
           {[
-            { label: "代表キャップ", value: `${player.caps}試合`, icon: "🏟️" },
-            { label: "代表得点", value: `${player.goals}ゴール`, icon: "⚽" },
-            { label: "身長", value: `${player.height}cm`, icon: "📏" },
-            { label: "年齢", value: `${player.age}歳`, icon: "🎂" },
+            { label: locale === 'en' ? "Caps" : "代表キャップ", value: `${player.caps}${locale === 'en' ? " caps" : "試合"}`, icon: "🏟️" },
+            { label: locale === 'en' ? "Goals" : "代表得点", value: `${player.goals}${locale === 'en' ? " goals" : "ゴール"}`, icon: "⚽" },
+            { label: locale === 'en' ? "Height" : "身長", value: `${player.height}cm`, icon: "📏" },
+            { label: locale === 'en' ? "Age" : "年齢", value: `${player.age}${locale === 'en' ? "" : "歳"}`, icon: "🎂" },
           ].map((stat) => (
             <div
               key={stat.label}
@@ -161,57 +144,69 @@ export default async function PlayerDetailPage({ params }: Props) {
             <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
                 <span className="w-1 h-5 bg-[#E8192C] rounded-full" />
-                選手プロフィール
+                {locale === 'en' ? "Player Profile" : "選手プロフィール"}
               </h2>
               <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
                 <div>
-                  <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">氏名</dt>
-                  <dd className="text-sm font-medium text-gray-900">{player.nameJa}</dd>
-                  <dd className="text-xs text-gray-500">{player.name}</dd>
+                  <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                    {locale === 'en' ? "Name" : "氏名"}
+                  </dt>
+                  <dd className="text-sm font-medium text-gray-900">{playerDisplayName}</dd>
+                  <dd className="text-xs text-gray-500">{locale === 'en' ? player.nameJa : player.name}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">生年月日</dt>
+                  <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                    {locale === 'en' ? "Date of birth" : "生年月日"}
+                  </dt>
                   <dd className="text-sm font-medium text-gray-900">
-                    {new Date(player.birthDate).toLocaleDateString("ja-JP", {
+                    {new Date(player.birthDate).toLocaleDateString(locale === 'en' ? "en-US" : "ja-JP", {
                       year: "numeric",
                       month: "long",
                       day: "numeric",
                     })}
                   </dd>
-                  <dd className="text-xs text-gray-500">{player.age}歳</dd>
+                  <dd className="text-xs text-gray-500">{player.age}{locale === 'en' ? "" : "歳"}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">ポジション</dt>
+                  <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                    {locale === 'en' ? "Position" : "ポジション"}
+                  </dt>
                   <dd className="text-sm font-medium text-gray-900">
                     <span className={`inline-block text-xs font-bold px-2 py-0.5 rounded ${positionColor[player.position]}`}>
                       {player.position}
                     </span>{" "}
-                    {positionFullName[player.position]}
+                    {posNames[player.position]}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">所属クラブ</dt>
+                  <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                    {locale === 'en' ? "Club" : "所属クラブ"}
+                  </dt>
                   <dd className="text-sm font-medium text-gray-900">{player.club}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">身長</dt>
+                  <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                    {locale === 'en' ? "Height" : "身長"}
+                  </dt>
                   <dd className="text-sm font-medium text-gray-900">{player.height}cm</dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">背番号</dt>
+                  <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                    {locale === 'en' ? "Squad number" : "背番号"}
+                  </dt>
                   <dd className="text-sm font-medium text-gray-900">#{player.number}</dd>
                 </div>
               </dl>
             </section>
 
             {/* Playing Style */}
-            {player.description && (
+            {playerDesc && (
               <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                 <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
                   <span className="w-1 h-5 bg-[#E8192C] rounded-full" />
-                  プレースタイル
+                  {locale === 'en' ? "Playing Style" : "プレースタイル"}
                 </h2>
-                <p className="text-gray-700 leading-relaxed">{player.description}</p>
+                <p className="text-gray-700 leading-relaxed">{playerDesc}</p>
               </section>
             )}
 
@@ -220,7 +215,7 @@ export default async function PlayerDetailPage({ params }: Props) {
               <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                 <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
                   <span className="w-1 h-5 bg-[#E8192C] rounded-full" />
-                  関連キーワード
+                  {locale === 'en' ? "Related Keywords" : "関連キーワード"}
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {player.seoKeywords.map((kw) => (
@@ -237,7 +232,7 @@ export default async function PlayerDetailPage({ params }: Props) {
               <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                 <h2 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
                   <span className="w-1 h-5 bg-[#E8192C] rounded-full" />
-                  これまでの経歴
+                  {locale === 'en' ? "Career" : "これまでの経歴"}
                 </h2>
                 <ol className="space-y-4">
                   {player.careerHistory.map((item, i) => (
@@ -268,7 +263,7 @@ export default async function PlayerDetailPage({ params }: Props) {
               <section className="bg-gradient-to-br from-red-50 to-white rounded-xl shadow-sm border border-red-100 p-6">
                 <h2 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
                   <span className="text-lg">🇯🇵</span>
-                  日本代表との縁
+                  {locale === 'en' ? "Japan connection" : "日本代表との縁"}
                 </h2>
                 <p className="text-sm text-gray-700 leading-relaxed">{player.japanConnection}</p>
               </section>
@@ -278,27 +273,29 @@ export default async function PlayerDetailPage({ params }: Props) {
             <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
                 <span className="w-1 h-5 bg-[#8B1538] rounded-full" />
-                代表成績
+                {locale === 'en' ? "International Record" : "代表成績"}
               </h2>
               <div className="grid grid-cols-3 gap-4 text-center mb-5">
                 <div className="bg-gray-50 rounded-xl p-4">
                   <p className="text-2xl font-extrabold text-[#8B1538]">{player.caps}</p>
-                  <p className="text-xs text-gray-600 mt-1">出場試合</p>
+                  <p className="text-xs text-gray-600 mt-1">{locale === 'en' ? "Caps" : "出場試合"}</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-4">
                   <p className="text-2xl font-extrabold text-[#8B1538]">{player.goals}</p>
-                  <p className="text-xs text-gray-600 mt-1">得点数</p>
+                  <p className="text-xs text-gray-600 mt-1">{locale === 'en' ? "Goals" : "得点数"}</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-4">
                   <p className="text-2xl font-extrabold text-[#8B1538]">
-                    {player.debutYear ? `${player.debutYear}年` : "—"}
+                    {player.debutYear ? (locale === 'en' ? `${player.debutYear}` : `${player.debutYear}年`) : "—"}
                   </p>
-                  <p className="text-xs text-gray-600 mt-1">代表デビュー</p>
+                  <p className="text-xs text-gray-600 mt-1">{locale === 'en' ? "Int'l debut" : "代表デビュー"}</p>
                 </div>
               </div>
               {player.tournaments && player.tournaments.length > 0 && (
                 <div className="bg-gray-50 rounded-xl p-4">
-                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">出場大会</p>
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                    {locale === 'en' ? "Tournaments" : "出場大会"}
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {player.tournaments.map((t) => (
                       <span
@@ -322,14 +319,16 @@ export default async function PlayerDetailPage({ params }: Props) {
           <div className="space-y-6">
             {/* Team Info */}
             <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <h3 className="text-sm font-bold text-gray-900 mb-4">所属代表チーム</h3>
+              <h3 className="text-sm font-bold text-gray-900 mb-4">
+                {locale === 'en' ? "National Team" : "所属代表チーム"}
+              </h3>
               <Link
                 href={`/teams/${team.id}`}
                 className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
               >
                 <span className="text-3xl">{team.flag}</span>
                 <div>
-                  <p className="font-bold text-gray-900">{team.nameJa}</p>
+                  <p className="font-bold text-gray-900">{teamDisplayName}</p>
                   <p className="text-xs text-gray-500">Group {team.group} | FIFA #{team.fifaRanking}</p>
                 </div>
               </Link>
@@ -338,7 +337,9 @@ export default async function PlayerDetailPage({ params }: Props) {
             {/* Teammates */}
             {teammates.length > 0 && (
               <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                <h3 className="text-sm font-bold text-gray-900 mb-4">チームメイト</h3>
+                <h3 className="text-sm font-bold text-gray-900 mb-4">
+                  {locale === 'en' ? "Teammates" : "チームメイト"}
+                </h3>
                 <div className="space-y-3">
                   {teammates.map((mate) => (
                     <Link
@@ -348,7 +349,9 @@ export default async function PlayerDetailPage({ params }: Props) {
                     >
                       <PlayerAvatar player={mate} size="sm" />
                       <div className="min-w-0 flex-1">
-                        <p className="text-sm font-medium text-gray-900 truncate">{mate.nameJa}</p>
+                        <p className="text-sm font-medium text-gray-900 truncate">
+                          {locale === 'en' ? mate.name : mate.nameJa}
+                        </p>
                         <p className="text-xs text-gray-500">#{mate.number} {mate.position}</p>
                       </div>
                     </Link>
@@ -359,7 +362,7 @@ export default async function PlayerDetailPage({ params }: Props) {
                     href={`/teams/${team.id}`}
                     className="block text-center text-xs font-medium text-[#E8192C] hover:underline mt-4 pt-3 border-t border-gray-100"
                   >
-                    全選手を見る →
+                    {locale === 'en' ? "View all players →" : "全選手を見る →"}
                   </Link>
                 )}
               </section>
@@ -373,13 +376,13 @@ export default async function PlayerDetailPage({ params }: Props) {
             href={`/teams/${team.id}`}
             className="text-sm font-medium text-[#E8192C] hover:underline"
           >
-            ← {team.nameJa}に戻る
+            {locale === 'en' ? `← Back to ${teamDisplayName}` : `← ${teamDisplayName}に戻る`}
           </Link>
           <Link
             href="/teams"
             className="text-sm font-medium text-[#E8192C] hover:underline"
           >
-            全チーム一覧 →
+            {locale === 'en' ? "All teams →" : "全チーム一覧 →"}
           </Link>
         </div>
       </div>

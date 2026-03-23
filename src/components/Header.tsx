@@ -8,15 +8,6 @@ import type { Locale } from "@/types/i18n";
 const LANGS: { code: Locale; flag: string; label: string }[] = [
   { code: "ja", flag: "🇯🇵", label: "JA" },
   { code: "en", flag: "🇺🇸", label: "EN" },
-  { code: "de", flag: "🇩🇪", label: "DE" },
-  { code: "fr", flag: "🇫🇷", label: "FR" },
-  { code: "es", flag: "🇪🇸", label: "ES" },
-  { code: "it", flag: "🇮🇹", label: "IT" },
-  { code: "pt", flag: "🇵🇹", label: "PT" },
-  { code: "nl", flag: "🇳🇱", label: "NL" },
-  { code: "pl", flag: "🇵🇱", label: "PL" },
-  { code: "ru", flag: "🇷🇺", label: "RU" },
-  { code: "tr", flag: "🇹🇷", label: "TR" },
 ];
 
 export default function Header() {
@@ -129,7 +120,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            {/* Mobile lang switcher - grid for 11 languages */}
+            {/* Mobile lang switcher */}
             <div className="grid grid-cols-4 gap-1 px-4 pt-2 mt-1 border-t border-white/10">
               {LANGS.map(({ code, flag, label }) => (
                 <button

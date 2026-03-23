@@ -13,6 +13,42 @@ export default function Home() {
   const groups = getGroups();
   const upcomingMatches = matches.slice(0, 4);
 
+  const hostCities = locale === 'en' ? [
+    { city: "New York/NJ",    country: "🇺🇸", venue: "MetLife Stadium" },
+    { city: "Los Angeles",    country: "🇺🇸", venue: "SoFi Stadium" },
+    { city: "Dallas",         country: "🇺🇸", venue: "AT&T Stadium" },
+    { city: "Miami",          country: "🇺🇸", venue: "Hard Rock Stadium" },
+    { city: "Atlanta",        country: "🇺🇸", venue: "Mercedes-Benz Stadium" },
+    { city: "Houston",        country: "🇺🇸", venue: "NRG Stadium" },
+    { city: "Philadelphia",   country: "🇺🇸", venue: "Lincoln Financial Field" },
+    { city: "Seattle",        country: "🇺🇸", venue: "Lumen Field" },
+    { city: "San Francisco",  country: "🇺🇸", venue: "Levi's Stadium" },
+    { city: "Kansas City",    country: "🇺🇸", venue: "Arrowhead Stadium" },
+    { city: "Boston",         country: "🇺🇸", venue: "Gillette Stadium" },
+    { city: "Mexico City",    country: "🇲🇽", venue: "Estadio Azteca" },
+    { city: "Guadalajara",    country: "🇲🇽", venue: "Estadio Akron" },
+    { city: "Monterrey",      country: "🇲🇽", venue: "Estadio BBVA" },
+    { city: "Vancouver",      country: "🇨🇦", venue: "BC Place" },
+    { city: "Toronto",        country: "🇨🇦", venue: "BMO Field" },
+  ] : [
+    { city: "ニューヨーク", country: "🇺🇸", venue: "メットライフ・スタジアム" },
+    { city: "ロサンゼルス", country: "🇺🇸", venue: "ソフィ・スタジアム" },
+    { city: "ダラス", country: "🇺🇸", venue: "AT&Tスタジアム" },
+    { city: "マイアミ", country: "🇺🇸", venue: "ハード・ロック・スタジアム" },
+    { city: "アトランタ", country: "🇺🇸", venue: "メルセデス・ベンツ・スタジアム" },
+    { city: "ヒューストン", country: "🇺🇸", venue: "NRGスタジアム" },
+    { city: "フィラデルフィア", country: "🇺🇸", venue: "リンカーン・ファイナンシャル" },
+    { city: "シアトル", country: "🇺🇸", venue: "ルーメン・フィールド" },
+    { city: "サンフランシスコ", country: "🇺🇸", venue: "リーバイス・スタジアム" },
+    { city: "カンザスシティ", country: "🇺🇸", venue: "アロウヘッド・スタジアム" },
+    { city: "ボストン", country: "🇺🇸", venue: "ジレット・スタジアム" },
+    { city: "メキシコシティ", country: "🇲🇽", venue: "アステカ・スタジアム" },
+    { city: "グアダラハラ", country: "🇲🇽", venue: "アクロン・スタジアム" },
+    { city: "モンテレイ", country: "🇲🇽", venue: "BBVAスタジアム" },
+    { city: "バンクーバー", country: "🇨🇦", venue: "BCプレイス" },
+    { city: "トロント", country: "🇨🇦", venue: "BMOフィールド" },
+  ];
+
   return (
     <div>
       {/* Hero Section */}
@@ -48,10 +84,10 @@ export default function Home() {
               <Countdown />
             </div>
             <p className="text-base sm:text-xl text-white/80 max-w-2xl mx-auto mb-1 sm:mb-2">
-              2026年6月11日 開幕
+              {locale === 'en' ? "Kickoff: June 11, 2026" : "2026年6月11日 開幕"}
             </p>
             <p className="text-xs sm:text-sm text-white/60 mb-6 sm:mb-8">
-              アメリカ・メキシコ・カナダ | 48チーム | 16都市
+              {locale === 'en' ? "USA, Mexico & Canada | 48 teams | 16 cities" : "アメリカ・メキシコ・カナダ | 48チーム | 16都市"}
             </p>
             <div className="flex flex-row gap-2 sm:gap-4 justify-center">
               <Link
@@ -161,24 +197,7 @@ export default function Home() {
             <p className="text-gray-400 mt-1">{t.home.hostCitiesSub}</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[
-              { city: "ニューヨーク", country: "🇺🇸", venue: "メットライフ・スタジアム" },
-              { city: "ロサンゼルス", country: "🇺🇸", venue: "ソフィ・スタジアム" },
-              { city: "ダラス", country: "🇺🇸", venue: "AT&Tスタジアム" },
-              { city: "マイアミ", country: "🇺🇸", venue: "ハード・ロック・スタジアム" },
-              { city: "アトランタ", country: "🇺🇸", venue: "メルセデス・ベンツ・スタジアム" },
-              { city: "ヒューストン", country: "🇺🇸", venue: "NRGスタジアム" },
-              { city: "フィラデルフィア", country: "🇺🇸", venue: "リンカーン・ファイナンシャル" },
-              { city: "シアトル", country: "🇺🇸", venue: "ルーメン・フィールド" },
-              { city: "サンフランシスコ", country: "🇺🇸", venue: "リーバイス・スタジアム" },
-              { city: "カンザスシティ", country: "🇺🇸", venue: "アロウヘッド・スタジアム" },
-              { city: "ボストン", country: "🇺🇸", venue: "ジレット・スタジアム" },
-              { city: "メキシコシティ", country: "🇲🇽", venue: "アステカ・スタジアム" },
-              { city: "グアダラハラ", country: "🇲🇽", venue: "アクロン・スタジアム" },
-              { city: "モンテレイ", country: "🇲🇽", venue: "BBVAスタジアム" },
-              { city: "バンクーバー", country: "🇨🇦", venue: "BCプレイス" },
-              { city: "トロント", country: "🇨🇦", venue: "BMOフィールド" },
-            ].map((item) => (
+            {hostCities.map((item) => (
               <div
                 key={item.city}
                 className="bg-white/5 backdrop-blur rounded-xl p-4 hover:bg-white/10 transition-colors"
