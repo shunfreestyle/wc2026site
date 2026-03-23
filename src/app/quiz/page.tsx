@@ -299,7 +299,7 @@ export default function QuizPage() {
               <div className="mb-6">
                 <span className="text-6xl">🏆</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-1">クイズ結果</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-1">{t.quiz.resultTitle}</h2>
               <p className="text-gray-400 text-sm mb-6">
                 {categoryLabel?.flag} {categoryLabel?.title}
                 {level ? ` Lv.${level}` : ""}
@@ -346,7 +346,7 @@ export default function QuizPage() {
           explanation={current.explanation}
           note={current.note}
           onNext={handleNext}
-          nextLabel={currentIndex + 1 < total ? "次の問題へ →" : "結果を見る →"}
+          nextLabel={currentIndex + 1 < total ? `${t.quiz.nextBtn} →` : `${t.quiz.resultTitle} →`}
         />
       )}
 

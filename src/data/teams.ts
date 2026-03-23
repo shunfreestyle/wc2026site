@@ -14,19 +14,23 @@ export type Team = {
   fifaRanking: number;
   wcAppearances: number;
   bestResult: string;
+  bestResultEn?: string;
   coach: Coach;
   players: Player[];
   description: string;
+  descriptionEn?: string;
 };
 
 export type Coach = {
   name: string;
   nameJa: string;
   nationality: string;
+  nationalityEn?: string;
   birthDate: string;
   age: number;
   careerHistory: string[];
   style: string;
+  styleEn?: string;
 };
 
 export type Player = {
@@ -45,6 +49,7 @@ export type Player = {
   isCaptain?: boolean;
   isNew?: boolean;
   description?: string;
+  descriptionEn?: string;
   careerHistory?: { club: string; period: string; note?: string }[];
   japanConnection?: string;
   debutYear?: number;

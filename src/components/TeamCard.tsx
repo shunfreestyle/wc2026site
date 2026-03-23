@@ -3,7 +3,7 @@
 import Link from "next/link";
 import type { Team } from "@/data/teams";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { getTeamName } from "@/utils/teamName";
+import { getTeamName, getTeamDescription, getBestResult } from "@/utils/teamName";
 
 export default function TeamCard({ team }: { team: Team }) {
   const { t, locale } = useLanguage();
@@ -31,10 +31,10 @@ export default function TeamCard({ team }: { team: Team }) {
           </span>
         </div>
         <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
-          {team.description}
+          {getTeamDescription(team, locale)}
         </p>
         <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
-          <span className="text-xs text-gray-600">{t.teams.bestResult}: {team.bestResult}</span>
+          <span className="text-xs text-gray-600">{t.teams.bestResult}: {getBestResult(team, locale)}</span>
           <span className="text-xs text-[#E8192C] font-medium group-hover:translate-x-1 transition-transform inline-block">
             {t.common.seeMore} →
           </span>

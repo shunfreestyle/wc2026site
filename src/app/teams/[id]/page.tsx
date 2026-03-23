@@ -8,7 +8,7 @@ import { getMatchesByTeam } from "@/data/matches";
 import MatchCard from "@/components/MatchCard";
 import PlayerAvatar from "@/components/PlayerAvatar";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { getTeamName, getCoachName } from "@/utils/teamName";
+import { getTeamName, getCoachName, getTeamDescription, getCoachStyle, getCoachNationality, getBestResult, getPlayerDescription } from "@/utils/teamName";
 
 export default function TeamDetailPage() {
   const { t, locale } = useLanguage();
@@ -83,7 +83,7 @@ export default function TeamDetailPage() {
               </div>
               <div className="flex justify-between">
                 <dt className="text-sm text-gray-600">{t.teams.bestResult}</dt>
-                <dd className="text-sm font-semibold text-gray-900">{team.bestResult}</dd>
+                <dd className="text-sm font-semibold text-gray-900">{getBestResult(team, locale)}</dd>
               </div>
               <div className="flex justify-between">
                 <dt className="text-sm text-gray-600">{t.teams.confederation}</dt>
@@ -94,7 +94,7 @@ export default function TeamDetailPage() {
 
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:col-span-2">
             <h3 className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">{t.teams.overview}</h3>
-            <p className="text-gray-700 leading-relaxed">{team.description}</p>
+            <p className="text-gray-700 leading-relaxed">{getTeamDescription(team, locale)}</p>
           </div>
         </div>
 

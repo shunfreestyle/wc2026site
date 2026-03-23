@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import HtmlLangSync from "@/components/HtmlLangSync";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,13 +21,49 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "SAMURAI FOOTBALL | サムライブルーと2026年W杯を追う",
+    default: "SAMURAI FOOTBALL | Follow Samurai Blue at 2026 World Cup",
     template: "%s | SAMURAI FOOTBALL",
   },
   description:
-    "サッカー日本代表・2026年FIFAワールドカップの最新情報。選手プロフィール、試合日程、チーム情報を網羅。",
+    "The ultimate guide to Japan national team (Samurai Blue) and the 2026 FIFA World Cup. Player profiles, match schedules, and team info in 11 languages.",
+  keywords: [
+    "Japan national team",
+    "Samurai Blue",
+    "2026 World Cup",
+    "FIFA World Cup",
+    "日本代表",
+    "サムライブルー",
+    "ワールドカップ",
+  ],
   openGraph: {
     siteName: "SAMURAI FOOTBALL",
+    type: "website",
+    url: "https://samurai-football.jp",
+    title: "SAMURAI FOOTBALL | 2026 FIFA World Cup",
+    description:
+      "Follow Samurai Blue and all 48 nations at the 2026 FIFA World Cup.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SAMURAI FOOTBALL",
+    description: "Follow Samurai Blue at the 2026 FIFA World Cup",
+  },
+  alternates: {
+    canonical: "https://samurai-football.jp",
+    languages: {
+      ja: "https://samurai-football.jp",
+      en: "https://samurai-football.jp",
+      de: "https://samurai-football.jp",
+      fr: "https://samurai-football.jp",
+      es: "https://samurai-football.jp",
+      it: "https://samurai-football.jp",
+      pt: "https://samurai-football.jp",
+      nl: "https://samurai-football.jp",
+      pl: "https://samurai-football.jp",
+      ru: "https://samurai-football.jp",
+      tr: "https://samurai-football.jp",
+      "x-default": "https://samurai-football.jp",
+    },
   },
   icons: {
     icon: [
@@ -76,6 +113,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-[#f8f9fa]">
         <LanguageProvider>
+          <HtmlLangSync />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
