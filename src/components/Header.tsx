@@ -8,7 +8,6 @@ const navLinks = [
   { href: "/matches", label: "試合日程" },
   { href: "/japan", label: "🇯🇵 日本代表" },
   { href: "/japan/uniform", label: "ユニフォーム" },
-  { href: "/jleague", label: "Jリーグ" },
   { href: "/articles", label: "記事" },
   { href: "/quiz", label: "クイズ" },
 ];
