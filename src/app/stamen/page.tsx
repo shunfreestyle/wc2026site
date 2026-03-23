@@ -527,13 +527,20 @@ export default function StamenPage() {
                   </button>
                 ))}
               </div>
-              <div className="mt-6 flex justify-between items-center">
-                <Link href="/" className="text-gray-500 hover:text-gray-300 text-sm transition-colors">
+              <div className="mt-6 flex justify-between items-center gap-3">
+                <Link
+                  href="/"
+                  className="px-5 py-2.5 rounded-lg text-sm text-white transition-all duration-200"
+                  style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.3)" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.2)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.12)")}
+                >
                   ← トップへ
                 </Link>
                 <button
                   onClick={nextStep}
-                  className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold py-3 px-8 rounded-xl transition-all"
+                  className="flex-1 max-w-[200px] py-2.5 rounded-lg text-white font-semibold transition-all duration-200 hover:bg-[#c0141f]"
+                  style={{ background: "#E8192C" }}
                 >
                   次へ →
                 </button>
@@ -562,13 +569,20 @@ export default function StamenPage() {
                 }}
               />
               <p className="text-center text-[10px] text-gray-600 mt-2">※ 配置済みの選手をタップで解除</p>
-              <div className="mt-6 flex justify-between items-center">
-                <button onClick={prevStep} className="text-gray-500 hover:text-gray-300 text-sm transition-colors">
+              <div className="mt-6 flex justify-between items-center gap-3">
+                <button
+                  onClick={prevStep}
+                  className="px-5 py-2.5 rounded-lg text-sm text-white transition-all duration-200"
+                  style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.3)" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.2)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.12)")}
+                >
                   ← 戻る
                 </button>
                 <button
                   onClick={nextStep}
-                  className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold py-3 px-8 rounded-xl transition-all"
+                  className="flex-1 max-w-[200px] py-2.5 rounded-lg text-white font-semibold transition-all duration-200 hover:bg-[#c0141f]"
+                  style={{ background: "#E8192C" }}
                 >
                   次へ →
                 </button>
@@ -607,13 +621,20 @@ export default function StamenPage() {
               >
                 ＋ 選手を追加
               </button>
-              <div className="mt-6 flex justify-between items-center">
-                <button onClick={prevStep} className="text-gray-500 hover:text-gray-300 text-sm transition-colors">
+              <div className="mt-6 flex justify-between items-center gap-3">
+                <button
+                  onClick={prevStep}
+                  className="px-5 py-2.5 rounded-lg text-sm text-white transition-all duration-200"
+                  style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.3)" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.2)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.12)")}
+                >
                   ← 戻る
                 </button>
                 <button
                   onClick={nextStep}
-                  className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold py-3 px-8 rounded-xl transition-all"
+                  className="flex-1 max-w-[200px] py-2.5 rounded-lg text-white font-semibold transition-all duration-200 hover:bg-[#c0141f]"
+                  style={{ background: "#E8192C" }}
                 >
                   次へ →
                 </button>
