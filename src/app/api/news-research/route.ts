@@ -28,15 +28,10 @@ export async function POST() {
       };
 
       try {
-        // Send media list so client can render cards
         send({ type: "init", sources: MEDIA_SOURCES });
 
-        // --- Phase 1: Broad search for top stories ---
-        send({ type: "source_status", source: "ゲキサカ", status: "searching" });
-        send({ type: "source_status", source: "サッカーキング", status: "searching" });
-        send({ type: "source_status", source: "Yahoo!ニュース", status: "searching" });
-        send({ type: "source_status", source: "Goal.com日本版", status: "searching" });
-        send({ type: "source_status", source: "超WORLDサッカー", status: "searching" });
+        // --- Phase 1 ---
+        for (const s of MEDIA_SOURCES.slice(0, 5)) send({ type: "source_status", source: s, status: "searching" });
 
         const r1 = await client.messages.create({
           model: "claude-haiku-4-5-20251001",
@@ -44,26 +39,22 @@ export async function POST() {
           system: SYSTEM_PROMPT,
           messages: [{
             role: "user",
-            content: `直近48時間の日本サッカーに関するニュースをウェブ検索してください。
+            content: `日本サッカーの最新ニュースをウェブ検索してください。
 
-以下の検索を実行してください:
-1. "日本サッカー 最新ニュース 2026" — 全般的なトレンド
-2. "日本代表 サッカー 速報" — 代表関連
-3. "Jリーグ 結果 移籍 ニュース" — Jリーグ関連
-4. "サッカー 海外組 日本人" — 海外組関連
+以下の検索を順に実行してください:
+1. "日本代表 サッカー ニュース"
+2. "Jリーグ ニュース 速報"
+3. "サッカー 海外組 日本人選手"
 
-各ニュースについて、同じニュースを報じている複数のメディアURLをできるだけ集めてください。
+検索結果から見つかった記事を、以下のJSON配列で10件出力してください。
+同じニュースが複数メディアにある場合はurlsにまとめてください。
 
-以下のJSON形式で10件出力してください:
 [
   {
-    "title": "ニュースのタイトル",
-    "urls": [
-      {"source": "メディア名", "url": "実際のURL"},
-      {"source": "別のメディア名", "url": "実際のURL"}
-    ],
+    "title": "記事タイトル",
+    "urls": [{"source": "メディア名", "url": "実際のURL"}],
     "summary": "200〜300文字の概要",
-    "hoursAgo": 推定何時間前のニュースか(数値)
+    "hoursAgo": 推定何時間前か(数値)
   }
 ]`,
           }],
@@ -72,20 +63,13 @@ export async function POST() {
 
         const sr1 = extractSearchResults(r1);
         const items1 = parseResponseItems(r1);
+        console.log(`[Phase1] searchResults=${sr1.length}, parsedItems=${items1.length}`);
 
-        send({ type: "source_status", source: "ゲキサカ", status: "done" });
-        send({ type: "source_status", source: "サッカーキング", status: "done" });
-        send({ type: "source_status", source: "Yahoo!ニュース", status: "done" });
-        send({ type: "source_status", source: "Goal.com日本版", status: "done" });
-        send({ type: "source_status", source: "超WORLDサッカー", status: "done" });
+        for (const s of MEDIA_SOURCES.slice(0, 5)) send({ type: "source_status", source: s, status: "done" });
         send({ type: "progress", found: items1.length });
 
-        // --- Phase 2: Additional sources ---
-        send({ type: "source_status", source: "Football LAB", status: "searching" });
-        send({ type: "source_status", source: "Jリーグ公式", status: "searching" });
-        send({ type: "source_status", source: "日刊スポーツ", status: "searching" });
-        send({ type: "source_status", source: "スポーツ報知", status: "searching" });
-        send({ type: "source_status", source: "footballista", status: "searching" });
+        // --- Phase 2 ---
+        for (const s of MEDIA_SOURCES.slice(5)) send({ type: "source_status", source: s, status: "searching" });
 
         const r2 = await client.messages.create({
           model: "claude-haiku-4-5-20251001",
@@ -93,25 +77,19 @@ export async function POST() {
           system: SYSTEM_PROMPT,
           messages: [{
             role: "user",
-            content: `直近48時間のサッカーニュースを以下のメディアから検索してください:
+            content: `日本サッカーのニュースを追加で検索してください。
 
-1. "site:nikkansports.com サッカー" — 日刊スポーツ
-2. "site:hochi.news サッカー" — スポーツ報知
-3. "site:footballista.jp" — footballista
-4. "site:jleague.jp ニュース" — Jリーグ公式
-5. "site:football-lab.jp" — Football LAB
+以下の検索を実行:
+1. "サッカー 移籍 最新"
+2. "日本代表 W杯 2026"
 
-各記事に複数のメディアURLを含めてください。同じ話題の記事は統合してURLを追加すること。
-
-以下のJSON形式で最大10件:
+先ほどと異なるニュースを中心に、以下のJSON配列で最大10件:
 [
   {
-    "title": "ニュースのタイトル",
-    "urls": [
-      {"source": "メディア名", "url": "実際のURL"}
-    ],
+    "title": "記事タイトル",
+    "urls": [{"source": "メディア名", "url": "実際のURL"}],
     "summary": "200〜300文字の概要",
-    "hoursAgo": 推定何時間前のニュースか(数値)
+    "hoursAgo": 推定何時間前か(数値)
   }
 ]`,
           }],
@@ -120,36 +98,38 @@ export async function POST() {
 
         const sr2 = extractSearchResults(r2);
         const items2 = parseResponseItems(r2);
+        console.log(`[Phase2] searchResults=${sr2.length}, parsedItems=${items2.length}`);
 
-        send({ type: "source_status", source: "Football LAB", status: "done" });
-        send({ type: "source_status", source: "Jリーグ公式", status: "done" });
-        send({ type: "source_status", source: "日刊スポーツ", status: "done" });
-        send({ type: "source_status", source: "スポーツ報知", status: "done" });
-        send({ type: "source_status", source: "footballista", status: "done" });
+        for (const s of MEDIA_SOURCES.slice(5)) send({ type: "source_status", source: s, status: "done" });
 
-        // --- Phase 3: Merge, validate, rank ---
+        // --- Phase 3: Merge & rank ---
         send({ type: "source_status_all", status: "ranking" });
 
         const allSearchResults = [...sr1, ...sr2];
-        const merged = mergeItems([...items1, ...items2]);
+        const allItems = [...items1, ...items2];
+        console.log(`[Merge] total items before merge: ${allItems.length}, searchResults: ${allSearchResults.length}`);
 
-        // Validate URLs and enrich with search results
+        const merged = mergeItems(allItems);
+        console.log(`[Merge] after dedup: ${merged.length}`);
+
+        // Enrich URLs from search results (but don't filter out items)
         for (const item of merged) {
-          item.urls = validateAndEnrichUrls(item.urls, item.title, allSearchResults);
+          item.urls = enrichUrls(item.urls, item.title, allSearchResults);
         }
 
-        // Filter items with at least 1 valid URL, sort by recency
-        const valid = merged
-          .filter((item) => item.urls.length >= 1)
-          .sort((a, b) => (a.hoursAgo ?? 48) - (b.hoursAgo ?? 48));
+        // Sort by recency, keep all items (even without URLs from search results)
+        const sorted = merged
+          .sort((a, b) => (a.hoursAgo ?? 99) - (b.hoursAgo ?? 99));
 
-        const ranked = valid.slice(0, 10).map((item, i) => ({
+        const ranked = sorted.slice(0, 10).map((item, i) => ({
           rank: i + 1,
           title: item.title,
-          urls: item.urls,
+          urls: item.urls.length > 0 ? item.urls : [{ source: "検索結果", url: "" }],
           summary: item.summary,
           hoursAgo: item.hoursAgo,
         }));
+
+        console.log(`[Result] ranked items: ${ranked.length}`);
 
         send({
           type: "done",
@@ -181,9 +161,9 @@ const SYSTEM_PROMPT = `あなたはサッカーニュースの調査員です。
 
 重要ルール:
 - 純粋なJSON配列のみ出力。前置き・説明・コードブロック(\`\`\`)は不要。
-- URLは検索結果で見つかった実際のURLのみ使用。推測・捏造は厳禁。
+- URLは検索結果で見つかった実際のURLをそのまま使用してください。
 - 同じニュースを複数メディアが報じている場合、urlsに全てのメディアURLを含める。
-- 見つからない場合は空配列 [] を返す。`;
+- 必ず5件以上出力してください。`;
 
 type RawItem = {
   title: string;
@@ -212,27 +192,75 @@ function parseResponseItems(response: Anthropic.Message): RawItem[] {
     if (block.type === "text") text += block.text;
   }
 
+  if (!text.trim()) {
+    console.error("[parseResponseItems] No text content in response. Content types:", response.content.map((b) => b.type));
+    // Fallback: build items from search results directly
+    return buildItemsFromSearchResults(response);
+  }
+
   let jsonStr = text.trim();
+
+  // Remove markdown code block wrappers
   const cbm = jsonStr.match(/```(?:json)?\s*([\s\S]*?)```/);
   if (cbm) jsonStr = cbm[1].trim();
+
+  // Try to find JSON array
   if (!jsonStr.startsWith("[")) {
     const m = jsonStr.match(/(\[[\s\S]*\])/);
     if (m) jsonStr = m[1];
   }
 
+  // Try to find JSON object (single item)
+  if (!jsonStr.startsWith("[") && jsonStr.startsWith("{")) {
+    jsonStr = `[${jsonStr}]`;
+  }
+
   try {
     const items = JSON.parse(jsonStr);
-    if (!Array.isArray(items)) return [];
-    return items.map((item: Record<string, unknown>) => ({
+    if (!Array.isArray(items)) {
+      console.error("[parseResponseItems] Parsed result is not array:", typeof items);
+      return buildItemsFromSearchResults(response);
+    }
+    const parsed = items.map((item: Record<string, unknown>) => ({
       title: String(item.title || ""),
-      urls: Array.isArray(item.urls) ? (item.urls as SourceUrl[]).filter((u) => u.url && u.source) : [],
+      urls: Array.isArray(item.urls)
+        ? (item.urls as SourceUrl[]).filter((u) => u && u.url)
+        : (item.url ? [{ source: String(item.source || ""), url: String(item.url) }] : []),
       summary: String(item.summary || ""),
       hoursAgo: typeof item.hoursAgo === "number" ? item.hoursAgo : undefined,
     }));
-  } catch {
-    console.error("Parse failed:", text.slice(0, 500));
-    return [];
+    console.log(`[parseResponseItems] Successfully parsed ${parsed.length} items`);
+    return parsed;
+  } catch (e) {
+    console.error("[parseResponseItems] JSON parse failed:", e);
+    console.error("[parseResponseItems] Raw text (first 1000 chars):", text.slice(0, 1000));
+    // Fallback: build from search results
+    return buildItemsFromSearchResults(response);
   }
+}
+
+/** Fallback: create news items directly from web search result blocks */
+function buildItemsFromSearchResults(response: Anthropic.Message): RawItem[] {
+  const items: RawItem[] = [];
+  for (const block of response.content) {
+    if (block.type === "web_search_tool_result" && Array.isArray(block.content)) {
+      for (const r of block.content) {
+        if (r.type === "web_search_result" && r.url && r.title) {
+          const src = identifySource(r.url);
+          if (src) {
+            items.push({
+              title: r.title,
+              urls: [{ source: src, url: r.url }],
+              summary: "",
+              hoursAgo: undefined,
+            });
+          }
+        }
+      }
+    }
+  }
+  console.log(`[buildItemsFromSearchResults] Built ${items.length} items from search results`);
+  return items;
 }
 
 function mergeItems(items: RawItem[]): RawItem[] {
@@ -252,7 +280,6 @@ function mergeItems(items: RawItem[]): RawItem[] {
     });
 
     if (dup) {
-      // Merge URLs
       for (const u of item.urls) {
         if (!dup.urls.some((eu) => eu.url === u.url)) dup.urls.push(u);
       }
@@ -268,52 +295,42 @@ function mergeItems(items: RawItem[]): RawItem[] {
   return result;
 }
 
-function validateAndEnrichUrls(
+/** Enrich item URLs with matching search results. Does NOT remove items. */
+function enrichUrls(
   urls: SourceUrl[],
   title: string,
   searchResults: { url: string; title: string }[]
 ): SourceUrl[] {
-  const validated: SourceUrl[] = [];
+  const result: SourceUrl[] = [];
   const seenUrls = new Set<string>();
 
-  // Validate existing URLs
+  // Keep all existing URLs that look valid
   for (const u of urls) {
-    if (!u.url || !u.url.startsWith("http") || seenUrls.has(u.url)) continue;
-    // Check if URL exists in search results or has a known domain
-    const inResults = searchResults.some((sr) => sr.url === u.url);
-    const hasKnownDomain = KNOWN_DOMAINS.some((d) => u.url.includes(d));
-    if (inResults || hasKnownDomain) {
-      validated.push(u);
+    if (u.url && u.url.startsWith("http") && !seenUrls.has(u.url)) {
+      // Assign source name if missing
+      if (!u.source) {
+        u.source = identifySource(u.url) || "その他";
+      }
+      result.push(u);
       seenUrls.add(u.url);
     }
   }
 
-  // Enrich: find more URLs from search results matching this title
-  if (validated.length < 3) {
-    const words = title.split(/[\s、。・「」『』（）\(\)【】]+/).filter((w) => w.length >= 3);
-    for (const sr of searchResults) {
-      if (seenUrls.has(sr.url)) continue;
-      const mc = words.filter((w) => sr.title.includes(w)).length;
-      if (mc >= 2) {
-        const src = identifySource(sr.url);
-        if (src) {
-          validated.push({ source: src, url: sr.url });
-          seenUrls.add(sr.url);
-        }
-      }
-      if (validated.length >= 5) break;
+  // Add matching URLs from search results
+  const words = title.split(/[\s、。・「」『』（）\(\)【】]+/).filter((w) => w.length >= 3);
+  for (const sr of searchResults) {
+    if (seenUrls.has(sr.url)) continue;
+    const mc = words.filter((w) => sr.title.includes(w)).length;
+    if (mc >= 2) {
+      const src = identifySource(sr.url);
+      result.push({ source: src || "その他", url: sr.url });
+      seenUrls.add(sr.url);
     }
+    if (result.length >= 5) break;
   }
 
-  return validated;
+  return result;
 }
-
-const KNOWN_DOMAINS = [
-  "gekisaka", "soccerking", "yahoo.co.jp", "goal.com", "ultra-soccer",
-  "football-lab", "jleague.jp", "nikkansports.com", "hochi.news",
-  "footballista", "sponichi", "mainichi", "asahi", "nhk.or.jp",
-  "sportsnavi", "web.gekisaka", "qoly",
-];
 
 function identifySource(url: string): string | null {
   const map: [string, string][] = [
@@ -331,6 +348,12 @@ function identifySource(url: string): string | null {
     ["nhk.or.jp", "NHK"],
     ["sportsnavi", "スポーツナビ"],
     ["qoly", "Qoly"],
+    ["mainichi", "毎日新聞"],
+    ["asahi", "朝日新聞"],
+    ["sankei", "産経新聞"],
+    ["yomiuri", "読売新聞"],
+    ["number.bunshun", "Number"],
+    ["thedigestweb", "ダイジェスト"],
   ];
   for (const [domain, name] of map) {
     if (url.includes(domain)) return name;
