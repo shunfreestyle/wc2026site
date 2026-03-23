@@ -20,6 +20,7 @@ export type JapanSquadPlayer = {
 export const japanSquad2026March: JapanSquadPlayer[] = [
   // ── GK (3) ──
   {
+    id: "japan-hayakawa",
     name: "Tomoki Hayakawa",
     nameJa: "早川友基",
     birthDate: "2001-07-29",
@@ -33,6 +34,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "鹿島の守護神として急成長を遂げた若きGK。鋭い反射神経とハイボール処理の安定感が光り、ビルドアップにも貢献できる現代型キーパー。大舞台でのさらなる飛躍に期待。",
   },
   {
+    id: "japan-osako",
     name: "Keisuke Osako",
     nameJa: "大迫敬介",
     birthDate: "1999-07-28",
@@ -45,6 +47,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "東京五輪世代の正GK候補として成長を続ける広島の守護神。安定感あるセービングとコーチングで最終ラインを統率。堅実なプレーでチームに安心感を与える。",
   },
   {
+    id: "japan-suzuki-z",
     name: "Zion Suzuki",
     nameJa: "鈴木彩艶",
     birthDate: "2002-08-21",
@@ -60,6 +63,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
 
   // ── DF (8) ──
   {
+    id: "japan-taniguchi",
     name: "Shogo Taniguchi",
     nameJa: "谷口彰悟",
     birthDate: "1991-07-15",
@@ -115,6 +119,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "ブンデスリーガ昇格組のザンクトパウリで定位置を掴んだ若手CB。スピードのある攻撃的な相手にも臆せず対峙できる対人守備の強さと、落ち着いたビルドアップが持ち味。",
   },
   {
+    id: "japan-ito-h",
     name: "Hiroki Ito",
     nameJa: "伊藤洋輝",
     birthDate: "1999-05-12",
@@ -141,6 +146,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "フランス・リーグアンで揉まれたインテリジェンス系CB。冷静な判断力と正確なパスでDFラインからゲームを組み立てる。カバーリング能力の高さも魅力。",
   },
   {
+    id: "japan-sugawara",
     name: "Yukinari Sugawara",
     nameJa: "菅原由勢",
     birthDate: "2000-06-28",
@@ -210,6 +216,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "カタールW杯でドイツ戦・スペイン戦の両方でゴールを決めた大舞台の男。左足のカットインシュートは世界レベルの威力。フランクフルトで進化を続ける闘志の塊。",
   },
   {
+    id: "japan-tanaka-a",
     name: "Ao Tanaka",
     nameJa: "田中碧",
     birthDate: "1998-09-10",
@@ -222,6 +229,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "カタールW杯のドイツ戦で試合を決定づけるゴールを記録した勝負師。ボックス・トゥ・ボックスで攻守をつなぎ、ここぞの場面で顔を出す。イングランドでたくましく成長中。",
   },
   {
+    id: "japan-sano-k",
     name: "Kaishu Sano",
     nameJa: "佐野海舟",
     birthDate: "2000-12-30",
@@ -234,6 +242,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "ボール奪取力に定評のある守備的MF。遠藤航不在の中盤で求められるアンカー役を担える逸材。ブンデスリーガで磨いた球際の強さとカバー範囲の広さがチームを支える。",
   },
   {
+    id: "japan-suzuki-y",
     name: "Yuito Suzuki",
     nameJa: "鈴木唯人",
     birthDate: "2001-08-26",
@@ -246,6 +255,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "フライブルクで着実に出場機会を増やしている攻撃的MF。スピードのある仕掛けと正確なシュートが持ち味。ポテンシャルの高さは欧州スカウトも注目する次世代の星。",
   },
   {
+    id: "japan-fujita",
     name: "Joel Chima Fujita",
     nameJa: "藤田譲瑠チマ",
     birthDate: "2002-02-16",
@@ -258,6 +268,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "ナイジェリアにルーツを持つハイブリッドMF。フィジカルの強さとテクニックを兼ね備え、中盤で力強くボールを運べる推進力が魅力。ブンデスリーガで急成長中の期待株。",
   },
   {
+    id: "japan-sano-k2",
     name: "Kodai Sano",
     nameJa: "佐野航大",
     birthDate: "2002-08-27",
@@ -299,6 +310,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "日本最速のスピードスターが右サイドを切り裂く。33歳になっても衰えないスプリント力と精度の高いクロスは、相手ディフェンスにとって最大の脅威。ベルギーの地で輝き続ける不屈のウインガー。",
   },
   {
+    id: "japan-ogawa",
     name: "Koki Ogawa",
     nameJa: "小川航基",
     birthDate: "1997-08-08",
@@ -312,6 +324,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "エールディヴィジで得点ランキング上位に名を連ねる和製ターゲットマン。186cmの高さと足元の技術を兼ね備え、日本に不足していた「高さの基準点」になれる逸材。ヘディングの強さは圧巻。",
   },
   {
+    id: "japan-maeda",
     name: "Daizen Maeda",
     nameJa: "前田大然",
     birthDate: "1997-10-20",
@@ -338,6 +351,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "エールディヴィジで得点を量産するストライカー。ゴール前での嗅覚と力強いシュートは欧州でも通用する本物の決定力。W杯でのブレイクを予感させる日本のエースFW候補。",
   },
   {
+    id: "japan-machino",
     name: "Shuto Machino",
     nameJa: "町野修斗",
     birthDate: "1999-09-30",
@@ -350,6 +364,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "ブンデスリーガのボルシアMGで出場機会を掴んだ万能型FW。ポストプレーから裏抜けまでこなせる器用さが武器。日本の前線に新たな選択肢を与える頼れるストライカー。",
   },
   {
+    id: "japan-nakamura-k",
     name: "Keito Nakamura",
     nameJa: "中村敬斗",
     birthDate: "2000-07-28",
@@ -362,6 +377,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "フランス・リーグアンで結果を出し続ける左利きのアタッカー。カットインからの強烈なシュートと、サイドを突破するスピードが持ち味。三笘との左サイドコンビは脅威。",
   },
   {
+    id: "japan-shiogai",
     name: "Kento Shiogai",
     nameJa: "塩貝健人",
     birthDate: "2003-12-04",
@@ -375,6 +391,7 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
       "ブンデスリーガの名門ヴォルフスブルクでチャンスを掴んだ若手アタッカー。スピードと得点感覚を兼ね備え、ドイツの舞台で急成長中。将来のエース候補として要注目。",
   },
   {
+    id: "japan-goto",
     name: "Keisuke Goto",
     nameJa: "後藤啓介",
     birthDate: "2005-10-16",

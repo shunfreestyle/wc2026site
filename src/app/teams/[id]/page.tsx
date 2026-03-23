@@ -140,122 +140,26 @@ export default function TeamDetailPage() {
             </div>
           </div>
         </section>
-
-        {/* Players Section */}
+        {/* Players Section — Coming Soon */}
         <section className="mb-10">
           <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
             <span className="w-1 h-6 bg-[#E8192C] rounded-full" />
             {t.teams.squad}
           </h2>
-          {team.players.length > 0 ? (
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-              {/* Desktop Table */}
-              <div className="hidden md:block overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="bg-gray-50 border-b border-gray-200">
-                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">背番号</th>
-                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">選手名</th>
-                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">ポジション</th>
-                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">所属クラブ</th>
-                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">年齢</th>
-                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">身長</th>
-                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">代表</th>
-                      <th className="text-left text-xs font-semibold text-gray-600 uppercase tracking-wider px-6 py-3">得点</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-100">
-                    {team.players.map((player) => {
-                      const pos = positionLabel(player.position);
-                      return (
-                        <tr key={player.id} className="hover:bg-gray-50 transition-colors">
-                          <td className="px-6 py-4 text-sm font-bold text-gray-900">
-                            #{player.number}
-                          </td>
-                          <td className="px-6 py-4">
-                            <Link href={`/players/${player.id}`} className="flex items-center gap-3 group">
-                              <PlayerAvatar player={player} size="sm" />
-                              <div>
-                                <p className="text-sm font-semibold text-gray-900 group-hover:text-[#E8192C] transition-colors">
-                                  {player.nameJa}
-                                  {player.isCaptain && (
-                                    <span className="ml-1.5 inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded">
-                                      C
-                                    </span>
-                                  )}
-                                  {player.isNew && (
-                                    <span className="ml-1.5 inline-block bg-emerald-100 text-emerald-800 text-[10px] font-bold px-1.5 py-0.5 rounded">
-                                      初
-                                    </span>
-                                  )}
-                                </p>
-                                <p className="text-xs text-gray-500">{player.name}</p>
-                              </div>
-                            </Link>
-                          </td>
-                          <td className="px-6 py-4">
-                            <span className={`inline-block text-xs font-bold px-2 py-0.5 rounded ${pos.color}`}>
-                              {pos.label}
-                            </span>
-                          </td>
-                          <td className="px-6 py-4 text-sm text-gray-700">{player.club}</td>
-                          <td className="px-6 py-4 text-sm text-gray-700">{player.age}歳</td>
-                          <td className="px-6 py-4 text-sm text-gray-700">{player.height}cm</td>
-                          <td className="px-6 py-4 text-sm text-gray-700">{player.caps}試合</td>
-                          <td className="px-6 py-4 text-sm font-semibold text-gray-900">{player.goals}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-
-              {/* Mobile Cards */}
-              <div className="md:hidden divide-y divide-gray-100">
-                {team.players.map((player) => {
-                  const pos = positionLabel(player.position);
-                  return (
-                    <Link key={player.id} href={`/players/${player.id}`} className="block p-4 hover:bg-gray-50 transition-colors">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-3">
-                          <PlayerAvatar player={player} size="sm" />
-                          <div>
-                            <p className="font-semibold text-gray-900">
-                              {player.nameJa}
-                              {player.isCaptain && (
-                                <span className="ml-1 inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded">
-                                  C
-                                </span>
-                              )}
-                              {player.isNew && (
-                                <span className="ml-1 inline-block bg-emerald-100 text-emerald-800 text-[10px] font-bold px-1.5 py-0.5 rounded">
-                                  初
-                                </span>
-                              )}
-                            </p>
-                            <p className="text-xs text-gray-500">{player.name}</p>
-                          </div>
-                        </div>
-                        <span className={`text-xs font-bold px-2 py-0.5 rounded ${pos.color}`}>
-                          {pos.label}
-                        </span>
-                      </div>
-                      <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-gray-600 ml-11">
-                        <p>所属: {player.club}</p>
-                        <p>年齢: {player.age}歳</p>
-                        <p>身長: {player.height}cm</p>
-                        <p>代表: {player.caps}試合 / {player.goals}得点</p>
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-10 text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 mb-5">
+              <span className="text-3xl">🏟️</span>
             </div>
-          ) : (
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center text-gray-600">
-              選手情報は後日更新されます
-            </div>
-          )}
+            <h3 className="text-lg font-bold text-gray-900 mb-2">選手一覧は準備中です</h3>
+            <p className="text-gray-500 text-sm leading-relaxed max-w-xs mx-auto mb-6">
+              W杯2026の最終メンバー発表後に<br />
+              各選手の詳細プロフィールを公開予定です。
+            </p>
+            <span className="inline-flex items-center gap-2 text-xs font-semibold text-blue-600 bg-blue-50 rounded-full px-4 py-2">
+              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+              メンバー発表待ち
+            </span>
+          </div>
         </section>
 
         {/* Team Matches */}
