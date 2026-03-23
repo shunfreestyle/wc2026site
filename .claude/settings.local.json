@@ -56,7 +56,10 @@
       "Bash(curl -s https://fonts.google.com/metadata/fonts)",
       "Bash(npm ls:*)",
       "Bash(node:*)",
-      "Bash(md5:*)"
+      "Bash(md5:*)",
+      "Bash(sudo npm:*)",
+      "Read(//Users/shunfreestyle/.npm/_cacache/content-v2/sha512/1d/**)",
+      "Bash(rm -rf ~/.npm/_cacache)"
     ]
   }
 }

@@ -18,6 +18,7 @@ interface Formation {
 interface Player {
   name: string;
   pos: string;
+  club?: string;
 }
 
 /* ─── Formations ─── */
@@ -96,35 +97,40 @@ const FORMATIONS: Formation[] = [
   },
 ];
 
-/* ─── Squad (28 players) ─── */
+/* ─── Squad (28 players) ── JFA公式 3月19日発表 ─── */
 const SQUAD: Player[] = [
-  { name: "鈴木彩艶", pos: "GK" },
-  { name: "大迫敬介", pos: "GK" },
-  { name: "谷晃生", pos: "GK" },
-  { name: "早川友基", pos: "GK" },
-  { name: "板倉滉", pos: "DF" },
-  { name: "冨安健洋", pos: "DF" },
-  { name: "町田浩樹", pos: "DF" },
-  { name: "橋岡大樹", pos: "DF" },
-  { name: "高井幸大", pos: "DF" },
-  { name: "長友佑都", pos: "DF" },
-  { name: "瀬古歩夢", pos: "DF" },
-  { name: "遠藤航", pos: "MF" },
-  { name: "守田英正", pos: "MF" },
-  { name: "田中碧", pos: "MF" },
-  { name: "鎌田大地", pos: "MF" },
-  { name: "旗手怜央", pos: "MF" },
-  { name: "堂安律", pos: "MF" },
-  { name: "安藤智哉", pos: "MF" },
-  { name: "三笘薫", pos: "FW" },
-  { name: "伊東純也", pos: "FW" },
-  { name: "中村敬斗", pos: "FW" },
-  { name: "前田大然", pos: "FW" },
-  { name: "南野拓実", pos: "FW" },
-  { name: "小川航基", pos: "FW" },
-  { name: "鈴木唯人", pos: "FW" },
-  { name: "後藤啓介", pos: "FW" },
-  { name: "塩貝健人", pos: "FW" },
+  // GK（3名）
+  { name: "早川友基", pos: "GK", club: "鹿島アントラーズ" },
+  { name: "大迫敬介", pos: "GK", club: "サンフレッチェ広島" },
+  { name: "鈴木彩艶", pos: "GK", club: "パルマ（イタリア）" },
+  // DF（8名）
+  { name: "谷口彰悟", pos: "DF", club: "シントトロイデン（ベルギー）" },
+  { name: "渡辺剛", pos: "DF", club: "フェイエノールト（オランダ）" },
+  { name: "冨安健洋", pos: "DF", club: "アヤックス（オランダ）" },
+  { name: "安藤智哉", pos: "DF", club: "ザンクトパウリ（ドイツ）" },
+  { name: "伊藤洋輝", pos: "DF", club: "バイエルン（ドイツ）" },
+  { name: "瀬古歩夢", pos: "DF", club: "ル・アーヴル（フランス）" },
+  { name: "菅原由勢", pos: "DF", club: "ブレーメン（ドイツ）" },
+  { name: "鈴木淳之介", pos: "DF", club: "コペンハーゲン（デンマーク）" },
+  // MF（9名）
+  { name: "鎌田大地", pos: "MF", club: "クリスタルパレス（イングランド）" },
+  { name: "三笘薫", pos: "MF", club: "ブライトン（イングランド）" },
+  { name: "堂安律", pos: "MF", club: "フランクフルト（ドイツ）" },
+  { name: "田中碧", pos: "MF", club: "リーズ（イングランド）" },
+  { name: "佐野海舟", pos: "MF", club: "マインツ（ドイツ）" },
+  { name: "鈴木唯人", pos: "MF", club: "フライブルク（ドイツ）" },
+  { name: "藤田譲瑠チマ", pos: "MF", club: "ザンクトパウリ（ドイツ）" },
+  { name: "佐野航大", pos: "MF", club: "NECナイメヘン（オランダ）" },
+  { name: "佐藤龍之介", pos: "MF", club: "FC東京" },
+  // FW（8名）
+  { name: "伊東純也", pos: "FW", club: "ゲンク（ベルギー）" },
+  { name: "小川航基", pos: "FW", club: "NEC（オランダ）" },
+  { name: "前田大然", pos: "FW", club: "セルティック（スコットランド）" },
+  { name: "上田綺世", pos: "FW", club: "フェイエノールト（オランダ）" },
+  { name: "町野修斗", pos: "FW", club: "ボルシアMG（ドイツ）" },
+  { name: "中村敬斗", pos: "FW", club: "スタッド・ランス（フランス）" },
+  { name: "塩貝健人", pos: "FW", club: "ヴォルフスブルク（ドイツ）" },
+  { name: "後藤啓介", pos: "FW", club: "シントトロイデン（ベルギー）" },
 ];
 
 /* ─── Half-court Y remap: newY = 8 + (oldY - 18) * 80 / 74 ─── */
