@@ -4,9 +4,21 @@ import Link from "next/link";
 import { useState, useMemo } from "react";
 import { articles } from "@/data/articles";
 import type { Article } from "@/data/articles";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CATEGORIES = ["新着", "人気", "日本代表", "Jリーグ", "W杯", "海外組", "コラム", "選手紹介"] as const;
 type Tab = (typeof CATEGORIES)[number];
+
+const categoryLabelsEn: Record<Tab, string> = {
+  "新着": "Latest",
+  "人気": "Popular",
+  "日本代表": "Japan NT",
+  "Jリーグ": "J.League",
+  "W杯": "World Cup",
+  "海外組": "Overseas",
+  "コラム": "Column",
+  "選手紹介": "Players",
+};
 
 const categoryColors: Record<Article["category"], string> = {
   "日本代表": "bg-blue-100 text-blue-800",
@@ -18,6 +30,7 @@ const categoryColors: Record<Article["category"], string> = {
 };
 
 export default function ArticlesPage() {
+  const { locale } = useLanguage();
   const [tab, setTab] = useState<Tab>("新着");
   const [search, setSearch] = useState("");
 
@@ -43,6 +56,8 @@ export default function ArticlesPage() {
     return list.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
   }, [tab, search]);
 
+  const t = (ja: string, en: string) => (locale === "en" ? en : ja);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -54,9 +69,14 @@ export default function ArticlesPage() {
           >
             SAMURAI FOOTBALL
           </p>
-          <h1 className="text-2xl sm:text-3xl font-black">記事・コラム</h1>
+          <h1 className="text-2xl sm:text-3xl font-black">
+            {t("記事・コラム", "Articles & Columns")}
+          </h1>
           <p className="text-blue-200/60 text-sm mt-1">
-            日本代表・W杯・Jリーグの最新情報を深堀り
+            {t(
+              "日本代表・W杯・Jリーグの最新情報を深堀り",
+              "In-depth coverage of Japan NT, World Cup & J.League"
+            )}
           </p>
         </div>
       </div>
@@ -67,7 +87,10 @@ export default function ArticlesPage() {
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="記事を検索（タイトル・タグ・キーワード）"
+          placeholder={t(
+            "記事を検索（タイトル・タグ・キーワード）",
+            "Search articles (title, tag, keyword)"
+          )}
           className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
         />
       </div>
@@ -86,7 +109,7 @@ export default function ArticlesPage() {
                   : { background: "transparent", color: "#6B7280", border: "1px solid #E5E7EB" }
               }
             >
-              {cat}
+              {locale === "en" ? categoryLabelsEn[cat] : cat}
             </button>
           ))}
         </div>
@@ -97,8 +120,15 @@ export default function ArticlesPage() {
         {filtered.length === 0 ? (
           <div className="text-center py-16 text-gray-400">
             <p className="text-4xl mb-3">📝</p>
-            <p className="font-bold">記事が見つかりませんでした</p>
-            <p className="text-sm mt-1">別のキーワードやカテゴリをお試しください</p>
+            <p className="font-bold">
+              {t("記事が見つかりませんでした", "No articles found")}
+            </p>
+            <p className="text-sm mt-1">
+              {t(
+                "別のキーワードやカテゴリをお試しください",
+                "Try a different keyword or category"
+              )}
+            </p>
           </div>
         ) : (
           filtered.map((article) => (
@@ -109,11 +139,15 @@ export default function ArticlesPage() {
             >
               <div className="flex items-center gap-2 mb-2">
                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${categoryColors[article.category]}`}>
-                  {article.category}
+                  {locale === "en"
+                    ? categoryLabelsEn[article.category as Tab]
+                    : article.category}
                 </span>
                 <span className="text-[10px] text-gray-400">{article.publishedAt}</span>
                 {article.isPopular && (
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-100 text-red-700">人気</span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-100 text-red-700">
+                    {t("人気", "Popular")}
+                  </span>
                 )}
               </div>
               <h2 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors leading-snug mb-2">

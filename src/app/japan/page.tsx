@@ -26,6 +26,7 @@ type AbsentPlayer = {
   position: string;
   club: string;
   reason: string;
+  reasonEn?: string;
 };
 
 /* ──────────────────────────────────────────────
@@ -472,13 +473,14 @@ const squad: SquadPlayer[] = [
 /* ──────────────────────────────────────────────
    招集外の注目選手
    ────────────────────────────────────────────── */
-const absentPlayers: AbsentPlayer[] = [
+const absentPlayersJa: AbsentPlayer[] = [
   {
     nameJa: "遠藤航",
     name: "Wataru Endo",
     position: "MF",
     club: "リバプール（イングランド）",
     reason: "日本代表キャプテン。今回はコンディション調整のため招集外。リバプールでの出場機会確保が最優先課題",
+    reasonEn: "Japan's captain. Left out for fitness management. Securing playtime at Liverpool is the top priority.",
   },
   {
     nameJa: "久保建英",
@@ -486,6 +488,7 @@ const absentPlayers: AbsentPlayer[] = [
     position: "MF",
     club: "レアル・ソシエダ（スペイン）",
     reason: "ラ・リーガで奮闘中のファンタジスタ。今回は招集外だがW杯本大会での活躍に期待",
+    reasonEn: "The fantasista competing in La Liga. Not called up this time but expected to feature at the World Cup.",
   },
   {
     nameJa: "守田英正",
@@ -493,6 +496,7 @@ const absentPlayers: AbsentPlayer[] = [
     position: "MF",
     club: "スポルティング（ポルトガル）",
     reason: "ポルトガルの名門で中盤の要として活躍。コンディション面を考慮し今回は招集外",
+    reasonEn: "A key midfielder at the Portuguese powerhouse. Left out due to fitness considerations.",
   },
   {
     nameJa: "板倉滉",
@@ -500,6 +504,7 @@ const absentPlayers: AbsentPlayer[] = [
     position: "DF",
     club: "ボルシアMG（ドイツ）",
     reason: "ブンデスリーガで安定したパフォーマンスを発揮するCB。今回はメンバー外も実力は折り紙つき",
+    reasonEn: "Consistent Bundesliga performer. Not in this squad but undeniably quality.",
   },
   {
     nameJa: "南野拓実",
@@ -507,6 +512,7 @@ const absentPlayers: AbsentPlayer[] = [
     position: "FW",
     club: "ASモナコ（フランス）",
     reason: "リバプールでプレミア優勝を経験した実績の持ち主。代表での巻き返しに期待",
+    reasonEn: "A Premier League winner with Liverpool. Looking to reclaim his Japan spot.",
   },
   {
     nameJa: "古橋亨梧",
@@ -514,18 +520,13 @@ const absentPlayers: AbsentPlayer[] = [
     position: "FW",
     club: "セルティック（スコットランド）",
     reason: "スコティッシュ・プレミアの得点王経験者。圧巻のゴール嗅覚を持つが今回は招集外",
+    reasonEn: "A former Scottish Premiership top scorer with an elite nose for goal. Left out this time.",
   },
 ];
 
 /* ──────────────────────────────────────────────
    Helpers
    ────────────────────────────────────────────── */
-const posLabel: Record<string, string> = {
-  GK: "ゴールキーパー",
-  DF: "ディフェンダー",
-  MF: "ミッドフィルダー",
-  FW: "フォワード",
-};
 const posColor: Record<string, string> = {
   GK: "from-amber-500 to-amber-600",
   DF: "from-blue-500 to-blue-600",
@@ -539,51 +540,55 @@ const posBorder: Record<string, string> = {
   FW: "border-red-400",
 };
 
-function groupByPosition(players: SquadPlayer[]) {
-  const order: Array<"GK" | "DF" | "MF" | "FW"> = ["GK", "DF", "MF", "FW"];
-  return order.map((pos) => ({
-    pos,
-    label: posLabel[pos],
-    players: players.filter((p) => p.position === pos),
-  }));
-}
-
 const featuredIds = ["japan-mitoma", "japan-tomiyasu", "japan-kamada"];
-
-const opponentCards = [
-  {
-    key: "scotland",
-    color: "#003F87",
-    flag: "🏴",
-    name: "スコットランド",
-    time: "3/29（日）02:00（日本時間）",
-    venue: "ハムデン・パーク（グラスゴー）",
-    badge: "メンバー発表済み（26名）",
-    footer: "監督：スティーブ・クラーク | 注目選手：マクトミネイ、ロバートソン、マクギン",
-    href: "/japan/opponents/scotland",
-    cta: "スコットランド詳細 →",
-  },
-  {
-    key: "england",
-    color: "#CF2B37",
-    flag: "🏴",
-    name: "イングランド",
-    time: "4/1（水）03:45（日本時間）",
-    venue: "ウェンブリー・スタジアム（ロンドン）",
-    badge: "メンバー発表済み（35名）",
-    footer: "監督：トーマス・トゥヘル | 注目選手：ケイン、ベリンガム、サカ",
-    href: "/japan/opponents/england",
-    cta: "イングランド詳細 →",
-  },
-];
 
 /* ──────────────────────────────────────────────
    Page Component
    ────────────────────────────────────────────── */
 export default function JapanPage() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const featured = squad.filter((p) => p.id && featuredIds.includes(p.id));
+
+  const posLabel: Record<string, string> = locale === 'en'
+    ? { GK: "Goalkeeper", DF: "Defender", MF: "Midfielder", FW: "Forward" }
+    : { GK: "ゴールキーパー", DF: "ディフェンダー", MF: "ミッドフィルダー", FW: "フォワード" };
+
+  function groupByPosition(players: SquadPlayer[]) {
+    const order: Array<"GK" | "DF" | "MF" | "FW"> = ["GK", "DF", "MF", "FW"];
+    return order.map((pos) => ({
+      pos,
+      label: posLabel[pos],
+      players: players.filter((p) => p.position === pos),
+    }));
+  }
+
   const grouped = groupByPosition(squad);
+
+  const opponentCards = locale === 'en' ? [
+    { key: "scotland", color: "#003F87", flag: "\u{1F3F4}", name: "Scotland",
+      time: "Mar 29 (Sat) 17:00 GMT", venue: "Hampden Park, Glasgow",
+      badge: "Squad announced (26 players)",
+      footer: "Manager: Steve Clarke | Key: McTominay, Robertson, McGinn",
+      href: "/japan/opponents/scotland", cta: "Scotland details \u2192" },
+    { key: "england", color: "#CF2B37", flag: "\u{1F3F4}", name: "England",
+      time: "Mar 31 (Tue) 19:45 BST", venue: "Wembley Stadium, London",
+      badge: "Squad announced (35 players)",
+      footer: "Manager: Thomas Tuchel | Key: Kane, Bellingham, Saka",
+      href: "/japan/opponents/england", cta: "England details \u2192" },
+  ] : [
+    { key: "scotland", color: "#003F87", flag: "\u{1F3F4}", name: "スコットランド",
+      time: "3/29（日）02:00（日本時間）", venue: "ハムデン・パーク（グラスゴー）",
+      badge: "メンバー発表済み（26名）",
+      footer: "監督：スティーブ・クラーク | 注目選手：マクトミネイ、ロバートソン、マクギン",
+      href: "/japan/opponents/scotland", cta: "スコットランド詳細 →" },
+    { key: "england", color: "#CF2B37", flag: "\u{1F3F4}", name: "イングランド",
+      time: "4/1（水）03:45（日本時間）", venue: "ウェンブリー・スタジアム（ロンドン）",
+      badge: "メンバー発表済み（35名）",
+      footer: "監督：トーマス・トゥヘル | 注目選手：ケイン、ベリンガム、サカ",
+      href: "/japan/opponents/england", cta: "イングランド詳細 →" },
+  ];
+
+  const absentPlayers = locale === 'en' ? absentPlayersJa : absentPlayersJa;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -632,10 +637,10 @@ export default function JapanPage() {
             SAMURAI BLUE
           </h1>
           <p className="text-xl sm:text-2xl font-light tracking-wide text-blue-200 mb-1">
-            {t.japan.pageTitle} イギリス遠征
+            {locale === 'en' ? "Japan National Team \u2014 UK Tour" : "\u65E5\u672C\u4EE3\u8868 \u30A4\u30AE\u30EA\u30B9\u9060\u5F81"}
           </p>
           <p className="text-sm text-blue-300/80 mb-8">
-            監督：森保一 ｜ FIFAランキング：18位 ｜ W杯出場：7大会連続7回目
+            {locale === 'en' ? "Manager: Hajime Moriyasu | FIFA Ranking: 18 | 7th consecutive World Cup" : "監督：森保一 ｜ FIFAランキング：18位 ｜ W杯出場：7大会連続7回目"}
           </p>
 
           <div className="flex items-center justify-center gap-2 mb-8">
@@ -645,8 +650,7 @@ export default function JapanPage() {
           </div>
 
           <p className="max-w-2xl mx-auto text-blue-100/80 text-sm sm:text-base leading-relaxed mb-8">
-            2022年カタール大会ではドイツ・スペインを撃破し世界を驚かせたSAMURAI BLUE。
-            W杯本大会前最後の欧州遠征で、スコットランド・イングランドという強豪に挑む。
+            {locale === 'en' ? "SAMURAI BLUE stunned the world by beating Germany and Spain at the 2022 Qatar World Cup. On their final European tour before the World Cup, they take on Scotland and England." : "2022年カタール大会ではドイツ・スペインを撃破し世界を驚かせたSAMURAI BLUE。W杯本大会前最後の欧州遠征で、スコットランド・イングランドという強豪に挑む。"}
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -654,13 +658,13 @@ export default function JapanPage() {
               href="/japan/matches"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-bold hover:bg-white/20 transition-colors"
             >
-              📊 試合結果（直近10試合）
+              {locale === 'en' ? "\u{1F4CA} Recent Results (last 10)" : "\u{1F4CA} 試合結果（直近10試合）"}
             </Link>
             <Link
               href="/teams/japan"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-bold hover:bg-white/20 transition-colors"
             >
-              📋 チーム詳細ページ
+              {locale === 'en' ? "\u{1F4CB} Team Details" : "\u{1F4CB} チーム詳細ページ"}
             </Link>
           </div>
         </div>
@@ -675,10 +679,10 @@ export default function JapanPage() {
             className="inline-block w-1.5 h-8 rounded-full"
             style={{ background: "#BC002D" }}
           />
-          イギリス遠征 親善試合
+          {locale === 'en' ? "UK Tour Friendlies" : "イギリス遠征 親善試合"}
         </h2>
         <p className="text-sm text-gray-500 mb-8">
-          キリンワールドチャレンジ 2026 — W杯前最後の欧州テストマッチ
+          {locale === 'en' ? "Kirin World Challenge 2026 \u2014 Final European test matches before the World Cup" : "キリンワールドチャレンジ 2026 — W杯前最後の欧州テストマッチ"}
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2">
@@ -697,7 +701,7 @@ export default function JapanPage() {
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-center flex-1">
                     <p className="text-2xl mb-1">🇯🇵</p>
-                    <p className="text-sm font-bold text-gray-900">日本</p>
+                    <p className="text-sm font-bold text-gray-900">{locale === 'en' ? "Japan" : "日本"}</p>
                   </div>
                   <div className="px-4 text-center">
                     <p className="text-lg font-black text-gray-300">VS</p>
@@ -718,13 +722,13 @@ export default function JapanPage() {
                   <p>📺 {m.broadcast}</p>
                 </div>
                 <div className="border-t pt-3 mt-3">
-                  <p className="text-xs text-gray-400 font-medium mb-2">メンバーを確認</p>
+                  <p className="text-xs text-gray-400 font-medium mb-2">{locale === 'en' ? "View squad" : "メンバーを確認"}</p>
                   <div className="flex flex-col sm:flex-row gap-2">
                     <Link
                       href="/japan#squad"
                       className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#003087]/10 text-[#003087] text-xs font-bold hover:bg-[#003087]/20 transition-colors"
                     >
-                      🇯🇵 日本代表メンバー
+                      {locale === 'en' ? "\u{1F1EF}\u{1F1F5} Japan squad" : "\u{1F1EF}\u{1F1F5} 日本代表メンバー"}
                     </Link>
                     <Link
                       href={m.opponentLink}
@@ -750,10 +754,10 @@ export default function JapanPage() {
               className="inline-block w-1.5 h-8 rounded-full"
               style={{ background: "#003087" }}
             />
-            W杯グループステージ日程
+            {locale === 'en' ? "World Cup Group Stage Schedule" : "W杯グループステージ日程"}
           </h2>
           <p className="text-sm text-gray-500 mb-8">
-            {t.japan.groupLabel} — オランダ、日本、チュニジア、UEFAプレーオフB勝者
+            {locale === 'en' ? "Group F \u2014 Netherlands, Japan, Tunisia, UEFA Playoff B Winner" : `${t.japan.groupLabel} — オランダ、日本、チュニジア、UEFAプレーオフB勝者`}
           </p>
 
           <div className="grid gap-4 sm:grid-cols-3">
@@ -773,7 +777,7 @@ export default function JapanPage() {
                   <div className="flex items-center justify-between mb-3">
                     <div className="text-center flex-1">
                       <p className="text-2xl mb-1">🇯🇵</p>
-                      <p className="text-sm font-bold text-gray-900">日本</p>
+                      <p className="text-sm font-bold text-gray-900">{locale === 'en' ? "Japan" : "日本"}</p>
                     </div>
                     <div className="px-4 text-center">
                       <p className="text-xs text-gray-400 font-bold uppercase tracking-wide">VS</p>
@@ -822,7 +826,7 @@ export default function JapanPage() {
             {t.japan.featuredPlayers}
           </h2>
           <p className="text-sm text-blue-200/70 mb-8">
-            イギリス遠征で日本の命運を握るキープレーヤー
+            {locale === 'en' ? "The players who hold Japan\u2019s fate on the UK tour" : "イギリス遠征で日本の命運を握るキープレーヤー"}
           </p>
 
           <div className="grid gap-6 sm:grid-cols-3">
@@ -855,14 +859,14 @@ export default function JapanPage() {
                 <div className="grid grid-cols-2 gap-2 text-xs text-blue-200/70">
                   <p>🏢 {p.club}</p>
                   <p>📏 {p.height}cm / {p.weight}kg</p>
-                  <p>🎂 {p.birthDate}（{p.age}歳）</p>
+                  <p>{locale === 'en' ? `\u{1F382} ${p.birthDate} (age ${p.age})` : `\u{1F382} ${p.birthDate}（${p.age}歳）`}</p>
                   <p>
                     {p.id ? (
                       <Link
                         href={`/players/${p.id}`}
                         className="text-amber-300 hover:text-amber-200 underline underline-offset-2"
                       >
-                        詳細プロフィール →
+                        {locale === 'en' ? "Full profile \u2192" : "詳細プロフィール →"}
                       </Link>
                     ) : (
                       ""
@@ -882,10 +886,10 @@ export default function JapanPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
             <span className="inline-block w-1.5 h-8 rounded-full bg-[#003087]" />
-            対戦国メンバー情報
+            {locale === 'en' ? "Opponent Squads" : "対戦国メンバー情報"}
           </h2>
           <p className="text-sm text-gray-500 mb-8">
-            対戦カードから詳細ページへ移動できます
+            {locale === 'en' ? "Click a card to see squad details" : "対戦カードから詳細ページへ移動できます"}
           </p>
           <div className="grid gap-4 sm:grid-cols-2">
             {opponentCards.map((card) => (
@@ -932,10 +936,10 @@ export default function JapanPage() {
             className="inline-block w-1.5 h-8 rounded-full"
             style={{ background: "#003087" }}
           />
-          {t.japan.fullSquad}
+          {locale === 'en' ? "Squad List" : "招集メンバー一覧"}
         </h2>
         <p className="text-sm text-gray-500 mb-8">
-          JFA公式発表 3月19日 — 28名（GK 3名 / DF 8名 / MF 9名 / FW 8名）
+          {locale === 'en' ? "JFA Official \u2014 28 players (3 GK / 8 DF / 9 MF / 8 FW)" : "JFA公式発表 3月19日 — 28名（GK 3名 / DF 8名 / MF 9名 / FW 8名）"}
         </p>
 
         {grouped.map((g) => (
@@ -948,7 +952,7 @@ export default function JapanPage() {
               </span>
               {g.label}
               <span className="text-gray-400 font-normal text-sm">
-                （{g.players.length}名）
+                {locale === 'en' ? ` (${g.players.length})` : `（${g.players.length}名）`}
               </span>
             </h3>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -973,28 +977,28 @@ export default function JapanPage() {
                     </div>
                     <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-gray-500 mb-3 border-t border-gray-100 pt-3">
                       <p>
-                        <span className="text-gray-400">生年月日</span>
+                        <span className="text-gray-400">{locale === 'en' ? "Date of birth" : "生年月日"}</span>
                         <br />
                         <span className="text-gray-700 font-medium">
-                          {p.birthDate}（{p.age}歳）
+                          {p.birthDate}{locale === 'en' ? ` (age ${p.age})` : `（${p.age}歳）`}
                         </span>
                       </p>
                       <p>
-                        <span className="text-gray-400">{t.japan.stats.height} / 体重</span>
+                        <span className="text-gray-400">{locale === 'en' ? "Height / Weight" : `${t.japan.stats.height} / 体重`}</span>
                         <br />
                         <span className="text-gray-700 font-medium">
                           {p.height}cm / {p.weight}kg
                         </span>
                       </p>
                       <p>
-                        <span className="text-gray-400">ポジション</span>
+                        <span className="text-gray-400">{locale === 'en' ? "Position" : "ポジション"}</span>
                         <br />
                         <span className="text-gray-700 font-medium">
                           {posLabel[p.position]}
                         </span>
                       </p>
                       <p>
-                        <span className="text-gray-400">{t.japan.stats.club}</span>
+                        <span className="text-gray-400">{locale === 'en' ? "Club" : t.japan.stats.club}</span>
                         <br />
                         <span className="text-gray-700 font-medium">
                           {p.club}
@@ -1010,7 +1014,7 @@ export default function JapanPage() {
                           href={`/players/${p.id}`}
                           className="text-xs text-[#003087] hover:text-[#BC002D] font-medium underline underline-offset-2 transition-colors"
                         >
-                          選手詳細ページへ →
+                          {locale === 'en' ? "Player details \u2192" : "選手詳細ページへ →"}
                         </Link>
                       </div>
                     )}
@@ -1029,10 +1033,10 @@ export default function JapanPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
             <span className="inline-block w-1.5 h-8 rounded-full bg-gray-400" />
-            招集外の注目選手
+            {locale === 'en' ? "Notable Absentees" : "招集外の注目選手"}
           </h2>
           <p className="text-sm text-gray-500 mb-8">
-            今回の招集メンバーには選ばれなかったが注目すべき選手たち
+            {locale === 'en' ? "Players not called up this time but worth watching" : "今回の招集メンバーには選ばれなかったが注目すべき選手たち"}
           </p>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -1042,15 +1046,15 @@ export default function JapanPage() {
                 className="rounded-2xl bg-white border border-gray-200 p-5 opacity-80 hover:opacity-100 transition-opacity"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-bold text-gray-800">{p.nameJa}</h4>
+                  <h4 className="font-bold text-gray-800">{locale === 'en' ? p.name : p.nameJa}</h4>
                   <span className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded">
                     {p.position}
                   </span>
                 </div>
-                <p className="text-xs text-gray-400 mb-1">{p.name}</p>
+                <p className="text-xs text-gray-400 mb-1">{locale === 'en' ? p.nameJa : p.name}</p>
                 <p className="text-xs text-gray-500 mb-2">🏢 {p.club}</p>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  {p.reason}
+                  {locale === 'en' ? p.reasonEn : p.reason}
                 </p>
               </div>
             ))}
@@ -1064,7 +1068,7 @@ export default function JapanPage() {
       <section className="bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
           <p className="text-gray-500 text-sm mb-4">
-            チーム全体の情報・過去の成績はこちら
+            {locale === 'en' ? "Full team info and past results" : "チーム全体の情報・過去の成績はこちら"}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
@@ -1072,19 +1076,19 @@ export default function JapanPage() {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold text-sm shadow-lg hover:shadow-xl transition-shadow"
               style={{ background: "#003087" }}
             >
-              🇯🇵 日本代表チームページ
+              {locale === 'en' ? "\u{1F1EF}\u{1F1F5} Japan Team Page" : "\u{1F1EF}\u{1F1F5} 日本代表チームページ"}
             </Link>
             <Link
               href="/teams"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-100 text-gray-700 font-bold text-sm hover:bg-gray-200 transition-colors"
             >
-              全48チーム一覧
+              {locale === 'en' ? "All 48 Teams" : "全48チーム一覧"}
             </Link>
             <Link
               href="/matches"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-100 text-gray-700 font-bold text-sm hover:bg-gray-200 transition-colors"
             >
-              全試合日程
+              {locale === 'en' ? "Full Schedule" : "全試合日程"}
             </Link>
           </div>
         </div>

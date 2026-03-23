@@ -1,13 +1,21 @@
+"use client";
+
 import "./article.css";
 import Link from "next/link";
-import type { Metadata } from "next";
+import { useParams } from "next/navigation";
 import { articles } from "@/data/articles";
 import { notFound } from "next/navigation";
 import ArticleBody from "./ArticleBody";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-export function generateStaticParams() {
-  return articles.map((a) => ({ slug: a.slug }));
-}
+const categoryLabelEn: Record<string, string> = {
+  "日本代表": "Japan NT",
+  "Jリーグ": "J.League",
+  "W杯": "World Cup",
+  "海外組": "Overseas",
+  "コラム": "Column",
+  "選手紹介": "Players",
+};
 
 function getCategoryClass(category: string) {
   const map: Record<string, string> = {
@@ -21,32 +29,13 @@ function getCategoryClass(category: string) {
   return map[category] ?? "japan";
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const article = articles.find((a) => a.slug === slug);
-  if (!article) return { title: "記事が見つかりません | SAMURAI FOOTBALL" };
-  return {
-    title: `${article.title} | SAMURAI FOOTBALL`,
-    description: article.excerpt,
-    openGraph: {
-      title: article.title,
-      description: article.excerpt,
-    },
-  };
-}
-
-export default async function ArticleDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
+export default function ArticleDetailPage() {
+  const { slug } = useParams<{ slug: string }>();
+  const { locale } = useLanguage();
   const article = articles.find((a) => a.slug === slug);
   if (!article) return notFound();
+
+  const t = (ja: string, en: string) => (locale === "en" ? en : ja);
 
   return (
     <div className="article-page">
@@ -55,12 +44,12 @@ export default async function ArticleDetailPage({
           href="/articles"
           className="text-gray-400 hover:text-gray-600 text-sm transition-colors"
         >
-          ← 記事一覧
+          {t("← 記事一覧", "← Articles")}
         </Link>
       </div>
 
       <span className={`category-badge badge-${getCategoryClass(article.category)}`}>
-        {article.category}
+        {locale === "en" ? (categoryLabelEn[article.category] ?? article.category) : article.category}
       </span>
 
       <h1 className="article-title">{article.title}</h1>
@@ -79,7 +68,10 @@ export default async function ArticleDetailPage({
       <ArticleBody content={article.content} />
 
       <p className="article-source">
-        出典: JFA公式サイト、各クラブ公式サイト、Transfermarkt
+        {t(
+          "出典: JFA公式サイト、各クラブ公式サイト、Transfermarkt",
+          "Sources: JFA Official, Club Official Sites, Transfermarkt"
+        )}
       </p>
 
       <div style={{ marginTop: "2rem", textAlign: "center" }}>
@@ -87,7 +79,7 @@ export default async function ArticleDetailPage({
           href="/articles"
           className="text-gray-400 hover:text-gray-600 text-sm transition-colors"
         >
-          ← 記事一覧に戻る
+          {t("← 記事一覧に戻る", "← Back to articles")}
         </Link>
       </div>
     </div>

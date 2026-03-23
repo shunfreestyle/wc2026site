@@ -2,11 +2,11 @@
 
 import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
-import { QUIZ_JAPAN_SQUAD, QUIZ_ENGLAND, QUIZ_SCOTLAND } from "@/data/quiz";
+import { QUIZ_JAPAN_SQUAD, QUIZ_ENGLAND, QUIZ_SCOTLAND, QUIZ_WC } from "@/data/quiz";
 import type { QuizQuestion } from "@/data/quiz";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-type Category = "japan" | "england" | "scotland";
+type Category = "japan" | "england" | "scotland" | "wc";
 type Screen = "category" | "level" | "quiz" | "result";
 
 const levelLabels = ["Lv.1 超初級 ⚽", "Lv.2 初級 🌟", "Lv.3 中級 🔥", "Lv.4 上級 💎", "Lv.5 超上級 👑"];
@@ -20,6 +20,7 @@ const RAKUTEN_BANNER_HTML =
 function getQuestions(category: Category | null, level: number | null): QuizQuestion[] {
   if (!category) return [];
   if (category === "japan") return QUIZ_JAPAN_SQUAD.filter((q) => q.level === (level ?? 1));
+  if (category === "wc") return QUIZ_WC.filter((q) => q.level === (level ?? 1));
   if (category === "england") return QUIZ_ENGLAND;
   if (category === "scotland") return QUIZ_SCOTLAND;
   return [];
@@ -86,6 +87,7 @@ export default function QuizPage() {
     { key: "japan" as Category, flag: "🇯🇵", title: `${t.quiz.categories.japan}クイズ`, sub: "イギリス遠征メンバー 50問" },
     { key: "england" as Category, flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", title: `${t.quiz.categories.england}クイズ`, sub: "対戦相手を知ろう 10問" },
     { key: "scotland" as Category, flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", title: `${t.quiz.categories.scotland}クイズ`, sub: "対戦相手を知ろう 10問" },
+    { key: "wc" as Category, flag: "🌍", title: "ワールドカップクイズ", sub: "W杯の歴史・記録 Lv.1〜5" },
   ];
   const [screen, setScreen] = useState<Screen>("category");
   const [category, setCategory] = useState<Category | null>(null);
@@ -102,7 +104,7 @@ export default function QuizPage() {
 
   const handleCategorySelect = (cat: Category) => {
     setCategory(cat);
-    if (cat === "japan") {
+    if (cat === "japan" || cat === "wc") {
       setScreen("level");
     } else {
       setLevel(null);
@@ -214,9 +216,9 @@ export default function QuizPage() {
           {screen === "level" && (
             <div className="text-center">
               <div className="mb-6">
-                <span className="text-5xl">🇯🇵</span>
+                <span className="text-5xl">{category === "wc" ? "🏆" : "🇯🇵"}</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">日本代表クイズ</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">{category === "wc" ? "ワールドカップクイズ" : "日本代表クイズ"}</h2>
               <p className="text-gray-400 mb-8">レベルを選んでください</p>
               <div className="space-y-3">
                 {levelLabels.map((label, i) => (

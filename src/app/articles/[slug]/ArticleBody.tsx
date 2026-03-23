@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import type { Components } from "react-markdown";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const components: Components = {
   h2: ({ children }) => <h2 className="article-h2">{children}</h2>,
@@ -14,8 +15,9 @@ const components: Components = {
 };
 
 export default function ArticleBody({ content }: { content: string }) {
+  const { locale } = useLanguage();
   return (
-    <div className="article-body">
+    <div className="article-body" lang={locale === "en" ? "en" : "ja"}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
