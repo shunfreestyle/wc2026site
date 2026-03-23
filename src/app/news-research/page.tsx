@@ -12,9 +12,15 @@ type NewsItem = {
   summary: string;
 };
 
+type SearchResult = {
+  url: string;
+  title: string;
+};
+
 type NewsData = {
   news: NewsItem[];
   searchedAt: string;
+  searchResults?: SearchResult[];
 };
 
 export default function NewsResearchPage() {
@@ -204,14 +210,18 @@ export default function NewsResearchPage() {
                         {item.summary}
                       </p>
                       <div className="flex items-center gap-3">
-                        <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors truncate max-w-xs"
-                        >
-                          {item.url}
-                        </a>
+                        {item.url && item.url.startsWith("http") ? (
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors truncate max-w-xs"
+                          >
+                            {item.url}
+                          </a>
+                        ) : (
+                          <span className="text-xs text-white/30">URL未取得</span>
+                        )}
                         <button
                           onClick={() => generateArticle(item, i)}
                           disabled={generatingIndex !== null}
