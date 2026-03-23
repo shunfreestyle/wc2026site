@@ -32,9 +32,16 @@ type ArticleMetadata = {
   articleTitle: string;
 };
 
+type StepInfo = {
+  step: number;
+  label: string;
+  message: string;
+};
+
 type ArticleData = {
   content: string;
   metadata: ArticleMetadata | null;
+  steps: StepInfo[];
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -114,7 +121,7 @@ export default function NewsResearchPage() {
 
   const generateArticle = async (item: NewsItem, index: number) => {
     setGeneratingIndex(index);
-    setArticles((prev) => ({ ...prev, [index]: { content: "", metadata: null } }));
+    setArticles((prev) => ({ ...prev, [index]: { content: "", metadata: null, steps: [] } }));
     try {
       const res = await fetch("/api/news-article", {
         method: "POST",
@@ -159,6 +166,17 @@ export default function NewsResearchPage() {
           try {
             const parsed = JSON.parse(payload);
             if (parsed.type === "error") throw new Error(parsed.error);
+            if (parsed.type === "step") {
+              const stepInfo: StepInfo = { step: parsed.step, label: parsed.label, message: parsed.message };
+              setArticles((prev) => {
+                const existing = prev[index];
+                const steps = [...(existing?.steps || [])];
+                const idx = steps.findIndex((s) => s.step === parsed.step);
+                if (idx >= 0) steps[idx] = stepInfo;
+                else steps.push(stepInfo);
+                return { ...prev, [index]: { ...existing, steps } };
+              });
+            }
             if (parsed.type === "metadata") {
               setArticles((prev) => ({
                 ...prev,
@@ -183,6 +201,7 @@ export default function NewsResearchPage() {
         [index]: {
           content: `エラー: ${err instanceof Error ? err.message : "記事生成に失敗しました"}`,
           metadata: null,
+          steps: prev[index]?.steps || [],
         },
       }));
     } finally {
@@ -350,7 +369,7 @@ export default function NewsResearchPage() {
                           onClick={() => generateArticle(item, i)}
                           disabled={generatingIndex !== null}
                           className={`shrink-0 px-4 py-1.5 rounded-lg text-xs font-bold transition-colors ${
-                            articles[i]?.content
+                            articles[i]?.content && generatingIndex !== i
                               ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
                               : generatingIndex === i
                               ? "bg-white/5 text-white/30 cursor-wait"
@@ -368,10 +387,61 @@ export default function NewsResearchPage() {
                   </div>
                 </div>
 
+                {/* Step progress */}
+                {generatingIndex === i && articles[i]?.steps?.length > 0 && !articles[i]?.content && (
+                  <div className="border-t border-white/10 bg-white/[0.02] p-5">
+                    <div className="space-y-2">
+                      {[
+                        { step: 1, label: "深いリサーチ" },
+                        { step: 2, label: "ファクトチェック" },
+                        { step: 3, label: "メタデータ生成" },
+                        { step: 4, label: "執筆" },
+                      ].map((s) => {
+                        const active = articles[i]?.steps?.find((st) => st.step === s.step);
+                        const isComplete = articles[i]?.steps?.some(
+                          (st) => st.step > s.step
+                        );
+                        return (
+                          <div key={s.step} className="flex items-start gap-3">
+                            <div className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold ${
+                              isComplete
+                                ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                                : active
+                                ? "bg-blue-500/20 text-blue-400 border border-blue-500/30 animate-pulse"
+                                : "bg-white/5 text-white/20 border border-white/10"
+                            }`}>
+                              {isComplete ? "✓" : s.step}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <p className={`text-xs font-bold ${active ? "text-white" : "text-white/30"}`}>
+                                STEP {s.step}: {s.label}
+                              </p>
+                              {active && (
+                                <p className="text-[11px] text-white/50 mt-0.5">{active.message}</p>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
                 {/* Generated article */}
                 {articles[i]?.content && (
                   <div className="border-t border-white/10 bg-white/[0.02]">
                     <div className="p-5">
+                      {/* Step summary (collapsed) */}
+                      {articles[i].steps?.length > 0 && generatingIndex !== i && (
+                        <div className="mb-4 flex flex-wrap gap-2">
+                          {articles[i].steps.map((s) => (
+                            <span key={s.step} className="text-[10px] text-white/30 bg-white/5 px-2 py-0.5 rounded">
+                              STEP {s.step}: {s.label} ✓
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
                       {/* Metadata display */}
                       {articles[i].metadata && (
                         <div className="mb-4 p-4 rounded-xl bg-white/5 border border-white/10">
