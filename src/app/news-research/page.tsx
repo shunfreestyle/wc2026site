@@ -69,73 +69,123 @@ export default function NewsResearchPage() {
   const [articles, setArticles] = useState<Record<number, ArticleData>>({});
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
+  const SOURCES = [
+    "ゲキサカ", "サッカーキング", "Yahoo!ニュース", "Goal.com日本版",
+    "超WORLDサッカー", "Football LAB", "Jリーグ公式",
+    "日刊スポーツ", "スポーツ報知", "footballista",
+  ];
+
+  const BATCH_SOURCES: Record<string, string[]> = {
+    "1": ["ゲキサカ", "サッカーキング", "Yahoo!ニュース", "Goal.com日本版"],
+    "2": ["超WORLDサッカー", "Football LAB", "Jリーグ公式"],
+    "3": ["日刊スポーツ", "スポーツ報知", "footballista"],
+  };
+
+  type RawItem = { title: string; urls: SourceUrl[]; summary: string; hoursAgo?: number };
+
   const fetchNews = async () => {
     setLoading(true);
     setError(null);
     setNewsData(null);
     setArticles({});
-    setSourceStatuses({});
-    setSourceList([]);
     setFoundCount(0);
 
+    // Init source statuses
+    setSourceList(SOURCES);
+    const initStatus: Record<string, SourceStatus> = {};
+    for (const s of SOURCES) initStatus[s] = "waiting";
+    setSourceStatuses(initStatus);
+
+    const allItems: RawItem[] = [];
+
     try {
-      const res = await fetch("/api/news-research", { method: "POST" });
-      if (!res.ok) {
-        const text = await res.text();
-        let msg = `HTTP ${res.status}`;
-        try { const d = JSON.parse(text); msg = d.error || msg; } catch { /* */ }
-        throw new Error(msg);
-      }
+      // 3 sequential short API calls (each ~15s)
+      for (const batchId of ["1", "2", "3"]) {
+        // Mark sources as searching
+        for (const s of BATCH_SOURCES[batchId]) {
+          setSourceStatuses((prev) => ({ ...prev, [s]: "searching" }));
+        }
 
-      const reader = res.body?.getReader();
-      if (!reader) throw new Error("ストリームを取得できませんでした");
+        try {
+          const res = await fetch("/api/news-research", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ batch: batchId }),
+          });
 
-      const decoder = new TextDecoder();
-      let buffer = "";
+          const data = await res.json();
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split("\n");
-        buffer = lines.pop() || "";
+          if (data.items && Array.isArray(data.items)) {
+            allItems.push(...data.items);
+            setFoundCount(allItems.length);
+          }
 
-        for (const line of lines) {
-          if (!line.startsWith("data: ")) continue;
-          const payload = line.slice(6);
-          if (payload === "[DONE]") break;
-          try {
-            const p = JSON.parse(payload);
-            if (p.type === "init") {
-              setSourceList(p.sources);
-              const init: Record<string, SourceStatus> = {};
-              for (const s of p.sources as string[]) init[s] = "waiting";
-              setSourceStatuses(init);
-            } else if (p.type === "source_status") {
-              setSourceStatuses((prev) => ({ ...prev, [p.source]: p.status }));
-            } else if (p.type === "source_status_all") {
-              setSourceStatuses((prev) => {
-                const n = { ...prev };
-                for (const k of Object.keys(n)) n[k] = p.status;
-                return n;
-              });
-            } else if (p.type === "progress") {
-              setFoundCount(p.found);
-            } else if (p.type === "done") {
-              setNewsData(p.data as NewsData);
-            } else if (p.type === "error") {
-              throw new Error(p.error);
-            }
-          } catch (e) {
-            if (e instanceof Error && e.message !== payload) throw e;
+          // Mark sources as done
+          for (const s of BATCH_SOURCES[batchId]) {
+            setSourceStatuses((prev) => ({ ...prev, [s]: "done" }));
+          }
+        } catch {
+          // Mark as failed but continue
+          for (const s of BATCH_SOURCES[batchId]) {
+            setSourceStatuses((prev) => ({ ...prev, [s]: "failed" }));
           }
         }
       }
+
+      // Merge & rank client-side
+      setSourceStatuses((prev) => {
+        const n = { ...prev };
+        for (const k of Object.keys(n)) if (n[k] === "done") n[k] = "ranking";
+        return n;
+      });
+
+      const merged = deduplicateItems(allItems);
+      const sorted = merged.sort((a, b) => (a.hoursAgo ?? 24) - (b.hoursAgo ?? 24));
+      const ranked = sorted.slice(0, 10).map((item, i) => ({
+        rank: i + 1,
+        title: item.title,
+        urls: item.urls,
+        summary: item.summary,
+        hoursAgo: item.hoursAgo,
+      }));
+
+      if (ranked.length === 0) {
+        throw new Error("ニュースを取得できませんでした。再試行してください。");
+      }
+
+      setNewsData({
+        news: ranked,
+        searchedAt: new Date().toISOString(),
+        totalFound: allItems.length,
+      });
     } catch (err) {
       setError(err instanceof Error ? err.message : "エラーが発生しました");
     } finally {
       setLoading(false);
     }
+  };
+
+  /** Client-side deduplication */
+  const deduplicateItems = (items: RawItem[]): RawItem[] => {
+    const result: RawItem[] = [];
+    for (const item of items) {
+      if (!item.title) continue;
+      const words = item.title.split(/[\s、。・「」『』（）\(\)【】]+/).filter((w) => w.length >= 3);
+      const dup = result.find((ex) => {
+        const ew = ex.title.split(/[\s、。・「」『』（）\(\)【】]+/).filter((w) => w.length >= 3);
+        let mc = 0;
+        for (const w of words) { if (ew.some((e) => e.includes(w) || w.includes(e))) mc++; }
+        return mc >= Math.min(3, Math.floor(words.length * 0.4));
+      });
+      if (dup) {
+        for (const u of item.urls) { if (!dup.urls.some((eu) => eu.url === u.url)) dup.urls.push(u); }
+        if (!dup.summary && item.summary) dup.summary = item.summary;
+        if (item.hoursAgo != null && (dup.hoursAgo == null || item.hoursAgo < dup.hoursAgo)) dup.hoursAgo = item.hoursAgo;
+      } else {
+        result.push({ ...item, urls: [...item.urls] });
+      }
+    }
+    return result;
   };
 
   const generateArticle = async (item: NewsItem, index: number) => {
