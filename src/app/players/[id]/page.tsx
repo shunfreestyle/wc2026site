@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { getAllPlayers, getPlayerById } from "@/data/teams";
+import { japanSquad2026March } from "@/data/japan-squad";
 import PlayerAvatar from "@/components/PlayerAvatar";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getTeamName, getPlayerDescription, getBestResult } from "@/utils/teamName";
@@ -42,13 +43,24 @@ export default function PlayerDetailPage() {
 
   const { player, team } = result;
 
+  // Check if this is a Japan squad player (from japan-squad.ts)
+  const japanSquadPlayer = japanSquad2026March.find((p) => p.id === id);
+  const isJapanSquad = !!japanSquadPlayer;
+
   // Find teammates (same team, different player)
   const teammates = team.players.filter((p) => p.id !== player.id).slice(0, 5);
 
   const playerDisplayName = locale === 'en' ? player.name : player.nameJa;
   const teamDisplayName = getTeamName(team, locale);
-  const playerDesc = getPlayerDescription(player, locale);
+  const playerDesc = isJapanSquad ? japanSquadPlayer!.description : getPlayerDescription(player, locale);
   const posNames = positionFullName[locale] ?? positionFullName.ja;
+
+  const posBadgeColor: Record<string, string> = {
+    GK: "bg-gray-500",
+    DF: "bg-blue-600",
+    MF: "bg-emerald-600",
+    FW: "bg-red-600",
+  };
 
   return (
     <div>
@@ -72,7 +84,16 @@ export default function PlayerDetailPage() {
         }}
       />
       {/* Hero */}
-      <div className="relative overflow-hidden text-white" style={{ background: "#1A1A2E" }}>
+      <div className="relative overflow-hidden text-white" style={{
+        background: isJapanSquad
+          ? "linear-gradient(135deg, #0A1628 0%, #1a2d4f 100%)"
+          : "#1A1A2E"
+      }}>
+        {isJapanSquad && (
+          <div className="absolute top-1/2 left-[70%] -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full opacity-[0.06]"
+            style={{ background: "radial-gradient(circle, #BC002D 0%, #BC002D 35%, transparent 36%)" }}
+          />
+        )}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-20 right-[10%] h-[150%]" style={{ width: "2px", background: "#E8192C", opacity: 0.35, transform: "rotate(15deg)" }} />
           <div className="absolute -bottom-20 left-[5%] h-[150%]" style={{ width: "2px", background: "#00843D", opacity: 0.3, transform: "rotate(-12deg)" }} />
@@ -80,27 +101,40 @@ export default function PlayerDetailPage() {
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <Link
-            href={`/teams/${team.id}`}
+            href={isJapanSquad ? "/japan" : `/teams/${team.id}`}
             className="inline-flex items-center gap-1 text-sm text-white/70 hover:text-white mb-6 transition-colors"
           >
-            ← {team.flag} {teamDisplayName}
+            {isJapanSquad
+              ? (locale === 'en' ? "← Japan Squad" : "← 日本代表メンバー")
+              : <>← {team.flag} {teamDisplayName}</>
+            }
           </Link>
           <div className="flex items-center gap-6">
-            <PlayerAvatar player={player} size="lg" />
+            {!isJapanSquad && <PlayerAvatar player={player} size="lg" />}
             <div>
-              <div className="flex items-center gap-3 mb-1">
-                <span className="text-3xl font-extrabold text-white/30">#{player.number}</span>
-              </div>
-              <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-                {playerDisplayName}
+              {player.number > 0 && (
+                <div className="flex items-center gap-3 mb-1">
+                  <span className="text-3xl font-extrabold text-white/30">#{player.number}</span>
+                </div>
+              )}
+              <h1 className={`font-black tracking-tight ${isJapanSquad ? "text-4xl sm:text-5xl" : "text-3xl sm:text-4xl font-extrabold"}`}>
+                {isJapanSquad ? player.nameJa : playerDisplayName}
               </h1>
-              <p className="text-white/70 text-lg mt-1">
-                {locale === 'en' ? player.nameJa : player.name}
+              <p className={`mt-1 ${isJapanSquad ? "text-sm text-white/60" : "text-white/70 text-lg"}`}>
+                {isJapanSquad ? player.name : (locale === 'en' ? player.nameJa : player.name)}
               </p>
               <div className="flex flex-wrap items-center gap-2 mt-3">
-                <span className={`text-xs font-bold px-3 py-1 rounded-full border ${positionColor[player.position]}`}>
+                <span className={`text-xs font-bold px-3 py-1 rounded-full ${isJapanSquad
+                  ? `${posBadgeColor[player.position]} text-white`
+                  : `border ${positionColor[player.position]}`
+                }`}>
                   {posNames[player.position]}
                 </span>
+                {japanSquadPlayer?.note && (
+                  <span className="bg-amber-400/90 text-amber-950 text-xs font-bold px-3 py-1 rounded-full">
+                    {japanSquadPlayer.note}
+                  </span>
+                )}
                 {player.isCaptain && (
                   <span className="bg-amber-400 text-amber-950 text-xs font-bold px-3 py-1 rounded-full">
                     {locale === 'en' ? "Captain" : "キャプテン"}
@@ -120,12 +154,17 @@ export default function PlayerDetailPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Stats Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 -mt-6 mb-10">
-          {[
+          {(isJapanSquad ? [
+            { label: locale === 'en' ? "Height" : "身長", value: `${japanSquadPlayer!.height}cm`, icon: "📏" },
+            { label: locale === 'en' ? "Weight" : "体重", value: `${japanSquadPlayer!.weight}kg`, icon: "⚖️" },
+            { label: locale === 'en' ? "Date of birth" : "生年月日", value: japanSquadPlayer!.birthDate, icon: "🎂" },
+            { label: locale === 'en' ? "Age" : "年齢", value: `${japanSquadPlayer!.age}${locale === 'en' ? "" : "歳"}`, icon: "🗓️" },
+          ] : [
             { label: locale === 'en' ? "Caps" : "代表キャップ", value: `${player.caps}${locale === 'en' ? " caps" : "試合"}`, icon: "🏟️" },
             { label: locale === 'en' ? "Goals" : "代表得点", value: `${player.goals}${locale === 'en' ? " goals" : "ゴール"}`, icon: "⚽" },
             { label: locale === 'en' ? "Height" : "身長", value: `${player.height}cm`, icon: "📏" },
             { label: locale === 'en' ? "Age" : "年齢", value: `${player.age}${locale === 'en' ? "" : "歳"}`, icon: "🎂" },
-          ].map((stat) => (
+          ]).map((stat) => (
             <div
               key={stat.label}
               className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 text-center"
@@ -190,12 +229,22 @@ export default function PlayerDetailPage() {
                   </dt>
                   <dd className="text-sm font-medium text-gray-900">{player.height}cm</dd>
                 </div>
-                <div>
-                  <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
-                    {locale === 'en' ? "Squad number" : "背番号"}
-                  </dt>
-                  <dd className="text-sm font-medium text-gray-900">#{player.number}</dd>
-                </div>
+                {japanSquadPlayer && (
+                  <div>
+                    <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                      {locale === 'en' ? "Weight" : "体重"}
+                    </dt>
+                    <dd className="text-sm font-medium text-gray-900">{japanSquadPlayer.weight}kg</dd>
+                  </div>
+                )}
+                {player.number > 0 && (
+                  <div>
+                    <dt className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                      {locale === 'en' ? "Squad number" : "背番号"}
+                    </dt>
+                    <dd className="text-sm font-medium text-gray-900">#{player.number}</dd>
+                  </div>
+                )}
               </dl>
             </section>
 
@@ -206,7 +255,13 @@ export default function PlayerDetailPage() {
                   <span className="w-1 h-5 bg-[#E8192C] rounded-full" />
                   {locale === 'en' ? "Playing Style" : "プレースタイル"}
                 </h2>
-                <p className="text-gray-700 leading-relaxed">{playerDesc}</p>
+                {isJapanSquad ? (
+                  <blockquote className="italic text-gray-600 leading-relaxed border-l-4 border-[#BC002D]/30 pl-4">
+                    {playerDesc}
+                  </blockquote>
+                ) : (
+                  <p className="text-gray-700 leading-relaxed">{playerDesc}</p>
+                )}
               </section>
             )}
 
@@ -269,50 +324,52 @@ export default function PlayerDetailPage() {
               </section>
             )}
 
-            {/* International Record */}
-            <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <h2 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <span className="w-1 h-5 bg-[#8B1538] rounded-full" />
-                {locale === 'en' ? "International Record" : "代表成績"}
-              </h2>
-              <div className="grid grid-cols-3 gap-4 text-center mb-5">
-                <div className="bg-gray-50 rounded-xl p-4">
-                  <p className="text-2xl font-extrabold text-[#8B1538]">{player.caps}</p>
-                  <p className="text-xs text-gray-600 mt-1">{locale === 'en' ? "Caps" : "出場試合"}</p>
-                </div>
-                <div className="bg-gray-50 rounded-xl p-4">
-                  <p className="text-2xl font-extrabold text-[#8B1538]">{player.goals}</p>
-                  <p className="text-xs text-gray-600 mt-1">{locale === 'en' ? "Goals" : "得点数"}</p>
-                </div>
-                <div className="bg-gray-50 rounded-xl p-4">
-                  <p className="text-2xl font-extrabold text-[#8B1538]">
-                    {player.debutYear ? (locale === 'en' ? `${player.debutYear}` : `${player.debutYear}年`) : "—"}
-                  </p>
-                  <p className="text-xs text-gray-600 mt-1">{locale === 'en' ? "Int'l debut" : "代表デビュー"}</p>
-                </div>
-              </div>
-              {player.tournaments && player.tournaments.length > 0 && (
-                <div className="bg-gray-50 rounded-xl p-4">
-                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                    {locale === 'en' ? "Tournaments" : "出場大会"}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {player.tournaments.map((t) => (
-                      <span
-                        key={t}
-                        className={`text-xs font-medium px-3 py-1.5 rounded-full border ${
-                          t.includes("W杯")
-                            ? "bg-[#8B1538]/10 text-[#8B1538] border-[#8B1538]/20"
-                            : "bg-gray-100 text-gray-600 border-gray-200"
-                        }`}
-                      >
-                        {t}
-                      </span>
-                    ))}
+            {/* International Record (hide for Japan squad players with no stats) */}
+            {!isJapanSquad && (
+              <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <h2 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
+                  <span className="w-1 h-5 bg-[#8B1538] rounded-full" />
+                  {locale === 'en' ? "International Record" : "代表成績"}
+                </h2>
+                <div className="grid grid-cols-3 gap-4 text-center mb-5">
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <p className="text-2xl font-extrabold text-[#8B1538]">{player.caps}</p>
+                    <p className="text-xs text-gray-600 mt-1">{locale === 'en' ? "Caps" : "出場試合"}</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <p className="text-2xl font-extrabold text-[#8B1538]">{player.goals}</p>
+                    <p className="text-xs text-gray-600 mt-1">{locale === 'en' ? "Goals" : "得点数"}</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <p className="text-2xl font-extrabold text-[#8B1538]">
+                      {player.debutYear ? (locale === 'en' ? `${player.debutYear}` : `${player.debutYear}年`) : "—"}
+                    </p>
+                    <p className="text-xs text-gray-600 mt-1">{locale === 'en' ? "Int'l debut" : "代表デビュー"}</p>
                   </div>
                 </div>
-              )}
-            </section>
+                {player.tournaments && player.tournaments.length > 0 && (
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                      {locale === 'en' ? "Tournaments" : "出場大会"}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {player.tournaments.map((t) => (
+                        <span
+                          key={t}
+                          className={`text-xs font-medium px-3 py-1.5 rounded-full border ${
+                            t.includes("W杯")
+                              ? "bg-[#8B1538]/10 text-[#8B1538] border-[#8B1538]/20"
+                              : "bg-gray-100 text-gray-600 border-gray-200"
+                          }`}
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </section>
+            )}
           </div>
 
           {/* Sidebar */}
@@ -373,10 +430,13 @@ export default function PlayerDetailPage() {
         {/* Navigation */}
         <div className="flex justify-between items-center pt-8 mt-8 border-t border-gray-200">
           <Link
-            href={`/teams/${team.id}`}
+            href={isJapanSquad ? "/japan" : `/teams/${team.id}`}
             className="text-sm font-medium text-[#E8192C] hover:underline"
           >
-            {locale === 'en' ? `← Back to ${teamDisplayName}` : `← ${teamDisplayName}に戻る`}
+            {isJapanSquad
+              ? (locale === 'en' ? "← Japan Squad" : "← 日本代表メンバー")
+              : (locale === 'en' ? `← Back to ${teamDisplayName}` : `← ${teamDisplayName}に戻る`)
+            }
           </Link>
           <Link
             href="/teams"

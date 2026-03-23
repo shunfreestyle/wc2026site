@@ -3,6 +3,7 @@
  * - グループ編成・各組4枠の並び順：NBC Sports / Olympics.com 公表の抽選結果に準拠
  * - FIFAランキング：2026年1月19日時点のユーザー指定順位（リスト外のチームは従来データを維持）
  */
+import { japanSquad2026March, type JapanSquadPlayer } from "./japan-squad";
 export type Team = {
   id: string;
   name: string;
@@ -1644,7 +1645,33 @@ export function getGroups(): string[] {
 }
 
 export function getPlayerById(playerId: string): { player: Player; team: Team } | undefined {
-  return getPlayerMap().get(playerId);
+  const fromTeams = getPlayerMap().get(playerId);
+  if (fromTeams) return fromTeams;
+
+  // Also search the Japan squad (march 2026 call-up)
+  const squadPlayer = japanSquad2026March.find((p) => p.id === playerId);
+  if (!squadPlayer) return undefined;
+
+  const japanTeam = getTeamMap().get("japan");
+  if (!japanTeam) return undefined;
+
+  // Convert JapanSquadPlayer to Player format
+  const player: Player = {
+    id: squadPlayer.id!,
+    name: squadPlayer.name,
+    nameJa: squadPlayer.nameJa,
+    number: 0,
+    position: squadPlayer.position,
+    club: squadPlayer.club,
+    birthDate: squadPlayer.birthDate,
+    age: squadPlayer.age,
+    caps: 0,
+    goals: 0,
+    height: squadPlayer.height,
+    description: squadPlayer.description,
+  };
+
+  return { player, team: japanTeam };
 }
 
 export function getAllPlayers(): { player: Player; team: Team }[] {

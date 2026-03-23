@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
 
 /* ─── Types ─── */
@@ -127,6 +127,11 @@ const SQUAD: Player[] = [
   { name: "塩貝健人", pos: "FW" },
 ];
 
+/* ─── Half-court Y remap: newY = 8 + (oldY - 18) * 80 / 74 ─── */
+function toHalfY(y: number): number {
+  return Math.round(8 + ((y - 18) * 80) / 74);
+}
+
 /* ─── Toast ─── */
 function Toast({ message, onClose }: { message: string; onClose: () => void }) {
   return (
@@ -172,7 +177,7 @@ function StepBar({ current }: { current: number }) {
   );
 }
 
-/* ─── Pitch component ─── */
+/* ─── Half-court Pitch component ─── */
 function Pitch({
   positions,
   slots,
@@ -185,25 +190,17 @@ function Pitch({
   readonly?: boolean;
 }) {
   return (
-    <div className="relative w-full aspect-[68/95] bg-gradient-to-b from-[#2d8a4e] to-[#1e6b3a] rounded-2xl overflow-hidden border border-white/10">
-      {/* pitch lines */}
+    <div className="relative w-full h-[240px] bg-gradient-to-b from-[#2d8a4e] to-[#1e6b3a] rounded-2xl overflow-hidden border border-white/10">
+      {/* pitch lines (half-court) */}
       <div className="absolute inset-0">
         {/* border */}
         <div className="absolute inset-[4%] border-2 border-white/30 rounded-sm" />
-        {/* center line */}
-        <div className="absolute left-[4%] right-[4%] top-1/2 h-0 border-t-2 border-white/30" />
-        {/* center circle */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[22%] aspect-square rounded-full border-2 border-white/30" />
-        {/* center dot */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-white/40" />
-        {/* top penalty area */}
-        <div className="absolute left-[22%] right-[22%] top-[4%] h-[16%] border-2 border-t-0 border-white/30" />
-        {/* top goal area */}
-        <div className="absolute left-[34%] right-[34%] top-[4%] h-[8%] border-2 border-t-0 border-white/30" />
-        {/* bottom penalty area */}
-        <div className="absolute left-[22%] right-[22%] bottom-[4%] h-[16%] border-2 border-b-0 border-white/30" />
-        {/* bottom goal area */}
-        <div className="absolute left-[34%] right-[34%] bottom-[4%] h-[8%] border-2 border-b-0 border-white/30" />
+        {/* penalty area (top) */}
+        <div className="absolute left-[22%] right-[22%] top-[4%] h-[18%] border-2 border-t-0 border-white/30" />
+        {/* goal area (top) */}
+        <div className="absolute left-[34%] right-[34%] top-[4%] h-[9%] border-2 border-t-0 border-white/30" />
+        {/* penalty arc (bottom, simulated as half-circle at bottom edge) */}
+        <div className="absolute left-1/2 bottom-[4%] -translate-x-1/2 w-[30%] h-[12%] border-2 border-b-0 border-white/30 rounded-t-full" />
       </div>
 
       {/* player slots */}
@@ -211,16 +208,17 @@ function Pitch({
         const player = slots[i];
         const isGK = p.pos === "GK";
         const filled = !!player;
+        const mappedY = toHalfY(p.y);
         return (
           <div
             key={i}
             className="absolute flex flex-col items-center -translate-x-1/2 -translate-y-1/2"
-            style={{ left: `${p.x}%`, top: `${p.y}%` }}
+            style={{ left: `${p.x}%`, top: `${mappedY}%` }}
           >
             <button
               onClick={() => !readonly && onSlotClick?.(i)}
               disabled={readonly}
-              className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold transition-all ${
+              className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold transition-all ${
                 filled
                   ? isGK
                     ? "bg-[#c8960c] text-white shadow-lg shadow-yellow-900/40"
@@ -230,7 +228,7 @@ function Pitch({
             >
               {filled ? player.name.slice(0, 2) : "+"}
             </button>
-            <span className="text-[10px] sm:text-xs text-white mt-0.5 font-medium text-center whitespace-nowrap drop-shadow">
+            <span className="text-[9px] sm:text-[10px] text-white mt-0.5 font-medium text-center whitespace-nowrap drop-shadow">
               {filled ? player.name : p.pos}
             </span>
           </div>
@@ -254,7 +252,6 @@ function PlayerModal({
   onSelect: (p: Player) => void;
   onClose: () => void;
 }) {
-  // Group: matching position first, then others
   const posMap: Record<string, string[]> = {
     GK: ["GK"],
     CB: ["DF"],
@@ -366,6 +363,7 @@ export default function StamenPage() {
   const [modalSlot, setModalSlot] = useState<number | null>(null);
   const [benchModal, setBenchModal] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  const [animClass, setAnimClass] = useState("");
   const cardRef = useRef<HTMLDivElement>(null);
 
   const showToast = useCallback((msg: string) => {
@@ -379,6 +377,18 @@ export default function StamenPage() {
   ]);
 
   const filledCount = slots.filter(Boolean).length;
+
+  /* ── slide transition helper ── */
+  const changeStep = useCallback((newStep: number, direction: "forward" | "back") => {
+    const exitClass = direction === "forward" ? "stamen-exit-left" : "stamen-exit-right";
+    setAnimClass(exitClass);
+    setTimeout(() => {
+      setStep(newStep);
+      const enterClass = direction === "forward" ? "stamen-enter-right" : "stamen-enter-left";
+      setAnimClass(enterClass);
+      setTimeout(() => setAnimClass(""), 300);
+    }, 150);
+  }, []);
 
   /* ── handlers ── */
   const handleFormationSelect = (f: Formation) => {
@@ -419,24 +429,33 @@ export default function StamenPage() {
         showToast("フォーメーションを選択してください");
         return;
       }
-      setStep(1);
+      changeStep(1, "forward");
     } else if (step === 1) {
       const remaining = 11 - filledCount;
       if (remaining > 0) {
         showToast(`あと${remaining}人選択してください`);
         return;
       }
-      setStep(2);
+      changeStep(2, "forward");
     } else if (step === 2) {
-      setStep(3);
+      changeStep(3, "forward");
     }
   };
 
+  const prevStep = () => {
+    if (step > 0) changeStep(step - 1, "back");
+  };
+
   const reset = () => {
-    setStep(0);
-    setFormation(null);
-    setSlots(Array(11).fill(null));
-    setBench([]);
+    setAnimClass("stamen-exit-left");
+    setTimeout(() => {
+      setStep(0);
+      setFormation(null);
+      setSlots(Array(11).fill(null));
+      setBench([]);
+      setAnimClass("stamen-enter-left");
+      setTimeout(() => setAnimClass(""), 300);
+    }, 150);
   };
 
   const handleShare = async () => {
@@ -455,7 +474,6 @@ export default function StamenPage() {
       const text = `日本代表スタメン予想！${formation?.name ?? ""} #サムライブルー #SAMURAIFOOTBALL #W杯2026`;
       const url = "https://samurai-football.jp/stamen";
 
-      // Try Web Share API with image first
       if (blob && navigator.share && navigator.canShare) {
         const file = new File([blob], "stamen.png", { type: "image/png" });
         const shareData = { text: `${text}\n${url}`, files: [file] };
@@ -465,11 +483,9 @@ export default function StamenPage() {
         }
       }
 
-      // Fallback: open X share dialog
       const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
       window.open(tweetUrl, "_blank", "noopener");
     } catch {
-      // Fallback if html2canvas fails
       const text = `日本代表スタメン予想！${formation?.name ?? ""} #サムライブルー #SAMURAIFOOTBALL #W杯2026`;
       const url = "https://samurai-football.jp/stamen";
       const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
@@ -488,181 +504,178 @@ export default function StamenPage() {
 
         <StepBar current={step} />
 
-        {/* ━━ STEP 0: Formation ━━ */}
-        {step === 0 && (
-          <div>
-            <h2 className="text-lg font-bold text-white mb-1">フォーメーションを選択</h2>
-            <p className="text-gray-400 text-xs mb-5">森保ジャパンで使われるフォーメーション</p>
-            <div className="grid grid-cols-2 gap-3">
-              {FORMATIONS.map((f) => (
-                <button
-                  key={f.id}
-                  onClick={() => handleFormationSelect(f)}
-                  className={`rounded-xl p-4 text-left transition-all border-2 ${
-                    formation?.id === f.id
-                      ? "bg-blue-500/20 border-blue-400 scale-[1.02]"
-                      : "bg-white/5 border-white/10 hover:border-white/30"
-                  }`}
-                >
-                  <p className="text-white font-bold text-lg">{f.name}</p>
-                  <p className="text-gray-400 text-xs mt-1">{f.tag}</p>
-                </button>
-              ))}
-            </div>
-            {formation && (
-              <div className="mt-6">
-                <p className="text-xs text-gray-400 mb-2">プレビュー</p>
-                <Pitch positions={formation.positions} slots={Array(11).fill(null)} readonly />
-              </div>
-            )}
-            <div className="mt-6 flex justify-between items-center">
-              <Link href="/" className="text-gray-500 hover:text-gray-300 text-sm transition-colors">
-                ← トップへ
-              </Link>
-              <button
-                onClick={nextStep}
-                className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold py-3 px-8 rounded-xl transition-all"
-              >
-                次へ →
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* ━━ STEP 1: Starting 11 ━━ */}
-        {step === 1 && formation && (
-          <div>
-            <h2 className="text-lg font-bold text-white mb-1">スターティング11</h2>
-            <p className="text-gray-400 text-xs mb-5">
-              {filledCount < 11
-                ? `ポジションをタップして選手を選んでください（${filledCount}/11）`
-                : "全員選択済み！次へ進めます"}
-            </p>
-            <Pitch
-              positions={formation.positions}
-              slots={slots}
-              onSlotClick={(i) => {
-                if (slots[i]) {
-                  handleSlotClear(i);
-                } else {
-                  setModalSlot(i);
-                }
-              }}
-            />
-            <p className="text-center text-[10px] text-gray-600 mt-2">※ 配置済みの選手をタップで解除</p>
-            <div className="mt-6 flex justify-between items-center">
-              <button onClick={() => setStep(0)} className="text-gray-500 hover:text-gray-300 text-sm transition-colors">
-                ← 戻る
-              </button>
-              <button
-                onClick={nextStep}
-                className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold py-3 px-8 rounded-xl transition-all"
-              >
-                次へ →
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* ━━ STEP 2: Bench ━━ */}
-        {step === 2 && formation && (
-          <div>
-            <h2 className="text-lg font-bold text-white mb-1">ベンチメンバー（任意）</h2>
-            <p className="text-gray-400 text-xs mb-5">
-              ベンチに入れたい選手を選んでください（スキップ可）
-            </p>
-            {bench.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-4">
-                {bench.map((p) => (
-                  <span
-                    key={p.name}
-                    className="inline-flex items-center gap-1 bg-white/10 border border-white/20 text-white text-xs font-medium px-3 py-1.5 rounded-full"
+        {/* animated wrapper */}
+        <div className={`stamen-step ${animClass}`}>
+          {/* ━━ STEP 0: Formation ━━ */}
+          {step === 0 && (
+            <div>
+              <h2 className="text-lg font-bold text-white mb-1">フォーメーションを選択</h2>
+              <p className="text-gray-400 text-xs mb-5">森保ジャパンで使われるフォーメーション</p>
+              <div className="grid grid-cols-2 gap-3">
+                {FORMATIONS.map((f) => (
+                  <button
+                    key={f.id}
+                    onClick={() => handleFormationSelect(f)}
+                    className={`rounded-xl p-4 text-left transition-all border-2 ${
+                      formation?.id === f.id
+                        ? "bg-blue-500/20 border-blue-400 scale-[1.02]"
+                        : "bg-white/5 border-white/10 hover:border-white/30"
+                    }`}
                   >
-                    {p.name}
-                    <button
-                      onClick={() => handleBenchRemove(p.name)}
-                      className="text-gray-400 hover:text-red-400 ml-1"
-                    >
-                      ✕
-                    </button>
-                  </span>
+                    <p className="text-white font-bold text-lg">{f.name}</p>
+                    <p className="text-gray-400 text-xs mt-1">{f.tag}</p>
+                  </button>
                 ))}
               </div>
-            )}
-            <button
-              onClick={() => setBenchModal(true)}
-              className="w-full bg-white/5 border-2 border-dashed border-white/20 hover:border-blue-400 text-gray-400 hover:text-blue-400 rounded-xl py-4 text-sm font-medium transition-all"
-            >
-              ＋ 選手を追加
-            </button>
-            <div className="mt-6 flex justify-between items-center">
-              <button onClick={() => setStep(1)} className="text-gray-500 hover:text-gray-300 text-sm transition-colors">
-                ← 戻る
-              </button>
-              <button
-                onClick={nextStep}
-                className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold py-3 px-8 rounded-xl transition-all"
-              >
-                次へ →
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* ━━ STEP 3: Result & Share ━━ */}
-        {step === 3 && formation && (
-          <div>
-            <h2 className="text-lg font-bold text-white mb-4 text-center">あなたのスタメン</h2>
-
-            {/* Share card */}
-            <div
-              ref={cardRef}
-              className="bg-gradient-to-b from-[#0a1628] to-[#152238] rounded-2xl overflow-hidden border border-white/10 p-5"
-            >
-              <div className="text-center mb-3">
-                <p className="text-white font-bold text-lg">MY STARTING XI</p>
-                <p className="text-blue-400 text-sm font-medium">{formation.name}</p>
+              <div className="mt-6 flex justify-between items-center">
+                <Link href="/" className="text-gray-500 hover:text-gray-300 text-sm transition-colors">
+                  ← トップへ
+                </Link>
+                <button
+                  onClick={nextStep}
+                  className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold py-3 px-8 rounded-xl transition-all"
+                >
+                  次へ →
+                </button>
               </div>
-              <Pitch positions={formation.positions} slots={slots} readonly />
+            </div>
+          )}
+
+          {/* ━━ STEP 1: Starting 11 ━━ */}
+          {step === 1 && formation && (
+            <div>
+              <h2 className="text-lg font-bold text-white mb-1">スターティング11</h2>
+              <p className="text-gray-400 text-xs mb-5">
+                {filledCount < 11
+                  ? `ポジションをタップして選手を選んでください（${filledCount}/11）`
+                  : "全員選択済み！次へ進めます"}
+              </p>
+              <Pitch
+                positions={formation.positions}
+                slots={slots}
+                onSlotClick={(i) => {
+                  if (slots[i]) {
+                    handleSlotClear(i);
+                  } else {
+                    setModalSlot(i);
+                  }
+                }}
+              />
+              <p className="text-center text-[10px] text-gray-600 mt-2">※ 配置済みの選手をタップで解除</p>
+              <div className="mt-6 flex justify-between items-center">
+                <button onClick={prevStep} className="text-gray-500 hover:text-gray-300 text-sm transition-colors">
+                  ← 戻る
+                </button>
+                <button
+                  onClick={nextStep}
+                  className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold py-3 px-8 rounded-xl transition-all"
+                >
+                  次へ →
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* ━━ STEP 2: Bench ━━ */}
+          {step === 2 && formation && (
+            <div>
+              <h2 className="text-lg font-bold text-white mb-1">ベンチメンバー（任意）</h2>
+              <p className="text-gray-400 text-xs mb-5">
+                ベンチに入れたい選手を選んでください（スキップ可）
+              </p>
               {bench.length > 0 && (
-                <div className="mt-4">
-                  <p className="text-xs text-gray-400 font-bold mb-2">BENCH</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {bench.map((p) => (
-                      <span
-                        key={p.name}
-                        className="text-[10px] bg-white/10 text-gray-300 px-2 py-1 rounded-md"
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {bench.map((p) => (
+                    <span
+                      key={p.name}
+                      className="inline-flex items-center gap-1 bg-white/10 border border-white/20 text-white text-xs font-medium px-3 py-1.5 rounded-full"
+                    >
+                      {p.name}
+                      <button
+                        onClick={() => handleBenchRemove(p.name)}
+                        className="text-gray-400 hover:text-red-400 ml-1"
                       >
-                        {p.name}
-                      </span>
-                    ))}
-                  </div>
+                        ✕
+                      </button>
+                    </span>
+                  ))}
                 </div>
               )}
-              <p className="text-center text-[10px] text-gray-500 mt-4">
-                &copy; SAMURAI FOOTBALL 2026
-              </p>
+              <button
+                onClick={() => setBenchModal(true)}
+                className="w-full bg-white/5 border-2 border-dashed border-white/20 hover:border-blue-400 text-gray-400 hover:text-blue-400 rounded-xl py-4 text-sm font-medium transition-all"
+              >
+                ＋ 選手を追加
+              </button>
+              <div className="mt-6 flex justify-between items-center">
+                <button onClick={prevStep} className="text-gray-500 hover:text-gray-300 text-sm transition-colors">
+                  ← 戻る
+                </button>
+                <button
+                  onClick={nextStep}
+                  className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold py-3 px-8 rounded-xl transition-all"
+                >
+                  次へ →
+                </button>
+              </div>
             </div>
+          )}
 
-            <div className="mt-6 space-y-3">
-              <button
-                onClick={handleShare}
-                className="w-full flex items-center justify-center gap-2 bg-[#1DA1F2] hover:bg-[#1a8cd8] text-white font-bold py-3 px-6 rounded-xl transition-all"
+          {/* ━━ STEP 3: Result & Share ━━ */}
+          {step === 3 && formation && (
+            <div>
+              <h2 className="text-lg font-bold text-white mb-4 text-center">あなたのスタメン</h2>
+
+              {/* Share card */}
+              <div
+                ref={cardRef}
+                className="bg-gradient-to-b from-[#0a1628] to-[#152238] rounded-2xl overflow-hidden border border-white/10 p-5"
               >
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-                Xにシェアする
-              </button>
-              <button
-                onClick={reset}
-                className="w-full text-gray-500 hover:text-gray-300 text-sm py-2 transition-colors"
-              >
-                最初からやり直す
-              </button>
+                <div className="text-center mb-3">
+                  <p className="text-white font-bold text-lg">MY STARTING XI</p>
+                  <p className="text-blue-400 text-sm font-medium">{formation.name}</p>
+                </div>
+                <Pitch positions={formation.positions} slots={slots} readonly />
+                {bench.length > 0 && (
+                  <div className="mt-4">
+                    <p className="text-xs text-gray-400 font-bold mb-2">BENCH</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {bench.map((p) => (
+                        <span
+                          key={p.name}
+                          className="text-[10px] bg-white/10 text-gray-300 px-2 py-1 rounded-md"
+                        >
+                          {p.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <p className="text-center text-[10px] text-gray-500 mt-4">
+                  &copy; SAMURAI FOOTBALL 2026
+                </p>
+              </div>
+
+              <div className="mt-6 space-y-3">
+                <button
+                  onClick={handleShare}
+                  className="w-full flex items-center justify-center gap-2 bg-[#1DA1F2] hover:bg-[#1a8cd8] text-white font-bold py-3 px-6 rounded-xl transition-all"
+                >
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                  Xにシェアする
+                </button>
+                <button
+                  onClick={reset}
+                  className="w-full text-gray-500 hover:text-gray-300 text-sm py-2 transition-colors"
+                >
+                  最初からやり直す
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* ━━ Player Select Modal (for starting 11) ━━ */}
         {modalSlot !== null && formation && (
@@ -705,6 +718,35 @@ export default function StamenPage() {
         }
         .animate-slide-up { animation: slide-up 0.3s ease-out; }
         .animate-fade-in { animation: fade-in 0.3s ease-out; }
+
+        /* Step slide transitions */
+        .stamen-step {
+          transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+          opacity: 1;
+          transform: translateX(0);
+        }
+        .stamen-exit-left {
+          opacity: 0;
+          transform: translateX(-40px);
+        }
+        .stamen-exit-right {
+          opacity: 0;
+          transform: translateX(40px);
+        }
+        .stamen-enter-right {
+          animation: enter-from-right 0.3s ease-in-out forwards;
+        }
+        .stamen-enter-left {
+          animation: enter-from-left 0.3s ease-in-out forwards;
+        }
+        @keyframes enter-from-right {
+          from { opacity: 0; transform: translateX(40px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes enter-from-left {
+          from { opacity: 0; transform: translateX(-40px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
       `}</style>
     </div>
   );
