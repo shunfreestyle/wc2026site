@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 type NewsItem = {
   rank: number;
@@ -23,13 +24,36 @@ type NewsData = {
   searchResults?: SearchResult[];
 };
 
+type ArticleMetadata = {
+  category: string;
+  tags: string[];
+  slug: string;
+  excerpt: string;
+  articleTitle: string;
+};
+
+type ArticleData = {
+  content: string;
+  metadata: ArticleMetadata | null;
+};
+
+const CATEGORY_COLORS: Record<string, string> = {
+  "日本代表": "bg-blue-500/20 text-blue-400 border-blue-500/30",
+  "Jリーグ": "bg-green-500/20 text-green-400 border-green-500/30",
+  "W杯": "bg-amber-500/20 text-amber-400 border-amber-500/30",
+  "海外組": "bg-purple-500/20 text-purple-400 border-purple-500/30",
+  "コラム": "bg-gray-500/20 text-gray-400 border-gray-500/30",
+  "選手紹介": "bg-indigo-500/20 text-indigo-400 border-indigo-500/30",
+};
+
 export default function NewsResearchPage() {
   const [loading, setLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState("");
   const [newsData, setNewsData] = useState<NewsData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [generatingIndex, setGeneratingIndex] = useState<number | null>(null);
-  const [articles, setArticles] = useState<Record<number, string>>({});
+  const [articles, setArticles] = useState<Record<number, ArticleData>>({});
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
   const fetchNews = async () => {
     setLoading(true);
@@ -90,7 +114,7 @@ export default function NewsResearchPage() {
 
   const generateArticle = async (item: NewsItem, index: number) => {
     setGeneratingIndex(index);
-    setArticles((prev) => ({ ...prev, [index]: "" }));
+    setArticles((prev) => ({ ...prev, [index]: { content: "", metadata: null } }));
     try {
       const res = await fetch("/api/news-article", {
         method: "POST",
@@ -134,10 +158,19 @@ export default function NewsResearchPage() {
           if (payload === "[DONE]") break;
           try {
             const parsed = JSON.parse(payload);
-            if (parsed.error) throw new Error(parsed.error);
-            if (parsed.text) {
+            if (parsed.type === "error") throw new Error(parsed.error);
+            if (parsed.type === "metadata") {
+              setArticles((prev) => ({
+                ...prev,
+                [index]: { ...prev[index], metadata: parsed.metadata },
+              }));
+            }
+            if (parsed.type === "text") {
               fullText += parsed.text;
-              setArticles((prev) => ({ ...prev, [index]: fullText }));
+              setArticles((prev) => ({
+                ...prev,
+                [index]: { ...prev[index], content: fullText },
+              }));
             }
           } catch (e) {
             if (e instanceof Error && e.message !== payload) throw e;
@@ -147,15 +180,42 @@ export default function NewsResearchPage() {
     } catch (err) {
       setArticles((prev) => ({
         ...prev,
-        [index]: `エラー: ${err instanceof Error ? err.message : "記事生成に失敗しました"}`,
+        [index]: {
+          content: `エラー: ${err instanceof Error ? err.message : "記事生成に失敗しました"}`,
+          metadata: null,
+        },
       }));
     } finally {
       setGeneratingIndex(null);
     }
   };
 
-  const copyArticle = (text: string) => {
+  const copyArticle = (text: string, index: number) => {
     navigator.clipboard.writeText(text);
+    setCopiedIndex(index);
+    setTimeout(() => setCopiedIndex(null), 2000);
+  };
+
+  const copyAsArticleData = (index: number, item: NewsItem) => {
+    const article = articles[index];
+    if (!article?.metadata) return;
+    const m = article.metadata;
+    const today = new Date().toISOString().split("T")[0];
+    const escaped = article.content.replace(/`/g, "\\`").replace(/\$/g, "\\$");
+    const code = `  {
+    id: "NEW",
+    slug: "${m.slug}",
+    title: "${m.articleTitle.replace(/"/g, '\\"')}",
+    excerpt: "${m.excerpt.replace(/"/g, '\\"')}",
+    category: "${m.category}",
+    tags: [${m.tags.map((t: string) => `"${t}"`).join(", ")}],
+    publishedAt: "${today}",
+    isPopular: false,
+    content: \`${escaped}\`,
+  },`;
+    navigator.clipboard.writeText(code);
+    setCopiedIndex(index * 1000);
+    setTimeout(() => setCopiedIndex(null), 2000);
   };
 
   return (
@@ -290,7 +350,7 @@ export default function NewsResearchPage() {
                           onClick={() => generateArticle(item, i)}
                           disabled={generatingIndex !== null}
                           className={`shrink-0 px-4 py-1.5 rounded-lg text-xs font-bold transition-colors ${
-                            articles[i]
+                            articles[i]?.content
                               ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
                               : generatingIndex === i
                               ? "bg-white/5 text-white/30 cursor-wait"
@@ -299,7 +359,7 @@ export default function NewsResearchPage() {
                         >
                           {generatingIndex === i
                             ? "生成中..."
-                            : articles[i]
+                            : articles[i]?.content
                             ? "生成済み ✓"
                             : "記事にする"}
                         </button>
@@ -309,20 +369,66 @@ export default function NewsResearchPage() {
                 </div>
 
                 {/* Generated article */}
-                {articles[i] && (
+                {articles[i]?.content && (
                   <div className="border-t border-white/10 bg-white/[0.02]">
                     <div className="p-5">
+                      {/* Metadata display */}
+                      {articles[i].metadata && (
+                        <div className="mb-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                          <div className="flex items-center gap-2 mb-3">
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded border ${CATEGORY_COLORS[articles[i].metadata!.category] || "bg-white/10 text-white/60 border-white/20"}`}>
+                              {articles[i].metadata!.category}
+                            </span>
+                            <span className="text-[10px] text-white/30">
+                              slug: {articles[i].metadata!.slug}
+                            </span>
+                          </div>
+                          <p className="text-sm font-bold text-white mb-1">
+                            {articles[i].metadata!.articleTitle}
+                          </p>
+                          <p className="text-xs text-white/50 mb-3">
+                            {articles[i].metadata!.excerpt}
+                          </p>
+                          <div className="flex flex-wrap gap-1.5">
+                            {articles[i].metadata!.tags.map((tag: string) => (
+                              <span
+                                key={tag}
+                                className="text-[10px] text-white/50 bg-white/5 px-2 py-0.5 rounded-full border border-white/10"
+                              >
+                                #{tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
                       <div className="flex items-center justify-between mb-4">
                         <h4 className="text-sm font-bold text-emerald-400 flex items-center gap-2">
                           <span className="w-1.5 h-4 bg-emerald-400 rounded-full" />
                           生成された記事
                         </h4>
                         <div className="flex gap-2">
+                          {articles[i].metadata && (
+                            <button
+                              onClick={() => copyAsArticleData(i, item)}
+                              className={`px-3 py-1 rounded-lg text-xs transition-colors ${
+                                copiedIndex === i * 1000
+                                  ? "bg-emerald-500/20 text-emerald-400"
+                                  : "bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 border border-amber-500/30"
+                              }`}
+                            >
+                              {copiedIndex === i * 1000 ? "コピー済み!" : "articles.ts用コピー"}
+                            </button>
+                          )}
                           <button
-                            onClick={() => copyArticle(articles[i])}
-                            className="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/15 text-white/60 text-xs transition-colors"
+                            onClick={() => copyArticle(articles[i].content, i)}
+                            className={`px-3 py-1 rounded-lg text-xs transition-colors ${
+                              copiedIndex === i
+                                ? "bg-emerald-500/20 text-emerald-400"
+                                : "bg-white/10 hover:bg-white/15 text-white/60"
+                            }`}
                           >
-                            コピー
+                            {copiedIndex === i ? "コピー済み!" : "本文コピー"}
                           </button>
                           <button
                             onClick={() => generateArticle(item, i)}
@@ -333,8 +439,8 @@ export default function NewsResearchPage() {
                           </button>
                         </div>
                       </div>
-                      <div className="prose prose-invert prose-sm max-w-none prose-headings:text-white prose-p:text-white/70 prose-a:text-blue-400">
-                        <ReactMarkdown>{articles[i]}</ReactMarkdown>
+                      <div className="prose prose-invert prose-sm max-w-none prose-headings:text-white prose-p:text-white/70 prose-a:text-blue-400 prose-strong:text-white">
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{articles[i].content}</ReactMarkdown>
                       </div>
                     </div>
                   </div>
