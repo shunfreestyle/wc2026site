@@ -281,6 +281,12 @@ export default function JapanPage() {
             >
               {locale === 'en' ? "\u{1F4CB} Team Details" : "\u{1F4CB} チーム詳細ページ"}
             </Link>
+            <Link
+              href="/stamen"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-bold hover:bg-white/20 transition-colors"
+            >
+              {locale === 'en' ? "⚽ Lineup Maker" : "⚽ スタメンメーカー"}
+            </Link>
           </div>
         </div>
       </section>
