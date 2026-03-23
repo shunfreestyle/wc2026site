@@ -25,6 +25,7 @@ type NewsData = {
 
 export default function NewsResearchPage() {
   const [loading, setLoading] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState("");
   const [newsData, setNewsData] = useState<NewsData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [generatingIndex, setGeneratingIndex] = useState<number | null>(null);
@@ -35,29 +36,61 @@ export default function NewsResearchPage() {
     setError(null);
     setNewsData(null);
     setArticles({});
+    setLoadingMessage("接続中...");
 
     try {
       const res = await fetch("/api/news-research", { method: "POST" });
-      const text = await res.text();
-      let data;
-      try {
-        data = JSON.parse(text);
-      } catch {
-        throw new Error(`APIエラー (${res.status}): ${text.slice(0, 200)}`);
-      }
+
       if (!res.ok) {
-        throw new Error(data.error || `HTTP ${res.status}`);
+        const text = await res.text();
+        let msg = `HTTP ${res.status}`;
+        try { const d = JSON.parse(text); msg = d.error || msg; } catch { /* ignore */ }
+        throw new Error(msg);
       }
-      setNewsData(data as NewsData);
+
+      const reader = res.body?.getReader();
+      if (!reader) throw new Error("ストリームを取得できませんでした");
+
+      const decoder = new TextDecoder();
+      let buffer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
+
+        for (const line of lines) {
+          if (!line.startsWith("data: ")) continue;
+          const payload = line.slice(6);
+          if (payload === "[DONE]") break;
+          try {
+            const parsed = JSON.parse(payload);
+            if (parsed.status === "searching" || parsed.status === "processing") {
+              setLoadingMessage(parsed.message);
+            } else if (parsed.status === "done") {
+              setNewsData(parsed.data as NewsData);
+            } else if (parsed.status === "error") {
+              throw new Error(parsed.error);
+            }
+          } catch (e) {
+            if (e instanceof Error && e.message !== payload) throw e;
+          }
+        }
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "エラーが発生しました");
     } finally {
       setLoading(false);
+      setLoadingMessage("");
     }
   };
 
   const generateArticle = async (item: NewsItem, index: number) => {
     setGeneratingIndex(index);
+    setArticles((prev) => ({ ...prev, [index]: "" }));
     try {
       const res = await fetch("/api/news-article", {
         method: "POST",
@@ -69,17 +102,48 @@ export default function NewsResearchPage() {
           source: item.source,
         }),
       });
-      const text = await res.text();
-      let data;
-      try {
-        data = JSON.parse(text);
-      } catch {
-        throw new Error(`APIエラー (${res.status}): ${text.slice(0, 200)}`);
-      }
+
       if (!res.ok) {
-        throw new Error(data.error || `HTTP ${res.status}`);
+        const text = await res.text();
+        let msg = `HTTP ${res.status}`;
+        try {
+          const data = JSON.parse(text);
+          msg = data.error || msg;
+        } catch { /* ignore */ }
+        throw new Error(msg);
       }
-      setArticles((prev) => ({ ...prev, [index]: data.article }));
+
+      const reader = res.body?.getReader();
+      if (!reader) throw new Error("ストリームを取得できませんでした");
+
+      const decoder = new TextDecoder();
+      let buffer = "";
+      let fullText = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
+
+        for (const line of lines) {
+          if (!line.startsWith("data: ")) continue;
+          const payload = line.slice(6);
+          if (payload === "[DONE]") break;
+          try {
+            const parsed = JSON.parse(payload);
+            if (parsed.error) throw new Error(parsed.error);
+            if (parsed.text) {
+              fullText += parsed.text;
+              setArticles((prev) => ({ ...prev, [index]: fullText }));
+            }
+          } catch (e) {
+            if (e instanceof Error && e.message !== payload) throw e;
+          }
+        }
+      }
     } catch (err) {
       setArticles((prev) => ({
         ...prev,
@@ -160,7 +224,7 @@ export default function NewsResearchPage() {
             <div className="inline-flex flex-col items-center gap-4">
               <div className="w-12 h-12 border-4 border-white/10 border-t-[#E8192C] rounded-full animate-spin" />
               <p className="text-white/60 text-sm">
-                AIがニュースを収集中...（30秒程度）
+                {loadingMessage || "AIがニュースを収集中..."}
               </p>
             </div>
           </div>
