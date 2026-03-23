@@ -32,12 +32,17 @@ export default function NewsResearchPage() {
 
     try {
       const res = await fetch("/api/news-research", { method: "POST" });
+      const text = await res.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error(`APIエラー (${res.status}): ${text.slice(0, 200)}`);
+      }
       if (!res.ok) {
-        const data = await res.json();
         throw new Error(data.error || `HTTP ${res.status}`);
       }
-      const data: NewsData = await res.json();
-      setNewsData(data);
+      setNewsData(data as NewsData);
     } catch (err) {
       setError(err instanceof Error ? err.message : "エラーが発生しました");
     } finally {
@@ -58,11 +63,16 @@ export default function NewsResearchPage() {
           source: item.source,
         }),
       });
+      const text = await res.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error(`APIエラー (${res.status}): ${text.slice(0, 200)}`);
+      }
       if (!res.ok) {
-        const data = await res.json();
         throw new Error(data.error || `HTTP ${res.status}`);
       }
-      const data = await res.json();
       setArticles((prev) => ({ ...prev, [index]: data.article }));
     } catch (err) {
       setArticles((prev) => ({

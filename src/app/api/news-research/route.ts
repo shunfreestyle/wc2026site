@@ -75,10 +75,18 @@ export async function POST() {
 
     const data = JSON.parse(jsonStr);
     return NextResponse.json(data);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("News research error:", error);
-    const message =
-      error instanceof Error ? error.message : "Unknown error occurred";
-    return NextResponse.json({ error: message }, { status: 500 });
+    let message = "Unknown error occurred";
+    let status = 500;
+    if (error instanceof Anthropic.APIError) {
+      message = `Anthropic API error: ${error.status} ${error.message}`;
+      status = error.status >= 400 && error.status < 600 ? error.status : 500;
+    } else if (error instanceof SyntaxError) {
+      message = "AIの応答をJSONとして解析できませんでした";
+    } else if (error instanceof Error) {
+      message = error.message;
+    }
+    return NextResponse.json({ error: message }, { status });
   }
 }
