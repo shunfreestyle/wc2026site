@@ -53,7 +53,9 @@
       "Bash(ls:*)",
       "Bash(python3:*)",
       "Bash(xxd)",
-      "Bash(curl -s https://fonts.google.com/metadata/fonts)"
+      "Bash(curl -s https://fonts.google.com/metadata/fonts)",
+      "Bash(npm ls:*)",
+      "Bash(node:*)"
     ]
   }
 }

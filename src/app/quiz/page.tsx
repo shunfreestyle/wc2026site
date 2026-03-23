@@ -4,16 +4,12 @@ import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { QUIZ_JAPAN_SQUAD, QUIZ_ENGLAND, QUIZ_SCOTLAND } from "@/data/quiz";
 import type { QuizQuestion } from "@/data/quiz";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 type Category = "japan" | "england" | "scotland";
 type Screen = "category" | "level" | "quiz" | "result";
 
 const levelLabels = ["Lv.1 超初級 ⚽", "Lv.2 初級 🌟", "Lv.3 中級 🔥", "Lv.4 上級 💎", "Lv.5 超上級 👑"];
-const categories = [
-  { key: "japan" as Category, flag: "🇯🇵", title: "日本代表クイズ", sub: "イギリス遠征メンバー 50問" },
-  { key: "england" as Category, flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", title: "イングランドクイズ", sub: "対戦相手を知ろう 10問" },
-  { key: "scotland" as Category, flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", title: "スコットランドクイズ", sub: "対戦相手を知ろう 10問" },
-];
 
 const RAKUTEN_BUY_URL =
   "https://hb.afl.rakuten.co.jp/ichiba/521aa121.b7b3d243.521aa122.9bcc9825/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fadidas%2Fkd3345-mn1%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjQwMHg0MDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MSwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9";
@@ -85,6 +81,12 @@ function FeedbackPopup({ isCorrect, correctAnswer, explanation, note, onNext, ne
 }
 
 export default function QuizPage() {
+  const { t } = useLanguage();
+  const categories = [
+    { key: "japan" as Category, flag: "🇯🇵", title: `${t.quiz.categories.japan}クイズ`, sub: "イギリス遠征メンバー 50問" },
+    { key: "england" as Category, flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", title: `${t.quiz.categories.england}クイズ`, sub: "対戦相手を知ろう 10問" },
+    { key: "scotland" as Category, flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", title: `${t.quiz.categories.scotland}クイズ`, sub: "対戦相手を知ろう 10問" },
+  ];
   const [screen, setScreen] = useState<Screen>("category");
   const [category, setCategory] = useState<Category | null>(null);
   const [level, setLevel] = useState<number | null>(null);
@@ -325,7 +327,7 @@ export default function QuizPage() {
                   onClick={handleRetry}
                   className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-semibold py-3 px-6 rounded-xl transition-all"
                 >
-                  もう一度挑戦
+                  {t.quiz.retry}
                 </button>
               </div>
               <button onClick={handleBackToTop} className="text-gray-500 hover:text-gray-300 text-sm transition-colors">

@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import type { Team } from "@/data/teams";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getTeamName } from "@/utils/teamName";
 
 export default function TeamCard({ team }: { team: Team }) {
+  const { t, locale } = useLanguage();
   return (
     <Link
       href={`/teams/${team.id}`}
@@ -12,7 +17,7 @@ export default function TeamCard({ team }: { team: Team }) {
           <span className="text-4xl">{team.flag}</span>
           <div>
             <h3 className="font-bold text-gray-900 group-hover:text-[#E8192C] transition-colors">
-              {team.nameJa}
+              {getTeamName(team, locale)}
             </h3>
             <p className="text-xs text-gray-500">{team.name}</p>
           </div>
@@ -29,9 +34,9 @@ export default function TeamCard({ team }: { team: Team }) {
           {team.description}
         </p>
         <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
-          <span className="text-xs text-gray-600">最高成績: {team.bestResult}</span>
+          <span className="text-xs text-gray-600">{t.teams.bestResult}: {team.bestResult}</span>
           <span className="text-xs text-[#E8192C] font-medium group-hover:translate-x-1 transition-transform inline-block">
-            詳細 →
+            {t.common.seeMore} →
           </span>
         </div>
       </div>

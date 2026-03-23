@@ -1,11 +1,7 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "🇯🇵 日本代表 SAMURAI BLUE イギリス遠征",
-  description:
-    "2026 FIFAワールドカップ 日本代表（SAMURAI BLUE）特設ページ。イギリス遠征・グループF 試合日程・注目選手・招集メンバー28名一覧。",
-};
+import Link from "next/link";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 /* ──────────────────────────────────────────────
    Types
@@ -585,6 +581,7 @@ const opponentCards = [
    Page Component
    ────────────────────────────────────────────── */
 export default function JapanPage() {
+  const { t } = useLanguage();
   const featured = squad.filter((p) => p.id && featuredIds.includes(p.id));
   const grouped = groupByPosition(squad);
 
@@ -635,7 +632,7 @@ export default function JapanPage() {
             SAMURAI BLUE
           </h1>
           <p className="text-xl sm:text-2xl font-light tracking-wide text-blue-200 mb-1">
-            日本代表 イギリス遠征
+            {t.japan.pageTitle} イギリス遠征
           </p>
           <p className="text-sm text-blue-300/80 mb-8">
             監督：森保一 ｜ FIFAランキング：18位 ｜ W杯出場：7大会連続7回目
@@ -756,7 +753,7 @@ export default function JapanPage() {
             W杯グループステージ日程
           </h2>
           <p className="text-sm text-gray-500 mb-8">
-            グループF — オランダ、日本、チュニジア、UEFAプレーオフB勝者
+            {t.japan.groupLabel} — オランダ、日本、チュニジア、UEFAプレーオフB勝者
           </p>
 
           <div className="grid gap-4 sm:grid-cols-3">
@@ -822,7 +819,7 @@ export default function JapanPage() {
               className="inline-block w-1.5 h-8 rounded-full"
               style={{ background: "#BC002D" }}
             />
-            注目選手ピックアップ
+            {t.japan.featuredPlayers}
           </h2>
           <p className="text-sm text-blue-200/70 mb-8">
             イギリス遠征で日本の命運を握るキープレーヤー
@@ -935,7 +932,7 @@ export default function JapanPage() {
             className="inline-block w-1.5 h-8 rounded-full"
             style={{ background: "#003087" }}
           />
-          招集メンバー一覧
+          {t.japan.fullSquad}
         </h2>
         <p className="text-sm text-gray-500 mb-8">
           JFA公式発表 3月19日 — 28名（GK 3名 / DF 8名 / MF 9名 / FW 8名）
@@ -983,7 +980,7 @@ export default function JapanPage() {
                         </span>
                       </p>
                       <p>
-                        <span className="text-gray-400">身長 / 体重</span>
+                        <span className="text-gray-400">{t.japan.stats.height} / 体重</span>
                         <br />
                         <span className="text-gray-700 font-medium">
                           {p.height}cm / {p.weight}kg
@@ -997,7 +994,7 @@ export default function JapanPage() {
                         </span>
                       </p>
                       <p>
-                        <span className="text-gray-400">所属クラブ</span>
+                        <span className="text-gray-400">{t.japan.stats.club}</span>
                         <br />
                         <span className="text-gray-700 font-medium">
                           {p.club}

@@ -1,13 +1,12 @@
+"use client";
+
 import { teams, getGroups, getTeamsByGroup } from "@/data/teams";
 import TeamCard from "@/components/TeamCard";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "出場チーム一覧",
-  description: "2026年FIFAワールドカップ出場48チームの情報",
-};
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getTeamName } from "@/utils/teamName";
 
 export default function TeamsPage() {
+  const { t, locale } = useLanguage();
   const groups = getGroups();
 
   return (
@@ -15,10 +14,10 @@ export default function TeamsPage() {
       {/* Page Header */}
       <div className="mb-10">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-          出場チーム一覧
+          {t.teams.pageTitle}
         </h1>
         <p className="text-gray-500 mt-2">
-          全48チームをグループ別に表示しています
+          {t.teams.pageSub}
         </p>
       </div>
 
@@ -44,14 +43,14 @@ export default function TeamsPage() {
 
       {/* Confederation Stats */}
       <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mt-8">
-        <h2 className="text-xl font-bold text-gray-900 mb-6">大陸連盟別出場チーム数</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-6">{t.teams.confederationTitle}</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {[
-            { name: "UEFA (欧州)", count: teams.filter((t) => t.confederation === "UEFA").length, color: "bg-blue-500" },
-            { name: "CONMEBOL (南米)", count: teams.filter((t) => t.confederation === "CONMEBOL").length, color: "bg-green-500" },
-            { name: "CONCACAF (北中米)", count: teams.filter((t) => t.confederation === "CONCACAF").length, color: "bg-red-500" },
-            { name: "AFC (アジア)", count: teams.filter((t) => t.confederation === "AFC").length, color: "bg-yellow-500" },
-            { name: "CAF (アフリカ)", count: teams.filter((t) => t.confederation === "CAF").length, color: "bg-orange-500" },
+            { name: t.teams.uefa, count: teams.filter((tm) => tm.confederation === "UEFA").length, color: "bg-blue-500" },
+            { name: t.teams.conmebol, count: teams.filter((tm) => tm.confederation === "CONMEBOL").length, color: "bg-green-500" },
+            { name: t.teams.concacaf, count: teams.filter((tm) => tm.confederation === "CONCACAF").length, color: "bg-red-500" },
+            { name: t.teams.afc, count: teams.filter((tm) => tm.confederation === "AFC").length, color: "bg-yellow-500" },
+            { name: t.teams.caf, count: teams.filter((tm) => tm.confederation === "CAF").length, color: "bg-orange-500" },
           ].map((conf) => (
             <div key={conf.name} className="text-center p-4 rounded-xl bg-gray-50">
               <div className={`w-3 h-3 ${conf.color} rounded-full mx-auto mb-2`} />

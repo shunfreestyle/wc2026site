@@ -1,10 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import { teams, getGroups, getTeamsByGroup } from "@/data/teams";
 import { matches } from "@/data/matches";
 import MatchCard from "@/components/MatchCard";
 import Countdown from "@/components/Countdown";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getTeamName } from "@/utils/teamName";
 
 export default function Home() {
+  const { t, locale } = useLanguage();
   const groups = getGroups();
   const upcomingMatches = matches.slice(0, 4);
 
@@ -37,7 +42,7 @@ export default function Home() {
               SAMURAI FOOTBALL
             </h1>
             <p className="text-base sm:text-xl text-white/70 mb-4">
-              サムライブルーと2026年FIFAワールドカップを追う
+              {t.home.heroSubtitle}
             </p>
             <div className="mb-6 sm:mb-8">
               <Countdown />
@@ -53,13 +58,13 @@ export default function Home() {
                 href="/teams"
                 className="inline-flex items-center justify-center px-5 sm:px-8 py-2.5 sm:py-3 bg-[#E8192C] text-white font-bold rounded-full hover:bg-[#c81525] transition-colors shadow-lg text-sm sm:text-base"
               >
-                出場チーム一覧
+                {t.teams.pageTitle}
               </Link>
               <Link
                 href="/matches"
                 className="inline-flex items-center justify-center px-5 sm:px-8 py-2.5 sm:py-3 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-colors text-sm sm:text-base"
               >
-                試合日程を見る
+                {t.home.seeAllMatches}
               </Link>
             </div>
           </div>
@@ -71,10 +76,10 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20 mb-12 sm:mb-16">
         <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 grid grid-cols-4 gap-2 sm:gap-6">
           {[
-            { value: "48", label: "出場チーム", icon: "🏆" },
-            { value: "3", label: "開催国", icon: "🌎" },
-            { value: "16", label: "開催都市", icon: "🏟️" },
-            { value: "104", label: "試合数", icon: "📅" },
+            { value: "48", label: t.home.statsBarTeams, icon: "🏆" },
+            { value: "3", label: t.home.hostCitiesTitle, icon: "🌎" },
+            { value: "16", label: t.home.statsBarStadiums, icon: "🏟️" },
+            { value: "104", label: t.home.statsBarMatches, icon: "📅" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <span className="text-lg sm:text-2xl mb-0.5 sm:mb-1 block">{stat.icon}</span>
@@ -89,8 +94,8 @@ export default function Home() {
       <section className="bg-white py-16 mb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">グループステージ</h2>
-            <p className="text-gray-500 mt-1">全12グループの組み合わせ</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">{t.home.groupStageTitle}</h2>
+            <p className="text-gray-500 mt-1">{t.home.groupStageSub}</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {groups.map((group) => {
@@ -113,7 +118,7 @@ export default function Home() {
                         <span className="text-xl">{team.flag}</span>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium text-gray-900 group-hover:text-[#E8192C] transition-colors truncate">
-                            {team.nameJa}
+                            {getTeamName(team, locale)}
                           </p>
                         </div>
                         <span className="text-xs text-gray-600 font-medium">#{team.fifaRanking}</span>
@@ -131,14 +136,14 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">試合日程</h2>
-            <p className="text-gray-500 mt-1">注目の対戦カード</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">{t.home.matchScheduleTitle}</h2>
+            <p className="text-gray-500 mt-1">{t.home.matchScheduleSub}</p>
           </div>
           <Link
             href="/matches"
             className="text-sm font-medium text-[#E8192C] hover:underline"
           >
-            全日程を見る →
+            {t.home.seeAllMatches}
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -152,8 +157,8 @@ export default function Home() {
       <section className="bg-gradient-to-br from-[#1a1a2e] to-[#2d2d4e] text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-2xl sm:text-3xl font-bold">開催都市</h2>
-            <p className="text-gray-400 mt-1">3カ国16都市で開催</p>
+            <h2 className="text-2xl sm:text-3xl font-bold">{t.home.hostCitiesTitle}</h2>
+            <p className="text-gray-400 mt-1">{t.home.hostCitiesSub}</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {[

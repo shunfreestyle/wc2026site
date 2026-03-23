@@ -1,31 +1,19 @@
+"use client";
+
 import { notFound } from "next/navigation";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import { teams, getTeamById } from "@/data/teams";
 import { getMatchesByTeam } from "@/data/matches";
 import MatchCard from "@/components/MatchCard";
 import PlayerAvatar from "@/components/PlayerAvatar";
-import type { Metadata } from "next";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { getTeamName, getCoachName } from "@/utils/teamName";
 
-type Props = {
-  params: Promise<{ id: string }>;
-};
-
-export async function generateStaticParams() {
-  return teams.map((team) => ({ id: team.id }));
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
-  const team = getTeamById(id);
-  if (!team) return { title: "チームが見つかりません" };
-  return {
-    title: team.nameJa,
-    description: team.description,
-  };
-}
-
-export default async function TeamDetailPage({ params }: Props) {
-  const { id } = await params;
+export default function TeamDetailPage() {
+  const { t, locale } = useLanguage();
+  const params = useParams();
+  const id = params.id as string;
   const team = getTeamById(id);
 
   if (!team) {
@@ -58,13 +46,13 @@ export default async function TeamDetailPage({ params }: Props) {
             href="/teams"
             className="inline-flex items-center gap-1 text-sm text-white/60 hover:text-white mb-6 transition-colors"
           >
-            ← 出場チーム一覧
+            ← {t.teams.pageTitle}
           </Link>
           <div className="flex items-center gap-5">
             <span className="text-6xl sm:text-8xl">{team.flag}</span>
             <div>
               <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
-                {team.nameJa}
+                {getTeamName(team, locale)}
               </h1>
               <p className="text-white/70 text-lg mt-1">{team.name}</p>
               <div className="flex flex-wrap items-center gap-3 mt-3">
@@ -87,25 +75,25 @@ export default async function TeamDetailPage({ params }: Props) {
         {/* Team Info Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 -mt-6">
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-            <h3 className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">チーム情報</h3>
+            <h3 className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">{t.teams.teamInfo}</h3>
             <dl className="space-y-3">
               <div className="flex justify-between">
-                <dt className="text-sm text-gray-600">W杯出場回数</dt>
+                <dt className="text-sm text-gray-600">{t.teams.wcAppearances}</dt>
                 <dd className="text-sm font-semibold text-gray-900">{team.wcAppearances}回</dd>
               </div>
               <div className="flex justify-between">
-                <dt className="text-sm text-gray-600">最高成績</dt>
+                <dt className="text-sm text-gray-600">{t.teams.bestResult}</dt>
                 <dd className="text-sm font-semibold text-gray-900">{team.bestResult}</dd>
               </div>
               <div className="flex justify-between">
-                <dt className="text-sm text-gray-600">所属連盟</dt>
+                <dt className="text-sm text-gray-600">{t.teams.confederation}</dt>
                 <dd className="text-sm font-semibold text-gray-900">{team.confederation}</dd>
               </div>
             </dl>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:col-span-2">
-            <h3 className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">概要</h3>
+            <h3 className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">{t.teams.overview}</h3>
             <p className="text-gray-700 leading-relaxed">{team.description}</p>
           </div>
         </div>
@@ -114,11 +102,11 @@ export default async function TeamDetailPage({ params }: Props) {
         <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-10">
           <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
             <span className="w-1 h-6 bg-[#E8192C] rounded-full" />
-            監督情報
+            {t.teams.coachTitle}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900">{team.coach.nameJa}</h3>
+              <h3 className="text-2xl font-bold text-gray-900">{getCoachName(team, locale)}</h3>
               <p className="text-gray-600 mb-4">{team.coach.name}</p>
               <dl className="space-y-3">
                 <div className="flex items-center gap-3">
@@ -130,7 +118,7 @@ export default async function TeamDetailPage({ params }: Props) {
                   <dd className="text-sm font-medium text-gray-900">{team.coach.age}歳</dd>
                 </div>
                 <div className="flex items-center gap-3">
-                  <dt className="text-sm text-gray-600 w-20">スタイル</dt>
+                  <dt className="text-sm text-gray-600 w-20">{t.teams.coachStyle}</dt>
                   <dd className="text-sm font-medium text-gray-900">{team.coach.style}</dd>
                 </div>
               </dl>
@@ -157,7 +145,7 @@ export default async function TeamDetailPage({ params }: Props) {
         <section className="mb-10">
           <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
             <span className="w-1 h-6 bg-[#E8192C] rounded-full" />
-            登録選手
+            {t.teams.squad}
           </h2>
           {team.players.length > 0 ? (
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
@@ -275,7 +263,7 @@ export default async function TeamDetailPage({ params }: Props) {
           <section className="mb-10">
             <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
               <span className="w-1 h-6 bg-[#E8192C] rounded-full" />
-              対戦日程
+              {t.home.matchScheduleTitle}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {teamMatches.map((match) => (
@@ -291,13 +279,13 @@ export default async function TeamDetailPage({ params }: Props) {
             href="/teams"
             className="text-sm font-medium text-[#E8192C] hover:underline"
           >
-            ← チーム一覧に戻る
+            ← {t.teams.pageTitle}
           </Link>
           <Link
             href="/matches"
             className="text-sm font-medium text-[#E8192C] hover:underline"
           >
-            試合日程を見る →
+            {t.home.seeAllMatches}
           </Link>
         </div>
       </div>
