@@ -13,12 +13,15 @@ type SourceUrl = { source: string; url: string };
 type NewsItem = { rank: number; title: string; urls: SourceUrl[]; summary: string; hoursAgo?: number };
 type StepInfo = { step: number; label: string; message: string; done?: boolean };
 
-/* ─── API helper ─── */
+/* ─── Helpers ─── */
+const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/* ─── API helper with auto-retry on rate limit ─── */
 async function callClaude(
   system: string,
   user: string,
-  opts: { webSearch?: boolean; stream?: boolean; model?: string; maxTokens?: number } = {},
-) {
+  opts: { webSearch?: boolean; stream?: boolean; model?: string; maxTokens?: number; onRetry?: (sec: number) => void } = {},
+): Promise<Response> {
   if (!API_KEY) throw new Error("APIキーが未設定です");
   const body: Record<string, unknown> = {
     model: opts.model || "claude-haiku-4-5-20251001",
@@ -28,23 +31,42 @@ async function callClaude(
     messages: [{ role: "user", content: user }],
   };
   if (opts.webSearch) {
-    body.tools = [{ type: "web_search_20250305", name: "web_search", max_uses: 8 }];
+    body.tools = [{ type: "web_search_20250305", name: "web_search", max_uses: 3 }];
   }
-  const res = await fetch(API_URL, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "x-api-key": API_KEY,
-      "anthropic-version": "2023-06-01",
-      "anthropic-dangerous-direct-browser-access": "true",
-    },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) {
-    const t = await res.text();
-    throw new Error(`API ${res.status}: ${t.slice(0, 200)}`);
+
+  for (let attempt = 0; attempt < 3; attempt++) {
+    if (attempt > 0) {
+      const delaySec = 60;
+      opts.onRetry?.(delaySec);
+      await wait(delaySec * 1000);
+    }
+
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "x-api-key": API_KEY,
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true",
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (res.status === 429) {
+      console.warn(`Rate limited (attempt ${attempt + 1}/3), will retry in 60s`);
+      continue;
+    }
+    if (!res.ok) {
+      const t = await res.text();
+      if (t.includes("rate_limit") && attempt < 2) {
+        console.warn(`Rate limit in body (attempt ${attempt + 1}/3), will retry in 60s`);
+        continue;
+      }
+      throw new Error(`API ${res.status}: ${t.slice(0, 200)}`);
+    }
+    return res;
   }
-  return res;
+  throw new Error("レート制限で3回失敗しました。しばらく待ってから再試行してください。");
 }
 
 function extractText(data: Record<string, unknown>): string {
@@ -157,7 +179,7 @@ export default function NewsResearchPage() {
   const [articles, setArticles] = useState<Record<number, string>>({});
   const [copied, setCopied] = useState<number | null>(null);
 
-  /* ── Fetch news (3 items) ── */
+  /* ── Fetch news (10 items) ── */
   const fetchNews = async () => {
     setLoading(true);
     setError(null);
@@ -170,26 +192,39 @@ export default function NewsResearchPage() {
 ルール:
 - 純粋なJSON配列のみ出力。前置き・説明・コードブロック不要。
 - URLは検索結果の実際のURLのみ。推測禁止。
-- 直近48時間以内で最もトレンドのニュースを厳選して3件のみ。
-- 同じニュースが複数メディアで報じられている場合はurlsにまとめる（最大5メディア）。
-- summaryは300〜400文字で詳しく。5W1Hを含めること。
-- 3件それぞれ異なるトピックであること。`,
+- 直近48時間以内のニュースを10件。
+- 重要: 同じニュースを複数メディアが報じている場合、urlsに全メディアのURLをまとめる（2〜5件）。
+- 複数メディアが報じているニュースほど重要なので優先的に上位にする。
+- 10件それぞれ異なるトピックであること。
+- summaryは200〜300文字。`,
         `直近48時間の日本サッカーニュースをウェブ検索してください。
 
-検索:
+以下を幅広く検索:
 1. "日本代表 サッカー 最新ニュース"
-2. "Jリーグ 速報 結果 最新"
-3. "海外サッカー 日本人選手"
+2. "Jリーグ 速報 結果"
+3. "海外サッカー 日本人選手 最新"
 4. "サッカー 移籍 W杯2026"
+5. "サッカー 速報 今日"
 
-最もトレンドの3件をJSON配列で出力（注目度順）:
-[{"title":"タイトル","urls":[{"source":"メディア名","url":"実際のURL"}],"summary":"300〜400文字の詳細な概要","hoursAgo":数値}]`,
+重要: 各ニュースについて、同じニュースを報じた別メディアのURLも探してurlsに追加してください。
+urlsが多いニュース＝複数メディアが注目＝トレンド上位です。
+
+JSON配列で10件（トレンド順、urls多い順）:
+[{"title":"タイトル","urls":[{"source":"メディア名","url":"URL"},{"source":"別メディア","url":"URL"}],"summary":"200〜300文字の概要","hoursAgo":数値}]`,
         { webSearch: true }
       );
 
       const data = await res.json();
       const items = parseNews(data);
-      const ranked = items.slice(0, 3).map((it, i) => ({ ...it, rank: i + 1 }));
+
+      // Sort: more URLs = higher trend, then by recency
+      const sorted = items.sort((a, b) => {
+        const urlDiff = b.urls.length - a.urls.length;
+        if (urlDiff !== 0) return urlDiff;
+        return (a.hoursAgo ?? 24) - (b.hoursAgo ?? 24);
+      });
+
+      const ranked = sorted.slice(0, 10).map((it, i) => ({ ...it, rank: i + 1 }));
 
       if (ranked.length === 0) throw new Error("ニュースが取得できませんでした");
       setNews(ranked);
@@ -219,160 +254,54 @@ export default function NewsResearchPage() {
     const u = item.urls[0];
 
     try {
-      // ── STEP 1: 深いリサーチ + ファクトチェック ──
-      updateStep(1, "深いリサーチ", "5〜8サイトから情報収集・ファクトチェック中...");
+      // ── STEP 1: リサーチ ──
+      updateStep(1, "リサーチ", "関連情報を収集中...");
+      await wait(4000); // Rate limit対策
+
+      const retryMsg = (sec: number) => updateStep(1, "リサーチ", `レート制限 — ${sec}秒後にリトライ...`);
 
       const researchRes = await callClaude(
-        `あなたはスポーツジャーナリストのリサーチャー兼ファクトチェッカーだ。
-与えられたニュースを徹底調査し、複数ソースから事実を収集しつつ正確性を検証せよ。
-必ずJSON形式のみで返答。コードブロック不要。`,
-        `以下のニュースをウェブ検索で5〜8件の関連記事から調査・ファクトチェックせよ。
-
-ニュース: ${item.title}
+        `スポーツニュース調査員。JSON形式のみ出力。コードブロック不要。`,
+        `ニュース「${item.title}」をウェブ検索で調査。
 概要: ${item.summary}
-元記事URL: ${u?.url || ""}
-元記事メディア: ${u?.source || ""}
 
-調査項目:
-- 選手のフルネーム・所属クラブ・年齢・背番号
-- スコア・日付・会場の正確な数字
-- 監督や選手のコメント（原文に近い形）
-- 関連する過去の出来事や文脈
-
-ファクトチェック:
-- 複数ソース間の矛盾を特定
-- 固有名詞・数字の正確性を検証
-- 不確かな情報を除外
-
-JSON形式:
-{
-  "facts": [{"fact": "確認済みの事実", "sources": ["ソース名1", "ソース名2"]}],
-  "quotes": [{"speaker": "発言者名", "quote": "発言内容", "source": "ソース名"}],
-  "context": "ニュースの背景・文脈（200文字程度）",
-  "playerDetails": [{"name": "選手名", "club": "所属クラブ", "age": 25, "position": "ポジション"}],
-  "numbers": [{"label": "説明", "value": "数字"}],
-  "doNotInclude": ["不確かまたは矛盾のある情報"]
-}`,
-        { webSearch: true, model: "claude-sonnet-4-20250514" }
+JSON: {"facts":["事実1","事実2"],"quotes":[{"speaker":"名前","quote":"発言"}],"context":"背景200文字","playerDetails":[{"name":"名","club":"クラブ"}]}`,
+        { webSearch: true, onRetry: retryMsg }
       );
 
       const researchData = await researchRes.json();
       const researchText = extractText(researchData);
       const research = parseJsonSafe(researchText, {
-        facts: [], quotes: [], context: item.summary, playerDetails: [], numbers: [], doNotInclude: [],
+        facts: [], quotes: [], context: item.summary, playerDetails: [],
       });
 
-      updateStep(1, "深いリサーチ", `完了 — ${research.facts?.length || 0}件の事実、${research.quotes?.length || 0}件のコメント収集`, true);
+      updateStep(1, "リサーチ", `完了 — ${research.facts?.length || 0}件の事実収集`, true);
 
-      // ── STEP 2: 固有名詞・数字の最終検証 ──
-      updateStep(2, "ファクトチェック", "固有名詞・数字をウェブ検索で再確認中...");
+      // ── STEP 2: 執筆（ストリーミング） ──
+      updateStep(2, "執筆", "記事を執筆中...");
+      await wait(4000); // Rate limit対策
 
-      const checkRes = await callClaude(
-        `スポーツニュースのファクトチェッカー。固有名詞と数字を検証。JSON形式のみ。コードブロック不要。`,
-        `固有名詞と数字の最終確認:
-
-元ニュース: ${item.title}
-選手情報: ${JSON.stringify(research.playerDetails || [])}
-数字情報: ${JSON.stringify(research.numbers || [])}
-除外候補: ${JSON.stringify(research.doNotInclude || [])}
-
-ウェブ検索で確認:
-- 選手名フルネーム（漢字）
-- 所属クラブ正式名称
-- 年齢・ポジション
-- スコア・日付
-
-JSON: {"corrections": [{"item": "対象", "before": "修正前", "after": "修正後"}], "finalDoNotInclude": ["除外情報"]}`,
-        { webSearch: true }
-      );
-
-      const checkData = await checkRes.json();
-      const checkText = extractText(checkData);
-      const factCheck = parseJsonSafe(checkText, { corrections: [], finalDoNotInclude: [] });
-
-      const allDoNotInclude = [...(research.doNotInclude || []), ...(factCheck.finalDoNotInclude || [])];
-
-      updateStep(2, "ファクトチェック", `完了 — ${factCheck.corrections?.length || 0}件修正、${allDoNotInclude.length}件除外`, true);
-
-      // ── STEP 3: 執筆（ストリーミング） ──
-      updateStep(3, "執筆", "リサーチ結果をもとに記事を執筆中...");
+      const retryMsgWrite = (sec: number) => updateStep(2, "執筆", `レート制限 — ${sec}秒後にリトライ...`);
 
       const writeRes = await callClaude(
-        `あなたは「サムライフットボール」のベテランライターだ。10年以上サッカーを取材してきた。
-読者は日本サッカーに詳しいファン層。深みのある記事を書け。
+        `サムライフットボールのライター。だ・である調。H2見出し2〜3個。1500〜2000文字。Markdown出力。
+highlight-box（POINT）とsummary-card（SUMMARY）のHTML要素を使え。
+選手名は初出時フルネーム＋（所属クラブ）。出典は末尾に書かない。`,
+        `以下の素材で記事を書け。本文のみ出力。
 
-## 絶対に守るルール
-
-### 文体
-- だ・である調で統一
-- 「〜となっています」「〜とのことです」「〜が期待されます」は禁止。AI臭い
-- 「まず」「次に」「そして」「また」「さらに」で文を始めるのは各1回まで。繰り返すな
-- 同じ構文・言い回しを連続させない。「〜した。〜した。〜した。」は禁止
-- 体言止め、倒置法、問いかけ、比喩を織り交ぜろ
-- 1文は40文字以内を意識。長文は区切れ
-
-### 構成
-1. 冒頭リード文（見出しなし、2〜3文で引き込む）
-2. ## 見出し1 — 核心の事実
-3. highlight-box（POINT 1〜2）
-4. ## 見出し2 — 分析・背景・展望
-5. ## 見出し3 — 今後の注目点（任意）
-6. summary-card — 締め
-
-### HTMLカスタム要素（必ず使え）
-
-<div class="highlight-box">
-<span class="point-label">POINT 1</span>
-<span class="point-title">タイトル</span>
-<p class="point-body">説明。<strong>固有名詞</strong>は太字。</p>
-</div>
-
-<div class="summary-card">
-  <div class="summary-label">SUMMARY</div>
-  <p>まとめ。</p>
-</div>
-
-### 事実の扱い
-- 提供されたリサーチ結果のみ使用
-- 「除外すべき情報」は絶対に書くな
-- 選手名は初出時フルネーム＋（所属クラブ）
-- コメント引用は「」で囲み発言者を明記
-
-### 分量
-- 1500〜2500文字
-- 出典は末尾に書かない`,
-        `以下の素材で記事を書け。記事本文のみ出力。
-
-■ テーマ: ${item.title}
-
-■ 事実:
-${JSON.stringify(research.facts || [])}
-
-■ コメント:
-${JSON.stringify(research.quotes || [])}
-
-■ 背景:
-${research.context || item.summary}
-
-■ 選手情報:
-${JSON.stringify(research.playerDetails || [])}
-
-■ 数字:
-${JSON.stringify(research.numbers || [])}
-
-■ 修正:
-${JSON.stringify(factCheck.corrections || [])}
-
-■ 書くな（不確か）:
-${JSON.stringify(allDoNotInclude)}`,
-        { stream: true, model: "claude-sonnet-4-20250514", maxTokens: 6000 }
+テーマ: ${item.title}
+事実: ${JSON.stringify((research.facts || []).slice(0, 8))}
+コメント: ${JSON.stringify((research.quotes || []).slice(0, 3))}
+背景: ${research.context || item.summary}
+選手: ${JSON.stringify((research.playerDetails || []).slice(0, 5))}`,
+        { stream: true, onRetry: retryMsgWrite }
       );
 
       await readStream(writeRes, (full) => {
         setArticles((p) => ({ ...p, [idx]: full }));
       });
 
-      updateStep(3, "執筆", "完了", true);
+      updateStep(2, "執筆", "完了", true);
 
     } catch (err) {
       const msg = err instanceof Error ? err.message : "生成失敗";
@@ -393,9 +322,8 @@ ${JSON.stringify(allDoNotInclude)}`,
 
   /* ─── Step indicator ─── */
   const STEPS = [
-    { step: 1, label: "深いリサーチ" },
-    { step: 2, label: "ファクトチェック" },
-    { step: 3, label: "執筆" },
+    { step: 1, label: "リサーチ" },
+    { step: 2, label: "執筆" },
   ];
 
   /* ── Render ── */
