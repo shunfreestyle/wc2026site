@@ -67,51 +67,58 @@ export async function POST(request: NextRequest) {
         controller.enqueue(encoder.encode(`data: ${JSON.stringify(data)}\n\n`));
       };
 
+      // Keepalive: send a ping every 8 seconds to prevent Vercel/browser timeout
+      const keepalive = setInterval(() => {
+        try {
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: "ping" })}\n\n`));
+        } catch {
+          // controller already closed
+        }
+      }, 8000);
+
       try {
         // =============================================
-        // STEP 1: 深いリサーチ（web_search で複数サイト収集）
+        // STEP 1: 深いリサーチ + ファクトチェック（1回のAPI呼び出しに統合）
         // =============================================
-        send({ type: "step", step: 1, label: "深いリサーチ", message: "5〜8サイトから情報収集中..." });
+        send({ type: "step", step: 1, label: "深いリサーチ", message: "複数サイトから情報収集・検証中..." });
 
         const researchResponse = await client.messages.create({
           model: "claude-sonnet-4-20250514",
           max_tokens: 4096,
-          system: `あなたはスポーツジャーナリストのリサーチャーです。
-与えられたニュースについて徹底的に調査し、複数のソースから事実を収集してください。
+          system: `あなたはスポーツジャーナリストのリサーチャー兼ファクトチェッカーです。
+与えられたニュースについて徹底調査し、事実を収集したうえで正確性を検証してください。
 
 必ずJSON形式のみで返答。コードブロック不要。`,
           messages: [
             {
               role: "user",
-              content: `以下のニュースについて、ウェブ検索で5〜8件の関連記事を調査してください。
+              content: `以下のニュースについてウェブ検索で5〜8件の関連記事を調査し、ファクトチェックも同時に行ってください。
 
 ニュース: ${title}
 概要: ${summary}
 元記事URL: ${url}
 元記事メディア: ${source}
 
-調査で以下を正確に把握してください：
+調査項目:
 - 選手のフルネーム・所属クラブ・年齢・背番号
 - スコア・日付・会場などの具体的な数字
 - 監督や選手のコメント（原文に近い形で）
-- 各メディアの論調・切り口の違い
+- 各メディアの論調の違い
 - 関連する過去の出来事や文脈
 
-以下のJSON形式で出力:
+ファクトチェック:
+- 複数ソース間の矛盾を特定
+- 固有名詞・数字の正確性を検証
+- 不確かな情報を除外リストに追加
+
+JSON形式で出力:
 {
-  "facts": [
-    {"fact": "確認された事実", "sources": ["ソース名1", "ソース名2"]}
-  ],
-  "quotes": [
-    {"speaker": "発言者名", "quote": "発言内容", "source": "ソース名"}
-  ],
-  "context": "このニュースの背景・文脈の説明（200文字程度）",
-  "playerDetails": [
-    {"name": "選手名", "club": "所属クラブ", "age": 25, "position": "ポジション"}
-  ],
-  "numbers": [
-    {"label": "数字の説明", "value": "具体的な数字"}
-  ],
+  "facts": [{"fact": "確認された事実", "sources": ["ソース名1", "ソース名2"]}],
+  "quotes": [{"speaker": "発言者名", "quote": "発言内容", "source": "ソース名"}],
+  "context": "このニュースの背景・文脈（200文字程度）",
+  "playerDetails": [{"name": "選手名", "club": "所属クラブ", "age": 25, "position": "ポジション"}],
+  "numbers": [{"label": "数字の説明", "value": "具体的な数字"}],
+  "doNotInclude": ["不確かまたは矛盾がある情報"],
   "sourceCount": 5
 }`,
             },
@@ -132,6 +139,7 @@ export async function POST(request: NextRequest) {
           context: summary,
           playerDetails: [],
           numbers: [],
+          doNotInclude: [],
           sourceCount: 0,
         }) as Record<string, unknown>;
 
@@ -139,90 +147,39 @@ export async function POST(request: NextRequest) {
           type: "step",
           step: 1,
           label: "深いリサーチ",
-          message: `完了 — ${(research.facts as Array<unknown>)?.length || 0}件の事実、${(research.quotes as Array<unknown>)?.length || 0}件のコメントを収集`,
+          message: `完了 — ${(research.facts as Array<unknown>)?.length || 0}件の事実、${(research.quotes as Array<unknown>)?.length || 0}件のコメント収集`,
         });
 
         // =============================================
-        // STEP 2: ファクトチェック（2回）
+        // STEP 2: ファクトチェック（固有名詞・数字の再確認）
         // =============================================
-        send({ type: "step", step: 2, label: "ファクトチェック", message: "1回目: 情報の矛盾・誤りを検証中..." });
+        send({ type: "step", step: 2, label: "ファクトチェック", message: "固有名詞・数字をウェブ検索で再確認中..." });
 
-        const factCheck1 = await client.messages.create({
-          model: "claude-sonnet-4-20250514",
+        const factCheckResponse = await client.messages.create({
+          model: "claude-haiku-4-5-20251001",
           max_tokens: 2048,
-          system: `あなたはスポーツニュースのファクトチェッカーです。
-収集された情報を精査し、矛盾や疑わしい点を指摘してください。
+          system: `スポーツニュースのファクトチェッカーです。固有名詞と数字を検証してください。
 必ずJSON形式のみで返答。コードブロック不要。`,
           messages: [
             {
               role: "user",
-              content: `以下のリサーチ結果をファクトチェックしてください。
+              content: `以下のリサーチ結果の固有名詞と数字を最終確認してください。
 
 元ニュース: ${title}
+選手情報: ${JSON.stringify(research.playerDetails || [], null, 2)}
+数字情報: ${JSON.stringify(research.numbers || [], null, 2)}
+除外候補: ${JSON.stringify(research.doNotInclude || [], null, 2)}
 
-リサーチ結果:
-${JSON.stringify(research, null, 2)}
-
-以下を検証:
-1. 事実同士に矛盾はないか
-2. 数字（スコア、日付、年齢、移籍金額等）に不整合はないか
-3. 選手名・チーム名の表記揺れや誤りはないか
-4. コメントの文脈は正しいか
-
-JSON形式で出力:
-{
-  "issues": [{"description": "問題点", "severity": "high/medium/low", "suggestion": "修正案"}],
-  "verifiedFacts": ["確認済みの事実1", "確認済みの事実2"],
-  "unreliableFacts": ["不確かな情報1"],
-  "correctedNumbers": [{"original": "元の値", "corrected": "修正値", "reason": "修正理由"}]
-}`,
-            },
-          ],
-        });
-
-        const check1Text = extractText(factCheck1);
-        const check1 = parseJsonSafe(check1Text, {
-          issues: [],
-          verifiedFacts: [],
-          unreliableFacts: [],
-          correctedNumbers: [],
-        }) as Record<string, unknown>;
-
-        send({
-          type: "step",
-          step: 2,
-          label: "ファクトチェック",
-          message: `1回目完了 — ${(check1.issues as Array<unknown>)?.length || 0}件の問題検出、2回目の検証中...`,
-        });
-
-        // 2回目：固有名詞・数字の再確認（web_search付き）
-        const factCheck2 = await client.messages.create({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 2048,
-          system: `あなたはスポーツニュースの最終ファクトチェッカーです。
-固有名詞と数字に特化して最終確認を行います。ウェブ検索で裏取りしてください。
-必ずJSON形式のみで返答。コードブロック不要。`,
-          messages: [
-            {
-              role: "user",
-              content: `以下の情報について、固有名詞と数字の最終確認を行ってください。
-
-元ニュース: ${title}
-1回目チェック結果: ${JSON.stringify(check1, null, 2)}
-リサーチ結果の選手情報: ${JSON.stringify(research.playerDetails || [], null, 2)}
-リサーチ結果の数字情報: ${JSON.stringify(research.numbers || [], null, 2)}
-
-ウェブ検索で以下を再確認:
+ウェブ検索で確認:
 - 選手名のフルネーム（漢字表記）
 - 所属クラブ名（正式名称）
-- 年齢・背番号・ポジション
-- スコア・日付・会場
+- 年齢・ポジション
+- スコア・日付
 
-JSON形式で出力:
+JSON形式:
 {
-  "finalFacts": ["最終確認済みの事実1", ...],
   "corrections": [{"item": "修正対象", "before": "修正前", "after": "修正後"}],
-  "doNotInclude": ["記事に含めるべきでない不確かな情報"]
+  "finalDoNotInclude": ["記事に含めない不確かな情報"]
 }`,
             },
           ],
@@ -235,50 +192,45 @@ JSON形式で出力:
           ],
         });
 
-        const check2Text = extractText(factCheck2);
-        const check2 = parseJsonSafe(check2Text, {
-          finalFacts: [],
+        const checkText = extractText(factCheckResponse);
+        const factCheck = parseJsonSafe(checkText, {
           corrections: [],
-          doNotInclude: [],
+          finalDoNotInclude: [],
         }) as Record<string, unknown>;
+
+        const allDoNotInclude = [
+          ...((research.doNotInclude as string[]) || []),
+          ...((factCheck.finalDoNotInclude as string[]) || []),
+        ];
 
         send({
           type: "step",
           step: 2,
           label: "ファクトチェック",
-          message: `完了 — ${(check2.corrections as Array<unknown>)?.length || 0}件の修正、${(check2.doNotInclude as Array<unknown>)?.length || 0}件の除外情報`,
+          message: `完了 — ${(factCheck.corrections as Array<unknown>)?.length || 0}件修正、${allDoNotInclude.length}件除外`,
         });
 
         // =============================================
-        // STEP 3: メタデータ生成
+        // STEP 3: メタデータ生成 + 執筆開始を同時に
         // =============================================
         send({ type: "step", step: 3, label: "メタデータ生成", message: "カテゴリ・タグ・タイトルを生成中..." });
 
         const metaResponse = await client.messages.create({
           model: "claude-haiku-4-5-20251001",
           max_tokens: 1024,
-          system: `サッカーニュース記事のメタデータを生成するAIです。
-必ずJSON形式のみで返答。前置き・コードブロック不要。`,
+          system: `サッカーニュース記事のメタデータ生成AI。JSON形式のみ。コードブロック不要。`,
           messages: [
             {
               role: "user",
-              content: `以下のニュースのメタデータを生成してください。
+              content: `メタデータを生成:
 
-ニュースタイトル: ${title}
+タイトル: ${title}
 出典: ${source}
 概要: ${summary}
 
-JSON形式:
-{
-  "category": "${CATEGORIES.join(" | ")} から1つ",
-  "tags": ["3〜7個"],
-  "slug": "english-slug",
-  "excerpt": "50〜80文字の要約",
-  "articleTitle": "【】付きの記事タイトル"
-}
+JSON: {"category": "${CATEGORIES.join("|")}から1つ", "tags": ["3〜7個"], "slug": "english-slug", "excerpt": "50〜80文字", "articleTitle": "【】付きタイトル"}
 
-タグは既存タグ優先: ${EXISTING_TAGS.join(", ")}
-既存にない場合は新規作成OK。`,
+既存タグ優先: ${EXISTING_TAGS.join(", ")}`,
             },
           ],
         });
@@ -299,9 +251,15 @@ JSON形式:
         }
 
         send({ type: "metadata", metadata });
+        send({
+          type: "step",
+          step: 3,
+          label: "メタデータ生成",
+          message: `完了 — ${metadata.category} / ${(metadata.tags as string[])?.length || 0}タグ`,
+        });
 
         // =============================================
-        // STEP 4: 執筆（人間的な文章）
+        // STEP 4: 執筆（ストリーミング）
         // =============================================
         send({ type: "step", step: 4, label: "執筆", message: "リサーチ結果をもとに記事を執筆中..." });
 
@@ -375,14 +333,11 @@ ${JSON.stringify(research.playerDetails || [], null, 2)}
 ■ 確認済みの数字:
 ${JSON.stringify(research.numbers || [], null, 2)}
 
-■ ファクトチェックで確認済みの事実:
-${JSON.stringify(check2.finalFacts || [], null, 2)}
-
-■ 修正された情報:
-${JSON.stringify(check2.corrections || [], null, 2)}
+■ 修正情報:
+${JSON.stringify(factCheck.corrections || [], null, 2)}
 
 ■ 記事に含めてはいけない不確かな情報:
-${JSON.stringify(check2.doNotInclude || [], null, 2)}`,
+${JSON.stringify(allDoNotInclude, null, 2)}`,
             },
           ],
         });
@@ -396,13 +351,20 @@ ${JSON.stringify(check2.doNotInclude || [], null, 2)}`,
           }
         }
 
+        clearInterval(keepalive);
         send({ type: "done" });
         controller.enqueue(encoder.encode("data: [DONE]\n\n"));
         controller.close();
       } catch (err) {
+        clearInterval(keepalive);
         console.error("Article generation error:", err);
-        send({ type: "error", error: err instanceof Error ? err.message : "記事生成エラー" });
-        controller.close();
+        const msg = err instanceof Error ? err.message : "記事生成エラー";
+        try {
+          send({ type: "error", error: msg });
+          controller.close();
+        } catch {
+          // controller may already be closed
+        }
       }
     },
   });

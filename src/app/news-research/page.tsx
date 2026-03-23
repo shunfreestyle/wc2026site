@@ -142,6 +142,8 @@ export default function NewsResearchPage() {
     setGeneratingIndex(index);
     setArticles((prev) => ({ ...prev, [index]: { content: "", metadata: null, steps: [] } }));
     const primaryUrl = item.urls?.[0];
+    let receivedDone = false;
+
     try {
       const res = await fetch("/api/news-article", {
         method: "POST",
@@ -157,6 +159,7 @@ export default function NewsResearchPage() {
       if (!res.ok) {
         const text = await res.text();
         let msg = `HTTP ${res.status}`;
+        if (res.status === 504) msg = "サーバータイムアウト（504）— 再試行してください";
         try { const d = JSON.parse(text); msg = d.error || msg; } catch { /* */ }
         throw new Error(msg);
       }
@@ -177,10 +180,12 @@ export default function NewsResearchPage() {
         for (const line of lines) {
           if (!line.startsWith("data: ")) continue;
           const pl = line.slice(6);
-          if (pl === "[DONE]") break;
+          if (pl === "[DONE]") { receivedDone = true; break; }
           try {
             const parsed = JSON.parse(pl);
+            if (parsed.type === "ping") continue; // keepalive, ignore
             if (parsed.type === "error") throw new Error(parsed.error);
+            if (parsed.type === "done") { receivedDone = true; continue; }
             if (parsed.type === "step") {
               const si: StepInfo = { step: parsed.step, label: parsed.label, message: parsed.message };
               setArticles((prev) => {
@@ -203,11 +208,34 @@ export default function NewsResearchPage() {
           }
         }
       }
+
+      // Stream ended — if we never got a "done" event and have no content, it was a timeout
+      if (!receivedDone && !fullText) {
+        throw new Error("接続が途切れました（タイムアウトの可能性）。「再生成」で再試行してください。");
+      }
     } catch (err) {
-      setArticles((prev) => ({
-        ...prev,
-        [index]: { content: `エラー: ${err instanceof Error ? err.message : "記事生成に失敗しました"}`, metadata: null, steps: prev[index]?.steps || [] },
-      }));
+      const errMsg = err instanceof Error ? err.message : "記事生成に失敗しました";
+      setArticles((prev) => {
+        const existing = prev[index];
+        // If we already have partial content, keep it and append error
+        if (existing?.content && !existing.content.startsWith("エラー:")) {
+          return {
+            ...prev,
+            [index]: {
+              ...existing,
+              content: existing.content + `\n\n---\n\n**⚠ 生成が中断されました:** ${errMsg}`,
+            },
+          };
+        }
+        return {
+          ...prev,
+          [index]: {
+            content: `エラー: ${errMsg}`,
+            metadata: existing?.metadata || null,
+            steps: existing?.steps || [],
+          },
+        };
+      });
     } finally {
       setGeneratingIndex(null);
     }
@@ -433,8 +461,8 @@ export default function NewsResearchPage() {
                   </div>
                 </div>
 
-                {/* Step progress */}
-                {generatingIndex === i && articles[i]?.steps?.length > 0 && !articles[i]?.content && (
+                {/* Step progress — show during generation, even if content has started streaming */}
+                {generatingIndex === i && articles[i]?.steps?.length > 0 && (
                   <div className="border-t border-white/10 bg-white/[0.02] p-5">
                     <div className="space-y-2">
                       {[
