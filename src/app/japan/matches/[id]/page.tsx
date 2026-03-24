@@ -37,7 +37,7 @@ function FormationPitch({ match, locale }: { match: JapanMatch; locale: string }
   }
 
   return (
-    <div className="relative w-full max-w-md mx-auto" style={{ aspectRatio: "3 / 4" }}>
+    <div className="relative w-full max-w-md mx-auto" style={{ aspectRatio: "1 / 1" }}>
       {/* Pitch background */}
       <div className="absolute inset-0 rounded-2xl overflow-hidden bg-gradient-to-b from-[#2d8a4e] to-[#1a6b35]">
         {/* Pitch lines */}
@@ -62,21 +62,23 @@ function FormationPitch({ match, locale }: { match: JapanMatch; locale: string }
         }} />
       </div>
 
-      {/* Players */}
-      {match.formationPositions.map((p, i) => (
-        <div
-          key={i}
-          className="absolute -translate-x-1/2 -translate-y-1/2 text-center"
-          style={{ top: `${p.top}%`, left: `${p.left}%` }}
-        >
-          <div className="w-8 h-8 mx-auto rounded-full bg-[#003087] border-2 border-white shadow-lg flex items-center justify-center text-white text-xs font-bold">
-            {p.number}
+      {/* Players – wrapper adds vertical padding so top/bottom players aren't clipped */}
+      <div className="absolute inset-x-0 top-[4%] bottom-[4%]">
+        {match.formationPositions.map((p, i) => (
+          <div
+            key={i}
+            className="absolute -translate-x-1/2 -translate-y-1/2 text-center"
+            style={{ top: `${p.top}%`, left: `${p.left}%` }}
+          >
+            <div className="w-8 h-8 mx-auto rounded-full bg-[#003087] border-2 border-white shadow-lg flex items-center justify-center text-white text-xs font-bold">
+              {p.number}
+            </div>
+            <p className="mt-0.5 text-[10px] sm:text-xs font-bold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] whitespace-nowrap">
+              {p.nameJa}
+            </p>
           </div>
-          <p className="mt-0.5 text-[10px] sm:text-xs font-bold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] whitespace-nowrap">
-            {p.nameJa}
-          </p>
-        </div>
-      ))}
+        ))}
+      </div>
 
       {/* Formation label */}
       <div className="absolute top-3 right-4 bg-black/40 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] text-white font-bold">

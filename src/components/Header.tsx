@@ -35,7 +35,6 @@ export default function Header() {
     { href: "/japan/uniform", label: t.nav.uniform },
     { href: "/articles", label: t.nav.articles },
     { href: "/quiz", label: t.nav.quiz },
-    { href: "/stamen", label: "スタメン" },
   ];
 
   return (

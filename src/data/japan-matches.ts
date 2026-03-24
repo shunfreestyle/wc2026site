@@ -1,7 +1,7 @@
 /**
  * 日本代表 直近11試合の試合データ
  * ソース: JFA公式 / ESPN / FOX Sports
- * W杯アジア最終予選 グループC 全10試合 + E-1選手権
+ * W杯アジア最終予選 グループC 全10試合
  */
 
 export type MatchPlayer = {
@@ -73,63 +73,7 @@ function f3421(p: {
 
 /* ── Match Data (newest → oldest) ──────────────── */
 export const japanMatches: JapanMatch[] = [
-  // ── 1. E-1 韓国戦 ──
-  {
-    id: "20250715-korea-e1",
-    date: "2025-07-15",
-    competition: "EAFF E-1サッカー選手権 2025",
-    venue: "龍仁ミル・スタジアム",
-    city: "龍仁（韓国）",
-    home: { name: "South Korea", nameJa: "韓国", flag: "🇰🇷", score: 0 },
-    away: { name: "Japan", nameJa: "日本", flag: "🇯🇵", score: 1 },
-    goals: [
-      { minute: "8", player: "ジャーメイン良", team: "away" },
-    ],
-    formation: "3-4-2-1",
-    formationPositions: f3421({
-      gk: [1, "大迫敬介"], lcb: [3, "荒木隼人"], ccb: [4, "古賀太陽"], rcb: [16, "安藤智哉"],
-      lwb: [7, "相馬勇紀"], lcm: [6, "川辺駿"], rcm: [15, "稲垣祥"], rwb: [2, "望月ヘンリー"],
-      lss: [9, "宮代大聖"], rss: [13, "ジャーメイン良"], st: [19, "垣田裕暉"],
-    }),
-    starting: [
-      { number: 1, name: "Keisuke Osako", nameJa: "大迫敬介", position: "GK" },
-      { number: 3, name: "Hayato Araki", nameJa: "荒木隼人", position: "DF" },
-      { number: 4, name: "Taiyo Koga", nameJa: "古賀太陽", position: "DF" },
-      { number: 16, name: "Tomoya Ando", nameJa: "安藤智哉", position: "DF" },
-      { number: 7, name: "Yuki Soma", nameJa: "相馬勇紀", position: "MF" },
-      { number: 6, name: "Shun Kawabe", nameJa: "川辺駿", position: "MF" },
-      { number: 15, name: "Sho Inagaki", nameJa: "稲垣祥", position: "MF" },
-      { number: 2, name: "Henry Mochizuki", nameJa: "望月ヘンリー海輝", position: "MF" },
-      { number: 9, name: "Taisei Miyashiro", nameJa: "宮代大聖", position: "FW" },
-      { number: 13, name: "Ryo Germain", nameJa: "ジャーメイン良", position: "FW" },
-      { number: 19, name: "Yuki Kakita", nameJa: "垣田裕暉", position: "FW" },
-    ],
-    bench: [
-      { number: 12, name: "Tomoki Hayakawa", nameJa: "早川友基", position: "GK" },
-      { number: 5, name: "Yuto Nagatomo", nameJa: "長友佑都", position: "DF" },
-      { number: 22, name: "Naomichi Ueda", nameJa: "上田直道", position: "DF" },
-      { number: 10, name: "Mao Hosoya", nameJa: "細谷真大", position: "FW" },
-      { number: 11, name: "Taichi Hara", nameJa: "原大智", position: "FW" },
-      { number: 17, name: "Zento Uno", nameJa: "宇野善翔", position: "MF" },
-      { number: 21, name: "Ryunosuke Sato", nameJa: "佐藤龍之介", position: "MF" },
-    ],
-    substitutions: [
-      { minute: "65", playerIn: "細谷真大", playerOut: "垣田裕暉" },
-      { minute: "65", playerIn: "佐藤龍之介", playerOut: "宮代大聖" },
-      { minute: "77", playerIn: "宇野善翔", playerOut: "川辺駿" },
-      { minute: "77", playerIn: "上田直道", playerOut: "相馬勇紀" },
-      { minute: "85", playerIn: "原大智", playerOut: "ジャーメイン良" },
-    ],
-    highlights: [
-      "E-1選手権はJリーグ所属選手中心の「国内組」で臨む大会",
-      "開始わずか8分、ジャーメイン良が鮮やかなゴールで先制",
-      "韓国のホームで1-0の勝利を収め、大会優勝を決めた",
-      "W杯メンバー入りを目指す国内組の選手たちが存在感をアピール",
-    ],
-    highlightUrl: "",
-  },
-
-  // ── 2. MD10 日本 6-0 インドネシア ──
+  // ── 1. MD10 日本 6-0 インドネシア ──
   {
     id: "20250610-indonesia-h",
     date: "2025-06-10",
@@ -176,7 +120,7 @@ export const japanMatches: JapanMatch[] = [
     ],
     substitutions: [
       { minute: "45", playerIn: "中村敬斗", playerOut: "三戸舜介" },
-      { minute: "61", playerIn: "佐野航大", playerOut: "三戸舜介" },
+      { minute: "61", playerIn: "佐野航大", playerOut: "中村敬斗" },
       { minute: "68", playerIn: "佐藤龍之介", playerOut: "久保建英" },
       { minute: "69", playerIn: "細谷真大", playerOut: "森下龍矢" },
       { minute: "78", playerIn: "俵積田晃太", playerOut: "町野修斗" },
@@ -190,7 +134,7 @@ export const japanMatches: JapanMatch[] = [
     highlightUrl: "",
   },
 
-  // ── 3. MD9 オーストラリア 1-0 日本 ──
+  // ── 2. MD9 オーストラリア 1-0 日本 ──
   {
     id: "20250605-australia-a",
     date: "2025-06-05",
@@ -245,7 +189,7 @@ export const japanMatches: JapanMatch[] = [
     highlightUrl: "",
   },
 
-  // ── 4. MD8 日本 0-0 サウジアラビア ──
+  // ── 3. MD8 日本 0-0 サウジアラビア ──
   {
     id: "20250325-saudi-h",
     date: "2025-03-25",
@@ -301,7 +245,7 @@ export const japanMatches: JapanMatch[] = [
     highlightUrl: "",
   },
 
-  // ── 5. MD7 日本 2-0 バーレーン ──
+  // ── 4. MD7 日本 2-0 バーレーン ──
   {
     id: "20250320-bahrain-h",
     date: "2025-03-20",
@@ -359,7 +303,7 @@ export const japanMatches: JapanMatch[] = [
     highlightUrl: "",
   },
 
-  // ── 6. MD6 中国 1-3 日本 ──
+  // ── 5. MD6 中国 1-3 日本 ──
   {
     id: "20241119-china-a",
     date: "2024-11-19",
@@ -419,7 +363,7 @@ export const japanMatches: JapanMatch[] = [
     highlightUrl: "",
   },
 
-  // ── 7. MD5 インドネシア 0-4 日本 ──
+  // ── 6. MD5 インドネシア 0-4 日本 ──
   {
     id: "20241115-indonesia-a",
     date: "2024-11-15",
@@ -479,7 +423,7 @@ export const japanMatches: JapanMatch[] = [
     highlightUrl: "",
   },
 
-  // ── 8. MD4 日本 1-1 オーストラリア ──
+  // ── 7. MD4 日本 1-1 オーストラリア ──
   {
     id: "20241015-australia-h",
     date: "2024-10-15",
@@ -537,7 +481,7 @@ export const japanMatches: JapanMatch[] = [
     highlightUrl: "",
   },
 
-  // ── 9. MD3 サウジアラビア 0-2 日本 ──
+  // ── 8. MD3 サウジアラビア 0-2 日本 ──
   {
     id: "20241010-saudi-a",
     date: "2024-10-10",
@@ -596,7 +540,7 @@ export const japanMatches: JapanMatch[] = [
     highlightUrl: "",
   },
 
-  // ── 10. MD2 バーレーン 0-5 日本 ──
+  // ── 9. MD2 バーレーン 0-5 日本 ──
   {
     id: "20240910-bahrain-a",
     date: "2024-09-10",
@@ -660,7 +604,7 @@ export const japanMatches: JapanMatch[] = [
     highlightUrl: "",
   },
 
-  // ── 11. MD1 日本 7-0 中国 ──
+  // ── 10. MD1 日本 7-0 中国 ──
   {
     id: "20240905-china-h",
     date: "2024-09-05",

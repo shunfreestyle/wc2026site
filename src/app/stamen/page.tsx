@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
 
 /* ─── Types ─── */
@@ -107,7 +107,7 @@ const SQUAD: Player[] = [
   { name: "谷口彰悟", pos: "DF", club: "シントトロイデン（ベルギー）" },
   { name: "渡辺剛", pos: "DF", club: "フェイエノールト（オランダ）" },
   { name: "冨安健洋", pos: "DF", club: "アヤックス（オランダ）" },
-  { name: "安藤智哉", pos: "DF", club: "ザンクトパウリ（ドイツ）" },
+  { name: "橋岡大樹", pos: "DF", club: "KAAヘント（ベルギー）" },
   { name: "伊藤洋輝", pos: "DF", club: "バイエルン（ドイツ）" },
   { name: "瀬古歩夢", pos: "DF", club: "ル・アーヴル（フランス）" },
   { name: "菅原由勢", pos: "DF", club: "ブレーメン（ドイツ）" },
@@ -153,10 +153,10 @@ function Toast({ message, onClose }: { message: string; onClose: () => void }) {
 }
 
 /* ─── Step Bar ─── */
-const STEP_LABELS = ["フォーメーション", "スタメン", "ベンチ", "確認・シェア"];
+const STEP_LABELS = ["フォーメーション", "スタメン", "確認・シェア"];
 function StepBar({ current }: { current: number }) {
   return (
-    <div className="flex items-center justify-between mb-8 px-2">
+    <div className="flex items-center justify-between mb-4 px-2">
       {STEP_LABELS.map((label, i) => {
         const done = i < current;
         const active = i === current;
@@ -196,7 +196,7 @@ function Pitch({
   readonly?: boolean;
 }) {
   return (
-    <div className="relative w-full aspect-[5/3] bg-gradient-to-b from-[#2d8a4e] to-[#1e6b3a] rounded-2xl overflow-hidden border border-white/10">
+    <div className="relative w-full aspect-square bg-gradient-to-b from-[#2d8a4e] to-[#1e6b3a] rounded-2xl overflow-hidden border border-white/10">
       {/* pitch lines (half-court) */}
       <div className="absolute inset-0">
         {/* border */}
@@ -365,9 +365,7 @@ export default function StamenPage() {
   const [step, setStep] = useState(0);
   const [formation, setFormation] = useState<Formation | null>(null);
   const [slots, setSlots] = useState<(Player | null)[]>(Array(11).fill(null));
-  const [bench, setBench] = useState<Player[]>([]);
   const [modalSlot, setModalSlot] = useState<number | null>(null);
-  const [benchModal, setBenchModal] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [animClass, setAnimClass] = useState("");
   const cardRef = useRef<HTMLDivElement>(null);
@@ -377,10 +375,9 @@ export default function StamenPage() {
     setTimeout(() => setToast(null), 3000);
   }, []);
 
-  const usedNames = new Set([
-    ...slots.filter(Boolean).map((p) => p!.name),
-    ...bench.map((p) => p.name),
-  ]);
+  const usedNames = new Set(
+    slots.filter(Boolean).map((p) => p!.name),
+  );
 
   const filledCount = slots.filter(Boolean).length;
 
@@ -400,7 +397,6 @@ export default function StamenPage() {
   const handleFormationSelect = (f: Formation) => {
     setFormation(f);
     setSlots(Array(11).fill(null));
-    setBench([]);
   };
 
   const handleSlotSelect = (player: Player) => {
@@ -411,14 +407,6 @@ export default function StamenPage() {
       return next;
     });
     setModalSlot(null);
-  };
-
-  const handleBenchSelect = (player: Player) => {
-    setBench((prev) => [...prev, player]);
-  };
-
-  const handleBenchRemove = (name: string) => {
-    setBench((prev) => prev.filter((p) => p.name !== name));
   };
 
   const handleSlotClear = (index: number) => {
@@ -443,8 +431,6 @@ export default function StamenPage() {
         return;
       }
       changeStep(2, "forward");
-    } else if (step === 2) {
-      changeStep(3, "forward");
     }
   };
 
@@ -458,54 +444,174 @@ export default function StamenPage() {
       setStep(0);
       setFormation(null);
       setSlots(Array(11).fill(null));
-      setBench([]);
       setAnimClass("stamen-enter-left");
       setTimeout(() => setAnimClass(""), 300);
     }, 150);
   };
 
+  const captureCard = async (): Promise<Blob | null> => {
+    if (!formation) return null;
+
+    const S = 2; // Retina scale
+    const W = 480;
+    const H = 560;
+    const canvas = document.createElement("canvas");
+    canvas.width = W * S;
+    canvas.height = H * S;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return null;
+    ctx.scale(S, S);
+
+    // ── Background gradient ──
+    const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
+    bgGrad.addColorStop(0, "#0a1628");
+    bgGrad.addColorStop(1, "#152238");
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    // ── Title ──
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 18px system-ui, sans-serif";
+    ctx.fillText("MY STARTING XI", W / 2, 32);
+    ctx.fillStyle = "#60a5fa";
+    ctx.font = "500 14px system-ui, sans-serif";
+    ctx.fillText(formation.name, W / 2, 52);
+
+    // ── Pitch area ──
+    const pitchX = 20;
+    const pitchY = 65;
+    const pitchW = W - 40;
+    const pitchH = pitchW; // square
+
+    // Pitch gradient
+    const pitchGrad = ctx.createLinearGradient(pitchX, pitchY, pitchX, pitchY + pitchH);
+    pitchGrad.addColorStop(0, "#2d8a4e");
+    pitchGrad.addColorStop(1, "#1e6b3a");
+    ctx.fillStyle = pitchGrad;
+    ctx.beginPath();
+    ctx.roundRect(pitchX, pitchY, pitchW, pitchH, 12);
+    ctx.fill();
+
+    // Pitch lines
+    const lineColor = "rgba(255,255,255,0.3)";
+    ctx.strokeStyle = lineColor;
+    ctx.lineWidth = 1.5;
+    const m = pitchW * 0.04; // 4% margin
+    // Outer border
+    ctx.strokeRect(pitchX + m, pitchY + m, pitchW - m * 2, pitchH - m * 2);
+    // Penalty area top
+    const paW = pitchW * 0.56;
+    const paH = pitchH * 0.18;
+    ctx.strokeRect(pitchX + (pitchW - paW) / 2, pitchY + m, paW, paH);
+    // Goal area top
+    const gaW = pitchW * 0.32;
+    const gaH = pitchH * 0.09;
+    ctx.strokeRect(pitchX + (pitchW - gaW) / 2, pitchY + m, gaW, gaH);
+    // Penalty arc bottom
+    ctx.beginPath();
+    const arcCx = pitchX + pitchW / 2;
+    const arcCy = pitchY + pitchH - m;
+    const arcRx = pitchW * 0.15;
+    const arcRy = pitchH * 0.12;
+    ctx.ellipse(arcCx, arcCy, arcRx, arcRy, 0, Math.PI, 0);
+    ctx.stroke();
+
+    // ── Players ──
+    const circleR = 18;
+    formation.positions.forEach((pos, i) => {
+      const player = slots[i];
+      if (!player) return;
+      const isGK = pos.pos === "GK";
+      const px = pitchX + (pos.x / 100) * pitchW;
+      const mappedY = toHalfY(pos.y);
+      const py = pitchY + (mappedY / 100) * pitchH;
+
+      // Circle
+      ctx.beginPath();
+      ctx.arc(px, py, circleR, 0, Math.PI * 2);
+      ctx.fillStyle = isGK ? "#c8960c" : "#003087";
+      ctx.fill();
+      // White border
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Name abbreviation inside circle
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 11px system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(player.name.slice(0, 2), px, py);
+
+      // Full name below
+      ctx.textBaseline = "top";
+      ctx.font = "600 9px system-ui, sans-serif";
+      ctx.fillStyle = "#ffffff";
+      ctx.shadowColor = "rgba(0,0,0,0.8)";
+      ctx.shadowBlur = 3;
+      ctx.fillText(player.name, px, py + circleR + 2);
+      ctx.shadowBlur = 0;
+    });
+
+    // ── Footer ──
+    ctx.textAlign = "center";
+    ctx.textBaseline = "alphabetic";
+    ctx.fillStyle = "rgba(255,255,255,0.35)";
+    ctx.font = "10px system-ui, sans-serif";
+    ctx.fillText("\u00A9 SAMURAI FOOTBALL 2026", W / 2, H - 12);
+
+    return new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+  };
+
+  const shareText = `日本代表スタメン予想！${formation?.name ?? ""} #サムライブルー #SAMURAIFOOTBALL #W杯2026`;
+  const shareUrl = "https://samurai-football.jp/stamen";
+
   const handleShare = async () => {
-    const el = cardRef.current;
-    if (!el) return;
-
     try {
-      const html2canvas = (await import("html2canvas")).default;
-      const canvas = await html2canvas(el, {
-        backgroundColor: "#0a1628",
-        scale: 2,
-        useCORS: true,
-      });
-      const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, "image/png"));
-
-      const text = `日本代表スタメン予想！${formation?.name ?? ""} #サムライブルー #SAMURAIFOOTBALL #W杯2026`;
-      const url = "https://samurai-football.jp/stamen";
+      const blob = await captureCard();
 
       if (blob && navigator.share && navigator.canShare) {
         const file = new File([blob], "stamen.png", { type: "image/png" });
-        const shareData = { text: `${text}\n${url}`, files: [file] };
+        const shareData = { text: `${shareText}\n${shareUrl}`, files: [file] };
         if (navigator.canShare(shareData)) {
           await navigator.share(shareData);
           return;
         }
       }
 
-      const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+      const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
       window.open(tweetUrl, "_blank", "noopener");
-    } catch {
-      const text = `日本代表スタメン予想！${formation?.name ?? ""} #サムライブルー #SAMURAIFOOTBALL #W杯2026`;
-      const url = "https://samurai-football.jp/stamen";
-      const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    } catch (err) {
+      console.error("Share failed:", err);
+      const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
       window.open(tweetUrl, "_blank", "noopener");
     }
   };
 
+  const handleSaveImage = async () => {
+    try {
+      const blob = await captureCard();
+      if (!blob) return;
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "my-starting-xi.png";
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("Image save failed:", err);
+      showToast("スクリーンショットで保存してください");
+    }
+  };
+
   return (
-    <div className="min-h-[80vh] bg-gradient-to-b from-[#0a1628] to-[#1a1a2e] py-8 px-4">
+    <div className="min-h-[80vh] bg-gradient-to-b from-[#0a1628] to-[#1a1a2e] py-4 px-4">
       <div className="max-w-[480px] mx-auto">
         {/* header */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-3">
           <h1 className="text-2xl sm:text-3xl font-bold text-white">スタメンメーカー</h1>
-          <p className="text-gray-400 text-sm mt-1">あなたの理想のスタメンを組もう！</p>
+          <p className="text-gray-400 text-sm mt-1">イギリス遠征のベストスタメンを組もう！</p>
         </div>
 
         <StepBar current={step} />
@@ -516,7 +622,7 @@ export default function StamenPage() {
           {step === 0 && (
             <div>
               <h2 className="text-lg font-bold text-white mb-1">フォーメーションを選択</h2>
-              <p className="text-gray-400 text-xs mb-5">森保ジャパンで使われるフォーメーション</p>
+              <p className="text-gray-400 text-xs mb-3">森保ジャパンで使われるフォーメーション</p>
               <div className="grid grid-cols-2 gap-3">
                 {FORMATIONS.map((f) => (
                   <button
@@ -533,7 +639,7 @@ export default function StamenPage() {
                   </button>
                 ))}
               </div>
-              <div className="mt-6 flex justify-between items-center gap-3">
+              <div className="mt-3 flex justify-between items-center gap-3">
                 <Link
                   href="/"
                   className="px-5 py-2.5 rounded-lg text-sm text-white transition-all duration-200"
@@ -557,8 +663,7 @@ export default function StamenPage() {
           {/* ━━ STEP 1: Starting 11 ━━ */}
           {step === 1 && formation && (
             <div>
-              <h2 className="text-lg font-bold text-white mb-1">スターティング11</h2>
-              <p className="text-gray-400 text-xs mb-5">
+              <p className="text-gray-400 text-xs mb-3">
                 {filledCount < 11
                   ? `ポジションをタップして選手を選んでください（${filledCount}/11）`
                   : "全員選択済み！次へ進めます"}
@@ -574,8 +679,8 @@ export default function StamenPage() {
                   }
                 }}
               />
-              <p className="text-center text-[10px] text-gray-600 mt-2">※ 配置済みの選手をタップで解除</p>
-              <div className="mt-6 flex justify-between items-center gap-3">
+              <p className="text-center text-[10px] text-gray-600 mt-1">※ 配置済みの選手をタップで解除</p>
+              <div className="mt-3 flex justify-between items-center gap-3">
                 <button
                   onClick={prevStep}
                   className="px-5 py-2.5 rounded-lg text-sm text-white transition-all duration-200"
@@ -596,63 +701,9 @@ export default function StamenPage() {
             </div>
           )}
 
-          {/* ━━ STEP 2: Bench ━━ */}
+          {/* ━━ STEP 2: Result & Share ━━ */}
           {step === 2 && formation && (
             <div>
-              <h2 className="text-lg font-bold text-white mb-1">ベンチメンバー（任意）</h2>
-              <p className="text-gray-400 text-xs mb-5">
-                ベンチに入れたい選手を選んでください（スキップ可）
-              </p>
-              {bench.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {bench.map((p) => (
-                    <span
-                      key={p.name}
-                      className="inline-flex items-center gap-1 bg-white/10 border border-white/20 text-white text-xs font-medium px-3 py-1.5 rounded-full"
-                    >
-                      {p.name}
-                      <button
-                        onClick={() => handleBenchRemove(p.name)}
-                        className="text-gray-400 hover:text-red-400 ml-1"
-                      >
-                        ✕
-                      </button>
-                    </span>
-                  ))}
-                </div>
-              )}
-              <button
-                onClick={() => setBenchModal(true)}
-                className="w-full bg-white/5 border-2 border-dashed border-white/20 hover:border-blue-400 text-gray-400 hover:text-blue-400 rounded-xl py-4 text-sm font-medium transition-all"
-              >
-                ＋ 選手を追加
-              </button>
-              <div className="mt-6 flex justify-between items-center gap-3">
-                <button
-                  onClick={prevStep}
-                  className="px-5 py-2.5 rounded-lg text-sm text-white transition-all duration-200"
-                  style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.3)" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.2)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.12)")}
-                >
-                  ← 戻る
-                </button>
-                <button
-                  onClick={nextStep}
-                  className="flex-1 max-w-[200px] py-2.5 rounded-lg text-white font-semibold transition-all duration-200 hover:bg-[#c0141f]"
-                  style={{ background: "#E8192C" }}
-                >
-                  次へ →
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* ━━ STEP 3: Result & Share ━━ */}
-          {step === 3 && formation && (
-            <div>
-              <h2 className="text-lg font-bold text-white mb-4 text-center">あなたのスタメン</h2>
-
               {/* Share card */}
               <div
                 ref={cardRef}
@@ -663,21 +714,6 @@ export default function StamenPage() {
                   <p className="text-blue-400 text-sm font-medium">{formation.name}</p>
                 </div>
                 <Pitch positions={formation.positions} slots={slots} readonly />
-                {bench.length > 0 && (
-                  <div className="mt-4">
-                    <p className="text-xs text-gray-400 font-bold mb-2">BENCH</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {bench.map((p) => (
-                        <span
-                          key={p.name}
-                          className="text-[10px] bg-white/10 text-gray-300 px-2 py-1 rounded-md"
-                        >
-                          {p.name}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
                 <p className="text-center text-[10px] text-gray-500 mt-4">
                   &copy; SAMURAI FOOTBALL 2026
                 </p>
@@ -692,6 +728,17 @@ export default function StamenPage() {
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                   Xにシェアする
+                </button>
+                <button
+                  onClick={handleSaveImage}
+                  className="w-full flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3 px-6 rounded-xl transition-all"
+                >
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  画像を保存
                 </button>
                 <button
                   onClick={reset}
@@ -712,20 +759,6 @@ export default function StamenPage() {
             posFilter={formation.positions[modalSlot].pos}
             onSelect={handleSlotSelect}
             onClose={() => setModalSlot(null)}
-          />
-        )}
-
-        {/* ━━ Bench Select Modal ━━ */}
-        {benchModal && (
-          <PlayerModal
-            squad={SQUAD}
-            usedNames={usedNames}
-            posFilter="ALL"
-            onSelect={(p) => {
-              handleBenchSelect(p);
-              setBenchModal(false);
-            }}
-            onClose={() => setBenchModal(false)}
           />
         )}
 
