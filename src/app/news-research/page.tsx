@@ -10,7 +10,7 @@ const API_KEY = process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY || "";
 
 /* ─── Types ─── */
 type Article = { title: string; url: string; date: string; description: string };
-type SiteConfig = { name: string; icon: string; rss: string };
+type SiteConfig = { name: string; icon: string; rss: string; filterCategory?: string };
 type SiteResult = SiteConfig & {
   status: "waiting" | "fetching" | "done" | "error";
   articles: Article[];
@@ -18,13 +18,13 @@ type SiteResult = SiteConfig & {
 };
 
 const SITES: SiteConfig[] = [
-  { name: "ゲキサカ", icon: "⚽", rss: "https://web.gekisaka.jp/rss" },
+  { name: "ゲキサカ", icon: "⚽", rss: "https://web.gekisaka.jp/feed" },
   { name: "サッカーキング", icon: "👑", rss: "https://www.soccer-king.jp/feed" },
-  { name: "東スポ", icon: "📰", rss: "https://www.tokyo-sports.co.jp/rss/soccer.xml" },
+  { name: "東スポ", icon: "📰", rss: "https://www.tokyo-sports.co.jp/list/feed/rss", filterCategory: "サッカー" },
 ];
 
 /* ─── RSS XML parser ─── */
-function parseRss(xml: string): Article[] {
+function parseRss(xml: string, filterCategory?: string): Article[] {
   const parser = new DOMParser();
   const doc = parser.parseFromString(xml, "text/xml");
 
@@ -34,18 +34,30 @@ function parseRss(xml: string): Article[] {
   items.forEach((item) => {
     if (articles.length >= 5) return;
 
+    // Category filter (for sites like 東スポ whose RSS includes all categories)
+    if (filterCategory) {
+      const cats = item.querySelectorAll("category");
+      const catTexts = Array.from(cats).map((c) => c.textContent || "").join(" ");
+      const titleText = item.querySelector("title")?.textContent || "";
+      // Check if category or title contains the filter keyword
+      if (!catTexts.includes(filterCategory) && !titleText.includes(filterCategory) && !titleText.includes("サッカー") && !titleText.includes("Ｊリーグ") && !titleText.includes("日本代表")) {
+        return;
+      }
+    }
+
     const title = item.querySelector("title")?.textContent?.trim() || "";
     const link = item.querySelector("link")?.textContent?.trim() || "";
     const pubDate = item.querySelector("pubDate")?.textContent?.trim() || "";
     const desc = item.querySelector("description")?.textContent?.trim() || "";
 
     if (title && link) {
-      // Strip HTML tags from description
-      const cleanDesc = desc.replace(/<[^>]*>/g, "").trim();
+      // Strip HTML tags, CDATA markers, and site suffixes from title/description
+      const cleanTitle = title.replace(/<!\[CDATA\[|\]\]>/g, "").replace(/\s*\|\s*記事\s*\|\s*東スポWEB$/g, "").trim();
+      const cleanDesc = desc.replace(/<!\[CDATA\[|\]\]>/g, "").replace(/<[^>]*>/g, "").trim();
 
       articles.push({
-        title,
-        url: link,
+        title: cleanTitle,
+        url: link.replace(/\?utm_.*$/, ""), // Remove UTM params
         date: pubDate,
         description: cleanDesc.slice(0, 150) + (cleanDesc.length > 150 ? "..." : ""),
       });
@@ -176,7 +188,7 @@ export default function NewsResearchPage() {
           throw new Error(data.error || `HTTP ${res.status}`);
         }
         const xml = await res.text();
-        const articles = parseRss(xml);
+        const articles = parseRss(xml, site.filterCategory);
         if (articles.length === 0) throw new Error("記事が見つかりませんでした");
         updateSite(site.name, { status: "done", articles });
       } catch (err) {
