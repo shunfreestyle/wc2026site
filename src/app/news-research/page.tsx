@@ -89,8 +89,42 @@ async function streamArticle(title: string, url: string, description: string, so
       model: "claude-haiku-4-5-20251001",
       max_tokens: 4096,
       stream: true,
-      system: "サムライフットボールのライター。だ・である調。H2見出し2〜3個。1200〜1800文字。Markdown出力。選手名は初出時フルネーム＋（所属クラブ）。出典は末尾に書かない。",
-      messages: [{ role: "user", content: `記事を書け。本文のみ。\n\nタイトル: ${title}\nURL: ${url}\n出典: ${source}\n概要: ${description}` }],
+      system: `あなたは「サムライフットボール」のベテラン編集者だ。別の記者が書いた元記事をリライトする。
+
+## リライトのルール
+- 元の情報・事実は一切変えない
+- 文体・表現・文章構造を完全に変える
+- AIが書いたと思われる表現を徹底的に避ける
+  - 「〜となっています」「〜とのことです」「〜が期待されます」禁止
+  - 「まず」「次に」「そして」「また」「さらに」で文を始めるのは各1回まで
+- 体言止めを適度に使う
+- 受動態と能動態を自然に混ぜる
+- 同じ情報でも別の切り口・順番で伝える
+- サッカー専門メディアのベテラン記者らしい文体
+- だ・である調で統一
+- 1文は40文字以内を意識
+
+## フォーマット
+- H2見出し（##）を2〜3個
+- 1200〜1800文字
+- Markdown出力
+- 選手名は初出時フルネーム＋（所属クラブ）
+- 出典は末尾に書かない
+
+## HTMLカスタム要素（必ず使え）
+重要ポイント（1〜2個）:
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">タイトル</span>
+<p class="point-body">説明。<strong>固有名詞</strong>は太字。</p>
+</div>
+
+記事末尾のまとめ（必ず1個）:
+<div class="summary-card">
+  <div class="summary-label">SUMMARY</div>
+  <p>まとめ。</p>
+</div>`,
+      messages: [{ role: "user", content: `以下の元記事をリライトしてください。記事本文のみ出力。\n\nタイトル: ${title}\nURL: ${url}\n出典: ${source}\n概要: ${description}` }],
     }),
   });
   if (!res.ok) throw new Error(`API ${res.status}`);
@@ -121,6 +155,8 @@ export default function NewsResearchPage() {
   const [genKey, setGenKey] = useState<string | null>(null);
   const [genArticles, setGenArticles] = useState<Record<string, string>>({});
   const [copied, setCopied] = useState<string | null>(null);
+  const [publishing, setPublishing] = useState<string | null>(null);
+  const [published, setPublished] = useState<Record<string, string>>({});
 
   const updateSite = (name: string, u: Partial<SiteResult>) => {
     setSites((p) => p.map((s) => s.name === name ? { ...s, ...u } : s));
@@ -164,6 +200,77 @@ export default function NewsResearchPage() {
   };
 
   const copy = (t: string, k: string) => { navigator.clipboard.writeText(t); setCopied(k); setTimeout(() => setCopied(null), 2000); };
+
+  const publishArticle = async (key: string, article: Article, siteName: string) => {
+    setPublishing(key);
+    try {
+      const content = genArticles[key];
+      if (!content || content.startsWith("エラー:")) throw new Error("記事がありません");
+
+      const slug = article.title.slice(0, 50).replace(/[^a-zA-Z0-9ぁ-んァ-ヶ亜-熙]/g, "-").replace(/-+/g, "-").toLowerCase() || `news-${Date.now()}`;
+      const today = new Date().toISOString().split("T")[0];
+      const escaped = content.replace(/`/g, "\\`").replace(/\$/g, "\\$");
+
+      const newArticle = `  {
+    id: "${Date.now()}",
+    slug: "${slug}",
+    title: "${article.title.replace(/"/g, '\\"')}",
+    excerpt: "${article.description.replace(/"/g, '\\"').slice(0, 80)}",
+    category: "日本代表" as const,
+    tags: ["${siteName}"],
+    publishedAt: "${today}",
+    isPopular: false,
+    content: \`${escaped}\`,
+  },`;
+
+      // Read current articles.ts via GitHub API
+      const ghToken = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+      if (!ghToken) throw new Error("NEXT_PUBLIC_GITHUB_TOKEN が未設定です");
+
+      const repo = "shunfreestyle/wc2026site";
+      const path = "src/data/articles.ts";
+
+      const getRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+        headers: { Authorization: `token ${ghToken}`, Accept: "application/vnd.github.v3+json" },
+      });
+      if (!getRes.ok) throw new Error(`GitHub GET失敗: ${getRes.status}`);
+      const fileData = await getRes.json();
+      const currentContent = atob(fileData.content.replace(/\n/g, ""));
+
+      // Insert new article at the beginning of the array
+      const insertPoint = "export const articles: Article[] = [\n";
+      const idx = currentContent.indexOf(insertPoint);
+      if (idx === -1) throw new Error("articles配列が見つかりません");
+      const insertPos = idx + insertPoint.length;
+      const updatedContent = currentContent.slice(0, insertPos) + newArticle + "\n" + currentContent.slice(insertPos);
+
+      // Commit to GitHub
+      const putRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `token ${ghToken}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: `feat: add article "${article.title.slice(0, 50)}"`,
+          content: btoa(unescape(encodeURIComponent(updatedContent))),
+          sha: fileData.sha,
+        }),
+      });
+      if (!putRes.ok) {
+        const err = await putRes.json().catch(() => ({}));
+        throw new Error(`GitHub PUT失敗: ${putRes.status} ${err.message || ""}`);
+      }
+
+      setPublished((p) => ({ ...p, [key]: "success" }));
+    } catch (err) {
+      setPublished((p) => ({ ...p, [key]: `error:${err instanceof Error ? err.message : "投稿失敗"}` }));
+    } finally {
+      setPublishing(null);
+    }
+  };
+
   const total = sites.reduce((n, s) => n + s.articles.length, 0);
   const allDone = sites.length > 0 && sites.every((s) => s.status === "done" || s.status === "error");
 
@@ -263,8 +370,35 @@ export default function NewsResearchPage() {
                                 <button onClick={() => genArticle(site.name, ai, article)} disabled={genKey !== null} className="px-2 py-0.5 rounded bg-white/10 text-white/50 text-[10px]">再生成</button>
                               </div>
                             </div>
-                            <div className="prose prose-invert prose-sm max-w-none prose-headings:text-white prose-p:text-white/70 prose-a:text-blue-400 prose-strong:text-white">
+                            <div className="prose prose-invert prose-sm max-w-none prose-headings:text-white prose-p:text-white prose-li:text-white prose-a:text-blue-400 prose-strong:text-white/90">
                               <ReactMarkdown rehypePlugins={[rehypeRaw]}>{genArticles[key]}</ReactMarkdown>
+                            </div>
+                            {/* Publish button */}
+                            <div className="mt-4 pt-4 border-t border-white/10">
+                              {published[key] === "success" ? (
+                                <div className="flex items-center gap-2 text-emerald-400 text-sm">
+                                  <span>✓</span>
+                                  <span className="font-bold">投稿完了</span>
+                                  <span className="text-white/30 text-xs">— Vercelが自動デプロイします</span>
+                                </div>
+                              ) : published[key]?.startsWith("error:") ? (
+                                <div className="space-y-2">
+                                  <p className="text-xs text-red-400">{published[key]!.slice(6)}</p>
+                                  <button onClick={() => publishArticle(key, article, site.name)} disabled={publishing !== null}
+                                    className="px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-400 text-xs font-bold border border-red-500/30 transition-colors">
+                                    再試行
+                                  </button>
+                                </div>
+                              ) : (
+                                <button onClick={() => publishArticle(key, article, site.name)} disabled={publishing !== null || genKey !== null}
+                                  className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-colors ${
+                                    publishing === key
+                                      ? "bg-white/5 text-white/30 cursor-wait"
+                                      : "bg-gradient-to-r from-[#E8192C] to-[#c0141f] hover:from-[#c0141f] hover:to-[#a01019] text-white shadow-lg shadow-red-500/20"
+                                  }`}>
+                                  {publishing === key ? "投稿中..." : "📤 サムライフットボールに投稿"}
+                                </button>
+                              )}
                             </div>
                           </div>
                         )}
