@@ -20,7 +20,7 @@ type SiteResult = SiteConfig & {
 const SITES: SiteConfig[] = [
   { name: "ゲキサカ", icon: "⚽", rss: "https://web.gekisaka.jp/feed" },
   { name: "サッカーキング", icon: "👑", rss: "https://www.soccer-king.jp/feed" },
-  { name: "東スポ", icon: "📰", rss: "https://www.tokyo-sports.co.jp/list/feed/rss", filterCategory: "サッカー" },
+  { name: "フットボールチャンネル", icon: "⚽", rss: "https://www.footballchannel.jp/feed/" },
 ];
 
 /* ─── RSS XML parser ─── */
@@ -67,7 +67,7 @@ function parseRss(xml: string, filterCategory?: string): Article[] {
     return db - da;
   });
 
-  return allArticles.slice(0, 5);
+  return allArticles.slice(0, 10);
 }
 
 /* ─── Format date ─── */
