@@ -29,17 +29,14 @@ function parseRss(xml: string, filterCategory?: string): Article[] {
   const doc = parser.parseFromString(xml, "text/xml");
 
   const items = doc.querySelectorAll("item");
-  const articles: Article[] = [];
+  const allArticles: Article[] = [];
 
   items.forEach((item) => {
-    if (articles.length >= 10) return;
-
     // Category filter (for sites like 東スポ whose RSS includes all categories)
     if (filterCategory) {
       const cats = item.querySelectorAll("category");
       const catTexts = Array.from(cats).map((c) => c.textContent || "").join(" ");
       const titleText = item.querySelector("title")?.textContent || "";
-      // Check if category or title contains the filter keyword
       if (!catTexts.includes(filterCategory) && !titleText.includes(filterCategory) && !titleText.includes("サッカー") && !titleText.includes("Ｊリーグ") && !titleText.includes("日本代表")) {
         return;
       }
@@ -51,20 +48,26 @@ function parseRss(xml: string, filterCategory?: string): Article[] {
     const desc = item.querySelector("description")?.textContent?.trim() || "";
 
     if (title && link) {
-      // Strip HTML tags, CDATA markers, and site suffixes from title/description
       const cleanTitle = title.replace(/<!\[CDATA\[|\]\]>/g, "").replace(/\s*\|\s*記事\s*\|\s*東スポWEB$/g, "").trim();
       const cleanDesc = desc.replace(/<!\[CDATA\[|\]\]>/g, "").replace(/<[^>]*>/g, "").trim();
 
-      articles.push({
+      allArticles.push({
         title: cleanTitle,
-        url: link.replace(/\?utm_.*$/, ""), // Remove UTM params
+        url: link.replace(/\?utm_.*$/, ""),
         date: pubDate,
         description: cleanDesc.slice(0, 150) + (cleanDesc.length > 150 ? "..." : ""),
       });
     }
   });
 
-  return articles;
+  // Sort by pubDate (newest first) and take top 5
+  allArticles.sort((a, b) => {
+    const da = a.date ? new Date(a.date).getTime() : 0;
+    const db = b.date ? new Date(b.date).getTime() : 0;
+    return db - da;
+  });
+
+  return allArticles.slice(0, 5);
 }
 
 /* ─── Format date ─── */
@@ -237,9 +240,12 @@ export default function NewsResearchPage() {
 
       // Read current articles.ts via GitHub API
       const ghToken = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
+      const ghOwner = process.env.NEXT_PUBLIC_GITHUB_OWNER;
+      const ghRepo = process.env.NEXT_PUBLIC_GITHUB_REPO;
       if (!ghToken) throw new Error("NEXT_PUBLIC_GITHUB_TOKEN が未設定です");
+      if (!ghOwner || !ghRepo) throw new Error("NEXT_PUBLIC_GITHUB_OWNER / REPO が未設定です");
 
-      const repo = "shunfreestyle/wc2026site";
+      const repo = `${ghOwner}/${ghRepo}`;
       const path = "src/data/articles.ts";
 
       const getRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
