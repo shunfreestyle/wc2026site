@@ -253,7 +253,11 @@ export default function NewsResearchPage() {
       });
       if (!getRes.ok) throw new Error(`GitHub GET失敗: ${getRes.status}`);
       const fileData = await getRes.json();
-      const currentContent = atob(fileData.content.replace(/\n/g, ""));
+
+      // Decode base64 → UTF-8 properly (atob only handles Latin-1)
+      const binaryStr = atob(fileData.content.replace(/\n/g, ""));
+      const bytes = Uint8Array.from(binaryStr, (c) => c.charCodeAt(0));
+      const currentContent = new TextDecoder().decode(bytes);
 
       // Insert new article at the beginning of the array
       const insertPoint = "export const articles: Article[] = [\n";
@@ -261,6 +265,15 @@ export default function NewsResearchPage() {
       if (idx === -1) throw new Error("articles配列が見つかりません");
       const insertPos = idx + insertPoint.length;
       const updatedContent = currentContent.slice(0, insertPos) + newArticle + "\n" + currentContent.slice(insertPos);
+
+      // Encode UTF-8 → base64 properly (chunk to avoid call stack overflow)
+      const encodedBytes = new TextEncoder().encode(updatedContent);
+      let binaryString = "";
+      const chunkSize = 8192;
+      for (let i = 0; i < encodedBytes.length; i += chunkSize) {
+        binaryString += String.fromCharCode(...encodedBytes.slice(i, i + chunkSize));
+      }
+      const base64 = btoa(binaryString);
 
       // Commit to GitHub
       const putRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
@@ -272,7 +285,7 @@ export default function NewsResearchPage() {
         },
         body: JSON.stringify({
           message: `feat: add article "${article.title.slice(0, 50)}"`,
-          content: btoa(unescape(encodeURIComponent(updatedContent))),
+          content: base64,
           sha: fileData.sha,
         }),
       });
@@ -388,7 +401,7 @@ export default function NewsResearchPage() {
                                 <button onClick={() => genArticle(site.name, ai, article)} disabled={genKey !== null} className="px-2 py-0.5 rounded bg-white/10 text-white/50 text-[10px]">再生成</button>
                               </div>
                             </div>
-                            <div className="prose prose-invert prose-sm max-w-none prose-headings:text-white prose-p:text-white prose-li:text-white prose-a:text-blue-400 prose-strong:text-white/90">
+                            <div className="text-white prose prose-invert prose-sm max-w-none [&_*]:text-white [&_a]:!text-blue-400 [&_strong]:!text-white/90 [&_.point-label]:!text-amber-400 [&_.summary-label]:!text-amber-400">
                               <ReactMarkdown rehypePlugins={[rehypeRaw]}>{genArticles[key]}</ReactMarkdown>
                             </div>
                             {/* Publish button */}
