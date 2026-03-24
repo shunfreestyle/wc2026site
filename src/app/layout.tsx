@@ -56,6 +56,9 @@ export const metadata: Metadata = {
       "x-default": "https://samurai-football.jp",
     },
   },
+  verification: {
+    google: "OVov4qyr90K3Eb29v_zwIWa8R78SCkd6lBfMXKrGS24",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
