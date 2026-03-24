@@ -89,30 +89,31 @@ function parseJsonSafe<T>(text: string, fallback: T): T {
   try { return JSON.parse(s); } catch { return fallback; }
 }
 
-/* ─── Parse news JSON from Claude ─── */
+/* ─── Parse news JSON from Claude (no fallback) ─── */
 function parseNews(data: Record<string, unknown>): NewsItem[] {
   const content = data.content as Array<Record<string, unknown>>;
-  const srUrls: { url: string; title: string }[] = [];
   let text = "";
   for (const b of content) {
-    if (b.type === "web_search_tool_result" && Array.isArray(b.content)) {
-      for (const r of b.content as Array<Record<string, unknown>>) {
-        if (r.type === "web_search_result" && r.url) srUrls.push({ url: String(r.url), title: String(r.title || "") });
-      }
-    }
     if (b.type === "text") text += String(b.text || "");
   }
 
+  if (!text.trim()) throw new Error("AIからテキスト応答がありませんでした");
+
+  // Extract JSON from response
   let json = text.trim();
   const cb = json.match(/```(?:json)?\s*([\s\S]*?)```/);
   if (cb) json = cb[1].trim();
-  if (!json.startsWith("[")) { const m = json.match(/(\[[\s\S]*\])/); if (m) json = m[1]; }
+  if (!json.startsWith("[")) {
+    const m = json.match(/(\[[\s\S]*\])/);
+    if (m) json = m[1];
+  }
   if (!json.startsWith("[") && json.startsWith("{")) json = `[${json}]`;
 
-  let items: NewsItem[] = [];
-  try {
-    const raw = JSON.parse(json) as Array<Record<string, unknown>>;
-    items = raw.map((r, i) => ({
+  const raw = JSON.parse(json) as Array<Record<string, unknown>>;
+  if (!Array.isArray(raw)) throw new Error("JSONが配列ではありません");
+
+  return raw
+    .map((r, i) => ({
       rank: i + 1,
       title: String(r.title || ""),
       urls: Array.isArray(r.urls)
@@ -120,14 +121,8 @@ function parseNews(data: Record<string, unknown>): NewsItem[] {
         : r.url ? [{ source: String(r.source || ""), url: String(r.url) }] : [],
       summary: String(r.summary || ""),
       hoursAgo: typeof r.hoursAgo === "number" ? r.hoursAgo : undefined,
-    }));
-  } catch {
-    items = srUrls.slice(0, 3).map((sr, i) => ({
-      rank: i + 1, title: sr.title, urls: [{ source: "検索結果", url: sr.url }], summary: "", hoursAgo: undefined,
-    }));
-  }
-
-  return items.filter((it) => it.title && (!it.hoursAgo || it.hoursAgo <= 48));
+    }))
+    .filter((it) => it.title && it.urls.length > 0 && (!it.hoursAgo || it.hoursAgo <= 48));
 }
 
 /* ─── Stream reader helper ─── */
@@ -181,18 +176,26 @@ export default function NewsResearchPage() {
   const [copied, setCopied] = useState<number | null>(null);
 
   const QUERIES = [
-    { label: "日本代表", q: "日本代表 サッカー 最新ニュース" },
-    { label: "Jリーグ", q: "Jリーグ 試合結果 最新" },
-    { label: "海外組", q: "海外サッカー 日本人選手" },
-    { label: "移籍情報", q: "サッカー 移籍情報 最新" },
-    { label: "W杯2026", q: "W杯2026 日本 最新情報" },
+    { label: "サッカーニュース", q: "サッカー ニュース" },
+    { label: "日本代表", q: "サッカー日本代表 ニュース" },
+    { label: "Jリーグ", q: "Jリーグ ニュース" },
+    { label: "ワールドカップ", q: "ワールドカップ サッカー ニュース" },
   ];
 
-  const SYS_SEARCH = `サッカーニュース調査員。JSON配列のみ出力。コードブロック不要。
-URLは検索結果の実URLのみ。推測禁止。直近48時間以内の記事のみ。
-summaryは必ず200〜300文字で書くこと（省略禁止）。`;
+  const SYS_SEARCH = `必ずJSON形式のみで返答してください。前置き・説明文・コードブロック記号は一切不要です。
 
-  /* ── Fetch news (5 queries → merge → top 10) ── */
+あなたはサッカーニュースの調査員です。ウェブ検索の結果から「個別のニュース記事」を抽出してください。
+
+重要な注意:
+- サイトのトップページや記事一覧ページは除外すること（例: 「ゲキサカ - サッカー速報」はNG）
+- 個別の記事ページのみを対象にすること（例: 「三笘薫がゴール、ブライトンが3-1で勝利」はOK）
+- titleはニュース記事の見出しをそのまま使うこと（サイト名ではない）
+- summaryは記事の内容を200〜300文字で要約すること（省略禁止）
+- urlは検索結果に表示された実際の記事URLのみ使用（推測禁止）
+- publishedAtは記事の公開日時をISO 8601形式で記載
+- 直近48時間以内の記事のみ対象`;
+
+  /* ── Fetch news (4 queries → merge → top 10) ── */
   const fetchNews = async () => {
     setLoading(true);
     setError(null);
@@ -213,8 +216,21 @@ summaryは必ず200〜300文字で書くこと（省略禁止）。`;
         try {
           const res = await callClaude(
             SYS_SEARCH,
-            `「${q}」をウェブ検索し、見つかった記事をJSON配列で3〜5件出力:
-[{"title":"タイトル","urls":[{"source":"メディア名","url":"URL"}],"summary":"200〜300文字の概要（必須）","hoursAgo":数値}]`,
+            `「${q}」でウェブ検索してください。
+
+検索結果に含まれる「個別のニュース記事」を見つけて、以下のJSON配列で3〜5件出力してください。
+サイトのトップページや一覧ページは含めないでください。
+
+[
+  {
+    "title": "記事の見出し（サイト名ではない）",
+    "url": "記事の実際のURL",
+    "source": "メディア名（ゲキサカ、Yahoo!ニュース等）",
+    "summary": "記事内容の200〜300文字の要約",
+    "publishedAt": "2026-03-24T10:00:00Z",
+    "hoursAgo": 3
+  }
+]`,
             { webSearch: true }
           );
           const data = await res.json();
@@ -222,7 +238,6 @@ summaryは必ず200〜300文字で書くこと（省略禁止）。`;
           allItems.push(...items.map((it) => ({ title: it.title, urls: it.urls, summary: it.summary, hoursAgo: it.hoursAgo })));
         } catch (err) {
           console.warn(`Query "${label}" failed:`, err);
-          // 個別クエリの失敗は無視して続行
         }
       }
 
