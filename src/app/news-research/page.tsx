@@ -9,81 +9,73 @@ const API_URL = "https://api.anthropic.com/v1/messages";
 const API_KEY = process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY || "";
 
 /* ─── Types ─── */
-type Article = { title: string; url: string; source: string };
-type SiteConfig = { name: string; icon: string; query: string; domain: string };
-type SiteResult = SiteConfig & { status: "waiting" | "searching" | "done" | "error"; articles: Article[]; error?: string };
+type Article = { title: string; url: string; date: string; description: string };
+type SiteConfig = { name: string; icon: string; rss: string };
+type SiteResult = SiteConfig & {
+  status: "waiting" | "fetching" | "done" | "error";
+  articles: Article[];
+  error?: string;
+};
 
 const SITES: SiteConfig[] = [
-  { name: "ゲキサカ", icon: "⚽", query: "ゲキサカ サッカーニュース 最新", domain: "gekisaka.jp" },
-  { name: "サッカーキング", icon: "👑", query: "サッカーキング 最新ニュース", domain: "soccer-king.jp" },
-  { name: "東スポ", icon: "📰", query: "東京スポーツ サッカー 最新", domain: "tokyo-sports.co.jp" },
+  { name: "ゲキサカ", icon: "⚽", rss: "https://web.gekisaka.jp/rss" },
+  { name: "サッカーキング", icon: "👑", rss: "https://www.soccer-king.jp/feed" },
+  { name: "東スポ", icon: "📰", rss: "https://www.tokyo-sports.co.jp/rss/soccer.xml" },
 ];
 
-const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+/* ─── RSS XML parser ─── */
+function parseRss(xml: string): Article[] {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(xml, "text/xml");
 
-/* ─── Core: web_search → extract URLs from tool_result blocks ─── */
-async function searchForArticles(query: string, domain: string): Promise<Article[]> {
-  if (!API_KEY) throw new Error("APIキーが未設定");
+  const items = doc.querySelectorAll("item");
+  const articles: Article[] = [];
 
-  for (let attempt = 0; attempt < 3; attempt++) {
-    if (attempt > 0) await wait(60000);
+  items.forEach((item) => {
+    if (articles.length >= 5) return;
 
-    const res = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "x-api-key": API_KEY,
-        "anthropic-version": "2023-06-01",
-        "anthropic-dangerous-direct-browser-access": "true",
-      },
-      body: JSON.stringify({
-        model: "claude-haiku-4-5-20251001",
-        max_tokens: 256,
-        system: "検索を実行してください。テキスト出力は不要です。",
-        messages: [{ role: "user", content: `「${query}」を検索してください。` }],
-        tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 2 }],
-      }),
-    });
+    const title = item.querySelector("title")?.textContent?.trim() || "";
+    const link = item.querySelector("link")?.textContent?.trim() || "";
+    const pubDate = item.querySelector("pubDate")?.textContent?.trim() || "";
+    const desc = item.querySelector("description")?.textContent?.trim() || "";
 
-    if (res.status === 429) { console.warn("Rate limited, retry 60s"); continue; }
-    if (!res.ok) {
-      const t = await res.text();
-      if (t.includes("rate_limit") && attempt < 2) continue;
-      throw new Error(`API ${res.status}`);
+    if (title && link) {
+      // Strip HTML tags from description
+      const cleanDesc = desc.replace(/<[^>]*>/g, "").trim();
+
+      articles.push({
+        title,
+        url: link,
+        date: pubDate,
+        description: cleanDesc.slice(0, 150) + (cleanDesc.length > 150 ? "..." : ""),
+      });
     }
+  });
 
-    const data = await res.json();
-    const content = data.content as Array<Record<string, unknown>>;
-
-    // Extract articles DIRECTLY from web_search_tool_result — no JSON parsing needed
-    const articles: Article[] = [];
-    for (const block of content) {
-      if (block.type === "web_search_tool_result" && Array.isArray(block.content)) {
-        for (const r of block.content as Array<Record<string, unknown>>) {
-          if (r.type === "web_search_result" && r.url && r.title) {
-            const url = String(r.url);
-            const title = String(r.title);
-            // Only keep URLs from the target domain, skip top/listing pages
-            if (
-              url.includes(domain) &&
-              title.length > 10 &&
-              !/トップページ|一覧|公式サイト$|ログイン|会員登録/.test(title)
-            ) {
-              articles.push({ title, url, source: domain });
-            }
-          }
-        }
-      }
-    }
-
-    console.log(`[search] "${query}" → ${articles.length} articles from ${domain}:`, articles);
-    return articles.slice(0, 5);
-  }
-  throw new Error("レート制限で3回失敗");
+  return articles;
 }
 
-/* ─── Stream article generation ─── */
-async function streamArticle(title: string, url: string, source: string, onText: (t: string) => void) {
+/* ─── Format date ─── */
+function timeAgo(dateStr: string): string {
+  if (!dateStr) return "";
+  try {
+    const date = new Date(dateStr);
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffH = Math.floor(diffMs / (1000 * 60 * 60));
+    if (diffH < 1) return "1時間以内";
+    if (diffH < 24) return `約${diffH}時間前`;
+    const diffD = Math.floor(diffH / 24);
+    return `約${diffD}日前`;
+  } catch {
+    return dateStr;
+  }
+}
+
+/* ─── Stream article from Claude ─── */
+const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+async function streamArticle(title: string, url: string, description: string, source: string, onText: (t: string) => void) {
   if (!API_KEY) throw new Error("APIキーが未設定");
   const res = await fetch(API_URL, {
     method: "POST",
@@ -97,8 +89,8 @@ async function streamArticle(title: string, url: string, source: string, onText:
       model: "claude-haiku-4-5-20251001",
       max_tokens: 4096,
       stream: true,
-      system: "サムライフットボールのライター。だ・である調。H2見出し2〜3個。1200〜1800文字。Markdown。選手名は初出時フルネーム＋（所属クラブ）。出典は末尾に書かない。",
-      messages: [{ role: "user", content: `記事を書け。本文のみ。\n\nタイトル: ${title}\nURL: ${url}\n出典: ${source}` }],
+      system: "サムライフットボールのライター。だ・である調。H2見出し2〜3個。1200〜1800文字。Markdown出力。選手名は初出時フルネーム＋（所属クラブ）。出典は末尾に書かない。",
+      messages: [{ role: "user", content: `記事を書け。本文のみ。\n\nタイトル: ${title}\nURL: ${url}\n出典: ${source}\n概要: ${description}` }],
     }),
   });
   if (!res.ok) throw new Error(`API ${res.status}`);
@@ -125,7 +117,6 @@ async function streamArticle(title: string, url: string, source: string, onText:
 /* ═══ Component ═══ */
 export default function NewsResearchPage() {
   const [sites, setSites] = useState<SiteResult[]>([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [genKey, setGenKey] = useState<string | null>(null);
   const [genArticles, setGenArticles] = useState<Record<string, string>>({});
@@ -136,28 +127,25 @@ export default function NewsResearchPage() {
   };
 
   const fetchAll = async () => {
-    setLoading(true);
     setError(null);
     setGenArticles({});
     setSites(SITES.map((s) => ({ ...s, status: "waiting" as const, articles: [] })));
 
-    try {
-      for (let i = 0; i < SITES.length; i++) {
-        const site = SITES[i];
-        updateSite(site.name, { status: "searching" });
-        if (i > 0) await wait(5000);
-
-        try {
-          const found = await searchForArticles(site.query, site.domain);
-          updateSite(site.name, { status: "done", articles: found });
-        } catch (err) {
-          updateSite(site.name, { status: "error", error: err instanceof Error ? err.message : "失敗" });
+    for (const site of SITES) {
+      updateSite(site.name, { status: "fetching" });
+      try {
+        const res = await fetch(`/api/fetch-rss?url=${encodeURIComponent(site.rss)}`);
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({ error: `HTTP ${res.status}` }));
+          throw new Error(data.error || `HTTP ${res.status}`);
         }
+        const xml = await res.text();
+        const articles = parseRss(xml);
+        if (articles.length === 0) throw new Error("記事が見つかりませんでした");
+        updateSite(site.name, { status: "done", articles });
+      } catch (err) {
+        updateSite(site.name, { status: "error", error: err instanceof Error ? err.message : "取得失敗" });
       }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "エラー");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -167,7 +155,7 @@ export default function NewsResearchPage() {
     setGenArticles((p) => ({ ...p, [key]: "" }));
     try {
       await wait(3000);
-      await streamArticle(article.title, article.url, siteName, (full) => setGenArticles((p) => ({ ...p, [key]: full })));
+      await streamArticle(article.title, article.url, article.description, siteName, (full) => setGenArticles((p) => ({ ...p, [key]: full })));
     } catch (err) {
       setGenArticles((p) => ({ ...p, [key]: `エラー: ${err instanceof Error ? err.message : "失敗"}` }));
     } finally {
@@ -191,38 +179,46 @@ export default function NewsResearchPage() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-8">
+        {/* Start */}
         {sites.length === 0 && (
           <div className="text-center py-20">
             <div className="text-5xl mb-4">📡</div>
             <h2 className="text-xl font-bold text-white mb-2">サッカーニュース収集</h2>
-            <p className="text-sm text-white/50 mb-6">ゲキサカ・サッカーキング・東スポから最新記事を取得</p>
+            <p className="text-sm text-white/50 mb-6">RSSフィードから最新記事を取得します</p>
             <button onClick={fetchAll} className="px-8 py-3 rounded-xl bg-[#E8192C] hover:bg-[#c0141f] text-white font-bold transition-colors">収集開始</button>
             {error && <p className="mt-4 text-sm text-red-400 bg-red-500/10 border border-red-500/30 rounded-lg px-4 py-3 max-w-md mx-auto">{error}</p>}
           </div>
         )}
 
+        {/* Progress */}
         {sites.length > 0 && !allDone && (
           <div className="space-y-3 mb-8">
-            <h2 className="text-lg font-bold text-white mb-4">検索状況</h2>
+            <h2 className="text-lg font-bold text-white mb-4">取得状況</h2>
             {sites.map((s) => (
-              <div key={s.name} className={`rounded-xl border p-4 transition-all ${s.status === "searching" ? "bg-blue-500/10 border-blue-500/40" : s.status === "done" ? "bg-emerald-500/10 border-emerald-500/30" : s.status === "error" ? "bg-red-500/10 border-red-500/30" : "bg-white/[0.02] border-white/10"}`}>
+              <div key={s.name} className={`rounded-xl border p-4 transition-all ${
+                s.status === "fetching" ? "bg-blue-500/10 border-blue-500/40"
+                : s.status === "done" ? "bg-emerald-500/10 border-emerald-500/30"
+                : s.status === "error" ? "bg-red-500/10 border-red-500/30"
+                : "bg-white/[0.02] border-white/10"
+              }`}>
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">{s.icon}</span>
                   <div className="flex-1">
-                    <p className={`text-sm font-bold ${s.status === "searching" ? "text-blue-400" : s.status === "done" ? "text-emerald-400" : s.status === "error" ? "text-red-400" : "text-white/40"}`}>{s.name}</p>
-                    <p className="text-xs text-white/40">{s.status === "waiting" ? "待機中" : s.status === "searching" ? "検索中..." : s.status === "done" ? `✓ ${s.articles.length}件` : `× ${s.error}`}</p>
+                    <p className={`text-sm font-bold ${s.status === "fetching" ? "text-blue-400" : s.status === "done" ? "text-emerald-400" : s.status === "error" ? "text-red-400" : "text-white/40"}`}>{s.name}</p>
+                    <p className="text-xs text-white/40">{s.status === "waiting" ? "待機中" : s.status === "fetching" ? "RSSを取得中..." : s.status === "done" ? `✓ ${s.articles.length}件` : `× ${s.error}`}</p>
                   </div>
-                  {s.status === "searching" && <div className="w-5 h-5 border-2 border-blue-400/30 border-t-blue-400 rounded-full animate-spin" />}
+                  {s.status === "fetching" && <div className="w-5 h-5 border-2 border-blue-400/30 border-t-blue-400 rounded-full animate-spin" />}
                 </div>
               </div>
             ))}
           </div>
         )}
 
+        {/* Results */}
         {allDone && (
           <div className="space-y-8">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-bold text-white">取得結果（{total}件）</h2>
+              <h2 className="text-lg font-bold text-white">最新ニュース（{total}件）</h2>
               <button onClick={fetchAll} className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-white text-sm border border-white/20 transition-colors">再取得</button>
             </div>
 
@@ -243,7 +239,11 @@ export default function NewsResearchPage() {
                           <div className="flex items-start gap-3">
                             <span className="shrink-0 w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center text-xs font-bold text-white/60">{ai + 1}</span>
                             <div className="flex-1 min-w-0">
-                              <h4 className="text-sm font-bold text-white mb-2 leading-snug">{article.title}</h4>
+                              {article.date && (
+                                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-400">{timeAgo(article.date)}</span>
+                              )}
+                              <h4 className="text-sm font-bold text-white mt-1 mb-1 leading-snug">{article.title}</h4>
+                              {article.description && <p className="text-xs text-white/50 leading-relaxed mb-2">{article.description}</p>}
                               <div className="flex items-center gap-3 flex-wrap">
                                 <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-[11px] text-blue-400 hover:text-blue-300 underline underline-offset-2 truncate max-w-[350px]">{article.url}</a>
                                 <button onClick={() => genArticle(site.name, ai, article)} disabled={genKey !== null}
