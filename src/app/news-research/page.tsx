@@ -32,7 +32,7 @@ function parseRss(xml: string, filterCategory?: string): Article[] {
   const articles: Article[] = [];
 
   items.forEach((item) => {
-    if (articles.length >= 5) return;
+    if (articles.length >= 10) return;
 
     // Category filter (for sites like 東スポ whose RSS includes all categories)
     if (filterCategory) {
