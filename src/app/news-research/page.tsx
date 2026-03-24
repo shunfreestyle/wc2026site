@@ -9,37 +9,43 @@ const API_URL = "https://api.anthropic.com/v1/messages";
 const API_KEY = process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY || "";
 
 /* ─── Types ─── */
-type SourceUrl = { source: string; url: string };
-type NewsItem = { rank: number; title: string; urls: SourceUrl[]; summary: string; hoursAgo?: number };
-type StepInfo = { step: number; label: string; message: string; done?: boolean };
+type Article = {
+  title: string;
+  url: string;
+  summary: string;
+  timeAgo: string;
+};
+
+type SiteResult = {
+  name: string;
+  icon: string;
+  status: "waiting" | "fetching" | "parsing" | "done" | "error";
+  articles: Article[];
+  error?: string;
+};
+
+/* ─── Sites ─── */
+const SITES = [
+  { name: "サッカーキング", icon: "👑", url: "https://www.soccer-king.jp/" },
+  { name: "ゲキサカ", icon: "⚽", url: "https://web.gekisaka.jp/article/nationalteam?news_type=news" },
+  { name: "東スポ", icon: "📰", url: "https://www.tokyo-sports.co.jp/list/soccer" },
+];
 
 /* ─── Helpers ─── */
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-/* ─── API helper with auto-retry on rate limit ─── */
-async function callClaude(
-  system: string,
-  user: string,
-  opts: { webSearch?: boolean; stream?: boolean; model?: string; maxTokens?: number; onRetry?: (sec: number) => void } = {},
-): Promise<Response> {
-  if (!API_KEY) throw new Error("APIキーが未設定です");
-  const body: Record<string, unknown> = {
-    model: opts.model || "claude-haiku-4-5-20251001",
-    max_tokens: opts.maxTokens || 4096,
-    stream: opts.stream || false,
-    system,
-    messages: [{ role: "user", content: user }],
-  };
-  if (opts.webSearch) {
-    body.tools = [{ type: "web_search_20250305", name: "web_search", max_uses: 3 }];
-  }
+async function fetchHtml(url: string): Promise<string> {
+  const res = await fetch(`/api/proxy?url=${encodeURIComponent(url)}`);
+  const data = await res.json();
+  if (data.error) throw new Error(data.error);
+  return data.html;
+}
+
+async function askClaude(system: string, user: string): Promise<string> {
+  if (!API_KEY) throw new Error("APIキーが未設定");
 
   for (let attempt = 0; attempt < 3; attempt++) {
-    if (attempt > 0) {
-      const delaySec = 60;
-      opts.onRetry?.(delaySec);
-      await wait(delaySec * 1000);
-    }
+    if (attempt > 0) await wait(60000);
 
     const res = await fetch(API_URL, {
       method: "POST",
@@ -49,113 +55,58 @@ async function callClaude(
         "anthropic-version": "2023-06-01",
         "anthropic-dangerous-direct-browser-access": "true",
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify({
+        model: "claude-haiku-4-5-20251001",
+        max_tokens: 2048,
+        system,
+        messages: [{ role: "user", content: user }],
+      }),
     });
 
-    if (res.status === 429) {
-      console.warn(`Rate limited (attempt ${attempt + 1}/3), will retry in 60s`);
-      continue;
-    }
+    if (res.status === 429) { console.warn("Rate limited, retrying in 60s"); continue; }
     if (!res.ok) {
       const t = await res.text();
-      if (t.includes("rate_limit") && attempt < 2) {
-        console.warn(`Rate limit in body (attempt ${attempt + 1}/3), will retry in 60s`);
-        continue;
-      }
+      if (t.includes("rate_limit") && attempt < 2) continue;
       throw new Error(`API ${res.status}: ${t.slice(0, 200)}`);
     }
-    return res;
-  }
-  throw new Error("レート制限で3回失敗しました。しばらく待ってから再試行してください。");
-}
 
-function extractText(data: Record<string, unknown>): string {
-  const content = data.content as Array<Record<string, unknown>>;
-  let text = "";
-  for (const b of content) {
-    if (b.type === "text") text += String(b.text || "");
-  }
-  return text;
-}
-
-function parseJsonSafe<T>(text: string, fallback: T): T {
-  let s = text.trim();
-  const cb = s.match(/```(?:json)?\s*([\s\S]*?)```/);
-  if (cb) s = cb[1].trim();
-  if (!s.startsWith("{") && !s.startsWith("[")) {
-    const m = s.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
-    if (m) s = m[1];
-  }
-  try { return JSON.parse(s); } catch { return fallback; }
-}
-
-/* ─── Extract search result URLs directly from web_search_tool_result ─── */
-type SearchHit = { url: string; title: string };
-
-function extractSearchHits(data: Record<string, unknown>): SearchHit[] {
-  const content = data.content as Array<Record<string, unknown>>;
-  const hits: SearchHit[] = [];
-  for (const block of content) {
-    if (block.type === "web_search_tool_result" && Array.isArray(block.content)) {
-      for (const r of block.content as Array<Record<string, unknown>>) {
-        if (r.type === "web_search_result" && r.url && r.title) {
-          hits.push({ url: String(r.url), title: String(r.title) });
-        }
-      }
+    const data = await res.json();
+    let text = "";
+    for (const b of (data.content as Array<{ type: string; text?: string }>)) {
+      if (b.type === "text") text += b.text || "";
     }
+    return text;
   }
-  return hits;
+  throw new Error("レート制限で3回失敗");
 }
 
-/* ─── Parse Claude's text response as JSON ─── */
-function parseClaudeJson(data: Record<string, unknown>): Array<Record<string, unknown>> {
-  const content = data.content as Array<Record<string, unknown>>;
-  let text = "";
-  for (const b of content) {
-    if (b.type === "text") text += String(b.text || "");
-  }
-  if (!text.trim()) return [];
+async function streamClaude(system: string, user: string, onText: (t: string) => void): Promise<void> {
+  if (!API_KEY) throw new Error("APIキーが未設定");
 
-  let json = text.trim();
-  const cb = json.match(/```(?:json)?\s*([\s\S]*?)```/);
-  if (cb) json = cb[1].trim();
-  if (!json.startsWith("[")) {
-    const m = json.match(/(\[[\s\S]*\])/);
-    if (m) json = m[1];
-  }
-  if (!json.startsWith("[") && json.startsWith("{")) json = `[${json}]`;
+  const res = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "x-api-key": API_KEY,
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true",
+    },
+    body: JSON.stringify({
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 4096,
+      stream: true,
+      system,
+      messages: [{ role: "user", content: user }],
+    }),
+  });
 
-  try {
-    const parsed = JSON.parse(json);
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    console.warn("Claude JSON parse failed:", text.slice(0, 300));
-    return [];
-  }
-}
+  if (!res.ok) throw new Error(`API ${res.status}`);
 
-const SOURCE_MAP: [string, string][] = [
-  ["gekisaka", "ゲキサカ"], ["soccerking", "サッカーキング"],
-  ["news.yahoo.co.jp", "Yahoo!ニュース"], ["goal.com", "Goal.com"],
-  ["ultra-soccer", "超WORLDサッカー"], ["jleague.jp", "Jリーグ公式"],
-  ["nikkansports.com", "日刊スポーツ"], ["hochi.news", "スポーツ報知"],
-  ["footballista", "footballista"], ["sponichi", "スポニチ"],
-  ["nhk.or.jp", "NHK"], ["sportsnavi", "スポーツナビ"],
-];
-
-function identifySource(url: string): string {
-  for (const [domain, name] of SOURCE_MAP) {
-    if (url.includes(domain)) return name;
-  }
-  try { return new URL(url).hostname.replace("www.", ""); } catch { return "その他"; }
-}
-
-/* ─── Stream reader helper ─── */
-async function readStream(res: Response, onText: (t: string) => void) {
   const reader = res.body?.getReader();
   if (!reader) throw new Error("ストリーム取得失敗");
   const dec = new TextDecoder();
   let buf = "", full = "";
+
   while (true) {
     const { done, value } = await reader.read();
     if (done) break;
@@ -173,280 +124,146 @@ async function readStream(res: Response, onText: (t: string) => void) {
       } catch { /* skip */ }
     }
   }
-  return full;
 }
 
-/* ─── Helpers ─── */
-const timeLabel = (h?: number) => {
-  if (h == null) return null;
-  if (h < 1) return "1時間以内";
-  if (h < 24) return `約${Math.round(h)}時間前`;
-  return `約${Math.round(h / 24)}日前`;
-};
-
-const SOURCE_ICONS: Record<string, string> = {
-  "ゲキサカ": "⚽", "サッカーキング": "👑", "Yahoo!ニュース": "📰", "Goal.com": "🥅",
-  "超WORLDサッカー": "🌍", "Jリーグ公式": "🏆", "日刊スポーツ": "📄", "スポーツ報知": "📢",
-};
+function parseArticles(text: string): Article[] {
+  let json = text.trim();
+  const cb = json.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (cb) json = cb[1].trim();
+  if (!json.startsWith("[")) {
+    const m = json.match(/(\[[\s\S]*\])/);
+    if (m) json = m[1];
+  }
+  try {
+    const arr = JSON.parse(json);
+    if (!Array.isArray(arr)) return [];
+    return arr
+      .filter((a: Record<string, unknown>) => a.title && a.url)
+      .slice(0, 5)
+      .map((a: Record<string, unknown>) => ({
+        title: String(a.title),
+        url: String(a.url),
+        summary: String(a.summary || ""),
+        timeAgo: String(a.timeAgo || ""),
+      }));
+  } catch {
+    console.error("Article parse failed:", text.slice(0, 300));
+    return [];
+  }
+}
 
 /* ═══ Component ═══ */
 export default function NewsResearchPage() {
+  const [sites, setSites] = useState<SiteResult[]>([]);
   const [loading, setLoading] = useState(false);
-  const [loadMsg, setLoadMsg] = useState("");
-  const [news, setNews] = useState<NewsItem[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [genIdx, setGenIdx] = useState<number | null>(null);
-  const [genSteps, setGenSteps] = useState<StepInfo[]>([]);
-  const [articles, setArticles] = useState<Record<number, string>>({});
-  const [copied, setCopied] = useState<number | null>(null);
+  const [genIdx, setGenIdx] = useState<string | null>(null);
+  const [articles, setArticles] = useState<Record<string, string>>({});
+  const [copied, setCopied] = useState<string | null>(null);
 
-  const QUERIES = [
-    { label: "サッカーニュース", q: "サッカー ニュース 最新" },
-    { label: "日本代表", q: "サッカー日本代表 ニュース 最新" },
-    { label: "Jリーグ", q: "Jリーグ ニュース 最新" },
-    { label: "ワールドカップ", q: "ワールドカップ サッカー 2026" },
-  ];
+  const updateSite = (name: string, update: Partial<SiteResult>) => {
+    setSites((prev) => prev.map((s) => s.name === name ? { ...s, ...update } : s));
+  };
 
-  /* ── Fetch news: extract URLs from tool_result, then ask Claude to summarize ── */
-  const fetchNews = async () => {
+  /* ── Fetch all sites ── */
+  const fetchAll = async () => {
     setLoading(true);
     setError(null);
-    setNews([]);
     setArticles({});
-    setLoadMsg("検索準備中...");
-
-    type RawItem = { title: string; urls: SourceUrl[]; summary: string; hoursAgo?: number };
-    const allHits: SearchHit[] = [];
-    const claudeItems: Array<Record<string, unknown>> = [];
+    setSites(SITES.map((s) => ({ ...s, status: "waiting", articles: [] })));
 
     try {
-      // Phase 1: Run 4 searches, collect all web_search_tool_result URLs
-      for (let i = 0; i < QUERIES.length; i++) {
-        const { label, q } = QUERIES[i];
-        setLoadMsg(`(${i + 1}/${QUERIES.length}) ${label}を検索中...`);
-        if (i > 0) await wait(5000);
+      for (const site of SITES) {
+        // Step 1: Fetch HTML
+        updateSite(site.name, { status: "fetching" });
+        let html: string;
+        try {
+          html = await fetchHtml(site.url);
+          console.log(`[${site.name}] HTML fetched: ${html.length} chars`);
+        } catch (err) {
+          const msg = err instanceof Error ? err.message : "取得失敗";
+          updateSite(site.name, { status: "error", error: msg });
+          continue;
+        }
+
+        // Step 2: Ask Claude to extract articles
+        updateSite(site.name, { status: "parsing" });
+        await wait(3000); // Rate limit対策
 
         try {
-          const res = await callClaude(
-            `必ずJSON配列のみで返答。コードブロック不要。`,
-            `「${q}」をウェブ検索し、検索結果から個別のニュース記事を抽出してJSON配列で出力。
-サイトのトップページは除外。記事ページのみ対象。
-[{"title":"記事見出し","url":"記事URL","source":"メディア名","summary":"200〜300文字の要約","hoursAgo":数値}]`,
-            { webSearch: true }
+          const result = await askClaude(
+            `必ずJSON配列のみで返答。前置き・説明文・コードブロック記号は不要。`,
+            `以下は「${site.name}」(${site.url})のHTMLの一部です。
+このページから最新のニュース記事を5件抽出してください。
+
+重要:
+- titleは記事の見出し（サイト名ではない）
+- urlは記事への完全なURL（相対パスの場合はサイトのドメインを補完）
+- summaryは記事の内容を100〜150文字で要約
+- timeAgoは「約3時間前」「約1日前」などの表記
+
+JSON配列で出力:
+[{"title":"記事見出し","url":"https://...","summary":"100〜150文字","timeAgo":"約X時間前"}]
+
+HTML:
+${html}`
           );
-          const data = await res.json();
 
-          // Extract URLs directly from web_search_tool_result blocks
-          const hits = extractSearchHits(data);
-          console.log(`[${label}] web_search hits:`, hits.length, hits.map((h) => h.url));
-          allHits.push(...hits);
+          const parsed = parseArticles(result);
+          console.log(`[${site.name}] Parsed articles:`, parsed.length);
 
-          // Also collect Claude's JSON interpretation
-          const parsed = parseClaudeJson(data);
-          console.log(`[${label}] Claude JSON items:`, parsed.length);
-          claudeItems.push(...parsed);
+          if (parsed.length === 0) {
+            updateSite(site.name, { status: "error", error: "記事を抽出できませんでした" });
+          } else {
+            updateSite(site.name, { status: "done", articles: parsed });
+          }
         } catch (err) {
-          console.warn(`[${label}] failed:`, err);
+          const msg = err instanceof Error ? err.message : "解析失敗";
+          updateSite(site.name, { status: "error", error: msg });
         }
       }
-
-      console.log(`[Total] ${allHits.length} search hits, ${claudeItems.length} Claude items`);
-
-      // Phase 2: Build news items
-      setLoadMsg("結果を整理中...");
-      const items: RawItem[] = [];
-      const usedUrls = new Set<string>();
-
-      // First pass: use Claude's parsed items, validate URLs against search hits
-      for (const ci of claudeItems) {
-        const title = String(ci.title || "");
-        const url = String(ci.url || "");
-        const summary = String(ci.summary || "");
-        const source = String(ci.source || "");
-        const hoursAgo = typeof ci.hoursAgo === "number" ? ci.hoursAgo : undefined;
-
-        if (!title || title.length < 5) continue;
-        if (hoursAgo && hoursAgo > 48) continue;
-
-        // Find matching URL from search hits
-        let validUrl = "";
-        if (url.startsWith("http")) {
-          const found = allHits.some((h) => h.url === url);
-          if (found) validUrl = url;
-          else if (url.includes(".") && !url.includes(" ")) validUrl = url; // trust if looks like URL
-        }
-        if (!validUrl) {
-          // Try to match by title keywords
-          const words = title.split(/[\s、。「」]+/).filter((w) => w.length >= 3);
-          const match = allHits.find((h) => {
-            const mc = words.filter((w) => h.title.includes(w)).length;
-            return mc >= 2;
-          });
-          if (match) validUrl = match.url;
-        }
-
-        if (validUrl && !usedUrls.has(validUrl)) {
-          usedUrls.add(validUrl);
-          items.push({
-            title,
-            urls: [{ source: source || identifySource(validUrl), url: validUrl }],
-            summary,
-            hoursAgo,
-          });
-        }
-      }
-
-      // Second pass: add remaining search hits not yet used (with basic info)
-      for (const hit of allHits) {
-        if (usedUrls.has(hit.url)) continue;
-        // Skip obvious non-article pages
-        if (hit.title.length < 10) continue;
-        if (/トップ|ホーム|公式サイト$|一覧/.test(hit.title)) continue;
-
-        usedUrls.add(hit.url);
-        items.push({
-          title: hit.title,
-          urls: [{ source: identifySource(hit.url), url: hit.url }],
-          summary: "",
-          hoursAgo: undefined,
-        });
-      }
-
-      console.log(`[Build] ${items.length} items after merge`);
-
-      // Deduplicate similar titles
-      const merged: RawItem[] = [];
-      for (const item of items) {
-        const words = item.title.split(/[\s、。・「」『』（）\(\)【】]+/).filter((w) => w.length >= 3);
-        const dup = merged.find((ex) => {
-          const ew = ex.title.split(/[\s、。・「」『』（）\(\)【】]+/).filter((w) => w.length >= 3);
-          let mc = 0;
-          for (const w of words) { if (ew.some((e) => e.includes(w) || w.includes(e))) mc++; }
-          return mc >= Math.min(3, Math.floor(words.length * 0.4));
-        });
-        if (dup) {
-          for (const u of item.urls) { if (!dup.urls.some((eu) => eu.url === u.url)) dup.urls.push(u); }
-          if (!dup.summary && item.summary) dup.summary = item.summary;
-          if (item.hoursAgo != null && (dup.hoursAgo == null || item.hoursAgo < dup.hoursAgo)) dup.hoursAgo = item.hoursAgo;
-        } else {
-          merged.push({ ...item, urls: [...item.urls] });
-        }
-      }
-
-      // Sort: items with summary first, then by URL count, then recency
-      const sorted = merged.sort((a, b) => {
-        const hasSumA = a.summary ? 1 : 0;
-        const hasSumB = b.summary ? 1 : 0;
-        if (hasSumB !== hasSumA) return hasSumB - hasSumA;
-        const urlDiff = b.urls.length - a.urls.length;
-        if (urlDiff !== 0) return urlDiff;
-        return (a.hoursAgo ?? 24) - (b.hoursAgo ?? 24);
-      });
-
-      const ranked = sorted.slice(0, 10).map((it, i) => ({
-        rank: i + 1, title: it.title, urls: it.urls, summary: it.summary, hoursAgo: it.hoursAgo,
-      }));
-
-      if (ranked.length === 0) throw new Error("ニュースが取得できませんでした。再試行してください。");
-      setNews(ranked);
     } catch (err) {
       setError(err instanceof Error ? err.message : "エラーが発生しました");
     } finally {
       setLoading(false);
-      setLoadMsg("");
     }
   };
 
-  /* ── Update step state ── */
-  const updateStep = (step: number, label: string, message: string, done = false) => {
-    setGenSteps((prev) => {
-      const next = [...prev];
-      const idx = next.findIndex((s) => s.step === step);
-      const info = { step, label, message, done };
-      if (idx >= 0) next[idx] = info; else next.push(info);
-      return next;
-    });
-  };
-
-  /* ── Generate article (3-step pipeline) ── */
-  const genArticle = async (item: NewsItem, idx: number) => {
-    setGenIdx(idx);
-    setGenSteps([]);
-    setArticles((p) => ({ ...p, [idx]: "" }));
-    const u = item.urls[0];
+  /* ── Generate article ── */
+  const genArticle = async (siteName: string, articleIdx: number, article: Article) => {
+    const key = `${siteName}-${articleIdx}`;
+    setGenIdx(key);
+    setArticles((p) => ({ ...p, [key]: "" }));
 
     try {
-      // ── STEP 1: リサーチ ──
-      updateStep(1, "リサーチ", "関連情報を収集中...");
-      await wait(4000); // Rate limit対策
-
-      const retryMsg = (sec: number) => updateStep(1, "リサーチ", `レート制限 — ${sec}秒後にリトライ...`);
-
-      const researchRes = await callClaude(
-        `スポーツニュース調査員。JSON形式のみ出力。コードブロック不要。`,
-        `ニュース「${item.title}」をウェブ検索で調査。
-概要: ${item.summary}
-
-JSON: {"facts":["事実1","事実2"],"quotes":[{"speaker":"名前","quote":"発言"}],"context":"背景200文字","playerDetails":[{"name":"名","club":"クラブ"}]}`,
-        { webSearch: true, onRetry: retryMsg }
-      );
-
-      const researchData = await researchRes.json();
-      const researchText = extractText(researchData);
-      const research = parseJsonSafe(researchText, {
-        facts: [], quotes: [], context: item.summary, playerDetails: [],
-      });
-
-      updateStep(1, "リサーチ", `完了 — ${research.facts?.length || 0}件の事実収集`, true);
-
-      // ── STEP 2: 執筆（ストリーミング） ──
-      updateStep(2, "執筆", "記事を執筆中...");
-      await wait(4000); // Rate limit対策
-
-      const retryMsgWrite = (sec: number) => updateStep(2, "執筆", `レート制限 — ${sec}秒後にリトライ...`);
-
-      const writeRes = await callClaude(
-        `サムライフットボールのライター。だ・である調。H2見出し2〜3個。1500〜2000文字。Markdown出力。
-highlight-box（POINT）とsummary-card（SUMMARY）のHTML要素を使え。
+      await wait(3000);
+      await streamClaude(
+        `サムライフットボールのライター。だ・である調。H2見出し2〜3個。1200〜1800文字。Markdown出力。
 選手名は初出時フルネーム＋（所属クラブ）。出典は末尾に書かない。`,
-        `以下の素材で記事を書け。本文のみ出力。
+        `以下のニュースで記事を書け。本文のみ出力。
 
-テーマ: ${item.title}
-事実: ${JSON.stringify((research.facts || []).slice(0, 8))}
-コメント: ${JSON.stringify((research.quotes || []).slice(0, 3))}
-背景: ${research.context || item.summary}
-選手: ${JSON.stringify((research.playerDetails || []).slice(0, 5))}`,
-        { stream: true, onRetry: retryMsgWrite }
+タイトル: ${article.title}
+URL: ${article.url}
+出典: ${siteName}
+概要: ${article.summary}`,
+        (full) => setArticles((p) => ({ ...p, [key]: full }))
       );
-
-      await readStream(writeRes, (full) => {
-        setArticles((p) => ({ ...p, [idx]: full }));
-      });
-
-      updateStep(2, "執筆", "完了", true);
-
     } catch (err) {
       const msg = err instanceof Error ? err.message : "生成失敗";
-      setArticles((p) => ({
-        ...p,
-        [idx]: p[idx] ? p[idx] + `\n\n---\n\n**⚠ 生成が中断されました:** ${msg}` : `エラー: ${msg}`,
-      }));
+      setArticles((p) => ({ ...p, [key]: `エラー: ${msg}` }));
     } finally {
       setGenIdx(null);
     }
   };
 
-  const copy = (text: string, idx: number) => {
+  const copy = (text: string, key: string) => {
     navigator.clipboard.writeText(text);
-    setCopied(idx);
+    setCopied(key);
     setTimeout(() => setCopied(null), 2000);
   };
 
-  /* ─── Step indicator ─── */
-  const STEPS = [
-    { step: 1, label: "リサーチ" },
-    { step: 2, label: "執筆" },
-  ];
+  const totalArticles = sites.reduce((sum, s) => sum + s.articles.length, 0);
+  const allDone = sites.length > 0 && sites.every((s) => s.status === "done" || s.status === "error");
 
   /* ── Render ── */
   return (
@@ -462,136 +279,148 @@ highlight-box（POINT）とsummary-card（SUMMARY）のHTML要素を使え。
 
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Start */}
-        {news.length === 0 && !loading && (
+        {sites.length === 0 && !loading && (
           <div className="text-center py-20">
             <div className="text-5xl mb-4">📡</div>
-            <h2 className="text-xl font-bold text-white mb-2">サッカーニュース調査</h2>
-            <p className="text-sm text-white/50 mb-6">直近48時間のトレンドニュース TOP 10 をAIが収集します</p>
-            <button onClick={fetchNews} className="px-8 py-3 rounded-xl bg-[#E8192C] hover:bg-[#c0141f] text-white font-bold transition-colors">
-              ニュース収集開始
+            <h2 className="text-xl font-bold text-white mb-2">サッカーニュース収集</h2>
+            <p className="text-sm text-white/50 mb-6">3サイトから最新ニュースを直接取得します</p>
+            <button onClick={fetchAll} className="px-8 py-3 rounded-xl bg-[#E8192C] hover:bg-[#c0141f] text-white font-bold transition-colors">
+              収集開始
             </button>
             {error && <p className="mt-4 text-sm text-red-400 bg-red-500/10 border border-red-500/30 rounded-lg px-4 py-3 max-w-md mx-auto">{error}</p>}
           </div>
         )}
 
-        {/* Loading */}
-        {loading && (
-          <div className="text-center py-20">
-            <div className="w-12 h-12 border-4 border-white/10 border-t-[#E8192C] rounded-full animate-spin mx-auto mb-4" />
-            <p className="text-white/60 text-sm">{loadMsg || "ニュースを収集中..."}</p>
+        {/* Progress cards */}
+        {sites.length > 0 && !allDone && (
+          <div className="space-y-3 mb-8">
+            <h2 className="text-lg font-bold text-white mb-4">取得状況</h2>
+            {sites.map((site) => (
+              <div
+                key={site.name}
+                className={`rounded-xl border p-4 transition-all duration-500 ${
+                  site.status === "fetching" || site.status === "parsing"
+                    ? "bg-blue-500/10 border-blue-500/40"
+                    : site.status === "done"
+                    ? "bg-emerald-500/10 border-emerald-500/30"
+                    : site.status === "error"
+                    ? "bg-red-500/10 border-red-500/30"
+                    : "bg-white/[0.02] border-white/10"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{site.icon}</span>
+                  <div className="flex-1">
+                    <p className={`text-sm font-bold ${
+                      site.status === "fetching" || site.status === "parsing" ? "text-blue-400"
+                      : site.status === "done" ? "text-emerald-400"
+                      : site.status === "error" ? "text-red-400"
+                      : "text-white/40"
+                    }`}>
+                      {site.name}
+                    </p>
+                    <p className="text-xs text-white/40 mt-0.5">
+                      {site.status === "waiting" && "待機中..."}
+                      {site.status === "fetching" && "ページを取得中..."}
+                      {site.status === "parsing" && "記事を解析中..."}
+                      {site.status === "done" && `✓ ${site.articles.length}件取得`}
+                      {site.status === "error" && `× ${site.error}`}
+                    </p>
+                  </div>
+                  {(site.status === "fetching" || site.status === "parsing") && (
+                    <div className="w-5 h-5 border-2 border-blue-400/30 border-t-blue-400 rounded-full animate-spin" />
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         )}
 
-        {/* Results */}
-        {news.length > 0 && (
-          <div className="space-y-4">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-bold text-white">トレンド TOP {news.length}</h2>
-              <button onClick={fetchNews} className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-white text-sm border border-white/20 transition-colors">再取得</button>
+        {/* Results by site */}
+        {allDone && (
+          <div className="space-y-8">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-bold text-white">取得結果（{totalArticles}件）</h2>
+              <button onClick={fetchAll} className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-white text-sm border border-white/20 transition-colors">
+                再取得
+              </button>
             </div>
 
-            {news.map((item, i) => (
-              <div key={i} className="rounded-2xl bg-white/5 border border-white/10 overflow-hidden">
-                <div className="p-5">
-                  <div className="flex items-start gap-4">
-                    {/* Rank */}
-                    <div className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-lg font-black bg-gradient-to-br from-amber-400 to-amber-600 text-white">
-                      {item.rank}
-                    </div>
+            {sites.map((site) => (
+              <div key={site.name}>
+                <h3 className="text-base font-bold text-white mb-3 flex items-center gap-2">
+                  <span className="text-xl">{site.icon}</span>
+                  {site.name}
+                  <span className="text-xs text-white/30 font-normal">({site.articles.length}件)</span>
+                </h3>
 
-                    <div className="flex-1 min-w-0">
-                      {/* Time */}
-                      {item.hoursAgo != null && (
-                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${item.hoursAgo < 6 ? "bg-red-500/20 text-red-400" : item.hoursAgo < 24 ? "bg-amber-500/20 text-amber-400" : "bg-white/5 text-white/40"}`}>
-                          {timeLabel(item.hoursAgo)}
-                        </span>
-                      )}
+                {site.status === "error" && (
+                  <p className="text-sm text-red-400 bg-red-500/10 border border-red-500/30 rounded-lg px-4 py-3 mb-4">
+                    {site.error}
+                  </p>
+                )}
 
-                      <h3 className="text-base font-bold text-white mt-1.5 mb-2 leading-snug">{item.title}</h3>
-                      <p className="text-sm text-white/60 leading-relaxed mb-3">{item.summary}</p>
-
-                      {/* Source URLs */}
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {item.urls.map((u, ui) => (
-                          <a key={ui} href={u.url} target="_blank" rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] text-blue-400 hover:bg-white/10 transition-colors">
-                            <span className="text-white/30">{SOURCE_ICONS[u.source] || "🔗"}</span>
-                            {u.source || "リンク"}
-                          </a>
-                        ))}
-                      </div>
-
-                      <button onClick={() => genArticle(item, i)} disabled={genIdx !== null}
-                        className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-colors ${
-                          articles[i] && genIdx !== i ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
-                          : genIdx === i ? "bg-white/5 text-white/30 cursor-wait"
-                          : "bg-[#E8192C] hover:bg-[#c0141f] text-white"
-                        }`}>
-                        {genIdx === i ? "生成中..." : articles[i] ? "生成済み ✓" : "記事にする"}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Step progress during generation */}
-                {genIdx === i && genSteps.length > 0 && (
-                  <div className="border-t border-white/10 bg-white/[0.02] px-5 py-4">
-                    <div className="space-y-2">
-                      {STEPS.map((s) => {
-                        const active = genSteps.find((st) => st.step === s.step);
-                        const isDone = active?.done;
-                        return (
-                          <div key={s.step} className="flex items-start gap-3">
-                            <div className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold ${
-                              isDone ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
-                              : active ? "bg-blue-500/20 text-blue-400 border border-blue-500/30 animate-pulse"
-                              : "bg-white/5 text-white/20 border border-white/10"
-                            }`}>
-                              {isDone ? "✓" : s.step}
-                            </div>
+                <div className="space-y-3">
+                  {site.articles.map((article, ai) => {
+                    const key = `${site.name}-${ai}`;
+                    return (
+                      <div key={ai} className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
+                        <div className="p-4">
+                          <div className="flex items-start gap-3">
+                            <span className="shrink-0 w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center text-xs font-bold text-white/60">
+                              {ai + 1}
+                            </span>
                             <div className="flex-1 min-w-0">
-                              <p className={`text-xs font-bold ${active ? "text-white" : "text-white/30"}`}>
-                                STEP {s.step}: {s.label}
-                              </p>
-                              {active && <p className="text-[11px] text-white/50 mt-0.5">{active.message}</p>}
+                              {article.timeAgo && (
+                                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-400">
+                                  {article.timeAgo}
+                                </span>
+                              )}
+                              <h4 className="text-sm font-bold text-white mt-1 mb-1 leading-snug">{article.title}</h4>
+                              {article.summary && (
+                                <p className="text-xs text-white/50 leading-relaxed mb-2">{article.summary}</p>
+                              )}
+                              <div className="flex items-center gap-3">
+                                <a href={article.url} target="_blank" rel="noopener noreferrer"
+                                  className="text-[11px] text-blue-400 hover:text-blue-300 underline underline-offset-2 truncate max-w-[300px]">
+                                  {article.url}
+                                </a>
+                                <button onClick={() => genArticle(site.name, ai, article)} disabled={genIdx !== null}
+                                  className={`shrink-0 px-3 py-1 rounded-lg text-xs font-bold transition-colors ${
+                                    articles[key] && genIdx !== key ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                                    : genIdx === key ? "bg-white/5 text-white/30 cursor-wait"
+                                    : "bg-[#E8192C] hover:bg-[#c0141f] text-white"
+                                  }`}>
+                                  {genIdx === key ? "生成中..." : articles[key] ? "✓" : "記事にする"}
+                                </button>
+                              </div>
                             </div>
                           </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
+                        </div>
 
-                {/* Article */}
-                {articles[i] && (
-                  <div className="border-t border-white/10 bg-white/[0.02] p-5">
-                    {/* Completed steps summary */}
-                    {genIdx !== i && genSteps.length > 0 && (
-                      <div className="mb-4 flex flex-wrap gap-2">
-                        {genSteps.filter((s) => s.done).map((s) => (
-                          <span key={s.step} className="text-[10px] text-white/30 bg-white/5 px-2 py-0.5 rounded">
-                            STEP {s.step}: {s.label} ✓
-                          </span>
-                        ))}
+                        {/* Generated article */}
+                        {articles[key] && (
+                          <div className="border-t border-white/10 bg-white/[0.02] p-4">
+                            <div className="flex items-center justify-between mb-3">
+                              <h5 className="text-xs font-bold text-emerald-400">生成された記事</h5>
+                              <div className="flex gap-2">
+                                <button onClick={() => copy(articles[key], key)}
+                                  className={`px-2 py-0.5 rounded text-[10px] transition-colors ${copied === key ? "bg-emerald-500/20 text-emerald-400" : "bg-white/10 text-white/50"}`}>
+                                  {copied === key ? "コピー済み!" : "コピー"}
+                                </button>
+                                <button onClick={() => genArticle(site.name, ai, article)} disabled={genIdx !== null}
+                                  className="px-2 py-0.5 rounded bg-white/10 text-white/50 text-[10px]">再生成</button>
+                              </div>
+                            </div>
+                            <div className="prose prose-invert prose-sm max-w-none prose-headings:text-white prose-p:text-white/70 prose-a:text-blue-400 prose-strong:text-white">
+                              <ReactMarkdown rehypePlugins={[rehypeRaw]}>{articles[key]}</ReactMarkdown>
+                            </div>
+                          </div>
+                        )}
                       </div>
-                    )}
-
-                    <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-sm font-bold text-emerald-400">生成された記事</h4>
-                      <div className="flex gap-2">
-                        <button onClick={() => copy(articles[i], i)}
-                          className={`px-3 py-1 rounded-lg text-xs transition-colors ${copied === i ? "bg-emerald-500/20 text-emerald-400" : "bg-white/10 hover:bg-white/15 text-white/60"}`}>
-                          {copied === i ? "コピー済み!" : "コピー"}
-                        </button>
-                        <button onClick={() => genArticle(item, i)} disabled={genIdx !== null}
-                          className="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/15 text-white/60 text-xs transition-colors">再生成</button>
-                      </div>
-                    </div>
-                    <div className="prose prose-invert prose-sm max-w-none prose-headings:text-white prose-p:text-white/70 prose-a:text-blue-400 prose-strong:text-white">
-                      <ReactMarkdown rehypePlugins={[rehypeRaw]}>{articles[i]}</ReactMarkdown>
-                    </div>
-                  </div>
-                )}
+                    );
+                  })}
+                </div>
               </div>
             ))}
           </div>
