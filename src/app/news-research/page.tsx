@@ -172,6 +172,7 @@ const SOURCE_ICONS: Record<string, string> = {
 /* ═══ Component ═══ */
 export default function NewsResearchPage() {
   const [loading, setLoading] = useState(false);
+  const [loadMsg, setLoadMsg] = useState("");
   const [news, setNews] = useState<NewsItem[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [genIdx, setGenIdx] = useState<number | null>(null);
@@ -179,59 +180,92 @@ export default function NewsResearchPage() {
   const [articles, setArticles] = useState<Record<number, string>>({});
   const [copied, setCopied] = useState<number | null>(null);
 
-  /* ── Fetch news (10 items) ── */
+  const QUERIES = [
+    { label: "日本代表", q: "日本代表 サッカー 最新ニュース" },
+    { label: "Jリーグ", q: "Jリーグ 試合結果 最新" },
+    { label: "海外組", q: "海外サッカー 日本人選手" },
+    { label: "移籍情報", q: "サッカー 移籍情報 最新" },
+    { label: "W杯2026", q: "W杯2026 日本 最新情報" },
+  ];
+
+  const SYS_SEARCH = `サッカーニュース調査員。JSON配列のみ出力。コードブロック不要。
+URLは検索結果の実URLのみ。推測禁止。直近48時間以内の記事のみ。
+summaryは必ず200〜300文字で書くこと（省略禁止）。`;
+
+  /* ── Fetch news (5 queries → merge → top 10) ── */
   const fetchNews = async () => {
     setLoading(true);
     setError(null);
     setNews([]);
     setArticles({});
+    setLoadMsg("検索準備中...");
+
+    type RawItem = { title: string; urls: SourceUrl[]; summary: string; hoursAgo?: number };
+    const allItems: RawItem[] = [];
 
     try {
-      const res = await callClaude(
-        `あなたはサッカーニュース調査員です。日本語で回答。
-ルール:
-- 純粋なJSON配列のみ出力。前置き・説明・コードブロック不要。
-- URLは検索結果の実際のURLのみ。推測禁止。
-- 直近48時間以内のニュースを10件。
-- 重要: 同じニュースを複数メディアが報じている場合、urlsに全メディアのURLをまとめる（2〜5件）。
-- 複数メディアが報じているニュースほど重要なので優先的に上位にする。
-- 10件それぞれ異なるトピックであること。
-- summaryは200〜300文字。`,
-        `直近48時間の日本サッカーニュースをウェブ検索してください。
+      for (let i = 0; i < QUERIES.length; i++) {
+        const { label, q } = QUERIES[i];
+        setLoadMsg(`(${i + 1}/${QUERIES.length}) ${label}を検索中...`);
 
-以下を幅広く検索:
-1. "日本代表 サッカー 最新ニュース"
-2. "Jリーグ 速報 結果"
-3. "海外サッカー 日本人選手 最新"
-4. "サッカー 移籍 W杯2026"
-5. "サッカー 速報 今日"
+        if (i > 0) await wait(5000); // レート制限対策
 
-重要: 各ニュースについて、同じニュースを報じた別メディアのURLも探してurlsに追加してください。
-urlsが多いニュース＝複数メディアが注目＝トレンド上位です。
+        try {
+          const res = await callClaude(
+            SYS_SEARCH,
+            `「${q}」をウェブ検索し、見つかった記事をJSON配列で3〜5件出力:
+[{"title":"タイトル","urls":[{"source":"メディア名","url":"URL"}],"summary":"200〜300文字の概要（必須）","hoursAgo":数値}]`,
+            { webSearch: true }
+          );
+          const data = await res.json();
+          const items = parseNews(data);
+          allItems.push(...items.map((it) => ({ title: it.title, urls: it.urls, summary: it.summary, hoursAgo: it.hoursAgo })));
+        } catch (err) {
+          console.warn(`Query "${label}" failed:`, err);
+          // 個別クエリの失敗は無視して続行
+        }
+      }
 
-JSON配列で10件（トレンド順、urls多い順）:
-[{"title":"タイトル","urls":[{"source":"メディア名","url":"URL"},{"source":"別メディア","url":"URL"}],"summary":"200〜300文字の概要","hoursAgo":数値}]`,
-        { webSearch: true }
-      );
+      setLoadMsg("結果を整理中...");
 
-      const data = await res.json();
-      const items = parseNews(data);
+      // Deduplicate: merge URLs of similar titles
+      const merged: RawItem[] = [];
+      for (const item of allItems) {
+        if (!item.title) continue;
+        const words = item.title.split(/[\s、。・「」『』（）\(\)【】]+/).filter((w) => w.length >= 3);
+        const dup = merged.find((ex) => {
+          const ew = ex.title.split(/[\s、。・「」『』（）\(\)【】]+/).filter((w) => w.length >= 3);
+          let mc = 0;
+          for (const w of words) { if (ew.some((e) => e.includes(w) || w.includes(e))) mc++; }
+          return mc >= Math.min(3, Math.floor(words.length * 0.4));
+        });
+        if (dup) {
+          for (const u of item.urls) { if (!dup.urls.some((eu) => eu.url === u.url)) dup.urls.push(u); }
+          if (!dup.summary && item.summary) dup.summary = item.summary;
+          if (item.hoursAgo != null && (dup.hoursAgo == null || item.hoursAgo < dup.hoursAgo)) dup.hoursAgo = item.hoursAgo;
+        } else {
+          merged.push({ ...item, urls: [...item.urls] });
+        }
+      }
 
-      // Sort: more URLs = higher trend, then by recency
-      const sorted = items.sort((a, b) => {
+      // Sort: more URLs first, then recency
+      const sorted = merged.sort((a, b) => {
         const urlDiff = b.urls.length - a.urls.length;
         if (urlDiff !== 0) return urlDiff;
         return (a.hoursAgo ?? 24) - (b.hoursAgo ?? 24);
       });
 
-      const ranked = sorted.slice(0, 10).map((it, i) => ({ ...it, rank: i + 1 }));
+      const ranked = sorted.slice(0, 10).map((it, i) => ({
+        rank: i + 1, title: it.title, urls: it.urls, summary: it.summary, hoursAgo: it.hoursAgo,
+      }));
 
-      if (ranked.length === 0) throw new Error("ニュースが取得できませんでした");
+      if (ranked.length === 0) throw new Error("ニュースが取得できませんでした。再試行してください。");
       setNews(ranked);
     } catch (err) {
       setError(err instanceof Error ? err.message : "エラーが発生しました");
     } finally {
       setLoading(false);
+      setLoadMsg("");
     }
   };
 
@@ -344,7 +378,7 @@ highlight-box（POINT）とsummary-card（SUMMARY）のHTML要素を使え。
           <div className="text-center py-20">
             <div className="text-5xl mb-4">📡</div>
             <h2 className="text-xl font-bold text-white mb-2">サッカーニュース調査</h2>
-            <p className="text-sm text-white/50 mb-6">直近48時間のトレンドニュース TOP 3 をAIが厳選します</p>
+            <p className="text-sm text-white/50 mb-6">直近48時間のトレンドニュース TOP 10 をAIが収集します</p>
             <button onClick={fetchNews} className="px-8 py-3 rounded-xl bg-[#E8192C] hover:bg-[#c0141f] text-white font-bold transition-colors">
               ニュース収集開始
             </button>
@@ -356,7 +390,7 @@ highlight-box（POINT）とsummary-card（SUMMARY）のHTML要素を使え。
         {loading && (
           <div className="text-center py-20">
             <div className="w-12 h-12 border-4 border-white/10 border-t-[#E8192C] rounded-full animate-spin mx-auto mb-4" />
-            <p className="text-white/60 text-sm">トレンドニュースを厳選中...</p>
+            <p className="text-white/60 text-sm">{loadMsg || "ニュースを収集中..."}</p>
           </div>
         )}
 
