@@ -222,7 +222,8 @@ export default function NewsResearchPage() {
       const content = genArticles[key];
       if (!content || content.startsWith("エラー:")) throw new Error("記事がありません");
 
-      const slug = article.title.slice(0, 50).replace(/[^a-zA-Z0-9ぁ-んァ-ヶ亜-熙]/g, "-").replace(/-+/g, "-").toLowerCase() || `news-${Date.now()}`;
+      const ascii = article.title.replace(/[^a-zA-Z0-9\s]/g, "").trim().replace(/\s+/g, "-").toLowerCase().slice(0, 40);
+      const slug = (ascii || "news") + "-" + Date.now().toString(36);
       const today = new Date().toISOString().split("T")[0];
       const escaped = content.replace(/`/g, "\\`").replace(/\$/g, "\\$");
 
