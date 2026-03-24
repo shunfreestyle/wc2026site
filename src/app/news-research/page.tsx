@@ -16,6 +16,12 @@ type SiteResult = SiteConfig & {
   articles: Article[];
   error?: string;
 };
+type ArticleMeta = {
+  articleTitle: string;
+  category: string;
+  tags: string[];
+  excerpt: string;
+};
 
 const SITES: SiteConfig[] = [
   { name: "ゲキサカ", icon: "⚽", rss: "https://web.gekisaka.jp/feed" },
@@ -23,16 +29,23 @@ const SITES: SiteConfig[] = [
   { name: "フットボールチャンネル", icon: "⚽", rss: "https://www.footballchannel.jp/feed/" },
 ];
 
+const CATEGORIES = ["日本代表", "Jリーグ", "W杯", "海外組", "コラム", "選手紹介"];
+const EXISTING_TAGS = [
+  "日本代表", "W杯2026", "Jリーグ", "海外組", "森保一", "冨安健洋", "塩貝健人",
+  "三笘薫", "守田英正", "久保建英", "遠藤航", "南野拓実", "板倉滉", "伊藤洋輝",
+  "プレミアリーグ", "ブンデスリーガ", "チャンピオンズリーグ",
+  "鹿島アントラーズ", "川崎フロンターレ", "横浜Fマリノス",
+  "戦術分析", "移籍",
+];
+
 /* ─── RSS XML parser ─── */
 function parseRss(xml: string, filterCategory?: string): Article[] {
   const parser = new DOMParser();
   const doc = parser.parseFromString(xml, "text/xml");
-
   const items = doc.querySelectorAll("item");
   const allArticles: Article[] = [];
 
   items.forEach((item) => {
-    // Category filter (for sites like 東スポ whose RSS includes all categories)
     if (filterCategory) {
       const cats = item.querySelectorAll("category");
       const catTexts = Array.from(cats).map((c) => c.textContent || "").join(" ");
@@ -41,16 +54,13 @@ function parseRss(xml: string, filterCategory?: string): Article[] {
         return;
       }
     }
-
     const title = item.querySelector("title")?.textContent?.trim() || "";
     const link = item.querySelector("link")?.textContent?.trim() || "";
     const pubDate = item.querySelector("pubDate")?.textContent?.trim() || "";
     const desc = item.querySelector("description")?.textContent?.trim() || "";
-
     if (title && link) {
       const cleanTitle = title.replace(/<!\[CDATA\[|\]\]>/g, "").replace(/\s*\|\s*記事\s*\|\s*東スポWEB$/g, "").trim();
       const cleanDesc = desc.replace(/<!\[CDATA\[|\]\]>/g, "").replace(/<[^>]*>/g, "").trim();
-
       allArticles.push({
         title: cleanTitle,
         url: link.replace(/\?utm_.*$/, ""),
@@ -60,13 +70,11 @@ function parseRss(xml: string, filterCategory?: string): Article[] {
     }
   });
 
-  // Sort by pubDate (newest first) and take top 5
   allArticles.sort((a, b) => {
     const da = a.date ? new Date(a.date).getTime() : 0;
     const db = b.date ? new Date(b.date).getTime() : 0;
     return db - da;
   });
-
   return allArticles.slice(0, 10);
 }
 
@@ -76,21 +84,15 @@ function timeAgo(dateStr: string): string {
   try {
     const date = new Date(dateStr);
     const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
-    const diffH = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffH = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60));
     if (diffH < 1) return "1時間以内";
     if (diffH < 24) return `約${diffH}時間前`;
-    const diffD = Math.floor(diffH / 24);
-    return `約${diffD}日前`;
-  } catch {
-    return dateStr;
-  }
+    return `約${Math.floor(diffH / 24)}日前`;
+  } catch { return dateStr; }
 }
 
-/* ─── Stream article from Claude ─── */
-const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
-
-async function streamArticle(title: string, url: string, description: string, source: string, onText: (t: string) => void) {
+/* ─── Call Claude API ─── */
+async function callClaude(system: string, user: string, opts?: { stream?: boolean }) {
   if (!API_KEY) throw new Error("APIキーが未設定");
   const res = await fetch(API_URL, {
     method: "POST",
@@ -103,8 +105,21 @@ async function streamArticle(title: string, url: string, description: string, so
     body: JSON.stringify({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 4096,
-      stream: true,
-      system: `あなたは「サムライフットボール」のベテラン編集者だ。別の記者が書いた元記事をリライトする。
+      stream: opts?.stream || false,
+      system,
+      messages: [{ role: "user", content: user }],
+    }),
+  });
+  if (!res.ok) throw new Error(`API ${res.status}`);
+  return res;
+}
+
+/* ─── Stream article from Claude ─── */
+const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+async function streamArticle(title: string, url: string, description: string, source: string, onText: (t: string) => void) {
+  const res = await callClaude(
+    `あなたは「サムライフットボール」のベテラン編集者だ。別の記者が書いた元記事をリライトする。
 
 ## リライトのルール
 - 元の情報・事実は一切変えない
@@ -139,10 +154,9 @@ async function streamArticle(title: string, url: string, description: string, so
   <div class="summary-label">SUMMARY</div>
   <p>まとめ。</p>
 </div>`,
-      messages: [{ role: "user", content: `以下の元記事をリライトしてください。記事本文のみ出力。\n\nタイトル: ${title}\nURL: ${url}\n出典: ${source}\n概要: ${description}` }],
-    }),
-  });
-  if (!res.ok) throw new Error(`API ${res.status}`);
+    `以下の元記事をリライトしてください。記事本文のみ出力。\n\nタイトル: ${title}\nURL: ${url}\n出典: ${source}\n概要: ${description}`,
+    { stream: true }
+  );
   const reader = res.body?.getReader();
   if (!reader) throw new Error("ストリーム失敗");
   const dec = new TextDecoder();
@@ -163,15 +177,54 @@ async function streamArticle(title: string, url: string, description: string, so
   }
 }
 
+/* ─── Generate metadata via Claude ─── */
+async function generateMetadata(title: string, description: string): Promise<ArticleMeta> {
+  const res = await callClaude(
+    `サッカーニュース記事のメタデータ生成AI。JSON形式のみ。コードブロック不要。`,
+    `メタデータを生成:
+
+タイトル: ${title}
+概要: ${description}
+
+JSON: {"articleTitle": "【】付きの魅力的なタイトル", "category": "${CATEGORIES.join("|")}から1つ", "tags": ["3〜7個"], "excerpt": "50〜80文字の要約"}
+
+既存タグ優先: ${EXISTING_TAGS.join(", ")}
+既存にない場合は新規作成OK。`
+  );
+  const data = await res.json();
+  let text = "";
+  for (const b of (data.content as Array<Record<string, unknown>>)) {
+    if (b.type === "text") text += String(b.text || "");
+  }
+  let s = text.trim();
+  const cb = s.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (cb) s = cb[1].trim();
+  if (!s.startsWith("{")) { const m = s.match(/(\{[\s\S]*\})/); if (m) s = m[1]; }
+  try {
+    const parsed = JSON.parse(s);
+    return {
+      articleTitle: parsed.articleTitle || title,
+      category: CATEGORIES.includes(parsed.category) ? parsed.category : "日本代表",
+      tags: Array.isArray(parsed.tags) ? parsed.tags : ["日本代表"],
+      excerpt: parsed.excerpt || description.slice(0, 80),
+    };
+  } catch {
+    return { articleTitle: title, category: "日本代表", tags: ["日本代表"], excerpt: description.slice(0, 80) };
+  }
+}
+
 /* ═══ Component ═══ */
 export default function NewsResearchPage() {
   const [sites, setSites] = useState<SiteResult[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [genKey, setGenKey] = useState<string | null>(null);
   const [genArticles, setGenArticles] = useState<Record<string, string>>({});
+  const [articleMeta, setArticleMeta] = useState<Record<string, ArticleMeta>>({});
   const [copied, setCopied] = useState<string | null>(null);
   const [publishing, setPublishing] = useState<string | null>(null);
   const [published, setPublished] = useState<Record<string, string>>({});
+  const [editingKey, setEditingKey] = useState<string | null>(null);
+  const [editDraft, setEditDraft] = useState<Record<string, string>>({});
 
   const updateSite = (name: string, u: Partial<SiteResult>) => {
     setSites((p) => p.map((s) => s.name === name ? { ...s, ...u } : s));
@@ -180,6 +233,7 @@ export default function NewsResearchPage() {
   const fetchAll = async () => {
     setError(null);
     setGenArticles({});
+    setArticleMeta({});
     setSites(SITES.map((s) => ({ ...s, status: "waiting" as const, articles: [] })));
 
     for (const site of SITES) {
@@ -205,7 +259,13 @@ export default function NewsResearchPage() {
     setGenKey(key);
     setGenArticles((p) => ({ ...p, [key]: "" }));
     try {
-      await wait(3000);
+      // Generate metadata in parallel with the wait
+      const [meta] = await Promise.all([
+        generateMetadata(article.title, article.description),
+        wait(3000),
+      ]);
+      setArticleMeta((p) => ({ ...p, [key]: meta }));
+
       await streamArticle(article.title, article.url, article.description, siteName, (full) => setGenArticles((p) => ({ ...p, [key]: full })));
     } catch (err) {
       setGenArticles((p) => ({ ...p, [key]: `エラー: ${err instanceof Error ? err.message : "失敗"}` }));
@@ -216,7 +276,7 @@ export default function NewsResearchPage() {
 
   const copy = (t: string, k: string) => { navigator.clipboard.writeText(t); setCopied(k); setTimeout(() => setCopied(null), 2000); };
 
-  const publishArticle = async (key: string, article: Article, siteName: string) => {
+  const publishArticle = async (key: string, article: Article, siteName: string, meta?: ArticleMeta) => {
     setPublishing(key);
     try {
       const content = genArticles[key];
@@ -227,19 +287,23 @@ export default function NewsResearchPage() {
       const today = new Date().toISOString().split("T")[0];
       const escaped = content.replace(/`/g, "\\`").replace(/\$/g, "\\$");
 
+      const pubTitle = (meta?.articleTitle || article.title).replace(/"/g, '\\"');
+      const pubExcerpt = (meta?.excerpt || article.description).replace(/"/g, '\\"').slice(0, 80);
+      const pubCategory = meta?.category || "日本代表";
+      const pubTags = JSON.stringify(meta?.tags ?? ["日本代表"]);
+
       const newArticle = `  {
     id: "${Date.now()}",
     slug: "${slug}",
-    title: "${article.title.replace(/"/g, '\\"')}",
-    excerpt: "${article.description.replace(/"/g, '\\"').slice(0, 80)}",
-    category: "日本代表" as const,
-    tags: ["${siteName}"],
+    title: "${pubTitle}",
+    excerpt: "${pubExcerpt}",
+    category: "${pubCategory}" as const,
+    tags: ${pubTags},
     publishedAt: "${today}",
     isPopular: false,
     content: \`${escaped}\`,
   },`;
 
-      // Read current articles.ts via GitHub API
       const ghToken = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
       const ghOwner = process.env.NEXT_PUBLIC_GITHUB_OWNER;
       const ghRepo = process.env.NEXT_PUBLIC_GITHUB_REPO;
@@ -255,19 +319,16 @@ export default function NewsResearchPage() {
       if (!getRes.ok) throw new Error(`GitHub GET失敗: ${getRes.status}`);
       const fileData = await getRes.json();
 
-      // Decode base64 → UTF-8 properly (atob only handles Latin-1)
       const binaryStr = atob(fileData.content.replace(/\n/g, ""));
       const bytes = Uint8Array.from(binaryStr, (c) => c.charCodeAt(0));
       const currentContent = new TextDecoder().decode(bytes);
 
-      // Insert new article at the beginning of the array
       const insertPoint = "export const articles: Article[] = [\n";
       const idx = currentContent.indexOf(insertPoint);
       if (idx === -1) throw new Error("articles配列が見つかりません");
       const insertPos = idx + insertPoint.length;
       const updatedContent = currentContent.slice(0, insertPos) + newArticle + "\n" + currentContent.slice(insertPos);
 
-      // Encode UTF-8 → base64 properly (chunk to avoid call stack overflow)
       const encodedBytes = new TextEncoder().encode(updatedContent);
       let binaryString = "";
       const chunkSize = 8192;
@@ -276,16 +337,11 @@ export default function NewsResearchPage() {
       }
       const base64 = btoa(binaryString);
 
-      // Commit to GitHub
       const putRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
         method: "PUT",
-        headers: {
-          Authorization: `token ${ghToken}`,
-          Accept: "application/vnd.github.v3+json",
-          "Content-Type": "application/json",
-        },
+        headers: { Authorization: `token ${ghToken}`, Accept: "application/vnd.github.v3+json", "Content-Type": "application/json" },
         body: JSON.stringify({
-          message: `feat: add article "${article.title.slice(0, 50)}"`,
+          message: `feat: add article "${(meta?.articleTitle || article.title).slice(0, 50)}"`,
           content: base64,
           sha: fileData.sha,
         }),
@@ -305,6 +361,15 @@ export default function NewsResearchPage() {
 
   const total = sites.reduce((n, s) => n + s.articles.length, 0);
   const allDone = sites.length > 0 && sites.every((s) => s.status === "done" || s.status === "error");
+
+  const CATEGORY_COLORS: Record<string, string> = {
+    "日本代表": "bg-blue-500/20 text-blue-400 border-blue-500/30",
+    "Jリーグ": "bg-green-500/20 text-green-400 border-green-500/30",
+    "W杯": "bg-amber-500/20 text-amber-400 border-amber-500/30",
+    "海外組": "bg-purple-500/20 text-purple-400 border-purple-500/30",
+    "コラム": "bg-gray-500/20 text-gray-400 border-gray-500/30",
+    "選手紹介": "bg-indigo-500/20 text-indigo-400 border-indigo-500/30",
+  };
 
   return (
     <div className="min-h-screen bg-[#0a1628]">
@@ -372,6 +437,7 @@ export default function NewsResearchPage() {
                 <div className="space-y-3">
                   {site.articles.map((article, ai) => {
                     const key = `${site.name}-${ai}`;
+                    const meta = articleMeta[key];
                     return (
                       <div key={ai} className="rounded-xl bg-white/5 border border-white/10 overflow-hidden">
                         <div className="p-4">
@@ -395,16 +461,64 @@ export default function NewsResearchPage() {
                         </div>
                         {genArticles[key] && (
                           <div className="border-t border-white/10 bg-white/[0.02] p-4">
+                            {/* Metadata display */}
+                            {meta && (
+                              <div className="mb-4 p-3 rounded-xl bg-white/5 border border-white/10">
+                                {meta.articleTitle && meta.articleTitle !== article.title && (
+                                  <div className="mb-2">
+                                    <p className="text-[10px] text-white/40 mb-0.5">AIが生成したタイトル</p>
+                                    <p className="text-sm font-bold text-amber-300">{meta.articleTitle}</p>
+                                  </div>
+                                )}
+                                <div className="flex items-center gap-2 flex-wrap">
+                                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded border ${CATEGORY_COLORS[meta.category] || "bg-white/10 text-white/60 border-white/20"}`}>
+                                    {meta.category}
+                                  </span>
+                                  {meta.tags.map((tag) => (
+                                    <span key={tag} className="text-[10px] text-white/50 bg-white/5 px-2 py-0.5 rounded-full border border-white/10">#{tag}</span>
+                                  ))}
+                                </div>
+                                {meta.excerpt && (
+                                  <p className="text-xs text-white/40 mt-2">{meta.excerpt}</p>
+                                )}
+                              </div>
+                            )}
+
                             <div className="flex items-center justify-between mb-3">
                               <h5 className="text-xs font-bold text-emerald-400">生成された記事</h5>
                               <div className="flex gap-2">
                                 <button onClick={() => copy(genArticles[key], key)} className={`px-2 py-0.5 rounded text-[10px] ${copied === key ? "bg-emerald-500/20 text-emerald-400" : "bg-white/10 text-white/50"}`}>{copied === key ? "コピー済み!" : "コピー"}</button>
+                                <button
+                                  onClick={() => {
+                                    if (editingKey === key) {
+                                      setGenArticles((p) => ({ ...p, [key]: editDraft[key] ?? p[key] }));
+                                      setEditingKey(null);
+                                    } else {
+                                      setEditDraft((p) => ({ ...p, [key]: genArticles[key] }));
+                                      setEditingKey(key);
+                                    }
+                                  }}
+                                  className={`px-2 py-0.5 rounded text-[10px] ${editingKey === key ? "bg-amber-500/20 text-amber-400 border border-amber-500/30" : "bg-white/10 text-white/50"}`}
+                                >
+                                  {editingKey === key ? "保存" : "編集"}
+                                </button>
                                 <button onClick={() => genArticle(site.name, ai, article)} disabled={genKey !== null} className="px-2 py-0.5 rounded bg-white/10 text-white/50 text-[10px]">再生成</button>
                               </div>
                             </div>
-                            <div className="text-white prose prose-invert prose-sm max-w-none [&_*]:text-white [&_a]:!text-blue-400 [&_strong]:!text-white/90 [&_.point-label]:!text-amber-400 [&_.summary-label]:!text-amber-400">
-                              <ReactMarkdown rehypePlugins={[rehypeRaw]}>{genArticles[key]}</ReactMarkdown>
-                            </div>
+
+                            {/* Article body: edit mode or preview mode */}
+                            {editingKey === key ? (
+                              <textarea
+                                value={editDraft[key] ?? ""}
+                                onChange={(e) => setEditDraft((p) => ({ ...p, [key]: e.target.value }))}
+                                className="w-full h-96 bg-white/5 border border-white/20 rounded-lg p-3 text-sm text-white font-mono resize-y focus:outline-none focus:border-blue-500/50"
+                              />
+                            ) : (
+                              <div className="text-white prose prose-invert prose-sm max-w-none [&_*]:text-white [&_a]:!text-blue-400 [&_strong]:!text-white/90 [&_.point-label]:!text-amber-400 [&_.summary-label]:!text-amber-400">
+                                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{genArticles[key]}</ReactMarkdown>
+                              </div>
+                            )}
+
                             {/* Publish button */}
                             <div className="mt-4 pt-4 border-t border-white/10">
                               {published[key] === "success" ? (
@@ -416,16 +530,18 @@ export default function NewsResearchPage() {
                               ) : published[key]?.startsWith("error:") ? (
                                 <div className="space-y-2">
                                   <p className="text-xs text-red-400">{published[key]!.slice(6)}</p>
-                                  <button onClick={() => publishArticle(key, article, site.name)} disabled={publishing !== null}
+                                  <button onClick={() => publishArticle(key, article, site.name, meta)} disabled={publishing !== null}
                                     className="px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-400 text-xs font-bold border border-red-500/30 transition-colors">
                                     再試行
                                   </button>
                                 </div>
                               ) : (
-                                <button onClick={() => publishArticle(key, article, site.name)} disabled={publishing !== null || genKey !== null}
+                                <button onClick={() => publishArticle(key, article, site.name, meta)} disabled={publishing !== null || genKey !== null || editingKey === key}
                                   className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-colors ${
                                     publishing === key
                                       ? "bg-white/5 text-white/30 cursor-wait"
+                                      : editingKey === key
+                                      ? "bg-white/5 text-white/20 cursor-not-allowed"
                                       : "bg-gradient-to-r from-[#E8192C] to-[#c0141f] hover:from-[#c0141f] hover:to-[#a01019] text-white shadow-lg shadow-red-500/20"
                                   }`}>
                                   {publishing === key ? "投稿中..." : "📤 サムライフットボールに投稿"}
