@@ -37,7 +37,9 @@ const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 async function fetchHtml(url: string): Promise<string> {
   const res = await fetch(`/api/proxy?url=${encodeURIComponent(url)}`);
   const data = await res.json();
-  if (data.error) throw new Error(data.error);
+  if (data.error) throw new Error(`${data.error} (${url})`);
+  console.log(`[fetchHtml] ${url} -> ${data.html?.length || 0} chars (total: ${data.totalLength})`);
+  console.log(`[fetchHtml] First 500 chars:`, data.html?.slice(0, 500));
   return data.html;
 }
 
@@ -191,23 +193,29 @@ export default function NewsResearchPage() {
         await wait(3000); // Rate limit対策
 
         try {
+          // Extract domain for relative URL resolution
+          const domain = new URL(site.url).origin;
+
           const result = await askClaude(
             `必ずJSON配列のみで返答。前置き・説明文・コードブロック記号は不要。`,
-            `以下は「${site.name}」(${site.url})のHTMLの一部です。
-このページから最新のニュース記事を5件抽出してください。
+            `以下は「${site.name}」のHTMLです。
+HTMLの中から<a>タグのhrefにある個別のニュース記事ページへのリンクを見つけて、最新5件を抽出してください。
 
-重要:
-- titleは記事の見出し（サイト名ではない）
-- urlは記事への完全なURL（相対パスの場合はサイトのドメインを補完）
-- summaryは記事の内容を100〜150文字で要約
-- timeAgoは「約3時間前」「約1日前」などの表記
+ルール:
+- titleは<a>タグ内のテキスト（ニュース記事の見出し）。サイト名やカテゴリ名は除外。
+- urlは<a>タグのhref属性の値。相対パスの場合は「${domain}」を先頭に付けて完全なURLにすること。
+- summaryは見出しから推測される記事内容を100〜150文字で要約。
+- timeAgoは日時情報があれば「約X時間前」形式。なければ空文字。
+- 「トップ」「一覧」「カテゴリ」「ログイン」などのナビゲーションリンクは除外。
+- ニュース記事の見出しリンクだけを対象にする。
 
-JSON配列で出力:
-[{"title":"記事見出し","url":"https://...","summary":"100〜150文字","timeAgo":"約X時間前"}]
+JSON配列:
+[{"title":"見出し","url":"https://完全URL","summary":"100〜150文字","timeAgo":"約X時間前"}]
 
 HTML:
 ${html}`
           );
+          console.log(`[${site.name}] Claude response:`, result.slice(0, 500));
 
           const parsed = parseArticles(result);
           console.log(`[${site.name}] Parsed articles:`, parsed.length);
