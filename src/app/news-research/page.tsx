@@ -282,78 +282,90 @@ export default function NewsResearchPage() {
       const content = genArticles[key];
       if (!content || content.startsWith("エラー:")) throw new Error("記事がありません");
 
-      const ascii = article.title.replace(/[^a-zA-Z0-9\s]/g, "").trim().replace(/\s+/g, "-").toLowerCase().slice(0, 40);
-      const slug = (ascii || "news") + "-" + Date.now().toString(36);
+      const articleTitle = (meta?.articleTitle || article.title).replace(/"/g, '\\"');
+      const articleExcerpt = (meta?.excerpt || article.description).replace(/"/g, '\\"').slice(0, 80);
+      const articleTags = meta?.tags ?? ["日本代表"];
+      const articleCategory = meta?.category || "日本代表";
+      const slug = `news-${Date.now()}`;
       const today = new Date().toISOString().split("T")[0];
-      const escaped = content.replace(/`/g, "\\`").replace(/\$/g, "\\$");
+      const escaped = content.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$/g, "\\$");
 
-      const pubTitle = (meta?.articleTitle || article.title).replace(/"/g, '\\"');
-      const pubExcerpt = (meta?.excerpt || article.description).replace(/"/g, '\\"').slice(0, 80);
-      const pubCategory = meta?.category || "日本代表";
-      const pubTags = JSON.stringify(meta?.tags ?? ["日本代表"]);
-
-      const newArticle = `  {
+      const newArticleObj = `  {
     id: "${Date.now()}",
     slug: "${slug}",
-    title: "${pubTitle}",
-    excerpt: "${pubExcerpt}",
-    category: "${pubCategory}" as const,
-    tags: ${pubTags},
+    title: "${articleTitle}",
+    excerpt: "${articleExcerpt}",
+    category: "${articleCategory}" as const,
+    tags: ${JSON.stringify(articleTags)},
     publishedAt: "${today}",
     isPopular: false,
     content: \`${escaped}\`,
-  },`;
+  },
+`;
 
       const ghToken = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
-      const ghOwner = process.env.NEXT_PUBLIC_GITHUB_OWNER;
-      const ghRepo = process.env.NEXT_PUBLIC_GITHUB_REPO;
       if (!ghToken) throw new Error("NEXT_PUBLIC_GITHUB_TOKEN が未設定です");
-      if (!ghOwner || !ghRepo) throw new Error("NEXT_PUBLIC_GITHUB_OWNER / REPO が未設定です");
-
-      const repo = `${ghOwner}/${ghRepo}`;
+      const repo = "shunfreestyle/wc2026site";
       const path = "src/data/articles.ts";
 
+      // Step A: 現在のファイルを取得
+      console.log("[publishArticle] Step A: GitHub GET...");
       const getRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
         headers: { Authorization: `token ${ghToken}`, Accept: "application/vnd.github.v3+json" },
       });
-      if (!getRes.ok) throw new Error(`GitHub GET失敗: ${getRes.status}`);
-      const fileData = await getRes.json();
-
-      const binaryStr = atob(fileData.content.replace(/\n/g, ""));
-      const bytes = Uint8Array.from(binaryStr, (c) => c.charCodeAt(0));
-      const currentContent = new TextDecoder().decode(bytes);
-
-      const insertPoint = "export const articles: Article[] = [\n";
-      const idx = currentContent.indexOf(insertPoint);
-      if (idx === -1) throw new Error("articles配列が見つかりません");
-      const insertPos = idx + insertPoint.length;
-      const updatedContent = currentContent.slice(0, insertPos) + newArticle + "\n" + currentContent.slice(insertPos);
-
-      const encodedBytes = new TextEncoder().encode(updatedContent);
-      let binaryString = "";
-      const chunkSize = 8192;
-      for (let i = 0; i < encodedBytes.length; i += chunkSize) {
-        binaryString += String.fromCharCode(...encodedBytes.slice(i, i + chunkSize));
+      if (!getRes.ok) {
+        const body = await getRes.json().catch(() => ({}));
+        throw new Error(`GitHub GET失敗: ${getRes.status} ${JSON.stringify(body)}`);
       }
-      const base64 = btoa(binaryString);
+      const fileData = await getRes.json();
+      console.log("[publishArticle] Step A: OK, sha=", fileData.sha?.slice(0, 8));
 
+      // Step B: Base64 → UTF-8テキスト
+      const base64Clean = (fileData.content as string).replace(/\n/g, "");
+      const binaryStr = atob(base64Clean);
+      const byteArr = new Uint8Array(binaryStr.length);
+      for (let i = 0; i < binaryStr.length; i++) byteArr[i] = binaryStr.charCodeAt(i);
+      const currentContent = new TextDecoder("utf-8").decode(byteArr);
+
+      // Step C: 配列先頭に記事を挿入
+      const marker = "export const articles: Article[] = [\n";
+      const markerIdx = currentContent.indexOf(marker);
+      if (markerIdx === -1) throw new Error("articles配列の挿入位置が見つかりません");
+      const insertAt = markerIdx + marker.length;
+      const newContent = currentContent.slice(0, insertAt) + newArticleObj + currentContent.slice(insertAt);
+      console.log("[publishArticle] Step C: 挿入完了, 新サイズ=", newContent.length);
+
+      // Step D: UTF-8テキスト → Base64
+      const encBytes = new TextEncoder().encode(newContent);
+      let binStr = "";
+      encBytes.forEach((b) => (binStr += String.fromCharCode(b)));
+      const newBase64 = btoa(binStr);
+
+      // Step E: GitHub にコミット
+      console.log("[publishArticle] Step E: GitHub PUT...");
       const putRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
         method: "PUT",
-        headers: { Authorization: `token ${ghToken}`, Accept: "application/vnd.github.v3+json", "Content-Type": "application/json" },
+        headers: {
+          Authorization: `token ${ghToken}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
-          message: `feat: add article "${(meta?.articleTitle || article.title).slice(0, 50)}"`,
-          content: base64,
+          message: `feat: 記事追加 ${articleTitle.slice(0, 50)}`,
+          content: newBase64,
           sha: fileData.sha,
         }),
       });
       if (!putRes.ok) {
-        const err = await putRes.json().catch(() => ({}));
-        throw new Error(`GitHub PUT失敗: ${putRes.status} ${err.message || ""}`);
+        const errBody = await putRes.json().catch(() => ({}));
+        throw new Error(`GitHub PUT失敗: ${putRes.status} ${JSON.stringify(errBody)}`);
       }
+      console.log("[publishArticle] 投稿成功!");
 
       setPublished((p) => ({ ...p, [key]: "success" }));
     } catch (err) {
-      setPublished((p) => ({ ...p, [key]: `error:${err instanceof Error ? err.message : "投稿失敗"}` }));
+      console.error("[publishArticle]", err);
+      setPublished((p) => ({ ...p, [key]: `error:${err instanceof Error ? err.message : String(err)}` }));
     } finally {
       setPublishing(null);
     }
