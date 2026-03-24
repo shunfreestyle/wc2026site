@@ -89,17 +89,33 @@ function parseJsonSafe<T>(text: string, fallback: T): T {
   try { return JSON.parse(s); } catch { return fallback; }
 }
 
-/* ─── Parse news JSON from Claude (no fallback) ─── */
-function parseNews(data: Record<string, unknown>): NewsItem[] {
+/* ─── Extract search result URLs directly from web_search_tool_result ─── */
+type SearchHit = { url: string; title: string };
+
+function extractSearchHits(data: Record<string, unknown>): SearchHit[] {
+  const content = data.content as Array<Record<string, unknown>>;
+  const hits: SearchHit[] = [];
+  for (const block of content) {
+    if (block.type === "web_search_tool_result" && Array.isArray(block.content)) {
+      for (const r of block.content as Array<Record<string, unknown>>) {
+        if (r.type === "web_search_result" && r.url && r.title) {
+          hits.push({ url: String(r.url), title: String(r.title) });
+        }
+      }
+    }
+  }
+  return hits;
+}
+
+/* ─── Parse Claude's text response as JSON ─── */
+function parseClaudeJson(data: Record<string, unknown>): Array<Record<string, unknown>> {
   const content = data.content as Array<Record<string, unknown>>;
   let text = "";
   for (const b of content) {
     if (b.type === "text") text += String(b.text || "");
   }
+  if (!text.trim()) return [];
 
-  if (!text.trim()) throw new Error("AIからテキスト応答がありませんでした");
-
-  // Extract JSON from response
   let json = text.trim();
   const cb = json.match(/```(?:json)?\s*([\s\S]*?)```/);
   if (cb) json = cb[1].trim();
@@ -109,20 +125,29 @@ function parseNews(data: Record<string, unknown>): NewsItem[] {
   }
   if (!json.startsWith("[") && json.startsWith("{")) json = `[${json}]`;
 
-  const raw = JSON.parse(json) as Array<Record<string, unknown>>;
-  if (!Array.isArray(raw)) throw new Error("JSONが配列ではありません");
+  try {
+    const parsed = JSON.parse(json);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    console.warn("Claude JSON parse failed:", text.slice(0, 300));
+    return [];
+  }
+}
 
-  return raw
-    .map((r, i) => ({
-      rank: i + 1,
-      title: String(r.title || ""),
-      urls: Array.isArray(r.urls)
-        ? (r.urls as SourceUrl[]).filter((u) => u?.url?.startsWith("http"))
-        : r.url ? [{ source: String(r.source || ""), url: String(r.url) }] : [],
-      summary: String(r.summary || ""),
-      hoursAgo: typeof r.hoursAgo === "number" ? r.hoursAgo : undefined,
-    }))
-    .filter((it) => it.title && it.urls.length > 0 && (!it.hoursAgo || it.hoursAgo <= 48));
+const SOURCE_MAP: [string, string][] = [
+  ["gekisaka", "ゲキサカ"], ["soccerking", "サッカーキング"],
+  ["news.yahoo.co.jp", "Yahoo!ニュース"], ["goal.com", "Goal.com"],
+  ["ultra-soccer", "超WORLDサッカー"], ["jleague.jp", "Jリーグ公式"],
+  ["nikkansports.com", "日刊スポーツ"], ["hochi.news", "スポーツ報知"],
+  ["footballista", "footballista"], ["sponichi", "スポニチ"],
+  ["nhk.or.jp", "NHK"], ["sportsnavi", "スポーツナビ"],
+];
+
+function identifySource(url: string): string {
+  for (const [domain, name] of SOURCE_MAP) {
+    if (url.includes(domain)) return name;
+  }
+  try { return new URL(url).hostname.replace("www.", ""); } catch { return "その他"; }
 }
 
 /* ─── Stream reader helper ─── */
@@ -176,26 +201,13 @@ export default function NewsResearchPage() {
   const [copied, setCopied] = useState<number | null>(null);
 
   const QUERIES = [
-    { label: "サッカーニュース", q: "サッカー ニュース" },
-    { label: "日本代表", q: "サッカー日本代表 ニュース" },
-    { label: "Jリーグ", q: "Jリーグ ニュース" },
-    { label: "ワールドカップ", q: "ワールドカップ サッカー ニュース" },
+    { label: "サッカーニュース", q: "サッカー ニュース 最新" },
+    { label: "日本代表", q: "サッカー日本代表 ニュース 最新" },
+    { label: "Jリーグ", q: "Jリーグ ニュース 最新" },
+    { label: "ワールドカップ", q: "ワールドカップ サッカー 2026" },
   ];
 
-  const SYS_SEARCH = `必ずJSON形式のみで返答してください。前置き・説明文・コードブロック記号は一切不要です。
-
-あなたはサッカーニュースの調査員です。ウェブ検索の結果から「個別のニュース記事」を抽出してください。
-
-重要な注意:
-- サイトのトップページや記事一覧ページは除外すること（例: 「ゲキサカ - サッカー速報」はNG）
-- 個別の記事ページのみを対象にすること（例: 「三笘薫がゴール、ブライトンが3-1で勝利」はOK）
-- titleはニュース記事の見出しをそのまま使うこと（サイト名ではない）
-- summaryは記事の内容を200〜300文字で要約すること（省略禁止）
-- urlは検索結果に表示された実際の記事URLのみ使用（推測禁止）
-- publishedAtは記事の公開日時をISO 8601形式で記載
-- 直近48時間以内の記事のみ対象`;
-
-  /* ── Fetch news (4 queries → merge → top 10) ── */
+  /* ── Fetch news: extract URLs from tool_result, then ask Claude to summarize ── */
   const fetchNews = async () => {
     setLoading(true);
     setError(null);
@@ -204,49 +216,107 @@ export default function NewsResearchPage() {
     setLoadMsg("検索準備中...");
 
     type RawItem = { title: string; urls: SourceUrl[]; summary: string; hoursAgo?: number };
-    const allItems: RawItem[] = [];
+    const allHits: SearchHit[] = [];
+    const claudeItems: Array<Record<string, unknown>> = [];
 
     try {
+      // Phase 1: Run 4 searches, collect all web_search_tool_result URLs
       for (let i = 0; i < QUERIES.length; i++) {
         const { label, q } = QUERIES[i];
         setLoadMsg(`(${i + 1}/${QUERIES.length}) ${label}を検索中...`);
-
-        if (i > 0) await wait(5000); // レート制限対策
+        if (i > 0) await wait(5000);
 
         try {
           const res = await callClaude(
-            SYS_SEARCH,
-            `「${q}」でウェブ検索してください。
-
-検索結果に含まれる「個別のニュース記事」を見つけて、以下のJSON配列で3〜5件出力してください。
-サイトのトップページや一覧ページは含めないでください。
-
-[
-  {
-    "title": "記事の見出し（サイト名ではない）",
-    "url": "記事の実際のURL",
-    "source": "メディア名（ゲキサカ、Yahoo!ニュース等）",
-    "summary": "記事内容の200〜300文字の要約",
-    "publishedAt": "2026-03-24T10:00:00Z",
-    "hoursAgo": 3
-  }
-]`,
+            `必ずJSON配列のみで返答。コードブロック不要。`,
+            `「${q}」をウェブ検索し、検索結果から個別のニュース記事を抽出してJSON配列で出力。
+サイトのトップページは除外。記事ページのみ対象。
+[{"title":"記事見出し","url":"記事URL","source":"メディア名","summary":"200〜300文字の要約","hoursAgo":数値}]`,
             { webSearch: true }
           );
           const data = await res.json();
-          const items = parseNews(data);
-          allItems.push(...items.map((it) => ({ title: it.title, urls: it.urls, summary: it.summary, hoursAgo: it.hoursAgo })));
+
+          // Extract URLs directly from web_search_tool_result blocks
+          const hits = extractSearchHits(data);
+          console.log(`[${label}] web_search hits:`, hits.length, hits.map((h) => h.url));
+          allHits.push(...hits);
+
+          // Also collect Claude's JSON interpretation
+          const parsed = parseClaudeJson(data);
+          console.log(`[${label}] Claude JSON items:`, parsed.length);
+          claudeItems.push(...parsed);
         } catch (err) {
-          console.warn(`Query "${label}" failed:`, err);
+          console.warn(`[${label}] failed:`, err);
         }
       }
 
-      setLoadMsg("結果を整理中...");
+      console.log(`[Total] ${allHits.length} search hits, ${claudeItems.length} Claude items`);
 
-      // Deduplicate: merge URLs of similar titles
+      // Phase 2: Build news items
+      setLoadMsg("結果を整理中...");
+      const items: RawItem[] = [];
+      const usedUrls = new Set<string>();
+
+      // First pass: use Claude's parsed items, validate URLs against search hits
+      for (const ci of claudeItems) {
+        const title = String(ci.title || "");
+        const url = String(ci.url || "");
+        const summary = String(ci.summary || "");
+        const source = String(ci.source || "");
+        const hoursAgo = typeof ci.hoursAgo === "number" ? ci.hoursAgo : undefined;
+
+        if (!title || title.length < 5) continue;
+        if (hoursAgo && hoursAgo > 48) continue;
+
+        // Find matching URL from search hits
+        let validUrl = "";
+        if (url.startsWith("http")) {
+          const found = allHits.some((h) => h.url === url);
+          if (found) validUrl = url;
+          else if (url.includes(".") && !url.includes(" ")) validUrl = url; // trust if looks like URL
+        }
+        if (!validUrl) {
+          // Try to match by title keywords
+          const words = title.split(/[\s、。「」]+/).filter((w) => w.length >= 3);
+          const match = allHits.find((h) => {
+            const mc = words.filter((w) => h.title.includes(w)).length;
+            return mc >= 2;
+          });
+          if (match) validUrl = match.url;
+        }
+
+        if (validUrl && !usedUrls.has(validUrl)) {
+          usedUrls.add(validUrl);
+          items.push({
+            title,
+            urls: [{ source: source || identifySource(validUrl), url: validUrl }],
+            summary,
+            hoursAgo,
+          });
+        }
+      }
+
+      // Second pass: add remaining search hits not yet used (with basic info)
+      for (const hit of allHits) {
+        if (usedUrls.has(hit.url)) continue;
+        // Skip obvious non-article pages
+        if (hit.title.length < 10) continue;
+        if (/トップ|ホーム|公式サイト$|一覧/.test(hit.title)) continue;
+
+        usedUrls.add(hit.url);
+        items.push({
+          title: hit.title,
+          urls: [{ source: identifySource(hit.url), url: hit.url }],
+          summary: "",
+          hoursAgo: undefined,
+        });
+      }
+
+      console.log(`[Build] ${items.length} items after merge`);
+
+      // Deduplicate similar titles
       const merged: RawItem[] = [];
-      for (const item of allItems) {
-        if (!item.title) continue;
+      for (const item of items) {
         const words = item.title.split(/[\s、。・「」『』（）\(\)【】]+/).filter((w) => w.length >= 3);
         const dup = merged.find((ex) => {
           const ew = ex.title.split(/[\s、。・「」『』（）\(\)【】]+/).filter((w) => w.length >= 3);
@@ -263,8 +333,11 @@ export default function NewsResearchPage() {
         }
       }
 
-      // Sort: more URLs first, then recency
+      // Sort: items with summary first, then by URL count, then recency
       const sorted = merged.sort((a, b) => {
+        const hasSumA = a.summary ? 1 : 0;
+        const hasSumB = b.summary ? 1 : 0;
+        if (hasSumB !== hasSumA) return hasSumB - hasSumA;
         const urlDiff = b.urls.length - a.urls.length;
         if (urlDiff !== 0) return urlDiff;
         return (a.hoursAgo ?? 24) - (b.hoursAgo ?? 24);
