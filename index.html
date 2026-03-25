@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>とやっちFC / Jリーグ リサーチ</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --border: #2a2a3e;
+    --accent: #00e5ff;
+    --accent2: #ff3d71;
+    --accent3: #ffd600;
+    --text: #e8e8f0;
+    --muted: #666680;
+    --goal: #00e5ff;
+    --yellow: #ffd600;
+    --red: #ff3d71;
+    --sub: #888899;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 13px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── ヘッダー ── */
+  header {
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--accent);
+  }
+  .logo span { color: var(--text); opacity: 0.5; font-size: 14px; margin-left: 10px; letter-spacing: 1px; }
+
+  .header-right { display: flex; align-items: center; gap: 12px; }
+
+  .league-tabs { display: flex; gap: 4px; }
+  .league-tab {
+    padding: 6px 16px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: all 0.2s;
+  }
+  .league-tab:hover { border-color: var(--accent); color: var(--accent); }
+  .league-tab.active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
+  .fetch-btn {
+    padding: 8px 24px;
+    background: var(--accent2);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    border-radius: 3px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .fetch-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+  .fetch-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  .fetch-btn .spinner {
+    width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: none;
+  }
+  .fetch-btn.loading .spinner { display: block; }
+  .fetch-btn.loading .btn-text { opacity: 0.6; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── メインレイアウト ── */
+  .main {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: calc(100vh - 61px);
+    overflow: hidden;
+  }
+
+  /* ── サイドバー（順位表） ── */
+  .sidebar {
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 20px 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    padding: 0 20px 10px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+
+  .standings-table { width: 100%; }
+  .standings-row {
+    display: grid;
+    grid-template-columns: 28px 1fr 36px 28px 28px 28px;
+    align-items: center;
+    padding: 7px 16px;
+    gap: 4px;
+    cursor: default;
+    transition: background 0.15s;
+    border-left: 3px solid transparent;
+  }
+  .standings-row:hover { background: var(--surface2); }
+  .standings-row.top3 { border-left-color: var(--accent); }
+  .standings-row.relegation { border-left-color: var(--accent2); }
+
+  .rank { color: var(--muted); font-size: 11px; text-align: center; }
+  .team-name { font-weight: 700; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pts { color: var(--accent); font-weight: 900; font-size: 13px; text-align: right; }
+  .stat { color: var(--muted); font-size: 11px; text-align: center; }
+
+  .standings-header {
+    display: grid;
+    grid-template-columns: 28px 1fr 36px 28px 28px 28px;
+    padding: 4px 16px;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .standings-header span { color: var(--muted); font-size: 10px; letter-spacing: 1px; text-align: center; }
+  .standings-header span:nth-child(2) { text-align: left; }
+
+  /* ── コンテンツエリア ── */
+  .content {
+    overflow-y: auto;
+    padding: 20px 24px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .content-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .section-badge {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--text);
+  }
+  .section-badge span { color: var(--accent); }
+
+  .updated-at { color: var(--muted); font-size: 11px; }
+
+  /* ── 試合カード ── */
+  .matches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 12px;
+  }
+
+  .match-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .match-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .match-card.expanded { border-color: var(--accent); }
+
+  .match-header {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+  .match-meta { color: var(--muted); font-size: 11px; }
+  .match-meta strong { color: var(--text); }
+  .status-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .status-badge.finished { background: rgba(0,229,255,0.1); color: var(--accent); }
+  .status-badge.upcoming { background: rgba(255,214,0,0.1); color: var(--accent3); }
+  .status-badge.live { background: rgba(255,61,113,0.1); color: var(--accent2); animation: pulse 1.5s infinite; }
+  @keyframes pulse { 50% { opacity: 0.5; } }
+
+  .match-score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 16px;
+  }
+  .team-block { flex: 1; text-align: center; }
+  .team-short { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; }
+  .score-block {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 16px;
+    min-width: 80px;
+    justify-content: center;
+  }
+  .score-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    line-height: 1;
+    color: var(--text);
+  }
+  .score-sep { color: var(--border); font-family: 'Bebas Neue', sans-serif; font-size: 32px; }
+
+  .scorers-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 16px 12px;
+    gap: 8px;
+  }
+  .scorer-list { flex: 1; font-size: 11px; color: var(--accent); }
+  .scorer-list.away { text-align: right; }
+  .scorer-item { display: flex; align-items: center; gap: 4px; margin-bottom: 2px; }
+  .scorer-item.away { justify-content: flex-end; }
+  .scorer-time { color: var(--muted); font-size: 10px; min-width: 24px; }
+
+  /* ── タイムライン（展開） ── */
+  .timeline-wrap {
+    display: none;
+    border-top: 1px solid var(--border);
+    padding: 12px 16px;
+    max-height: 320px;
+    overflow-y: auto;
+  }
+  .match-card.expanded .timeline-wrap { display: block; }
+
+  .timeline-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .timeline-row {
+    display: grid;
+    grid-template-columns: 1fr 48px 1fr;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(42,42,62,0.5);
+    min-height: 28px;
+  }
+
+  .tl-time {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+  }
+  .tl-event { font-size: 11px; display: flex; align-items: center; gap: 5px; }
+  .tl-event.away { justify-content: flex-end; }
+
+  .ev-goal { color: var(--goal); }
+  .ev-yellow { color: var(--yellow); }
+  .ev-red { color: var(--red); }
+  .ev-sub { color: var(--sub); }
+  .ev-icon { font-size: 12px; }
+
+  /* ── 空状態・ローディング ── */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    color: var(--muted);
+    gap: 12px;
+  }
+  .empty-state .big-icon { font-size: 48px; opacity: 0.3; }
+  .empty-state p { font-size: 13px; text-align: center; line-height: 1.8; }
+
+  .loading-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    gap: 12px;
+    color: var(--muted);
+  }
+  .loading-bar {
+    display: flex;
+    gap: 6px;
+  }
+  .loading-bar span {
+    width: 6px;
+    height: 24px;
+    background: var(--accent);
+    border-radius: 3px;
+    animation: bar 1s ease-in-out infinite;
+    opacity: 0.4;
+  }
+  .loading-bar span:nth-child(2) { animation-delay: 0.1s; }
+  .loading-bar span:nth-child(3) { animation-delay: 0.2s; }
+  .loading-bar span:nth-child(4) { animation-delay: 0.3s; }
+  @keyframes bar { 0%,100%{transform:scaleY(0.4);opacity:0.3} 50%{transform:scaleY(1);opacity:1} }
+
+  .error-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    color: var(--accent2);
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* スクロールバー */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  /* フェードイン */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .match-card { animation: fadeInUp 0.3s ease both; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">とやっちFC <span>JLEAGUE RESEARCH</span></div>
+  <div class="header-right">
+    <div class="league-tabs">
+      <button class="league-tab active" data-league="j1">J1</button>
+      <button class="league-tab" data-league="j2">J2</button>
+    </div>
+    <button class="fetch-btn" id="fetchBtn" onclick="fetchAll()">
+      <div class="spinner"></div>
+      <span class="btn-text">データ取得</span>
+    </button>
+  </div>
+</header>
+
+<div class="main">
+  <aside class="sidebar">
+    <div class="section-title">STANDINGS</div>
+    <div id="standingsArea">
+      <div style="padding: 20px 16px; color: var(--muted); font-size: 12px;">
+        「データ取得」を押してください
+      </div>
+    </div>
+  </aside>
+
+  <section class="content">
+    <div id="contentArea">
+      <div class="empty-state">
+        <div class="big-icon">⚽</div>
+        <p>データ取得ボタンを押すと<br>最新節の試合結果・得点者・試合経過を表示します</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+let currentLeague = 'j1';
+let expandedMatch = null;
+
+// リーグタブ切り替え
+document.querySelectorAll('.league-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.league-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    currentLeague = tab.dataset.league;
+  });
+});
+
+async function fetchAll() {
+  const btn = document.getElementById('fetchBtn');
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  document.getElementById('contentArea').innerHTML = `
+    <div class="loading-state">
+      <div class="loading-bar"><span></span><span></span><span></span><span></span></div>
+      <span style="font-size:13px">取得中...</span>
+    </div>`;
+  document.getElementById('standingsArea').innerHTML = `
+    <div style="padding:20px 16px;color:var(--muted);font-size:12px">読み込み中...</div>`;
+
+  try {
+    const res = await fetch(`/api/all?league=${currentLeague}`);
+    if (!res.ok) throw new Error('サーバーエラー');
+    const data = await res.json();
+    renderStandings(data.standings);
+    renderMatches(data.matches, data.section, data.updated);
+  } catch(e) {
+    document.getElementById('contentArea').innerHTML = `
+      <div class="error-state">
+        <div style="font-size:32px">⚠️</div>
+        <div>取得に失敗しました</div>
+        <div style="font-size:11px;color:var(--muted)">${e.message}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:8px">サーバーが起動しているか確認してください</div>
+      </div>`;
+  } finally {
+    btn.classList.remove('loading');
+    btn.disabled = false;
+  }
+}
+
+function renderStandings(teams) {
+  if (!teams || !teams.length) return;
+  let html = `
+    <div class="standings-header">
+      <span>#</span><span>クラブ</span><span>PT</span><span>W</span><span>L</span><span>GD</span>
+    </div>`;
+  teams.forEach((t, i) => {
+    const cls = i < 3 ? 'top3' : (i >= teams.length - 3 ? 'relegation' : '');
+    html += `
+      <div class="standings-row ${cls}">
+        <span class="rank">${t.rank}</span>
+        <span class="team-name">${t.team}</span>
+        <span class="pts">${t.pts}</span>
+        <span class="stat">${t.wins}</span>
+        <span class="stat">${t.losses}</span>
+        <span class="stat" style="color:${parseInt(t.gd)>0?'#00e5ff':parseInt(t.gd)<0?'#ff3d71':'var(--muted)'}">
+          ${parseInt(t.gd) > 0 ? '+' : ''}${t.gd}
+        </span>
+      </div>`;
+  });
+  document.getElementById('standingsArea').innerHTML = html;
+}
+
+function renderMatches(matches, section, updated) {
+  if (!matches || !matches.length) {
+    document.getElementById('contentArea').innerHTML = `<div class="empty-state"><p>試合データがありません</p></div>`;
+    return;
+  }
+
+  let html = `
+    <div class="content-header">
+      <div class="section-badge">第<span>${section}</span>節</div>
+      <div class="updated-at">更新: ${updated}</div>
+    </div>
+    <div class="matches-grid">`;
+
+  matches.forEach((m, idx) => {
+    const d = m.detail || {};
+    const finished = m.status === '試合終了';
+    const statusCls = finished ? 'finished' : m.status === '試合中' ? 'live' : 'upcoming';
+    const score = finished ? `
+      <span class="score-num">${m.home_score}</span>
+      <span class="score-sep">-</span>
+      <span class="score-num">${m.away_score}</span>
+    ` : `<span style="font-family:'Bebas Neue';font-size:22px;color:var(--muted)">VS</span>`;
+
+    // 得点者
+    const sh = (d.scorers_home || []).map(s =>
+      `<div class="scorer-item"><span class="scorer-time">${s.time}'</span><span>⚽ ${s.player}</span></div>`
+    ).join('');
+    const sa = (d.scorers_away || []).map(s =>
+      `<div class="scorer-item away"><span>${s.player} ⚽</span><span class="scorer-time">${s.time}'</span></div>`
+    ).join('');
+
+    // タイムライン
+    const timelineRows = buildTimeline(d.timeline || [], m.home, m.away);
+
+    html += `
+      <div class="match-card" id="card-${idx}" style="animation-delay:${idx*0.04}s" onclick="toggleCard(${idx})">
+        <div class="match-header">
+          <div class="match-meta"><strong>${m.kickoff}</strong> ${m.stadium}</div>
+          <span class="status-badge ${statusCls}">${m.status}</span>
+        </div>
+        <div class="match-score">
+          <div class="team-block"><div class="team-short">${m.home}</div></div>
+          <div class="score-block">${score}</div>
+          <div class="team-block"><div class="team-short">${m.away}</div></div>
+        </div>
+        <div class="scorers-row">
+          <div class="scorer-list home">${sh}</div>
+          <div class="scorer-list away">${sa}</div>
+        </div>
+        <div class="timeline-wrap">
+          <div class="timeline-title">MATCH EVENTS</div>
+          ${timelineRows}
+        </div>
+      </div>`;
+  });
+
+  html += `</div>`;
+  document.getElementById('contentArea').innerHTML = html;
+}
+
+function buildTimeline(timeline, home, away) {
+  if (!timeline.length) return `<div style="color:var(--muted);font-size:11px;text-align:center;padding:8px">イベントなし</div>`;
+
+  // 時刻でソート
+  const sorted = [...timeline].sort((a, b) => {
+    const ta = parseInt(a.time) || 0;
+    const tb = parseInt(b.time) || 0;
+    return ta - tb;
+  });
+
+  // 同じ時刻のイベントをグループ化
+  const grouped = {};
+  sorted.forEach(ev => {
+    if (!grouped[ev.time]) grouped[ev.time] = {home: [], away: []};
+    grouped[ev.time][ev.side].push(ev);
+  });
+
+  let html = '';
+  Object.entries(grouped).forEach(([time, events]) => {
+    const homeEvs = events.home.map(ev => formatEvent(ev)).join('<br>');
+    const awayEvs = events.away.map(ev => formatEvent(ev, true)).join('<br>');
+    html += `
+      <div class="timeline-row">
+        <div class="tl-event">${homeEvs}</div>
+        <div class="tl-time">${time}</div>
+        <div class="tl-event away">${awayEvs}</div>
+      </div>`;
+  });
+  return html;
+}
+
+function formatEvent(ev, isAway = false) {
+  const icons = { goal: '⚽', yellow: '🟨', red: '🟥', sub: '🔄' };
+  const classes = { goal: 'ev-goal', yellow: 'ev-yellow', red: 'ev-red', sub: 'ev-sub' };
+  const icon = icons[ev.type] || '';
+  const cls = classes[ev.type] || '';
+  const action = ev.action ? `<span style="color:var(--muted);font-size:10px">${ev.action}</span> ` : '';
+  return `<span class="tl-event ${cls}">${isAway ? action : ''}${icon} ${ev.player}${!isAway ? action : ''}</span>`;
+}
+
+function toggleCard(idx) {
+  const card = document.getElementById(`card-${idx}`);
+  if (expandedMatch === idx) {
+    card.classList.remove('expanded');
+    expandedMatch = null;
+  } else {
+    if (expandedMatch !== null) {
+      document.getElementById(`card-${expandedMatch}`)?.classList.remove('expanded');
+    }
+    card.classList.add('expanded');
+    expandedMatch = idx;
+  }
+}
+</script>
+</body>
+</html>

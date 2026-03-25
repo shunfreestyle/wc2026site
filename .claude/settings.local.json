@@ -59,7 +59,24 @@
       "Bash(md5:*)",
       "Bash(sudo npm:*)",
       "Read(//Users/shunfreestyle/.npm/_cacache/content-v2/sha512/1d/**)",
-      "Bash(rm -rf ~/.npm/_cacache)"
+      "Bash(rm -rf ~/.npm/_cacache)",
+      "Bash(vercel env:*)",
+      "Bash(vercel:*)",
+      "Bash(curl -s \"https://www.tokyo-sports.co.jp/articles.rss\")",
+      "Bash(curl -s \"https://www.tokyo-sports.co.jp/list/feed/rss\")",
+      "Bash(curl -s \"https://www.tokyo-sports.co.jp/list/soccer/feed/rss\" -o /dev/null -w \"%{http_code}\")",
+      "Bash(curl -s \"https://www.tokyo-sports.co.jp/list/soccer/feed/rss\")",
+      "Bash(curl:*)",
+      "Bash(git stash:*)",
+      "Bash(git pull:*)",
+      "Bash(pip install:*)",
+      "Bash(pip3 install:*)",
+      "Bash(open:*)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(lsof -ti:3000)",
+      "Bash(pkill -f \"next\")",
+      "Bash(git rebase:*)",
+      "Bash(GIT_EDITOR=true git rebase --continue)"
     ]
   }
 }

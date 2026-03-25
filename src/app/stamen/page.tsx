@@ -197,16 +197,20 @@ function Pitch({
 }) {
   return (
     <div className="relative w-full aspect-square bg-gradient-to-b from-[#2d8a4e] to-[#1e6b3a] rounded-2xl overflow-hidden border border-white/10">
-      {/* pitch lines (half-court) */}
+      {/* pitch lines - ハーフコート表示（上:センターサークル側、下:GKペナルティエリア側） */}
       <div className="absolute inset-0">
-        {/* border */}
+        {/* outer border */}
         <div className="absolute inset-[4%] border-2 border-white/30 rounded-sm" />
-        {/* penalty area (top) */}
-        <div className="absolute left-[22%] right-[22%] top-[4%] h-[18%] border-2 border-t-0 border-white/30" />
-        {/* goal area (top) */}
-        <div className="absolute left-[34%] right-[34%] top-[4%] h-[9%] border-2 border-t-0 border-white/30" />
-        {/* penalty arc (bottom, simulated as half-circle at bottom edge) */}
-        <div className="absolute left-1/2 bottom-[4%] -translate-x-1/2 w-[30%] h-[12%] border-2 border-b-0 border-white/30 rounded-t-full" />
+        {/* half line - 上端 */}
+        <div className="absolute left-[4%] right-[4%] top-[4%] h-0 border-t-2 border-white/30" />
+        {/* center circle - 下向き半円（FWの足元付近） */}
+        <div style={{position:'absolute',left:'50%',top:'4%',transform:'translateX(-50%)',width:'22%',height:'11%',borderLeft:'2px solid rgba(255,255,255,0.3)',borderRight:'2px solid rgba(255,255,255,0.3)',borderBottom:'2px solid rgba(255,255,255,0.3)',borderTop:'none',borderRadius:'0 0 999px 999px'}} />
+        {/* penalty area - GK side bottom */}
+        <div className="absolute left-[20%] right-[20%] bottom-[4%] h-[22%] border-2 border-b-0 border-white/30" />
+        {/* goal area - GK side bottom */}
+        <div className="absolute left-[33%] right-[33%] bottom-[4%] h-[11%] border-2 border-b-0 border-white/30" />
+        {/* penalty arc - ペナルティエリア上部の小さい上向き半円 */}
+        <div style={{position:'absolute',left:'50%',bottom:'26%',transform:'translateX(-50%)',width:'16%',height:'8%',borderLeft:'2px solid rgba(255,255,255,0.3)',borderRight:'2px solid rgba(255,255,255,0.3)',borderTop:'2px solid rgba(255,255,255,0.3)',borderBottom:'none',borderRadius:'999px 999px 0 0'}} />
       </div>
 
       {/* player slots */}
@@ -500,7 +504,18 @@ export default function StamenPage() {
     const m = pitchW * 0.04; // 4% margin
     // Outer border
     ctx.strokeRect(pitchX + m, pitchY + m, pitchW - m * 2, pitchH - m * 2);
-    // Penalty area top
+    // Half line
+    const halfY = pitchY + pitchH / 2;
+    ctx.beginPath();
+    ctx.moveTo(pitchX + m, halfY);
+    ctx.lineTo(pitchX + pitchW - m, halfY);
+    ctx.stroke();
+    // Center circle
+    const centerCircleR = pitchW * 0.13;
+    ctx.beginPath();
+    ctx.arc(pitchX + pitchW / 2, halfY, centerCircleR, 0, Math.PI * 2);
+    ctx.stroke();
+    // Penalty area top (attack side)
     const paW = pitchW * 0.56;
     const paH = pitchH * 0.18;
     ctx.strokeRect(pitchX + (pitchW - paW) / 2, pitchY + m, paW, paH);
@@ -508,14 +523,10 @@ export default function StamenPage() {
     const gaW = pitchW * 0.32;
     const gaH = pitchH * 0.09;
     ctx.strokeRect(pitchX + (pitchW - gaW) / 2, pitchY + m, gaW, gaH);
-    // Penalty arc bottom
-    ctx.beginPath();
-    const arcCx = pitchX + pitchW / 2;
-    const arcCy = pitchY + pitchH - m;
-    const arcRx = pitchW * 0.15;
-    const arcRy = pitchH * 0.12;
-    ctx.ellipse(arcCx, arcCy, arcRx, arcRy, 0, Math.PI, 0);
-    ctx.stroke();
+    // Penalty area bottom (GK side)
+    ctx.strokeRect(pitchX + (pitchW - paW) / 2, pitchY + pitchH - m - paH, paW, paH);
+    // Goal area bottom
+    ctx.strokeRect(pitchX + (pitchW - gaW) / 2, pitchY + pitchH - m - gaH, gaW, gaH);
 
     // ── Players ──
     const circleR = 18;

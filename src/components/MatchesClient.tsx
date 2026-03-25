@@ -24,8 +24,28 @@ const FEATURED_COUNTRIES = [
   { id: "saudi-arabia", nameJa: "サウジアラビア", nameEn: "Saudi Arabia",  flag: "🇸🇦" },
 ] as const;
 
-// Japan's potential knockout matches (Group F)
-const JAPAN_POTENTIAL_MATCHES = new Set([74, 76, 89, 91]);
+const POTENTIAL_MATCHES_BY_TEAM: Record<string, number[]> = {
+  "japan":        [74, 76, 89, 91, 97, 98, 101],
+  "netherlands":  [74, 76, 89, 91, 97, 98, 101],
+  "brazil":       [74, 76, 91, 89, 98, 97, 101],
+  "morocco":      [74, 76, 91, 89, 98, 97, 101],
+  "france":       [78, 77, 90, 91, 97, 98, 101],
+  "germany":      [75, 77, 90, 91, 97, 98, 101],
+  "spain":        [83, 87, 94, 96, 99, 100, 102],
+  "saudi-arabia": [83, 87, 94, 96, 99, 100, 102],
+  "argentina":    [87, 83, 96, 94, 100, 99, 102],
+  "portugal":     [88, 84, 95, 93, 100, 99, 102],
+  "england":      [80, 84, 92, 93, 98, 99, 101, 102],
+  "mexico":       [79, 73, 92, 89, 98, 97, 101],
+  "korea":        [79, 73, 92, 89, 98, 97, 101],
+  "canada":       [85, 73, 95, 89, 100, 97, 101, 102],
+  "usa":          [82, 86, 94, 96, 99, 100, 102],
+  "australia":    [82, 86, 94, 96, 99, 100, 102],
+};
+
+const COUNTRY_FLAG: Record<string, string> = Object.fromEntries(
+  FEATURED_COUNTRIES.map(c => [c.id, c.flag])
+);
 
 function formatDate(dateStr: string, loc: string) {
   const date = new Date(dateStr + "T00:00:00");
@@ -85,18 +105,19 @@ export default function MatchesClient() {
 
   const clearFilter = () => setSelectedCountries(new Set());
 
-  const japanSelected = selectedCountries.has("japan");
-
   const filteredMatches = useMemo(() => {
     if (selectedCountries.size === 0) return matches;
     return matches.filter((m) => {
       // Direct team match
       if (selectedCountries.has(m.homeTeamId) || selectedCountries.has(m.awayTeamId)) return true;
-      // Japan's potential knockout matches
-      if (japanSelected && JAPAN_POTENTIAL_MATCHES.has(m.matchNumber)) return true;
+      // Potential knockout matches for any selected country
+      for (const cid of selectedCountries) {
+        const potentials = POTENTIAL_MATCHES_BY_TEAM[cid];
+        if (potentials && potentials.includes(m.matchNumber)) return true;
+      }
       return false;
     });
-  }, [selectedCountries, japanSelected]);
+  }, [selectedCountries]);
 
   const filteredStages = useMemo(() => {
     const allStages = getStages();
@@ -161,7 +182,7 @@ export default function MatchesClient() {
         </div>
 
         {filterOpen && (
-          <div className="absolute z-20 top-full left-0 mt-2 bg-white rounded-xl shadow-lg border border-gray-200 p-3 w-full max-w-md">
+          <div className="absolute z-50 top-full left-0 mt-2 bg-white rounded-xl shadow-lg border border-gray-200 p-3 w-full max-w-md max-h-80 overflow-y-auto">
             <div className="flex flex-wrap gap-1.5">
               {FEATURED_COUNTRIES.map((c) => {
                 const active = selectedCountries.has(c.id);
@@ -181,20 +202,12 @@ export default function MatchesClient() {
                 );
               })}
             </div>
-            {/* Japan potential knockout notice */}
-            {japanSelected && (
+            {/* Potential knockout notice */}
+            {[...selectedCountries].some(cid => POTENTIAL_MATCHES_BY_TEAM[cid]) && (
               <div className="mt-2 p-2 bg-amber-50 border border-amber-200 rounded-lg text-[10px] text-amber-800 leading-relaxed">
-                {locale === 'en' ? (
-                  <>
-                    <span className="font-bold">🇯🇵 Potential knockout matches</span> also shown.
-                    1st: M76→M89, 2nd: M74→M91.
-                  </>
-                ) : (
-                  <>
-                    <span className="font-bold">🇯🇵 決勝T進出時の対戦候補</span>も表示。
-                    F組1位: M76→M89、F組2位: M74→M91。
-                  </>
-                )}
+                <span className="font-bold">
+                  🏆 {locale === 'en' ? "Potential knockout matches also shown" : "決勝T進出時の対戦候補も表示しています"}
+                </span>
               </div>
             )}
           </div>
@@ -250,12 +263,28 @@ export default function MatchesClient() {
                   {dayMatches
                     .sort((a, b) => a.localTime.localeCompare(b.localTime))
                     .map((match) => {
-                      const isPotential = japanSelected && JAPAN_POTENTIAL_MATCHES.has(match.matchNumber);
+                      const potentialFlags: string[] = [];
+                      if (selectedCountries.size > 0) {
+                        const isDirectMatch =
+                          [...selectedCountries].some(
+                            cid => match.homeTeamId === cid || match.awayTeamId === cid
+                          );
+                        if (!isDirectMatch) {
+                          for (const cid of selectedCountries) {
+                            const potentials = POTENTIAL_MATCHES_BY_TEAM[cid];
+                            if (potentials && potentials.includes(match.matchNumber)) {
+                              const flag = COUNTRY_FLAG[cid];
+                              if (flag) potentialFlags.push(flag);
+                            }
+                          }
+                        }
+                      }
+                      const isPotential = potentialFlags.length > 0;
                       return (
                         <div key={match.id} className={`relative ${isPotential ? "ring-2 ring-amber-300 ring-offset-1 rounded-xl" : ""}`}>
                           {isPotential && (
                             <span className="absolute -top-2 left-3 z-10 text-[11px] font-bold px-2 py-0.5 bg-amber-400 text-amber-900 rounded-full shadow-sm">
-                              {locale === 'en' ? "🇯🇵 Potential match" : "🇯🇵 進出時の可能性"}
+                              🏆{potentialFlags.join("")} {locale === 'en' ? "Potential" : "進出時の可能性"}
                             </span>
                           )}
                           <MatchCard match={match} />
