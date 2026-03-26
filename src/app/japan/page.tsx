@@ -368,9 +368,9 @@ export default function JapanPage() {
               {g.players.map((p) => (
                 <div
                   key={p.name}
-                  className={`rounded-2xl border-l-4 ${posBorder[p.position]} bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden`}
+                  className={`flex flex-col rounded-2xl border-l-4 ${posBorder[p.position]} bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden`}
                 >
-                  <div className="p-5">
+                  <div className="flex-1 p-5">
                     <div className="flex items-start justify-between mb-2">
                       <div>
                         <h4 className="text-lg font-bold text-gray-900">
@@ -417,18 +417,20 @@ export default function JapanPage() {
                     <p className="text-sm text-gray-600 leading-relaxed">
                       {p.description}
                     </p>
-                    {p.id && (
-                      <div className="mt-4 pt-3 border-t border-gray-100">
+                  </div>
+                  {p.id && (
+                    <div className="mt-auto px-5 pb-5">
+                      <div className="pt-3 border-t border-gray-100">
                         <Link
                           href={`/players/${p.id}`}
                           className="flex items-center justify-center gap-1.5 w-full px-4 py-2.5 rounded-xl bg-[#003087]/5 text-[#003087] text-xs sm:text-sm font-bold hover:bg-[#003087]/15 active:bg-[#003087]/20 transition-colors"
                         >
-                          {locale === 'en' ? "Player details" : "選手詳細ページへ"}
+                          {locale === 'en' ? "Player details" : "選手詳細へ"}
                           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
                         </Link>
                       </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
