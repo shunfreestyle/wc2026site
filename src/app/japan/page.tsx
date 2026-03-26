@@ -96,11 +96,11 @@ const posBorder: Record<string, string> = {
   MF: "border-emerald-400",
   FW: "border-red-400",
 };
-const posText: Record<string, string> = {
-  GK: "text-amber-600",
-  DF: "text-blue-600",
-  MF: "text-emerald-600",
-  FW: "text-red-600",
+const posTextColor: Record<string, string> = {
+  GK: "#d97706",
+  DF: "#2563eb",
+  MF: "#059669",
+  FW: "#dc2626",
 };
 
 /* ──────────────────────────────────────────────
@@ -408,7 +408,7 @@ export default function JapanPage() {
                       <p>
                         <span className="text-gray-400">{locale === 'en' ? "Position" : "ポジション"}</span>
                         <br />
-                        <span className={`font-bold ${posText[p.position]}`}>
+                        <span className="font-bold" style={{ color: posTextColor[p.position] }}>
                           {posLabel[p.position]}
                         </span>
                       </p>
