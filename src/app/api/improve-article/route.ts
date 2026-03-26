@@ -40,6 +40,7 @@ ${content}`,
     }],
   });
 
-  const improved = response.content.find((b: { type: string }) => b.type === "text")?.text || content;
+  const block = response.content.find((b: { type: string }) => b.type === "text");
+  const improved = (block && "text" in block ? (block as { type: "text"; text: string }).text : null) || content;
   return NextResponse.json({ improved });
 }
