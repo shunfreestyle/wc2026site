@@ -285,16 +285,34 @@ export default function PlayerDetailPage() {
               </section>
             )}
 
-            {/* Japan Squad Career History */}
-            {japanSquadPlayer?.careerHistory && (
+            {/* Japan Squad Career History (timeline) */}
+            {japanSquadPlayer?.careerHistory && japanSquadPlayer.careerHistory.length > 0 && (
               <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <h2 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
                   <span className="w-1 h-5 bg-[#E8192C] rounded-full" />
                   {locale === 'en' ? "Career" : "これまでの経歴"}
                 </h2>
-                <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
-                  {japanSquadPlayer.careerHistory}
-                </p>
+                <ol className="space-y-4">
+                  {japanSquadPlayer.careerHistory.map((item, i) => (
+                    <li key={i} className="flex gap-3">
+                      <div className="flex flex-col items-center">
+                        <div className="w-3 h-3 rounded-full bg-[#003087] ring-2 ring-white ring-offset-1 ring-offset-gray-100 mt-1 shrink-0" />
+                        {i < japanSquadPlayer.careerHistory!.length - 1 && (
+                          <div className="w-0.5 bg-gray-200 flex-1 mt-1" />
+                        )}
+                      </div>
+                      <div className="pb-4 min-w-0 flex-1">
+                        <p className="text-sm font-semibold text-gray-900 leading-tight">{item.club}</p>
+                        <p className="text-xs text-gray-400 mt-0.5 mb-1">{item.period}</p>
+                        {item.note && (
+                          <p className="text-xs text-gray-600 leading-relaxed bg-gray-50 rounded-lg px-3 py-2 border-l-2 border-[#003087]/40">
+                            {item.note}
+                          </p>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ol>
               </section>
             )}
 
@@ -368,43 +386,50 @@ export default function PlayerDetailPage() {
               </section>
             )}
 
-            {/* International Record (hide for Japan squad players with no stats) */}
-            {!isJapanSquad && (
+            {/* International Record */}
+            {(() => {
+              const intlCaps = isJapanSquad ? (japanSquadPlayer?.caps ?? 0) : player.caps;
+              const intlGoals = isJapanSquad ? (japanSquadPlayer?.goals ?? 0) : player.goals;
+              const intlDebut = isJapanSquad ? japanSquadPlayer?.debutYear : player.debutYear;
+              const intlTournaments = isJapanSquad ? (japanSquadPlayer?.tournaments ?? []) : (player.tournaments ?? []);
+              const accentColor = isJapanSquad ? "#003087" : "#8B1538";
+              return (
               <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                 <h2 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
-                  <span className="w-1 h-5 bg-[#8B1538] rounded-full" />
+                  <span className="w-1 h-5 rounded-full" style={{ background: accentColor }} />
                   {locale === 'en' ? "International Record" : "代表成績"}
                 </h2>
                 <div className="grid grid-cols-3 gap-4 text-center mb-5">
                   <div className="bg-gray-50 rounded-xl p-4">
-                    <p className="text-2xl font-extrabold text-[#8B1538]">{player.caps}</p>
+                    <p className="text-2xl font-extrabold" style={{ color: accentColor }}>{intlCaps}</p>
                     <p className="text-xs text-gray-600 mt-1">{locale === 'en' ? "Caps" : "出場試合"}</p>
                   </div>
                   <div className="bg-gray-50 rounded-xl p-4">
-                    <p className="text-2xl font-extrabold text-[#8B1538]">{player.goals}</p>
+                    <p className="text-2xl font-extrabold" style={{ color: accentColor }}>{intlGoals}</p>
                     <p className="text-xs text-gray-600 mt-1">{locale === 'en' ? "Goals" : "得点数"}</p>
                   </div>
                   <div className="bg-gray-50 rounded-xl p-4">
-                    <p className="text-2xl font-extrabold text-[#8B1538]">
-                      {player.debutYear ? (locale === 'en' ? `${player.debutYear}` : `${player.debutYear}年`) : "—"}
+                    <p className="text-2xl font-extrabold" style={{ color: accentColor }}>
+                      {intlDebut ? (locale === 'en' ? `${intlDebut}` : `${intlDebut}年`) : "—"}
                     </p>
                     <p className="text-xs text-gray-600 mt-1">{locale === 'en' ? "Int'l debut" : "代表デビュー"}</p>
                   </div>
                 </div>
-                {player.tournaments && player.tournaments.length > 0 && (
+                {intlTournaments.length > 0 && (
                   <div className="bg-gray-50 rounded-xl p-4">
                     <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
                       {locale === 'en' ? "Tournaments" : "出場大会"}
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {player.tournaments.map((t) => (
+                      {intlTournaments.map((t) => (
                         <span
                           key={t}
                           className={`text-xs font-medium px-3 py-1.5 rounded-full border ${
                             t.includes("W杯")
-                              ? "bg-[#8B1538]/10 text-[#8B1538] border-[#8B1538]/20"
+                              ? `bg-[${accentColor}]/10 border-[${accentColor}]/20`
                               : "bg-gray-100 text-gray-600 border-gray-200"
                           }`}
+                          style={t.includes("W杯") ? { color: accentColor } : undefined}
                         >
                           {t}
                         </span>
@@ -413,7 +438,8 @@ export default function PlayerDetailPage() {
                   </div>
                 )}
               </section>
-            )}
+              );
+            })()}
           </div>
 
           {/* Sidebar */}

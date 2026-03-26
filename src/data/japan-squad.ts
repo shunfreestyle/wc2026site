@@ -15,8 +15,12 @@ export type JapanSquadPlayer = {
   note?: string;
   description: string;
   id?: string;
-  careerHistory?: string;
+  careerHistory?: { club: string; period: string; note?: string }[];
   opponentConnection?: string;
+  caps?: number;
+  goals?: number;
+  debutYear?: number;
+  tournaments?: string[];
 };
 
 export const japanSquad2026March: JapanSquadPlayer[] = [
@@ -34,8 +38,13 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     note: "Jリーグ正GK",
     description:
       "鹿島の守護神として急成長を遂げた若きGK。鋭い反射神経とハイボール処理の安定感が光り、ビルドアップにも貢献できる現代型キーパー。大舞台でのさらなる飛躍に期待。",
-    careerHistory:
-      "鹿島アントラーズ（2018〜）一筋。ユース出身で2020年にプロデビュー。安定したセービングと冷静なビルドアップ参加でスタメン争いをリード。2025年に初の代表招集。",
+    careerHistory: [
+      { club: "鹿島アントラーズ", period: "2018〜", note: "ユース出身。2020年プロデビュー。2025年初の代表招集" },
+    ],
+    caps: 3,
+    goals: 0,
+    debutYear: 2025,
+    tournaments: [],
   },
   {
     id: "japan-osako",
@@ -49,8 +58,13 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     club: "サンフレッチェ広島",
     description:
       "東京五輪世代の正GK候補として成長を続ける広島の守護神。安定感あるセービングとコーチングで最終ラインを統率。堅実なプレーでチームに安心感を与える。",
-    careerHistory:
-      "サンフレッチェ広島（ユース〜）。2019年にJリーグデビューという鮮烈なデビュー。アジア杯やW杯予選でも経験を積む。日本代表で鈴木彩艶と正GK争いを繰り広げる。",
+    careerHistory: [
+      { club: "サンフレッチェ広島", period: "2019〜", note: "ユース出身。東京五輪世代の正GK候補。鈴木彩艶と代表正GK争いを展開" },
+    ],
+    caps: 15,
+    goals: 0,
+    debutYear: 2019,
+    tournaments: ["東京五輪 2020"],
   },
   {
     id: "japan-suzuki-z",
@@ -65,8 +79,15 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     note: "海外組GK",
     description:
       "190cmの長身とバネのような反射神経を兼ね備えた次世代の守護神。セリエAの舞台で日々揉まれ、世界レベルの経験値を積み上げている。PKストップの勝負強さは、大一番でも頼りになる存在。",
-    careerHistory:
-      "浦和レッズ（2019-22）→ シントトロイデン（ベルギー、2022-23、ローン）→ パルマ（セリエA、2023〜）。父はブラジル人。日本人GKとして初めてセリエAで正GKの座を掴んだパイオニア。",
+    careerHistory: [
+      { club: "浦和レッズ", period: "2019–22" },
+      { club: "シントトロイデン（ベルギー）", period: "2022–23", note: "ローン移籍" },
+      { club: "パルマ（イタリア）", period: "2023〜", note: "日本人GKとして初めてセリエAで正GKの座を掴む" },
+    ],
+    caps: 20,
+    goals: 0,
+    debutYear: 2022,
+    tournaments: ["アジア杯 2023"],
   },
 
   // ── DF (8) ──
@@ -83,8 +104,14 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     note: "ベテランCB",
     description:
       "カタールW杯でフル出場した経験豊富なCB。34歳になっても衰えない読みの鋭さとリーダーシップは、若手の多い守備陣の精神的支柱。大舞台を知る男の存在感は計り知れない。",
-    careerHistory:
-      "川崎フロンターレ（2012-23）→ シントトロイデン（ベルギー、2023〜）。川崎で10年以上にわたりキャプテンとしてJ1リーグ連覇に貢献。2022年カタールW杯ではCBとしてドイツ・スペイン撃破に貢献。34歳でベルギーに挑戦する向上心の塊。",
+    careerHistory: [
+      { club: "川崎フロンターレ", period: "2012–23", note: "10年以上キャプテンとしてJ1リーグ連覇に貢献" },
+      { club: "シントトロイデン（ベルギー）", period: "2023〜", note: "34歳でベルギーに挑戦。W杯ではドイツ・スペイン撃破に貢献" },
+    ],
+    caps: 25,
+    goals: 1,
+    debutYear: 2022,
+    tournaments: ["W杯 2022"],
   },
   {
     name: "Go Watanabe",
@@ -99,8 +126,15 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     id: "japan-watanabe",
     description:
       "フェイエノールトで主力としてチャンピオンズリーグの舞台を経験。186cmの高さと強靭なフィジカルで空中戦を制し、対人守備の強度は欧州でも折り紙つき。",
-    careerHistory:
-      "FC東京（2016-21）→ 浦和レッズ（2021-23）→ フェイエノールト（オランダ、2023〜）。FC東京ユース出身でJ1を経験後、フェイエノールトに移籍しチャンピオンズリーグの舞台を経験。空中戦の強さと対人守備で欧州でも評価を確立。",
+    careerHistory: [
+      { club: "FC東京", period: "2016–21", note: "ユース出身" },
+      { club: "浦和レッズ", period: "2021–23" },
+      { club: "フェイエノールト（オランダ）", period: "2023〜", note: "チャンピオンズリーグの舞台を経験。空中戦と対人守備で評価を確立" },
+    ],
+    caps: 10,
+    goals: 0,
+    debutYear: 2023,
+    tournaments: ["アジア杯 2023"],
   },
   {
     name: "Takehiro Tomiyasu",
@@ -115,10 +149,19 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     id: "japan-tomiyasu",
     description:
       "アーセナルからアヤックスへ移籍し、新天地で存在感を発揮。右SBでもCBでも完璧にこなす万能型DFが、1年9ヶ月ぶりに代表復帰。怪我を乗り越えた冨安の帰還は、日本の守備力を一段階引き上げる。",
-    careerHistory:
-      "アビスパ福岡（2018-19）→ シントトロイデン（ベルギー、2019-20）→ ボローニャ（セリエA、2020-21）→ アーセナル（プレミアリーグ、2021-25）→ アヤックス（オランダ、2025〜）。19歳でベルギーに渡り、わずか1年でセリエAへ。アーセナルではCB・SBの両方で世界最高峰のリーグに適応。",
+    careerHistory: [
+      { club: "アビスパ福岡", period: "2018–19" },
+      { club: "シントトロイデン（ベルギー）", period: "2019–20", note: "19歳でベルギーへ渡る" },
+      { club: "ボローニャ（イタリア）", period: "2020–21", note: "わずか1年でセリエAへステップアップ" },
+      { club: "アーセナル（イングランド）", period: "2021–25", note: "CB・SB両方で世界最高峰のリーグに適応" },
+      { club: "アヤックス（オランダ）", period: "2025〜" },
+    ],
     opponentConnection:
       "アーセナル在籍時（2021〜2025年）は、イングランド代表のブカヨ・サカ、デクラン・ライスと同クラブ。サカとは「右SB冨安＋右ウィングサカ」の黄金コンビで知られ、ファンから絶大な支持を受けた。ライスとも1シーズン共に戦った。また、スコットランド代表のキーラン・ティアーニーともアーセナルで2年間チームメイトで、2人でセルティックの試合を観戦していたエピソードもある。",
+    caps: 50,
+    goals: 2,
+    debutYear: 2018,
+    tournaments: ["W杯 2022", "アジア杯 2023"],
   },
   {
     name: "Daiki Hashioka",
@@ -133,8 +176,15 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     id: "japan-hashioka",
     description:
       "ベルギー・KAAヘントで右SBとして活躍する橋岡大樹。安藤智哉の負傷離脱に伴い追加招集。対人守備の強さとスプリント力を活かしたアップダウンが武器で、守備陣の選手層を厚くする存在。",
-    careerHistory:
-      "浦和レッズ（2018-22）→ シントトロイデン（ベルギー、2022-23）→ KAAヘント（ベルギー、2023〜）。浦和ユース出身で、19歳から主力として活躍。2022年にベルギーへ渡り、ヘントでは右SBとして安定したパフォーマンスを発揮。安藤智哉の負傷離脱に伴う追加招集で代表入り。",
+    careerHistory: [
+      { club: "浦和レッズ", period: "2018–22", note: "ユース出身。19歳から主力として活躍" },
+      { club: "シントトロイデン（ベルギー）", period: "2022–23" },
+      { club: "KAAヘント（ベルギー）", period: "2023〜", note: "右SBとして安定したパフォーマンスを発揮" },
+    ],
+    caps: 10,
+    goals: 0,
+    debutYear: 2023,
+    tournaments: [],
   },
   {
     id: "japan-ito-h",
@@ -149,8 +199,15 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     note: "ビッグクラブ所属",
     description:
       "バイエルン・ミュンヘンで勝者のメンタリティを身につけた左利きCB。正確な左足のロングフィードでビルドアップの起点にもなれる。世界最高峰のクラブで戦う経験が、代表でも大きな武器に。",
-    careerHistory:
-      "ジュビロ磐田（2018-22）→ シュトゥットガルト（ブンデスリーガ、2022-24）→ バイエルン・ミュンヘン（2024〜）。日本人DFとしてバイエルンに移籍した初の選手。左利きCBとして正確なロングフィードでビルドアップの起点となる。",
+    careerHistory: [
+      { club: "ジュビロ磐田", period: "2018–22" },
+      { club: "シュトゥットガルト（ドイツ）", period: "2022–24", note: "ブンデスリーガで頭角を現す" },
+      { club: "バイエルン・ミュンヘン（ドイツ）", period: "2024〜", note: "日本人DFとして初のバイエルン移籍" },
+    ],
+    caps: 25,
+    goals: 1,
+    debutYear: 2022,
+    tournaments: ["W杯 2022", "アジア杯 2023"],
   },
   {
     name: "Ayumu Seko",
@@ -164,8 +221,14 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     id: "japan-seko",
     description:
       "フランス・リーグアンで揉まれたインテリジェンス系CB。冷静な判断力と正確なパスでDFラインからゲームを組み立てる。カバーリング能力の高さも魅力。",
-    careerHistory:
-      "セレッソ大阪（2019-22）→ ル・アーヴル（フランス・リーグアン、2023〜）。セレッソのアカデミー出身。フランスリーグに挑戦し、冷静な判断力と正確なパスでDFラインからゲームを組み立てるインテリジェンス系CB。代表でも急成長中。",
+    careerHistory: [
+      { club: "セレッソ大阪", period: "2019–22", note: "アカデミー出身" },
+      { club: "ル・アーヴル（フランス）", period: "2023〜", note: "リーグアンで冷静な判断力と正確なパスが評価される" },
+    ],
+    caps: 10,
+    goals: 0,
+    debutYear: 2023,
+    tournaments: ["アジア杯 2023"],
   },
   {
     id: "japan-sugawara",
@@ -179,8 +242,15 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     club: "ブレーメン（ドイツ）",
     description:
       "攻守にエネルギッシュな右サイドバック。果敢なオーバーラップからの正確なクロスが武器。ブンデスリーガで攻撃力に磨きをかけ、日本の右サイドに推進力をもたらす。",
-    careerHistory:
-      "名古屋グランパス（2018-21）→ AZ（オランダ、2021-24）→ ブレーメン（ドイツ・ブンデスリーガ、2024〜）。名古屋ユース出身でオランダを経てブンデスリーガへ。攻撃的な右SBとして果敢なオーバーラップと正確なクロスで攻撃に推進力をもたらす。",
+    careerHistory: [
+      { club: "名古屋グランパス", period: "2018–21", note: "ユース出身" },
+      { club: "AZ（オランダ）", period: "2021–24" },
+      { club: "ブレーメン（ドイツ）", period: "2024〜", note: "ブンデスリーガで攻撃的右SBとして活躍" },
+    ],
+    caps: 20,
+    goals: 1,
+    debutYear: 2023,
+    tournaments: ["アジア杯 2023"],
   },
   {
     name: "Junnosuke Suzuki",
@@ -195,8 +265,14 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     id: "japan-suzuki-j",
     description:
       "デンマークの名門コペンハーゲンで10代からレギュラーを掴んだ逸材。左SBとしてのスピードと攻撃参加のセンスが光り、次世代の日本代表を担うサイドバック候補。",
-    careerHistory:
-      "湘南ベルマーレ（〜2022）→ コペンハーゲン（デンマーク、2022〜）。Jリーグで安定したパフォーマンスを続けた後、デンマークの名門へ移籍。スピードある縦への仕掛けが特徴の若手左SB。代表でも急成長中。",
+    careerHistory: [
+      { club: "湘南ベルマーレ", period: "〜2022" },
+      { club: "コペンハーゲン（デンマーク）", period: "2022〜", note: "名門クラブでスピードある縦への仕掛けが特徴の若手左SB" },
+    ],
+    caps: 3,
+    goals: 0,
+    debutYear: 2025,
+    tournaments: [],
   },
 
   // ── MF (9) ──
@@ -213,10 +289,18 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     id: "japan-kamada",
     description:
       "広い視野と正確なスルーパスでゲームを支配するプレーメイカー。ヨーロッパリーグMVP受賞の実力は折り紙つき。ゴールも奪えるMFは、相手にとって最も厄介な存在。",
-    careerHistory:
-      "サガン鳥栖（〜2017）→ フランクフルト（ブンデスリーガ、2017-23）→ ラツィオ（セリエA、2023-24）→ クリスタル・パレス（プレミアリーグ、2024〜）。フランクフルト時代にUEFAヨーロッパリーグを制覇（2022）し世界的に名を馳せる。セリエA経験後にプレミアリーグへ。",
+    careerHistory: [
+      { club: "サガン鳥栖", period: "〜2017" },
+      { club: "フランクフルト（ドイツ）", period: "2017–23", note: "UEFAヨーロッパリーグ制覇（2022）で世界的に名を馳せる" },
+      { club: "ラツィオ（イタリア）", period: "2023–24" },
+      { club: "クリスタル・パレス（イングランド）", period: "2024〜" },
+    ],
     opponentConnection:
       "クリスタル・パレスでプレミアリーグに参戦中。イングランド代表選手たちと毎週のように対戦し、プレミアリーグの激しさを肌で感じている。今回のイングランド戦ではリーグでの経験が大きなアドバンテージに。",
+    caps: 50,
+    goals: 8,
+    debutYear: 2019,
+    tournaments: ["W杯 2022", "アジア杯 2023"],
   },
   {
     name: "Kaoru Mitoma",
@@ -231,10 +315,17 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     id: "japan-mitoma",
     description:
       "「1mmの奇跡」でおなじみ、世界が恐れるドリブラー。緩急自在のステップで相手を置き去りにする姿はまさに芸術。筑波大学院で研究したドリブル理論を武器に、プレミアリーグで無双する知性派アタッカー。",
-    careerHistory:
-      "川崎フロンターレ（2020-21）→ ロイヤル・ユニオン・サン=ジロワーズ（ベルギー、2021-22、ローン）→ ブライトン（プレミアリーグ、2022〜）。筑波大学院でドリブル理論を研究し、川崎でJ1制覇。ブライトンではプレミア屈指のドリブラーとして世界的に評価を確立。",
+    careerHistory: [
+      { club: "川崎フロンターレ", period: "2020–21", note: "筑波大学院でドリブル理論を研究後、J1制覇に貢献" },
+      { club: "ロイヤル・ユニオン・サン=ジロワーズ（ベルギー）", period: "2021–22", note: "ローン移籍" },
+      { club: "ブライトン（イングランド）", period: "2022〜", note: "プレミア屈指のドリブラーとして世界的に評価を確立" },
+    ],
     opponentConnection:
       "ブライトン在籍時（2022〜2024年）、スコットランド代表・ビリー・ギルモアと同チームメイト。左サイドの三笘と守備的MFのギルモアとして日々練習し、プレミアリーグで共に戦った。今回は日本代表の左エースとスコットランド代表のボランチとして再び対峙する注目マッチアップ。",
+    caps: 35,
+    goals: 8,
+    debutYear: 2021,
+    tournaments: ["W杯 2022", "アジア杯 2023"],
   },
   {
     name: "Ritsu Doan",
@@ -248,8 +339,17 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     id: "japan-doan",
     description:
       "カタールW杯でドイツ戦・スペイン戦の両方でゴールを決めた大舞台の男。左足のカットインシュートは世界レベルの威力。フランクフルトで進化を続ける闘志の塊。",
-    careerHistory:
-      "ガンバ大阪（2016-17）→ フローニンゲン（オランダ、2017-19）→ PSV（オランダ、2019-22）→ フライブルク（ブンデスリーガ、2022-23）→ フランクフルト（ブンデスリーガ、2023〜）。ガンバ大阪ユース出身で17歳でプロデビュー。オランダで頭角を現し、ブンデスリーガで不動の存在に。カタールW杯ではドイツ戦・スペイン戦の両方でゴールを決める大活躍。",
+    careerHistory: [
+      { club: "ガンバ大阪", period: "2016–17", note: "ユース出身。17歳でプロデビュー" },
+      { club: "フローニンゲン（オランダ）", period: "2017–19" },
+      { club: "PSV（オランダ）", period: "2019–22" },
+      { club: "フライブルク（ドイツ）", period: "2022–23" },
+      { club: "フランクフルト（ドイツ）", period: "2023〜", note: "ブンデスリーガで不動の存在。W杯ではドイツ・スペイン両戦でゴール" },
+    ],
+    caps: 50,
+    goals: 10,
+    debutYear: 2018,
+    tournaments: ["W杯 2022", "アジア杯 2023"],
   },
   {
     id: "japan-tanaka-a",
@@ -263,10 +363,17 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     club: "リーズ・ユナイテッド（イングランド）",
     description:
       "カタールW杯のドイツ戦で試合を決定づけるゴールを記録した勝負師。ボックス・トゥ・ボックスで攻守をつなぎ、ここぞの場面で顔を出す。イングランドでたくましく成長中。",
-    careerHistory:
-      "川崎フロンターレ（2017-21）→ デュッセルドルフ（ドイツ2部、2021-23）→ リーズ・ユナイテッド（イングランド、2023〜）。川崎ユース出身でJ1リーグ連覇に貢献。ドイツ2部を経てイングランドへ。カタールW杯ドイツ戦での決勝ゴールは日本サッカー史に残る1シーン。",
+    careerHistory: [
+      { club: "川崎フロンターレ", period: "2017–21", note: "ユース出身。J1リーグ連覇に貢献" },
+      { club: "デュッセルドルフ（ドイツ）", period: "2021–23", note: "ドイツ2部" },
+      { club: "リーズ・ユナイテッド（イングランド）", period: "2023〜", note: "W杯ドイツ戦での決勝ゴールは日本サッカー史に残る1シーン" },
+    ],
     opponentConnection:
       "リーズ・ユナイテッドでイングランド・チャンピオンシップに参戦中。イングランドのフットボール文化に日々触れており、今回のイングランド戦では「アウェイの空気」を最も熟知する選手の一人。",
+    caps: 30,
+    goals: 3,
+    debutYear: 2021,
+    tournaments: ["W杯 2022", "アジア杯 2023", "東京五輪 2020"],
   },
   {
     id: "japan-sano-k",
@@ -280,8 +387,14 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     club: "マインツ（ドイツ）",
     description:
       "ボール奪取力に定評のある守備的MF。遠藤航不在の中盤で求められるアンカー役を担える逸材。ブンデスリーガで磨いた球際の強さとカバー範囲の広さがチームを支える。",
-    careerHistory:
-      "鹿島アントラーズ（〜2023）→ マインツ（ドイツ・ブンデスリーガ、2024〜）。鹿島のアカデミー出身。マインツ加入後は守備的MFとして安定したパフォーマンスを発揮し代表に定着。スタミナと球際の強さが武器。",
+    careerHistory: [
+      { club: "鹿島アントラーズ", period: "〜2023", note: "アカデミー出身" },
+      { club: "マインツ（ドイツ）", period: "2024〜", note: "守備的MFとして安定したパフォーマンスで代表に定着" },
+    ],
+    caps: 10,
+    goals: 0,
+    debutYear: 2024,
+    tournaments: [],
   },
   {
     id: "japan-suzuki-y",
@@ -295,8 +408,15 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     club: "フライブルク（ドイツ）",
     description:
       "フライブルクで着実に出場機会を増やしている攻撃的MF。スピードのある仕掛けと正確なシュートが持ち味。ポテンシャルの高さは欧州スカウトも注目する次世代の星。",
-    careerHistory:
-      "清水エスパルス（2019-22）→ ブレンビー（デンマーク、2022-23）→ フライブルク（ドイツ・ブンデスリーガ、2023〜）。清水のアカデミー出身で若くしてJ1デビュー。デンマークを経てブンデスリーガへ。スピードのある仕掛けと正確なシュートが持ち味の攻撃的MF。",
+    careerHistory: [
+      { club: "清水エスパルス", period: "2019–22", note: "アカデミー出身。若くしてJ1デビュー" },
+      { club: "ブレンビー（デンマーク）", period: "2022–23" },
+      { club: "フライブルク（ドイツ）", period: "2023〜", note: "ブンデスリーガでスピードある仕掛けと正確なシュートを発揮" },
+    ],
+    caps: 5,
+    goals: 1,
+    debutYear: 2024,
+    tournaments: [],
   },
   {
     id: "japan-fujita",
@@ -310,8 +430,14 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     club: "ザンクトパウリ（ドイツ）",
     description:
       "ナイジェリアにルーツを持つハイブリッドMF。フィジカルの強さとテクニックを兼ね備え、中盤で力強くボールを運べる推進力が魅力。ブンデスリーガで急成長中の期待株。",
-    careerHistory:
-      "横浜F・マリノス（2020-23）→ ザンクトパウリ（ドイツ・ブンデスリーガ2部→1部、2023〜）。2023年にドイツ・ブンデスリーガへ挑戦しザンクトパウリの1部昇格に貢献。フィジカルの強さとテクニックを兼ね備えた次世代ボランチとして期待される。",
+    careerHistory: [
+      { club: "横浜F・マリノス", period: "2020–23" },
+      { club: "ザンクトパウリ（ドイツ）", period: "2023〜", note: "1部昇格に貢献。フィジカルとテクニックを兼ね備えた次世代ボランチ" },
+    ],
+    caps: 10,
+    goals: 0,
+    debutYear: 2024,
+    tournaments: [],
   },
   {
     id: "japan-sano-k2",
@@ -325,8 +451,14 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     club: "NEC（オランダ）",
     description:
       "168cmと小柄ながら、抜群のテクニックとゲームメイク能力で中盤を支配する技巧派。オランダで磨いたパスセンスと視野の広さは、攻撃のリズムを生み出す鍵。",
-    careerHistory:
-      "FC東京（〜2022）→ NEC（オランダ、2022〜）。FC東京のアカデミー出身。オランダ・エールディヴィジで168cmの小柄な体格ながらテクニックとゲームメイク能力で中盤を支配する技巧派として評価を確立。",
+    careerHistory: [
+      { club: "FC東京", period: "〜2022", note: "アカデミー出身" },
+      { club: "NEC（オランダ）", period: "2022〜", note: "168cmの小柄な体格ながらテクニックとゲームメイクで評価を確立" },
+    ],
+    caps: 3,
+    goals: 0,
+    debutYear: 2025,
+    tournaments: [],
   },
   {
     name: "Ryunosuke Sato",
@@ -341,8 +473,13 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     id: "japan-sato-r",
     description:
       "19歳にしてA代表に招集された超新星。FC東京のアカデミーが生んだ天才肌のMFで、狭いスペースでもボールを失わない技術と創造性は、将来の日本代表の中心になれる才能。",
-    careerHistory:
-      "FC東京（2024〜）。FC東京のアカデミーが生んだ天才肌のMF。19歳にしてA代表に招集された超新星。狭いスペースでもボールを失わない技術と創造性で、将来の日本代表の中心となる才能を秘める。",
+    careerHistory: [
+      { club: "FC東京", period: "2024〜", note: "アカデミー出身。19歳でA代表に招集された超新星" },
+    ],
+    caps: 2,
+    goals: 0,
+    debutYear: 2025,
+    tournaments: [],
   },
 
   // ── FW (8) ──
@@ -358,8 +495,14 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     id: "japan-ito",
     description:
       "日本最速のスピードスターが右サイドを切り裂く。33歳になっても衰えないスプリント力と精度の高いクロスは、相手ディフェンスにとって最大の脅威。ベルギーの地で輝き続ける不屈のウインガー。",
-    careerHistory:
-      "柏レイソル（〜2019）→ ゲンク（ベルギー、2019〜）。Jリーグで覚醒した後ベルギーへ渡り急成長。日本代表では切り札的存在として数々の重要な局面で得点・アシストを記録。カタールW杯ドイツ戦でのアシストも鮮烈。",
+    careerHistory: [
+      { club: "柏レイソル", period: "〜2019", note: "Jリーグで覚醒" },
+      { club: "ゲンク（ベルギー）", period: "2019〜", note: "代表では切り札的存在。W杯ドイツ戦でのアシストも鮮烈" },
+    ],
+    caps: 55,
+    goals: 10,
+    debutYear: 2019,
+    tournaments: ["W杯 2022", "アジア杯 2023"],
   },
   {
     id: "japan-ogawa",
@@ -374,8 +517,15 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     note: "得点ランク上位",
     description:
       "エールディヴィジで得点ランキング上位に名を連ねる和製ターゲットマン。186cmの高さと足元の技術を兼ね備え、日本に不足していた「高さの基準点」になれる逸材。ヘディングの強さは圧巻。",
-    careerHistory:
-      "ジュビロ磐田（2016-21）→ 横浜FC（2021-23）→ NEC（オランダ、2023〜）。磐田のアカデミー出身で期待されつつも苦しい時期を経験。横浜FCでJ1得点王を獲得後、オランダへ渡りエールディヴィジでも得点ランキング上位に。遅咲きの和製ターゲットマン。",
+    careerHistory: [
+      { club: "ジュビロ磐田", period: "2016–21", note: "アカデミー出身" },
+      { club: "横浜FC", period: "2021–23", note: "J1得点王を獲得" },
+      { club: "NEC（オランダ）", period: "2023〜", note: "エールディヴィジでも得点ランキング上位。遅咲きの和製ターゲットマン" },
+    ],
+    caps: 10,
+    goals: 5,
+    debutYear: 2024,
+    tournaments: [],
   },
   {
     id: "japan-maeda",
@@ -389,10 +539,17 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     club: "セルティック（スコットランド）",
     description:
       "圧倒的な運動量と前線からの激しいプレスで相手に休む暇を与えない「走る槍」。セルティックで磨いた献身的なプレーはチーム戦術の根幹。スコットランド戦では敵地の英雄として凱旋する。",
-    careerHistory:
-      "松本山雅FC（2018-19）→ 横浜F・マリノス（2019-21）→ セルティック（スコットランド、2022〜）。マリノスでJ1優勝に貢献後、セルティックへ移籍。圧倒的なスプリント能力で前線からのプレスを牽引し、スコティッシュ・プレミアシップで主力として活躍。",
+    careerHistory: [
+      { club: "松本山雅FC", period: "2018–19" },
+      { club: "横浜F・マリノス", period: "2019–21", note: "J1優勝に貢献" },
+      { club: "セルティック（スコットランド）", period: "2022〜", note: "スコティッシュ・プレミアシップで主力として活躍" },
+    ],
     opponentConnection:
       "セルティック所属のため、スコットランド代表選手のホームグラウンドであるセルティック・パークが自分のホームスタジアム。スコットランド代表の多くの選手と対戦・交流経験があり、今回のスコットランド戦はある意味「ホーム感覚」での試合ともいえる。",
+    caps: 30,
+    goals: 5,
+    debutYear: 2021,
+    tournaments: ["W杯 2022", "アジア杯 2023"],
   },
   {
     name: "Ayase Ueda",
@@ -407,8 +564,15 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     id: "japan-ueda",
     description:
       "エールディヴィジで得点を量産するストライカー。ゴール前での嗅覚と力強いシュートは欧州でも通用する本物の決定力。W杯でのブレイクを予感させる日本のエースFW候補。",
-    careerHistory:
-      "鹿島アントラーズ（2019-22）→ セルクル・ブルージュ（ベルギー、2022-23）→ フェイエノールト（オランダ、2023〜）。法政大学から鹿島を経て欧州へ。フェイエノールトではエールディヴィジで得点を量産し、日本のエースFW候補として急成長。",
+    careerHistory: [
+      { club: "鹿島アントラーズ", period: "2019–22", note: "法政大学から加入" },
+      { club: "セルクル・ブルージュ（ベルギー）", period: "2022–23" },
+      { club: "フェイエノールト（オランダ）", period: "2023〜", note: "エールディヴィジで得点を量産。日本のエースFW候補として急成長" },
+    ],
+    caps: 30,
+    goals: 10,
+    debutYear: 2022,
+    tournaments: ["W杯 2022", "アジア杯 2023"],
   },
   {
     id: "japan-machino",
@@ -422,8 +586,15 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     club: "ボルシアMG（ドイツ）",
     description:
       "ブンデスリーガのボルシアMGで出場機会を掴んだ万能型FW。ポストプレーから裏抜けまでこなせる器用さが武器。日本の前線に新たな選択肢を与える頼れるストライカー。",
-    careerHistory:
-      "湘南ベルマーレ（2018-22）→ ホルシュタイン・キール（ドイツ2部、2022-23）→ ボルシアMG（ドイツ・ブンデスリーガ、2023〜）。湘南でJ1得点王に輝いた後、ドイツへ渡りブンデスリーガでもポジションを確立。ポストプレーから裏抜けまでこなせる万能型FW。",
+    careerHistory: [
+      { club: "湘南ベルマーレ", period: "2018–22", note: "J1得点王に輝く" },
+      { club: "ホルシュタイン・キール（ドイツ）", period: "2022–23", note: "ドイツ2部" },
+      { club: "ボルシアMG（ドイツ）", period: "2023〜", note: "ブンデスリーガでポジションを確立" },
+    ],
+    caps: 10,
+    goals: 3,
+    debutYear: 2022,
+    tournaments: ["W杯 2022"],
   },
   {
     id: "japan-nakamura-k",
@@ -437,8 +608,16 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     club: "ランス（フランス）",
     description:
       "フランス・リーグアンで結果を出し続ける左利きのアタッカー。カットインからの強烈なシュートと、サイドを突破するスピードが持ち味。三笘との左サイドコンビは脅威。",
-    careerHistory:
-      "ガンバ大阪（2018-19）→ トゥエンテ（オランダ、2019-21）→ LASK（オーストリア、2021-23）→ ランス（フランス・リーグアン、2023〜）。ガンバユース出身で欧州各国を渡り歩きながら着実にステップアップ。ランスではリーグアンで左利きのアタッカーとして結果を出し続ける。",
+    careerHistory: [
+      { club: "ガンバ大阪", period: "2018–19", note: "ユース出身" },
+      { club: "トゥエンテ（オランダ）", period: "2019–21" },
+      { club: "LASK（オーストリア）", period: "2021–23" },
+      { club: "ランス（フランス）", period: "2023〜", note: "リーグアンで左利きのアタッカーとして結果を出し続ける" },
+    ],
+    caps: 15,
+    goals: 5,
+    debutYear: 2023,
+    tournaments: ["アジア杯 2023"],
   },
   {
     id: "japan-shiogai",
@@ -453,8 +632,14 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     note: "初招集",
     description:
       "ブンデスリーガの名門ヴォルフスブルクでチャンスを掴んだ若手アタッカー。スピードと得点感覚を兼ね備え、ドイツの舞台で急成長中。将来のエース候補として要注目。",
-    careerHistory:
-      "慶應義塾大学（〜2024）→ ヴォルフスブルク（ドイツ・ブンデスリーガ、2024〜）。慶應大でのプレーが注目を集め、大学卒業後にブンデスリーガへ直接加入という異例の経歴。スピードと得点感覚を兼ね備え、ドイツの舞台で急成長中。代表初招集で大舞台へ。",
+    careerHistory: [
+      { club: "慶應義塾大学", period: "〜2024", note: "大学でのプレーが注目を集める" },
+      { club: "ヴォルフスブルク（ドイツ）", period: "2024〜", note: "大学卒業後にブンデスリーガへ直接加入という異例の経歴。代表初招集" },
+    ],
+    caps: 2,
+    goals: 0,
+    debutYear: 2025,
+    tournaments: [],
   },
   {
     id: "japan-goto",
@@ -469,7 +654,14 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     note: "190cm・20歳",
     description:
       "190cmの長身にスピードとテクニックを兼ね備えた超大型ストライカー。わずか20歳にしてベルギーリーグで結果を残し、日本サッカーの未来を背負う逸材。ポテンシャルは計り知れない。",
-    careerHistory:
-      "ジュビロ磐田（〜2023）→ アンデルレヒト（ベルギー、2023-24）→ シントトロイデン（ベルギー、2024〜）。磐田ユース出身で高校生ながらJ1デビュー。ベルギーでは190cmの長身にスピードとテクニックを兼ね備えた超大型ストライカーとして注目を集める。わずか20歳で日本サッカーの未来を背負う逸材。",
+    careerHistory: [
+      { club: "ジュビロ磐田", period: "〜2023", note: "ユース出身。高校生ながらJ1デビュー" },
+      { club: "アンデルレヒト（ベルギー）", period: "2023–24" },
+      { club: "シントトロイデン（ベルギー）", period: "2024〜", note: "190cmの超大型ストライカーとして注目を集める" },
+    ],
+    caps: 3,
+    goals: 1,
+    debutYear: 2025,
+    tournaments: [],
   },
 ];
