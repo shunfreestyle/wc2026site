@@ -83,10 +83,11 @@ export async function POST(request: NextRequest) {
         send({ type: "step", step: 1, label: "深いリサーチ", message: "複数サイトから情報収集・検証中..." });
 
         const researchResponse = await client.messages.create({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 4096,
+          model: "claude-haiku-4-5-20251001", // コスト削減: claude-sonnet-4-20250514 → claude-haiku-4-5-20251001
+          max_tokens: 2000, // コスト削減: 4096 → 2000
           system: `あなたはスポーツジャーナリストのリサーチャー兼ファクトチェッカーです。
 与えられたニュースについて徹底調査し、事実を収集したうえで正確性を検証してください。
+情報収集の際は、まず Wikipedia（https://en.wikipedia.org または https://ja.wikipedia.org）を参照してから、追加情報をWeb検索で補完すること。Web検索は最新ニュースや試合結果など、Wikipediaにない情報のみに絞ること。
 
 必ずJSON形式のみで返答。コードブロック不要。`,
           messages: [
@@ -127,7 +128,7 @@ JSON形式で出力:
             {
               type: "web_search_20250305" as const,
               name: "web_search",
-              max_uses: 8,
+              max_uses: 4, // コスト削減: max_uses 8 → 4
             },
           ],
         });

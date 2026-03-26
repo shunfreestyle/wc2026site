@@ -29,11 +29,12 @@ export async function POST(request: NextRequest) {
       try {
         send({ type: "step", step: 1, message: "リサーチ中..." });
         const researchResponse = await client.messages.create({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 4096,
-          system: `サッカー選手リサーチャー。JSON形式のみで返答。コードブロック不要。`,
+          model: "claude-haiku-4-5-20251001", // コスト削減: claude-sonnet-4-20250514 → claude-haiku-4-5-20251001
+          max_tokens: 2000, // コスト削減: 4096 → 2000
+          system: `サッカー選手リサーチャー。JSON形式のみで返答。コードブロック不要。
+情報収集の際は、まず Wikipedia（https://en.wikipedia.org または https://ja.wikipedia.org）を参照してから、追加情報をWeb検索で補完すること。Web検索は最新ニュースや試合結果など、Wikipediaにない情報のみに絞ること。`,
           messages: [{ role: "user", content: `「${playerName}」について調査してください。JSON: {"name":"名前","nameEn":"English","birthDate":"YYYY-MM-DD","birthPlace":"出身地","height":数値,"position":"ポジション","currentClub":"所属クラブ","career":[{"year":"年代","club":"クラブ","detail":"詳細"}],"stats":[{"season":"シーズン","club":"クラブ","apps":数値,"goals":数値}],"nationalTeam":{"caps":数値,"goals":数値,"debut":"デビュー年"},"episodes":["エピソード1","エピソード2"],"style":"プレースタイル","wcExpectation":"W杯への期待200文字"}` }],
-          tools: [{ type: "web_search_20250305" as const, name: "web_search", max_uses: 8 }],
+          tools: [{ type: "web_search_20250305" as const, name: "web_search", max_uses: 4 }], // コスト削減: max_uses 8 → 4
         });
         let researchText = "";
         for (const block of researchResponse.content) { if (block.type === "text") researchText += block.text; }
@@ -45,7 +46,7 @@ export async function POST(request: NextRequest) {
         let articleContent = "";
         const stream = client.messages.stream({
           model: "claude-sonnet-4-20250514",
-          max_tokens: 6000,
+          max_tokens: 8000,
           system: `サッカー専門メディアのベテランライター。だ・である調。1文40文字以内。3000文字以上。
 構成: 1.冒頭リード 2.## プロフィール(profile-tableのHTMLテーブル) 3.## 幼少期・学生時代 4.## プロデビュー 5.## 現在のクラブ 6.highlight-box×2〜3 7.## 日本代表での活躍 8.## 選手経歴(schedule-tableのHTMLテーブル) 9.summary-card
 highlight-box: <div class="highlight-box"><span class="point-label">POINT 1</span><span class="point-title">タイトル</span><p class="point-body">説明。<strong>固有名詞</strong>は太字。</p></div>

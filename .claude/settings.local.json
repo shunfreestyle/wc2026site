@@ -76,7 +76,22 @@
       "Bash(lsof -ti:3000)",
       "Bash(pkill -f \"next\")",
       "Bash(git rebase:*)",
-      "Bash(GIT_EDITOR=true git rebase --continue)"
+      "Bash(GIT_EDITOR=true git rebase --continue)",
+      "Bash(mkdir -p ~/Desktop/cockpit)",
+      "Bash(mv /Users/shunfreestyle/Desktop/wc2026site/tracker.html ~/Desktop/cockpit/)",
+      "WebFetch(domain:www.transfermarkt.us)",
+      "WebFetch(domain:fbref.com)",
+      "WebFetch(domain:www.fotmob.com)",
+      "WebFetch(domain:www.jleague.jp)",
+      "WebFetch(domain:www.soccer-king.jp)",
+      "WebFetch(domain:www.football-lab.jp)",
+      "WebFetch(domain:www.footballcritic.com)",
+      "WebFetch(domain:www.fctokyo.co.jp)",
+      "WebFetch(domain:data.j-league.or.jp)",
+      "WebFetch(domain:web.gekisaka.jp)",
+      "WebFetch(domain:www.sofascore.com)",
+      "WebFetch(domain:one-versus-one.com)",
+      "Bash(bash /tmp/search_player_articles.sh)"
     ]
   }
 }
