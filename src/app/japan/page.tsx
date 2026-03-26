@@ -385,7 +385,10 @@ export default function JapanPage() {
                         <p className="text-xs text-gray-400">{p.name}</p>
                       </div>
                       {p.note && (
-                        <span className="ml-2 shrink-0 inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#BC002D]/10 text-[#BC002D]">
+                        <span
+                          className="ml-2 shrink-0 inline-block px-2 py-0.5 rounded text-[10px] font-bold"
+                          style={{ color: posTextColor[p.position], backgroundColor: `${posTextColor[p.position]}15` }}
+                        >
                           {p.note}
                         </span>
                       )}
