@@ -4,14 +4,6 @@ import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { japanSquad2026March, type JapanSquadPlayer } from "@/data/japan-squad";
 
-type AbsentPlayer = {
-  nameJa: string;
-  name: string;
-  position: string;
-  club: string;
-  reason: string;
-  reasonEn?: string;
-};
 
 /* ──────────────────────────────────────────────
    親善試合（イギリス遠征）
@@ -88,59 +80,6 @@ const squad = japanSquad2026March;
 
 /* Squad data moved to @/data/japan-squad.ts */
 
-/* ──────────────────────────────────────────────
-   招集外の注目選手
-   ────────────────────────────────────────────── */
-const absentPlayersJa: AbsentPlayer[] = [
-  {
-    nameJa: "遠藤航",
-    name: "Wataru Endo",
-    position: "MF",
-    club: "リバプール（イングランド）",
-    reason: "日本代表キャプテン。今回はコンディション調整のため招集外。リバプールでの出場機会確保が最優先課題",
-    reasonEn: "Japan's captain. Left out for fitness management. Securing playtime at Liverpool is the top priority.",
-  },
-  {
-    nameJa: "久保建英",
-    name: "Takefusa Kubo",
-    position: "MF",
-    club: "レアル・ソシエダ（スペイン）",
-    reason: "ラ・リーガで奮闘中のファンタジスタ。今回は招集外だがW杯本大会での活躍に期待",
-    reasonEn: "The fantasista competing in La Liga. Not called up this time but expected to feature at the World Cup.",
-  },
-  {
-    nameJa: "守田英正",
-    name: "Hidemasa Morita",
-    position: "MF",
-    club: "スポルティング（ポルトガル）",
-    reason: "ポルトガルの名門で中盤の要として活躍。コンディション面を考慮し今回は招集外",
-    reasonEn: "A key midfielder at the Portuguese powerhouse. Left out due to fitness considerations.",
-  },
-  {
-    nameJa: "板倉滉",
-    name: "Ko Itakura",
-    position: "DF",
-    club: "ボルシアMG（ドイツ）",
-    reason: "ブンデスリーガで安定したパフォーマンスを発揮するCB。今回はメンバー外も実力は折り紙つき",
-    reasonEn: "Consistent Bundesliga performer. Not in this squad but undeniably quality.",
-  },
-  {
-    nameJa: "南野拓実",
-    name: "Takumi Minamino",
-    position: "FW",
-    club: "ASモナコ（フランス）",
-    reason: "リバプールでプレミア優勝を経験した実績の持ち主。代表での巻き返しに期待",
-    reasonEn: "A Premier League winner with Liverpool. Looking to reclaim his Japan spot.",
-  },
-  {
-    nameJa: "古橋亨梧",
-    name: "Kyogo Furuhashi",
-    position: "FW",
-    club: "セルティック（スコットランド）",
-    reason: "スコティッシュ・プレミアの得点王経験者。圧巻のゴール嗅覚を持つが今回は招集外",
-    reasonEn: "A former Scottish Premiership top scorer with an elite nose for goal. Left out this time.",
-  },
-];
 
 /* ──────────────────────────────────────────────
    Helpers
@@ -202,8 +141,6 @@ export default function JapanPage() {
       footer: "監督：トーマス・トゥヘル | 注目選手：ケイン、ベリンガム、サカ",
       href: "/japan/opponents/england", cta: "イングランド詳細 →" },
   ];
-
-  const absentPlayers = locale === 'en' ? absentPlayersJa : absentPlayersJa;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -345,12 +282,13 @@ export default function JapanPage() {
                 <div className="border-t pt-3 mt-3">
                   <p className="text-xs text-gray-400 font-medium mb-2">{locale === 'en' ? "View squad" : "メンバーを確認"}</p>
                   <div className="flex flex-col sm:flex-row gap-2">
-                    <Link
-                      href="/japan#squad"
-                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#003087]/10 text-[#003087] text-xs font-bold hover:bg-[#003087]/20 transition-colors"
+                    <button
+                      type="button"
+                      onClick={() => document.getElementById("squad")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#003087]/10 text-[#003087] text-xs font-bold hover:bg-[#003087]/20 transition-colors cursor-pointer"
                     >
                       {locale === 'en' ? "\u{1F1EF}\u{1F1F5} Japan squad" : "\u{1F1EF}\u{1F1F5} 日本代表メンバー"}
-                    </Link>
+                    </button>
                     <Link
                       href={m.opponentLink}
                       className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-gray-100 text-gray-700 text-xs font-bold hover:bg-gray-200 transition-colors"
@@ -366,116 +304,9 @@ export default function JapanPage() {
       </section>
 
       {/* ═══════════════════════════════════════
-          W杯グループステージ
-          ═══════════════════════════════════════ */}
-      <section className="bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span
-              className="inline-block w-1.5 h-8 rounded-full"
-              style={{ background: "#003087" }}
-            />
-            {locale === 'en' ? "World Cup Group Stage Schedule" : "W杯グループステージ日程"}
-          </h2>
-          <p className="text-sm text-gray-500 mb-8">
-            {locale === 'en' ? "Group F \u2014 Netherlands, Japan, Tunisia, UEFA Playoff B Winner" : `${t.japan.groupLabel} — オランダ、日本、チュニジア、UEFAプレーオフB勝者`}
-          </p>
-
-          <div className="grid gap-4 sm:grid-cols-3">
-            {wcMatches.map((m) => (
-              <div
-                key={m.num}
-                className="rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden"
-              >
-                <div
-                  className="px-4 py-2 text-white text-sm font-bold flex items-center justify-between"
-                  style={{ background: "#003087" }}
-                >
-                  <span>{m.label}</span>
-                  <span className="text-blue-200 text-xs">Match #{m.num}</span>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="text-center flex-1">
-                      <p className="text-2xl mb-1">🇯🇵</p>
-                      <p className="text-sm font-bold text-gray-900">{locale === 'en' ? "Japan" : "日本"}</p>
-                    </div>
-                    <div className="px-4 text-center">
-                      <p className="text-xs text-gray-400 font-bold uppercase tracking-wide">VS</p>
-                    </div>
-                    <div className="text-center flex-1">
-                      <p className="text-2xl mb-1">{m.opponent.split(" ")[0]}</p>
-                      <p className="text-sm font-bold text-gray-900">
-                        {m.opponent.split(" ").slice(1).join(" ")}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="space-y-1 text-xs text-gray-500 border-t pt-3">
-                    <p>📅 現地：{m.date} {m.local}</p>
-                    <p className="font-semibold text-[#BC002D]">
-                      🇯🇵 日本時間：{m.jst}
-                    </p>
-                    <p>🏟️ {m.venue}（{m.city}）</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
-          OPPONENT CARDS
-          ═══════════════════════════════════════ */}
-      <section className="bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span className="inline-block w-1.5 h-8 rounded-full bg-[#003087]" />
-            {locale === 'en' ? "Opponent Squads" : "対戦国メンバー情報"}
-          </h2>
-          <p className="text-sm text-gray-500 mb-8">
-            {locale === 'en' ? "Click a card to see squad details" : "対戦カードから詳細ページへ移動できます"}
-          </p>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {opponentCards.map((card) => (
-              <div key={card.key} className="rounded-2xl bg-white border border-gray-200 shadow-sm overflow-hidden">
-                <div className="flex">
-                  <div className="w-1.5 shrink-0" style={{ background: card.color }} />
-                  <div className="flex-1 p-5">
-                    <div className="flex items-start justify-between gap-3 mb-2">
-                      <div>
-                        <h3 className="text-lg font-bold text-gray-900">
-                          {card.flag} {card.name}
-                        </h3>
-                        <p className="text-xs text-gray-500 mt-1">📅 {card.time}</p>
-                        <p className="text-xs text-gray-500">🏟️ {card.venue}</p>
-                      </div>
-                      <span className="inline-block px-2 py-1 rounded-full text-[10px] font-bold bg-gray-100 text-gray-700">
-                        {card.badge}
-                      </span>
-                    </div>
-                    <p className="text-xs text-gray-600 mb-4">{card.footer}</p>
-                    <div className="text-right">
-                      <Link
-                        href={card.href}
-                        className="inline-flex items-center gap-1 text-sm font-bold hover:opacity-80 transition-opacity"
-                        style={{ color: card.color }}
-                      >
-                        {card.cta}
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
           FULL SQUAD
           ═══════════════════════════════════════ */}
-      <section id="squad" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <section id="squad" className="scroll-mt-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
           <span
             className="inline-block w-1.5 h-8 rounded-full"
@@ -572,35 +403,106 @@ export default function JapanPage() {
       </section>
 
       {/* ═══════════════════════════════════════
-          ABSENT PLAYERS
+          OPPONENT CARDS
           ═══════════════════════════════════════ */}
       <section className="bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span className="inline-block w-1.5 h-8 rounded-full bg-gray-400" />
-            {locale === 'en' ? "Notable Absentees" : "招集外の注目選手"}
+            <span className="inline-block w-1.5 h-8 rounded-full bg-[#003087]" />
+            {locale === 'en' ? "Opponent Squads" : "対戦国メンバー情報"}
           </h2>
           <p className="text-sm text-gray-500 mb-8">
-            {locale === 'en' ? "Players not called up this time but worth watching" : "今回の招集メンバーには選ばれなかったが注目すべき選手たち"}
+            {locale === 'en' ? "Click a card to see squad details" : "対戦カードから詳細ページへ移動できます"}
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {opponentCards.map((card) => (
+              <div key={card.key} className="rounded-2xl bg-white border border-gray-200 shadow-sm overflow-hidden">
+                <div className="flex">
+                  <div className="w-1.5 shrink-0" style={{ background: card.color }} />
+                  <div className="flex-1 p-5">
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <div>
+                        <h3 className="text-lg font-bold text-gray-900">
+                          {card.flag} {card.name}
+                        </h3>
+                        <p className="text-xs text-gray-500 mt-1">📅 {card.time}</p>
+                        <p className="text-xs text-gray-500">🏟️ {card.venue}</p>
+                      </div>
+                      <span className="inline-block px-2 py-1 rounded-full text-[10px] font-bold bg-gray-100 text-gray-700">
+                        {card.badge}
+                      </span>
+                    </div>
+                    <p className="text-xs text-gray-600 mb-4">{card.footer}</p>
+                    <div className="text-right">
+                      <Link
+                        href={card.href}
+                        className="inline-flex items-center gap-1 text-sm font-bold hover:opacity-80 transition-opacity"
+                        style={{ color: card.color }}
+                      >
+                        {card.cta}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          W杯グループステージ
+          ═══════════════════════════════════════ */}
+      <section className="bg-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+            <span
+              className="inline-block w-1.5 h-8 rounded-full"
+              style={{ background: "#003087" }}
+            />
+            {locale === 'en' ? "World Cup Group Stage Schedule" : "W杯グループステージ日程"}
+          </h2>
+          <p className="text-sm text-gray-500 mb-8">
+            {locale === 'en' ? "Group F \u2014 Netherlands, Japan, Tunisia, UEFA Playoff B Winner" : `${t.japan.groupLabel} — オランダ、日本、チュニジア、UEFAプレーオフB勝者`}
           </p>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {absentPlayers.map((p) => (
+          <div className="grid gap-4 sm:grid-cols-3">
+            {wcMatches.map((m) => (
               <div
-                key={p.name}
-                className="rounded-2xl bg-white border border-gray-200 p-5 opacity-80 hover:opacity-100 transition-opacity"
+                key={m.num}
+                className="rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-bold text-gray-800">{locale === 'en' ? p.name : p.nameJa}</h4>
-                  <span className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded">
-                    {p.position}
-                  </span>
+                <div
+                  className="px-4 py-2 text-white text-sm font-bold flex items-center justify-between"
+                  style={{ background: "#003087" }}
+                >
+                  <span>{m.label}</span>
+                  <span className="text-blue-200 text-xs">Match #{m.num}</span>
                 </div>
-                <p className="text-xs text-gray-400 mb-1">{locale === 'en' ? p.nameJa : p.name}</p>
-                <p className="text-xs text-gray-500 mb-2">🏢 {p.club}</p>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {locale === 'en' ? p.reasonEn : p.reason}
-                </p>
+                <div className="p-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="text-center flex-1">
+                      <p className="text-2xl mb-1">🇯🇵</p>
+                      <p className="text-sm font-bold text-gray-900">{locale === 'en' ? "Japan" : "日本"}</p>
+                    </div>
+                    <div className="px-4 text-center">
+                      <p className="text-xs text-gray-400 font-bold uppercase tracking-wide">VS</p>
+                    </div>
+                    <div className="text-center flex-1">
+                      <p className="text-2xl mb-1">{m.opponent.split(" ")[0]}</p>
+                      <p className="text-sm font-bold text-gray-900">
+                        {m.opponent.split(" ").slice(1).join(" ")}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="space-y-1 text-xs text-gray-500 border-t pt-3">
+                    <p>📅 現地：{m.date} {m.local}</p>
+                    <p className="font-semibold text-[#BC002D]">
+                      🇯🇵 日本時間：{m.jst}
+                    </p>
+                    <p>🏟️ {m.venue}（{m.city}）</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
