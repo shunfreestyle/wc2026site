@@ -90,11 +90,11 @@ const posColor: Record<string, string> = {
   MF: "from-emerald-500 to-emerald-600",
   FW: "from-red-500 to-rose-600",
 };
-const posBorder: Record<string, string> = {
-  GK: "border-amber-400",
-  DF: "border-blue-400",
-  MF: "border-emerald-400",
-  FW: "border-red-400",
+const posBorderColor: Record<string, string> = {
+  GK: "#fbbf24",
+  DF: "#60a5fa",
+  MF: "#34d399",
+  FW: "#f87171",
 };
 const posTextColor: Record<string, string> = {
   GK: "#d97706",
@@ -386,8 +386,8 @@ export default function JapanPage() {
               {g.players.map((p) => (
                 <div
                   key={p.name}
-                  className={`flex flex-col rounded-2xl border-l-4 ${posBorder[p.position]} bg-white border border-gray-100 transition-shadow overflow-hidden group/card`}
-                  style={{ boxShadow: posShadow[p.position] }}
+                  className="flex flex-col rounded-2xl bg-white transition-shadow overflow-hidden group/card"
+                  style={{ border: `1px solid ${posBorderColor[p.position]}`, borderLeft: `4px solid ${posBorderColor[p.position]}`, boxShadow: posShadow[p.position] }}
                   onMouseEnter={(e) => { e.currentTarget.style.boxShadow = posShadowHover[p.position]; }}
                   onMouseLeave={(e) => { e.currentTarget.style.boxShadow = posShadow[p.position]; }}
                 >
