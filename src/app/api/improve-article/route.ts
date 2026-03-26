@@ -1,9 +1,13 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
+import { verifyAdmin } from "@/lib/api-auth";
 
 export const maxDuration = 60;
 
 export async function POST(request: NextRequest) {
+  const authError = verifyAdmin(request);
+  if (authError) return authError;
+
   const { content, issues, score, factCheckWarnings, factCheckVerified } = await request.json();
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 

@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest } from "next/server";
+import { verifyAdmin } from "@/lib/api-auth";
 
 export const maxDuration = 60;
 
@@ -41,6 +42,9 @@ function parseJsonSafe(text: string, fallback: unknown = null): unknown {
 }
 
 export async function POST(request: NextRequest) {
+  const authError = verifyAdmin(request);
+  if (authError) return authError;
+
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return new Response(JSON.stringify({ error: "ANTHROPIC_API_KEY is not configured" }), {

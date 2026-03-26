@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
+import { verifyAdmin } from "@/lib/api-auth";
 
 export const maxDuration = 30;
 
@@ -28,6 +29,9 @@ const BATCHES: Record<string, { label: string; query: string }> = {
 };
 
 export async function POST(request: NextRequest) {
+  const authError = verifyAdmin(request);
+  if (authError) return authError;
+
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return NextResponse.json({ error: "ANTHROPIC_API_KEY is not configured" }, { status: 500 });

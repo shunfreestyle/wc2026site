@@ -19,6 +19,13 @@ export async function generateMetadata({
     openGraph: {
       title: article.title,
       description: article.excerpt,
+      type: "article",
+      publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt ?? article.publishedAt,
+    },
+    other: {
+      "article:published_time": article.publishedAt,
+      "article:modified_time": article.updatedAt ?? article.publishedAt,
     },
   };
 }

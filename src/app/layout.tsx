@@ -1,8 +1,8 @@
-import Script from "next/script";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CookieConsent, { ConsentScripts } from "@/components/CookieConsent";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import HtmlLangSync from "@/components/HtmlLangSync";
 import "./globals.css";
@@ -86,31 +86,15 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.png" type="image/png" sizes="512x512" />
         <link rel="apple-touch-icon" href="/apple-icon.png" sizes="180x180" />
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8002835345271569"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-CBL9ZRXVZB"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-CBL9ZRXVZB');
-          `}
-        </Script>
       </head>
       <body className="min-h-full flex flex-col bg-[#f8f9fa]">
         <LanguageProvider>
           <HtmlLangSync />
+          <ConsentScripts />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <CookieConsent />
         </LanguageProvider>
       </body>
     </html>

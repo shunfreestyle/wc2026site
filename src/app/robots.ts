@@ -8,6 +8,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: [
           "/news-research",
+          "/player-writer",
           "/api/",
           "/_next/",
         ],

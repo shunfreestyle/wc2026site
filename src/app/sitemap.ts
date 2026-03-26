@@ -51,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // 記事ページ
   const articleUrls: MetadataRoute.Sitemap = articles.map((a) => ({
     url: `${BASE}/articles/${a.slug}`,
-    lastModified: new Date(a.publishedAt),
+    lastModified: new Date(a.updatedAt ?? a.publishedAt),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
@@ -72,13 +72,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...multiLangUrls("/quiz", 0.7, "weekly"),
     ...multiLangUrls("/quiz/japan-squad", 0.7, "weekly"),
     ...multiLangUrls("/stamen", 0.7, "weekly"),
-    ...multiLangUrls("/jleague", 0.7, "daily"),
+    // /jleague は一覧ページが未実装のため除外
     ...multiLangUrls("/japan/matches", 0.8, "weekly"),
     ...multiLangUrls("/japan/opponents/scotland", 0.7, "weekly"),
     ...multiLangUrls("/japan/opponents/england", 0.7, "weekly"),
     ...multiLangUrls("/japan/uniform", 0.6, "monthly"),
     ...multiLangUrls("/about", 0.5, "monthly"),
     ...multiLangUrls("/privacy", 0.4, "monthly"),
+    ...multiLangUrls("/terms", 0.4, "monthly"),
+    ...multiLangUrls("/disclaimer", 0.4, "monthly"),
     ...multiLangUrls("/contact", 0.4, "monthly"),
     ...teamUrls,
     ...playerUrls,

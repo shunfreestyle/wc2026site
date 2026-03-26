@@ -1,8 +1,12 @@
 import { NextRequest } from "next/server";
+import { verifyAdmin } from "@/lib/api-auth";
 
 export const maxDuration = 10;
 
 export async function GET(request: NextRequest) {
+  const authError = verifyAdmin(request);
+  if (authError) return authError;
+
   const url = request.nextUrl.searchParams.get("url");
   if (!url) {
     return new Response(JSON.stringify({ error: "url required" }), {

@@ -35,6 +35,8 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/about" className="hover:text-white transition-colors">{locale === 'en' ? "About Us" : "運営者情報"}</Link></li>
               <li><Link href="/privacy" className="hover:text-white transition-colors">{locale === 'en' ? "Privacy Policy" : "プライバシーポリシー"}</Link></li>
+              <li><Link href="/terms" className="hover:text-white transition-colors">{locale === 'en' ? "Terms of Service" : "利用規約"}</Link></li>
+              <li><Link href="/disclaimer" className="hover:text-white transition-colors">{locale === 'en' ? "Disclaimer" : "免責事項"}</Link></li>
               <li><Link href="/contact" className="hover:text-white transition-colors">{locale === 'en' ? "Contact" : "お問い合わせ"}</Link></li>
             </ul>
           </div>
