@@ -489,7 +489,7 @@ export default function PlayerDetailPage() {
                 </div>
                 {(isJapanTeam ? japanSquad2026March.length > 6 : team.players.length > 6) && (
                   <Link
-                    href={isJapanTeam ? "/japan" : `/teams/${team.id}`}
+                    href={isJapanTeam ? "/japan#squad" : `/teams/${team.id}`}
                     className="block text-center text-xs font-medium text-[#E8192C] hover:underline mt-4 pt-3 border-t border-gray-100"
                   >
                     {locale === 'en' ? "View all players →" : "全選手を見る →"}
