@@ -151,7 +151,7 @@ export default function MatchesClient() {
         <div className="flex items-center gap-2 flex-wrap">
           <button
             onClick={() => setFilterOpen(!filterOpen)}
-            className="text-xs font-bold px-3 py-1.5 rounded-full hover:opacity-80 transition-opacity inline-flex items-center gap-1.5"
+            className="text-sm font-bold px-4 py-2 rounded-full hover:opacity-80 active:scale-95 transition-all inline-flex items-center gap-1.5 cursor-pointer"
             style={selectedCountries.size > 0
               ? { background: "#DBEAFE", color: "#1E40AF", border: "1px solid #93C5FD" }
               : { background: "#F3F4F6", color: "#374151", border: "1px solid #D1D5DB" }
@@ -174,7 +174,7 @@ export default function MatchesClient() {
           {selectedCountries.size > 0 && (
             <button
               onClick={clearFilter}
-              className="text-[10px] text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-[10px] text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
             >
               {locale === 'en' ? "Clear" : "リセット"}
             </button>
@@ -190,7 +190,7 @@ export default function MatchesClient() {
                   <button
                     key={c.id}
                     onClick={() => toggleCountry(c.id)}
-                    className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium transition-all ${
+                    className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold transition-all active:scale-95 cursor-pointer ${
                       active
                         ? "bg-blue-600 text-white shadow-sm"
                         : "bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200"

@@ -102,6 +102,12 @@ const posTextColor: Record<string, string> = {
   MF: "#059669",
   FW: "#dc2626",
 };
+const posBgColor: Record<string, string> = {
+  GK: "#fffbeb",
+  DF: "#eff6ff",
+  MF: "#ecfdf5",
+  FW: "#fef2f2",
+};
 
 /* ──────────────────────────────────────────────
    Page Component
@@ -374,7 +380,8 @@ export default function JapanPage() {
               {g.players.map((p) => (
                 <div
                   key={p.name}
-                  className={`flex flex-col rounded-2xl border-l-4 ${posBorder[p.position]} bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden`}
+                  className={`flex flex-col rounded-2xl border-l-4 ${posBorder[p.position]} border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden`}
+                  style={{ backgroundColor: posBgColor[p.position] }}
                 >
                   <div className="flex-1 p-5">
                     <div className="flex items-start justify-between mb-2">

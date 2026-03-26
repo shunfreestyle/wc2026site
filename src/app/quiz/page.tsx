@@ -194,7 +194,7 @@ export default function QuizPage() {
                   <button
                     key={cat.key}
                     onClick={() => handleCategorySelect(cat.key)}
-                    className="bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-2xl p-5 sm:p-6 text-left transition-all hover:scale-[1.02] group"
+                    className="bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/30 rounded-2xl p-5 sm:p-6 text-left transition-all hover:scale-[1.02] group cursor-pointer"
                   >
                     <span className="text-3xl block mb-2">{cat.flag}</span>
                     <h3 className="text-white font-bold text-sm sm:text-base mb-1 group-hover:text-blue-300 transition-colors">
@@ -225,7 +225,7 @@ export default function QuizPage() {
                   <button
                     key={i}
                     onClick={() => handleLevelSelect(i + 1)}
-                    className="w-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-400/50 rounded-xl py-4 px-6 text-left transition-all group flex items-center justify-between"
+                    className="w-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-400/50 rounded-xl py-5 px-6 text-left transition-all active:scale-[0.98] group flex items-center justify-between cursor-pointer"
                   >
                     <span className="text-white font-semibold group-hover:text-blue-300 transition-colors">{label}</span>
                     <span className="text-gray-500 text-sm">10問</span>

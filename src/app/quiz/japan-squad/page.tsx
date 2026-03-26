@@ -201,7 +201,7 @@ export default function JapanSquadQuizPage() {
                     <button
                       key={level}
                       onClick={() => handleLevelSelect(level)}
-                      className={`w-full bg-gradient-to-r ${info.color} hover:opacity-90 text-white font-bold py-4 px-6 rounded-xl text-lg shadow-lg transition-all hover:scale-105`}
+                      className={`w-full bg-gradient-to-r ${info.color} hover:opacity-90 text-white font-bold py-5 px-6 rounded-xl text-lg shadow-lg transition-all active:scale-95`}
                     >
                       {info.label}
                     </button>
