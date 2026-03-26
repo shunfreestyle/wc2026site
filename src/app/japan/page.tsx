@@ -102,11 +102,17 @@ const posTextColor: Record<string, string> = {
   MF: "#059669",
   FW: "#dc2626",
 };
-const posBgColor: Record<string, string> = {
-  GK: "#fffbeb",
-  DF: "#eff6ff",
-  MF: "#ecfdf5",
-  FW: "#fef2f2",
+const posShadow: Record<string, string> = {
+  GK: "0 2px 8px rgba(217,119,6,0.15)",
+  DF: "0 2px 8px rgba(37,99,235,0.15)",
+  MF: "0 2px 8px rgba(5,150,105,0.15)",
+  FW: "0 2px 8px rgba(220,38,38,0.15)",
+};
+const posShadowHover: Record<string, string> = {
+  GK: "0 4px 16px rgba(217,119,6,0.25)",
+  DF: "0 4px 16px rgba(37,99,235,0.25)",
+  MF: "0 4px 16px rgba(5,150,105,0.25)",
+  FW: "0 4px 16px rgba(220,38,38,0.25)",
 };
 
 /* ──────────────────────────────────────────────
@@ -380,8 +386,10 @@ export default function JapanPage() {
               {g.players.map((p) => (
                 <div
                   key={p.name}
-                  className={`flex flex-col rounded-2xl border-l-4 ${posBorder[p.position]} border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden`}
-                  style={{ backgroundColor: posBgColor[p.position] }}
+                  className={`flex flex-col rounded-2xl border-l-4 ${posBorder[p.position]} bg-white border border-gray-100 transition-shadow overflow-hidden group/card`}
+                  style={{ boxShadow: posShadow[p.position] }}
+                  onMouseEnter={(e) => { e.currentTarget.style.boxShadow = posShadowHover[p.position]; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.boxShadow = posShadow[p.position]; }}
                 >
                   <div className="flex-1 p-5">
                     <div className="flex items-start justify-between mb-2">
