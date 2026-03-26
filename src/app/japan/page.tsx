@@ -142,8 +142,41 @@ export default function JapanPage() {
       href: "/japan/opponents/england", cta: "イングランド詳細 →" },
   ];
 
+  const sportsTeamJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SportsTeam",
+    name: "Japan National Football Team",
+    alternateName: "サムライブルー",
+    sport: "Football",
+    coach: {
+      "@type": "Person",
+      name: "Hajime Moriyasu",
+      alternateName: "森保一",
+    },
+    memberOf: {
+      "@type": "SportsOrganization",
+      name: "FIFA",
+    },
+    url: "https://www.jfa.jp/samuraiblue/",
+    sameAs: [
+      "https://en.wikipedia.org/wiki/Japan_national_football_team",
+      "https://www.jfa.jp/samuraiblue/",
+    ],
+    athlete: japanSquad2026March.slice(0, 10).map((p) => ({
+      "@type": "Person",
+      name: p.name,
+      alternateName: p.nameJa,
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* JSON-LD 構造化データ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(sportsTeamJsonLd) }}
+      />
+
       {/* ═══════════════════════════════════════
           HERO
           ═══════════════════════════════════════ */}
@@ -385,12 +418,13 @@ export default function JapanPage() {
                       {p.description}
                     </p>
                     {p.id && (
-                      <div className="mt-3">
+                      <div className="mt-4 pt-3 border-t border-gray-100">
                         <Link
                           href={`/players/${p.id}`}
-                          className="text-xs text-[#003087] hover:text-[#BC002D] font-medium underline underline-offset-2 transition-colors"
+                          className="flex items-center justify-center gap-1.5 w-full px-4 py-2.5 rounded-xl bg-[#003087]/5 text-[#003087] text-xs sm:text-sm font-bold hover:bg-[#003087]/15 active:bg-[#003087]/20 transition-colors"
                         >
-                          {locale === 'en' ? "Player details \u2192" : "選手詳細ページへ →"}
+                          {locale === 'en' ? "Player details" : "選手詳細ページへ"}
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
                         </Link>
                       </div>
                     )}
