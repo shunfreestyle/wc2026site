@@ -138,7 +138,7 @@ export default function UniformPage() {
                   const el = document.getElementById(`team-${team.id}`);
                   if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
-                className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-bold text-gray-700 hover:text-white transition-all shadow-sm"
+                className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-bold text-gray-700 hover:text-white transition-all shadow-sm cursor-pointer"
                 style={{
                   ["--hover-bg" as string]: team.themeColor,
                 }}

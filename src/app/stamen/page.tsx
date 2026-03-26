@@ -277,7 +277,7 @@ function PlayerModal({
   const others = squad.filter((p) => !matchPos.includes(p.pos));
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-end justify-center cursor-pointer" onClick={onClose}>
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
       <div
         className="relative w-full max-w-[480px] bg-[#1a1a2e] border-t border-white/20 rounded-t-3xl max-h-[65vh] overflow-y-auto animate-slide-up"

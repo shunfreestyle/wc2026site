@@ -3,6 +3,7 @@ import Link from "next/link";
 import { STADIUMS, getStadiumById } from "@/data/stadiums";
 import { matches } from "@/data/matches";
 import type { Metadata } from "next";
+import StadiumMatchList from "./StadiumMatchList";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -123,28 +124,7 @@ export default async function StadiumPage({ params }: Props) {
 
         {/* Matches at this venue */}
         {stadiumMatches.length > 0 && (
-          <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
-            <h2 className="font-bold text-gray-900 mb-4">
-              この会場の試合一覧
-              <span className="text-xs font-normal text-gray-400 ml-2">{stadiumMatches.length}試合</span>
-            </h2>
-            <div className="space-y-2">
-              {stadiumMatches.slice(0, 10).map((m) => (
-                <div key={m.id} className="flex items-center justify-between text-sm py-2 border-b border-gray-50 last:border-0">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-400 w-16 shrink-0">{m.date.slice(5)}</span>
-                    <span className="text-gray-700">
-                      {m.homeLabel || m.homeTeamId} vs {m.awayLabel || m.awayTeamId}
-                    </span>
-                  </div>
-                  <span className="text-xs text-gray-400">{m.stage}</span>
-                </div>
-              ))}
-              {stadiumMatches.length > 10 && (
-                <p className="text-xs text-gray-400 text-center pt-2">他 {stadiumMatches.length - 10} 試合</p>
-              )}
-            </div>
-          </div>
+          <StadiumMatchList matches={stadiumMatches} />
         )}
 
         {/* Back link */}

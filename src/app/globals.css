@@ -28,6 +28,12 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
+button,
+[role="button"],
+summary {
+  cursor: pointer;
+}
+
 /* Custom utilities */
 .line-clamp-2 {
   display: -webkit-box;

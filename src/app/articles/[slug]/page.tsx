@@ -37,8 +37,70 @@ export default function ArticleDetailPage() {
 
   const t = (ja: string, en: string) => (locale === "en" ? en : ja);
 
+  const displayTitle = locale === "en" && article.titleEn ? article.titleEn : article.title;
+  const displayExcerpt = locale === "en" && article.excerptEn ? article.excerptEn : article.excerpt;
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: displayTitle,
+    description: displayExcerpt,
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt ?? article.publishedAt,
+    author: {
+      "@type": "Organization",
+      name: "SAMURAI FOOTBALL",
+      url: "https://samurai-football.jp",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "SAMURAI FOOTBALL",
+      url: "https://samurai-football.jp",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://samurai-football.jp/articles/${article.slug}`,
+    },
+    keywords: article.tags.join(", "),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "ホーム",
+        item: "https://samurai-football.jp",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: t("記事一覧", "Articles"),
+        item: "https://samurai-football.jp/articles",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: article.title,
+        item: `https://samurai-football.jp/articles/${article.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="article-page">
+      {/* JSON-LD 構造化データ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
       <div style={{ marginBottom: "1.5rem" }}>
         <Link
           href="/articles"
@@ -52,27 +114,44 @@ export default function ArticleDetailPage() {
         {locale === "en" ? (categoryLabelEn[article.category] ?? article.category) : article.category}
       </span>
 
-      <h1 className="article-title">{article.title}</h1>
+      <h1 className="article-title">{locale === "en" && article.titleEn ? article.titleEn : article.title}</h1>
 
       <div className="article-meta">
-        <span className="date">{article.publishedAt}</span>
-        {article.tags.map((tag) => (
+        <span className="date">
+          {t("公開", "Published")}: {article.publishedAt}
+        </span>
+        {article.updatedAt && article.updatedAt !== article.publishedAt && (
+          <span className="date">
+            {t("更新", "Updated")}: {article.updatedAt}
+          </span>
+        )}
+        {(locale === "en" && article.tagsEn ? article.tagsEn : article.tags).map((tag) => (
           <span key={tag} className="article-tag">
             {tag}
           </span>
         ))}
       </div>
 
-      <div className="article-lead">{article.excerpt}</div>
+      <div className="article-lead">{locale === "en" && article.excerptEn ? article.excerptEn : article.excerpt}</div>
 
-      <ArticleBody content={article.content} />
+      <ArticleBody content={locale === "en" && article.contentEn ? article.contentEn : article.content} />
 
-      <p className="article-source">
-        {t(
-          "出典: JFA公式サイト、各クラブ公式サイト、Transfermarkt",
-          "Sources: JFA Official, Club Official Sites, Transfermarkt"
+      <div className="article-source">
+        <span>{t("出典", "Sources")}:</span>
+        {article.sources && article.sources.length > 0 ? (
+          <ul className="source-list">
+            {article.sources.map((src) => (
+              <li key={src.url}>
+                <a href={src.url} target="_blank" rel="noopener noreferrer">
+                  {src.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <span> JFA公式サイト、各クラブ公式サイト、Transfermarkt</span>
         )}
-      </p>
+      </div>
 
       <div style={{ marginTop: "2rem", textAlign: "center" }}>
         <Link

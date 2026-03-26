@@ -48,8 +48,11 @@ export default function ArticlesPage() {
       list = list.filter(
         (a) =>
           a.title.toLowerCase().includes(q) ||
+          (a.titleEn?.toLowerCase().includes(q)) ||
           a.tags.some((t) => t.toLowerCase().includes(q)) ||
-          a.excerpt.toLowerCase().includes(q)
+          (a.tagsEn?.some((t) => t.toLowerCase().includes(q))) ||
+          a.excerpt.toLowerCase().includes(q) ||
+          (a.excerptEn?.toLowerCase().includes(q))
       );
     }
 
@@ -102,7 +105,7 @@ export default function ArticlesPage() {
             <button
               key={cat}
               onClick={() => setTab(cat)}
-              className="px-4 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap"
+              className="px-4 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap cursor-pointer"
               style={
                 tab === cat
                   ? { background: "#0A1A3C", color: "#fff" }
@@ -151,11 +154,13 @@ export default function ArticlesPage() {
                 )}
               </div>
               <h2 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors leading-snug mb-2">
-                {article.title}
+                {locale === "en" && article.titleEn ? article.titleEn : article.title}
               </h2>
-              <p className="text-sm text-gray-500 leading-relaxed line-clamp-2">{article.excerpt}</p>
+              <p className="text-sm text-gray-500 leading-relaxed line-clamp-2">
+                {locale === "en" && article.excerptEn ? article.excerptEn : article.excerpt}
+              </p>
               <div className="flex flex-wrap gap-1.5 mt-3">
-                {article.tags.slice(0, 5).map((tag) => (
+                {(locale === "en" && article.tagsEn ? article.tagsEn : article.tags).slice(0, 5).map((tag) => (
                   <span key={tag} className="text-[10px] text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full">
                     #{tag}
                   </span>

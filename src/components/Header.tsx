@@ -68,7 +68,7 @@ export default function Header() {
             <div ref={langRef} className="relative ml-3 border-l border-white/20 pl-3">
               <button
                 onClick={() => setLangOpen((v) => !v)}
-                className="flex items-center gap-1 px-2 py-1 rounded text-xs font-bold hover:bg-white/10 transition-colors"
+                className="flex items-center gap-1 px-2 py-1 rounded text-xs font-bold hover:bg-white/10 transition-colors cursor-pointer"
               >
                 <span>{currentLang?.flag}</span>
                 <span>{currentLang?.label}</span>
@@ -80,7 +80,7 @@ export default function Header() {
                     <button
                       key={code}
                       onClick={() => { setLocale(code); setLangOpen(false); }}
-                      className={`flex items-center gap-2 w-full px-3 py-1.5 text-xs hover:bg-gray-50 transition-colors ${
+                      className={`flex items-center gap-2 w-full px-3 py-1.5 text-xs hover:bg-gray-50 transition-colors cursor-pointer ${
                         locale === code ? "font-semibold text-[#003087]" : "text-gray-700"
                       }`}
                     >
@@ -96,7 +96,7 @@ export default function Header() {
           {/* Hamburger button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded-lg hover:bg-white/10 transition-colors"
+            className="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
             aria-label="メニュー"
           >
             <span className={`block w-5 h-0.5 bg-white transition-all ${menuOpen ? "rotate-45 translate-y-1.5" : ""}`} />
@@ -126,7 +126,7 @@ export default function Header() {
                 <button
                   key={code}
                   onClick={() => { setLocale(code); setMenuOpen(false); }}
-                  className={`px-2 py-1.5 rounded text-xs font-bold transition-all ${
+                  className={`px-2 py-1.5 rounded text-xs font-bold transition-all cursor-pointer ${
                     locale === code
                       ? "bg-white/20 text-white"
                       : "text-white/50 hover:text-white hover:bg-white/10"

@@ -14,39 +14,39 @@ export default function Home() {
   const upcomingMatches = matches.slice(0, 4);
 
   const hostCities = locale === 'en' ? [
-    { city: "New York/NJ",    country: "🇺🇸", venue: "MetLife Stadium" },
-    { city: "Los Angeles",    country: "🇺🇸", venue: "SoFi Stadium" },
-    { city: "Dallas",         country: "🇺🇸", venue: "AT&T Stadium" },
-    { city: "Miami",          country: "🇺🇸", venue: "Hard Rock Stadium" },
-    { city: "Atlanta",        country: "🇺🇸", venue: "Mercedes-Benz Stadium" },
-    { city: "Houston",        country: "🇺🇸", venue: "NRG Stadium" },
-    { city: "Philadelphia",   country: "🇺🇸", venue: "Lincoln Financial Field" },
-    { city: "Seattle",        country: "🇺🇸", venue: "Lumen Field" },
-    { city: "San Francisco",  country: "🇺🇸", venue: "Levi's Stadium" },
-    { city: "Kansas City",    country: "🇺🇸", venue: "Arrowhead Stadium" },
-    { city: "Boston",         country: "🇺🇸", venue: "Gillette Stadium" },
-    { city: "Mexico City",    country: "🇲🇽", venue: "Estadio Azteca" },
-    { city: "Guadalajara",    country: "🇲🇽", venue: "Estadio Akron" },
-    { city: "Monterrey",      country: "🇲🇽", venue: "Estadio BBVA" },
-    { city: "Vancouver",      country: "🇨🇦", venue: "BC Place" },
-    { city: "Toronto",        country: "🇨🇦", venue: "BMO Field" },
+    { city: "New York/NJ",    country: "🇺🇸", venue: "MetLife Stadium",          id: "metlife" },
+    { city: "Los Angeles",    country: "🇺🇸", venue: "SoFi Stadium",             id: "sofi" },
+    { city: "Dallas",         country: "🇺🇸", venue: "AT&T Stadium",             id: "att" },
+    { city: "Miami",          country: "🇺🇸", venue: "Hard Rock Stadium",        id: "hardrock" },
+    { city: "Atlanta",        country: "🇺🇸", venue: "Mercedes-Benz Stadium",    id: "mercedes" },
+    { city: "Houston",        country: "🇺🇸", venue: "NRG Stadium",              id: "nrg" },
+    { city: "Philadelphia",   country: "🇺🇸", venue: "Lincoln Financial Field",  id: "lincoln" },
+    { city: "Seattle",        country: "🇺🇸", venue: "Lumen Field",              id: "lumen" },
+    { city: "San Francisco",  country: "🇺🇸", venue: "Levi's Stadium",           id: "levis" },
+    { city: "Kansas City",    country: "🇺🇸", venue: "Arrowhead Stadium",        id: "arrowhead" },
+    { city: "Boston",         country: "🇺🇸", venue: "Gillette Stadium",         id: "gillette" },
+    { city: "Mexico City",    country: "🇲🇽", venue: "Estadio Azteca",           id: "azteca" },
+    { city: "Guadalajara",    country: "🇲🇽", venue: "Estadio Akron",            id: "akron" },
+    { city: "Monterrey",      country: "🇲🇽", venue: "Estadio BBVA",             id: "bbva" },
+    { city: "Vancouver",      country: "🇨🇦", venue: "BC Place",                 id: "bc" },
+    { city: "Toronto",        country: "🇨🇦", venue: "BMO Field",                id: "bmo" },
   ] : [
-    { city: "ニューヨーク", country: "🇺🇸", venue: "メットライフ・スタジアム" },
-    { city: "ロサンゼルス", country: "🇺🇸", venue: "ソフィ・スタジアム" },
-    { city: "ダラス", country: "🇺🇸", venue: "AT&Tスタジアム" },
-    { city: "マイアミ", country: "🇺🇸", venue: "ハード・ロック・スタジアム" },
-    { city: "アトランタ", country: "🇺🇸", venue: "メルセデス・ベンツ・スタジアム" },
-    { city: "ヒューストン", country: "🇺🇸", venue: "NRGスタジアム" },
-    { city: "フィラデルフィア", country: "🇺🇸", venue: "リンカーン・ファイナンシャル" },
-    { city: "シアトル", country: "🇺🇸", venue: "ルーメン・フィールド" },
-    { city: "サンフランシスコ", country: "🇺🇸", venue: "リーバイス・スタジアム" },
-    { city: "カンザスシティ", country: "🇺🇸", venue: "アロウヘッド・スタジアム" },
-    { city: "ボストン", country: "🇺🇸", venue: "ジレット・スタジアム" },
-    { city: "メキシコシティ", country: "🇲🇽", venue: "アステカ・スタジアム" },
-    { city: "グアダラハラ", country: "🇲🇽", venue: "アクロン・スタジアム" },
-    { city: "モンテレイ", country: "🇲🇽", venue: "BBVAスタジアム" },
-    { city: "バンクーバー", country: "🇨🇦", venue: "BCプレイス" },
-    { city: "トロント", country: "🇨🇦", venue: "BMOフィールド" },
+    { city: "ニューヨーク", country: "🇺🇸", venue: "メットライフ・スタジアム",       id: "metlife" },
+    { city: "ロサンゼルス", country: "🇺🇸", venue: "ソフィ・スタジアム",             id: "sofi" },
+    { city: "ダラス", country: "🇺🇸", venue: "AT&Tスタジアム",                     id: "att" },
+    { city: "マイアミ", country: "🇺🇸", venue: "ハード・ロック・スタジアム",         id: "hardrock" },
+    { city: "アトランタ", country: "🇺🇸", venue: "メルセデス・ベンツ・スタジアム",   id: "mercedes" },
+    { city: "ヒューストン", country: "🇺🇸", venue: "NRGスタジアム",                 id: "nrg" },
+    { city: "フィラデルフィア", country: "🇺🇸", venue: "リンカーン・ファイナンシャル", id: "lincoln" },
+    { city: "シアトル", country: "🇺🇸", venue: "ルーメン・フィールド",               id: "lumen" },
+    { city: "サンフランシスコ", country: "🇺🇸", venue: "リーバイス・スタジアム",     id: "levis" },
+    { city: "カンザスシティ", country: "🇺🇸", venue: "アロウヘッド・スタジアム",     id: "arrowhead" },
+    { city: "ボストン", country: "🇺🇸", venue: "ジレット・スタジアム",               id: "gillette" },
+    { city: "メキシコシティ", country: "🇲🇽", venue: "アステカ・スタジアム",         id: "azteca" },
+    { city: "グアダラハラ", country: "🇲🇽", venue: "アクロン・スタジアム",           id: "akron" },
+    { city: "モンテレイ", country: "🇲🇽", venue: "BBVAスタジアム",                  id: "bbva" },
+    { city: "バンクーバー", country: "🇨🇦", venue: "BCプレイス",                    id: "bc" },
+    { city: "トロント", country: "🇨🇦", venue: "BMOフィールド",                    id: "bmo" },
   ];
 
   return (
@@ -198,14 +198,15 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {hostCities.map((item) => (
-              <div
+              <Link
                 key={item.city}
-                className="bg-white/5 backdrop-blur rounded-xl p-4 hover:bg-white/10 transition-colors"
+                href={`/stadiums/${item.id}`}
+                className="bg-white/5 backdrop-blur rounded-xl p-4 hover:bg-white/10 transition-colors block"
               >
                 <span className="text-lg">{item.country}</span>
                 <p className="font-semibold text-white mt-1">{item.city}</p>
                 <p className="text-xs text-gray-300 mt-0.5">{item.venue}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
