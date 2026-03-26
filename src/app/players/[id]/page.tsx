@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { getAllPlayers, getPlayerById } from "@/data/teams";
+import { getAllPlayers, getPlayerById, type Player } from "@/data/teams";
 import { japanSquad2026March } from "@/data/japan-squad";
 import PlayerAvatar from "@/components/PlayerAvatar";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -48,7 +48,27 @@ export default function PlayerDetailPage() {
   const isJapanSquad = !!japanSquadPlayer;
 
   // Find teammates (same team, different player)
-  const teammates = team.players.filter((p) => p.id !== player.id).slice(0, 5);
+  // For Japan team players, always show from the current March 2026 call-up
+  const isJapanTeam = team.id === "japan";
+  const currentPosition = japanSquadPlayer?.position ?? player.position;
+  const teammates = isJapanTeam
+    ? japanSquad2026March
+        .filter((p) => p.id !== id && p.position === currentPosition)
+        .slice(0, 5)
+        .map((p) => ({
+          id: p.id!,
+          name: p.name,
+          nameJa: p.nameJa,
+          number: 0,
+          position: p.position,
+          club: p.club,
+          birthDate: p.birthDate,
+          age: p.age,
+          caps: 0,
+          goals: 0,
+          height: p.height,
+        } as Player))
+    : team.players.filter((p) => p.id !== player.id).slice(0, 5);
 
   const playerDisplayName = locale === 'en' ? player.name : player.nameJa;
   const teamDisplayName = getTeamName(team, locale);
@@ -265,6 +285,30 @@ export default function PlayerDetailPage() {
               </section>
             )}
 
+            {/* Japan Squad Career History */}
+            {japanSquadPlayer?.careerHistory && (
+              <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <span className="w-1 h-5 bg-[#E8192C] rounded-full" />
+                  {locale === 'en' ? "Career" : "これまでの経歴"}
+                </h2>
+                <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
+                  {japanSquadPlayer.careerHistory}
+                </p>
+              </section>
+            )}
+
+            {/* Japan Squad Opponent Connection */}
+            {japanSquadPlayer?.opponentConnection && (
+              <section className="bg-gradient-to-br from-blue-50 to-white rounded-xl shadow-sm border border-blue-100 p-6">
+                <h2 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+                  <span className="text-lg">🏴󠁧󠁢󠁳󠁣󠁴󠁿🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+                  {locale === 'en' ? "Opponent Connection" : "対戦相手との接点"}
+                </h2>
+                <p className="text-sm text-gray-700 leading-relaxed">{japanSquadPlayer.opponentConnection}</p>
+              </section>
+            )}
+
             {/* SEO Keywords */}
             {player.seoKeywords && player.seoKeywords.length > 0 && (
               <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
@@ -395,7 +439,10 @@ export default function PlayerDetailPage() {
             {teammates.length > 0 && (
               <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                 <h3 className="text-sm font-bold text-gray-900 mb-4">
-                  {locale === 'en' ? "Teammates" : "チームメイト"}
+                  {isJapanTeam
+                    ? (locale === 'en' ? "Same Position" : "同ポジションの選手")
+                    : (locale === 'en' ? "Teammates" : "チームメイト")
+                  }
                 </h3>
                 <div className="space-y-3">
                   {teammates.map((mate) => (
@@ -409,14 +456,14 @@ export default function PlayerDetailPage() {
                         <p className="text-sm font-medium text-gray-900 truncate">
                           {locale === 'en' ? mate.name : mate.nameJa}
                         </p>
-                        <p className="text-xs text-gray-500">#{mate.number} {mate.position}</p>
+                        <p className="text-xs text-gray-500">{mate.number > 0 ? `#${mate.number} ` : ""}{mate.position}{isJapanTeam && mate.club ? ` · ${mate.club}` : ""}</p>
                       </div>
                     </Link>
                   ))}
                 </div>
-                {team.players.length > 6 && (
+                {(isJapanTeam ? japanSquad2026March.length > 6 : team.players.length > 6) && (
                   <Link
-                    href={`/teams/${team.id}`}
+                    href={isJapanTeam ? "/japan" : `/teams/${team.id}`}
                     className="block text-center text-xs font-medium text-[#E8192C] hover:underline mt-4 pt-3 border-t border-gray-100"
                   >
                     {locale === 'en' ? "View all players →" : "全選手を見る →"}
