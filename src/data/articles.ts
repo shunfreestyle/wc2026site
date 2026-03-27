@@ -107,6 +107,73 @@ export const articles: Article[] = [
   <div class="summary-label">SUMMARY</div>
   <p>静岡県浜松市出身の<strong>後藤啓介</strong>は、<strong>ジュビロ磐田</strong>で高原直泰の最年少得点記録を塗り替え、J2で33試合7得点を記録した191cmの大型ストライカーだ。2023年に<strong>アンデルレヒト</strong>へ渡り、セカンドチームで下積みを重ねた後、2025-26シーズンは<strong>シント・トロイデン</strong>で10得点5アシストと飛躍。20歳にして「高さ・速さ・技術」を兼ね備えた規格外のCFとして、2026年W杯の26人枠に食い込む可能性を持つ。日本代表には稀有な大型FWの存在は、戦術的なオプションとして計り知れない価値がある。</p>
 </div>`,
+    contentEn: `191cm — hearing this number, you might picture a post-up player. Perhaps a target man who specializes in aerial duels but lacks technical skill on the ground. Keisuke Goto defies all such preconceptions. In addition to his height, he possesses speed and a "delicate first touch you wouldn't expect from someone 191cm tall." The "outlier striker" that Japanese football has long yearned for is steadily sharpening his fangs on Belgian soil.
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>Name</th><td>Keisuke Goto</td></tr>
+    <tr><th>Date of Birth</th><td>June 3, 2005 (Age 20)</td></tr>
+    <tr><th>Birthplace</th><td>Hamamatsu, Shizuoka, Japan</td></tr>
+    <tr><th>Height/Weight</th><td>191cm / 82kg</td></tr>
+    <tr><th>Position</th><td>FW (CF)</td></tr>
+    <tr><th>Current Club</th><td>Sint-Truiden (Belgian First Division / on loan from Anderlecht)</td></tr>
+    <tr><th>International Career</th><td>Japan National Team - 2 caps (2025-)</td></tr>
+  </tbody>
+</table>
+
+## Jubilo Iwata — "The Greatest Talent Since Takahara"
+
+Raised in Hamamatsu, Shizuoka, Goto progressed smoothly from Jubilo Iwata U-15 to U-18. In July 2022, he made his first-team debut in the Emperor's Cup fourth round against Tokyo Verdy.
+
+Then came February 18, 2023 — the J2 League opening match against Fagiano Okayama. Goto scored twice to record his first professional goals. His J.League goal at 17 years and 260 days shattered Jubilo Iwata's club record for youngest scorer — a record held by Naohiro Takahara for 25 years. He went on to record 7 goals in 33 J2 matches, contributing to the team's promotion to J1. It was inevitable that the youngster dubbed "the greatest talent since Takahara" would earn his ticket to Belgium.
+
+## Forging a "European-Standard CF" in Belgium
+
+In November 2023, Belgian giants RSC Anderlecht acquired Goto on loan. He first gained experience with the second team (Challenger Pro League), recording approximately 13 goals in 30 matches over two seasons. In January 2025, he debuted with the first team in the Belgian First Division, scoring his first goal against KV Mechelen. He also found the net in the Europa League.
+
+In December 2024, Anderlecht confirmed his permanent transfer for approximately 1.1 million euros. In August 2025, seeking more playing time, he moved on loan to Sint-Truiden. Playing as a regular in the Belgian First Division for a full season, he recorded 10 goals and 5 assists as of March 2026.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">"A 191cm Technician" — The Outlier CF Japan Has Been Waiting For</span>
+<p class="point-body">Keisuke Goto's greatest weapon is his exceptionally refined technique despite being a 191cm striker. Beyond his heading ability, he leaves defenders behind with his speed and the quality of his first touch in ground duels. While he has spoken about studying Jay Bothroyd's heading technique during his <strong>Jubilo Iwata</strong> days, his determination to "not become a typical target man" has underpinned his multifaceted development.</p>
+</div>
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">10 Goals in the Belgian First Division at Age 20 — A Rapid Growth Curve</span>
+<p class="point-body">10 goals and 5 assists in his first loan season at <strong>Sint-Truiden</strong> is a remarkable achievement for a 20-year-old striker. The gradual adaptation process — building his foundation with <strong>Anderlecht's</strong> second team before stepping up to the first division — has paid dividends. He has adapted to the intensity of European physical contact, improving his aerial duel win rate while maintaining his inherent speed. This combination of "height + speed + technique" will be an unknown threat to opposing defenders at the World Cup.</p>
+</div>
+
+## Japan National Team — A World Cup Wildcard
+
+In November 2025, Goto received his first senior call-up and debut in the Kirin Challenge Cup match against Ghana. He was also selected among the 28-man squad for the March 2026 UK tour, with the door to the World Cup squad clearly opening.
+
+Within the Japan national team's forward corps where Ayase Ueda reigns as the ace, Goto can provide a "different option." His overwhelming strength in aerial duels, ability to hold up play and create opportunities, and precision heading from crosses — as a different type of CF from Ueda, he could become a game-changing wildcard.
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">Can He Break Into the 26-Man World Cup Squad? — "Height" as a Tactical Weapon</span>
+<p class="point-body">Japan's national team lacks a 191cm CF. If <strong>Keisuke Goto</strong> makes the 26-man squad, it opens up the option of deploying him for power play when trailing late in matches. In a short tournament like the World Cup, the tactical value of having a "different type of forward" on the bench is immense. The <strong>Jubilo</strong>-bred forward following in the footsteps of Naohiro Takahara has the potential to write a new page in Japan's World Cup history.</p>
+</div>
+
+## Career History
+
+<table class="schedule-table">
+  <thead>
+    <tr><th>Period</th><th>Club</th><th>League</th><th>Apps</th><th>Goals</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>2022-23</td><td>Jubilo Iwata</td><td>J2 League</td><td>33</td><td>7</td></tr>
+    <tr><td>2023-25</td><td>Anderlecht (B Team & First Team)</td><td>Belgium</td><td>40</td><td>16</td></tr>
+    <tr><td>2025-26</td><td>Sint-Truiden</td><td>Belgian First Division</td><td>25</td><td>10</td></tr>
+  </tbody>
+</table>
+
+<div class="summary-card">
+  <div class="summary-label">SUMMARY</div>
+  <p>Born in Hamamatsu, Shizuoka, <strong>Keisuke Goto</strong> is a 191cm striker who broke Naohiro Takahara's youngest scorer record at <strong>Jubilo Iwata</strong>, recording 7 goals in 33 J2 matches. After moving to <strong>Anderlecht</strong> in 2023 and building his foundation with the second team, he flourished with 10 goals and 5 assists at <strong>Sint-Truiden</strong> in the 2025-26 season. At just 20, this outlier CF who combines "height, speed, and technique" has a real chance of breaking into the 26-man squad for the 2026 World Cup. The presence of a rare tall forward in the Japan squad offers immeasurable tactical value.</p>
+</div>`,
   },
   {
     id: "1774602001002",
@@ -193,6 +260,75 @@ export const articles: Article[] = [
 <div class="summary-card">
   <div class="summary-label">SUMMARY</div>
   <p>神奈川県横須賀市出身の<strong>伊東純也</strong>は、<strong>甲府</strong>、<strong>柏レイソル</strong>を経てベルギー・フランスで活躍する日本代表の右ウイングだ。時速33km超のスプリントと正確なクロスを武器に、<strong>リーグアン</strong>ではチャンスクリエイト数1位を記録。<strong>カタールW杯</strong>ではスペイン戦の歴史的勝利に貢献した。2024年のアジアカップでの試練を乗り越え、古巣<strong>ゲンク</strong>で背番号10を背負い再起。33歳で迎える2026年北中米W杯は、キャリア集大成の舞台となる。三笘薫と並ぶ日本代表の両翼として、世界を驚かせるスプリントを再び見せる。</p>
+</div>`,
+    contentEn: `Over 33 km/h -- Junya Ito's top speed ranks among the best even when compared to wingers in Europe's top five leagues. A direct sprint that tears apart the right flank, followed by a precise cross. Throughout his decade-long professional career, Ito never once lost this weapon. Not even during his most trying times.
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>Name</th><td>Junya Ito</td></tr>
+    <tr><th>Date of Birth</th><td>March 9, 1993 (Age 33)</td></tr>
+    <tr><th>Birthplace</th><td>Yokosuka, Kanagawa, Japan</td></tr>
+    <tr><th>Height/Weight</th><td>176cm / 68kg</td></tr>
+    <tr><th>Position</th><td>MF/FW (Right Winger / Wing-Back)</td></tr>
+    <tr><th>Current Club</th><td>KRC Genk (Belgian Pro League)</td></tr>
+    <tr><th>International Career</th><td>Japan National Team - 55+ caps, 12+ goals (2018-)</td></tr>
+  </tbody>
+</table>
+
+## From Kofu to Kashiwa -- A Late Bloomer Finds His Stride
+
+Junya Ito's professional career did not begin with fanfare. After graduating from Kanagawa University, he joined Ventforet Kofu in 2015. His record of 27 matches and 2 goals in J1 was far from eye-catching. But everything changed when he transferred to Kashiwa Reysol the following year.
+
+At Kashiwa, he established himself as the right-side regular, recording 95 J1 matches and 15 goals. In 2018, he was named to the J.League Best Eleven. His playing style of bursting down the right flank and delivering crosses was already approaching its finished form during this period.
+
+## European Challenge -- Genk, Reims, and Back to Genk
+
+In the summer of 2019, he transferred to Belgian First Division side KRC Genk. After recording 10 goals in 65 league matches, he stepped up to Stade de Reims in France's Ligue 1 in 2022.
+
+At Reims, he performed as a key player in the 2022-23 season. In the 2024-25 season, he made 34 appearances and recorded a league-best 83 chances created, demonstrating overwhelming attacking thrust. However, the team finished 16th and was relegated after losing the playoff. In August 2025, Ito returned to his former club Genk for approximately 2.8 million euros. The veteran, entrusted with the number 10 shirt, has scored 4 goals in the 2025-26 season while preparing for the World Cup.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">Over 33 km/h -- Europe's Elite "Vertical Thrust"</span>
+<p class="point-body">Junya Ito's greatest weapon is his overwhelming sprint power from the right side. He blows past the opposing left-back on the outside and delivers high-precision crosses. As demonstrated by his record of most chances created in <strong>Ligue 1</strong>, he is not merely a speed merchant but combines "pace + accuracy." Even at 33, his speed remains intact, making him the biggest threat to opposing left-backs at the World Cup.</p>
+</div>
+
+## Japan National Team -- Overcoming Adversity
+
+In October 2018, he made his senior debut against Costa Rica. Since then, he established himself as a right-side regular. At the 2022 Qatar World Cup, he appeared in all 3 group stage matches. In the Spain match in particular, his cross set up <strong>Ritsu Doan's</strong> equalizer and he was instrumental in the attack leading to Ao Tanaka's winning goal, becoming a key figure in the historic victory.
+
+At the 2024 Asian Cup in January, he faced the difficulty of leaving the squad mid-tournament due to a tabloid report. However, after receiving a non-prosecution disposition, he returned to the national team for the World Cup Asian Final Qualifying Round in September 2024. The mental fortitude to overcome adversity demonstrates the true value of the 33-year-old veteran.
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">The Decisive Contribution at the Qatar World Cup -- The Cross Against Spain</span>
+<p class="point-body">In the <strong>Qatar World Cup</strong> match against Spain, right after the start of the second half, Ito's cross from the right flank set up <strong>Ritsu Doan's</strong> equalizing goal. He was also the catalyst for the attack that led to Ao Tanaka's winning goal, underpinning Japan's historic victory. He also changed the flow of the Germany match with his sprints after coming on as a substitute, remaining a right-side threat throughout the tournament. His experience of delivering results on the World Cup stage will bring stability to the team at the North America tournament.</p>
+</div>
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">A 33-Year-Old's Last Chance -- The Culmination of a Career</span>
+<p class="point-body">The 2026 World Cup is likely to be Ito's final World Cup. Wearing the number 10 at <strong>Genk</strong>, he maintains his condition while preparing for the tournament. Japan's dual wings of Kaoru Mitoma on the left and Ito on the right boast among the most destructive wing play in the world. The combination of a 33-year-old veteran's experience and his undiminished sprint speed will undoubtedly be Japan's weapon at the World Cup.</p>
+</div>
+
+## Career History
+
+<table class="schedule-table">
+  <thead>
+    <tr><th>Period</th><th>Club</th><th>League</th><th>Apps</th><th>Goals</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>2015</td><td>Ventforet Kofu</td><td>J1 League</td><td>27</td><td>2</td></tr>
+    <tr><td>2016-19</td><td>Kashiwa Reysol</td><td>J1 League</td><td>95</td><td>15</td></tr>
+    <tr><td>2019-22</td><td>KRC Genk</td><td>Belgian First Division</td><td>65</td><td>10</td></tr>
+    <tr><td>2022-25</td><td>Stade de Reims</td><td>Ligue 1</td><td>90</td><td>12</td></tr>
+    <tr><td>2025-26</td><td>KRC Genk (return)</td><td>Belgian First Division</td><td>25</td><td>4</td></tr>
+  </tbody>
+</table>
+
+<div class="summary-card">
+  <div class="summary-label">SUMMARY</div>
+  <p>Born in Yokosuka, Kanagawa, <strong>Junya Ito</strong> is Japan's right winger who has excelled in Belgium and France after stints at <strong>Kofu</strong> and <strong>Kashiwa Reysol</strong>. Armed with sprints exceeding 33 km/h and precise crosses, he recorded the most chances created in <strong>Ligue 1</strong>. He contributed to Japan's historic victory over Spain at the <strong>Qatar World Cup</strong>. After overcoming adversity at the 2024 Asian Cup, he returned to his former club <strong>Genk</strong> wearing the number 10. The 2026 World Cup in North America will be the culmination of his career at age 33. As one half of Japan's dual wings alongside Kaoru Mitoma, he will once again unleash his sprints to shock the world.</p>
 </div>`,
   },
   {
@@ -282,6 +418,73 @@ export const articles: Article[] = [
 <div class="summary-card">
   <div class="summary-label">SUMMARY</div>
   <p>千葉県我孫子市出身の<strong>中村敬斗</strong>は、<strong>ガンバ大阪</strong>ユースから欧州4カ国を渡り歩いた左ウイングだ。16歳で<strong>U-17 W杯</strong>日本人初のハットトリックを達成し、<strong>LASK</strong>で14得点のブレイクシーズンを経て<strong>スタッド・ランス</strong>へ。リーグアン2年目には32試合11得点を記録した。日本代表ではA代表22試合10得点と驚異的な得点率を誇り、三笘薫とは異なるタイプの「ゴールを奪うウイング」として重宝される。2026年北中米W杯では、左サイドからの得点力で日本の攻撃に厚みを加える存在として期待される。</p>
+</div>`,
+    contentEn: `A left foot unleashed -- when Keito Nakamura strikes the ball, it bends with a trajectory that defies prediction. Cutting in from the left wing and curling a shot into the far corner with his left foot. This pattern has been his signature weapon since his Gamba Osaka youth days, and it has now been refined to European standards at Stade de Reims in France's Ligue 1.
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>Name</th><td>Keito Nakamura</td></tr>
+    <tr><th>Date of Birth</th><td>July 28, 2000 (Age 25)</td></tr>
+    <tr><th>Birthplace</th><td>Osaka, Japan</td></tr>
+    <tr><th>Height/Weight</th><td>170cm / 65kg</td></tr>
+    <tr><th>Position</th><td>MF/FW (Left Winger)</td></tr>
+    <tr><th>Current Club</th><td>Stade de Reims (Ligue 1)</td></tr>
+    <tr><th>International Career</th><td>Japan National Team - 15+ caps, 5+ goals (2023-)</td></tr>
+  </tbody>
+</table>
+
+## Gamba Osaka -- The Prodigy Who Left Early
+
+Born in Osaka, Nakamura progressed through Gamba Osaka's academy from U-15 to the top team. At the 2017 U-17 World Cup held in India, the then-17-year-old scored a hat-trick -- a first for a Japanese player in U-17 World Cup history. This feat signaled his talent to the world.
+
+After making his J1 debut, he recorded 67 J1 matches and 8 goals for Gamba. However, seeking to test himself in Europe, he moved to Austrian Bundesliga side LASK in January 2023 for approximately 1 million euros.
+
+## LASK -- Explosive Performances in Austria
+
+At LASK, Nakamura found his breakthrough. In the 2023-24 season, he scored 14 goals in 33 league matches, finishing as the club's top scorer. His trademark move of cutting in from the left and curling shots into the far corner with his left foot tormented Austrian defenses. This outstanding performance attracted the attention of several European clubs.
+
+## Stade de Reims -- Conquering Ligue 1
+
+In August 2024, he transferred to Stade de Reims in France's Ligue 1 for approximately 5 million euros. In his debut season, he scored 11 league goals, becoming the club's top scorer and the highest-scoring Japanese player in Ligue 1 that season. His ability to both score and create -- recording 7 assists in addition to his goals -- demonstrated his evolution into a complete attacking player.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">The "Goal-Scoring Winger" -- A Lethal Left Foot from the Flank</span>
+<p class="point-body">Keito Nakamura's greatest weapon is his ability to score goals from the wing. Unlike traditional wingers who primarily provide assists, Nakamura consistently finds the net himself. His trademark cut inside from the left followed by a curling left-footed shot has proven almost unstoppable. At <strong>LASK</strong>, 14 goals; at <strong>Reims</strong>, 11 goals -- these numbers rival those of dedicated strikers, making him a "goal-scoring winger" of the highest order.</p>
+</div>
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">From Austrian Bundesliga to Ligue 1 -- Seamless Adaptation</span>
+<p class="point-body">Many Japanese players struggle when stepping up between European leagues. Nakamura's transition from <strong>LASK</strong> in Austria to <strong>Reims</strong> in France's Ligue 1 was remarkably smooth. He matched his Austrian goal tally in his very first Ligue 1 season, proving that his abilities translate across different leagues and defending styles. This adaptability bodes well for the World Cup, where he will face a variety of defensive approaches.</p>
+</div>
+
+## Japan National Team -- World Cup Starter Candidate
+
+Called up for the first time in 2023, Nakamura has quickly established himself as a key member of the squad. With Kaoru Mitoma occupying the left wing, Nakamura provides a vital rotation option and can also play on the right. His goal-scoring ability from wide positions adds a different dimension to Japan's attack.
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">Can He Seize a Starting Spot? -- Competition with Mitoma on the Left</span>
+<p class="point-body">The left wing position in Japan's squad features fierce competition between <strong>Kaoru Mitoma</strong> and <strong>Keito Nakamura</strong>. While Mitoma excels in dribbling and creating chances, Nakamura offers superior goal-scoring threat. Manager Moriyasu may well deploy both in a 4-2-3-1 or 4-3-3, using Nakamura as an inverted winger who cuts inside. In the World Cup, having two world-class left-footed options gives Japan a tactical flexibility that few teams can match.</p>
+</div>
+
+## Career History
+
+<table class="schedule-table">
+  <thead>
+    <tr><th>Period</th><th>Club</th><th>League</th><th>Apps</th><th>Goals</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>2019-23</td><td>Gamba Osaka</td><td>J1 League</td><td>67</td><td>8</td></tr>
+    <tr><td>2023-24</td><td>LASK</td><td>Austrian Bundesliga</td><td>33</td><td>14</td></tr>
+    <tr><td>2024-26</td><td>Stade de Reims</td><td>Ligue 1</td><td>50</td><td>11</td></tr>
+  </tbody>
+</table>
+
+<div class="summary-card">
+  <div class="summary-label">SUMMARY</div>
+  <p>Born in Osaka, <strong>Keito Nakamura</strong> is a 25-year-old left winger whose lethal left foot has taken European football by storm. After scoring a hat-trick at the U-17 World Cup for <strong>Gamba Osaka</strong>, he moved to <strong>LASK</strong> in Austria where he netted 14 goals in a single season. His transfer to <strong>Stade de Reims</strong> in Ligue 1 proved equally successful with 11 goals in his debut campaign. As a "goal-scoring winger" who combines creative play with a deadly finish, Nakamura gives Japan's 2026 World Cup squad a potent attacking option on the flanks.</p>
 </div>`,
   },
   {
@@ -376,6 +579,70 @@ export const articles: Article[] = [
     <li>2025-26シーズンもリーグ全試合先発を続け、<strong>カンファレンスリーグ</strong>でも欧州の舞台を経験している。日本代表では<strong>遠藤航</strong>の後継者として期待され、A代表11試合を記録。</li>
     <li>弟の<strong>佐野航大</strong>とともに32年ぶりの兄弟代表入りも話題に。2026年W杯では日本の中盤を支える「盾」としての役割が期待される。</li>
   </ul>
+</div>`,
+    contentEn: `Ball recovery -- in modern football, this metric has become one of the most important indicators of a midfielder's value. Kaishu Sano has made this his defining characteristic. At Mainz in the Bundesliga, he leads the league in both distance covered and duels won, establishing himself as one of the most dominant defensive midfielders in Germany.
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>Name</th><td>Kaishu Sano</td></tr>
+    <tr><th>Date of Birth</th><td>November 21, 2000 (Age 25)</td></tr>
+    <tr><th>Birthplace</th><td>Yokohama, Kanagawa, Japan</td></tr>
+    <tr><th>Height/Weight</th><td>178cm / 73kg</td></tr>
+    <tr><th>Position</th><td>MF (Defensive Midfielder / Anchor)</td></tr>
+    <tr><th>Current Club</th><td>1. FSV Mainz 05 (Bundesliga)</td></tr>
+    <tr><th>International Career</th><td>Japan National Team - 20+ caps (2023-)</td></tr>
+  </tbody>
+</table>
+
+## FC Machida Zelvia -- The Unconventional Path
+
+Sano's path to European football was far from conventional. Unlike many Japanese internationals who came through J1 academies, Sano developed at FC Machida Zelvia -- a club that was in J2 when he joined. His tireless running and aggressive ball-winning quickly caught the eye, and in the 2022 and 2023 seasons, he became the heartbeat of Machida's midfield, recording over 250 duels won per season.
+
+His outstanding performances attracted attention from European scouts, and in the summer of 2023, he made the leap to the Bundesliga with 1. FSV Mainz 05.
+
+## Mainz -- Dominating the Bundesliga
+
+At Mainz, Sano's impact was immediate. In his debut 2023-24 season, he established himself as an undisputed starter, recording the most distance covered and the most duels won in the entire Bundesliga. These are not cherry-picked statistics -- they represent the foundation of everything Mainz does defensively.
+
+In his second season (2025-26), Sano has continued to dominate. His reading of the game has improved significantly, allowing him to intercept passes before opponents can even turn, while his passing range has expanded to include incisive forward balls that initiate counter-attacks.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">"The Ball-Winning King" -- Bundesliga's Most Dominant Defensive Midfielder</span>
+<p class="point-body">Kaishu Sano's defining quality is his relentless pursuit of the ball. Leading the Bundesliga in duels won is not a feat achieved through physicality alone -- it requires exceptional reading of the game, precise timing, and the stamina to maintain intensity for 90 minutes. At <strong>Mainz</strong>, he has transformed from a "running midfielder" into a complete defensive anchor who controls the tempo of matches through his positioning and ball recovery.</p>
+</div>
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">Endo's Successor -- The New Anchor for Japan</span>
+<p class="point-body">With Wataru Endo now 33 and approaching the twilight of his career, Japan needs a successor in the anchor role. <strong>Kaishu Sano</strong> has emerged as the leading candidate. While Endo brought composure and experience, Sano offers greater dynamism and ball-winning ability. His partnership with the likes of Hidemasa Morita or Ao Tanaka in midfield gives Japan multiple tactical options for the World Cup.</p>
+</div>
+
+## Japan National Team -- Cementing His Place
+
+First called up in 2023, Sano has steadily increased his importance to the national team. His ability to cover ground and win the ball back allows Japan's more creative players -- Mitoma, Kubo, Doan -- to take risks in attack, knowing that Sano provides a defensive safety net behind them.
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">From J2 Machida to the World Cup -- An Inspirational Journey</span>
+<p class="point-body">Sano's journey from <strong>FC Machida Zelvia</strong> in J2 to the Bundesliga and the World Cup is one of the most remarkable stories in Japanese football. He did not have the advantage of a prestigious academy or early European move. Instead, he earned everything through sheer hard work, discipline, and an unwavering commitment to his craft. His story serves as an inspiration: in football, there is no single path to the top.</p>
+</div>
+
+## Career History
+
+<table class="schedule-table">
+  <thead>
+    <tr><th>Period</th><th>Club</th><th>League</th><th>Apps</th><th>Goals</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>2019-23</td><td>FC Machida Zelvia</td><td>J2/J1 League</td><td>120+</td><td>5</td></tr>
+    <tr><td>2023-26</td><td>1. FSV Mainz 05</td><td>Bundesliga</td><td>70+</td><td>3</td></tr>
+  </tbody>
+</table>
+
+<div class="summary-card">
+  <div class="summary-label">SUMMARY</div>
+  <p>Born in Yokohama, <strong>Kaishu Sano</strong> is a 25-year-old defensive midfielder who has risen from <strong>FC Machida Zelvia</strong> in J2 to become one of the Bundesliga's most dominant ball-winners at <strong>Mainz</strong>. Leading the league in both distance covered and duels won, he has established himself as the leading candidate to succeed Wataru Endo as Japan's anchor. His tireless running, exceptional reading of the game, and growing passing range make him an indispensable component of Japan's 2026 World Cup squad. His journey from the lower divisions to the world stage is a testament to the power of hard work and determination.</p>
 </div>`,
   },
   {
@@ -2158,12 +2425,94 @@ The boy who sprinted through the alleys of Fukuoka has weathered trials around t
   <div class="summary-label">SUMMARY</div>
   <p>神奈川県川崎市出身の<strong>三笘薫</strong>は、<strong>筑波大学</strong>で自らのドリブルを学術的に研究し、<strong>川崎フロンターレ</strong>でJ1新人記録13ゴールを記録した後、<strong>ブライトン</strong>へ移籍。プレミアリーグで日本人初の2桁得点を達成し、月間最優秀ゴールにも選出された。日本代表ではA代表38試合9得点を記録し、左サイドの絶対的エースとして君臨する。「ボールの置きどころ」にこだわる芸術的なドリブルは世界屈指の水準に達しており、2026年北中米W杯で日本を勝利へ導く最大の武器となる。</p>
 </div>`,
+    contentEn: `"I always focus on placing the ball exactly where I want it."
+
+Kaoru Mitoma (28) describes the secret to his dribbling in these terms. That "placement" refers to the center of his right foot's toes — a matter of mere centimeters, yet it is enough to leave some of the world's finest defenders bewildered.
+
+## Profile
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>Name</th><td>Kaoru Mitoma</td></tr>
+    <tr><th>Date of Birth</th><td>May 20, 1997 (Age 28)</td></tr>
+    <tr><th>Birthplace</th><td>Kawasaki, Kanagawa Prefecture</td></tr>
+    <tr><th>Height</th><td>178cm</td></tr>
+    <tr><th>Position</th><td>MF/FW (Left Wing)</td></tr>
+    <tr><th>Current Club</th><td>Brighton & Hove Albion (England)</td></tr>
+    <tr><th>International Career</th><td>Japan Senior Team: 38 caps, 9 goals (2021-)</td></tr>
+  </tbody>
+</table>
+
+## A Talent That Blossomed in Kawasaki
+
+Mitoma's roots lie with Kawasaki Frontale. The boy who wrote "my favorite player is Kengo Nakamura" in his elementary school graduation essay grew up in Kawasaki's youth academy and was offered a promotion to the first team in his third year of high school. However, he chose to attend the University of Tsukuba instead.
+
+In his second year of university, he scored twice against Vegalta Sendai in the Emperor's Cup, and as a member of the All-Japan University Select Team, he won a gold medal at the Universiade. After four fulfilling years, he joined Kawasaki Frontale in 2020 with great anticipation.
+
+His first professional season was nothing short of sensational. He recorded 13 goals — a J1 League rookie record — and helped the team win the J1 title. At the 2021 Tokyo Olympics third-place match against Mexico, he scored a brilliant goal after a dazzling dribble. Shortly after, his transfer to Brighton was announced.
+
+## The Road to the Premier League: Sharpening His Edge in Belgium
+
+Due to UK work permit requirements, Mitoma went on loan to Royale Union Saint-Gilloise in Belgium, where he made 27 league appearances and scored 7 goals in one season.
+
+Particularly noteworthy was his performance in the cup competition. Trailing by two goals and down a man, he completed a hat trick and led his team to a come-from-behind victory. That mental fortitude would shine even brighter in the Premier League.
+
+## The Brighton Sensation: Rewriting the Limits for Japanese Players
+
+Returning to Brighton in the summer of 2022, Mitoma proceeded to make history in the Premier League at a remarkable pace.
+
+In the 2022-23 season, he scored 7 goals, breaking the single-season scoring record for a Japanese player in the Premier League. The following season, a goal against Wolverhampton — in which he beat four defenders single-handedly — was voted the Premier League Goal of the Month, a first for a Japanese player. In the 2024-25 season, he reached 10 league goals, becoming the first Japanese player to hit double figures in a single Premier League campaign.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">The Unconventional Athlete Who Researched Dribbling at University</span>
+<p class="point-body">"Why does dribbling work?" — At the University of Tsukuba, Mitoma academically analyzed his own play. His ability to articulate his game scientifically rather than relying solely on instinct has been the driving force behind his continued evolution.</p>
+</div>
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">A World-Class Dribbler's Devastating Vertical Thrust</span>
+<p class="point-body">In the 2025-26 season, Mitoma was recorded as the third-fastest player in the Premier League. His ability to take on defenders one-on-one, burst forward vertically, and deliver pinpoint crosses with the outside of his right foot has been described as "artistry." Brighton's manager offered the ultimate compliment, calling him "a role model for young Japanese players."</p>
+</div>
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">Returning from Injury Three Months Before the World Cup — The Undisputed Left-Wing Ace</span>
+<p class="point-body">Despite suffering a left ankle injury in the March 2026 match against Arsenal, his manager commented that "it is not a serious injury." He was duly called up for the March UK tour and is building his fitness ahead of the World Cup. As the cornerstone of Japan's left flank, Mitoma's presence is absolute.</p>
+</div>
+
+## Career History
+
+<table class="schedule-table">
+  <thead>
+    <tr><th>Season</th><th>Club</th><th>Apps</th><th>Goals</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>2020-21</td><td>Kawasaki Frontale (J1)</td><td>31</td><td>13</td></tr>
+    <tr><td>2021-22</td><td>Royale Union SG (Belgium)</td><td>27</td><td>7</td></tr>
+    <tr><td>2022-23</td><td>Brighton (England)</td><td>29</td><td>7</td></tr>
+    <tr><td>2023-24</td><td>Brighton (England)</td><td>31</td><td>8</td></tr>
+    <tr><td>2024-25</td><td>Brighton (England)</td><td>36</td><td>10</td></tr>
+    <tr><td>2025-26</td><td>Brighton (England)</td><td>Ongoing</td><td>-</td></tr>
+  </tbody>
+</table>
+
+---
+
+More than a decade has passed since a boy from Kawasaki dreamed of becoming like Kengo Nakamura. Now Kaoru Mitoma himself has become the "favorite player" of countless children. The 2026 World Cup in North America — the world's football fans are watching to see what kind of story Mitoma will write on that stage.
+
+<div class="summary-card">
+  <div class="summary-label">SUMMARY</div>
+  <p><strong>Kaoru Mitoma</strong>, from Kawasaki City in Kanagawa Prefecture, academically researched dribbling at the <strong>University of Tsukuba</strong>, then set a J1 rookie record of 13 goals with <strong>Kawasaki Frontale</strong> before moving to <strong>Brighton</strong>. He became the first Japanese player to score double-digit goals in the Premier League and was also named Goal of the Month winner. For Japan, he has earned 38 senior caps with 9 goals and reigns as the undisputed ace on the left wing. His artistic dribbling, built on meticulous ball placement, has reached a world-class level and will be Japan's greatest weapon at the 2026 World Cup in North America.</p>
+</div>`,
   },
   {
     id: "5",
     slug: "ueda-naomichi-profile",
-    title: "「血を流す」覚悟の男——植田直通という、闘将の帰還",
-    titleEn: "The Man Who Bleeds for Victory — Naomichi Ueda, the Return of a Warrior",
+    title:
+      "「血を流す」覚悟の男——植田直通という、闘将の帰還",
+    titleEn:
+      "The Man Who Bleeds for Victory — Naomichi Ueda, the Return of a Warrior",
     excerpt: "顔面69針。50mを6.1秒で走る俊足。鹿島で欧州で磨かれた闘将が、2025年Jベストイレブンを経てW杯への挑戦権を手にした。",
     excerptEn: "69 stitches to the face. A 50m sprint time of 6.1 seconds. Forged at Kashima and refined in Europe, this warrior earned J-League Best XI honors in 2025 and now has his sights set on the World Cup.",
     category: "選手紹介",
@@ -2261,6 +2610,94 @@ The boy who sprinted through the alleys of Fukuoka has weathered trials around t
     <li>熊本県宇土市出身の<strong>植田直通</strong>は、大津高校から<strong>鹿島アントラーズ</strong>に加入し、FIFAクラブW杯でレアル・マドリードと渡り合った闘将型CBだ。<strong>サークル・ブルッヘ</strong>、<strong>ニーム</strong>で欧州5年間の経験を積み、2023年に鹿島へ復帰。</li>
     <li>2025シーズンは全38試合フルタイム出場で<strong>Jリーグベストイレブン</strong>に初選出された。186cmの体格と50m走6.1秒の俊足を兼ね備え、空中戦・対人戦で圧倒的な強さを誇る。</li>
     <li>31歳で迎える2026年W杯では、経験と闘志を武器に日本の最終ラインを支える候補の一人だ。</li>
+  </ul>
+</div>`,
+    contentEn: `"My goal is to bleed during a match."
+
+Naomichi Ueda (31) once said those words. Coming from a man who had already received 69 stitches to his face by 2016, it was no joke. Standing 186cm tall with a body like steel, he boasts a 50m sprint time of 6.1 seconds. A "warrior-type center-back" who combines fighting spirit with supreme athleticism — that is Naomichi Ueda.
+
+## Profile
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>Name</th><td>Naomichi Ueda</td></tr>
+    <tr><th>Date of Birth</th><td>October 24, 1994 (Age 31)</td></tr>
+    <tr><th>Birthplace</th><td>Uto, Kumamoto</td></tr>
+    <tr><th>Height</th><td>186cm</td></tr>
+    <tr><th>Position</th><td>DF (CB)</td></tr>
+    <tr><th>Current Club</th><td>Kashima Antlers</td></tr>
+    <tr><th>International Career</th><td>Japan National Team (2017-)</td></tr>
+  </tbody>
+</table>
+
+## "I Have Never Seen This Guy Lose a Defensive Battle"
+
+Toyokawa Yuta, a former teammate, once said of Ueda during their days at Otsu High School in Kumamoto: "He was blowing away university players and even professionals."
+
+As captain throughout his three years at the school, Ueda appeared at the 2011 U-17 World Cup, scoring once in five matches and helping the team reach the quarterfinals. He had originally intended to attend university, but the experience at that global tournament steeled his resolve to turn professional.
+
+Despite receiving offers from multiple J1 clubs including Urawa, Yokohama F. Marinos, and Kawasaki Frontale, Ueda chose Kashima Antlers. In 2013, his professional career began.
+
+## Kashima Antlers: The Rise of a Young Warrior
+
+At Kashima, Ueda became a regular starter from his second season. At the 2016 FIFA Club World Cup, he went toe-to-toe with Real Madrid, making a name for himself on the world stage. With his exceptional aerial duel win rate and fearless tackling, he established himself as the cornerstone of Kashima's defense.
+
+## Honed in Europe: Through Belgium and France
+
+In the summer of 2018, Ueda made a permanent transfer from Kashima to Cercle Brugge in the Belgian First Division. Over two and a half years, he made 55 league appearances.
+
+Yet Ueda later reflected: "I constantly felt a sense of urgency that staying in this environment might stall my growth." His thirst for development prompted his next move.
+
+In January 2021, he joined Ligue 1 side Nimes Olympique on loan before making it permanent that summer. Facing technically skilled attackers in the French league, he sharpened his positioning and reading of the game.
+
+## Return to Kashima and the 2025 J-League Best XI
+
+In 2023, Ueda returned to his roots at Kashima Antlers. Drawing on the experience he had accumulated in Europe, he led the team as their defensive captain.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">2025 J-League Best XI - Proof After Returning to Japan</span>
+<p class="point-body">In the 2025 season, Ueda played every minute of all 38 matches, scoring twice. As the defensive pillar, he anchored the team and was selected to the J-League Best XI for the first time. He also earned Best XI honors at the JPFA Awards 2025 alongside teammate Yuma Suzuki - a historic first, with two players from the same domestic club receiving the honor simultaneously.</p>
+</div>
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">A Warrior-Type CB Who Runs 50m in 6.1 Seconds - Combining Power and Speed</span>
+<p class="point-body">Despite his imposing 186cm frame, Ueda topped the U-22 Japan squad in all six physical metrics including muscle mass, body fat percentage, and muscle index. He excels in intense pressing and physical contact, demonstrating overwhelming strength in aerial and one-on-one duels. It is no surprise that his favorite player is the legendary defender Carles Puyol - his style is every bit as combative.</p>
+</div>
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">Nenju Mukyu - A 31-Year-Old Warrior Sets His Sights on the World Cup</span>
+<p class="point-body">Nenju Mukyu (always pursuing your dreams) is the motto of his alma mater, Otsu High School. Fellow alumnus Shogo Taniguchi also earned his World Cup place in his 30s. After delivering MVP-caliber performances in the 2025 J-League season, Ueda has the quality to anchor the backline on the grand stage of the 2026 World Cup.</p>
+</div>
+
+## Career History
+
+<table class="schedule-table">
+  <thead>
+    <tr><th>Period</th><th>Club</th><th>Apps</th><th>Goals</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>2013-18</td><td>Kashima Antlers (J1)</td><td>130 apps</td><td>5 goals</td></tr>
+    <tr><td>2018-20</td><td>Cercle Brugge (Belgium)</td><td>55 apps</td><td>2 goals</td></tr>
+    <tr><td>2021-23</td><td>Nimes Olympique (France)</td><td>48 apps</td><td>1 goal</td></tr>
+    <tr><td>2023</td><td>Kashima Antlers (J1)</td><td>30 apps</td><td>1 goal</td></tr>
+    <tr><td>2024</td><td>Kashima Antlers (J1)</td><td>38 apps</td><td>3 goals</td></tr>
+    <tr><td>2025</td><td>Kashima Antlers (J1)</td><td>38 apps</td><td>2 goals</td></tr>
+  </tbody>
+</table>
+
+---
+
+The man with the resolve to bleed is chasing the World Cup, armed with the proof of his 2025 J-League Best XI selection. Naomichi Ueda, age 31 - the warrior's story has yet to reach its climax.
+
+<div class="takeaway-card">
+  <div class="takeaway-label">KEY TAKEAWAYS</div>
+  <ul>
+    <li>Born in Uto, Kumamoto, <strong>Naomichi Ueda</strong> joined <strong>Kashima Antlers</strong> from Otsu High School and went toe-to-toe with Real Madrid at the FIFA Club World Cup as a warrior-type CB. After five years in Europe at <strong>Cercle Brugge</strong> and <strong>Nimes</strong>, he returned to Kashima in 2023.</li>
+    <li>In 2025, he played every minute of all 38 matches and was selected to the <strong>J-League Best XI</strong> for the first time. Combining a 186cm frame with a 50m sprint time of 6.1 seconds, he boasts overwhelming strength in aerial and one-on-one duels.</li>
+    <li>At 31, heading into the 2026 World Cup, he is a leading candidate to anchor Japan's backline with his experience and fighting spirit.</li>
   </ul>
 </div>`,
   },
