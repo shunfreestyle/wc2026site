@@ -7,6 +7,13 @@
  * ※ オリジナル10が21年ぶりに全クラブJ1揃い踏み
  */
 
+export type TeamFormation = {
+  id: string;
+  name: string;
+  tag: string;
+  isMain?: boolean;
+};
+
 export type J1Team = {
   id: string;
   shortName: string;
@@ -24,6 +31,7 @@ export type J1Team = {
   division: "EAST" | "WEST";
   officialUrl: string;
   officialTwitter: string;
+  formations: TeamFormation[];
 };
 
 export const j1Teams: J1Team[] = [
@@ -45,6 +53,11 @@ export const j1Teams: J1Team[] = [
     division: "EAST",
     officialUrl: "https://www.antlers.co.jp/",
     officialTwitter: "https://x.com/atlaborofficial",
+    formations: [
+      { id: "442", name: "4-4-2", tag: "メイン布陣", isMain: true },
+      { id: "4231", name: "4-2-3-1", tag: "オプション" },
+      { id: "433", name: "4-3-3", tag: "攻撃的変形" },
+    ],
   },
   {
     id: "mito",
@@ -63,6 +76,11 @@ export const j1Teams: J1Team[] = [
     division: "EAST",
     officialUrl: "https://www.mito-hollyhock.net/",
     officialTwitter: "https://x.com/hollyhock_staff",
+    formations: [
+      { id: "442", name: "4-4-2", tag: "メイン布陣", isMain: true },
+      { id: "4231", name: "4-2-3-1", tag: "オプション" },
+      { id: "352", name: "3-5-2", tag: "守備的変形" },
+    ],
   },
   {
     id: "urawa",
@@ -81,6 +99,11 @@ export const j1Teams: J1Team[] = [
     division: "EAST",
     officialUrl: "https://www.urawa-reds.co.jp/",
     officialTwitter: "https://x.com/ABOREDS",
+    formations: [
+      { id: "4231", name: "4-2-3-1", tag: "メイン布陣", isMain: true },
+      { id: "442", name: "4-4-2", tag: "サブ布陣" },
+      { id: "433", name: "4-3-3", tag: "攻撃的変形" },
+    ],
   },
   {
     id: "chiba",
@@ -99,6 +122,11 @@ export const j1Teams: J1Team[] = [
     division: "EAST",
     officialUrl: "https://jefunited.co.jp/",
     officialTwitter: "https://x.com/jaborofficial",
+    formations: [
+      { id: "442", name: "4-4-2", tag: "メイン布陣", isMain: true },
+      { id: "4231", name: "4-2-3-1", tag: "オプション" },
+      { id: "3421", name: "3-4-2-1", tag: "3バック変形" },
+    ],
   },
   {
     id: "kashiwa",
@@ -117,6 +145,11 @@ export const j1Teams: J1Team[] = [
     division: "EAST",
     officialUrl: "https://www.reysol.co.jp/",
     officialTwitter: "https://x.com/ABREYSOL",
+    formations: [
+      { id: "3421", name: "3-4-2-1", tag: "メイン布陣", isMain: true },
+      { id: "352", name: "3-5-2", tag: "守備的変形" },
+      { id: "442", name: "4-4-2", tag: "4バックオプション" },
+    ],
   },
   {
     id: "fctokyo",
@@ -135,6 +168,11 @@ export const j1Teams: J1Team[] = [
     division: "EAST",
     officialUrl: "https://www.fctokyo.co.jp/",
     officialTwitter: "https://x.com/fctokyoofficial",
+    formations: [
+      { id: "442", name: "4-4-2", tag: "メイン布陣", isMain: true },
+      { id: "4231", name: "4-2-3-1", tag: "オプション" },
+      { id: "433", name: "4-3-3", tag: "攻撃的変形" },
+    ],
   },
   {
     id: "verdy",
@@ -153,6 +191,11 @@ export const j1Teams: J1Team[] = [
     division: "EAST",
     officialUrl: "https://www.verdy.co.jp/",
     officialTwitter: "https://x.com/TokyoVerdySTAFF",
+    formations: [
+      { id: "3421", name: "3-4-2-1", tag: "メイン布陣", isMain: true },
+      { id: "352", name: "3-5-2", tag: "守備的3バック" },
+      { id: "442", name: "4-4-2", tag: "4バックオプション" },
+    ],
   },
   {
     id: "machida",
@@ -171,6 +214,11 @@ export const j1Teams: J1Team[] = [
     division: "EAST",
     officialUrl: "https://www.zelvia.co.jp/",
     officialTwitter: "https://x.com/FCMachidaZelvia",
+    formations: [
+      { id: "3421", name: "3-4-2-1", tag: "メイン布陣", isMain: true },
+      { id: "442", name: "4-4-2", tag: "オプション" },
+      { id: "352", name: "3-5-2", tag: "守備的変形" },
+    ],
   },
   {
     id: "kawasaki",
@@ -189,6 +237,11 @@ export const j1Teams: J1Team[] = [
     division: "EAST",
     officialUrl: "https://www.frontale.co.jp/",
     officialTwitter: "https://x.com/frontale_staff",
+    formations: [
+      { id: "4231", name: "4-2-3-1", tag: "メイン布陣", isMain: true },
+      { id: "433", name: "4-3-3", tag: "攻撃的変形" },
+      { id: "442", name: "4-4-2", tag: "バランス型" },
+    ],
   },
   {
     id: "yokohamafm",
@@ -207,6 +260,11 @@ export const j1Teams: J1Team[] = [
     division: "EAST",
     officialUrl: "https://www.f-marinos.com/",
     officialTwitter: "https://x.com/prompt_fmarinos",
+    formations: [
+      { id: "4213", name: "4-2-1-3", tag: "メイン布陣", isMain: true },
+      { id: "433", name: "4-3-3", tag: "攻撃的変形" },
+      { id: "4231", name: "4-2-3-1", tag: "オプション" },
+    ],
   },
 
   // ── WEST ──────────────────────────────────────
@@ -227,6 +285,11 @@ export const j1Teams: J1Team[] = [
     division: "WEST",
     officialUrl: "https://www.s-pulse.co.jp/",
     officialTwitter: "https://x.com/spulse_official",
+    formations: [
+      { id: "4123", name: "4-1-2-3", tag: "メイン布陣", isMain: true },
+      { id: "433", name: "4-3-3", tag: "攻撃的変形" },
+      { id: "442", name: "4-4-2", tag: "バランス型" },
+    ],
   },
   {
     id: "nagoya",
@@ -245,6 +308,11 @@ export const j1Teams: J1Team[] = [
     division: "WEST",
     officialUrl: "https://nagoya-grampus.jp/",
     officialTwitter: "https://x.com/naborofficial",
+    formations: [
+      { id: "3421", name: "3-4-2-1", tag: "ミシャ式メイン", isMain: true },
+      { id: "352", name: "3-5-2", tag: "守備的変形" },
+      { id: "442", name: "4-4-2", tag: "4バックオプション" },
+    ],
   },
   {
     id: "kyoto",
@@ -263,6 +331,11 @@ export const j1Teams: J1Team[] = [
     division: "WEST",
     officialUrl: "https://www.sanga-fc.jp/",
     officialTwitter: "https://x.com/kyotosanga_fc",
+    formations: [
+      { id: "4123", name: "4-1-2-3", tag: "メイン布陣", isMain: true },
+      { id: "3421", name: "3-4-2-1", tag: "サブ布陣" },
+      { id: "433", name: "4-3-3", tag: "攻撃的変形" },
+    ],
   },
   {
     id: "gosaka",
@@ -281,6 +354,11 @@ export const j1Teams: J1Team[] = [
     division: "WEST",
     officialUrl: "https://www.gamba-osaka.net/",
     officialTwitter: "https://x.com/ABOROFFICIAL_GO",
+    formations: [
+      { id: "4231", name: "4-2-3-1", tag: "メイン布陣", isMain: true },
+      { id: "4123", name: "4-1-2-3", tag: "オプション" },
+      { id: "442", name: "4-4-2", tag: "バランス型" },
+    ],
   },
   {
     id: "cosaka",
@@ -299,6 +377,11 @@ export const j1Teams: J1Team[] = [
     division: "WEST",
     officialUrl: "https://www.cerezo.jp/",
     officialTwitter: "https://x.com/craborofficial",
+    formations: [
+      { id: "4231", name: "4-2-3-1", tag: "メイン布陣", isMain: true },
+      { id: "442", name: "4-4-2", tag: "サブ布陣" },
+      { id: "433", name: "4-3-3", tag: "攻撃的変形" },
+    ],
   },
   {
     id: "kobe",
@@ -317,6 +400,11 @@ export const j1Teams: J1Team[] = [
     division: "WEST",
     officialUrl: "https://www.vissel-kobe.co.jp/",
     officialTwitter: "https://x.com/visselkobe",
+    formations: [
+      { id: "4123", name: "4-1-2-3", tag: "スキッベ式メイン", isMain: true },
+      { id: "433", name: "4-3-3", tag: "攻撃的変形" },
+      { id: "4231", name: "4-2-3-1", tag: "オプション" },
+    ],
   },
   {
     id: "okayama",
@@ -335,6 +423,11 @@ export const j1Teams: J1Team[] = [
     division: "WEST",
     officialUrl: "https://www.fagiano-okayama.com/",
     officialTwitter: "https://x.com/fagaborofficial",
+    formations: [
+      { id: "3421", name: "3-4-2-1", tag: "メイン布陣", isMain: true },
+      { id: "352", name: "3-5-2", tag: "守備的変形" },
+      { id: "442", name: "4-4-2", tag: "4バックオプション" },
+    ],
   },
   {
     id: "hiroshima",
@@ -353,6 +446,11 @@ export const j1Teams: J1Team[] = [
     division: "WEST",
     officialUrl: "https://www.sanfrecce.co.jp/",
     officialTwitter: "https://x.com/SanfrecceOff",
+    formations: [
+      { id: "3421", name: "3-4-2-1", tag: "メイン布陣", isMain: true },
+      { id: "3412", name: "3-4-1-2", tag: "サブ布陣" },
+      { id: "352", name: "3-5-2", tag: "守備的変形" },
+    ],
   },
   {
     id: "fukuoka",
@@ -371,6 +469,11 @@ export const j1Teams: J1Team[] = [
     division: "WEST",
     officialUrl: "https://www.avispa.co.jp/",
     officialTwitter: "https://x.com/aaborofficial",
+    formations: [
+      { id: "3421", name: "3-4-2-1", tag: "メイン布陣", isMain: true },
+      { id: "352", name: "3-5-2", tag: "守備的変形" },
+      { id: "442", name: "4-4-2", tag: "4バックオプション" },
+    ],
   },
   {
     id: "nagasaki",
@@ -389,6 +492,11 @@ export const j1Teams: J1Team[] = [
     division: "WEST",
     officialUrl: "https://www.v-varen.com/",
     officialTwitter: "https://x.com/V_VAREN_staff",
+    formations: [
+      { id: "3421", name: "3-4-2-1", tag: "メイン布陣", isMain: true },
+      { id: "442", name: "4-4-2", tag: "サブ布陣" },
+      { id: "352", name: "3-5-2", tag: "守備的変形" },
+    ],
   },
 ];
 

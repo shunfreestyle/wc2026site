@@ -27,6 +27,24 @@ interface Player {
 /* ─── Formations ─── */
 const FORMATIONS: Formation[] = [
   {
+    id: "442",
+    name: "4-4-2",
+    tag: "伝統的バランス型",
+    positions: [
+      { pos: "GK", x: 50, y: 92 },
+      { pos: "DF", x: 18, y: 75 },
+      { pos: "DF", x: 38, y: 75 },
+      { pos: "DF", x: 62, y: 75 },
+      { pos: "DF", x: 82, y: 75 },
+      { pos: "MF", x: 15, y: 50 },
+      { pos: "MF", x: 38, y: 50 },
+      { pos: "MF", x: 62, y: 50 },
+      { pos: "MF", x: 85, y: 50 },
+      { pos: "FW", x: 35, y: 22 },
+      { pos: "FW", x: 65, y: 22 },
+    ],
+  },
+  {
     id: "3421",
     name: "3-4-2-1",
     tag: "現在のメイン布陣",
@@ -96,6 +114,60 @@ const FORMATIONS: Formation[] = [
       { pos: "WB", x: 92, y: 52 },
       { pos: "FW", x: 35, y: 22 },
       { pos: "FW", x: 65, y: 22 },
+    ],
+  },
+  {
+    id: "4213",
+    name: "4-2-1-3",
+    tag: "ハイプレス型",
+    positions: [
+      { pos: "GK", x: 50, y: 92 },
+      { pos: "DF", x: 18, y: 75 },
+      { pos: "DF", x: 38, y: 75 },
+      { pos: "DF", x: 62, y: 75 },
+      { pos: "DF", x: 82, y: 75 },
+      { pos: "MF", x: 35, y: 57 },
+      { pos: "MF", x: 65, y: 57 },
+      { pos: "MF", x: 50, y: 40 },
+      { pos: "FW", x: 18, y: 22 },
+      { pos: "FW", x: 50, y: 18 },
+      { pos: "FW", x: 82, y: 22 },
+    ],
+  },
+  {
+    id: "4123",
+    name: "4-1-2-3",
+    tag: "アンカー型攻撃布陣",
+    positions: [
+      { pos: "GK", x: 50, y: 92 },
+      { pos: "DF", x: 18, y: 75 },
+      { pos: "DF", x: 38, y: 75 },
+      { pos: "DF", x: 62, y: 75 },
+      { pos: "DF", x: 82, y: 75 },
+      { pos: "MF", x: 50, y: 58 },
+      { pos: "MF", x: 30, y: 43 },
+      { pos: "MF", x: 70, y: 43 },
+      { pos: "FW", x: 18, y: 22 },
+      { pos: "FW", x: 50, y: 18 },
+      { pos: "FW", x: 82, y: 22 },
+    ],
+  },
+  {
+    id: "3412",
+    name: "3-4-1-2",
+    tag: "2トップ3バック",
+    positions: [
+      { pos: "GK", x: 50, y: 92 },
+      { pos: "CB", x: 25, y: 75 },
+      { pos: "CB", x: 50, y: 75 },
+      { pos: "CB", x: 75, y: 75 },
+      { pos: "WB", x: 10, y: 55 },
+      { pos: "MF", x: 35, y: 55 },
+      { pos: "MF", x: 65, y: 55 },
+      { pos: "WB", x: 90, y: 55 },
+      { pos: "MF", x: 50, y: 38 },
+      { pos: "FW", x: 35, y: 20 },
+      { pos: "FW", x: 65, y: 20 },
     ],
   },
 ];
@@ -398,6 +470,23 @@ function StamenPageInner() {
   const accentColor = j1Team?.color ?? "#E8192C";
   const teamLabel = j1Team ? j1Team.fullName : "日本代表";
 
+  // チーム固有フォーメーション or 日本代表用
+  const availableFormations = useMemo(() => {
+    if (j1Team?.formations && j1Team.formations.length > 0) {
+      return j1Team.formations
+        .map((tf) => {
+          const base = FORMATIONS.find((f) => f.id === tf.id);
+          if (!base) return null;
+          return { ...base, tag: tf.tag };
+        })
+        .filter(Boolean) as Formation[];
+    }
+    return FORMATIONS.filter((f) => ["3421", "4231", "433", "352"].includes(f.id)).map((f) => ({
+      ...f,
+      tag: f.id === "3421" ? "現在のメイン布陣" : f.id === "4231" ? "カタール前の基本形" : f.id === "433" ? "攻撃的オプション" : f.tag,
+    }));
+  }, [j1Team]);
+
   const [step, setStep] = useState(0);
   const [formation, setFormation] = useState<Formation | null>(null);
   const [slots, setSlots] = useState<(Player | null)[]>(Array(11).fill(null));
@@ -673,9 +762,11 @@ function StamenPageInner() {
           {step === 0 && (
             <div>
               <h2 className="text-lg font-bold text-white mb-1">フォーメーションを選択</h2>
-              <p className="text-gray-400 text-xs mb-3">森保ジャパンで使われるフォーメーション</p>
+              <p className="text-gray-400 text-xs mb-3">
+                {isJ1Mode ? `${teamLabel}の2026年シーズン布陣` : "森保ジャパンで使われるフォーメーション"}
+              </p>
               <div className="grid grid-cols-2 gap-3">
-                {FORMATIONS.map((f) => (
+                {availableFormations.map((f) => (
                   <button
                     key={f.id}
                     onClick={() => handleFormationSelect(f)}
