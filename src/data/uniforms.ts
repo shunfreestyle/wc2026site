@@ -246,8 +246,8 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#991B1B",
     tagBorder: "#FCA5A5",
     uniforms: [
-      { id: 60, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
-      { id: 61, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
+      { id: 60, type: "home", name: "ホーム", affiliateUrl: "https://a.r10.to/hkacBh", imgSrc: "", imgHref: "" },
+      { id: 61, type: "away", name: "アウェイ", affiliateUrl: "https://a.r10.to/hYCnYr", imgSrc: "", imgHref: "" },
     ],
   },
   {
@@ -289,7 +289,7 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagBorder: "#D1D5DB",
     uniforms: [
       { id: 90, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
-      { id: 91, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
+      { id: 91, type: "away", name: "アウェイ 24/25", affiliateUrl: "https://a.r10.to/hgzQAw", imgSrc: "", imgHref: "" },
     ],
   },
   {
@@ -302,7 +302,7 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#374151",
     tagBorder: "#D1D5DB",
     uniforms: [
-      { id: 100, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
+      { id: 100, type: "home", name: "ホーム 26/27", affiliateUrl: "https://a.r10.to/hPrrQd", imgSrc: "", imgHref: "" },
       { id: 101, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
     ],
   },
@@ -316,8 +316,8 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#374151",
     tagBorder: "#D1D5DB",
     uniforms: [
-      { id: 110, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
-      { id: 111, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
+      { id: 110, type: "home", name: "ホーム 2024", affiliateUrl: "https://a.r10.to/hRlslw", imgSrc: "", imgHref: "" },
+      { id: 111, type: "away", name: "アウェイ 2022", affiliateUrl: "https://a.r10.to/h5oMOt", imgSrc: "", imgHref: "" },
     ],
   },
   {
@@ -330,8 +330,8 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#1E3A8A",
     tagBorder: "#93C5FD",
     uniforms: [
-      { id: 120, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
-      { id: 121, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
+      { id: 120, type: "home", name: "ホーム 2024", affiliateUrl: "https://a.r10.to/h8zTGw", imgSrc: "", imgHref: "" },
+      { id: 121, type: "away", name: "アウェイ 2022", affiliateUrl: "https://a.r10.to/hP3V4d", imgSrc: "", imgHref: "" },
     ],
   },
   {
@@ -372,7 +372,7 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#374151",
     tagBorder: "#D1D5DB",
     uniforms: [
-      { id: 150, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
+      { id: 150, type: "home", name: "ホーム 1994復刻", affiliateUrl: "https://a.r10.to/hPMvpm", imgSrc: "", imgHref: "" },
       { id: 151, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
     ],
   },
@@ -428,8 +428,8 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#374151",
     tagBorder: "#D1D5DB",
     uniforms: [
-      { id: 190, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
-      { id: 191, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
+      { id: 190, type: "home", name: "ホーム 2018", affiliateUrl: "https://a.r10.to/hFraMH", imgSrc: "", imgHref: "" },
+      { id: 191, type: "away", name: "アウェイ 2018", affiliateUrl: "https://a.r10.to/h54Yfz", imgSrc: "", imgHref: "" },
     ],
   },
   {
