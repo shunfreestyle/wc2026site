@@ -950,6 +950,44 @@ A代表通算62試合11得点（2026年3月時点）。日本代表において�
     <li>プロ選手の規律意識は、ピッチ外の数秒間の行動にこそ表れるという現実を突きつけた一件だ。</li>
   </ul>
 </div>`,
+    contentEn: `## Depay Under Fire for Using Phone on Bench
+
+Memphis Depay (Netherlands international), currently at Corinthians (Brazil), caused a stir during the Flamengo match on the 22nd. While on the bench, the forward was spotted handling his smartphone. Team staff intervened immediately, but the scene drew criticism from Brazilian football veterans. Former Brazil striker Luis Fabiano commented on the incident, as reported by ESPN Brasil.
+
+## The Gap with European Standards
+
+"This would never happen at a European club." Fabiano emphasized the difference in discipline at top-level clubs. Using a phone on the bench signals a lapse in concentration — behavior deemed unacceptable from a key striker. Depay is expected to be central at Corinthians, which is precisely why scrutiny is intense.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">A Clash of Football Cultures</span>
+<p class="point-body"><strong>Memphis Depay</strong> has played for <strong>Manchester United</strong>, <strong>Barcelona</strong>, and <strong>Atletico Madrid</strong> — clubs where bench behavior is strictly monitored. The gap with Brazilian football's freer culture was laid bare by this incident. Adapting means conforming not just to tactics but to club culture.</p>
+</div>
+
+Depay's arrival was major news for Corinthians, but adapting to the Brazilian game goes beyond technique.
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">The Visibility of Professionalism</span>
+<p class="point-body"><strong>Luis Fabiano</strong> highlighted the gap in professional standards between South America and Europe. In modern football, even seconds on the bench can go viral on social media. How players spend their "invisible time" directly impacts reputation.</p>
+</div>
+
+Elite European clubs enforce strict bench discipline. Depay knows these standards well. Whether he grew complacent in Brazil's relaxed environment or it was simply habit, improvement is essential. Fabiano's words carry weight: "A European club would never allow this" — paradoxically reflecting the high expectations placed on Depay.
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">Player Management in the Social Media Age</span>
+<p class="point-body">Bench behavior that once went unnoticed now spreads instantly via social media. <strong>Depay's</strong> phone use was captured by broadcast cameras and immediately went viral. Off-pitch behavior now affects contracts and sponsorships. This incident reminds us that how professionals spend their "invisible time" is the true test of character.</p>
+</div>
+
+<div class="takeaway-card">
+<div class="takeaway-label">KEY TAKEAWAYS</div>
+<ul>
+<li><strong>Memphis Depay</strong> (<strong>Corinthians</strong>) used his smartphone on the bench during the <strong>Flamengo</strong> match. Former Brazil striker <strong>Luis Fabiano</strong> said "this would never happen at a European club."</li>
+<li>Having played for <strong>Manchester United</strong> and <strong>Barcelona</strong>, Depay's actions attracted heightened scrutiny.</li>
+<li>The incident underscored that a professional's discipline is revealed in seconds of off-pitch behavior.</li>
+</ul>
+</div>`,
   },
   {
     id: "1774346895440",
