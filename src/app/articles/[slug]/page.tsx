@@ -149,7 +149,7 @@ export default function ArticleDetailPage() {
             ))}
           </ul>
         ) : (
-          <span> JFA公式サイト、各クラブ公式サイト、Transfermarkt</span>
+          <span> JFA公式サイト、各クラブ公式サイト、Wikipedia</span>
         )}
       </div>
 

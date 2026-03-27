@@ -58,7 +58,7 @@ JSON: {
         const factRes = await client.messages.create({
           model: "claude-haiku-4-5-20251001",
           max_tokens: 2000,
-          system: `サッカー選手ファクトチェッカー。Transfermarkt・JFA・ESPN・Goal.comなどでデータを検証する。
+          system: `サッカー選手ファクトチェッカー。Wikipedia・JFA・ESPN・Goal.com・各クラブ公式サイトなどでデータを検証する。
 JSON形式のみで返答。コードブロック不要。`,
           messages: [{
             role: "user",
@@ -70,7 +70,7 @@ JSON: {
   "verified":["確認済み事実1","確認済み事実2"],
   "corrections":["修正: ○○は△△が正しい"],
   "additions":["追加情報1"],
-  "sources":["Transfermarkt","JFA公式"...]
+  "sources":["Wikipedia","JFA公式","クラブ公式"...]
 }`,
           }],
           tools: [{ type: "web_search_20250305" as const, name: "web_search", max_uses: 3 }],

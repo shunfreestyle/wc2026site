@@ -111,8 +111,8 @@ export default function AboutPage() {
                   </p>
                   <p className="text-gray-600 mt-0.5">
                     {t(
-                      "選手成績・移籍情報・試合データは、JFA公式、Transfermarkt、FBref等の信頼できるソースを参照し、ファクトチェックを行ったうえで掲載しています。",
-                      "Player stats, transfer information, and match data are fact-checked using reliable sources such as the JFA, Transfermarkt, and FBref before publication."
+                      "選手成績・移籍情報・試合データは、JFA公式、Wikipedia、FBref等の信頼できるソースを参照し、ファクトチェックを行ったうえで掲載しています。",
+                      "Player stats, transfer information, and match data are fact-checked using reliable sources such as the JFA, Wikipedia, and FBref before publication."
                     )}
                   </p>
                 </div>

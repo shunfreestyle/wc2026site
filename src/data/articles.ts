@@ -194,7 +194,7 @@ Manager Hajime Moriyasu will prioritize preparation for the Netherlands opener o
     isPopular: false,
     sources: [
       { name: "JFA公式サイト", url: "https://www.jfa.jp/samuraiblue/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `191cm——この数字を聞いて、ポストプレーヤーを想像するだろうか。足元の技術に乏しい空中戦専門のターゲットマンを思い浮かべるかもしれない。後藤啓介は、そのすべての先入観を裏切る。高さに加え、スピード、そして「191cmとは思えない」繊細なファーストタッチを持つ。日本サッカーが長年渇望してきた「規格外のストライカー」が、ベルギーの地で着実に牙を研いでいる。
 
@@ -346,7 +346,7 @@ Within the Japan national team's forward corps where Ayase Ueda reigns as the ac
     isPopular: false,
     sources: [
       { name: "JFA公式サイト", url: "https://www.jfa.jp/samuraiblue/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `時速33km超——伊東純也の最高速度は、欧州5大リーグのウイングと比較しても屈指の数値だ。右サイドを切り裂く直線的なスプリントと、そこから繰り出される正確なクロス。10年にわたるプロキャリアの中で、伊東はその武器を一度も失わなかった。試練の時期さえも。
 
@@ -502,7 +502,7 @@ At the 2024 Asian Cup in January, he faced the difficulty of leaving the squad m
     isPopular: false,
     sources: [
       { name: "JFA公式サイト", url: "https://www.jfa.jp/samuraiblue/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `2017年、インド。FIFA U-17ワールドカップの舞台で、16歳の少年がホンジュラス相手にハットトリックを達成した。日本人選手としてFIFA主催大会初のハットトリック——中村敬斗の名前が世界に知れ渡った最初の瞬間だった。
 
@@ -658,7 +658,7 @@ Called up for the first time in 2023, Nakamura has quickly established himself a
     isPopular: false,
     sources: [
       { name: "JFA公式サイト", url: "https://www.jfa.jp/samuraiblue/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `ブンデスリーガ2024-25シーズン、あるスタッツが日本のサッカーファンの間で話題になった。デュエル勝利数209回、走行距離394km——いずれもリーグ1位。その数字の持ち主が、J2の町田ゼルビアから鹿島アントラーズを経てわずか2年前にドイツへ渡った25歳の日本人だと知れば、驚く人も多いだろう。
 
@@ -816,7 +816,7 @@ First called up in 2023, Sano has steadily increased his importance to the natio
     isPopular: false,
     sources: [
       { name: "JFA公式サイト", url: "https://www.jfa.jp/samuraiblue/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `2022年5月18日、セビージャ。UEFAヨーロッパリーグ決勝。アイントラハト・フランクフルトがPK戦の末にグラスゴー・レンジャーズを下した夜、優勝トロフィーを掲げる選手たちの中に鎌田大地がいた。大会13試合で5得点——その活躍なしにフランクフルトの戴冠はなかった。
 
@@ -996,7 +996,7 @@ With 47 caps and 12 goals for the senior national team, he covers a wide range o
     isPopular: false,
     sources: [
       { name: "JFA公式サイト", url: "https://www.jfa.jp/samuraiblue/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `2022年11月23日、カタール。後半26分にピッチへ送り出された堂安律は、わずか4分後にドイツ代表のゴールネットを揺らした。そして8日後のスペイン戦でも後半開始直後に同点弾を叩き込んだ。W杯のグループリーグで優勝経験国から連続ゴール——堂安律という男の「大舞台での勝負強さ」が、あの夜から世界に知れ渡った。
 
@@ -1156,7 +1156,7 @@ With 62 caps and 11 goals for the senior national team (as of March 2026), Doan 
     isPopular: true,
     sources: [
       { name: "JFA公式サイト", url: "https://www.jfa.jp/samuraiblue/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `ゴール前で息を潜め、一瞬で仕留める——。上田綺世とは、そういうストライカーだ。
 
@@ -1323,7 +1323,7 @@ With 62 caps and 11 goals for the senior national team (as of March 2026), Doan 
     isPopular: true,
     sources: [
       { name: "JFA公式サイト", url: "https://www.jfa.jp/samuraiblue/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `<p class="article-lead">10歳でバルセロナのカンテラに飛び込み、15歳でJリーグ最年少記録を塗り替え、18歳でレアル・マドリードと契約した男——久保建英。2026年現在、レアル・ソシエダの攻撃を牽引する24歳の左足は、日本サッカー史上最も早熟にして最も正統派のテクニシャンである。7大会連続でW杯を現地取材してきた筆者が、この稀有な才能の軌跡を読み解く。</p>
 
@@ -1402,7 +1402,7 @@ With 62 caps and 11 goals for the senior national team (as of March 2026), Doan 
 <p><strong>久保建英</strong>は、10歳で<strong>FCバルセロナ</strong>のカンテラに入団し、15歳でJリーグ最年少記録を樹立、18歳で<strong>レアル・マドリード</strong>と契約した日本サッカー界の至宝である。4クラブへのレンタル移籍で実戦力を磨き、2022年から<strong>レアル・ソシエダ</strong>で完全に開花。ラ・リーガ通算27得点を積み上げ、日本代表でも48キャップ7得点を記録する。2024-25シーズンには欧州5大リーグのドリブル成功数で3位に入る突破力を誇り、2026年W杯を控えた今、背番号10を背負う24歳は日本サッカーの歴史を塗り替える存在へと成長を続けている。</p>
 </div>
 
-<p class="article-source">出典：JFA公式、Transfermarkt、FBref、Jリーグ公式データサイト、サッカーキング、ゲキサカ、Football Zone（2026年3月時点のデータ）</p>`,
+<p class="article-source">出典：JFA公式、Wikipedia、FBref、Jリーグ公式データサイト、サッカーキング、ゲキサカ、Football Zone（2026年3月時点のデータ）</p>`,
     contentEn: `<p class="article-lead">Joining Barcelona's La Masia at 10, setting J.League's youngest record at 15, signing with Real Madrid at 18 — Takefusa Kubo. This 24-year-old left foot driving Real Sociedad's attack is the most precocious yet orthodox technician in Japanese football history.</p>
 
 <table class="profile-table">
@@ -1472,7 +1472,7 @@ Debuting June 9, 2019, at 18 years and 5 days — second-youngest in Japan histo
 <p><strong>Takefusa Kubo</strong> joined <strong>FC Barcelona's</strong> La Masia at 10, set J.League's youngest record at 15, signed with <strong>Real Madrid</strong> at 18. After four loans, he blossomed at <strong>Real Sociedad</strong> from 2022 with 27 La Liga goals and 48 Japan caps. In 2024-25, ranked 3rd in dribble success across Europe's top five leagues. This 24-year-old number 10 continues growing into a history-making force.</p>
 </div>
 
-<p class="article-source">Sources: JFA Official, Transfermarkt, FBref, J.League Official Data Site, Soccer King, Gekisaka, Football Zone (data as of March 2026)</p>`,
+<p class="article-source">Sources: JFA Official, Wikipedia, FBref, J.League Official Data Site, Soccer King, Gekisaka, Football Zone (data as of March 2026)</p>`,
   },
   {
     id: "1774364639198",
@@ -1690,7 +1690,7 @@ Elite European clubs enforce strict bench discipline. Depay knows these standard
     isPopular: false,
     sources: [
       { name: "FIFA.com", url: "https://www.fifa.com/fifaplus/en/tournaments/mens/worldcup/26" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `# ヒュンメル、1986年ユニに敬意を表したデンマーク代表のアウェイユニフォームを発表！ 欧州PO決勝でお披露目予定
 
@@ -2166,7 +2166,7 @@ Meanwhile, the following regulars were left out of the squad:
     isPopular: true,
     sources: [
       { name: "JFA公式サイト", url: "https://www.jfa.jp/samuraiblue/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `## 「ユース昇格できなかった少年」が夢を諦めなかった
 
@@ -2292,7 +2292,7 @@ Manager Hajime Moriyasu commented: "Shiogai has outstanding instincts in front o
     updatedAt: "2026-03-23",
     sources: [
       { name: "JFA公式サイト", url: "https://www.jfa.jp/samuraiblue/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `福岡市博多区。住宅街のマンション通路を、一人の少年がとてつもないスピードで駆け抜けていた。それを偶然目撃したのが、地元の少年サッカーチーム「三筑キッカーズ」の総監督だった。
 
@@ -2499,7 +2499,7 @@ The boy who sprinted through the alleys of Fukuoka has weathered trials around t
     updatedAt: "2026-03-23",
     sources: [
       { name: "JFA公式サイト", url: "https://www.jfa.jp/samuraiblue/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `「常に自分の置きどころにボールを置くことを大切にしています」
 
@@ -2678,7 +2678,7 @@ More than a decade has passed since a boy from Kawasaki dreamed of becoming like
     updatedAt: "2026-03-23",
     sources: [
       { name: "JFA公式サイト", url: "https://www.jfa.jp/samuraiblue/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `「自分は試合中に血を流すというのが目標でもある」
 
@@ -3020,7 +3020,7 @@ With less than three months until the World Cup, what will Japan prove and what 
     updatedAt: "2026-03-24",
     sources: [
       { name: "Jリーグ公式", url: "https://www.jleague.jp/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `## 鹿島アントラーズ、圧巻の7連勝——植田直通が試合を決めた
 
@@ -3165,7 +3165,7 @@ EAST leaders Kashima travel to Mito Hollyhock on Matchday 9 (April 4). Can they 
     updatedAt: "2026-03-24",
     sources: [
       { name: "FIFA.com", url: "https://www.fifa.com/fifaplus/en/tournaments/mens/worldcup/26" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `## 80日後、日本はオランダと対峙する
 
@@ -3292,7 +3292,7 @@ Eighty days until the World Cup kicks off. Whether Japan can claim victory in th
     updatedAt: "2026-03-25",
     sources: [
       { name: "UEFA.com", url: "https://www.uefa.com/uefachampionsleague/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `3月17日、リスボン。スポルティングのホームスタジアム「ホセ・アルバラーデ」に轟く歓声の中、守田英正は後半23分までピッチに立ち続けていた。チャンピオンズリーグ・ラウンド16を突破し、クラブ史上に名を刻んだ夜——その2日後に発表された日本代表メンバーに、守田の名前はなかった。
 
@@ -3425,7 +3425,7 @@ The man who led his club to the Champions League quarterfinals could not wear th
     updatedAt: "2026-03-25",
     sources: [
       { name: "FIFA.com", url: "https://www.fifa.com/fifaplus/en/tournaments/mens/worldcup/26" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `「世界基準」——この言葉が日本のサッカーメディアに溢れるようになって久しい。カタールW杯でドイツとスペインを撃破したあの歴史的な夜から3年。日本サッカーは確かに変わった。しかし「世界基準に達した」と言い切ることは、果たして正確だろうか。
 
@@ -3542,7 +3542,7 @@ Eighty days until the World Cup. Rather than being intoxicated by the beautiful 
     updatedAt: "2026-03-25",
     sources: [
       { name: "JFA公式サイト", url: "https://www.jfa.jp/samuraiblue/" },
-      { name: "Transfermarkt", url: "https://www.transfermarkt.com/" },
+      { name: "Wikipedia", url: "https://ja.wikipedia.org/" },
     ],
     content: `3月19日の招集メンバー発表後、日本のサッカーファンの間に一つの名前が広まった。
 

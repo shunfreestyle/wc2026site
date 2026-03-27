@@ -1,6 +1,6 @@
 /**
  * J1リーグ 2026シーズン 監督データ
- * 出典: Jリーグ公式 / Wikipedia / 各クラブ公式サイト / transfermarkt
+ * 出典: Jリーグ公式 / Wikipedia / 各クラブ公式サイト
  */
 
 export type J1Manager = {

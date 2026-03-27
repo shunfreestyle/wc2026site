@@ -112,7 +112,7 @@ export default function DisclaimerPage() {
               <li>{t("日本サッカー協会（JFA）公式サイト", "Japan Football Association (JFA) Official Website")}</li>
               <li>{t("Jリーグ公式データサイト", "J-League Official Data Site")}</li>
               <li>{t("FIFA公式サイト", "FIFA Official Website")}</li>
-              <li>{t("Transfermarkt（選手移籍・成績データ）", "Transfermarkt (transfer and performance data)")}</li>
+              <li>{t("Wikipedia（選手経歴・移籍データ、CC BY-SA ライセンス）", "Wikipedia (player career and transfer data, CC BY-SA license)")}</li>
               <li>{t("FBref / Football Reference（詳細スタッツ）", "FBref / Football Reference (detailed statistics)")}</li>
               <li>{t("各クラブ公式サイト", "Official club websites")}</li>
             </ul>
