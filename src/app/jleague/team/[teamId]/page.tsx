@@ -67,14 +67,41 @@ export default function TeamDetailPage() {
           {[
             { label: locale === "en" ? "Prefecture" : "拠点", value: `${team.prefecture} ${team.city}` },
             { label: locale === "en" ? "Founded" : "創設", value: `${team.founded}年` },
-            { label: locale === "en" ? "Stadium" : "スタジアム", value: team.stadium },
+            { label: locale === "en" ? "Stadium" : "スタジアム", value: team.stadium, link: `/jleague/team/${team.id}/stadium` },
             { label: locale === "en" ? "Manager" : "監督", value: team.manager },
-          ].map((item) => (
-            <div key={item.label} className="bg-white rounded-xl border border-gray-100 p-4 shadow-sm">
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{item.label}</p>
-              <p className="text-sm font-bold text-gray-900 mt-1 leading-snug">{item.value}</p>
-            </div>
-          ))}
+          ].map((item) =>
+            item.link ? (
+              <Link
+                key={item.label}
+                href={item.link}
+                className="group relative bg-white rounded-xl border border-gray-100 p-4 shadow-sm hover:shadow-lg hover:border-transparent hover:ring-2 transition-all duration-200 overflow-hidden"
+                style={{ "--tw-ring-color": team.color } as React.CSSProperties}
+              >
+                <div
+                  className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+                  style={{ backgroundColor: team.color }}
+                />
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{item.label}</p>
+                <p className="text-sm font-bold text-gray-900 mt-1 leading-snug group-hover:text-gray-900 transition-colors">
+                  {item.value}
+                </p>
+                <span
+                  className="inline-flex items-center gap-1 mt-2 text-[11px] font-bold tracking-wide opacity-70 group-hover:opacity-100 transition-all"
+                  style={{ color: team.color }}
+                >
+                  {locale === "en" ? "View details" : "詳しく見る"}
+                  <svg className="w-3.5 h-3.5 translate-x-0 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                </span>
+              </Link>
+            ) : (
+              <div key={item.label} className="bg-white rounded-xl border border-gray-100 p-4 shadow-sm">
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{item.label}</p>
+                <p className="text-sm font-bold text-gray-900 mt-1 leading-snug">{item.value}</p>
+              </div>
+            )
+          )}
         </div>
 
         {/* Coming soon section */}
