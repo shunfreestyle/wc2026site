@@ -381,7 +381,7 @@ export default function TeamDetailPage() {
                         ))}
                       </div>
                       <div className="flex items-start justify-center pt-0.5">
-                        <span className="text-[10px] text-gray-300">&#9917;</span>
+                        <span className="text-[10px] text-gray-300">⚽</span>
                       </div>
                       <div className="text-left space-y-0.5">
                         {goals.filter(g => g.teamSide === "away").map((g, i) => (
@@ -406,7 +406,7 @@ export default function TeamDetailPage() {
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white transition-opacity hover:opacity-90"
             style={{ backgroundColor: team.color }}
           >
-            {locale === "en" ? "Try Starting Lineup Maker" : "スタメンメーカーで遊ぶ"} &#9917;
+            {locale === "en" ? "Try Starting Lineup Maker" : "スタメンメーカーで遊ぶ"} ⚽
           </Link>
           <a
             href={team.officialUrl}
@@ -414,7 +414,7 @@ export default function TeamDetailPage() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-bold border-2 border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors"
           >
-            {locale === "en" ? "Official Site" : "公式サイト"} &nearr;
+            {locale === "en" ? "Official Site" : "公式サイト"} ↗
           </a>
         </div>
       </div>
