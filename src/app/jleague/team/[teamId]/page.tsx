@@ -28,7 +28,7 @@ export default function TeamDetailPage() {
   const { teamId } = useParams<{ teamId: string }>();
   const { locale } = useLanguage();
   const team = getJ1TeamById(teamId);
-  const [posFilter, setPosFilter] = useState<string>("ALL");
+  const [activePos, setActivePos] = useState<string>("ALL");
   const [activeTab, setActiveTab] = useState<TabKey>("squad");
 
   if (!team) {
@@ -46,7 +46,6 @@ export default function TeamDetailPage() {
 
   // ── Data ────────────────────────────────────
   const players = getRosterByTeamId(teamId);
-  const filteredPlayers = posFilter === "ALL" ? players : players.filter((p) => p.position === posFilter);
 
   const teamShort = team.shortName;
   const teamMatches = jMatches
@@ -211,29 +210,37 @@ export default function TeamDetailPage() {
         {/* ── Squad Tab ── */}
         {activeTab === "squad" && (
           <div>
-            {/* Position filter */}
+            {/* Position nav */}
             <div className="flex flex-wrap gap-2 mb-6">
               {(["ALL", ...POS_ORDER] as const).map((p) => (
                 <button
                   key={p}
-                  onClick={() => setPosFilter(p)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-colors ${posFilter === p ? "text-white border-transparent" : "bg-white text-gray-600 border-gray-200 hover:border-gray-400"}`}
-                  style={posFilter === p ? { backgroundColor: p === "ALL" ? team.color : POS_COLORS[p] } : {}}
+                  onClick={() => {
+                    setActivePos(p);
+                    if (p === "ALL") {
+                      document.getElementById("squad-top")?.scrollIntoView({ behavior: "smooth" });
+                    } else {
+                      document.getElementById(`pos-${p}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                  }}
+                  className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-all ${activePos === p ? "text-white border-transparent scale-105" : "bg-white text-gray-600 border-gray-200 hover:border-gray-400"}`}
+                  style={activePos === p ? { backgroundColor: p === "ALL" ? team.color : POS_COLORS[p] } : {}}
                 >
-                  {p === "ALL" ? (locale === "en" ? `ALL (${players.length})` : `ALL (${players.length})`) : `${p} (${players.filter(pl => pl.position === p).length})`}
+                  {p === "ALL" ? `ALL (${players.length})` : `${p} (${players.filter(pl => pl.position === p).length})`}
                 </button>
               ))}
             </div>
 
+            <div id="squad-top" />
             {players.length === 0 ? (
               <p className="text-gray-400 text-center py-12">{locale === "en" ? "No squad data available" : "選手データがありません"}</p>
             ) : (
               <div className="space-y-6">
-                {(posFilter === "ALL" ? [...POS_ORDER] : [posFilter]).map((pos) => {
-                  const group = filteredPlayers.filter((p: JRosterPlayer) => p.position === pos);
+                {POS_ORDER.map((pos) => {
+                  const group = players.filter((p: JRosterPlayer) => p.position === pos);
                   if (group.length === 0) return null;
                   return (
-                    <div key={pos}>
+                    <div key={pos} id={`pos-${pos}`} className="scroll-mt-16">
                       <div className="flex items-center gap-2 mb-3">
                         <span className="w-2 h-5 rounded-full" style={{ backgroundColor: POS_COLORS[pos] }} />
                         <span className="text-sm font-bold text-gray-700">{pos}</span>
