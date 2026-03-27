@@ -210,18 +210,6 @@ export default function TeamDetailPage() {
         {/* ── Squad Tab ── */}
         {activeTab === "squad" && (
           <div>
-            {/* Team overview */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm mb-6">
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-600">
-                <span className="font-bold text-gray-900">{locale === "en" ? team.fullNameEn : team.fullName}</span>
-                <span>{locale === "en" ? "Est." : "創設"} {team.founded}{locale === "en" ? "" : "年"}</span>
-                <span>{team.prefecture} {team.city}</span>
-                <span>{team.stadium} ({team.stadiumCapacity.toLocaleString()}{locale === "en" ? " seats" : "人収容"})</span>
-                <span>{locale === "en" ? "Manager:" : "監督:"} {team.manager}</span>
-                <span>{locale === "en" ? "Squad:" : "登録:"} {players.length}{locale === "en" ? " players" : "名"}</span>
-              </div>
-            </div>
-
             {/* Position nav */}
             <div className="flex flex-wrap gap-2 mb-6">
               {(["ALL", ...POS_ORDER] as const).map((p) => (
