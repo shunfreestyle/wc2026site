@@ -24,6 +24,162 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    id: "1774857600001",
+    slug: "japan-wc2026-group-f-sweden-or-poland",
+    title: "森保ジャパン、W杯グループF最後の1枠はスウェーデンかポーランドか——いずれも日本代表に「縁」のある強敵",
+    titleEn: "Japan's World Cup Group F: Will It Be Sweden or Poland? Both Have History with the Samurai Blue",
+    excerpt: "W杯2026グループFの最後の1枠を懸けた欧州プレーオフ決勝が3月31日に開催。スウェーデンとポーランド、いずれも日本代表との因縁を持つ両国の動向を分析する。",
+    excerptEn: "The UEFA playoff final on March 31 will determine Japan's last Group F opponent. Both Sweden and Poland share history with the Samurai Blue — here's what to expect.",
+    category: "W杯" as const,
+    tags: ["W杯2026", "日本代表", "グループF", "スウェーデン", "ポーランド", "欧州プレーオフ", "レヴァンドフスキ", "ギェケレシュ", "森保一"],
+    tagsEn: ["World Cup 2026", "Japan", "Group F", "Sweden", "Poland", "UEFA Playoff", "Lewandowski", "Gyökeres", "Hajime Moriyasu"],
+    publishedAt: "2026-03-27",
+    updatedAt: "2026-03-27",
+    isPopular: true,
+    sources: [
+      { name: "JFA公式サイト", url: "https://www.jfa.jp/samuraiblue/news/00035825/" },
+      { name: "FIFA公式", url: "https://www.fifa.com/ja/tournaments/mens/worldcup/canadamexicousa2026/articles/final-draw-results-ja" },
+      { name: "ゲキサカ", url: "https://web.gekisaka.jp/news/worldcup/detail/?448522-448522-fl=" },
+      { name: "サッカーキング", url: "https://www.soccer-king.jp/news/world/wc/20260327/2141700.html" },
+    ],
+    content: `3月31日——この日、森保ジャパンのW杯グループステージ最後の対戦相手が決まる。欧州予選プレーオフ・パスB決勝で激突するのは、スウェーデンとポーランド。いずれも日本代表にとって「縁」のある相手だ。オランダ、チュニジアとともにグループFを戦う日本にとって、最後の1枠に入るのがどちらであっても、一筋縄ではいかない戦いが待っている。
+
+## グループF——すでに決まっている構図
+
+2025年12月のFIFAワールドカップ2026組み合わせ抽選会で、日本代表はグループFに入った。確定している対戦相手はオランダとチュニジア。そして残る1枠は、欧州予選プレーオフ・パスBの勝者に委ねられた。
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>グループ</th><td>F</td></tr>
+    <tr><th>確定チーム</th><td>日本、オランダ、チュニジア</td></tr>
+    <tr><th>残り1枠</th><td>欧州PO パスB勝者（スウェーデン or ポーランド）</td></tr>
+    <tr><th>PO決勝日</th><td>2026年3月31日</td></tr>
+    <tr><th>日本vsPO勝者</th><td>2026年6月25日（ダラス）</td></tr>
+  </tbody>
+</table>
+
+## プレーオフ準決勝——両国ともに圧巻の勝ち上がり
+
+3月27日に行われた欧州プレーオフ準決勝で、スウェーデンとポーランドはともに力強い勝利を収めた。
+
+**スウェーデン 3-1 ウクライナ**——主役はアーセナルのエースFWヴィクトル・ギェケレシュ。5分に先制点、50分に追加点、73分にPKで3点目を沈め、圧巻のハットトリックを達成。27歳のストライカーが一人でウクライナの夢を打ち砕いた。
+
+**ポーランド 2-1 アルバニア**——先制を許す苦しい展開も、37歳のエースFWロベルト・レヴァンドフスキが同点弾を叩き込み、流れを引き戻した。そしてナポリMFピオトル・ジエリンスキがスーパーミドルを決めて逆転勝利。ベテランと中堅の力で決勝に駒を進めた。
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">ギェケレシュ vs レヴァンドフスキ——新旧ストライカー対決</span>
+<p class="point-body">パスB決勝は、欧州屈指の2人のストライカーによる直接対決でもある。<strong>ギェケレシュ</strong>（27歳）はスポルティング時代に得点王を獲得し、アーセナル移籍後もプレミアリーグで得点を量産する「北欧の怪物」。一方の<strong>レヴァンドフスキ</strong>（37歳）は通算代表100ゴール超えのレジェンド。バルセロナでの契約満了が近づく中、「最後のW杯」への執念を見せる。両者のゴールが決勝の行方を左右するだろう。</p>
+</div>
+
+## ポーランドとの「因縁」——2018年ロシアW杯の記憶
+
+日本代表とポーランドには、忘れられない因縁がある。2018年ロシアW杯グループH第3戦、ボルゴグラード・アリーナでの一戦だ。
+
+59分、ヤン・ベドナレクのゴールでポーランドが先制。日本は0-1のビハインドを背負いながら、同時刻に行われていたセネガル対コロンビア戦の状況を踏まえ、西野朗監督は「攻めない」という決断を下した。試合終盤の約10分間、日本は自陣でボールを回し続け、0-1の敗北を「受け入れた」。結果としてフェアプレーポイントの差で決勝トーナメント進出を果たしたが、この判断は国内外で大きな議論を巻き起こした。
+
+あの試合のピッチに立っていたのが、当時29歳のレヴァンドフスキだ。37歳になった今もポーランド代表のエースとして君臨し、準決勝のアルバニア戦でも決定的なゴールを決めている。もしポーランドがプレーオフを勝ち抜けば、8年越しの「再戦」が実現することになる。
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">スウェーデンなら「未知との遭遇」——ギェケレシュ＆イサクの2トップは脅威</span>
+<p class="point-body">一方、スウェーデンが勝ち上がった場合、日本にとってはW杯での初対戦となる。注目すべきは<strong>ギェケレシュとアレクサンダー・イサク</strong>の2トップだ。アーセナルとニューカッスル、プレミアリーグを代表する2人のストライカーを擁するスウェーデンの攻撃力は、W杯全体を見渡しても屈指の破壊力を誇る。さらにスウェーデンは欧州予選グループステージこそ0勝2分4敗の最下位だったが、ネーションズリーグの成績でプレーオフに滑り込み、本番で一気に爆発する「大舞台での勝負強さ」を見せている。</p>
+</div>
+
+## 数字で見る——スウェーデンとポーランドの比較
+
+<table class="schedule-table">
+  <thead><tr><th>項目</th><th>スウェーデン</th><th>ポーランド</th></tr></thead>
+  <tbody>
+    <tr><td>FIFAランキング</td><td>50位前後</td><td>30位前後</td></tr>
+    <tr><td>欧州予選グループ成績</td><td>0勝2分4敗（最下位）</td><td>3勝2分3敗</td></tr>
+    <tr><td>PO準決勝結果</td><td>3-1（vsウクライナ）</td><td>2-1（vsアルバニア）</td></tr>
+    <tr><td>エースFW</td><td>ギェケレシュ（27歳）</td><td>レヴァンドフスキ（37歳）</td></tr>
+    <tr><td>直近W杯出場</td><td>2018年ロシア大会</td><td>2022年カタール大会</td></tr>
+    <tr><td>日本との対戦歴（W杯）</td><td>なし</td><td>2018年（ポーランド 1-0 日本）</td></tr>
+  </tbody>
+</table>
+
+## 森保監督はどちらを想定しているか
+
+いずれの相手になっても、日本代表にとって軽視できない存在であることは間違いない。ポーランドが来ればレヴァンドフスキという「個の力」への対策が必要になり、スウェーデンが来ればギェケレシュ＆イサクの2トップという「組織的な攻撃力」に備えなければならない。
+
+森保一監督率いる日本代表は、オランダという強豪との初戦（6月14日・フォックスボロ）に向けた準備を最優先としつつも、3月31日の結果を注視しているはずだ。グループFの全貌が明らかになるまで、あと4日——。
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">3月31日の決勝で何が決まるか</span>
+<p class="point-body">・欧州プレーオフ・パスB決勝（スウェーデン vs ポーランド）の勝者が日本のグループF最後の対戦相手に<br>・ポーランドなら2018年ロシアW杯以来の「因縁の再戦」。37歳レヴァンドフスキとの対峙<br>・スウェーデンならW杯初対戦。ギェケレシュ＆イサクのプレミア最強2トップが脅威<br>・いずれにしても、オランダ・チュニジアを含むグループFは「激戦区」となることは間違いない</p>
+</div>`,
+    contentEn: `March 31 — on this day, the final piece of Japan's World Cup Group F puzzle will fall into place. Sweden and Poland face off in the UEFA Playoff Path B final, and both nations share history with the Samurai Blue. Alongside the Netherlands and Tunisia, Japan's group stage journey promises to be anything but straightforward, regardless of who emerges victorious.
+
+## Group F — The Story So Far
+
+At the FIFA World Cup 2026 draw in December 2025, Japan was placed in Group F. The confirmed opponents are the Netherlands and Tunisia, with the final spot reserved for the winner of UEFA Playoff Path B.
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>Group</th><td>F</td></tr>
+    <tr><th>Confirmed Teams</th><td>Japan, Netherlands, Tunisia</td></tr>
+    <tr><th>Remaining Slot</th><td>UEFA PO Path B Winner (Sweden or Poland)</td></tr>
+    <tr><th>Playoff Final</th><td>March 31, 2026</td></tr>
+    <tr><th>Japan vs PO Winner</th><td>June 25, 2026 (Dallas)</td></tr>
+  </tbody>
+</table>
+
+## Playoff Semifinals — Both Nations Advance in Style
+
+On March 27, both Sweden and Poland secured impressive victories in their respective playoff semifinals.
+
+**Sweden 3-1 Ukraine** — Arsenal striker Viktor Gyökeres stole the show with a stunning hat-trick: goals in the 5th, 50th, and 73rd minutes dismantled Ukraine's hopes single-handedly.
+
+**Poland 2-1 Albania** — After conceding first, 37-year-old Robert Lewandowski equalized with a trademark finish before Napoli's Piotr Zieliński sealed the comeback with a spectacular long-range strike.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">Gyökeres vs Lewandowski — A Clash of Generations</span>
+<p class="point-body">The Path B final is also a showdown between two of Europe's most lethal strikers. <strong>Gyökeres</strong> (27) won the Primeira Liga golden boot at Sporting before becoming a prolific scorer at Arsenal. <strong>Lewandowski</strong> (37) has over 100 international goals and remains Poland's talisman despite approaching the twilight of his career at Barcelona. Their goals will likely decide the final.</p>
+</div>
+
+## Poland's History with Japan — Memories of Russia 2018
+
+Japan and Poland share an unforgettable chapter from the 2018 World Cup in Russia. In their Group H decider at Volgograd Arena, Jan Bednarek's 59th-minute goal gave Poland a 1-0 lead. With simultaneous results going their way, Japan manager Akira Nishino made the controversial decision to stop attacking in the final 10 minutes, accepting defeat to advance on fair play points. The strategy worked but sparked fierce debate worldwide.
+
+On the pitch that day was a 29-year-old Lewandowski. Now 37, he continues to captain Poland and delivered a crucial equalizer against Albania in the semifinal. Should Poland advance, an eight-year reunion awaits.
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">Sweden Would Bring an "Unknown Quantity" — and a Fearsome Strike Partnership</span>
+<p class="point-body">If Sweden advance, it would be their first-ever World Cup meeting with Japan. The headline threat is the <strong>Gyökeres-Alexander Isak</strong> partnership — two Premier League strikers from Arsenal and Newcastle respectively. Despite finishing bottom of their qualifying group with zero wins, Sweden's Nations League performance earned them a playoff spot, and their emphatic semifinal display suggests they peak when it matters most.</p>
+</div>
+
+## By the Numbers — Sweden vs Poland
+
+<table class="schedule-table">
+  <thead><tr><th>Category</th><th>Sweden</th><th>Poland</th></tr></thead>
+  <tbody>
+    <tr><td>FIFA Ranking</td><td>~50th</td><td>~30th</td></tr>
+    <tr><td>Qualifying Group Record</td><td>0W 2D 4L (last place)</td><td>3W 2D 3L</td></tr>
+    <tr><td>Playoff Semifinal</td><td>3-1 (vs Ukraine)</td><td>2-1 (vs Albania)</td></tr>
+    <tr><td>Star Striker</td><td>Gyökeres (27)</td><td>Lewandowski (37)</td></tr>
+    <tr><td>Last WC Appearance</td><td>2018 (Russia)</td><td>2022 (Qatar)</td></tr>
+    <tr><td>WC Record vs Japan</td><td>Never played</td><td>2018: Poland 1-0 Japan</td></tr>
+  </tbody>
+</table>
+
+## What Is Moriyasu Planning?
+
+Either opponent presents a formidable challenge. Poland would bring Lewandowski's individual brilliance and the emotional weight of a 2018 rematch. Sweden would offer the unknown — plus the terrifying Gyökeres-Isak strike duo that ranks among the best in world football.
+
+Manager Hajime Moriyasu will prioritize preparation for the Netherlands opener on June 14 in Foxborough, but his staff will undoubtedly be watching March 31 closely. In four days, Group F's full picture will be revealed.
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">What March 31 Decides</span>
+<p class="point-body">• The UEFA Playoff Path B final (Sweden vs Poland) determines Japan's last Group F opponent<br>• Poland would mean a 2018 World Cup rematch — and facing a 37-year-old Lewandowski on a mission<br>• Sweden would be a first-ever WC meeting — with the Premier League's deadliest strike pair in Gyökeres and Isak<br>• Either way, Group F — with the Netherlands and Tunisia also in the mix — will be one of the tournament's toughest groups</p>
+</div>`,
+  },
+  {
     id: "1774602001001",
     slug: "goto-keisuke-profile",
     title: "191cmの異次元ストライカー——後藤啓介という、日本サッカーが待ち望んだ「規格外」",
