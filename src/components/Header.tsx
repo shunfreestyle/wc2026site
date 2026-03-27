@@ -33,6 +33,7 @@ export default function Header() {
     { href: "/matches", label: t.nav.matches },
     { href: "/japan", label: t.nav.japan },
     { href: "/japan/uniform", label: t.nav.uniform },
+    { href: "/jleague", label: t.nav.jleague },
     { href: "/articles", label: t.nav.articles },
     { href: "/quiz", label: t.nav.quiz },
   ];

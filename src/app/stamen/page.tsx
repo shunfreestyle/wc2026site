@@ -1,7 +1,10 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useMemo, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { getRosterByTeamId } from "@/data/j1-rosters";
+import { getJ1TeamById } from "@/data/j1-teams";
 
 /* ─── Types ─── */
 interface Position {
@@ -364,8 +367,37 @@ function PlayerModal({
   );
 }
 
-/* ─── Main Page ─── */
+/* ─── Main Page (wrapper for Suspense) ─── */
 export default function StamenPage() {
+  return (
+    <Suspense fallback={<div className="min-h-[80vh] bg-gradient-to-b from-[#0a1628] to-[#1a1a2e] flex items-center justify-center"><p className="text-white/50">Loading...</p></div>}>
+      <StamenPageInner />
+    </Suspense>
+  );
+}
+
+function StamenPageInner() {
+  const searchParams = useSearchParams();
+  const teamParam = searchParams.get("team");
+
+  // J1チームモード
+  const j1Team = teamParam ? getJ1TeamById(teamParam) : null;
+  const j1Roster = teamParam ? getRosterByTeamId(teamParam) : [];
+  const activeSquad: Player[] = useMemo(() => {
+    if (j1Team && j1Roster.length > 0) {
+      return j1Roster.map((p) => ({
+        name: p.name,
+        pos: p.position,
+        club: j1Team.fullName,
+      }));
+    }
+    return SQUAD;
+  }, [j1Team, j1Roster]);
+
+  const isJ1Mode = !!j1Team;
+  const accentColor = j1Team?.color ?? "#E8192C";
+  const teamLabel = j1Team ? j1Team.fullName : "日本代表";
+
   const [step, setStep] = useState(0);
   const [formation, setFormation] = useState<Formation | null>(null);
   const [slots, setSlots] = useState<(Player | null)[]>(Array(11).fill(null));
@@ -575,8 +607,12 @@ export default function StamenPage() {
     return new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
   };
 
-  const shareText = `日本代表スタメン予想！${formation?.name ?? ""} #サムライブルー #SAMURAIFOOTBALL #W杯2026`;
-  const shareUrl = "https://samurai-football.jp/stamen";
+  const shareText = isJ1Mode
+    ? `${teamLabel}スタメン予想！${formation?.name ?? ""} #${teamLabel.replace(/[・\s]/g, "")} #Jリーグ #SAMURAIFOOTBALL`
+    : `日本代表スタメン予想！${formation?.name ?? ""} #サムライブルー #SAMURAIFOOTBALL #W杯2026`;
+  const shareUrl = isJ1Mode
+    ? `https://samurai-football.jp/stamen?team=${teamParam}`
+    : "https://samurai-football.jp/stamen";
 
   const handleShare = async () => {
     try {
@@ -621,8 +657,12 @@ export default function StamenPage() {
       <div className="max-w-[480px] mx-auto">
         {/* header */}
         <div className="text-center mb-3">
-          <h1 className="text-2xl sm:text-3xl font-bold text-white">スタメンメーカー</h1>
-          <p className="text-gray-400 text-sm mt-1">イギリス遠征のベストスタメンを組もう！</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white">
+            {isJ1Mode ? `${teamLabel}` : ""} スタメンメーカー
+          </h1>
+          <p className="text-gray-400 text-sm mt-1">
+            {isJ1Mode ? `${teamLabel}のベスト11を組もう！` : "イギリス遠征のベストスタメンを組もう！"}
+          </p>
         </div>
 
         <StepBar current={step} />
@@ -652,18 +692,18 @@ export default function StamenPage() {
               </div>
               <div className="mt-3 flex justify-between items-center gap-3">
                 <Link
-                  href="/"
+                  href={isJ1Mode ? `/jleague/team/${teamParam}` : "/"}
                   className="px-5 py-2.5 rounded-lg text-sm text-white transition-all duration-200"
                   style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.3)" }}
                   onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.2)")}
                   onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.12)")}
                 >
-                  ← トップへ
+                  ← {isJ1Mode ? "チームへ" : "トップへ"}
                 </Link>
                 <button
                   onClick={nextStep}
                   className="flex-1 max-w-[200px] py-2.5 rounded-lg text-white font-semibold transition-all duration-200 hover:bg-[#c0141f]"
-                  style={{ background: "#E8192C" }}
+                  style={{ background: accentColor }}
                 >
                   次へ →
                 </button>
@@ -704,7 +744,7 @@ export default function StamenPage() {
                 <button
                   onClick={nextStep}
                   className="flex-1 max-w-[200px] py-2.5 rounded-lg text-white font-semibold transition-all duration-200 hover:bg-[#c0141f]"
-                  style={{ background: "#E8192C" }}
+                  style={{ background: accentColor }}
                 >
                   次へ →
                 </button>
@@ -765,7 +805,7 @@ export default function StamenPage() {
         {/* ━━ Player Select Modal (for starting 11) ━━ */}
         {modalSlot !== null && formation && (
           <PlayerModal
-            squad={SQUAD}
+            squad={activeSquad}
             usedNames={usedNames}
             posFilter={formation.positions[modalSlot].pos}
             onSelect={handleSlotSelect}
