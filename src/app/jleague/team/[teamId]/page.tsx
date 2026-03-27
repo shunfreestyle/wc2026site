@@ -65,7 +65,7 @@ export default function TeamDetailPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
           {[
-            { label: locale === "en" ? "Prefecture" : "拠点", value: `${team.prefecture} ${team.city}`, link: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(team.prefecture + team.city)}`, external: true, cta: locale === "en" ? "Open Map" : "地図を見る" },
+            { label: locale === "en" ? "Prefecture" : "拠点", value: `${team.prefecture} ${team.city}`, link: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(team.stadium)}`, external: true, cta: locale === "en" ? "Open Map" : "地図を見る" },
             { label: locale === "en" ? "Founded" : "創設", value: `${team.founded}年` },
             { label: locale === "en" ? "Stadium" : "スタジアム", value: team.stadium, link: `/jleague/team/${team.id}/stadium`, cta: locale === "en" ? "View details" : "詳しく見る" },
             { label: locale === "en" ? "Manager" : "監督", value: team.manager, link: `/jleague/team/${team.id}/manager`, cta: locale === "en" ? "View profile" : "プロフィール" },
