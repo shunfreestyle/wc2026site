@@ -463,7 +463,7 @@ export const j1Teams: J1Team[] = [
     isOriginal10: false,
     stadium: "ベスト電器スタジアム",
     stadiumCapacity: 22563,
-    manager: "金明輝",
+    manager: "塚原真也",
     color: "#003087",
     colorSecondary: "#FFBE00",
     division: "WEST",
