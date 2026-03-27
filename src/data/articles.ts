@@ -1594,7 +1594,7 @@ The fact that the Bundesliga specifically distributed the content in Japanese re
 
 コリンチャンス（ブラジル）に所属するメンフィス・デパイ（オランダ代表）。22日のフラメンゴ戦での一場面が波紋を呼んでいる。試合中、ベンチに下りた同選手がスマートフォンを手にしたのだ。
 
-チームスタッフが即座に注意。だがこの光景は、ブラジルサッカー界のOBから批判の声を招いた。元ブラジル代表FWルイス・ファビアーノ氏（元ACミラン）がこの件に言及。ESPN Brasilが24日に報じている。
+チームスタッフが即座に注意。だがこの光景は、ブラジルサッカー界のOBから批判の声を招いた。元ブラジル代表FWルイス・ファビアーノ氏（元ACミラン）がこの件について、ESPN Brasilの取材に対し「欧州のクラブならあり得ない」と語った（ESPN Brasil、3月24日報道）。
 
 ## 欧州基準との落差を指摘
 
@@ -1631,14 +1631,14 @@ The fact that the Bundesliga specifically distributed the content in Japanese re
 <div class="takeaway-card">
   <div class="takeaway-label">KEY TAKEAWAYS</div>
   <ul>
-    <li><strong>メンフィス・デパイ</strong>（<strong>コリンチャンス</strong>）が<strong>フラメンゴ</strong>戦の試合中にベンチでスマートフォンを操作し、チームスタッフから即座に注意を受けた。元ブラジル代表FWの<strong>ルイス・ファビアーノ</strong>氏は「欧州のクラブなら絶対にあり得ない」と批判。</li>
+    <li><strong>メンフィス・デパイ</strong>（<strong>コリンチャンス</strong>）が<strong>フラメンゴ</strong>戦の試合中にベンチでスマートフォンを操作し、チームスタッフから即座に注意を受けた。元ブラジル代表FWの<strong>ルイス・ファビアーノ</strong>氏はESPN Brasilの取材で「欧州のクラブなら絶対にあり得ない」と批判（ESPN Brasil報道）。</li>
     <li><strong>マンチェスター・ユナイテッド</strong>や<strong>バルセロナ</strong>を経験したデパイだからこそ、その行動は余計に注目を浴びた。</li>
     <li>プロ選手の規律意識は、ピッチ外の数秒間の行動にこそ表れるという現実を突きつけた一件だ。</li>
   </ul>
 </div>`,
     contentEn: `## Depay Under Fire for Using Phone on Bench
 
-Memphis Depay (Netherlands international), currently at Corinthians (Brazil), caused a stir during the Flamengo match on the 22nd. While on the bench, the forward was spotted handling his smartphone. Team staff intervened immediately, but the scene drew criticism from Brazilian football veterans. Former Brazil striker Luis Fabiano commented on the incident, as reported by ESPN Brasil.
+Memphis Depay (Netherlands international), currently at Corinthians (Brazil), caused a stir during the Flamengo match on the 22nd. While on the bench, the forward was spotted handling his smartphone. Team staff intervened immediately, but the scene drew criticism from Brazilian football veterans. Former Brazil striker Luis Fabiano told ESPN Brasil: "This would never happen at a European club" (ESPN Brasil, March 24, 2026).
 
 ## The Gap with European Standards
 
@@ -1669,7 +1669,7 @@ Elite European clubs enforce strict bench discipline. Depay knows these standard
 <div class="takeaway-card">
 <div class="takeaway-label">KEY TAKEAWAYS</div>
 <ul>
-<li><strong>Memphis Depay</strong> (<strong>Corinthians</strong>) used his smartphone on the bench during the <strong>Flamengo</strong> match. Former Brazil striker <strong>Luis Fabiano</strong> said "this would never happen at a European club."</li>
+<li><strong>Memphis Depay</strong> (<strong>Corinthians</strong>) used his smartphone on the bench during the <strong>Flamengo</strong> match. Former Brazil striker <strong>Luis Fabiano</strong> told ESPN Brasil: "This would never happen at a European club" (ESPN Brasil).</li>
 <li>Having played for <strong>Manchester United</strong> and <strong>Barcelona</strong>, Depay's actions attracted heightened scrutiny.</li>
 <li>The incident underscored that a professional's discipline is revealed in seconds of off-pitch behavior.</li>
 </ul>
@@ -2265,12 +2265,12 @@ True to his word, Shiogai went on to rack up goals on the Bundesliga stage.
 
 On March 19, 2026, Kento Shiogai's name appeared among the 28-man squad announced by the JFA for the UK tour. A first senior call-up. The 21-year-old who had been rejected from youth promotion, fought his way up through high school football, crossed to the Netherlands, and then moved on to Germany had finally become a member of the Samurai Blue.
 
-Manager Hajime Moriyasu commented: "Shiogai has outstanding instincts in front of goal. Age is irrelevant. It is only natural to call up players who are producing results."
+Manager Hajime Moriyasu said at his press conference (JFA, March 19, 2026): "Shiogai has outstanding instincts in front of goal. Age is irrelevant. It is only natural to call up players who are producing results."
 
 <div class="highlight-box">
 <span class="point-label">POINT 3</span>
 <span class="point-title">A Surprise Call-Up Just Before the World Cup — Moriyasu Sees That Extra 1 Percent</span>
-<p class="point-body">A first call-up with roughly three months to go before the World Cup is highly unusual. Manager <strong>Hajime Moriyasu</strong> said he wanted to raise the team's chances of winning by even 1 percent. Read another way, this means he judged that Shiogai's nose for goal offers something the existing squad members cannot. If Shiogai delivers against Scotland and England, a place in the World Cup squad becomes a very real prospect.</p>
+<p class="point-body">A first call-up with roughly three months to go before the World Cup is highly unusual. Manager <strong>Hajime Moriyasu</strong> stated at his press conference (JFA, March 19, 2026) that he wanted to raise the team's chances of winning by even 1 percent. Read another way, this means he judged that Shiogai's nose for goal offers something the existing squad members cannot. If Shiogai delivers against Scotland and England, a place in the World Cup squad becomes a very real prospect.</p>
 </div>
 
 <div class="verdict-card">
@@ -2634,7 +2634,7 @@ In the 2022-23 season, he scored 7 goals, breaking the single-season scoring rec
 <div class="highlight-box">
 <span class="point-label">POINT 3</span>
 <span class="point-title">Returning from Injury Three Months Before the World Cup — The Undisputed Left-Wing Ace</span>
-<p class="point-body">Despite suffering a left ankle injury in the March 2026 match against Arsenal, his manager commented that "it is not a serious injury." He was duly called up for the March UK tour and is building his fitness ahead of the World Cup. As the cornerstone of Japan's left flank, Mitoma's presence is absolute.</p>
+<p class="point-body">Despite suffering a left ankle injury in the March 2026 match against Arsenal, his club manager was quoted as saying "it is not a serious injury" (reported by Brighton & Hove Albion official site). He was duly called up for the March UK tour and is building his fitness ahead of the World Cup. As the cornerstone of Japan's left flank, Mitoma's presence is absolute.</p>
 </div>
 
 ## Career History
@@ -2788,7 +2788,7 @@ Naomichi Ueda (31) once said those words. Coming from a man who had already rece
 
 ## "I Have Never Seen This Guy Lose a Defensive Battle"
 
-Toyokawa Yuta, a former teammate, once said of Ueda during their days at Otsu High School in Kumamoto: "He was blowing away university players and even professionals."
+Toyokawa Yuta, a former teammate, recalled during an interview about their days at Otsu High School in Kumamoto: "He was blowing away university players and even professionals."
 
 As captain throughout his three years at the school, Ueda appeared at the 2011 U-17 World Cup, scoring once in five matches and helping the team reach the quarterfinals. He had originally intended to attend university, but the experience at that global tournament steeled his resolve to turn professional.
 
@@ -2979,12 +2979,12 @@ In midfield, the key question is whether the double pivot of Daichi Kamada as th
 
 ## "The Greatest View" — 80 Days to Go
 
-At his press conference, Manager Moriyasu stated: "I want this tour to serve both as a platform for squad selection toward the World Cup and as an opportunity to strengthen the team."
+At his squad announcement press conference (JFA, March 19, 2026), Manager Moriyasu stated: "I want this tour to serve both as a platform for squad selection toward the World Cup and as an opportunity to strengthen the team."
 
 <div class="analysis-box">
 <span class="analysis-label">ANALYSIS 3</span>
 <span class="analysis-title">Kent Shiogai's Surprise Call-Up — "Gaining That Extra 1%" With the World Cup in Mind</span>
-<p class="analysis-body">Twenty-one-year-old Kent Shiogai has earned a surprise first call-up just before the World Cup. Manager Moriyasu said, "We want to raise our chances of winning by even 1% heading into the World Cup." His performances at Wolfsburg have been recognized, and if he delivers results in these two matches, a place in the World Cup squad could become a realistic prospect.</p>
+<p class="analysis-body">Twenty-one-year-old Kent Shiogai has earned a surprise first call-up just before the World Cup. Manager Moriyasu stated at the press conference (JFA, March 19, 2026): "We want to raise our chances of winning by even 1% heading into the World Cup." His performances at Wolfsburg have been recognized, and if he delivers results in these two matches, a place in the World Cup squad could become a realistic prospect.</p>
 </div>
 
 <table class="schedule-table">
@@ -3316,7 +3316,7 @@ Eighty days until the World Cup kicks off. Whether Japan can claim victory in th
 
 ## 森保監督の選考哲学——「目先の成績」より「チームへの統合性」
 
-森保監督は会見で「そこには競争がある」と述べた。この言葉の裏には、「CLで活躍した守田より、リーズで出場機会が減少している田中碧を選ぶ」という判断がある。ファンの間では「なぜ守田を外すのか」という反応が広がったが、これは「目先の成績よりもチームへの統合性を重視する」という森保監督の一貫した選考哲学の表れとも読める。
+森保監督は招集メンバー発表の記者会見で「そこには競争がある」と述べた（JFA公式、2026年3月19日）。この言葉の裏には、「CLで活躍した守田より、リーズで出場機会が減少している田中碧を選ぶ」という判断がある。ファンの間では「なぜ守田を外すのか」という反応が広がったが、これは「目先の成績よりもチームへの統合性を重視する」という森保監督の一貫した選考哲学の表れとも読める。
 
 守田は「いつでも入ってこられる」戦力だからこそ、今は別の選手を試す優先順位があるというロジックだ。3月の遠征は最後の「テストの場」であり、既に実力が証明されている守田よりも、まだ見極めが必要な選手に出場機会を与えたい——そう読み解くこともできる。
 
@@ -3374,7 +3374,7 @@ That made the news of his omission from the national team all the more shocking.
 
 ## Moriyasu's Selection Philosophy — "Team Integration" Over "Recent Form"
 
-At his press conference, Manager Moriyasu stated: "There is competition." Behind these words lies the decision to select Ao Tanaka — whose playing time at Leeds has been decreasing — over Morita, who has been excelling in the Champions League. While the reaction among fans was widespread disbelief — "Why leave out Morita?" — this can also be read as an expression of Moriyasu's consistent selection philosophy: prioritizing team integration over recent individual results.
+At his squad announcement press conference (JFA, March 19, 2026), Manager Moriyasu stated: "There is competition." Behind these words lies the decision to select Ao Tanaka — whose playing time at Leeds has been decreasing — over Morita, who has been excelling in the Champions League. While the reaction among fans was widespread disbelief — "Why leave out Morita?" — this can also be read as an expression of Moriyasu's consistent selection philosophy: prioritizing team integration over recent individual results.
 
 The logic is that precisely because Morita is a player who "can slot back in at any time," other players are given higher priority for testing right now. The March tour is the last "testing ground," and the reading is that Moriyasu wanted to give playing time to players who still need evaluating rather than Morita, whose quality is already proven.
 
@@ -3586,7 +3586,7 @@ Eighty days until the World Cup. Rather than being intoxicated by the beautiful 
 <div class="highlight-box">
 <span class="point-label">POINT 3</span>
 <span class="point-title">森保監督の「1%の上積み」哲学——塩貝招集の真意</span>
-<p class="point-body">森保監督が語った「1%でも勝つ可能性を上げる」という言葉は、塩貝のような「ゲームチェンジャー」をベンチに置くことの戦術的価値を指している。W杯は7試合を戦う長丁場。スタメン11人だけでは勝ち抜けない。26人全員の質がものを言う舞台で、塩貝の存在は確実に「1%以上」の上積みとなる。</p>
+<p class="point-body">森保監督が記者会見で語った「1%でも勝つ可能性を上げる」（JFA公式、2026年3月19日）という言葉は、塩貝のような「ゲームチェンジャー」をベンチに置くことの戦術的価値を指している。W杯は7試合を戦う長丁場。スタメン11人だけでは勝ち抜けない。26人全員の質がものを言う舞台で、塩貝の存在は確実に「1%以上」の上積みとなる。</p>
 </div>
 
 ## 塩貝が代表で見せるべきもの
