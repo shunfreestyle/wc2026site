@@ -29,28 +29,46 @@ export default function PrivacyPage() {
 
           <section>
             <h2 className="text-lg font-bold text-gray-900 mb-3">
-              {t("収集する情報", "Information We Collect")}
+              {t("収集する情報と利用目的", "Information We Collect & Purpose of Use")}
             </h2>
             <p>
               {t(
-                "当サイトでは以下の情報を収集する場合があります：",
-                "We may collect the following:"
+                "当サイトでは以下の情報を、それぞれの目的のために収集・利用します：",
+                "We collect and use the following information for the purposes described:"
               )}
             </p>
-            <ul className="list-disc pl-6 mt-2 space-y-1">
+            <ul className="list-disc pl-6 mt-2 space-y-2">
               <li>
                 {t(
-                  "お問い合わせフォームからご入力いただいた情報",
-                  "Information submitted via the contact form"
+                  "お問い合わせフォームからご入力いただいた情報（氏名・メールアドレス・お問い合わせ内容）→ お問い合わせへの回答および対応のため",
+                  "Information submitted via the contact form (name, email, message) — to respond to and handle your inquiry"
                 )}
               </li>
               <li>
                 {t(
-                  "Googleアナリティクスによるアクセスログ（IPアドレス、ブラウザ情報等）",
-                  "Access logs from Google Analytics (IP address, browser info, etc.)"
+                  "Googleアナリティクスによるアクセスログ（IPアドレス、ブラウザ情報、閲覧ページ等）→ サイトの利用状況の分析およびコンテンツ改善のため",
+                  "Access logs from Google Analytics (IP address, browser info, pages viewed, etc.) — to analyze site usage and improve content"
+                )}
+              </li>
+              <li>
+                {t(
+                  "Google AdSenseによるCookie情報 → 興味関心に基づいた広告配信のため（第三者である広告配信事業者が使用）",
+                  "Cookie data from Google AdSense — to deliver interest-based advertising (used by third-party ad providers)"
+                )}
+              </li>
+              <li>
+                {t(
+                  "言語設定の選択情報（localStorage）→ 次回アクセス時の表示言語の維持のため",
+                  "Language preference (localStorage) — to maintain your display language on subsequent visits"
                 )}
               </li>
             </ul>
+            <p className="mt-2">
+              {t(
+                "上記以外の目的で個人情報を利用することはありません。法的根拠：ユーザーの同意（Cookie同意バナーによる）および当サイト運営の正当な利益に基づきます。",
+                "We do not use personal information for purposes other than those listed above. Legal basis: user consent (via cookie consent banner) and legitimate interests of site operation."
+              )}
+            </p>
           </section>
 
           <section>

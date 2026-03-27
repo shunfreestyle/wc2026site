@@ -21,11 +21,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "SAMURAI FOOTBALL | Follow Samurai Blue at 2026 World Cup",
+    default: "SAMURAI FOOTBALL | Unofficial 2026 World Cup Fan Site",
     template: "%s | SAMURAI FOOTBALL",
   },
   description:
-    "The ultimate guide to Japan national team (Samurai Blue) and the 2026 FIFA World Cup. Player profiles, match schedules, and team info in 11 languages.",
+    "Unofficial fan site covering Japan national team and the 2026 FIFA World Cup. Player profiles, match schedules, and team info. Not affiliated with FIFA or JFA.",
   keywords: [
     "Japan national team",
     "Samurai Blue",
@@ -39,14 +39,14 @@ export const metadata: Metadata = {
     siteName: "SAMURAI FOOTBALL",
     type: "website",
     url: "https://samurai-football.jp",
-    title: "SAMURAI FOOTBALL | 2026 FIFA World Cup",
+    title: "SAMURAI FOOTBALL | Unofficial 2026 FIFA World Cup Fan Site",
     description:
-      "Follow Samurai Blue and all 48 nations at the 2026 FIFA World Cup.",
+      "Unofficial fan site covering Japan national team and all 48 nations at the 2026 FIFA World Cup. Not affiliated with FIFA or JFA.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAMURAI FOOTBALL",
-    description: "Follow Samurai Blue at the 2026 FIFA World Cup",
+    title: "SAMURAI FOOTBALL — Unofficial Fan Site",
+    description: "Unofficial fan site covering Japan national team and the 2026 FIFA World Cup. Not affiliated with FIFA or JFA.",
   },
   alternates: {
     canonical: "https://samurai-football.jp",

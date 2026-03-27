@@ -49,6 +49,7 @@ export default function Header() {
               <h1 className="text-base sm:text-lg font-bold tracking-tight leading-none">SAMURAI FOOTBALL</h1>
               <p className="text-[10px] sm:text-xs font-semibold tracking-widest">
                 <span className="text-[#E8192C]">USA</span> | <span className="text-[#00843D]">MEX</span> | <span className="text-white">CAN</span> 2026
+                <span className="text-white/40 ml-1">{locale === "en" ? "— Unofficial Fan Site" : "— 非公式ファンサイト"}</span>
               </p>
             </div>
           </Link>
