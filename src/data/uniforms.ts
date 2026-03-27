@@ -246,8 +246,8 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#991B1B",
     tagBorder: "#FCA5A5",
     uniforms: [
-      { id: 60, type: "home", name: "ホーム", affiliateUrl: "https://a.r10.to/hkacBh", imgSrc: "", imgHref: "" },
-      { id: 61, type: "away", name: "アウェイ", affiliateUrl: "https://a.r10.to/hYCnYr", imgSrc: "", imgHref: "" },
+      { id: 60, type: "home", name: "ホーム", affiliateUrl: "https://a.r10.to/hkacBh", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/adidas/cabinet/p96/jm8381_l.jpg?_ex=400x400", imgHref: "https://a.r10.to/hkacBh" },
+      { id: 61, type: "away", name: "アウェイ", affiliateUrl: "https://a.r10.to/hYCnYr", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/adidas/cabinet/p107/jm8386_l.jpg?_ex=400x400", imgHref: "https://a.r10.to/hYCnYr" },
     ],
   },
   {
@@ -260,8 +260,8 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#854D0E",
     tagBorder: "#FDE047",
     uniforms: [
-      { id: 70, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
-      { id: 71, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
+      { id: 70, type: "home", name: "ホーム", affiliateUrl: "https://item.rakuten.co.jp/adidas/jl6972/", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/adidas/cabinet/p96/jl6972_l.jpg?_ex=400x400", imgHref: "https://item.rakuten.co.jp/adidas/jl6972/" },
+      { id: 71, type: "away", name: "アウェイ", affiliateUrl: "https://item.rakuten.co.jp/adidas/jl6974/", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/adidas/cabinet/p107/jl6974_l.jpg?_ex=400x400", imgHref: "https://item.rakuten.co.jp/adidas/jl6974/" },
     ],
   },
   {
@@ -288,8 +288,8 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#374151",
     tagBorder: "#D1D5DB",
     uniforms: [
-      { id: 90, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
-      { id: 91, type: "away", name: "アウェイ 24/25", affiliateUrl: "https://a.r10.to/hgzQAw", imgSrc: "", imgHref: "" },
+      { id: 90, type: "home", name: "ホーム 26/27", affiliateUrl: "https://item.rakuten.co.jp/football-life/swe26hsa/", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/football-life/cabinet/shohin23/swe26hsat1rp01x.jpg?_ex=400x400", imgHref: "https://item.rakuten.co.jp/football-life/swe26hsa/" },
+      { id: 91, type: "away", name: "アウェイ 24/25", affiliateUrl: "https://a.r10.to/hgzQAw", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/football-life/cabinet/shohin20/swe24asat19.jpg?_ex=400x400", imgHref: "https://a.r10.to/hgzQAw" },
     ],
   },
   {
@@ -302,7 +302,7 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#374151",
     tagBorder: "#D1D5DB",
     uniforms: [
-      { id: 100, type: "home", name: "ホーム 26/27", affiliateUrl: "https://a.r10.to/hPrrQd", imgSrc: "", imgHref: "" },
+      { id: 100, type: "home", name: "ホーム 26/27", affiliateUrl: "https://a.r10.to/hPrrQd", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/football-life/cabinet/shohin23/hun26hsat1rp01x.jpg?_ex=400x400", imgHref: "https://a.r10.to/hPrrQd" },
       { id: 101, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
     ],
   },
@@ -316,8 +316,8 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#374151",
     tagBorder: "#D1D5DB",
     uniforms: [
-      { id: 110, type: "home", name: "ホーム 2024", affiliateUrl: "https://a.r10.to/hRlslw", imgSrc: "", imgHref: "" },
-      { id: 111, type: "away", name: "アウェイ 2022", affiliateUrl: "https://a.r10.to/h5oMOt", imgSrc: "", imgHref: "" },
+      { id: 110, type: "home", name: "ホーム 2024", affiliateUrl: "https://item.rakuten.co.jp/bbfb/c-4-4-iq0781/", imgSrc: "", imgHref: "" },
+      { id: 111, type: "away", name: "アウェイ 2022", affiliateUrl: "https://a.r10.to/h5oMOt", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/bbfb/cabinet/09106006/daihyounorire22ass-.jpg?_ex=400x400", imgHref: "https://a.r10.to/h5oMOt" },
     ],
   },
   {
@@ -330,8 +330,8 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#1E3A8A",
     tagBorder: "#93C5FD",
     uniforms: [
-      { id: 120, type: "home", name: "ホーム 2024", affiliateUrl: "https://a.r10.to/h8zTGw", imgSrc: "", imgHref: "" },
-      { id: 121, type: "away", name: "アウェイ 2022", affiliateUrl: "https://a.r10.to/hP3V4d", imgSrc: "", imgHref: "" },
+      { id: 120, type: "home", name: "ホーム 2024", affiliateUrl: "https://a.r10.to/h8zTGw", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/fcfa/cabinet/uni/national/10026980.jpg?_ex=400x400", imgHref: "https://a.r10.to/h8zTGw" },
+      { id: 121, type: "away", name: "アウェイ 2022", affiliateUrl: "https://a.r10.to/hP3V4d", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/pit-sports/cabinet/banana59/if814-hk5126_1.jpg?_ex=400x400", imgHref: "https://a.r10.to/hP3V4d" },
     ],
   },
   {
@@ -372,7 +372,7 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#374151",
     tagBorder: "#D1D5DB",
     uniforms: [
-      { id: 150, type: "home", name: "ホーム 1994復刻", affiliateUrl: "https://a.r10.to/hPMvpm", imgSrc: "", imgHref: "" },
+      { id: 150, type: "home", name: "ホーム 1994復刻", affiliateUrl: "https://a.r10.to/hPMvpm", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/kinetics-tokyo/cabinet/product_image/12/9063989-1.jpg?_ex=400x400", imgHref: "https://a.r10.to/hPMvpm" },
       { id: 151, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
     ],
   },
@@ -400,8 +400,8 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#374151",
     tagBorder: "#D1D5DB",
     uniforms: [
-      { id: 170, type: "home", name: "ホーム", affiliateUrl: "", imgSrc: "", imgHref: "" },
-      { id: 171, type: "away", name: "アウェイ", affiliateUrl: "", imgSrc: "", imgHref: "" },
+      { id: 170, type: "home", name: "ホーム", affiliateUrl: "https://item.rakuten.co.jp/adidas/kd0959/", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/adidas/cabinet/p103/kd0959_l.jpg?_ex=400x400", imgHref: "https://item.rakuten.co.jp/adidas/kd0959/" },
+      { id: 171, type: "away", name: "アウェイ", affiliateUrl: "https://item.rakuten.co.jp/adidas/kd0957/", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/adidas/cabinet/p107/kd0957_l.jpg?_ex=400x400", imgHref: "https://item.rakuten.co.jp/adidas/kd0957/" },
     ],
   },
   {
@@ -428,8 +428,8 @@ export const NATIONAL_TEAMS: NationalTeam[] = [
     tagText: "#374151",
     tagBorder: "#D1D5DB",
     uniforms: [
-      { id: 190, type: "home", name: "ホーム 2018", affiliateUrl: "https://a.r10.to/hFraMH", imgSrc: "", imgHref: "" },
-      { id: 191, type: "away", name: "アウェイ 2018", affiliateUrl: "https://a.r10.to/h54Yfz", imgSrc: "", imgHref: "" },
+      { id: 190, type: "home", name: "ホーム 2018", affiliateUrl: "https://a.r10.to/hFraMH", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/kumasupo/cabinet/adidas18ss/dsi37_1.jpg?_ex=400x400", imgHref: "https://a.r10.to/hFraMH" },
+      { id: 191, type: "away", name: "アウェイ 2018", affiliateUrl: "https://a.r10.to/h54Yfz", imgSrc: "https://thumbnail.image.rakuten.co.jp/@0_mall/kumasupo/cabinet/adidas18ss/emf74_1.jpg?_ex=400x400", imgHref: "https://a.r10.to/h54Yfz" },
     ],
   },
   {
