@@ -162,6 +162,161 @@ export const TEAM_INFO: Record<string, { shortName: string; color: string; emoji
 const NOTE = "出典: Jリーグ公式サイト（jleague.jp / data.j-league.or.jp）";
 
 export const jMatchDetails: JMatchDetail[] = [
+  // ── Round 1 EAST ──────────────────────────────
+  {
+    matchId: "e-r1-ymfm-mchd",
+    homeLineup: { formation: "4-2-1-3", players: [] },
+    awayLineup: { formation: "3-4-2-1", players: [] },
+    goals: [
+      { minute: 8, playerName: "エリキ", teamSide: "away" },
+      { minute: 16, playerName: "遠野 大弥", teamSide: "home" },
+      { minute: 17, playerName: "エリキ", teamSide: "away" },
+      { minute: 47, playerName: "相馬 勇紀", teamSide: "away" },
+      { minute: 67, playerName: "ジョルディ クルークス", teamSide: "home" },
+    ],
+    cards: [
+      { minute: 47, playerName: "宮市 亮", teamSide: "home", type: "yellow" },
+      { minute: 63, playerName: "相馬 勇紀", teamSide: "away", type: "yellow" },
+    ],
+    stats: { shots: [16, 8], corners: [5, 1], fouls: [17, 15] },
+  },
+  {
+    matchId: "e-r1-chib-urw",
+    homeLineup: { formation: "4-4-2", players: [] },
+    awayLineup: { formation: "4-2-3-1", players: [] },
+    goals: [
+      { minute: 5, playerName: "松尾 佑介", teamSide: "away" },
+      { minute: 12, playerName: "肥田野 蓮治", teamSide: "away" },
+    ],
+    cards: [
+      { minute: 77, playerName: "髙橋 壱晟", teamSide: "home", type: "yellow" },
+      { minute: 90, playerName: "岩井 琢朗", teamSide: "home", type: "yellow" },
+    ],
+    stats: { shots: [16, 20], corners: [13, 6], fouls: [12, 10] },
+  },
+  {
+    matchId: "e-r1-fct-kas",
+    homeLineup: { formation: "4-4-2", players: [] },
+    awayLineup: { formation: "4-4-2", players: [] },
+    goals: [
+      { minute: 44, playerName: "遠藤 渓太", teamSide: "home" },
+      { minute: 46, playerName: "キム テヒョン", teamSide: "away" },
+    ],
+    cards: [
+      { minute: 34, playerName: "稲村 隼翔", teamSide: "home", type: "yellow" },
+      { minute: 41, playerName: "三竿 健斗", teamSide: "away", type: "red" },
+      { minute: 58, playerName: "鈴木 優磨", teamSide: "away", type: "yellow" },
+      { minute: 60, playerName: "知念 慶", teamSide: "away", type: "yellow" },
+    ],
+    stats: { shots: [21, 8], corners: [11, 4], fouls: [9, 19] },
+  },
+  {
+    matchId: "e-r1-tkv-mito",
+    homeLineup: { formation: "3-4-2-1", players: [] },
+    awayLineup: { formation: "4-4-2", players: [] },
+    goals: [
+      { minute: 8, playerName: "オウンゴール", teamSide: "home" },
+      { minute: 21, playerName: "齋藤 功佑", teamSide: "home" },
+      { minute: 49, playerName: "松橋 優安", teamSide: "home" },
+      { minute: 59, playerName: "加藤 千尋", teamSide: "away" },
+    ],
+    cards: [
+      { minute: 42, playerName: "板倉 健太", teamSide: "away", type: "yellow" },
+      { minute: 50, playerName: "五木田 季晋", teamSide: "away", type: "yellow" },
+    ],
+    stats: { shots: [7, 9], corners: [2, 4], fouls: [13, 11] },
+  },
+  {
+    matchId: "e-r1-kaw-kas2",
+    homeLineup: { formation: "4-2-3-1", players: [] },
+    awayLineup: { formation: "3-4-2-1", players: [] },
+    goals: [
+      { minute: 6, playerName: "エリソン", teamSide: "home" },
+      { minute: 11, playerName: "エリソン", teamSide: "home" },
+      { minute: 25, playerName: "エリソン", teamSide: "home" },
+      { minute: 38, playerName: "細谷 真大", teamSide: "away" },
+      { minute: 61, playerName: "瀬川 祐輔", teamSide: "away" },
+      { minute: 68, playerName: "松長根 悠仁", teamSide: "home" },
+      { minute: 81, playerName: "山内 日向汰", teamSide: "away" },
+      { minute: 94, playerName: "脇坂 泰斗", teamSide: "home" },
+    ],
+    stats: { shots: [12, 27], corners: [2, 8], fouls: [4, 5] },
+  },
+  // ── Round 1 WEST ──────────────────────────────
+  {
+    matchId: "w-r1-kyt-kob",
+    homeLineup: { formation: "4-1-2-3", players: [] },
+    awayLineup: { formation: "4-1-2-3", players: [] },
+    goals: [
+      { minute: 37, playerName: "武藤 嘉紀", teamSide: "away" },
+      { minute: 53, playerName: "マルコ トゥーリオ", teamSide: "home" },
+    ],
+    cards: [
+      { minute: 2, playerName: "鈴木 義宜", teamSide: "home", type: "yellow" },
+      { minute: 61, playerName: "ジョアン ペドロ", teamSide: "home", type: "yellow" },
+      { minute: 95, playerName: "扇原 貴宏", teamSide: "away", type: "yellow" },
+    ],
+    stats: { shots: [14, 11], shotsOnTarget: [6, 2], corners: [5, 5], fouls: [9, 18] },
+  },
+  {
+    matchId: "w-r1-nsk-hir",
+    homeLineup: { formation: "3-4-2-1", players: [] },
+    awayLineup: { formation: "3-4-2-1", players: [] },
+    goals: [
+      { minute: 35, playerName: "中野 就斗", teamSide: "away" },
+      { minute: 50, playerName: "鈴木 章斗", teamSide: "away" },
+      { minute: 54, playerName: "川辺 駿", teamSide: "away" },
+      { minute: 81, playerName: "マテウス ジェズス", teamSide: "home" },
+    ],
+    stats: { shots: [11, 18], shotsOnTarget: [2, 6], corners: [1, 5], fouls: [11, 16] },
+  },
+  {
+    matchId: "w-r1-nag-shm",
+    homeLineup: { formation: "3-4-2-1", players: [] },
+    awayLineup: { formation: "4-1-2-3", players: [] },
+    goals: [
+      { minute: 59, playerName: "木村 勇大", teamSide: "home" },
+    ],
+    cards: [
+      { minute: 28, playerName: "原 輝綺", teamSide: "home", type: "yellow" },
+      { minute: 41, playerName: "マルクス ヴィニシウス", teamSide: "home", type: "yellow" },
+      { minute: 64, playerName: "住吉 ジェラニレショーン", teamSide: "away", type: "yellow" },
+      { minute: 90, playerName: "甲田 英將", teamSide: "home", type: "yellow" },
+      { minute: 90, playerName: "小塚 和季", teamSide: "away", type: "yellow" },
+    ],
+    stats: { shots: [14, 6], shotsOnTarget: [3, 3], corners: [5, 5], fouls: [18, 13] },
+  },
+  {
+    matchId: "w-r1-cos-gam",
+    homeLineup: { formation: "4-2-3-1", players: [] },
+    awayLineup: { formation: "4-2-3-1", players: [] },
+    goals: [],
+    cards: [
+      { minute: 1, playerName: "チアゴ アンドラーデ", teamSide: "home", type: "yellow" },
+      { minute: 3, playerName: "鈴木 徳真", teamSide: "away", type: "yellow" },
+      { minute: 8, playerName: "岸本 武流", teamSide: "away", type: "yellow" },
+      { minute: 41, playerName: "田中 隼人", teamSide: "home", type: "red" },
+      { minute: 84, playerName: "岸本 武流", teamSide: "away", type: "red" },
+    ],
+    stats: { shots: [4, 20], shotsOnTarget: [1, 3], corners: [4, 5], fouls: [15, 18] },
+  },
+  {
+    matchId: "w-r1-fuk-oka",
+    homeLineup: { formation: "3-4-2-1", players: [] },
+    awayLineup: { formation: "3-4-2-1", players: [] },
+    goals: [
+      { minute: 44, playerName: "松本 昌也", teamSide: "away" },
+      { minute: 78, playerName: "前田 快", teamSide: "home" },
+    ],
+    cards: [
+      { minute: 40, playerName: "名古 新太郎", teamSide: "home", type: "yellow" },
+      { minute: 47, playerName: "木村 太哉", teamSide: "away", type: "yellow" },
+      { minute: 54, playerName: "一美 和成", teamSide: "away", type: "yellow" },
+      { minute: 76, playerName: "藤田 息吹", teamSide: "away", type: "yellow" },
+    ],
+    stats: { shots: [12, 5], shotsOnTarget: [5, 1], corners: [6, 4], fouls: [17, 17] },
+  },
+  // ── Round 8 ───────────────────────────────────
   {
     matchId: "e-r8-kas-chib",
     homeLineup: {
@@ -642,7 +797,7 @@ export const jMatches: JMatchSimple[] = [
   { id:"e-r1-chib-urw",  league:"J1", group:"EAST", round:1, date:"2026-02-07", kickoff:"13:04", homeTeam:"千葉",   awayTeam:"浦和",   homeScore:0, awayScore:2, status:"finished", stadium:"フクダ電子アリーナ",   referenceNote:NOTE },
   { id:"e-r1-fct-kas",   league:"J1", group:"EAST", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"FC東京", awayTeam:"鹿島",   homeScore:1, awayScore:1, pkHome:5, pkAway:4, status:"finished", stadium:"味の素スタジアム",     referenceNote:NOTE },
   { id:"e-r1-kaw-kas2",  league:"J1", group:"EAST", round:1, date:"2026-02-08", kickoff:"14:00", homeTeam:"川崎F",  awayTeam:"柏",     homeScore:5, awayScore:3, status:"finished", stadium:"Uvanceとどろきスタジアム", referenceNote:NOTE },
-  { id:"e-r1-tkv-mito",  league:"J1", group:"EAST", round:1, date:"2026-02-08", kickoff:"15:00", homeTeam:"東京V",  awayTeam:"水戸",   homeScore:3, awayScore:0, status:"finished", stadium:"味の素スタジアム",     referenceNote:NOTE },
+  { id:"e-r1-tkv-mito",  league:"J1", group:"EAST", round:1, date:"2026-02-08", kickoff:"15:00", homeTeam:"東京V",  awayTeam:"水戸",   homeScore:3, awayScore:1, status:"finished", stadium:"味の素スタジアム",     referenceNote:NOTE },
 
   // ── 第2節 ──
   { id:"e-r2-mchd-mito", league:"J1", group:"EAST", round:2, date:"2026-02-14", kickoff:"14:00", homeTeam:"町田",   awayTeam:"水戸",   homeScore:2, awayScore:2, pkHome:4, pkAway:2, status:"finished", stadium:"町田GIONスタジアム",   referenceNote:NOTE },
@@ -698,10 +853,10 @@ export const jMatches: JMatchSimple[] = [
   // ══════════════════════════════════════════
 
   // ── 第1節 ──
-  { id:"w-r1-kyt-kob",   league:"J1", group:"WEST", round:1, date:"2026-02-06", kickoff:"19:00", homeTeam:"京都",   awayTeam:"神戸",   homeScore:1, awayScore:1, pkHome:1, pkAway:4, status:"finished", stadium:"サンガスタジアム by KYOCERA", referenceNote:NOTE },
+  { id:"w-r1-kyt-kob",   league:"J1", group:"WEST", round:1, date:"2026-02-06", kickoff:"19:00", homeTeam:"京都",   awayTeam:"神戸",   homeScore:1, awayScore:1, pkHome:4, pkAway:1, pkWinner:"home" as const, status:"finished", stadium:"サンガスタジアム by KYOCERA", referenceNote:NOTE },
   { id:"w-r1-nsk-hir",   league:"J1", group:"WEST", round:1, date:"2026-02-06", kickoff:"19:00", homeTeam:"長崎",   awayTeam:"広島",   homeScore:1, awayScore:3, status:"finished", stadium:"PEACE STADIUM Connected by SoftBank", referenceNote:NOTE },
   { id:"w-r1-cos-gam",   league:"J1", group:"WEST", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"C大阪",  awayTeam:"G大阪",  homeScore:0, awayScore:0, pkHome:4, pkAway:5, status:"finished", stadium:"ヨドコウ桜スタジアム",   referenceNote:NOTE },
-  { id:"w-r1-fuk-oka",   league:"J1", group:"WEST", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"福岡",   awayTeam:"岡山",   homeScore:0, awayScore:0, pkHome:4, pkAway:5, status:"finished", stadium:"ベスト電器スタジアム",   referenceNote:NOTE },
+  { id:"w-r1-fuk-oka",   league:"J1", group:"WEST", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"福岡",   awayTeam:"岡山",   homeScore:1, awayScore:1, pkHome:6, pkAway:5, status:"finished", stadium:"ベスト電器スタジアム",   referenceNote:NOTE },
   { id:"w-r1-nag-shm",   league:"J1", group:"WEST", round:1, date:"2026-02-08", kickoff:"14:00", homeTeam:"名古屋", awayTeam:"清水",   homeScore:1, awayScore:0, status:"finished", stadium:"豊田スタジアム",         referenceNote:NOTE },
 
   // ── 第2節 ──

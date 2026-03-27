@@ -6,11 +6,10 @@ import {
   getMatchById,
   getAllMatchIds,
   getScoreDisplay,
-  getRecentForm,
   TEAM_INFO,
   JLEAGUE_SEASON,
 } from "@/data/jleague";
-import type { MatchResult, JPosition, JLineup, JPlayer } from "@/data/jleague";
+import type { JPosition, JLineup, JPlayer } from "@/data/jleague";
 import { notFound } from "next/navigation";
 
 /* ── Static generation ─────────────────────────── */
@@ -43,14 +42,6 @@ function formatDate(dateStr: string) {
   const dow = ["日", "月", "火", "水", "木", "金", "土"][d.getDay()];
   return `${y}年${m}月${day}日（${dow}）`;
 }
-
-const resultBadge: Record<MatchResult, { label: string; bg: string }> = {
-  W:     { label: "W",   bg: "bg-green-500" },
-  L:     { label: "L",   bg: "bg-red-500" },
-  D:     { label: "D",   bg: "bg-gray-400" },
-  "PK+": { label: "PK+", bg: "bg-emerald-600" },
-  "PK-": { label: "PK-", bg: "bg-orange-500" },
-};
 
 const posStyle: Record<JPosition, { bg: string; text: string }> = {
   GK: { bg: "#FAEEDA", text: "#633806" },
@@ -192,9 +183,6 @@ export default async function JLeagueMatchDetailPage({
     (match.pkHome !== undefined && match.pkAway !== undefined) ||
     match.pkWinner !== undefined;
 
-  const homeForm = getRecentForm(match.homeTeam, matchId, 5);
-  const awayForm = getRecentForm(match.awayTeam, matchId, 5);
-
   const groupMatches = jMatches.filter((m) => m.group === match.group);
   const idx = groupMatches.findIndex((m) => m.id === matchId);
   const prevMatch = idx > 0 ? groupMatches[idx - 1] : null;
@@ -289,46 +277,104 @@ export default async function JLeagueMatchDetailPage({
       {/* ═══════ NOTEBOOK BODY ═══════ */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 space-y-6">
 
-        {/* ── Recent Form ── */}
-        <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-          <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
-            <h2 className="text-sm font-bold text-gray-800 flex items-center gap-2">
-              <span className="w-1 h-5 rounded-full bg-[#0A1A3C] inline-block" />
-              直近5試合の戦績
-            </h2>
-          </div>
-          <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-gray-100">
-            {[
-              { team: match.homeTeam, form: homeForm, info: ht },
-              { team: match.awayTeam, form: awayForm, info: at },
-            ].map(({ team, form, info }) => (
-              <div key={team} className="p-4">
-                <p className="text-xs font-bold mb-3" style={{ color: info?.color || "#333" }}>
-                  {info?.emoji} {team}
-                </p>
-                {form.length === 0 ? (
-                  <p className="text-xs text-gray-400">データなし</p>
-                ) : (
-                  <div className="space-y-1.5">
-                    {form.map((f) => {
-                      const b = resultBadge[f.result];
-                      return (
-                        <div key={f.matchId} className="flex items-center gap-2 text-xs">
-                          <span className={`${b.bg} text-white text-[10px] font-bold w-8 text-center py-0.5 rounded`}>
-                            {b.label}
-                          </span>
-                          <span className="text-gray-500 w-12 shrink-0">{f.date.slice(5).replace("-", "/")}</span>
-                          <span className="font-bold text-gray-700 truncate">vs {f.opponent}</span>
-                          <span className="text-gray-400 ml-auto shrink-0">{f.score}</span>
-                        </div>
-                      );
-                    })}
+        {/* ── Goal Scorers (always visible) ── */}
+        {detail && detail.goals && detail.goals.length > 0 && (
+          <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+            <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
+              <h2 className="text-sm font-bold text-gray-800 flex items-center gap-2">
+                <span className="w-1 h-5 rounded-full bg-[#0A1A3C] inline-block" />
+                得点経過
+              </h2>
+            </div>
+            <div className="divide-y divide-gray-100">
+              {detail.goals.map((g, i) => {
+                const isHome = g.teamSide === "home";
+                return (
+                  <div key={i} className={`flex items-center gap-3 px-5 py-3 ${isHome ? "" : "flex-row-reverse"}`}>
+                    <span className="text-base font-black w-10 text-center" style={{ color: isHome ? ht?.color : at?.color }}>
+                      {g.minute}&apos;
+                    </span>
+                    <span className="text-lg">⚽</span>
+                    <div className={isHome ? "flex-1" : "flex-1 text-right"}>
+                      <span className="font-bold text-sm text-gray-900">
+                        {g.playerName}
+                      </span>
+                      {g.assistName && (
+                        <span className="text-xs text-gray-400 ml-2">(ast. {g.assistName})</span>
+                      )}
+                    </div>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{
+                      backgroundColor: `${isHome ? ht?.color : at?.color}15`,
+                      color: isHome ? ht?.color : at?.color,
+                    }}>
+                      {isHome ? match.homeTeam : match.awayTeam}
+                    </span>
                   </div>
-                )}
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {/* ── Match Stats ── */}
+        {detail?.stats && (
+          <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+            <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
+              <h2 className="text-sm font-bold text-gray-800 flex items-center gap-2">
+                <span className="w-1 h-5 rounded-full bg-blue-500 inline-block" />
+                マッチスタッツ
+              </h2>
+            </div>
+            <div className="p-5 space-y-3">
+              {/* Team headers */}
+              <div className="flex items-center text-xs font-bold text-gray-500 mb-1">
+                <span className="w-12 text-right" style={{ color: ht?.color }}>{match.homeTeam}</span>
+                <span className="flex-1" />
+                <span className="w-12" style={{ color: at?.color }}>{match.awayTeam}</span>
               </div>
-            ))}
-          </div>
-        </section>
+              {(
+                [
+                  ["ポゼッション", detail.stats.possession, "%"],
+                  ["シュート", detail.stats.shots, ""],
+                  ["枠内シュート", detail.stats.shotsOnTarget, ""],
+                  ["コーナーキック", detail.stats.corners, ""],
+                  ["ファウル", detail.stats.fouls, ""],
+                  ["パス", detail.stats.passes, ""],
+                  ["パス成功率", detail.stats.passAccuracy, "%"],
+                ] as [string, [number, number] | undefined, string][]
+              )
+                .filter(([, val]) => val !== undefined)
+                .map(([label, val, unit]) => {
+                  const [h, a] = val!;
+                  const total = h + a || 1;
+                  const hPct = (h / total) * 100;
+                  return (
+                    <div key={label}>
+                      <div className="flex items-center text-xs mb-1">
+                        <span className="w-12 text-right font-bold text-gray-800">
+                          {h}{unit}
+                        </span>
+                        <span className="flex-1 text-center text-[10px] text-gray-400">{label}</span>
+                        <span className="w-12 font-bold text-gray-800">
+                          {a}{unit}
+                        </span>
+                      </div>
+                      <div className="flex h-1.5 rounded-full overflow-hidden bg-gray-100">
+                        <div
+                          className="rounded-full transition-all"
+                          style={{ width: `${hPct}%`, background: ht?.color || "#0A1A3C" }}
+                        />
+                        <div
+                          className="rounded-full transition-all"
+                          style={{ width: `${100 - hPct}%`, background: at?.color || "#666" }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+            </div>
+          </section>
+        )}
 
         {/* ── Match Info ── */}
         <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
@@ -362,42 +408,6 @@ export default async function JLeagueMatchDetailPage({
 
         {detail ? (
           <>
-            {/* ── Goals ── */}
-            {detail.goals && detail.goals.length > 0 && (
-              <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
-                  <h2 className="text-sm font-bold text-gray-800 flex items-center gap-2">
-                    <span className="w-1 h-5 rounded-full bg-[#0A1A3C] inline-block" />
-                    得点経過
-                  </h2>
-                </div>
-                <div className="divide-y divide-gray-100">
-                  {detail.goals.map((g, i) => {
-                    const isHome = g.teamSide === "home";
-                    return (
-                      <div key={i} className="flex items-center gap-3 px-5 py-3">
-                        <span className={`text-base font-black w-10 text-right ${isHome ? "text-[#0A1A3C]" : "text-gray-400"}`}>
-                          {g.minute}&apos;
-                        </span>
-                        <span className="text-lg">⚽</span>
-                        <div className="flex-1">
-                          <span className={`font-bold text-sm ${isHome ? "text-gray-900" : "text-gray-600"}`}>
-                            {g.playerName}
-                          </span>
-                          {g.assistName && (
-                            <span className="text-xs text-gray-400 ml-2">(ast. {g.assistName})</span>
-                          )}
-                        </div>
-                        <span className="text-[10px] text-gray-400">
-                          {isHome ? match.homeTeam : match.awayTeam}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </section>
-            )}
-
             {/* ── Formation ── */}
             <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
               <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
@@ -481,67 +491,6 @@ export default async function JLeagueMatchDetailPage({
                       </span>
                     </div>
                   ))}
-                </div>
-              </section>
-            )}
-
-            {/* ── Stats ── */}
-            {detail.stats && (
-              <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
-                  <h2 className="text-sm font-bold text-gray-800 flex items-center gap-2">
-                    <span className="w-1 h-5 rounded-full bg-blue-500 inline-block" />
-                    スタッツ
-                  </h2>
-                </div>
-                <div className="p-5 space-y-3">
-                  {/* Team headers */}
-                  <div className="flex items-center text-xs font-bold text-gray-500 mb-1">
-                    <span className="w-12 text-right" style={{ color: ht?.color }}>{match.homeTeam}</span>
-                    <span className="flex-1" />
-                    <span className="w-12" style={{ color: at?.color }}>{match.awayTeam}</span>
-                  </div>
-                  {(
-                    [
-                      ["ポゼッション", detail.stats.possession, "%"],
-                      ["シュート", detail.stats.shots, ""],
-                      ["枠内シュート", detail.stats.shotsOnTarget, ""],
-                      ["コーナーキック", detail.stats.corners, ""],
-                      ["ファウル", detail.stats.fouls, ""],
-                      ["イエローカード", detail.stats.yellowCards, ""],
-                      ["パス", detail.stats.passes, ""],
-                      ["パス成功率", detail.stats.passAccuracy, "%"],
-                    ] as [string, [number, number] | undefined, string][]
-                  )
-                    .filter(([, val]) => val !== undefined)
-                    .map(([label, val, unit]) => {
-                      const [h, a] = val!;
-                      const total = h + a || 1;
-                      const hPct = (h / total) * 100;
-                      return (
-                        <div key={label}>
-                          <div className="flex items-center text-xs mb-1">
-                            <span className="w-12 text-right font-bold text-gray-800">
-                              {h}{unit}
-                            </span>
-                            <span className="flex-1 text-center text-[10px] text-gray-400">{label}</span>
-                            <span className="w-12 font-bold text-gray-800">
-                              {a}{unit}
-                            </span>
-                          </div>
-                          <div className="flex h-1.5 rounded-full overflow-hidden bg-gray-100">
-                            <div
-                              className="rounded-full transition-all"
-                              style={{ width: `${hPct}%`, background: ht?.color || "#0A1A3C" }}
-                            />
-                            <div
-                              className="rounded-full transition-all"
-                              style={{ width: `${100 - hPct}%`, background: at?.color || "#666" }}
-                            />
-                          </div>
-                        </div>
-                      );
-                    })}
                 </div>
               </section>
             )}
