@@ -406,7 +406,7 @@ export default function TeamDetailPage() {
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white transition-opacity hover:opacity-90"
             style={{ backgroundColor: team.color }}
           >
-            {locale === "en" ? "Lineup Maker" : "スタメンメーカー"} ⚽
+            {locale === "en" ? "Lineup Maker" : "スタメンメーカー"}
           </Link>
           <a
             href={team.officialUrl}
