@@ -8,6 +8,7 @@ export type JRosterPlayer = {
   number: number;
   name: string;
   position: "GK" | "DF" | "MF" | "FW";
+  bio?: string;
 };
 
 export type JTeamRoster = {

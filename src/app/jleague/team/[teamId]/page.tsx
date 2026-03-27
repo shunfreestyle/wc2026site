@@ -258,13 +258,18 @@ export default function TeamDetailPage() {
                         <span className="text-sm font-bold text-gray-700">{pos}</span>
                         <span className="text-xs text-gray-400">{group.length}{locale === "en" ? " players" : "人"}</span>
                       </div>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                         {group.map((player: JRosterPlayer) => (
-                          <div key={player.number} className="flex items-center gap-3 bg-white rounded-lg border border-gray-100 px-3 py-2.5 shadow-sm">
-                            <span className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-xs font-extrabold text-white" style={{ backgroundColor: POS_COLORS[pos] }}>
+                          <div key={player.number} className="flex items-start gap-3 bg-white rounded-xl border border-gray-100 px-4 py-3 shadow-sm">
+                            <span className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-sm font-extrabold text-white mt-0.5" style={{ backgroundColor: POS_COLORS[pos] }}>
                               {player.number}
                             </span>
-                            <span className="text-sm font-bold text-gray-800 truncate">{player.name}</span>
+                            <div className="min-w-0">
+                              <p className="text-sm font-bold text-gray-900">{player.name}</p>
+                              {player.bio && (
+                                <p className="text-[11px] text-gray-500 mt-0.5 leading-relaxed">{player.bio}</p>
+                              )}
+                            </div>
                           </div>
                         ))}
                       </div>
