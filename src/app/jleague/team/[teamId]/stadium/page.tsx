@@ -132,16 +132,16 @@ export default function StadiumDetailPage() {
                 className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex"
               >
                 <div
-                  className="shrink-0 w-14 sm:w-16 flex items-center justify-center text-white text-xl sm:text-2xl font-extrabold"
+                  className="shrink-0 w-10 sm:w-16 flex items-center justify-center text-white text-lg sm:text-2xl font-extrabold"
                   style={{ backgroundColor: team.color }}
                 >
                   {highlightIcons[i]}
                 </div>
-                <div className="p-4 sm:p-5">
-                  <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-1">
+                <div className="p-3 sm:p-5 min-w-0">
+                  <h3 className="text-xs sm:text-base font-bold text-gray-900 mb-1 leading-snug">
                     {locale === "en" ? h.titleEn : h.titleJa}
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                  <p className="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
                     {locale === "en" ? h.descriptionEn : h.descriptionJa}
                   </p>
                 </div>

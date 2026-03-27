@@ -288,20 +288,20 @@ export default async function JLeagueMatchDetailPage({
               {detail.goals.map((g, i) => {
                 const isHome = g.teamSide === "home";
                 return (
-                  <div key={i} className={`flex items-center gap-3 px-5 py-3 ${isHome ? "" : "flex-row-reverse"}`}>
-                    <span className="text-base font-black w-10 text-center" style={{ color: isHome ? ht?.color : at?.color }}>
+                  <div key={i} className={`flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-3 ${isHome ? "" : "flex-row-reverse"}`}>
+                    <span className="text-sm sm:text-base font-black w-8 sm:w-10 text-center shrink-0" style={{ color: isHome ? ht?.color : at?.color }}>
                       {g.minute}&apos;
                     </span>
-                    <span className="text-lg">⚽</span>
-                    <div className={isHome ? "flex-1" : "flex-1 text-right"}>
-                      <span className="font-bold text-sm text-gray-900">
+                    <span className="text-base sm:text-lg shrink-0">⚽</span>
+                    <div className={`flex-1 min-w-0 ${isHome ? "" : "text-right"}`}>
+                      <span className="font-bold text-xs sm:text-sm text-gray-900">
                         {g.playerName}
                       </span>
                       {g.assistName && (
-                        <span className="text-xs text-gray-400 ml-2">(ast. {g.assistName})</span>
+                        <span className="text-[10px] sm:text-xs text-gray-400 ml-1 sm:ml-2">(ast. {g.assistName})</span>
                       )}
                     </div>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{
+                    <span className="text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full shrink-0" style={{
                       backgroundColor: `${isHome ? ht?.color : at?.color}15`,
                       color: isHome ? ht?.color : at?.color,
                     }}>
@@ -325,9 +325,9 @@ export default async function JLeagueMatchDetailPage({
             </div>
             <div className="p-5 space-y-3">
               <div className="flex items-center text-xs font-bold text-gray-500 mb-1">
-                <span className="w-12 text-right" style={{ color: ht?.color }}>{match.homeTeam}</span>
+                <span className="w-14 sm:w-16 text-right truncate" style={{ color: ht?.color }}>{match.homeTeam}</span>
                 <span className="flex-1" />
-                <span className="w-12" style={{ color: at?.color }}>{match.awayTeam}</span>
+                <span className="w-14 sm:w-16 truncate" style={{ color: at?.color }}>{match.awayTeam}</span>
               </div>
               {(
                 [
@@ -348,9 +348,9 @@ export default async function JLeagueMatchDetailPage({
                   return (
                     <div key={label}>
                       <div className="flex items-center text-xs mb-1">
-                        <span className="w-12 text-right font-bold text-gray-800">{h}{unit}</span>
+                        <span className="w-14 sm:w-16 text-right font-bold text-gray-800">{h}{unit}</span>
                         <span className="flex-1 text-center text-[10px] text-gray-400">{label}</span>
-                        <span className="w-12 font-bold text-gray-800">{a}{unit}</span>
+                        <span className="w-14 sm:w-16 font-bold text-gray-800">{a}{unit}</span>
                       </div>
                       <div className="flex h-1.5 rounded-full overflow-hidden bg-gray-100">
                         <div className="rounded-full" style={{ width: `${hPct}%`, background: ht?.color || "#0A1A3C" }} />
@@ -436,8 +436,8 @@ export default async function JLeagueMatchDetailPage({
             </div>
             <div className="divide-y divide-gray-100">
               {detail.cards.map((c, i) => (
-                <div key={i} className="flex items-center gap-3 px-5 py-3 text-sm">
-                  <span className="font-black text-gray-900 w-10 text-right">{c.minute}&apos;</span>
+                <div key={i} className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-3 text-xs sm:text-sm">
+                  <span className="font-black text-gray-900 w-8 sm:w-10 text-right">{c.minute}&apos;</span>
                   <span>{c.type === "yellow" ? "🟨" : "🟥"}</span>
                   <span className="font-bold text-gray-800">{c.playerName}</span>
                   <span className="text-xs text-gray-400 ml-auto">
@@ -458,22 +458,22 @@ export default async function JLeagueMatchDetailPage({
             </h2>
           </div>
           <div className="p-5">
-            <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-sm">
               <div>
                 <p className="text-[10px] text-gray-400 mb-0.5">大会</p>
-                <p className="font-bold text-gray-800">{match.league === "J1" ? JLEAGUE_SEASON.nameJ1 : JLEAGUE_SEASON.nameJ23}</p>
+                <p className="font-bold text-gray-800 text-xs sm:text-sm">{match.league === "J1" ? JLEAGUE_SEASON.nameJ1 : JLEAGUE_SEASON.nameJ23}</p>
               </div>
               <div>
                 <p className="text-[10px] text-gray-400 mb-0.5">節</p>
-                <p className="font-bold text-gray-800">第{match.round}節 ({match.group})</p>
+                <p className="font-bold text-gray-800 text-xs sm:text-sm">第{match.round}節 ({match.group})</p>
               </div>
               <div>
                 <p className="text-[10px] text-gray-400 mb-0.5">日時</p>
-                <p className="font-bold text-gray-800">{formatDate(match.date)} {match.kickoff}</p>
+                <p className="font-bold text-gray-800 text-xs sm:text-sm">{formatDate(match.date)} {match.kickoff}</p>
               </div>
               <div>
                 <p className="text-[10px] text-gray-400 mb-0.5">会場</p>
-                <p className="font-bold text-gray-800">{match.stadium}</p>
+                <p className="font-bold text-gray-800 text-xs sm:text-sm">{match.stadium}</p>
               </div>
             </div>
           </div>

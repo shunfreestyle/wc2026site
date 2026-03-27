@@ -147,7 +147,7 @@ export default function TeamDetailPage() {
 
       {/* Info cards */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {[
             { label: locale === "en" ? "Prefecture" : "拠点", value: `${team.prefecture} ${team.city}`, link: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(team.stadium)}`, external: true, cta: locale === "en" ? "Open Map" : "地図を見る" },
             { label: locale === "en" ? "Founded" : "創設", value: `${team.founded}${locale === "en" ? "" : "年"}` },
@@ -189,7 +189,7 @@ export default function TeamDetailPage() {
       </div>
 
       {/* Tabs */}
-      <div className="sticky top-0 z-20 bg-white border-b border-gray-200">
+      <div className="sticky top-14 sm:top-16 z-20 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex">
           {TABS.map((tab) => (
             <button
@@ -240,7 +240,7 @@ export default function TeamDetailPage() {
                   const group = players.filter((p: JRosterPlayer) => p.position === pos);
                   if (group.length === 0) return null;
                   return (
-                    <div key={pos} id={`pos-${pos}`} className="scroll-mt-16">
+                    <div key={pos} id={`pos-${pos}`} className="scroll-mt-32 sm:scroll-mt-28">
                       <div className="flex items-center gap-2 mb-3">
                         <span className="w-2 h-5 rounded-full" style={{ backgroundColor: POS_COLORS[pos] }} />
                         <span className="text-sm font-bold text-gray-700">{pos}</span>
@@ -273,7 +273,7 @@ export default function TeamDetailPage() {
         {activeTab === "season" && (
           <div>
             {/* Stats cards */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 mb-8">
               {[
                 { label: locale === "en" ? "Points" : "勝点", value: points, color: team.color },
                 { label: locale === "en" ? "Record" : "成績", value: `${wins}${locale === "en" ? "W" : "勝"} ${draws}${locale === "en" ? "D" : "分"} ${losses}${locale === "en" ? "L" : "敗"}`, color: "#374151" },
