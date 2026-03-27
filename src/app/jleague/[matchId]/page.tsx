@@ -9,7 +9,7 @@ import {
   TEAM_INFO,
   JLEAGUE_SEASON,
 } from "@/data/jleague";
-import type { JPosition, JLineup, JPlayer } from "@/data/jleague";
+import type { JPosition, JPlayer } from "@/data/jleague";
 import { notFound } from "next/navigation";
 
 /* ── Static generation ─────────────────────────── */
@@ -50,18 +50,15 @@ const posStyle: Record<JPosition, { bg: string; text: string }> = {
   FW: { bg: "#FEE2E2", text: "#991B1B" },
 };
 
-/* Split formation string into pitch lines (reversed: FW first visually) */
-function splitFormation(lineup: JLineup) {
-  const starters = lineup.players.filter((p) => p.isStarter);
-  const nums = [1, ...lineup.formation.split("-").map(Number)];
-  const lines: (typeof starters)[] = [];
-  let idx = 0;
-  for (const n of nums) {
-    lines.push(starters.slice(idx, idx + n));
-    idx += n;
-  }
-  return lines.reverse(); // FW line first (top of pitch)
-}
+/* shortName → teamId for back-link */
+const SHORT_TO_ID: Record<string, string> = {
+  "鹿島": "kashima", "水戸": "mito", "浦和": "urawa", "千葉": "chiba",
+  "柏": "kashiwa", "FC東京": "fctokyo", "東京V": "verdy", "町田": "machida",
+  "川崎F": "kawasaki", "横浜FM": "yokohamafm", "清水": "shimizu",
+  "名古屋": "nagoya", "京都": "kyoto", "G大阪": "gosaka", "C大阪": "cosaka",
+  "神戸": "kobe", "岡山": "okayama", "広島": "hiroshima", "福岡": "fukuoka",
+  "長崎": "nagasaki",
+};
 
 const timelineIcon: Record<string, string> = {
   goal: "⚽",
@@ -71,72 +68,8 @@ const timelineIcon: Record<string, string> = {
   end:  "🏁",
 };
 
-/* ── Formation Pitch ─────────────────────────── */
-function FormationPitch({
-  lineup,
-  teamColor,
-  teamName,
-}: {
-  lineup: JLineup;
-  teamColor: string;
-  teamName: string;
-}) {
-  const lines = splitFormation(lineup);
-  return (
-    <div>
-      <div className="flex items-center gap-2 mb-3">
-        <span className="text-xs font-bold px-2 py-1 rounded" style={{ background: teamColor, color: "#fff" }}>
-          {teamName}
-        </span>
-        <span className="text-xs text-gray-500 font-bold">{lineup.formation}</span>
-      </div>
-      <div className="relative w-full max-w-xs mx-auto rounded-2xl overflow-hidden" style={{ aspectRatio: "3 / 4" }}>
-        {/* Pitch bg */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2d8a4e] to-[#1a6b35]" />
-        {/* Pitch lines */}
-        <div className="absolute inset-2 border-2 border-white/25 rounded-lg" />
-        <div className="absolute left-2 right-2 top-1/2 h-0.5 bg-white/25" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border-2 border-white/25" />
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-32 h-12 border-2 border-t-0 border-white/20 rounded-b-lg" />
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-12 border-2 border-b-0 border-white/20 rounded-t-lg" />
-        {/* Grass stripes */}
-        <div className="absolute inset-0 opacity-[0.05]" style={{
-          backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 28px, #fff 28px, #fff 29px)",
-        }} />
-
-        {/* Players by line */}
-        <div className="absolute inset-0 flex flex-col justify-around py-6 px-2">
-          {lines.map((line, li) => (
-            <div key={li} className="flex justify-around">
-              {line.map((p) => (
-                <div key={p.number} className="text-center w-12">
-                  <div
-                    className="w-7 h-7 mx-auto rounded-full border-2 border-white shadow-md flex items-center justify-center text-white text-[10px] font-black"
-                    style={{ background: teamColor }}
-                  >
-                    {p.number}
-                  </div>
-                  <p className="mt-0.5 text-[9px] font-bold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] leading-tight whitespace-nowrap">
-                    {p.name.split(" ").pop()}
-                    {p.isCaptain && <span className="text-amber-300">©</span>}
-                  </p>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        {/* Formation label */}
-        <div className="absolute top-2 right-3 bg-black/40 backdrop-blur-sm px-1.5 py-0.5 rounded text-[9px] text-white font-bold">
-          {lineup.formation}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 /* ── Player Row ─────────────────────────────── */
-function PlayerRow({ player }: { player: JPlayer }) {
+function PlayerRow({ player, teamColor }: { player: JPlayer; teamColor?: string }) {
   const ps = posStyle[player.position];
   return (
     <div className="flex items-center gap-2 py-1.5 px-2 rounded-lg hover:bg-gray-50 transition-colors text-xs">
@@ -157,10 +90,10 @@ function PlayerRow({ player }: { player: JPlayer }) {
         {player.position}
       </span>
       {player.subOut && (
-        <span className="text-[9px] text-red-400 shrink-0">▼{player.subOut}&apos;</span>
+        <span className="text-[9px] text-red-400 shrink-0 font-bold">🔻{player.subOut}&apos;</span>
       )}
       {player.subIn && (
-        <span className="text-[9px] text-green-500 shrink-0">▲{player.subIn}&apos;</span>
+        <span className="text-[9px] text-green-500 shrink-0 font-bold">🔺{player.subIn}&apos;</span>
       )}
     </div>
   );
@@ -197,6 +130,11 @@ export default async function JLeagueMatchDetailPage({
 
   const detail = jMatchDetails.find(d => d.matchId === matchId);
 
+  // Back link: prefer home team's detail page
+  const homeTeamId = SHORT_TO_ID[match.homeTeam];
+  const backHref = homeTeamId ? `/jleague/team/${homeTeamId}?tab=matches` : "/jleague";
+  const backLabel = homeTeamId ? `${match.homeTeam} 対戦カード` : "試合一覧";
+
   return (
     <div className="min-h-screen bg-[#F5F0E8]">
       {/* ═══════ NOTEBOOK HEADER ═══════ */}
@@ -215,8 +153,8 @@ export default async function JLeagueMatchDetailPage({
         />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 py-6">
           <div className="flex items-center gap-3 mb-5">
-            <Link href="/jleague" className="text-white/60 hover:text-white text-sm transition-colors">
-              ← 試合一覧
+            <Link href={backHref} className="text-white/60 hover:text-white text-sm transition-colors">
+              ← {backLabel}
             </Link>
             <span className="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/20 font-bold">
               {match.league === "J1" ? JLEAGUE_SEASON.nameJ1 : JLEAGUE_SEASON.nameJ23} 第{match.round}節
@@ -277,7 +215,34 @@ export default async function JLeagueMatchDetailPage({
       {/* ═══════ NOTEBOOK BODY ═══════ */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 space-y-6">
 
-        {/* ── Goal Scorers (always visible) ── */}
+        {/* ── Prev / Next Nav ── */}
+        <div className="flex items-center justify-between gap-2">
+          {prevMatch ? (
+            <Link
+              href={`/jleague/${prevMatch.id}`}
+              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all text-xs font-bold text-gray-700 truncate max-w-[45%]"
+            >
+              <span className="text-gray-400">←</span>
+              <span className="truncate">{prevMatch.homeTeam} vs {prevMatch.awayTeam}</span>
+            </Link>
+          ) : (
+            <div />
+          )}
+          <span className="text-[10px] text-gray-400 font-bold shrink-0">第{match.round}節</span>
+          {nextMatch ? (
+            <Link
+              href={`/jleague/${nextMatch.id}`}
+              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all text-xs font-bold text-gray-700 truncate max-w-[45%]"
+            >
+              <span className="truncate">{nextMatch.homeTeam} vs {nextMatch.awayTeam}</span>
+              <span className="text-gray-400">→</span>
+            </Link>
+          ) : (
+            <div />
+          )}
+        </div>
+
+        {/* ── Goal Scorers ── */}
         {detail && detail.goals && detail.goals.length > 0 && (
           <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
             <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
@@ -326,7 +291,6 @@ export default async function JLeagueMatchDetailPage({
               </h2>
             </div>
             <div className="p-5 space-y-3">
-              {/* Team headers */}
               <div className="flex items-center text-xs font-bold text-gray-500 mb-1">
                 <span className="w-12 text-right" style={{ color: ht?.color }}>{match.homeTeam}</span>
                 <span className="flex-1" />
@@ -351,27 +315,103 @@ export default async function JLeagueMatchDetailPage({
                   return (
                     <div key={label}>
                       <div className="flex items-center text-xs mb-1">
-                        <span className="w-12 text-right font-bold text-gray-800">
-                          {h}{unit}
-                        </span>
+                        <span className="w-12 text-right font-bold text-gray-800">{h}{unit}</span>
                         <span className="flex-1 text-center text-[10px] text-gray-400">{label}</span>
-                        <span className="w-12 font-bold text-gray-800">
-                          {a}{unit}
-                        </span>
+                        <span className="w-12 font-bold text-gray-800">{a}{unit}</span>
                       </div>
                       <div className="flex h-1.5 rounded-full overflow-hidden bg-gray-100">
-                        <div
-                          className="rounded-full transition-all"
-                          style={{ width: `${hPct}%`, background: ht?.color || "#0A1A3C" }}
-                        />
-                        <div
-                          className="rounded-full transition-all"
-                          style={{ width: `${100 - hPct}%`, background: at?.color || "#666" }}
-                        />
+                        <div className="rounded-full" style={{ width: `${hPct}%`, background: ht?.color || "#0A1A3C" }} />
+                        <div className="rounded-full" style={{ width: `${100 - hPct}%`, background: at?.color || "#666" }} />
                       </div>
                     </div>
                   );
                 })}
+            </div>
+          </section>
+        )}
+
+        {/* ── Members (Starters + Bench + Sub info) ── */}
+        {detail && (detail.homeLineup.players.length > 0 || detail.awayLineup.players.length > 0) ? (
+          <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+            <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
+              <h2 className="text-sm font-bold text-gray-800 flex items-center gap-2">
+                <span className="w-1 h-5 rounded-full bg-[#0A1A3C] inline-block" />
+                メンバー
+              </h2>
+            </div>
+            <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-gray-100">
+              {[
+                { team: match.homeTeam, lineup: detail.homeLineup, info: ht },
+                { team: match.awayTeam, lineup: detail.awayLineup, info: at },
+              ].map(({ team, lineup, info }) => {
+                const starters = lineup.players.filter((p) => p.isStarter);
+                const bench = lineup.players.filter((p) => !p.isStarter);
+                return (
+                  <div key={team} className="p-4">
+                    <p className="text-xs font-bold mb-2 flex items-center gap-2" style={{ color: info?.color || "#333" }}>
+                      {info?.emoji} {team}
+                      <span className="text-gray-400 font-normal">({lineup.formation})</span>
+                    </p>
+
+                    <p className="text-[10px] text-gray-400 font-bold mb-1 mt-3">スターター</p>
+                    <div className="space-y-0.5">
+                      {starters.map((p) => (
+                        <PlayerRow key={p.number} player={p} teamColor={info?.color} />
+                      ))}
+                    </div>
+
+                    {bench.length > 0 && (
+                      <>
+                        <p className="text-[10px] text-gray-400 font-bold mb-1 mt-4">ベンチ</p>
+                        <div className="space-y-0.5">
+                          {bench.map((p) => (
+                            <PlayerRow key={p.number} player={p} teamColor={info?.color} />
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        ) : (
+          /* ── Placeholder when no lineup data ── */
+          <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+            <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
+              <h2 className="text-sm font-bold text-gray-800 flex items-center gap-2">
+                <span className="w-1 h-5 rounded-full bg-[#0A1A3C] inline-block" />
+                メンバー
+              </h2>
+            </div>
+            <div className="p-8 text-center">
+              <p className="text-4xl mb-3">📋</p>
+              <p className="text-sm text-gray-400 font-bold">準備中</p>
+              <p className="text-xs text-gray-300 mt-1">スターティングメンバー情報は順次追加予定</p>
+            </div>
+          </section>
+        )}
+
+        {/* ── Cards ── */}
+        {detail?.cards && detail.cards.length > 0 && (
+          <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+            <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
+              <h2 className="text-sm font-bold text-gray-800 flex items-center gap-2">
+                <span className="w-1 h-5 rounded-full bg-amber-500 inline-block" />
+                警告・退場
+              </h2>
+            </div>
+            <div className="divide-y divide-gray-100">
+              {detail.cards.map((c, i) => (
+                <div key={i} className="flex items-center gap-3 px-5 py-3 text-sm">
+                  <span className="font-black text-gray-900 w-10 text-right">{c.minute}&apos;</span>
+                  <span>{c.type === "yellow" ? "🟨" : "🟥"}</span>
+                  <span className="font-bold text-gray-800">{c.playerName}</span>
+                  <span className="text-xs text-gray-400 ml-auto">
+                    {c.teamSide === "home" ? match.homeTeam : match.awayTeam}
+                  </span>
+                </div>
+              ))}
             </div>
           </section>
         )}
@@ -406,148 +446,41 @@ export default async function JLeagueMatchDetailPage({
           </div>
         </section>
 
-        {detail ? (
-          <>
-            {/* ── Formation ── */}
-            <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-              <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
-                <h2 className="text-sm font-bold text-gray-800 flex items-center gap-2">
-                  <span className="w-1 h-5 rounded-full bg-emerald-500 inline-block" />
-                  フォーメーション
-                </h2>
-              </div>
-              <div className="p-5 grid sm:grid-cols-2 gap-6">
-                <FormationPitch
-                  lineup={detail.homeLineup}
-                  teamColor={ht?.color || "#0A1A3C"}
-                  teamName={match.homeTeam}
-                />
-                <FormationPitch
-                  lineup={detail.awayLineup}
-                  teamColor={at?.color || "#333"}
-                  teamName={match.awayTeam}
-                />
-              </div>
-            </section>
-
-            {/* ── Members ── */}
-            <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-              <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
-                <h2 className="text-sm font-bold text-gray-800 flex items-center gap-2">
-                  <span className="w-1 h-5 rounded-full bg-[#0A1A3C] inline-block" />
-                  メンバー
-                </h2>
-              </div>
-              <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-gray-100">
-                {[
-                  { team: match.homeTeam, lineup: detail.homeLineup, info: ht },
-                  { team: match.awayTeam, lineup: detail.awayLineup, info: at },
-                ].map(({ team, lineup, info }) => {
-                  const starters = lineup.players.filter((p) => p.isStarter);
-                  const bench = lineup.players.filter((p) => !p.isStarter);
+        {/* ── Timeline ── */}
+        {detail?.timeline && detail.timeline.length > 0 && (
+          <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+            <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
+              <h2 className="text-sm font-bold text-gray-800 flex items-center gap-2">
+                <span className="w-1 h-5 rounded-full bg-[#0A1A3C] inline-block" />
+                タイムライン
+              </h2>
+            </div>
+            <div className="p-4">
+              <div className="relative border-l-2 border-gray-200 ml-6 space-y-0">
+                {detail.timeline.map((ev, i) => {
+                  const borderColor =
+                    ev.teamSide === "home"
+                      ? ht?.color || "#0A1A3C"
+                      : ev.teamSide === "away"
+                        ? at?.color || "#666"
+                        : "#9CA3AF";
                   return (
-                    <div key={team} className="p-4">
-                      <p className="text-xs font-bold mb-2 flex items-center gap-2" style={{ color: info?.color || "#333" }}>
-                        {info?.emoji} {team}
-                        <span className="text-gray-400 font-normal">({lineup.formation})</span>
-                      </p>
-
-                      <p className="text-[10px] text-gray-400 font-bold mb-1 mt-3">スターター</p>
-                      <div className="space-y-0.5">
-                        {starters.map((p) => (
-                          <PlayerRow key={p.number} player={p} />
-                        ))}
-                      </div>
-
-                      <p className="text-[10px] text-gray-400 font-bold mb-1 mt-4">ベンチ</p>
-                      <div className="space-y-0.5">
-                        {bench.map((p) => (
-                          <PlayerRow key={p.number} player={p} />
-                        ))}
+                    <div key={i} className="relative pl-6 pb-4">
+                      <div
+                        className="absolute -left-[7px] top-1 w-3 h-3 rounded-full border-2 border-white"
+                        style={{ background: borderColor }}
+                      />
+                      <div className="flex items-start gap-2">
+                        <span className="text-[10px] font-black text-gray-500 w-8 shrink-0 pt-0.5">
+                          {ev.minute}&apos;
+                        </span>
+                        <span className="text-sm shrink-0">{timelineIcon[ev.type] || "📝"}</span>
+                        <p className="text-xs text-gray-700 leading-relaxed">{ev.text}</p>
                       </div>
                     </div>
                   );
                 })}
               </div>
-            </section>
-
-            {/* ── Cards ── */}
-            {detail.cards && detail.cards.length > 0 && (
-              <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
-                  <h2 className="text-sm font-bold text-gray-800 flex items-center gap-2">
-                    <span className="w-1 h-5 rounded-full bg-amber-500 inline-block" />
-                    警告・退場
-                  </h2>
-                </div>
-                <div className="divide-y divide-gray-100">
-                  {detail.cards.map((c, i) => (
-                    <div key={i} className="flex items-center gap-3 px-5 py-3 text-sm">
-                      <span className="font-black text-gray-900 w-10 text-right">{c.minute}&apos;</span>
-                      <span>{c.type === "yellow" ? "🟨" : "🟥"}</span>
-                      <span className="font-bold text-gray-800">{c.playerName}</span>
-                      <span className="text-xs text-gray-400 ml-auto">
-                        {c.teamSide === "home" ? match.homeTeam : match.awayTeam}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* ── Timeline ── */}
-            {detail.timeline && detail.timeline.length > 0 && (
-              <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
-                  <h2 className="text-sm font-bold text-gray-800 flex items-center gap-2">
-                    <span className="w-1 h-5 rounded-full bg-[#0A1A3C] inline-block" />
-                    タイムライン
-                  </h2>
-                </div>
-                <div className="p-4">
-                  <div className="relative border-l-2 border-gray-200 ml-6 space-y-0">
-                    {detail.timeline.map((ev, i) => {
-                      const borderColor =
-                        ev.teamSide === "home"
-                          ? ht?.color || "#0A1A3C"
-                          : ev.teamSide === "away"
-                            ? at?.color || "#666"
-                            : "#9CA3AF";
-                      return (
-                        <div key={i} className="relative pl-6 pb-4">
-                          {/* Dot */}
-                          <div
-                            className="absolute -left-[7px] top-1 w-3 h-3 rounded-full border-2 border-white"
-                            style={{ background: borderColor }}
-                          />
-                          <div className="flex items-start gap-2">
-                            <span className="text-[10px] font-black text-gray-500 w-8 shrink-0 pt-0.5">
-                              {ev.minute}&apos;
-                            </span>
-                            <span className="text-sm shrink-0">{timelineIcon[ev.type] || "📝"}</span>
-                            <p className="text-xs text-gray-700 leading-relaxed">{ev.text}</p>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </section>
-            )}
-          </>
-        ) : (
-          /* ── Placeholder ── */
-          <section className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-            <div className="px-5 py-3 border-b border-gray-100 bg-gray-50">
-              <h2 className="text-sm font-bold text-gray-800 flex items-center gap-2">
-                <span className="w-1 h-5 rounded-full bg-emerald-500 inline-block" />
-                フォーメーション・メンバー
-              </h2>
-            </div>
-            <div className="p-8 text-center">
-              <p className="text-4xl mb-3">📋</p>
-              <p className="text-sm text-gray-400 font-bold">準備中</p>
-              <p className="text-xs text-gray-300 mt-1">フォーメーション・スターティングメンバー情報は順次追加予定</p>
             </div>
           </section>
         )}
@@ -557,40 +490,6 @@ export default async function JLeagueMatchDetailPage({
           {match.referenceNote}
         </p>
       </div>
-
-      {/* ═══════ NAV ═══════ */}
-      <section className="bg-white border-t border-gray-200">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-5">
-          <div className="flex items-center justify-between gap-4">
-            {prevMatch ? (
-              <Link
-                href={`/jleague/${prevMatch.id}`}
-                className="text-xs text-[#0A1A3C] hover:text-blue-700 font-medium transition-colors truncate"
-              >
-                ← {prevMatch.homeTeam} vs {prevMatch.awayTeam}
-              </Link>
-            ) : (
-              <div />
-            )}
-            <Link
-              href="/jleague"
-              className="shrink-0 text-xs text-gray-500 hover:text-gray-700 transition-colors"
-            >
-              試合一覧
-            </Link>
-            {nextMatch ? (
-              <Link
-                href={`/jleague/${nextMatch.id}`}
-                className="text-xs text-[#0A1A3C] hover:text-blue-700 font-medium transition-colors truncate text-right"
-              >
-                {nextMatch.homeTeam} vs {nextMatch.awayTeam} →
-              </Link>
-            ) : (
-              <div />
-            )}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
