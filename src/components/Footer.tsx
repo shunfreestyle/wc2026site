@@ -28,6 +28,7 @@ export default function Footer() {
               <li><Link href="/teams" className="hover:text-white transition-colors">{locale === 'en' ? "All Teams" : "出場チーム一覧"}</Link></li>
               <li><Link href="/matches" className="hover:text-white transition-colors">{locale === 'en' ? "Match Schedule" : "試合日程・結果"}</Link></li>
               <li><Link href="/japan" className="hover:text-white transition-colors">{locale === 'en' ? "🇯🇵 Japan National Team" : "🇯🇵 日本代表特設ページ"}</Link></li>
+              <li><Link href="/articles" className="hover:text-white transition-colors">{locale === 'en' ? "Articles" : "記事一覧"}</Link></li>
             </ul>
           </div>
           <div>
