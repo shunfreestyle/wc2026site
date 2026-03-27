@@ -2629,6 +2629,61 @@ W杯開幕まで80日。オランダとの初戦で日本が勝利を掴める�
   <div class="verdict-label">VERDICT</div>
   <p>2026年北中米W杯、日本の初戦はFIFAランク7位の<strong>オランダ代表</strong>。ハイプレス4-3-3を基本とするオランダに対し、日本はミドルブロックからのカウンターと守備ブロックの密度で勝機を見出す必要がある。<strong>三笘薫</strong>と<strong>伊東純也</strong>の両翼が相手SBの裏を突き、<strong>上田綺世</strong>がフィニッシュするメカニズムの精度が鍵を握る。3月のスコットランド・イングランド戦は本番のシミュレーションとして最高の機会であり、<strong>冨安健洋</strong>と<strong>伊藤洋輝</strong>のCBコンビが機能すれば、オランダの攻撃を封じる土台が完成する。</p>
 </div>`,
+    contentEn: `## 80 Days From Now, Japan Will Face the Netherlands
+
+The 2026 North America World Cup is fast approaching. Japan's opening group-stage match is against the Netherlands, ranked seventh in the FIFA rankings. Having come through European qualifying unbeaten, the Dutch are transitioning toward a "hybrid" model that retains their pressing intensity and vertical speed while incorporating a more positional structure.
+
+<div class="analysis-box">
+<span class="analysis-label">ANALYSIS 1</span>
+<span class="analysis-title">The Netherlands' "High-Press 4-3-3" — A Structure That Targets Japan's Weak Points</span>
+<p class="analysis-body">The Netherlands' greatest weapon is their front-three press (Gakpo, Depay, Maldini) combined with midfield dominance through occupation of half-spaces. If Japan lose the ball during the build-up phase, the Dutch can carry possession all the way to the penalty area. The key question is whether Japan can deploy multiple build-up shapes — such as 3-4-2-1 or 4-2-3-1 — to combat this press.</p>
+</div>
+
+<div class="analysis-box">
+<span class="analysis-label">ANALYSIS 2</span>
+<span class="analysis-title">Japan's Path to Victory — "Counter-Attack Precision" and "Defensive Block Density"</span>
+<p class="analysis-body">It is inevitable that the Netherlands will dominate possession. Japan's best chance lies in counter-attacks launched from a mid-block. Having both wings — Kaoru Mitoma and Junya Ito — take up high positions to exploit space behind the opposing full-backs while Ayase Ueda finishes in the box: how sharp this mechanism can become before the World Cup will determine the outcome.</p>
+</div>
+
+## Japan vs Netherlands: Head-to-Head History
+
+The last time Japan and the Netherlands met at a World Cup was the group stage of the 2010 South Africa tournament. Japan lost 0-1 on that occasion, but the defensive organization that held the Dutch to just a Sneijder goal was highly regarded. In friendlies, however, Japan have suffered heavy defeats including a 0-3 loss in 2013.
+
+Sixteen years have passed since then — Japanese football has evolved into an entirely different dimension. With over 20 players now plying their trade in Europe's top five leagues, individual quality has undeniably improved. Whether the gap has truly narrowed is another question — and the upcoming Scotland and England matches serve as a vital measuring stick.
+
+## Mapping the Road to the Quarterfinals
+
+Assessing the scenarios for Japan to reach the quarterfinals or beyond at this tournament, a minimum of two wins (or one win and two draws) would be needed to advance from the group. A victory over the Netherlands would put qualification firmly in sight, but even a defeat would leave room for recovery in the second and third matches.
+
+The critical factor is how fit the players will be come June. If Wataru Endo (Liverpool), Takefusa Kubo (Real Sociedad), and Ko Itakura (Ajax) can return to full fitness by the tournament, Japan's squad strength will receive a significant boost.
+
+<div class="analysis-box">
+<span class="analysis-label">ANALYSIS 3</span>
+<span class="analysis-title">The Key: Performance of the March Tour Squad</span>
+<p class="analysis-body">In predicting the starting lineup for the World Cup, the Scotland and England matches in March serve as the final examination. If the center-back partnership of Takehiro Tomiyasu and Hiroki Ito proves effective, the foundation for containing the Dutch attack will be in place. Whether the midfield pairing of Daichi Kamada and Kaishu Sano can hold up against world-class opposition will also be answered on this tour.</p>
+</div>
+
+<table class="schedule-table">
+  <thead>
+    <tr><th>Player</th><th>Club</th><th>Current Status</th><th>World Cup Outlook</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Wataru Endo</td><td>Liverpool</td><td>Managing fitness</td><td>Expected to return</td></tr>
+    <tr><td>Takefusa Kubo</td><td>Real Sociedad</td><td>Returning from injury</td><td>Likely to return</td></tr>
+    <tr><td>Ko Itakura</td><td>Ajax</td><td>Not selected</td><td>Expected to be called up</td></tr>
+    <tr><td>Takehiro Tomiyasu</td><td>Ajax</td><td>Called up for March tour</td><td>Key squad member</td></tr>
+    <tr><td>Hidemasa Morita</td><td>Sporting CP</td><td>Not selected (playing in CL)</td><td>Expected to be called up</td></tr>
+  </tbody>
+</table>
+
+---
+
+Eighty days until the World Cup kicks off. Whether Japan can claim victory in their opening match against the Netherlands hinges on the final adjustments during the March tour and player fitness management through May.
+
+<div class="verdict-card">
+  <div class="verdict-label">VERDICT</div>
+  <p>At the 2026 North America World Cup, Japan's opening match is against FIFA No. 7-ranked <strong>Netherlands</strong>. Against the Dutch and their high-pressing 4-3-3, Japan will need to find opportunities through counter-attacks from a mid-block and the density of their defensive shape. The precision of the mechanism where <strong>Kaoru Mitoma</strong> and <strong>Junya Ito</strong> exploit space behind the opposing full-backs while <strong>Ayase Ueda</strong> provides the finishing touch will be decisive. The Scotland and England matches in March represent the best possible simulation for the main event, and if the center-back partnership of <strong>Takehiro Tomiyasu</strong> and <strong>Hiroki Ito</strong> proves effective, the foundation for shutting down the Dutch attack will be complete.</p>
+</div>`,
   },
   {
     id: "9",
@@ -2703,6 +2758,64 @@ CLベスト8に導いた男が、代表のユニフォームを着られなか�
 <div class="verdict-card">
   <div class="verdict-label">VERDICT</div>
   <p><strong>スポルティング</strong>をCLベスト8に導いた<strong>守田英正</strong>が、3月の日本代表イギリス遠征メンバーから選外となった。CLで不可欠な存在だった守田が外れた背景には、<strong>鎌田大地</strong>・<strong>佐野海舟</strong>・<strong>田中碧</strong>・<strong>藤田譲瑠チマ</strong>ら欧州組が揃うボランチ激戦区の構造がある。森保監督は「そこには競争がある」と語り、最後のテスト機会を他の選手に与える判断を下した。守田のW杯本大会メンバー入り確率は依然高いが、日本代表史上最強レベルの中盤争いはW杯開幕まで続く。</p>
+</div>`,
+    contentEn: `March 17, Lisbon. Inside Sporting's home ground, the Jose Alvalade Stadium, roaring with noise, Hidemasa Morita was on the pitch until the 68th minute. On the night the club etched its name into Champions League history by advancing past the Round of 16 — two days later, when the Japan squad was announced, Morita's name was nowhere to be found.
+
+## The Architect of a CL Quarterfinal Run, Yet Left Out of the National Team
+
+Morita was an indispensable figure in Sporting's run to the Champions League quarterfinals, starting from the group stage. Distributing the ball from deep, snuffing out opposition attacks at the source, and setting the rhythm for the entire team — he carried out unglamorous but essential work to a high standard. Portuguese outlet A BOLA described him as possessing "above-average intelligence in knowing when and where to release the ball."
+
+That made the news of his omission from the national team all the more shocking.
+
+<div class="analysis-box">
+<span class="analysis-label">ANALYSIS 1</span>
+<span class="analysis-title">The "Essential Value" of Hidemasa Morita as a Player</span>
+<p class="analysis-body">Morita's greatest strengths are his positioning and the speed of his passing decisions. His judgment after receiving the ball is accurate to within fractions of a second, enabling him to function as the "lubricant" that keeps the entire team running smoothly. This is proven by his contribution to reaching the CL quarterfinals. A BOLA's assessment — "above-average intelligence in knowing when and where to release the ball" — captures Morita's essence perfectly.</p>
+</div>
+
+<div class="analysis-box">
+<span class="analysis-label">ANALYSIS 2</span>
+<span class="analysis-title">The Fiercely Contested Central Midfield — The "Structural Reason" Behind Morita's Omission</span>
+<p class="analysis-body">Japan's current central midfield options are arguably the strongest in the nation's history. Daichi Kamada (Crystal Palace, Premier League), Kaishu Sano (Mainz, Bundesliga), Ao Tanaka (Leeds United), and Joel Chima Fujita (Sint-Truiden) — all are proven players gaining competitive experience in Europe. Morita was left out not due to "lack of ability" but as a structural consequence of the sheer intensity of competition.</p>
+</div>
+
+## Moriyasu's Selection Philosophy — "Team Integration" Over "Recent Form"
+
+At his press conference, Manager Moriyasu stated: "There is competition." Behind these words lies the decision to select Ao Tanaka — whose playing time at Leeds has been decreasing — over Morita, who has been excelling in the Champions League. While the reaction among fans was widespread disbelief — "Why leave out Morita?" — this can also be read as an expression of Moriyasu's consistent selection philosophy: prioritizing team integration over recent individual results.
+
+The logic is that precisely because Morita is a player who "can slot back in at any time," other players are given higher priority for testing right now. The March tour is the last "testing ground," and the reading is that Moriyasu wanted to give playing time to players who still need evaluating rather than Morita, whose quality is already proven.
+
+## Is a "World Cup Without Morita" Even Possible?
+
+Looking at the schedule ahead, roughly two months remain until the World Cup squad announcement (expected around May). If Morita maintains his high performance level through May, the risk of being left out is negligible. The issue is the intensity of competition — if Wataru Endo, Daichi Kamada, Kaishu Sano, Ao Tanaka, and Joel Chima Fujita are all fit, the 26-man squad can accommodate a maximum of four central midfielders. The cruel competition where someone must miss out continues.
+
+<div class="analysis-box">
+<span class="analysis-label">ANALYSIS 3</span>
+<span class="analysis-title">Morita's Chances of Making the World Cup Squad — A Sober Assessment</span>
+<p class="analysis-body">His CL quarterfinal pedigree, consistent appearances in the Portuguese league, and experience on the big stage — taking all of this into account, the probability of Morita being left out of the World Cup squad is low. However, depending on results from the March tour, the midfield pecking order could still shift. For Morita, there is no path forward other than "continuing to prove himself through results."</p>
+</div>
+
+<table class="schedule-table">
+  <thead>
+    <tr><th>Player</th><th>Club</th><th>Season Record</th><th>March Tour</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Wataru Endo</td><td>Liverpool</td><td>25 Premier League apps</td><td>Not called up</td></tr>
+    <tr><td>Daichi Kamada</td><td>Crystal Palace</td><td>28 Premier League apps, 4 goals</td><td>Called up</td></tr>
+    <tr><td>Hidemasa Morita</td><td>Sporting CP</td><td>24 Liga apps, 8 CL apps</td><td>Not selected</td></tr>
+    <tr><td>Kaishu Sano</td><td>Mainz</td><td>26 Bundesliga apps</td><td>Called up</td></tr>
+    <tr><td>Ao Tanaka</td><td>Leeds United</td><td>20 Championship apps</td><td>Called up</td></tr>
+    <tr><td>Joel Chima Fujita</td><td>Sint-Truiden</td><td>27 Belgian league apps, 3 goals</td><td>Called up</td></tr>
+  </tbody>
+</table>
+
+---
+
+The man who led his club to the Champions League quarterfinals could not wear the national team jersey. But Hidemasa Morita's path to the World Cup is not closed. Over the next two months, his performances at Sporting will decide his fate — the answer will come in May.
+
+<div class="verdict-card">
+  <div class="verdict-label">VERDICT</div>
+  <p><strong>Hidemasa Morita</strong>, who led <strong>Sporting CP</strong> to the CL quarterfinals, was left out of Japan's March British tour squad. Behind the omission of a player who was indispensable in the Champions League lies the structure of a fiercely contested central midfield position featuring Europe-based players <strong>Daichi Kamada</strong>, <strong>Kaishu Sano</strong>, <strong>Ao Tanaka</strong>, and <strong>Joel Chima Fujita</strong>. Manager Moriyasu said "there is competition" and opted to give the final testing opportunity to other players. The probability of Morita making the World Cup squad remains high, but the battle for central midfield places — the strongest in Japan's history — will rage on until the tournament begins.</p>
 </div>`,
   },
   {
