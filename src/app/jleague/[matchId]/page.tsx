@@ -11,6 +11,7 @@ import {
 } from "@/data/jleague";
 import type { JPosition, JPlayer } from "@/data/jleague";
 import { notFound } from "next/navigation";
+import { headers } from "next/headers";
 
 /* ── Static generation ─────────────────────────── */
 export function generateStaticParams() {
@@ -116,10 +117,33 @@ export default async function JLeagueMatchDetailPage({
     (match.pkHome !== undefined && match.pkAway !== undefined) ||
     match.pkWinner !== undefined;
 
-  const groupMatches = jMatches.filter((m) => m.group === match.group);
-  const idx = groupMatches.findIndex((m) => m.id === matchId);
-  const prevMatch = idx > 0 ? groupMatches[idx - 1] : null;
-  const nextMatch = idx < groupMatches.length - 1 ? groupMatches[idx + 1] : null;
+  // Determine the "focus team" from referer or default to home team
+  const headersList = await headers();
+  const referer = headersList.get("referer") || "";
+  const refTeamMatch = referer.match(/\/jleague\/team\/([^/?]+)/);
+  const refTeamId = refTeamMatch ? refTeamMatch[1] : null;
+
+  // Map teamId back to shortName
+  const ID_TO_SHORT: Record<string, string> = {};
+  for (const [short, id] of Object.entries(SHORT_TO_ID)) {
+    ID_TO_SHORT[id] = short;
+  }
+  const focusShort = refTeamId ? ID_TO_SHORT[refTeamId] : null;
+
+  // Use focus team if it's in this match, otherwise default to home team
+  const navTeam =
+    focusShort && (match.homeTeam === focusShort || match.awayTeam === focusShort)
+      ? focusShort
+      : match.homeTeam;
+
+  // Get this team's matches sorted by date
+  const teamMatches = jMatches
+    .filter((m) => m.league === match.league && (m.homeTeam === navTeam || m.awayTeam === navTeam))
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  const idx = teamMatches.findIndex((m) => m.id === matchId);
+  const prevMatch = idx > 0 ? teamMatches[idx - 1] : null;
+  const nextMatch = idx < teamMatches.length - 1 ? teamMatches[idx + 1] : null;
+  const navTeamId = SHORT_TO_ID[navTeam];
 
   const pkDisplay =
     match.pkHome !== undefined && match.pkAway !== undefined
@@ -130,10 +154,10 @@ export default async function JLeagueMatchDetailPage({
 
   const detail = jMatchDetails.find(d => d.matchId === matchId);
 
-  // Back link: prefer home team's detail page
-  const homeTeamId = SHORT_TO_ID[match.homeTeam];
-  const backHref = homeTeamId ? `/jleague/team/${homeTeamId}?tab=matches` : "/jleague";
-  const backLabel = homeTeamId ? `${match.homeTeam} 対戦カード` : "試合一覧";
+  // Back link: prefer focus team's detail page
+  const backTeamId = navTeamId || SHORT_TO_ID[match.homeTeam];
+  const backHref = backTeamId ? `/jleague/team/${backTeamId}` : "/jleague";
+  const backLabel = backTeamId ? `${navTeam} チーム詳細` : "試合一覧";
 
   return (
     <div className="min-h-screen bg-[#F5F0E8]">
@@ -215,27 +239,36 @@ export default async function JLeagueMatchDetailPage({
       {/* ═══════ NOTEBOOK BODY ═══════ */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 space-y-6">
 
-        {/* ── Prev / Next Nav ── */}
+        {/* ── Prev / Next Nav (team-based) ── */}
         <div className="flex items-center justify-between gap-2">
           {prevMatch ? (
             <Link
               href={`/jleague/${prevMatch.id}`}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all text-xs font-bold text-gray-700 truncate max-w-[45%]"
+              className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all text-xs font-bold text-gray-700 truncate max-w-[45%]"
             >
-              <span className="text-gray-400">←</span>
-              <span className="truncate">{prevMatch.homeTeam} vs {prevMatch.awayTeam}</span>
+              <span className="text-gray-400">&larr;</span>
+              <div className="truncate">
+                <p className="text-[10px] text-gray-400">第{prevMatch.round}節</p>
+                <p className="truncate">vs {prevMatch.homeTeam === navTeam ? prevMatch.awayTeam : prevMatch.homeTeam}</p>
+              </div>
             </Link>
           ) : (
             <div />
           )}
-          <span className="text-[10px] text-gray-400 font-bold shrink-0">第{match.round}節</span>
+          <div className="text-center shrink-0">
+            <p className="text-[10px] text-gray-400 font-bold">{navTeam}の試合</p>
+            <p className="text-[10px] text-gray-300">第{match.round}節</p>
+          </div>
           {nextMatch ? (
             <Link
               href={`/jleague/${nextMatch.id}`}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all text-xs font-bold text-gray-700 truncate max-w-[45%]"
+              className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all text-xs font-bold text-gray-700 truncate max-w-[45%]"
             >
-              <span className="truncate">{nextMatch.homeTeam} vs {nextMatch.awayTeam}</span>
-              <span className="text-gray-400">→</span>
+              <div className="truncate text-right">
+                <p className="text-[10px] text-gray-400">第{nextMatch.round}節</p>
+                <p className="truncate">vs {nextMatch.homeTeam === navTeam ? nextMatch.awayTeam : nextMatch.homeTeam}</p>
+              </div>
+              <span className="text-gray-400">&rarr;</span>
             </Link>
           ) : (
             <div />
