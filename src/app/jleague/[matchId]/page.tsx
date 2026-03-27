@@ -240,35 +240,35 @@ export default async function JLeagueMatchDetailPage({
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 space-y-6">
 
         {/* ── Prev / Next Nav (team-based) ── */}
-        <div className="flex items-center justify-between gap-2">
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
           {prevMatch ? (
             <Link
               href={`/jleague/${prevMatch.id}`}
-              className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all text-xs font-bold text-gray-700 truncate max-w-[45%]"
+              className="group flex items-center gap-3 px-4 py-3 rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all overflow-hidden"
             >
-              <span className="text-gray-400">&larr;</span>
-              <div className="truncate">
-                <p className="text-[10px] text-gray-400">第{prevMatch.round}節</p>
-                <p className="truncate">vs {prevMatch.homeTeam === navTeam ? prevMatch.awayTeam : prevMatch.homeTeam}</p>
+              <svg className="w-4 h-4 text-gray-300 group-hover:text-gray-500 shrink-0 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
+              <div className="min-w-0">
+                <p className="text-[10px] text-gray-400 font-medium">第{prevMatch.round}節</p>
+                <p className="text-xs font-bold text-gray-800 truncate">vs {prevMatch.homeTeam === navTeam ? prevMatch.awayTeam : prevMatch.homeTeam}</p>
               </div>
             </Link>
           ) : (
             <div />
           )}
-          <div className="text-center shrink-0">
-            <p className="text-[10px] text-gray-400 font-bold">{navTeam}の試合</p>
-            <p className="text-[10px] text-gray-300">第{match.round}節</p>
+          <div className="text-center px-2">
+            <p className="text-xs font-bold text-gray-700">{navTeam}</p>
+            <p className="text-[10px] text-gray-400 font-medium mt-0.5">第{match.round}節</p>
           </div>
           {nextMatch ? (
             <Link
               href={`/jleague/${nextMatch.id}`}
-              className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all text-xs font-bold text-gray-700 truncate max-w-[45%]"
+              className="group flex items-center justify-end gap-3 px-4 py-3 rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all overflow-hidden"
             >
-              <div className="truncate text-right">
-                <p className="text-[10px] text-gray-400">第{nextMatch.round}節</p>
-                <p className="truncate">vs {nextMatch.homeTeam === navTeam ? nextMatch.awayTeam : nextMatch.homeTeam}</p>
+              <div className="min-w-0 text-right">
+                <p className="text-[10px] text-gray-400 font-medium">第{nextMatch.round}節</p>
+                <p className="text-xs font-bold text-gray-800 truncate">vs {nextMatch.homeTeam === navTeam ? nextMatch.awayTeam : nextMatch.homeTeam}</p>
               </div>
-              <span className="text-gray-400">&rarr;</span>
+              <svg className="w-4 h-4 text-gray-300 group-hover:text-gray-500 shrink-0 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
             </Link>
           ) : (
             <div />
