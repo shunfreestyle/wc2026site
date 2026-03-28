@@ -56,7 +56,12 @@ export default function ArticlesPage() {
       );
     }
 
-    return list.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+    return list.sort((a, b) => {
+      const dateCmp = b.publishedAt.localeCompare(a.publishedAt);
+      if (dateCmp !== 0) return dateCmp;
+      // 同日の記事は配列の定義順（=追加順=新しい順）を維持
+      return articles.indexOf(a) - articles.indexOf(b);
+    });
   }, [tab, search]);
 
   const t = (ja: string, en: string) => (locale === "en" ? en : ja);
