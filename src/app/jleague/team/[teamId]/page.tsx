@@ -273,8 +273,9 @@ export default function TeamDetailPage() {
         {activeTab === "season" && (
           <div>
             {/* Stats cards */}
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 mb-8">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-5 sm:gap-4 mb-8">
               {[
+                { label: locale === "en" ? "Matches" : "試合数", value: teamMatches.length, color: "#374151" },
                 { label: locale === "en" ? "Points" : "勝点", value: points, color: team.color },
                 { label: locale === "en" ? "Record" : "成績", value: `${wins}${locale === "en" ? "W" : "勝"} ${draws}${locale === "en" ? "D" : "分"} ${losses}${locale === "en" ? "L" : "敗"}`, color: "#374151" },
                 { label: locale === "en" ? "Goals For" : "得点", value: gf, color: "#10B981" },
