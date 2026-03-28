@@ -137,33 +137,6 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     tournaments: ["アジア杯 2023"],
   },
   {
-    name: "Takehiro Tomiyasu",
-    nameJa: "冨安健洋",
-    birthDate: "1998-11-05",
-    age: 27,
-    height: 188,
-    weight: 84,
-    position: "DF",
-    club: "アヤックス（オランダ）",
-    note: "1年9ヶ月ぶり復帰",
-    id: "japan-tomiyasu",
-    description:
-      "アーセナルからアヤックスへ移籍し、新天地で存在感を発揮。右SBでもCBでも完璧にこなす万能型DFが、1年9ヶ月ぶりに代表復帰。怪我を乗り越えた冨安の帰還は、日本の守備力を一段階引き上げる。",
-    careerHistory: [
-      { club: "アビスパ福岡", period: "2018–19" },
-      { club: "シントトロイデン（ベルギー）", period: "2019–20", note: "19歳でベルギーへ渡る" },
-      { club: "ボローニャ（イタリア）", period: "2020–21", note: "わずか1年でセリエAへステップアップ" },
-      { club: "アーセナル（イングランド）", period: "2021–25", note: "CB・SB両方で世界最高峰のリーグに適応" },
-      { club: "アヤックス（オランダ）", period: "2025〜" },
-    ],
-    opponentConnection:
-      "アーセナル在籍時（2021〜2025年）は、イングランド代表のブカヨ・サカ、デクラン・ライスと同クラブ。サカとは「右SB冨安＋右ウィングサカ」の黄金コンビで知られ、ファンから絶大な支持を受けた。ライスとも1シーズン共に戦った。また、スコットランド代表のキーラン・ティアーニーともアーセナルで2年間チームメイトで、2人でセルティックの試合を観戦していたエピソードもある。",
-    caps: 50,
-    goals: 2,
-    debutYear: 2018,
-    tournaments: ["W杯 2022", "アジア杯 2023"],
-  },
-  {
     name: "Daiki Hashioka",
     nameJa: "橋岡大樹",
     birthDate: "1999-05-17",

@@ -181,7 +181,6 @@ const SQUAD: Player[] = [
   // DF（8名）
   { name: "谷口彰悟", pos: "DF", club: "シントトロイデン（ベルギー）" },
   { name: "渡辺剛", pos: "DF", club: "フェイエノールト（オランダ）" },
-  { name: "冨安健洋", pos: "DF", club: "アヤックス（オランダ）" },
   { name: "橋岡大樹", pos: "DF", club: "KAAヘント（ベルギー）" },
   { name: "伊藤洋輝", pos: "DF", club: "バイエルン（ドイツ）" },
   { name: "瀬古歩夢", pos: "DF", club: "ル・アーヴル（フランス）" },
