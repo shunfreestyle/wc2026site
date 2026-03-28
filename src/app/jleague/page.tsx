@@ -196,6 +196,29 @@ export default function JLeaguePage() {
           </div>
         </section>
 
+        {/* J2/J3 Link */}
+        <section className="mb-10">
+          <Link
+            href="/jleague/j2j3"
+            className="group block bg-gradient-to-r from-[#2C3E50] to-[#34495E] rounded-2xl p-6 sm:p-8 text-white hover:shadow-xl transition-all"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs font-bold text-white/50 tracking-widest mb-1">MEIJI YASUDA J2·J3 HYAKUNEN SŌZŌ LEAGUE</p>
+                <h2 className="text-xl sm:text-2xl font-bold">
+                  {locale === "en" ? "J2·J3 Centenary Vision League" : "J2·J3 百年構想リーグ"}
+                </h2>
+                <p className="text-white/60 text-sm mt-1">
+                  {locale === "en"
+                    ? "40 clubs in 4 groups — EAST-A, EAST-B, WEST-A, WEST-B"
+                    : "4グループ40クラブ ─ EAST-A / EAST-B / WEST-A / WEST-B"}
+                </p>
+              </div>
+              <svg className="w-6 h-6 text-white/40 group-hover:text-white/80 group-hover:translate-x-1 transition-all shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
+            </div>
+          </Link>
+        </section>
+
         {/* Data source */}
         <p className="text-xs text-gray-400 mt-8 text-center">
           {locale === "en"
