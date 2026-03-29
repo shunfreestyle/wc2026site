@@ -61,7 +61,7 @@ export const articles: Article[] = [
 
 森保一監督は、4月1日のイングランド戦を見据え、この試合では交代枠11人というレギュレーションを最大限に活用する「二部構成」の戦略を採用。前半は若手・準レギュラー中心のメンバーでスタートした。
 
-3-4-2-1のシステムで、GKにはケガからの復帰戦となる鈴木彩艶。3バックに瀬古歩夢・渡辺剛・伊藤洋輝、ダブルボランチに藤田譲瑠チマ・田中碧、右WBに菅原由勢、左WBにはキャプテンマークを巻いた"凱旋"の前田大然が入った。2シャドーは初先発の佐野航大（フェイエノールト）と鈴木唯人、ワントップには20歳の大型FW後藤啓介（ロイヤル・アントワープ）が初先発で抜擢された。
+3-4-2-1のシステムで、GKにはケガからの復帰戦となる鈴木彩艶。3バックに瀬古歩夢・渡辺剛・伊藤洋輝、ダブルボランチに藤田譲瑠チマ・田中碧、右WBに菅原由勢、左WBにはキャプテンマークを巻いた"凱旋"の前田大然が入った。2シャドーは初先発の佐野航大（フェイエノールト）と鈴木唯人、ワントップには20歳の大型FW後藤啓介（アンデルレヒトからシント＝トロイデンへ期限付き移籍中）が初先発で抜擢された。
 
 前半はスコットランドが勢いよく入った。8分、マクギンのクロスにマクトミネイが合わせたシュートは強烈だったが、GK鈴木彩艶が驚異的な反応でポストに弾き出す。この試合のMVPに選出される鈴木彩艶の、復帰戦とは思えない好セーブだった。
 
@@ -149,7 +149,7 @@ W杯グループFの初戦は6月14日のオランダ戦（ダラス）。残る
 
 With a crucial fixture against England at Wembley on April 1 in mind, manager Hajime Moriyasu employed a "two-phase" strategy, making full use of the 11-substitute rule. The first half featured a younger, rotated squad.
 
-In a 3-4-2-1 formation, Zion Suzuki started in goal on his return from injury. The back three comprised Ayumu Seko, Go Watanabe, and Hiroki Ito. Joel Fujita and Ao Tanaka anchored the midfield, while Yukinari Sugawara took the right wing-back role and captain Daizen Maeda — returning to Scotland where he starred for Celtic — patrolled the left. The two shadow strikers were debutant starters Kodai Sano (Feyenoord) and Yuito Suzuki, with 20-year-old Keisuke Goto (Royal Antwerp) handed his first start as the lone forward.
+In a 3-4-2-1 formation, Zion Suzuki started in goal on his return from injury. The back three comprised Ayumu Seko, Go Watanabe, and Hiroki Ito. Joel Fujita and Ao Tanaka anchored the midfield, while Yukinari Sugawara took the right wing-back role and captain Daizen Maeda — returning to Scotland where he starred for Celtic — patrolled the left. The two shadow strikers were debutant starters Kodai Sano (Feyenoord) and Yuito Suzuki, with 20-year-old Keisuke Goto (on loan at Sint-Truiden from Anderlecht) handed his first start as the lone forward.
 
 Scotland started brightly. In the 8th minute, McTominay met McGinn's cross with a fierce effort, but goalkeeper Zion Suzuki produced a stunning save, tipping the ball onto the post. It was a remarkable stop from the keeper on his return from injury — a display that would earn him the Man of the Match award.
 
@@ -158,7 +158,7 @@ Japan gradually found their rhythm, and in the 37th minute, Sano's intelligent l
 <div class="highlight-box">
 <span class="point-label">POINT 1</span>
 <span class="point-title">Goto and Sano Make First Starts — Building World Cup Squad Depth</span>
-<p class="point-body">Moriyasu handed first starts to 20-year-old Keisuke Goto at center forward and Kodai Sano in the shadow striker role. Goto used his 190cm frame to hold up play effectively, while Sano's intelligent movement created the chance that struck the crossbar. With roughly three months until the World Cup, the intent to widen the selection pool was clear.</p>
+<p class="point-body">Moriyasu handed first starts to 20-year-old Keisuke Goto (Sint-Truiden, on loan from Anderlecht) at center forward and Kodai Sano in the shadow striker role. Goto used his 190cm frame to hold up play effectively, while Sano's intelligent movement created the chance that struck the crossbar. With roughly three months until the World Cup, the intent to widen the selection pool was clear.</p>
 </div>
 
 ## Second Half — Phased Introduction of Key Players Transforms the Game
