@@ -5,6 +5,9 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { getRosterByTeamId } from "@/data/j1-rosters";
 import { getJ1TeamById } from "@/data/j1-teams";
+import { getJ2J3TeamById } from "@/data/j2j3-teams";
+import { getEastARosterByTeamId } from "@/data/j2j3-rosters-east-a";
+import { getEastBRosterByTeamId } from "@/data/j2j3-eastb-rosters";
 
 /* ─── Types ─── */
 interface Position {
@@ -451,23 +454,36 @@ function StamenPageInner() {
   const searchParams = useSearchParams();
   const teamParam = searchParams.get("team");
 
-  // J1チームモード
+  // チームモード（J1 + J2/J3対応）
   const j1Team = teamParam ? getJ1TeamById(teamParam) : null;
-  const j1Roster = teamParam ? getRosterByTeamId(teamParam) : [];
+  const j2j3Team = teamParam ? getJ2J3TeamById(teamParam) : null;
+  const teamData = j1Team || j2j3Team;
+
+  const teamRoster = useMemo(() => {
+    if (!teamParam) return [];
+    const j1r = getRosterByTeamId(teamParam);
+    if (j1r.length > 0) return j1r;
+    const eaR = getEastARosterByTeamId(teamParam);
+    if (eaR.length > 0) return eaR;
+    const ebR = getEastBRosterByTeamId(teamParam);
+    if (ebR.length > 0) return ebR;
+    return [];
+  }, [teamParam]);
+
   const activeSquad: Player[] = useMemo(() => {
-    if (j1Team && j1Roster.length > 0) {
-      return j1Roster.map((p) => ({
+    if (teamData && teamRoster.length > 0) {
+      return teamRoster.map((p) => ({
         name: p.name,
         pos: p.position,
-        club: j1Team.fullName,
+        club: teamData.fullName,
       }));
     }
     return SQUAD;
-  }, [j1Team, j1Roster]);
+  }, [teamData, teamRoster]);
 
-  const isJ1Mode = !!j1Team;
-  const accentColor = j1Team?.color ?? "#E8192C";
-  const teamLabel = j1Team ? j1Team.fullName : "日本代表";
+  const isJ1Mode = !!teamData;
+  const accentColor = teamData?.color ?? "#E8192C";
+  const teamLabel = teamData ? teamData.fullName : "日本代表";
 
   // チーム固有フォーメーション or 日本代表用
   const availableFormations = useMemo(() => {
