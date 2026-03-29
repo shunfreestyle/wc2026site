@@ -24,6 +24,204 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    id: "1774944000001",
+    slug: "japan-1-0-scotland-ito-winner-march-2026",
+    title: "伊東純也の決勝弾でスコットランド撃破！森保ジャパン、W杯イヤー初戦を白星で飾り4連勝",
+    titleEn: "Junya Ito's Late Winner Seals Japan's 1-0 Victory Over Scotland in World Cup Year Opener",
+    excerpt: "キリンワールドチャレンジ2026でスコットランドと対戦した日本代表は、84分の伊東純也のゴールで1-0の勝利。前半は若手中心、後半は主力投入で攻勢を強め、W杯イヤー初戦を制した。",
+    excerptEn: "Japan defeated Scotland 1-0 at Hampden Park thanks to Junya Ito's 84th-minute strike. Moriyasu's second-half tactical changes proved decisive as Japan opened their 2026 World Cup year with a fourth consecutive victory.",
+    category: "日本代表" as const,
+    tags: ["日本代表", "スコットランド", "伊東純也", "親善試合", "W杯2026", "森保一", "三笘薫", "鈴木彩艶", "後藤啓介", "佐野航大", "鈴木淳之介"],
+    tagsEn: ["Japan", "Scotland", "Junya Ito", "Friendly", "World Cup 2026", "Hajime Moriyasu", "Kaoru Mitoma", "Zion Suzuki", "Keisuke Goto", "Kodai Sano", "Junnosuke Suzuki"],
+    publishedAt: "2026-03-29",
+    updatedAt: "2026-03-29",
+    isPopular: true,
+    sources: [
+      { name: "JFA公式", url: "https://www.jfa.jp/samuraiblue/20260328/" },
+      { name: "Goal.com", url: "https://www.goal.com/jp/%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9/2026-0329-japan-scotland-match/blt45d5344d4d01105c" },
+      { name: "ABEMA TIMES", url: "https://times.abema.tv/articles/-/10234906" },
+      { name: "サッカーキング", url: "https://www.soccer-king.jp/news/japan/national/20260329/2142485.html" },
+      { name: "Scottish FA", url: "https://www.scottishfa.co.uk/news/late-ito-goal-proves-the-difference-at-barclays-hampden/?rid=13925" },
+      { name: "ESPN", url: "https://www.espn.co.uk/football/match/_/gameId/401856618/japan-scotland" },
+    ],
+    content: `日本代表は3月28日（現地時間）、キリンワールドチャレンジ2026でスコットランド代表とハンプデンパーク（グラスゴー）で対戦。44,644人の観衆が見守る中、84分に途中出場の伊東純也が決勝ゴールを挙げ、1-0で勝利した。W杯イヤーの初戦を白星で飾り、昨年11月のブラジル戦から公式・親善合わせて4連勝とした。
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>大会</th><td>キリンワールドチャレンジ2026</td></tr>
+    <tr><th>対戦</th><td>スコットランド 0 - 1 日本</td></tr>
+    <tr><th>日時</th><td>2026年3月28日（現地）/ 3月29日（日本時間）</td></tr>
+    <tr><th>会場</th><td>ハンプデンパーク（グラスゴー）</td></tr>
+    <tr><th>観客数</th><td>44,644人</td></tr>
+    <tr><th>得点者</th><td>伊東純也（84分）</td></tr>
+  </tbody>
+</table>
+
+## 若手中心のスタメンで挑んだ前半
+
+森保一監督は、4月1日のイングランド戦を見据え、この試合では交代枠11人というレギュレーションを最大限に活用する「二部構成」の戦略を採用。前半は若手・準レギュラー中心のメンバーでスタートした。
+
+3-4-2-1のシステムで、GKにはケガからの復帰戦となる鈴木彩艶。3バックに瀬古歩夢・渡辺剛・伊藤洋輝、ダブルボランチに藤田譲瑠チマ・田中碧、右WBに菅原由勢、左WBにはキャプテンマークを巻いた"凱旋"の前田大然が入った。2シャドーは初先発の佐野航大（フェイエノールト）と鈴木唯人、ワントップには20歳の大型FW後藤啓介（ロイヤル・アントワープ）が初先発で抜擢された。
+
+前半はスコットランドが勢いよく入った。8分、マクギンのクロスにマクトミネイが合わせたシュートは強烈だったが、GK鈴木彩艶が驚異的な反応でポストに弾き出す。この試合のMVPに選出される鈴木彩艶の、復帰戦とは思えない好セーブだった。
+
+日本も徐々にリズムを掴み、37分には佐野航大のインテリジェントなレイオフから田中碧がサイドフットで狙ったが、シュートはクロスバーを叩いた。両チームともにゴールを脅かしたが、前半はスコアレスで終了した。
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">後藤啓介・佐野航大が初先発——W杯に向けた選手層の底上げ</span>
+<p class="point-body">20歳の後藤啓介をワントップに、佐野航大をシャドーに初先発で起用。後藤は190cmの高さを活かしたポストプレーでチャンスに絡み、佐野は37分の田中碧のクロスバー直撃シュートをお膳立て。W杯本番までの約3ヶ月で「使える」選手の選択肢を増やす狙いが見えた。</p>
+</div>
+
+## 後半——段階的な主力投入で攻勢を強める
+
+後半、森保監督は段階的に交代カードを切り、チームの顔を一変させた。
+
+<table class="schedule-table">
+  <thead><tr><th>時間</th><th>IN</th><th>OUT</th></tr></thead>
+  <tbody>
+    <tr><td>46分</td><td>三笘薫、谷口彰悟、鈴木淳之介</td><td>佐野航大、渡辺剛、伊藤洋輝</td></tr>
+    <tr><td>62分</td><td>伊東純也、上田綺世、中村敬斗、堂安律</td><td>鈴木唯人、後藤啓介、前田大然、菅原由勢</td></tr>
+    <tr><td>77分</td><td>塩貝健人、橋岡大樹</td><td>藤田譲瑠チマ、瀬古歩夢</td></tr>
+  </tbody>
+</table>
+
+ハーフタイムの3枚替えで三笘薫が左サイドに入ると、突破力が格段に増した。さらに62分の4枚替えで伊東純也、上田綺世、堂安律、中村敬斗という攻撃の主力が一気に投入されると、日本は完全にギアチェンジ。67分に伊東がボックス内でスコットランドの守備を翻弄してシュート、70分には三笘がGKに阻まれるなど、怒涛の攻勢を見せた。
+
+## 84分——決勝ゴールの場面を振り返る
+
+スコットランドの守備陣が耐え続ける中、84分についに均衡が破れた。
+
+三笘薫が中央から鋭い縦パスを送ると、左サイドに走り込んだ鈴木淳之介がワンタッチでクロス。中央の塩貝健人が巧みなタッチでボールを落とし、最後は伊東純也が冷静にゴール右隅へ流し込んだ。三笘→鈴木淳之介→塩貝→伊東という4人の連携で崩し切った、チームとしての完成度が光るゴールだった。
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">伊東純也——「スーパーサブ」としての新たな武器</span>
+<p class="point-body">2023年以降、日本代表で6ゴール16アシストと最も多くのゴールに関与している選手の一人が伊東純也だ。この試合では62分からの途中出場で流れを変え、84分に決勝点。先発でもジョーカーでも機能する伊東の存在は、W杯本番で森保監督に多くの戦術的選択肢を与えることになる。</p>
+</div>
+
+## スコットランド側から見た一戦
+
+スコットランドにとっても、この試合は6月のW杯に向けた重要なテストだった。スティーブ・クラーク監督は、マクトミネイ、ロバートソン、マクギンら主力を先発起用。8分のマクトミネイのシュートは決定機だったが、GK鈴木彩艶のファインセーブに阻まれた。
+
+前半こそ互角に渡り合ったスコットランドだが、日本が主力を投入した後半は防戦一方に。最終的にシュート数8対18、枠内シュート3対7と、スタッツでも大きく水をあけられた。W杯本番までに攻撃面のテコ入れが急務であることが浮き彫りになった。
+
+## 数字で見るこの試合
+
+<table class="schedule-table">
+  <thead><tr><th>スタッツ</th><th>日本</th><th>スコットランド</th></tr></thead>
+  <tbody>
+    <tr><td>ボール支配率</td><td>55.1%</td><td>44.9%</td></tr>
+    <tr><td>シュート数</td><td>18</td><td>8</td></tr>
+    <tr><td>枠内シュート</td><td>7</td><td>3</td></tr>
+    <tr><td>期待ゴール（xG）</td><td>2.14</td><td>0.87</td></tr>
+    <tr><td>コーナーキック</td><td>8</td><td>3</td></tr>
+    <tr><td>セーブ数</td><td>3</td><td>6</td></tr>
+    <tr><td>イエローカード</td><td>2</td><td>0</td></tr>
+  </tbody>
+</table>
+
+## 今後の展望——イングランド戦、そしてW杯グループFへ
+
+この勝利で日本代表は4連勝。W杯イヤーの初戦を最高の形でスタートさせた。次戦は4月1日にウェンブリーで行われるイングランド戦だ。スコットランド戦では「前半・若手テスト、後半・主力投入」の二部構成だったが、イングランド戦ではよりW杯本番を意識したメンバー・戦術が試される可能性が高い。
+
+W杯グループFの初戦は6月14日のオランダ戦（ダラス）。残る1枠は3月31日の欧州プレーオフ（スウェーデン対ポーランド）で決定する。欧州の強豪との連戦は、グループステージ突破に向けた貴重なシミュレーションの場となるだろう。
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">スコットランド戦から見えた3つのポイント</span>
+<p class="point-body">（1）<strong>選手層の厚さ</strong>：若手中心の前半でもスコアレスに抑え、後半の主力投入で仕留める「二段構え」が機能。（2）<strong>伊東純也のジョーカー適性</strong>：62分からの途中出場で決勝点。先発・途中出場の両面で計算できる切り札。（3）<strong>鈴木彩艶の復帰</strong>：MVPに選出される好パフォーマンスでケガからの復帰を証明。W杯の正GK争いに大きなアピールを見せた。</p>
+</div>`,
+    contentEn: `Japan defeated Scotland 1-0 at Hampden Park in Glasgow on March 28 (local time) in a Kirin World Challenge 2026 friendly. In front of 44,644 fans, substitute Junya Ito scored the decisive goal in the 84th minute, extending Japan's winning streak to four matches dating back to their victory over Brazil in November.
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>Competition</th><td>Kirin World Challenge 2026</td></tr>
+    <tr><th>Match</th><td>Scotland 0 - 1 Japan</td></tr>
+    <tr><th>Date</th><td>March 28, 2026</td></tr>
+    <tr><th>Venue</th><td>Hampden Park, Glasgow</td></tr>
+    <tr><th>Attendance</th><td>44,644</td></tr>
+    <tr><th>Scorer</th><td>Junya Ito (84')</td></tr>
+  </tbody>
+</table>
+
+## Youth-Focused Starting XI in the First Half
+
+With a crucial fixture against England at Wembley on April 1 in mind, manager Hajime Moriyasu employed a "two-phase" strategy, making full use of the 11-substitute rule. The first half featured a younger, rotated squad.
+
+In a 3-4-2-1 formation, Zion Suzuki started in goal on his return from injury. The back three comprised Ayumu Seko, Go Watanabe, and Hiroki Ito. Joel Fujita and Ao Tanaka anchored the midfield, while Yukinari Sugawara took the right wing-back role and captain Daizen Maeda — returning to Scotland where he starred for Celtic — patrolled the left. The two shadow strikers were debutant starters Kodai Sano (Feyenoord) and Yuito Suzuki, with 20-year-old Keisuke Goto (Royal Antwerp) handed his first start as the lone forward.
+
+Scotland started brightly. In the 8th minute, McTominay met McGinn's cross with a fierce effort, but goalkeeper Zion Suzuki produced a stunning save, tipping the ball onto the post. It was a remarkable stop from the keeper on his return from injury — a display that would earn him the Man of the Match award.
+
+Japan gradually found their rhythm, and in the 37th minute, Sano's intelligent lay-off set up Ao Tanaka, whose side-footed effort rattled the crossbar. Both sides threatened, but the first half ended goalless.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">Goto and Sano Make First Starts — Building World Cup Squad Depth</span>
+<p class="point-body">Moriyasu handed first starts to 20-year-old Keisuke Goto at center forward and Kodai Sano in the shadow striker role. Goto used his 190cm frame to hold up play effectively, while Sano's intelligent movement created the chance that struck the crossbar. With roughly three months until the World Cup, the intent to widen the selection pool was clear.</p>
+</div>
+
+## Second Half — Phased Introduction of Key Players Transforms the Game
+
+At halftime, Moriyasu began his systematic overhaul of the team, introducing players in three waves.
+
+<table class="schedule-table">
+  <thead><tr><th>Minute</th><th>IN</th><th>OUT</th></tr></thead>
+  <tbody>
+    <tr><td>46'</td><td>Mitoma, Taniguchi, J. Suzuki</td><td>Sano, Watanabe, H. Ito</td></tr>
+    <tr><td>62'</td><td>J. Ito, Ueda, Nakamura, Doan</td><td>Y. Suzuki, Goto, Maeda, Sugawara</td></tr>
+    <tr><td>77'</td><td>Shiogai, Hashioka</td><td>Fujita, Seko</td></tr>
+  </tbody>
+</table>
+
+The halftime introduction of Kaoru Mitoma on the left flank immediately added penetration. Then, the 62nd-minute quadruple substitution — bringing on Junya Ito, Ayase Ueda, Ritsu Doan, and Keito Nakamura — shifted Japan into a completely different gear. In the 67th minute, Ito bamboozled the Scottish defense inside the box before firing a shot. Three minutes later, Mitoma tested the goalkeeper from close range. Japan laid siege to the Scottish goal.
+
+## 84th Minute — Anatomy of the Winning Goal
+
+With Scotland's defense holding firm, the breakthrough finally came in the 84th minute through a beautifully constructed team move.
+
+Kaoru Mitoma played a sharp vertical pass from central midfield. Junnosuke Suzuki, arriving on the left side of the box, delivered a first-time cross. Kento Shiogai deftly laid the ball off in the middle, and Junya Ito coolly slotted home into the bottom right corner. Four players combined — Mitoma to Suzuki to Shiogai to Ito — in a goal that showcased Japan's attacking fluency.
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">Junya Ito — A New Weapon as a "Super Sub"</span>
+<p class="point-body">Since the start of 2023, Junya Ito has been involved in more goals for Japan than almost any other player, with 6 goals and 16 assists across all competitions. In this match, he changed the game after coming on in the 62nd minute and delivered the winner in the 84th. Whether starting or coming off the bench, Ito gives Moriyasu valuable tactical flexibility heading into the World Cup.</p>
+</div>
+
+## Scotland's Perspective
+
+This was also an important test for Steve Clarke's Scotland side ahead of their World Cup campaign. Clarke fielded a strong lineup featuring McTominay, Robertson, and McGinn. McTominay came closest to scoring in the 8th minute, but his effort was denied by Suzuki's outstanding save.
+
+While Scotland competed well in the first half, they were overwhelmed after Japan's second-half introductions. The final stats told the story: 18 shots to 8, 7 on target to 3, and an expected goals margin of 2.14 to 0.87. Improving their attacking output will be a priority before the World Cup.
+
+## Match Statistics
+
+<table class="schedule-table">
+  <thead><tr><th>Stat</th><th>Japan</th><th>Scotland</th></tr></thead>
+  <tbody>
+    <tr><td>Possession</td><td>55.1%</td><td>44.9%</td></tr>
+    <tr><td>Shots</td><td>18</td><td>8</td></tr>
+    <tr><td>Shots on Target</td><td>7</td><td>3</td></tr>
+    <tr><td>Expected Goals (xG)</td><td>2.14</td><td>0.87</td></tr>
+    <tr><td>Corners</td><td>8</td><td>3</td></tr>
+    <tr><td>Saves</td><td>3</td><td>6</td></tr>
+    <tr><td>Yellow Cards</td><td>2</td><td>0</td></tr>
+  </tbody>
+</table>
+
+## Looking Ahead — England and World Cup Group F
+
+This victory makes it four wins in a row for Japan, the perfect start to their World Cup year. Next up is a clash with England at Wembley on April 1. While the Scotland match featured a "first half youth, second half starters" approach, the England fixture is likely to see a more World Cup-oriented lineup.
+
+Japan's Group F opener is against the Netherlands in Dallas on June 14. The final group opponent will be determined by the UEFA playoff between Sweden and Poland on March 31. Back-to-back matches against European heavyweights provide invaluable preparation for the group stage.
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">Three Key Takeaways from the Scotland Match</span>
+<p class="point-body">(1) <strong>Squad depth on display</strong>: Japan kept a clean sheet with a youth-heavy first half XI, then brought on starters to finish the job — a "two-phase" approach that worked perfectly. (2) <strong>Ito's super-sub credentials</strong>: Coming on in the 62nd minute and scoring the winner, Ito proved he can be equally effective as a starter or impact substitute. (3) <strong>Zion Suzuki's comeback</strong>: Named Man of the Match after a commanding display on his return from injury, Suzuki made a strong case for the No. 1 jersey at the World Cup.</p>
+</div>`,
+  },
+  {
     id: "1774857600001",
     slug: "japan-wc2026-group-f-sweden-or-poland",
     title: "森保ジャパン、W杯グループF最後の1枠はスウェーデンかポーランドか——いずれも日本代表に「縁」のある強敵",
