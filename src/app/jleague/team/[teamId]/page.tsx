@@ -32,6 +32,14 @@ const SHORT_TO_ID: Record<string, string> = {
 const POS_ORDER = ["GK", "DF", "MF", "FW"] as const;
 const POS_COLORS: Record<string, string> = { GK: "#F59E0B", DF: "#3B82F6", MF: "#10B981", FW: "#EF4444" };
 
+function isLightColor(hex: string): boolean {
+  const c = hex.replace("#", "");
+  const r = parseInt(c.substring(0, 2), 16);
+  const g = parseInt(c.substring(2, 4), 16);
+  const b = parseInt(c.substring(4, 6), 16);
+  return (r * 299 + g * 587 + b * 114) / 1000 > 180;
+}
+
 type TabKey = "squad" | "season" | "matches";
 
 export default function TeamDetailPage() {
@@ -41,6 +49,7 @@ export default function TeamDetailPage() {
   const j2j3Team = getJ2J3TeamById(teamId);
   const team = j1Team || (j2j3Team ? { ...j2j3Team, isOriginal10: false, officialTwitter: j2j3Team.officialTwitter } : null);
   const isJ1 = !!j1Team;
+  const accentColor = team ? (isLightColor(team.color) ? team.colorSecondary : team.color) : "#003087";
   const [activePos, setActivePos] = useState<string>("ALL");
   const [activeTab, setActiveTab] = useState<TabKey>("squad");
 
@@ -113,10 +122,10 @@ export default function TeamDetailPage() {
       <section
         className="relative text-white overflow-hidden"
         style={{
-          background: `linear-gradient(135deg, ${team.color} 0%, ${team.colorSecondary} 100%)`,
+          background: `linear-gradient(135deg, ${isLightColor(team.color) ? team.colorSecondary : team.color} 0%, ${isLightColor(team.colorSecondary) ? team.color : team.colorSecondary} 100%)`,
         }}
       >
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-black/25" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <Link
             href={isJ1 ? "/jleague" : "/jleague/j2j3"}
@@ -179,10 +188,10 @@ export default function TeamDetailPage() {
             }
             const inner = (
               <>
-                <div className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" style={{ backgroundColor: team.color }} />
+                <div className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" style={{ backgroundColor: accentColor }} />
                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{item.label}</p>
                 <p className="text-sm font-bold text-gray-900 mt-1 leading-snug">{item.value}</p>
-                <span className="inline-flex items-center gap-1 mt-2 text-[11px] font-bold tracking-wide opacity-70 group-hover:opacity-100 transition-all" style={{ color: team.color }}>
+                <span className="inline-flex items-center gap-1 mt-2 text-[11px] font-bold tracking-wide opacity-70 group-hover:opacity-100 transition-all" style={{ color: accentColor }}>
                   {item.cta}
                   {item.external ? (
                     <svg className="w-3.5 h-3.5 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
@@ -193,7 +202,7 @@ export default function TeamDetailPage() {
               </>
             );
             const cls = "group relative bg-white rounded-xl border border-gray-100 p-4 shadow-sm hover:shadow-lg hover:border-transparent hover:ring-2 transition-all duration-200 overflow-hidden";
-            const sty = { "--tw-ring-color": team.color } as React.CSSProperties;
+            const sty = { "--tw-ring-color": accentColor } as React.CSSProperties;
             return item.external ? (
               <a key={item.label} href={item.link} target="_blank" rel="noopener noreferrer" className={cls} style={sty}>{inner}</a>
             ) : (
@@ -454,7 +463,7 @@ export default function TeamDetailPage() {
           <Link
             href={`/stamen?team=${team.id}`}
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white transition-opacity hover:opacity-90"
-            style={{ backgroundColor: team.color }}
+            style={{ backgroundColor: accentColor }}
           >
             {locale === "en" ? "Lineup Maker" : "スタメンメーカー"}
           </Link>

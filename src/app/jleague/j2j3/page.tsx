@@ -5,7 +5,16 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { j2j3Teams, getJ2J3TeamsByDivision } from "@/data/j2j3-teams";
 import type { J2J3Team } from "@/data/j2j3-teams";
 
+function isLightColor(hex: string): boolean {
+  const c = hex.replace("#", "");
+  const r = parseInt(c.substring(0, 2), 16);
+  const g = parseInt(c.substring(2, 4), 16);
+  const b = parseInt(c.substring(4, 6), 16);
+  return (r * 299 + g * 587 + b * 114) / 1000 > 180;
+}
+
 function TeamCard({ team }: { team: J2J3Team }) {
+  const accent = isLightColor(team.color) ? team.colorSecondary : team.color;
   return (
     <div className="group relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex flex-col">
       <div
@@ -39,14 +48,14 @@ function TeamCard({ team }: { team: J2J3Team }) {
           <Link
             href={`/stamen?team=${team.id}`}
             className="flex-1 flex items-center justify-center text-xs font-bold h-10 rounded-lg border-2 transition-colors whitespace-nowrap"
-            style={{ borderColor: team.color === "#FFFFFF" ? team.colorSecondary : team.color, color: team.color === "#FFFFFF" ? team.colorSecondary : team.color }}
+            style={{ borderColor: accent, color: accent }}
           >
             スタメンメーカー
           </Link>
           <Link
             href={`/jleague/team/${team.id}`}
             className="flex-1 flex items-center justify-center text-xs font-bold h-10 rounded-lg text-white transition-opacity hover:opacity-90 whitespace-nowrap"
-            style={{ backgroundColor: team.color === "#FFFFFF" ? team.colorSecondary : team.color }}
+            style={{ backgroundColor: accent }}
           >
             チーム詳細
           </Link>
