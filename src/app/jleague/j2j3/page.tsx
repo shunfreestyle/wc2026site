@@ -37,20 +37,19 @@ function TeamCard({ team }: { team: J2J3Team }) {
 
         <div className="flex gap-2 mt-4">
           <Link
+            href={`/stamen?team=${team.id}`}
+            className="flex-1 flex items-center justify-center text-xs font-bold h-9 rounded-lg border-2 transition-colors"
+            style={{ borderColor: team.color === "#FFFFFF" ? team.colorSecondary : team.color, color: team.color === "#FFFFFF" ? team.colorSecondary : team.color }}
+          >
+            スタメンメーカー
+          </Link>
+          <Link
             href={`/jleague/team/${team.id}`}
             className="flex-1 flex items-center justify-center text-xs font-bold h-9 rounded-lg text-white transition-opacity hover:opacity-90"
             style={{ backgroundColor: team.color === "#FFFFFF" ? team.colorSecondary : team.color }}
           >
             チーム詳細
           </Link>
-          <a
-            href={team.officialUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center text-xs font-bold h-9 px-3 rounded-lg border-2 border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors"
-          >
-            公式
-          </a>
         </div>
       </div>
     </div>
