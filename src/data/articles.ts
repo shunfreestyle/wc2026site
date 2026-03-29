@@ -44,7 +44,9 @@ export const articles: Article[] = [
       { name: "下野新聞", url: "https://smart.shimotsuke.co.jp/articles/-/1316488" },
       { name: "高知新聞", url: "https://www.kochinews.co.jp/article/detail/986191" },
     ],
-    content: `明治安田J2・J3百年構想リーグは3月28日（土）・29日（日）の2日間にわたり第8節が行われた。4グループで計20試合が開催され、大量得点あり、首位攻防戦あり、PK14人目にもつれるドラマありと、見どころ満載の週末となった。全グループのハイライトをまとめてお届けする。
+    content: `明治安田J2・J3百年構想リーグは3月28日（土）・29日（日）の2日間にわたり第8節が行われた。百年構想リーグとは、Jリーグが2026年から「秋春制」へ移行するにあたり、空白期間となる2026年前半に開催される特別大会だ。J2・J3の全40クラブが4グループ（EAST-A/B、WEST-A/B）に分かれ、地域リーグラウンドを戦っている。
+
+今節は大量得点あり、首位攻防戦あり、PK14人目にもつれるドラマありと、見どころ満載の週末となった。各グループの主要試合のハイライトをお届けする。
 
 ## EAST-A：湘南が3連勝で暫定首位、栃木SCは前半3発
 
@@ -54,10 +56,10 @@ export const articles: Article[] = [
     <tr><td>3/28</td><td>群馬</td><td>1 - 3</td><td>栃木SC</td><td></td></tr>
     <tr><td>3/28</td><td>横浜FC</td><td>1 - 3</td><td>湘南</td><td></td></tr>
     <tr><td>3/29</td><td>秋田</td><td>0 - 0</td><td>仙台</td><td>PK 仙台勝利</td></tr>
-    <tr><td>3/29</td><td>八戸</td><td>-</td><td>相模原</td><td></td></tr>
-    <tr><td>3/29</td><td>山形</td><td>-</td><td>栃木C</td><td></td></tr>
   </tbody>
 </table>
+
+※八戸vs相模原、山形vs栃木Cの結果は確認でき次第更新します。
 
 **栃木SC**がJ3群馬を3-1で粉砕。FW**西野太陽**が9分・15分と前半だけで2ゴールを叩き込み、37分にはMF**永井大士**がプロ初ゴールを記録。狙い通りの速攻がハマり、前半だけで3-0と試合を決定づけた。
 
@@ -91,11 +93,11 @@ export const articles: Article[] = [
   <tbody>
     <tr><td>3/28</td><td>奈良</td><td>5 - 1</td><td>金沢</td><td></td></tr>
     <tr><td>3/29</td><td>富山</td><td>1 - 1</td><td>今治</td><td>PK 富山勝利</td></tr>
-    <tr><td>3/29</td><td>FC大阪</td><td>-</td><td>新潟</td><td></td></tr>
-    <tr><td>3/29</td><td>讃岐</td><td>-</td><td>愛媛</td><td></td></tr>
     <tr><td>3/29</td><td>徳島</td><td>3 - 0</td><td>高知</td><td>首位攻防戦</td></tr>
   </tbody>
 </table>
+
+※FC大阪vs新潟、讃岐vs愛媛の結果は確認でき次第更新します。
 
 <div class="highlight-box">
 <span class="point-label">POINT 2</span>
@@ -110,15 +112,13 @@ WEST-A最大の注目カードは、29日に行われた**徳島vs高知**の首
 <table class="schedule-table">
   <thead><tr><th>日付</th><th>ホーム</th><th>スコア</th><th>アウェイ</th><th>備考</th></tr></thead>
   <tbody>
-    <tr><td>3/29</td><td>熊本</td><td>0 - 1</td><td>鹿児島</td><td></td></tr>
-    <tr><td>3/29</td><td>滋賀</td><td>-</td><td>宮崎</td><td></td></tr>
-    <tr><td>3/29</td><td>鳥取</td><td>-</td><td>鳥栖</td><td></td></tr>
-    <tr><td>3/29</td><td>山口</td><td>-</td><td>大分</td><td></td></tr>
-    <tr><td>3/29</td><td>北九州</td><td>-</td><td>琉球</td><td></td></tr>
+    <tr><td>3/29</td><td>熊本</td><td>0 - 1</td><td>鹿児島</td><td>九州ダービー</td></tr>
   </tbody>
 </table>
 
-WEST-Bでは**鹿児島ユナイテッドFC**がJ3熊本を敵地で1-0と下し、3連勝を達成。九州ダービーを制した鹿児島が上位進出への足がかりを築いた。
+※滋賀vs宮崎、鳥取vs鳥栖、山口vs大分、北九州vs琉球の結果は確認でき次第更新します。
+
+WEST-Bのピックアップは**鹿児島ユナイテッドFC**。J3熊本との九州ダービーを敵地で1-0と制し、これで3連勝。J2経験を持つ鹿児島が、着実に勝点を積み上げている。昨季J3だった熊本にとっては、J2勢との力の差を突きつけられる結果となった。
 
 ## 今節のトピックス
 
@@ -133,7 +133,9 @@ WEST-Bでは**鹿児島ユナイテッドFC**がJ3熊本を敵地で1-0と下し
 <span class="point-title">百年構想リーグ第8節まとめ</span>
 <p class="point-body">（1）<strong>EAST-A</strong>：湘南が3連勝で暫定首位。栃木SC西野太陽が2発、秋田vs仙台はPK14人目の死闘。<br>（2）<strong>EAST-B</strong>：甲府が大宮撃破。岐阜が長野に5-1大勝。札幌はPK勝ちで3連勝。<br>（3）<strong>WEST-A</strong>：奈良が5-1の圧勝劇。徳島が高知との首位攻防戦を3-0で制す。<br>（4）<strong>WEST-B</strong>：鹿児島が熊本を敵地で下し3連勝。次節は4月5日開催。</p>
 </div>`,
-    contentEn: `The Meiji Yasuda J2/J3 Centenary Vision League Round 8 took place over March 28-29, with 20 matches across four groups delivering goals galore, a top-of-the-table showdown, and a penalty shootout that went to the 14th round. Here's the complete weekend recap.
+    contentEn: `The Meiji Yasuda J2/J3 Centenary Vision League Round 8 took place over March 28-29. The Centenary League is a special tournament created to fill the gap as the J.League transitions to an autumn-spring calendar from 2026. All 40 J2/J3 clubs compete in four regional groups (EAST-A/B, WEST-A/B) during the first half of 2026.
+
+This round delivered goals galore, a top-of-the-table showdown, and a penalty shootout that went to the 14th round. Here are the key highlights from each group.
 
 ## EAST-A: Shonan Go Top with Three Straight Wins, Tochigi SC Score Three in First Half
 
@@ -143,10 +145,10 @@ WEST-Bでは**鹿児島ユナイテッドFC**がJ3熊本を敵地で1-0と下し
     <tr><td>3/28</td><td>Gunma</td><td>1 - 3</td><td>Tochigi SC</td><td></td></tr>
     <tr><td>3/28</td><td>Yokohama FC</td><td>1 - 3</td><td>Shonan</td><td></td></tr>
     <tr><td>3/29</td><td>Akita</td><td>0 - 0</td><td>Sendai</td><td>PK: Sendai win</td></tr>
-    <tr><td>3/29</td><td>Hachinohe</td><td>-</td><td>Sagamihara</td><td></td></tr>
-    <tr><td>3/29</td><td>Yamagata</td><td>-</td><td>Tochigi C</td><td></td></tr>
   </tbody>
 </table>
+
+*Results for Hachinohe vs Sagamihara and Yamagata vs Tochigi C will be updated once confirmed.*
 
 **Tochigi SC** crushed J3 side Gunma 3-1. Striker **Taiyo Nishino** struck twice in the opening 15 minutes, and midfielder **Taishi Nagai** added a debut professional goal in the 37th minute to seal the result before halftime.
 
@@ -180,8 +182,6 @@ In the headline EAST-B fixture, **Ryunosuke Ota** scored twice in the first half
   <tbody>
     <tr><td>3/28</td><td>Nara</td><td>5 - 1</td><td>Kanazawa</td><td></td></tr>
     <tr><td>3/29</td><td>Toyama</td><td>1 - 1</td><td>Imabari</td><td>PK: Toyama win</td></tr>
-    <tr><td>3/29</td><td>FC Osaka</td><td>-</td><td>Niigata</td><td></td></tr>
-    <tr><td>3/29</td><td>Sanuki</td><td>-</td><td>Ehime</td><td></td></tr>
     <tr><td>3/29</td><td>Tokushima</td><td>3 - 0</td><td>Kochi</td><td>Top-of-table clash</td></tr>
   </tbody>
 </table>
@@ -192,6 +192,8 @@ In the headline EAST-B fixture, **Ryunosuke Ota** scored twice in the first half
 <p class="point-body">Nara Club produced the weekend's most emphatic result, destroying Kanazawa 5-1. <strong>Shota Tamura</strong> scored in the 15th and 70th minutes, while <strong>Ryosuke Tamura</strong> added a third in the 40th — two players named Tamura combining for three goals. <strong>Rin Morita</strong> (49') and <strong>Yuto Kunitake</strong> (89') completed the rout, with five different scorers getting on the sheet.</p>
 </div>
 
+*Results for FC Osaka vs Niigata and Sanuki vs Ehime will be updated once confirmed.*
+
 The WEST-A showdown between **Tokushima and Kochi** — first versus second — lived up to its billing. After a cagey first half, Tokushima exploded after the break. **Tony Anderson** struck twice (61', 75') and **Naoki Kanuma** added a stoppage-time third as Tokushima cruised to a 3-0 victory, reinforcing their position at the summit.
 
 ## WEST-B: Kagoshima Beat Kumamoto Away, Make It Three in a Row
@@ -199,15 +201,13 @@ The WEST-A showdown between **Tokushima and Kochi** — first versus second — 
 <table class="schedule-table">
   <thead><tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th>Notes</th></tr></thead>
   <tbody>
-    <tr><td>3/29</td><td>Kumamoto</td><td>0 - 1</td><td>Kagoshima</td><td></td></tr>
-    <tr><td>3/29</td><td>Shiga</td><td>-</td><td>Miyazaki</td><td></td></tr>
-    <tr><td>3/29</td><td>Tottori</td><td>-</td><td>Tosu</td><td></td></tr>
-    <tr><td>3/29</td><td>Yamaguchi</td><td>-</td><td>Oita</td><td></td></tr>
-    <tr><td>3/29</td><td>Kitakyushu</td><td>-</td><td>Ryukyu</td><td></td></tr>
+    <tr><td>3/29</td><td>Kumamoto</td><td>0 - 1</td><td>Kagoshima</td><td>Kyushu derby</td></tr>
   </tbody>
 </table>
 
-**Kagoshima United** continued their impressive form with a 1-0 victory at J3 side Kumamoto, extending their winning streak to three matches. The Kyushu derby win provides a solid platform for their push up the WEST-B standings.
+*Results for Shiga vs Miyazaki, Tottori vs Tosu, Yamaguchi vs Oita, and Kitakyushu vs Ryukyu will be updated once confirmed.*
+
+**Kagoshima United** continued their impressive form with a 1-0 away victory over J3 side Kumamoto in the Kyushu derby, extending their winning streak to three matches. The J2-experienced club is steadily building points, while for Kumamoto — promoted from J3 last season — it was another reminder of the gap between divisions.
 
 ## Key Takeaways from Round 8
 
