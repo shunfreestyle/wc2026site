@@ -24,6 +24,476 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    id: "1774944000003",
+    slug: "england-japan-preview-tuchel-squad-key-players-2026",
+    title: "【日本vsイングランド プレビュー】トゥヘルが送り出す「本気のスリーライオンズ」——招集35人の全貌と注目選手",
+    titleEn: "Japan vs England Preview: Tuchel's 'Real' Three Lions — Full 35-Man Squad Breakdown and Key Players to Watch",
+    excerpt: "4月1日（日本時間）にウェンブリーで行われる日本vsイングランド戦。トゥヘル監督は35人の大所帯を「二部構成」で運用し、日本戦にはケイン、サカ、ベリンガムら主力を投入予定。注目ポイントを徹底解説。",
+    excerptEn: "England will face Japan at Wembley on March 31. Tuchel split his 35-man squad into two camps, saving Kane, Saka, Bellingham and Rice for the Japan match. Here's the full squad breakdown and key players to watch.",
+    category: "日本代表" as const,
+    tags: ["日本代表", "イングランド", "トゥヘル", "ハリー・ケイン", "ブカヨ・サカ", "ジュード・ベリンガム", "コール・パーマー", "デクラン・ライス", "W杯2026", "親善試合"],
+    tagsEn: ["Japan", "England", "Tuchel", "Harry Kane", "Bukayo Saka", "Jude Bellingham", "Cole Palmer", "Declan Rice", "World Cup 2026", "Friendly"],
+    publishedAt: "2026-03-29",
+    updatedAt: "2026-03-29",
+    isPopular: true,
+    sources: [
+      { name: "England Football", url: "https://www.englandfootball.com/articles/2026/Mar/20/england-mens-senior-squad-announcement-uruguay-japan-20262003" },
+      { name: "ESPN", url: "https://www.espn.com/soccer/story/_/id/48286722/thomas-tuchel-35-player-england-squad-explained-play-uruguay-japan-world-cup" },
+      { name: "サッカーキング", url: "https://www.soccer-king.jp/news/japan/national/20260328/2142256.html" },
+      { name: "ゲキサカ", url: "https://web.gekisaka.jp/news/japan/detail/?448190-448190-fl=" },
+      { name: "Goal.com", url: "https://www.goal.com/en-us/lists/england-squad-update-harry-kane-bukayo-saka-thomas-tuchel-japan-friendly/blt4024ab36ec59a821" },
+    ],
+    content: `3月31日（現地時間）、ウェンブリー・スタジアムで日本代表がイングランド代表と激突する。W杯2026の開幕まで約2ヶ月半——トゥヘル監督が用意した35人の大所帯から、日本戦には主力が勢揃いする見込みだ。イングランドの招集メンバー、戦力構成、そして日本が警戒すべき注目選手を徹底的に分析する。
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>大会</th><td>キリンワールドチャレンジ2026</td></tr>
+    <tr><th>対戦</th><td>イングランド vs 日本</td></tr>
+    <tr><th>日時</th><td>3月31日 20:45（現地）/ 4月1日 3:45（日本時間）</td></tr>
+    <tr><th>会場</th><td>ウェンブリー・スタジアム（ロンドン）</td></tr>
+    <tr><th>指揮官</th><td>トーマス・トゥヘル（イングランド）/ 森保一（日本）</td></tr>
+  </tbody>
+</table>
+
+## 異例の35人招集——トゥヘルの「二部構成」戦略
+
+今回のインターナショナルウィークで、トゥヘル監督は異例の35人という大所帯を招集した。その狙いは明確で、W杯に向けた最終選考を2試合で効率的に行うためだ。
+
+監督自身が「2つのキャンプに分ける」と公言した通り、ウルグアイ戦（3月27日）と日本戦（3月31日）では大きくメンバーを入れ替える方針を採用。ウルグアイ戦にはフィールドプレーヤー19人＋GK4人の計24人が参加し、日本戦には追加で主力11人が合流して計27人体制で臨む。
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">日本戦から合流する主力11人</span>
+<p class="point-body">ディーン・ヘンダーソン（GK）、ダン・バーン、マルク・ギュエイ、エズリ・コンサ、ニコ・オライリー、エリオット・アンダーソン、デクラン・ライス、モーガン・ロジャーズ、アンソニー・ゴードン、ハリー・ケイン、ブカヨ・サカ。この11人がウルグアイ戦を休養し、日本戦に向けて万全の状態で合流する。つまり、日本が対峙するのはイングランドの「本番仕様」に近い布陣だ。</p>
+</div>
+
+## 招集メンバー35人の全貌
+
+<table class="schedule-table">
+  <thead><tr><th>ポジション</th><th>選手名</th><th>所属</th></tr></thead>
+  <tbody>
+    <tr><td>GK</td><td>ジョーダン・ピックフォード</td><td>エバートン</td></tr>
+    <tr><td>GK</td><td>ディーン・ヘンダーソン</td><td>クリスタル・パレス</td></tr>
+    <tr><td>GK</td><td>ジェームズ・トラフォード</td><td>マンチェスター・C</td></tr>
+    <tr><td>GK</td><td>アーロン・ラムズデール</td><td>ニューカッスル</td></tr>
+    <tr><td>GK</td><td>ジェイソン・スティール</td><td>ブライトン</td></tr>
+    <tr><td>DF</td><td>マルク・ギュエイ</td><td>マンチェスター・C</td></tr>
+    <tr><td>DF</td><td>ジョン・ストーンズ</td><td>マンチェスター・C</td></tr>
+    <tr><td>DF</td><td>エズリ・コンサ</td><td>アストン・ヴィラ</td></tr>
+    <tr><td>DF</td><td>ハリー・マグワイア</td><td>マンチェスター・U</td></tr>
+    <tr><td>DF</td><td>フィカヨ・トモリ</td><td>ACミラン</td></tr>
+    <tr><td>DF</td><td>ジャレル・クワンサー</td><td>バイヤー・レバークーゼン</td></tr>
+    <tr><td>DF</td><td>ティノ・リヴラメント</td><td>ニューカッスル</td></tr>
+    <tr><td>DF</td><td>ルイス・ホール</td><td>ニューカッスル</td></tr>
+    <tr><td>DF</td><td>ジェド・スペンス</td><td>トッテナム</td></tr>
+    <tr><td>DF</td><td>ダン・バーン</td><td>ニューカッスル</td></tr>
+    <tr><td>DF</td><td>ニコ・オライリー</td><td>マンチェスター・C</td></tr>
+    <tr><td>DF</td><td>ベン・ホワイト</td><td>アーセナル</td></tr>
+    <tr><td>MF</td><td>デクラン・ライス</td><td>アーセナル</td></tr>
+    <tr><td>MF</td><td>ジュード・ベリンガム</td><td>レアル・マドリード</td></tr>
+    <tr><td>MF</td><td>コビー・メイヌー</td><td>マンチェスター・U</td></tr>
+    <tr><td>MF</td><td>エリオット・アンダーソン</td><td>ノッティンガム・フォレスト</td></tr>
+    <tr><td>MF</td><td>モーガン・ロジャーズ</td><td>アストン・ヴィラ</td></tr>
+    <tr><td>MF</td><td>アダム・ウォートン</td><td>クリスタル・パレス</td></tr>
+    <tr><td>MF</td><td>ジョーダン・ヘンダーソン</td><td>ブレントフォード</td></tr>
+    <tr><td>MF</td><td>ジェームズ・ガーナー</td><td>エバートン</td></tr>
+    <tr><td>FW</td><td>ハリー・ケイン</td><td>バイエルン・ミュンヘン</td></tr>
+    <tr><td>FW</td><td>ブカヨ・サカ</td><td>アーセナル</td></tr>
+    <tr><td>FW</td><td>コール・パーマー</td><td>チェルシー</td></tr>
+    <tr><td>FW</td><td>フィル・フォーデン</td><td>マンチェスター・C</td></tr>
+    <tr><td>FW</td><td>アンソニー・ゴードン</td><td>ニューカッスル</td></tr>
+    <tr><td>FW</td><td>マーカス・ラッシュフォード</td><td>バルセロナ（マンU所属）</td></tr>
+    <tr><td>FW</td><td>ノニ・マドゥエケ</td><td>アーセナル</td></tr>
+    <tr><td>FW</td><td>ドミニク・ソランケ</td><td>トッテナム</td></tr>
+    <tr><td>FW</td><td>ドミニク・キャルバート＝ルーウィン</td><td>リーズ</td></tr>
+    <tr><td>FW</td><td>ハーヴィー・バーンズ</td><td>ニューカッスル</td></tr>
+  </tbody>
+</table>
+
+注目すべきは、トレント・アレクサンダー＝アーノルドが選外となったこと。トゥヘル体制下での序列が明確になりつつある。一方、マンチェスター・Uのコビー・メイヌーとハリー・マグワイアが代表復帰を果たしている。
+
+## 日本戦の予想フォーメーション
+
+トゥヘル監督は日本戦でW杯本番に近いメンバーを試すと見られている。予想されるフォーメーションは4-2-3-1だ。
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">予想スタメン（4-2-3-1）</span>
+<p class="point-body"><strong>GK</strong> ピックフォード ／ <strong>DF</strong> コンサ、ギュエイ、ストーンズ(?)、オライリー ／ <strong>MF</strong> ライス、アンダーソン ／ <strong>FW</strong> サカ、パーマー or ベリンガム、ゴードン ／ <strong>CF</strong> ケイン。ウルグアイ戦とは全く異なる「ベストメンバー」に近い構成。パーマーとフォーデンの10番争い、ベリンガムの起用法がポイント。</p>
+</div>
+
+## 日本が警戒すべき5人の注目選手
+
+### 1. ハリー・ケイン（バイエルン・ミュンヘン／CF）
+バイエルンでの得点量産は衰え知らず。ポストプレーとフィニッシュの両面で世界最高峰のストライカー。日本のCB陣にとって最大の脅威となる。
+
+### 2. ブカヨ・サカ（アーセナル／RW）
+右サイドからのカットインは世界屈指の破壊力。スピードとテクニックを兼ね備え、瀬古歩夢や菅原由勢との1対1は試合の鍵を握る。
+
+### 3. ジュード・ベリンガム（レアル・マドリード／MF）
+レアル・マドリードで不動の地位を築いた21歳。ボックス内への飛び出しと得点力はMFの域を超える。田中碧や藤田譲瑠チマとのマッチアップは見どころ。
+
+### 4. コール・パーマー（チェルシー／AM）
+チェルシーの絶対的エース。左足から繰り出すシュートとスルーパスは精度抜群。フォーデンとの「10番争い」を制してスタメンに入れば、日本の守備ブロックの間でボールを受ける巧みなポジショニングに要注意。
+
+### 5. デクラン・ライス（アーセナル／DMF）
+アーセナルの心臓部。守備での潰し能力と、攻撃への切り替え時の正確な配球が持ち味。トゥヘル体制での中盤の軸として、日本のビルドアップに対するプレッシングの起点となる。
+
+## トゥヘルの戦術的特徴——日本はどう戦うか
+
+トゥヘル監督はチェルシー、バイエルン時代を通じて「可変システム」を好む戦術家として知られる。守備時は4-4-2や5-3-2にブロックを形成し、攻撃時はSBの片方を中盤に上げるなど、状況に応じた柔軟な対応が持ち味だ。
+
+日本にとっての対策ポイントは以下の通りだろう。
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">日本が取り組むべき3つの対策</span>
+<p class="point-body">（1）<strong>サカの右サイド対策</strong>：カットインを許さない守備。左WBと左CBのダブルチームが鍵。（2）<strong>ケインを孤立させるハイライン</strong>：ケインにボールが入る前の段階でプレッシャーをかけ、起点を潰す。（3）<strong>トランジションの速さで勝負</strong>：イングランドの弱点は被カウンター時のCB間のスペース。三笘・伊東の速攻がチャンスを生む。</p>
+</div>
+
+## ウルグアイ戦から見えた課題
+
+3月27日のウルグアイ戦（1-1）では、トゥヘルは控え中心のメンバーで臨んだ。フォーデン、ラッシュフォード、ソランケらが先発したが、攻撃の連携は物足りず、81分のベン・ホワイトのゴールまで均衡を破れなかった。さらに後半アディショナルタイムにはホワイトのファウルでPKを献上し、バルベルデに決められてドロー。日本戦では主力合流により大幅なクオリティアップが見込まれるが、ウルグアイ戦で見せた「崩し」の精度不足がどこまで改善されるかは注目点だ。
+
+## W杯グループFとの関連性
+
+日本とイングランドはW杯2026で同じグループに入っていないが、両チームともに「優勝候補」としてベスト8以上を目指す立場にある。この親善試合は単なるテストマッチではなく、本番で対峙する可能性のある相手との貴重な力試しだ。イングランドは日本の3-4-2-1のハイプレスをどう攻略するか、日本はイングランドの個の質にどう対抗するか——W杯本番を占う90分になる。
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">イングランド戦で押さえるべきポイント</span>
+<p class="point-body">（1）トゥヘルは35人を「二部構成」で運用。日本戦にはケイン、サカ、ベリンガム、ライスら主力が合流し、W杯本番仕様のメンバーで臨む見込み。（2）ウルグアイ戦（1-1）は控え中心だったため、日本戦は攻撃の質が大幅に上がる。（3）日本はサカの右サイド、ケインのポストプレー、中盤のライスを警戒しつつ、トランジションの速さで勝負したい。</p>
+</div>`,
+    contentEn: `On March 31 (local time), Japan will face England at Wembley Stadium in what promises to be a crucial World Cup warm-up for both sides. With just over two months until the 2026 World Cup kicks off, Thomas Tuchel has assembled a massive 35-man squad — and the best of English football will be on show against Japan. Here's the complete squad breakdown, tactical analysis, and key players to watch.
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>Competition</th><td>Kirin World Challenge 2026</td></tr>
+    <tr><th>Match</th><td>England vs Japan</td></tr>
+    <tr><th>Date</th><td>March 31, 20:45 (local) / April 1, 3:45 AM (Japan time)</td></tr>
+    <tr><th>Venue</th><td>Wembley Stadium, London</td></tr>
+    <tr><th>Managers</th><td>Thomas Tuchel (England) / Hajime Moriyasu (Japan)</td></tr>
+  </tbody>
+</table>
+
+## An Unprecedented 35-Man Squad — Tuchel's Two-Phase Strategy
+
+For this international window, Tuchel named an unusually large 35-man squad with a clear objective: to maximize World Cup preparation across two fixtures.
+
+The German manager publicly stated his plan to "split the camp into two groups." For the Uruguay match (March 27), he used 24 players (19 outfield + 4 goalkeepers) primarily composed of fringe players and newcomers. For the Japan match, 11 additional first-choice players join the camp, bringing the total to 27 — a near full-strength squad.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">The 11 Stars Arriving for the Japan Match</span>
+<p class="point-body">Dean Henderson (GK), Dan Burn, Marc Guehi, Ezri Konsa, Nico O'Reilly, Elliot Anderson, Declan Rice, Morgan Rogers, Anthony Gordon, Harry Kane, and Bukayo Saka. These 11 were rested for the Uruguay match and will join in fresh condition. In other words, Japan will face something close to England's World Cup starting XI.</p>
+</div>
+
+## Full 35-Man Squad
+
+<table class="schedule-table">
+  <thead><tr><th>Position</th><th>Player</th><th>Club</th></tr></thead>
+  <tbody>
+    <tr><td>GK</td><td>Jordan Pickford</td><td>Everton</td></tr>
+    <tr><td>GK</td><td>Dean Henderson</td><td>Crystal Palace</td></tr>
+    <tr><td>GK</td><td>James Trafford</td><td>Manchester City</td></tr>
+    <tr><td>GK</td><td>Aaron Ramsdale</td><td>Newcastle United</td></tr>
+    <tr><td>GK</td><td>Jason Steele</td><td>Brighton</td></tr>
+    <tr><td>DF</td><td>Marc Guehi</td><td>Manchester City</td></tr>
+    <tr><td>DF</td><td>John Stones</td><td>Manchester City</td></tr>
+    <tr><td>DF</td><td>Ezri Konsa</td><td>Aston Villa</td></tr>
+    <tr><td>DF</td><td>Harry Maguire</td><td>Manchester United</td></tr>
+    <tr><td>DF</td><td>Fikayo Tomori</td><td>AC Milan</td></tr>
+    <tr><td>DF</td><td>Jarell Quansah</td><td>Bayer Leverkusen</td></tr>
+    <tr><td>DF</td><td>Tino Livramento</td><td>Newcastle United</td></tr>
+    <tr><td>DF</td><td>Lewis Hall</td><td>Newcastle United</td></tr>
+    <tr><td>DF</td><td>Djed Spence</td><td>Tottenham</td></tr>
+    <tr><td>DF</td><td>Dan Burn</td><td>Newcastle United</td></tr>
+    <tr><td>DF</td><td>Nico O'Reilly</td><td>Manchester City</td></tr>
+    <tr><td>DF</td><td>Ben White</td><td>Arsenal</td></tr>
+    <tr><td>MF</td><td>Declan Rice</td><td>Arsenal</td></tr>
+    <tr><td>MF</td><td>Jude Bellingham</td><td>Real Madrid</td></tr>
+    <tr><td>MF</td><td>Kobbie Mainoo</td><td>Manchester United</td></tr>
+    <tr><td>MF</td><td>Elliot Anderson</td><td>Nottingham Forest</td></tr>
+    <tr><td>MF</td><td>Morgan Rogers</td><td>Aston Villa</td></tr>
+    <tr><td>MF</td><td>Adam Wharton</td><td>Crystal Palace</td></tr>
+    <tr><td>MF</td><td>Jordan Henderson</td><td>Brentford</td></tr>
+    <tr><td>MF</td><td>James Garner</td><td>Everton</td></tr>
+    <tr><td>FW</td><td>Harry Kane</td><td>Bayern Munich</td></tr>
+    <tr><td>FW</td><td>Bukayo Saka</td><td>Arsenal</td></tr>
+    <tr><td>FW</td><td>Cole Palmer</td><td>Chelsea</td></tr>
+    <tr><td>FW</td><td>Phil Foden</td><td>Manchester City</td></tr>
+    <tr><td>FW</td><td>Anthony Gordon</td><td>Newcastle United</td></tr>
+    <tr><td>FW</td><td>Marcus Rashford</td><td>Barcelona (on loan)</td></tr>
+    <tr><td>FW</td><td>Noni Madueke</td><td>Arsenal</td></tr>
+    <tr><td>FW</td><td>Dominic Solanke</td><td>Tottenham</td></tr>
+    <tr><td>FW</td><td>Dominic Calvert-Lewin</td><td>Leeds United</td></tr>
+    <tr><td>FW</td><td>Harvey Barnes</td><td>Newcastle United</td></tr>
+  </tbody>
+</table>
+
+Notable omissions include Trent Alexander-Arnold, signaling a clear shift in Tuchel's defensive hierarchy. Meanwhile, Kobbie Mainoo and Harry Maguire have been recalled to the squad.
+
+## Predicted Formation for the Japan Match
+
+Tuchel is expected to field a lineup much closer to his ideal World Cup XI against Japan, likely in a 4-2-3-1 formation.
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">Predicted Starting XI (4-2-3-1)</span>
+<p class="point-body"><strong>GK</strong> Pickford / <strong>DF</strong> Konsa, Guehi, Stones(?), O'Reilly / <strong>MF</strong> Rice, Anderson / <strong>FW</strong> Saka, Palmer or Bellingham, Gordon / <strong>CF</strong> Kane. A completely different side from the Uruguay match. The battle between Palmer and Foden for the No. 10 role, and how Bellingham is deployed, will be key storylines.</p>
+</div>
+
+## Five Key Players Japan Must Watch
+
+### 1. Harry Kane (Bayern Munich / CF)
+The prolific Bayern striker remains one of the world's most complete forwards. His combination of hold-up play and lethal finishing will test Japan's center-backs to their limits.
+
+### 2. Bukayo Saka (Arsenal / RW)
+Saka's trademark cut-ins from the right flank are among the most dangerous weapons in world football. His battles with Japan's left-sided defenders could define the match.
+
+### 3. Jude Bellingham (Real Madrid / MF)
+The 21-year-old has cemented his status at Real Madrid with his ability to arrive late in the box and score goals more associated with a striker. His runs between the lines will demand close attention from Japan's midfield.
+
+### 4. Cole Palmer (Chelsea / AM)
+Chelsea's talisman brings pinpoint accuracy with his left foot, both in shooting and passing. If he wins the No. 10 battle with Foden, his positional intelligence between Japan's defensive lines will be a constant threat.
+
+### 5. Declan Rice (Arsenal / DMF)
+Arsenal's midfield anchor combines elite ball-winning ability with precise distribution. Under Tuchel, he serves as the pivot of England's build-up and the trigger for their pressing game.
+
+## Tuchel's Tactical Identity — How Japan Should Approach the Match
+
+Throughout his career at Chelsea and Bayern, Tuchel has been known for his tactical flexibility — shifting between 4-2-3-1, 3-4-2-1, and hybrid systems depending on the opponent. In defense, he favors compact blocks; in attack, he often pushes one full-back into midfield to create overloads.
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">Three Keys for Japan</span>
+<p class="point-body">(1) <strong>Neutralize Saka's right side</strong>: Japan's left wing-back and left center-back must double up to prevent cut-ins. (2) <strong>Press Kane early</strong>: Deny Kane service by pressing England's center-backs before the ball reaches the striker. (3) <strong>Counter-attack at speed</strong>: England's vulnerability lies in the spaces between their center-backs during transitions — Mitoma and Ito's pace can exploit this.</p>
+</div>
+
+## Lessons from the Uruguay Draw
+
+In the 1-1 draw with Uruguay on March 27, Tuchel fielded a rotation-heavy side featuring Foden, Rashford, and Solanke. The attack struggled to click until Ben White's 81st-minute goal, and they conceded a stoppage-time penalty through a White foul. While the Japan match will feature a significant upgrade in personnel, the lack of attacking cohesion shown against Uruguay is worth monitoring.
+
+## World Cup Context
+
+Although Japan and England are not in the same World Cup group, both are targeting quarter-final berths and beyond. This friendly serves as a valuable test — England will want to assess how they handle Japan's aggressive 3-4-2-1 high press, while Japan will measure their ability to compete against elite individual talent. The 90 minutes at Wembley could provide a preview of a potential knockout-stage clash.
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">What to Watch in the England Match</span>
+<p class="point-body">(1) Tuchel's 35-man squad is split into two camps — Kane, Saka, Bellingham, and Rice will all be fresh for the Japan match, making it close to England's World Cup XI. (2) The Uruguay draw (1-1) featured a rotation squad; expect a massive quality jump against Japan. (3) Japan should target transitions and counter-attacks while managing Saka's right-side threat and Kane's aerial presence.</p>
+</div>`,
+  },
+  {
+    id: "1774944000002",
+    slug: "england-1-1-uruguay-ben-white-controversy-march-2026",
+    title: "イングランド1-1ウルグアイ——ベン・ホワイトの代表復帰を彩った歓声とブーイング、そしてVAR判定の波紋",
+    titleEn: "England 1-1 Uruguay: Ben White's Controversial Return — A Goal, Boos, and a Last-Minute VAR Penalty",
+    excerpt: "3月27日、ウェンブリーで行われたイングランドvsウルグアイは1-1のドロー。代表復帰のベン・ホワイトが先制点も、PK献上で同点に。ウガルテの2枚イエロー退場取り消し問題も物議を醸した。",
+    excerptEn: "England drew 1-1 with Uruguay at Wembley on March 27. Ben White scored on his international return but also conceded the penalty that allowed Valverde to equalize. The match was also marred by a bizarre refereeing incident involving Manuel Ugarte's two yellow cards.",
+    category: "コラム" as const,
+    tags: ["イングランド", "ウルグアイ", "ベン・ホワイト", "バルベルデ", "トゥヘル", "親善試合", "W杯2026", "ウガルテ", "VAR"],
+    tagsEn: ["England", "Uruguay", "Ben White", "Valverde", "Tuchel", "Friendly", "World Cup 2026", "Ugarte", "VAR"],
+    publishedAt: "2026-03-29",
+    updatedAt: "2026-03-29",
+    isPopular: false,
+    sources: [
+      { name: "England Football", url: "https://www.englandfootball.com/articles/2026/Mar/27/app-england-v-uruguay-match-report-20262703" },
+      { name: "ESPN", url: "https://www.espn.com/soccer/report/_/gameId/762553" },
+      { name: "Sky Sports", url: "https://www.skysports.com/football/news/12309/13524566/england-1-1-uruguay-ben-white-booed-after-scoring-and-then-gives-away-penalty-on-international-comeback" },
+      { name: "サッカーキング", url: "https://www.soccer-king.jp/news/world/eng/20260328/2142086.html" },
+      { name: "Goal.com", url: "https://www.goal.com/jp/%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9/20260328-england-uruguay/blt8ec8ae7e774a6119" },
+    ],
+    content: `3月27日、ウェンブリー・スタジアムに80,581人が詰めかけたイングランドvsウルグアイの親善試合は、1-1のドローに終わった。しかし、この試合の主役はスコアではなく、一人の選手を巡るドラマだった。4年ぶりに代表復帰したベン・ホワイト（アーセナル）が先制ゴールを決めながらも、自らのファウルでPKを献上し、さらにウェンブリーの観衆からブーイングを浴びるという、波乱に満ちた90分間を過ごした。
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>大会</th><td>国際親善試合</td></tr>
+    <tr><th>対戦</th><td>イングランド 1 - 1 ウルグアイ</td></tr>
+    <tr><th>日時</th><td>2026年3月27日（現地時間）</td></tr>
+    <tr><th>会場</th><td>ウェンブリー・スタジアム（ロンドン）</td></tr>
+    <tr><th>観客数</th><td>80,581人</td></tr>
+    <tr><th>得点者</th><td>ホワイト（81分）、バルベルデ（90+4分・PK）</td></tr>
+  </tbody>
+</table>
+
+## ローテーション色の強いスタメン
+
+トゥヘル監督は日本戦に主力を温存する方針を明示し、ウルグアイ戦は「第1キャンプ」のメンバーで臨んだ。ハリー・ケイン、ブカヨ・サカ、デクラン・ライス、ジュード・ベリンガムらはベンチ外。代わりに先発を任されたのは以下の11人だ。
+
+<table class="schedule-table">
+  <thead><tr><th>ポジション</th><th>選手</th><th>所属</th></tr></thead>
+  <tbody>
+    <tr><td>GK</td><td>ジェームズ・トラフォード</td><td>マンチェスター・C</td></tr>
+    <tr><td>RB</td><td>ティノ・リヴラメント</td><td>ニューカッスル</td></tr>
+    <tr><td>CB</td><td>ハリー・マグワイア</td><td>マンチェスター・U</td></tr>
+    <tr><td>CB</td><td>フィカヨ・トモリ</td><td>ACミラン</td></tr>
+    <tr><td>LB</td><td>ジェド・スペンス</td><td>トッテナム</td></tr>
+    <tr><td>CM</td><td>ジェームズ・ガーナー</td><td>エバートン</td></tr>
+    <tr><td>CM</td><td>ジョーダン・ヘンダーソン（C）</td><td>ブレントフォード</td></tr>
+    <tr><td>RW</td><td>ノニ・マドゥエケ</td><td>アーセナル</td></tr>
+    <tr><td>AM</td><td>フィル・フォーデン</td><td>マンチェスター・C</td></tr>
+    <tr><td>LW</td><td>マーカス・ラッシュフォード</td><td>バルセロナ</td></tr>
+    <tr><td>CF</td><td>ドミニク・ソランケ</td><td>トッテナム</td></tr>
+  </tbody>
+</table>
+
+GKのトラフォード（マンチェスター・C）とMFのガーナー（エバートン）はともにA代表デビュー戦。キャプテンマークはヘンダーソンが巻いた。
+
+## 膠着した前半——両チーム決め手を欠く
+
+前半はイングランドがボールを握る時間が長かったものの、最終局面での精度を欠いた。フォーデンがトップ下に入ったが、周囲との連携が噛み合わず、ソランケも孤立する場面が目立った。ウルグアイはバルベルデとウガルテの中盤コンビでイングランドの攻撃を遮断し、カウンターを窺う展開。しかし双方ともに決定機を作れず、スコアレスで折り返した。
+
+## 後半——ベン・ホワイトの光と影
+
+後半からイングランドはカードを切り始め、ベン・ホワイト、コビー・メイヌー、ルイス・ホール、ハーヴィー・バーンズらを投入。ここから試合は動き始める。
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">4年ぶりの代表復帰——ホワイトを巡る「もう一つのストーリー」</span>
+<p class="point-body">ベン・ホワイトは2022年カタールW杯で「個人的な理由」により大会途中で帰国。以来、ギャレス・サウスゲート前監督の下では代表招集を辞退し続けていた。トゥヘル就任後に復帰が実現したが、ウェンブリーの一部ファンは彼を許していなかった。途中出場で名前がコールされた瞬間、スタンドからはブーイングが響いた。</p>
+</div>
+
+しかし81分、そのホワイトがドラマを演出する。右サイドからの折り返しに対し、ファーサイドに走り込んだホワイトが冷静にタップイン。代表初ゴールを記録した。だが、歓喜の瞬間にもブーイングが混じるという異様な光景だった。
+
+## 90+4分——VAR判定とバルベルデのPK
+
+試合はそのまま1-0でイングランドが逃げ切るかと思われたが、後半アディショナルタイム4分にドラマが待っていた。ホワイトがウルグアイFWビニャスと接触。主審は当初ファウルを取らなかったが、VARチェックの結果PKと判定。フェデリコ・バルベルデが冷静にPKを沈め、1-1のドローに持ち込んだ。
+
+先制点を決め、PK献上の元凶にもなったホワイトは、この一試合で「ヒーローとヴィラン」の両面を演じることになった。
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">ウガルテの「2枚イエロー」退場取り消し——審判団が混乱</span>
+<p class="point-body">この試合ではもう一つの珍事件が起きた。ウルグアイMFマニュエル・ウガルテ（マンチェスター・U）が70分と81分の2度にわたりイエローカードを提示されながら、退場にならなかったのだ。試合後、1枚目のカードはウガルテではなくヒメネスに対するものだったと説明されたが、映像上はウガルテに提示されているように見え、イアン・ライトら解説者からも「審判が行き当たりばったりだ」と批判が噴出。マグワイアも「2枚目が取り消されたと聞いたが、初めて聞く話だ」と困惑を隠さなかった。</p>
+</div>
+
+## 数字で見る試合
+
+<table class="schedule-table">
+  <thead><tr><th>スタッツ</th><th>イングランド</th><th>ウルグアイ</th></tr></thead>
+  <tbody>
+    <tr><td>ボール支配率</td><td>54.1%</td><td>45.9%</td></tr>
+    <tr><td>シュート数</td><td>13</td><td>9</td></tr>
+    <tr><td>枠内シュート</td><td>5</td><td>1</td></tr>
+    <tr><td>コーナーキック</td><td>7</td><td>0</td></tr>
+    <tr><td>ファウル数</td><td>7</td><td>12</td></tr>
+    <tr><td>イエローカード</td><td>1</td><td>2</td></tr>
+    <tr><td>セーブ数</td><td>0</td><td>4</td></tr>
+  </tbody>
+</table>
+
+スタッツではイングランドが圧倒しているが、枠内シュート5本に対してGKのセーブが0（すべてゴールに入ったかポスト・バーに当たった）という数字が示す通り、チャンスの質にはばらつきがあった。一方、ウルグアイは枠内1本でPKによる1ゴールと、少ないチャンスを確実にモノにした。
+
+## 日本代表にとっての注目ポイント
+
+この試合から日本が読み取るべき情報は多い。
+
+まず、イングランドの「控え組」のクオリティ。フォーデン、ラッシュフォード、マグワイア、トモリ、ヘンダーソンらは、日本戦では途中出場かベンチの可能性が高いが、いずれもプレミアリーグの一線級。日本が対峙する「主力組」はさらに上のレベルにある。
+
+次に、イングランドの弱点として浮かび上がったのが「前半の停滞感」。ローテーションメンバーとはいえ、最終局面での連携不足は課題だった。日本が前半からハイプレスを仕掛け、イングランドのビルドアップを乱せれば、チャンスは十分にある。
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">ウルグアイ戦から日本が学ぶべきこと</span>
+<p class="point-body">（1）<strong>イングランドの「控え」でもハイレベル</strong>：フォーデン、ラッシュフォード、マグワイアが控え組という選手層の厚さ。日本戦の主力組はさらに強力。（2）<strong>前半に仕掛ける価値あり</strong>：ウルグアイ戦の前半は攻撃が停滞。日本がハイプレスで主導権を握れば勝機が生まれる。（3）<strong>セットプレーとVARへの備え</strong>：PK献上の場面のように、VAR判定で試合が動く可能性。不用意なファウルは禁物。</p>
+</div>`,
+    contentEn: `England's 1-1 friendly draw with Uruguay at Wembley on March 27 will be remembered not for the scoreline, but for the drama surrounding one player. Ben White, making his first international appearance in four years, scored his maiden England goal, conceded the penalty that led to the equalizer, and was booed by his own fans throughout — all in one eventful 45-minute cameo.
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>Competition</th><td>International Friendly</td></tr>
+    <tr><th>Match</th><td>England 1 - 1 Uruguay</td></tr>
+    <tr><th>Date</th><td>March 27, 2026</td></tr>
+    <tr><th>Venue</th><td>Wembley Stadium, London</td></tr>
+    <tr><th>Attendance</th><td>80,581</td></tr>
+    <tr><th>Scorers</th><td>White (81'), Valverde (90+4' pen)</td></tr>
+  </tbody>
+</table>
+
+## A Heavily Rotated Starting XI
+
+Tuchel made clear his intention to save key players for the Japan match, fielding his "first camp" squad against Uruguay. Harry Kane, Bukayo Saka, Declan Rice, and Jude Bellingham were not even on the bench.
+
+<table class="schedule-table">
+  <thead><tr><th>Position</th><th>Player</th><th>Club</th></tr></thead>
+  <tbody>
+    <tr><td>GK</td><td>James Trafford</td><td>Manchester City</td></tr>
+    <tr><td>RB</td><td>Tino Livramento</td><td>Newcastle United</td></tr>
+    <tr><td>CB</td><td>Harry Maguire</td><td>Manchester United</td></tr>
+    <tr><td>CB</td><td>Fikayo Tomori</td><td>AC Milan</td></tr>
+    <tr><td>LB</td><td>Djed Spence</td><td>Tottenham</td></tr>
+    <tr><td>CM</td><td>James Garner</td><td>Everton</td></tr>
+    <tr><td>CM</td><td>Jordan Henderson (C)</td><td>Brentford</td></tr>
+    <tr><td>RW</td><td>Noni Madueke</td><td>Arsenal</td></tr>
+    <tr><td>AM</td><td>Phil Foden</td><td>Manchester City</td></tr>
+    <tr><td>LW</td><td>Marcus Rashford</td><td>Barcelona</td></tr>
+    <tr><td>CF</td><td>Dominic Solanke</td><td>Tottenham</td></tr>
+  </tbody>
+</table>
+
+Goalkeeper Trafford and midfielder Garner both earned their first senior caps, while Henderson wore the captain's armband.
+
+## A Stale First Half
+
+England dominated possession but lacked cutting edge. Foden struggled to connect with those around him in the No. 10 role, while Solanke was often isolated up front. Uruguay's midfield pairing of Valverde and Ugarte effectively disrupted England's build-up, sitting deep and looking for counter-attacks. Neither side created clear-cut chances, and the half ended goalless.
+
+## Second Half — Ben White's Hero-to-Villain Arc
+
+Tuchel introduced substitutes after the break, bringing on Ben White, Kobbie Mainoo, Lewis Hall, and Harvey Barnes. The match finally came alive.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">Four Years Away — The Ben White Backstory</span>
+<p class="point-body">White left the 2022 Qatar World Cup early for "personal reasons" and subsequently made himself unavailable for selection under Gareth Southgate. When Tuchel took charge, a reconciliation became possible. But sections of the Wembley crowd hadn't forgiven him — White was booed when his name was announced as a substitute, and even after he scored.</p>
+</div>
+
+In the 81st minute, White produced the moment of quality the match had been crying out for. Arriving at the far post, the Arsenal defender tapped in from close range to score his first international goal. Yet even in celebration, boos from sections of the crowd mixed with the cheers — a surreal scene.
+
+## 90+4 — VAR Drama and Valverde's Equalizer
+
+England appeared set to hold on for a 1-0 victory, but drama struck in the 94th minute. White challenged Uruguay forward Vinas in the box; the referee initially waved play on, but a VAR review awarded a penalty. Federico Valverde stepped up and coolly converted, rescuing a 1-1 draw for Uruguay.
+
+White had gone from hero to villain in the space of 13 minutes — scoring the opener and conceding the penalty on his long-awaited return.
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">The Ugarte Two-Yellow-Card Mystery</span>
+<p class="point-body">The match produced another bizarre incident. Uruguay midfielder Manuel Ugarte (Manchester United) appeared to receive two yellow cards — in the 70th and 81st minutes — yet was not sent off. Post-match, it emerged that the first yellow was actually shown to Jose Gimenez for "unsportsmanlike conduct," despite Ugarte having committed the foul. Pundit Ian Wright was scathing: "The ref made it up as he went along." Even Maguire admitted confusion: "We were told the second yellow was rescinded — that's a new one on us."</p>
+</div>
+
+## Match Statistics
+
+<table class="schedule-table">
+  <thead><tr><th>Stat</th><th>England</th><th>Uruguay</th></tr></thead>
+  <tbody>
+    <tr><td>Possession</td><td>54.1%</td><td>45.9%</td></tr>
+    <tr><td>Shots</td><td>13</td><td>9</td></tr>
+    <tr><td>Shots on Target</td><td>5</td><td>1</td></tr>
+    <tr><td>Corners</td><td>7</td><td>0</td></tr>
+    <tr><td>Fouls</td><td>7</td><td>12</td></tr>
+    <tr><td>Yellow Cards</td><td>1</td><td>2</td></tr>
+    <tr><td>Saves</td><td>0</td><td>4</td></tr>
+  </tbody>
+</table>
+
+England were dominant statistically — 13 shots to 9, 7 corners to 0 — but Uruguay's clinical efficiency told its own story: one shot on target, one goal (via penalty).
+
+## What Japan Can Learn
+
+This match offers valuable intelligence for Japan ahead of their Wembley fixture.
+
+First, even England's "B team" features Premier League quality — Foden, Rashford, Maguire, Tomori, and Henderson are all seasoned internationals who may still feature from the bench against Japan. The starting XI Japan will face will be significantly stronger.
+
+Second, England's vulnerability in the first half was clear. Their attack lacked cohesion and final-third quality. If Japan press high from the opening whistle and disrupt England's build-up, opportunities will emerge.
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">What Japan Should Take from the Uruguay Match</span>
+<p class="point-body">(1) <strong>England's depth is formidable</strong>: Foden, Rashford, and Maguire in the "rotation" squad underscores the Three Lions' strength in depth. Japan's opponents on match day will be even stronger. (2) <strong>Press early, press high</strong>: Uruguay's passive first-half approach allowed England to settle. Japan should look to disrupt from the start. (3) <strong>Beware set pieces and VAR</strong>: The penalty incident shows how VAR can swing matches. Discipline in the box will be crucial.</p>
+</div>`,
+  },
+  {
     id: "1774944000001",
     slug: "japan-1-0-scotland-ito-winner-march-2026",
     title: "伊東純也の決勝弾でスコットランド撃破！森保ジャパン、W杯イヤー初戦を白星で飾り4連勝",
