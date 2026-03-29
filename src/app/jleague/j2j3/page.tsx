@@ -38,10 +38,10 @@ function TeamCard({ team }: { team: J2J3Team }) {
         <div className="flex gap-2 mt-4">
           <Link
             href={`/stamen?team=${team.id}`}
-            className="flex-1 flex items-center justify-center text-xs font-bold h-9 rounded-lg border-2 transition-colors"
+            className="flex-1 flex items-center justify-center text-xs font-bold h-9 rounded-lg border-2 transition-colors whitespace-nowrap"
             style={{ borderColor: team.color === "#FFFFFF" ? team.colorSecondary : team.color, color: team.color === "#FFFFFF" ? team.colorSecondary : team.color }}
           >
-            スタメンメーカー
+            スタメン
           </Link>
           <Link
             href={`/jleague/team/${team.id}`}
