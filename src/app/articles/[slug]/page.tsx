@@ -42,15 +42,14 @@ export default function ArticleDetailPage() {
 
   const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "NewsArticle",
     headline: displayTitle,
     description: displayExcerpt,
     datePublished: article.publishedAt,
     dateModified: article.updatedAt ?? article.publishedAt,
     author: {
       "@type": "Organization",
-      name: "SAMURAI FOOTBALL",
-      url: "https://samurai-football.jp",
+      name: "SAMURAI FOOTBALL編集部",
     },
     publisher: {
       "@type": "Organization",
@@ -61,7 +60,6 @@ export default function ArticleDetailPage() {
       "@type": "WebPage",
       "@id": `https://samurai-football.jp/articles/${article.slug}`,
     },
-    keywords: article.tags.join(", "),
   };
 
   const breadcrumbJsonLd = {
@@ -101,14 +99,26 @@ export default function ArticleDetailPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <div style={{ marginBottom: "1.5rem" }}>
-        <Link
-          href="/articles"
-          className="text-gray-400 hover:text-gray-600 text-sm transition-colors"
-        >
-          {t("← 記事一覧", "← Articles")}
-        </Link>
-      </div>
+      {/* パンくずリスト */}
+      <nav aria-label="breadcrumb" style={{ marginBottom: "1.5rem" }}>
+        <ol className="flex items-center gap-1 text-xs text-gray-400" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+          <li>
+            <Link href="/" className="hover:text-gray-600 transition-colors">
+              {t("ホーム", "Home")}
+            </Link>
+          </li>
+          <li aria-hidden="true">&gt;</li>
+          <li>
+            <Link href="/articles" className="hover:text-gray-600 transition-colors">
+              {t("記事一覧", "Articles")}
+            </Link>
+          </li>
+          <li aria-hidden="true">&gt;</li>
+          <li className="truncate max-w-[200px] sm:max-w-xs" title={displayTitle}>
+            {displayTitle}
+          </li>
+        </ol>
+      </nav>
 
       <span className={`category-badge badge-${getCategoryClass(article.category)}`}>
         {locale === "en" ? (categoryLabelEn[article.category] ?? article.category) : article.category}
