@@ -24,6 +24,206 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    id: "1775030400001",
+    slug: "j2j3-hyakunen-round8-recap-march-28-29-2026",
+    title: "【百年構想リーグ第8節総集編】奈良5発大勝、徳島が首位攻防戦制す——栃木SC西野太陽の2発、仙台PK14人目の死闘も",
+    titleEn: "J2/J3 Centenary League Round 8 Recap: Nara's 5-Goal Rout, Tokushima Wins Top-of-Table Clash, and a 14-Round PK Shootout",
+    excerpt: "3月28〜29日に行われた百年構想リーグ第8節を総まとめ。奈良クラブが金沢に5-1大勝、徳島が高知との首位攻防戦で3-0完勝。EAST-Aでは栃木SCが西野太陽の2発で群馬を粉砕し、秋田vs仙台はPK14人目にもつれる死闘に。",
+    excerptEn: "A full recap of J2/J3 Centenary League Round 8. Nara Club demolished Kanazawa 5-1, Tokushima won the WEST-A summit clash 3-0 against Kochi, and Tochigi SC's Taiyo Nishino scored twice in a 3-1 win over Gunma.",
+    category: "Jリーグ" as const,
+    tags: ["百年構想リーグ", "J2", "J3", "奈良クラブ", "徳島", "栃木SC", "湘南", "仙台", "鹿児島", "甲府"],
+    tagsEn: ["Centenary League", "J2", "J3", "Nara Club", "Tokushima", "Tochigi SC", "Shonan", "Sendai", "Kagoshima", "Kofu"],
+    publishedAt: "2026-03-30",
+    updatedAt: "2026-03-30",
+    isPopular: false,
+    sources: [
+      { name: "Jリーグ公式", url: "https://www.jleague.jp/match/search/j2j3/20260328/" },
+      { name: "サッカーキング", url: "https://www.soccer-king.jp/news/japan/jl/20260328/2142173.html" },
+      { name: "ゲキサカ", url: "https://web.gekisaka.jp/jleague/j2j3spea?year=2026" },
+      { name: "南日本新聞", url: "https://373news.com/news/local/detail/231519/" },
+      { name: "下野新聞", url: "https://smart.shimotsuke.co.jp/articles/-/1316488" },
+      { name: "高知新聞", url: "https://www.kochinews.co.jp/article/detail/986191" },
+    ],
+    content: `明治安田J2・J3百年構想リーグは3月28日（土）・29日（日）の2日間にわたり第8節が行われた。4グループで計20試合が開催され、大量得点あり、首位攻防戦あり、PK14人目にもつれるドラマありと、見どころ満載の週末となった。全グループのハイライトをまとめてお届けする。
+
+## EAST-A：湘南が3連勝で暫定首位、栃木SCは前半3発
+
+<table class="schedule-table">
+  <thead><tr><th>日付</th><th>ホーム</th><th>スコア</th><th>アウェイ</th><th>備考</th></tr></thead>
+  <tbody>
+    <tr><td>3/28</td><td>群馬</td><td>1 - 3</td><td>栃木SC</td><td></td></tr>
+    <tr><td>3/28</td><td>横浜FC</td><td>1 - 3</td><td>湘南</td><td></td></tr>
+    <tr><td>3/29</td><td>秋田</td><td>0 - 0</td><td>仙台</td><td>PK 仙台勝利</td></tr>
+    <tr><td>3/29</td><td>八戸</td><td>-</td><td>相模原</td><td></td></tr>
+    <tr><td>3/29</td><td>山形</td><td>-</td><td>栃木C</td><td></td></tr>
+  </tbody>
+</table>
+
+**栃木SC**がJ3群馬を3-1で粉砕。FW**西野太陽**が9分・15分と前半だけで2ゴールを叩き込み、37分にはMF**永井大士**がプロ初ゴールを記録。狙い通りの速攻がハマり、前半だけで3-0と試合を決定づけた。
+
+**湘南**は横浜FCとの元J1対決を3-1で制し、3連勝でEAST-A暫定首位に浮上。25分にFW**太田修介**が今季初ゴールとなるヘディングで先制し、65分に**渡邊啓吾**、88分に**田村蒼生**が追加点。長沢監督は「半歩進むことができた」と手応えを語った。
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">秋田vs仙台——PK14人目にもつれた死闘</span>
+<p class="point-body">秋田vs仙台は90分間スコアレスの末、PK戦に突入。なんと14人目まで決着がつかないという壮絶な展開に。最後はGK<strong>林彰洋</strong>の活躍で仙台が勝点2を獲得。秋田の堅守は崩せなかったが、粘り強さで勝ち切った仙台の底力が光った。</p>
+</div>
+
+## EAST-B：甲府が大宮を撃破、岐阜は長野に5発
+
+<table class="schedule-table">
+  <thead><tr><th>日付</th><th>ホーム</th><th>スコア</th><th>アウェイ</th><th>備考</th></tr></thead>
+  <tbody>
+    <tr><td>3/28</td><td>甲府</td><td>2 - 1</td><td>大宮</td><td></td></tr>
+    <tr><td>3/28</td><td>藤枝</td><td>1 - 1</td><td>札幌</td><td>PK 札幌勝利</td></tr>
+    <tr><td>3/28</td><td>岐阜</td><td>5 - 1</td><td>長野</td><td></td></tr>
+  </tbody>
+</table>
+
+注目の甲府vs大宮は、FW**太田龍之介**が前半に2ゴールを挙げた甲府が2-1で勝利。大宮は84分に**山本桜大**が1点を返したものの反撃が遅すぎた。
+
+**岐阜**が長野に5-1の大勝。長野は開幕から未勝利が続く厳しい状況だ。一方、藤枝vs札幌は1-1の末にPK戦で札幌が勝利し、3連勝とした。
+
+## WEST-A：奈良5-1大勝、徳島が首位攻防戦で高知を完封
+
+<table class="schedule-table">
+  <thead><tr><th>日付</th><th>ホーム</th><th>スコア</th><th>アウェイ</th><th>備考</th></tr></thead>
+  <tbody>
+    <tr><td>3/28</td><td>奈良</td><td>5 - 1</td><td>金沢</td><td></td></tr>
+    <tr><td>3/29</td><td>富山</td><td>1 - 1</td><td>今治</td><td>PK 富山勝利</td></tr>
+    <tr><td>3/29</td><td>FC大阪</td><td>-</td><td>新潟</td><td></td></tr>
+    <tr><td>3/29</td><td>讃岐</td><td>-</td><td>愛媛</td><td></td></tr>
+    <tr><td>3/29</td><td>徳島</td><td>3 - 0</td><td>高知</td><td>首位攻防戦</td></tr>
+  </tbody>
+</table>
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">奈良クラブ、金沢に5-1の圧勝——「田村」のダブル砲が炸裂</span>
+<p class="point-body">奈良クラブがツエーゲン金沢を5-1で粉砕するインパクト大の勝利。<strong>田村翔太</strong>が15分と70分の2ゴール、<strong>田村亮介</strong>が40分に得点と「田村」姓の2選手が揃い踏み。さらに<strong>森田凜</strong>（49分）、<strong>國武勇斗</strong>（89分）も加わり、5人がゴールに絡む完勝劇だった。</p>
+</div>
+
+WEST-A最大の注目カードは、29日に行われた**徳島vs高知**の首位攻防戦。前半はスコアレスで折り返したが、後半に入ると徳島が爆発。61分と75分に**トニー・アンデルソン**がダブル、90+1分に**鹿沼直生**がダメ押しの3点目を決め、3-0の完勝。徳島が首位の座を堅守した。
+
+## WEST-B：鹿児島が敵地で熊本を撃破、3連勝
+
+<table class="schedule-table">
+  <thead><tr><th>日付</th><th>ホーム</th><th>スコア</th><th>アウェイ</th><th>備考</th></tr></thead>
+  <tbody>
+    <tr><td>3/29</td><td>熊本</td><td>0 - 1</td><td>鹿児島</td><td></td></tr>
+    <tr><td>3/29</td><td>滋賀</td><td>-</td><td>宮崎</td><td></td></tr>
+    <tr><td>3/29</td><td>鳥取</td><td>-</td><td>鳥栖</td><td></td></tr>
+    <tr><td>3/29</td><td>山口</td><td>-</td><td>大分</td><td></td></tr>
+    <tr><td>3/29</td><td>北九州</td><td>-</td><td>琉球</td><td></td></tr>
+  </tbody>
+</table>
+
+WEST-Bでは**鹿児島ユナイテッドFC**がJ3熊本を敵地で1-0と下し、3連勝を達成。九州ダービーを制した鹿児島が上位進出への足がかりを築いた。
+
+## 今節のトピックス
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">第8節で見えた3つのトレンド</span>
+<p class="point-body">（1）<strong>J2クラブの地力</strong>：湘南、栃木SC、甲府、徳島など元J1・J2上位クラブが順当に勝点を積み上げている。カテゴリーの壁はやはり大きい。<br>（2）<strong>PK戦の増加</strong>：今節も秋田vs仙台、藤枝vs札幌、富山vs今治と3試合がPK戦決着。百年構想リーグ独自のPK制度（引き分け時にPK勝者に勝点2・敗者1）が白熱のドラマを生んでいる。<br>（3）<strong>長野の苦戦</strong>：岐阜に1-5と大敗し、開幕から未勝利が続く。早急な立て直しが求められる。</p>
+</div>
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">百年構想リーグ第8節まとめ</span>
+<p class="point-body">（1）<strong>EAST-A</strong>：湘南が3連勝で暫定首位。栃木SC西野太陽が2発、秋田vs仙台はPK14人目の死闘。<br>（2）<strong>EAST-B</strong>：甲府が大宮撃破。岐阜が長野に5-1大勝。札幌はPK勝ちで3連勝。<br>（3）<strong>WEST-A</strong>：奈良が5-1の圧勝劇。徳島が高知との首位攻防戦を3-0で制す。<br>（4）<strong>WEST-B</strong>：鹿児島が熊本を敵地で下し3連勝。次節は4月5日開催。</p>
+</div>`,
+    contentEn: `The Meiji Yasuda J2/J3 Centenary Vision League Round 8 took place over March 28-29, with 20 matches across four groups delivering goals galore, a top-of-the-table showdown, and a penalty shootout that went to the 14th round. Here's the complete weekend recap.
+
+## EAST-A: Shonan Go Top with Three Straight Wins, Tochigi SC Score Three in First Half
+
+<table class="schedule-table">
+  <thead><tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>3/28</td><td>Gunma</td><td>1 - 3</td><td>Tochigi SC</td><td></td></tr>
+    <tr><td>3/28</td><td>Yokohama FC</td><td>1 - 3</td><td>Shonan</td><td></td></tr>
+    <tr><td>3/29</td><td>Akita</td><td>0 - 0</td><td>Sendai</td><td>PK: Sendai win</td></tr>
+    <tr><td>3/29</td><td>Hachinohe</td><td>-</td><td>Sagamihara</td><td></td></tr>
+    <tr><td>3/29</td><td>Yamagata</td><td>-</td><td>Tochigi C</td><td></td></tr>
+  </tbody>
+</table>
+
+**Tochigi SC** crushed J3 side Gunma 3-1. Striker **Taiyo Nishino** struck twice in the opening 15 minutes, and midfielder **Taishi Nagai** added a debut professional goal in the 37th minute to seal the result before halftime.
+
+**Shonan Bellmare** won 3-1 against Yokohama FC in a battle between former J1 clubs, climbing to provisional top of EAST-A with three consecutive victories. **Shusuke Ota** opened the scoring with a header in the 25th minute, with **Keigo Watanabe** (65') and **Aoi Tamura** (88') adding to the tally.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">Akita vs Sendai — A 14-Round Penalty Shootout Epic</span>
+<p class="point-body">After a goalless 90 minutes, Akita and Sendai entered a penalty shootout that remarkably went to the 14th round before a winner emerged. Veteran goalkeeper <strong>Akihiro Hayashi</strong> was the hero for Sendai, who claimed 2 points despite being unable to break down Akita's stubborn defense in normal time.</p>
+</div>
+
+## EAST-B: Kofu Beat Omiya, Gifu Put Five Past Nagano
+
+<table class="schedule-table">
+  <thead><tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>3/28</td><td>Kofu</td><td>2 - 1</td><td>Omiya</td><td></td></tr>
+    <tr><td>3/28</td><td>Fujieda</td><td>1 - 1</td><td>Sapporo</td><td>PK: Sapporo win</td></tr>
+    <tr><td>3/28</td><td>Gifu</td><td>5 - 1</td><td>Nagano</td><td></td></tr>
+  </tbody>
+</table>
+
+In the headline EAST-B fixture, **Ryunosuke Ota** scored twice in the first half as Kofu defeated Omiya 2-1. Omiya pulled one back through **Odai Yamamoto** in the 84th minute but it proved too little, too late.
+
+**Gifu** ran riot against winless Nagano, winning 5-1 in a result that underlines the J3 club's ongoing struggles. Meanwhile, Sapporo secured their third consecutive win via penalties after a 1-1 draw with Fujieda.
+
+## WEST-A: Nara's Five-Star Display, Tokushima Win Summit Battle
+
+<table class="schedule-table">
+  <thead><tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>3/28</td><td>Nara</td><td>5 - 1</td><td>Kanazawa</td><td></td></tr>
+    <tr><td>3/29</td><td>Toyama</td><td>1 - 1</td><td>Imabari</td><td>PK: Toyama win</td></tr>
+    <tr><td>3/29</td><td>FC Osaka</td><td>-</td><td>Niigata</td><td></td></tr>
+    <tr><td>3/29</td><td>Sanuki</td><td>-</td><td>Ehime</td><td></td></tr>
+    <tr><td>3/29</td><td>Tokushima</td><td>3 - 0</td><td>Kochi</td><td>Top-of-table clash</td></tr>
+  </tbody>
+</table>
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">Nara Club Demolish Kanazawa 5-1 — Double "Tamura" Strike</span>
+<p class="point-body">Nara Club produced the weekend's most emphatic result, destroying Kanazawa 5-1. <strong>Shota Tamura</strong> scored in the 15th and 70th minutes, while <strong>Ryosuke Tamura</strong> added a third in the 40th — two players named Tamura combining for three goals. <strong>Rin Morita</strong> (49') and <strong>Yuto Kunitake</strong> (89') completed the rout, with five different scorers getting on the sheet.</p>
+</div>
+
+The WEST-A showdown between **Tokushima and Kochi** — first versus second — lived up to its billing. After a cagey first half, Tokushima exploded after the break. **Tony Anderson** struck twice (61', 75') and **Naoki Kanuma** added a stoppage-time third as Tokushima cruised to a 3-0 victory, reinforcing their position at the summit.
+
+## WEST-B: Kagoshima Beat Kumamoto Away, Make It Three in a Row
+
+<table class="schedule-table">
+  <thead><tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>3/29</td><td>Kumamoto</td><td>0 - 1</td><td>Kagoshima</td><td></td></tr>
+    <tr><td>3/29</td><td>Shiga</td><td>-</td><td>Miyazaki</td><td></td></tr>
+    <tr><td>3/29</td><td>Tottori</td><td>-</td><td>Tosu</td><td></td></tr>
+    <tr><td>3/29</td><td>Yamaguchi</td><td>-</td><td>Oita</td><td></td></tr>
+    <tr><td>3/29</td><td>Kitakyushu</td><td>-</td><td>Ryukyu</td><td></td></tr>
+  </tbody>
+</table>
+
+**Kagoshima United** continued their impressive form with a 1-0 victory at J3 side Kumamoto, extending their winning streak to three matches. The Kyushu derby win provides a solid platform for their push up the WEST-B standings.
+
+## Key Takeaways from Round 8
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">Three Trends Emerging from Round 8</span>
+<p class="point-body">(1) <strong>J2 clubs asserting dominance</strong>: Shonan, Tochigi SC, Kofu, and Tokushima — all former J1/upper J2 sides — are steadily accumulating points. The gap between divisions is proving significant.<br>(2) <strong>PK shootouts adding drama</strong>: Three matches this round went to penalties (Akita-Sendai, Fujieda-Sapporo, Toyama-Imabari). The Centenary League's unique PK rule (2 points for PK winner, 1 for loser) is generating riveting drama.<br>(3) <strong>Nagano's struggles continue</strong>: A 1-5 thrashing by Gifu extends their winless start to the season. A turnaround is urgently needed.</p>
+</div>
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">Round 8 Summary</span>
+<p class="point-body">(1) <strong>EAST-A</strong>: Shonan go top with 3 wins in a row. Tochigi SC's Nishino scores twice. Akita-Sendai goes to 14 penalties.<br>(2) <strong>EAST-B</strong>: Kofu beat Omiya. Gifu thrash Nagano 5-1. Sapporo win on PKs for a 3rd straight victory.<br>(3) <strong>WEST-A</strong>: Nara destroy Kanazawa 5-1. Tokushima win the top-of-table clash with Kochi 3-0.<br>(4) <strong>WEST-B</strong>: Kagoshima win at Kumamoto for a 3rd consecutive victory. Next round: April 5.</p>
+</div>`,
+  },
+  {
     id: "1774944000003",
     slug: "england-japan-preview-tuchel-squad-key-players-2026",
     title: "【日本vsイングランド プレビュー】トゥヘルが送り出す「本気のスリーライオンズ」——招集35人の全貌と注目選手",
