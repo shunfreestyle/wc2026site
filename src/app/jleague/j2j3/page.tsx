@@ -77,11 +77,12 @@ export default function J2J3Page() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <div>
-              <Link href="/jleague" className="text-xs font-bold text-white/50 hover:text-white/80 transition-colors">
-                &larr; {locale === "en" ? "J1 League" : "J1リーグ"}
+              <Link href="/jleague" className="inline-flex items-center gap-1.5 text-xs font-bold text-white/60 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 transition-all">
+                <span className="text-[10px]">←</span>
+                {locale === "en" ? "J1 League" : "J1リーグへ"}
               </Link>
               <p className="text-xs sm:text-sm font-bold tracking-widest text-white/60 mb-2 mt-3">
-                MEIJI YASUDA J2·J3 HYAKUNEN SŌZŌ LEAGUE
+                MEIJI YASUDA J2·J3 HYAKUNEN KŌSŌ LEAGUE
               </p>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
                 {locale === "en" ? "J2·J3 League" : "J2·J3リーグ"}

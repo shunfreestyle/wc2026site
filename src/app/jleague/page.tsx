@@ -93,7 +93,7 @@ export default function JLeaguePage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <div>
               <p className="text-xs sm:text-sm font-bold tracking-widest text-white/60 mb-2">
-                MEIJI YASUDA J1 HYAKUNEN SŌZŌ LEAGUE
+                MEIJI YASUDA J1 HYAKUNEN KŌSŌ LEAGUE
               </p>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
                 {locale === "en" ? "J1 League" : "J1リーグ"}
@@ -104,8 +104,9 @@ export default function JLeaguePage() {
                   ? "20 clubs competing in the top division of Japanese football. The Original 10 clubs reunite in J1 for the first time in 21 years."
                   : "日本サッカーの頂点を争う20クラブ。2026年はオリジナル10が21年ぶりにJ1で揃い踏み。"}
               </p>
-              <Link href="/jleague/j2j3" className="text-xs font-bold text-white/50 hover:text-white/80 transition-colors mt-3 inline-block">
-                {locale === "en" ? "J2·J3 League →" : "J2·J3リーグへ →"}
+              <Link href="/jleague/j2j3" className="inline-flex items-center gap-1.5 text-xs font-bold text-white/60 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 mt-4 transition-all">
+                {locale === "en" ? "J2·J3 League" : "J2·J3リーグへ"}
+                <span className="text-[10px]">→</span>
               </Link>
             </div>
           </div>
@@ -186,7 +187,7 @@ export default function JLeaguePage() {
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs font-bold text-white/50 tracking-widest mb-1">MEIJI YASUDA J2·J3 HYAKUNEN SŌZŌ LEAGUE</p>
+                <p className="text-xs font-bold text-white/50 tracking-widest mb-1">MEIJI YASUDA J2·J3 HYAKUNEN KŌSŌ LEAGUE</p>
                 <h2 className="text-xl sm:text-2xl font-bold">
                   {locale === "en" ? "J2·J3 Centenary Vision League" : "J2·J3 百年構想リーグ"}
                 </h2>
