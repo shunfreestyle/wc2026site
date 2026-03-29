@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getJ1TeamById } from "@/data/j1-teams";
+import { getJ2J3TeamById } from "@/data/j2j3-teams";
 import { getRosterByTeamId } from "@/data/j1-rosters";
 import { jMatches, jMatchDetails } from "@/data/jleague";
 import type { JRosterPlayer } from "@/data/j1-rosters";
@@ -17,6 +18,14 @@ const SHORT_TO_ID: Record<string, string> = {
   "名古屋": "nagoya", "京都": "kyoto", "G大阪": "gosaka", "C大阪": "cosaka",
   "神戸": "kobe", "岡山": "okayama", "広島": "hiroshima", "福岡": "fukuoka",
   "長崎": "nagasaki",
+  // J2 EAST-A
+  "仙台": "sendai", "山形": "yamagata", "秋田": "akita", "群馬": "gunma",
+  "相模原": "sagamihara", "横浜FC": "yokohamafc", "栃木SC": "tochigisc",
+  "栃木C": "tochigicity", "湘南": "shonan", "八戸": "hachinohe",
+  // J2 EAST-B
+  "札幌": "sapporo", "大宮": "omiya", "磐田": "iwata", "甲府": "kofu",
+  "藤枝": "fujieda", "松本": "matsumoto", "長野": "nagano", "岐阜": "gifu",
+  "いわき": "iwaki", "福島": "fukushima",
 };
 
 const POS_ORDER = ["GK", "DF", "MF", "FW"] as const;
@@ -27,7 +36,10 @@ type TabKey = "squad" | "season" | "matches";
 export default function TeamDetailPage() {
   const { teamId } = useParams<{ teamId: string }>();
   const { locale } = useLanguage();
-  const team = getJ1TeamById(teamId);
+  const j1Team = getJ1TeamById(teamId);
+  const j2j3Team = getJ2J3TeamById(teamId);
+  const team = j1Team || (j2j3Team ? { ...j2j3Team, isOriginal10: false, officialTwitter: j2j3Team.officialTwitter } : null);
+  const isJ1 = !!j1Team;
   const [activePos, setActivePos] = useState<string>("ALL");
   const [activeTab, setActiveTab] = useState<TabKey>("squad");
 
@@ -38,7 +50,7 @@ export default function TeamDetailPage() {
           {locale === "en" ? "Team not found" : "チームが見つかりません"}
         </p>
         <Link href="/jleague" className="text-[#003087] font-bold mt-4 inline-block hover:underline">
-          &larr; {locale === "en" ? "Back to J1 League" : "J1リーグに戻る"}
+          &larr; {locale === "en" ? "Back to J-League" : "Jリーグに戻る"}
         </Link>
       </div>
     );
@@ -104,10 +116,10 @@ export default function TeamDetailPage() {
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <Link
-            href="/jleague"
+            href={isJ1 ? "/jleague" : "/jleague/j2j3"}
             className="inline-flex items-center gap-1 text-sm font-medium text-white/70 hover:text-white mb-4 transition-colors"
           >
-            &larr; {locale === "en" ? "J1 League" : "J1リーグ"}
+            &larr; {isJ1 ? (locale === "en" ? "J1 League" : "J1リーグ") : (locale === "en" ? "J2·J3 League" : "J2·J3リーグ")}
           </Link>
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-extrabold bg-white/20 backdrop-blur-sm">

@@ -4,12 +4,15 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getJ1TeamById } from "@/data/j1-teams";
+import { getJ2J3TeamById } from "@/data/j2j3-teams";
 import { getStadiumByTeamId } from "@/data/j1-stadiums";
 
 export default function StadiumDetailPage() {
   const { teamId } = useParams<{ teamId: string }>();
   const { locale } = useLanguage();
-  const team = getJ1TeamById(teamId);
+  const j1Team = getJ1TeamById(teamId);
+  const j2j3Team = getJ2J3TeamById(teamId);
+  const team = j1Team || (j2j3Team ? { ...j2j3Team, isOriginal10: false } : null);
   const stadium = getStadiumByTeamId(teamId);
 
   if (!team || !stadium) {
