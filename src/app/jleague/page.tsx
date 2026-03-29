@@ -15,22 +15,12 @@ function TeamCard({ team }: { team: J1Team }) {
       />
 
       <div className="p-5">
-        {/* Header: Team name + badges */}
-        <div className="flex items-start justify-between gap-2 mb-3">
-          <div className="min-w-0">
-            <h3 className="text-lg font-bold text-gray-900 leading-tight truncate">
-              {team.fullName}
-            </h3>
-            <p className="text-xs text-gray-400 mt-0.5">{team.fullNameEn}</p>
-          </div>
-          {team.isOriginal10 && (
-            <span
-              className="shrink-0 text-[10px] font-bold px-2 py-0.5 rounded-full border whitespace-nowrap"
-              style={{ color: team.color, borderColor: team.color, backgroundColor: `${team.color}10` }}
-            >
-              ORIGINAL 10
-            </span>
-          )}
+        {/* Header: Team name */}
+        <div className="mb-3">
+          <h3 className="text-lg font-bold text-gray-900 leading-tight truncate">
+            {team.fullName}
+          </h3>
+          <p className="text-xs text-gray-400 mt-0.5">{team.fullNameEn}</p>
         </div>
 
         {/* Info grid */}
@@ -90,7 +80,6 @@ export default function JLeaguePage() {
   const { locale } = useLanguage();
   const eastTeams = getJ1TeamsByDivision("EAST");
   const westTeams = getJ1TeamsByDivision("WEST");
-  const original10Count = j1Teams.filter((t) => t.isOriginal10).length;
 
   return (
     <>
@@ -116,15 +105,18 @@ export default function JLeaguePage() {
                   : "日本サッカーの頂点を争う20クラブ。2026年はオリジナル10が21年ぶりにJ1で揃い踏み。"}
               </p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 items-center">
               <div className="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center">
                 <p className="text-2xl font-bold">20</p>
                 <p className="text-[10px] text-white/60 font-medium">{locale === "en" ? "CLUBS" : "クラブ"}</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center">
-                <p className="text-2xl font-bold">{original10Count}</p>
-                <p className="text-[10px] text-white/60 font-medium">ORIGINAL 10</p>
-              </div>
+              <Link
+                href="/jleague/j2j3"
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl px-4 py-3 text-center transition-colors"
+              >
+                <p className="text-sm font-bold">J2·J3</p>
+                <p className="text-[10px] text-white/60 font-medium">40{locale === "en" ? " clubs" : "クラブ"}</p>
+              </Link>
             </div>
           </div>
         </div>
