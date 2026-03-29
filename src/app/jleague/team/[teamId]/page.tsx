@@ -220,7 +220,7 @@ export default function TeamDetailPage() {
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
               className={`px-5 py-3 text-sm font-bold border-b-2 transition-colors ${activeTab === tab.key ? "border-current" : "border-transparent text-gray-400 hover:text-gray-700"}`}
-              style={activeTab === tab.key ? { color: team.color } : {}}
+              style={activeTab === tab.key ? { color: accentColor } : {}}
             >
               {locale === "en" ? tab.labelEn : tab.labelJa}
             </button>
@@ -248,7 +248,7 @@ export default function TeamDetailPage() {
                     }
                   }}
                   className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-all ${activePos === p ? "text-white border-transparent scale-105" : "bg-white text-gray-600 border-gray-200 hover:border-gray-400"}`}
-                  style={activePos === p ? { backgroundColor: p === "ALL" ? team.color : POS_COLORS[p] } : {}}
+                  style={activePos === p ? { backgroundColor: p === "ALL" ? accentColor : POS_COLORS[p] } : {}}
                 >
                   {p === "ALL" ? `ALL (${players.length})` : `${p} (${players.filter(pl => pl.position === p).length})`}
                 </button>
@@ -307,7 +307,7 @@ export default function TeamDetailPage() {
               {[
                 { label: locale === "en" ? "Matches" : "試合数", value: teamMatches.length, color: "#374151" },
                 { label: locale === "en" ? "Record" : "成績", value: `${wins}${locale === "en" ? "W" : "勝"} ${draws}${locale === "en" ? "D" : "分"} ${losses}${locale === "en" ? "L" : "敗"}`, color: "#374151" },
-                { label: locale === "en" ? "Points" : "勝点", value: points, color: team.color },
+                { label: locale === "en" ? "Points" : "勝点", value: points, color: accentColor },
                 { label: locale === "en" ? "Goals For" : "得点", value: gf, color: "#10B981" },
                 { label: locale === "en" ? "Goals Against" : "失点", value: ga, color: "#EF4444" },
               ].map((s) => (
