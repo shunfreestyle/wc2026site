@@ -55,6 +55,10 @@ export const articles: Article[] = [
   </tbody>
 </table>
 
+<div class="quote-box">
+<p>「対戦相手はプレースタイルやランキングを考えると非常に強い相手だ」——トーマス・トゥヘル（イングランド代表監督）</p>
+</div>
+
 ## 異例の35人招集——トゥヘルの「二部構成」戦略
 
 今回のインターナショナルウィークで、トゥヘル監督は異例の35人という大所帯を招集した。その狙いは明確で、W杯に向けた最終選考を2試合で効率的に行うためだ。
@@ -114,12 +118,12 @@ export const articles: Article[] = [
 
 ## 日本戦の予想フォーメーション
 
-トゥヘル監督は日本戦でW杯本番に近いメンバーを試すと見られている。予想されるフォーメーションは4-2-3-1だ。
+トゥヘル監督は日本戦でW杯本番に近いメンバーを試すと見られている。ただし、ウルグアイ戦で負傷退場したマドゥエケとフォーデンのコンディションに加え、「ストーンズやベリンガムの状態も念入りに確認しなければならない」と監督自身が言及しており、最終的なメンバーは直前まで流動的だ。予想されるフォーメーションは4-2-3-1。
 
 <div class="highlight-box">
 <span class="point-label">POINT 2</span>
 <span class="point-title">予想スタメン（4-2-3-1）</span>
-<p class="point-body"><strong>GK</strong> ピックフォード ／ <strong>DF</strong> コンサ、ギュエイ、ストーンズ(?)、オライリー ／ <strong>MF</strong> ライス、アンダーソン ／ <strong>FW</strong> サカ、パーマー or ベリンガム、ゴードン ／ <strong>CF</strong> ケイン。ウルグアイ戦とは全く異なる「ベストメンバー」に近い構成。パーマーとフォーデンの10番争い、ベリンガムの起用法がポイント。</p>
+<p class="point-body"><strong>GK</strong> ピックフォード ／ <strong>DF</strong> コンサ、ギュエイ、ストーンズ or マグワイア、オライリー ／ <strong>MF</strong> ライス、アンダーソン ／ <strong>FW</strong> サカ、ベリンガム or パーマー、ゴードン ／ <strong>CF</strong> ケイン。ウルグアイ戦とは全く異なる「ベストメンバー」に近い構成。ストーンズのコンディション次第でCBの人選が変わり、10番はベリンガムとパーマーの競争が続く。</p>
 </div>
 
 ## 日本が警戒すべき5人の注目選手
@@ -131,7 +135,7 @@ export const articles: Article[] = [
 右サイドからのカットインは世界屈指の破壊力。スピードとテクニックを兼ね備え、瀬古歩夢や菅原由勢との1対1は試合の鍵を握る。
 
 ### 3. ジュード・ベリンガム（レアル・マドリード／MF）
-レアル・マドリードで不動の地位を築いた21歳。ボックス内への飛び出しと得点力はMFの域を超える。田中碧や藤田譲瑠チマとのマッチアップは見どころ。
+レアル・マドリードで不動の地位を築いた22歳。ボックス内への飛び出しと得点力はMFの域を超える。田中碧や藤田譲瑠チマとのマッチアップは見どころ。
 
 ### 4. コール・パーマー（チェルシー／AM）
 チェルシーの絶対的エース。左足から繰り出すシュートとスルーパスは精度抜群。フォーデンとの「10番争い」を制してスタメンに入れば、日本の守備ブロックの間でボールを受ける巧みなポジショニングに要注意。
@@ -175,6 +179,10 @@ export const articles: Article[] = [
     <tr><th>Managers</th><td>Thomas Tuchel (England) / Hajime Moriyasu (Japan)</td></tr>
   </tbody>
 </table>
+
+<div class="quote-box">
+<p>"They are very strong opponents when you consider their playing style and ranking." — Thomas Tuchel, England manager</p>
+</div>
 
 ## An Unprecedented 35-Man Squad — Tuchel's Two-Phase Strategy
 
@@ -235,12 +243,12 @@ Notable omissions include Trent Alexander-Arnold, signaling a clear shift in Tuc
 
 ## Predicted Formation for the Japan Match
 
-Tuchel is expected to field a lineup much closer to his ideal World Cup XI against Japan, likely in a 4-2-3-1 formation.
+Tuchel is expected to field a lineup much closer to his ideal World Cup XI against Japan, likely in a 4-2-3-1 formation. However, the manager noted that Madueke and Foden both suffered injuries against Uruguay, and he would need to "carefully assess" the fitness of Stones and Bellingham, meaning the final XI remains fluid.
 
 <div class="highlight-box">
 <span class="point-label">POINT 2</span>
 <span class="point-title">Predicted Starting XI (4-2-3-1)</span>
-<p class="point-body"><strong>GK</strong> Pickford / <strong>DF</strong> Konsa, Guehi, Stones(?), O'Reilly / <strong>MF</strong> Rice, Anderson / <strong>FW</strong> Saka, Palmer or Bellingham, Gordon / <strong>CF</strong> Kane. A completely different side from the Uruguay match. The battle between Palmer and Foden for the No. 10 role, and how Bellingham is deployed, will be key storylines.</p>
+<p class="point-body"><strong>GK</strong> Pickford / <strong>DF</strong> Konsa, Guehi, Stones or Maguire, O'Reilly / <strong>MF</strong> Rice, Anderson / <strong>FW</strong> Saka, Bellingham or Palmer, Gordon / <strong>CF</strong> Kane. A completely different side from the Uruguay match. Whether Stones is fit enough to start at CB, and the competition between Bellingham and Palmer for the No. 10 role, will be the key selection battles.</p>
 </div>
 
 ## Five Key Players Japan Must Watch
@@ -252,7 +260,7 @@ The prolific Bayern striker remains one of the world's most complete forwards. H
 Saka's trademark cut-ins from the right flank are among the most dangerous weapons in world football. His battles with Japan's left-sided defenders could define the match.
 
 ### 3. Jude Bellingham (Real Madrid / MF)
-The 21-year-old has cemented his status at Real Madrid with his ability to arrive late in the box and score goals more associated with a striker. His runs between the lines will demand close attention from Japan's midfield.
+The 22-year-old has cemented his status at Real Madrid with his ability to arrive late in the box and score goals more associated with a striker. His runs between the lines will demand close attention from Japan's midfield.
 
 ### 4. Cole Palmer (Chelsea / AM)
 Chelsea's talisman brings pinpoint accuracy with his left foot, both in shooting and passing. If he wins the No. 10 battle with Foden, his positional intelligence between Japan's defensive lines will be a constant threat.
