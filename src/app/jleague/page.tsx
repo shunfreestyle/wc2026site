@@ -104,18 +104,8 @@ export default function JLeaguePage() {
                   ? "20 clubs competing in the top division of Japanese football. The Original 10 clubs reunite in J1 for the first time in 21 years."
                   : "日本サッカーの頂点を争う20クラブ。2026年はオリジナル10が21年ぶりにJ1で揃い踏み。"}
               </p>
-            </div>
-            <div className="flex gap-3 items-center">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center">
-                <p className="text-2xl font-bold">20</p>
-                <p className="text-[10px] text-white/60 font-medium">{locale === "en" ? "CLUBS" : "クラブ"}</p>
-              </div>
-              <Link
-                href="/jleague/j2j3"
-                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl px-4 py-3 text-center transition-colors"
-              >
-                <p className="text-sm font-bold">J2·J3</p>
-                <p className="text-[10px] text-white/60 font-medium">40{locale === "en" ? " clubs" : "クラブ"}</p>
+              <Link href="/jleague/j2j3" className="text-xs font-bold text-white/50 hover:text-white/80 transition-colors mt-3 inline-block">
+                {locale === "en" ? "J2·J3 League →" : "J2·J3リーグへ →"}
               </Link>
             </div>
           </div>
