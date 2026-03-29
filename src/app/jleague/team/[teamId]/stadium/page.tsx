@@ -17,13 +17,17 @@ export default function StadiumDetailPage() {
 
   if (!team || !stadium) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-        <p className="text-gray-500 text-lg">
-          {locale === "en" ? "Stadium not found" : "スタジアム情報が見つかりません"}
-        </p>
-        <Link href="/jleague" className="text-[#003087] font-bold mt-4 inline-block hover:underline">
-          {locale === "en" ? "Back to J1 League" : "J1リーグに戻る"}
-        </Link>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="flex flex-col items-center justify-center py-16 px-4">
+          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center mb-5">
+            <svg className="w-10 h-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 0-.75 3.75m0 0-.75 3.75M17.25 7.5l.75 3.75m0 0 .75 3.75" /></svg>
+          </div>
+          <p className="text-gray-800 font-bold text-lg mb-2">{locale === "en" ? "Stadium Guide Coming Soon" : "スタジアム情報 準備中"}</p>
+          <p className="text-gray-400 text-sm text-center max-w-sm mb-6">{locale === "en" ? "We're preparing detailed stadium information for this team. Check back soon!" : "このチームのスタジアム情報を現在準備しています。もうしばらくお待ちください。"}</p>
+          <Link href="/jleague" className="text-[#003087] font-bold text-sm hover:underline">
+            {locale === "en" ? "← Back to J League" : "← Jリーグに戻る"}
+          </Link>
+        </div>
       </div>
     );
   }

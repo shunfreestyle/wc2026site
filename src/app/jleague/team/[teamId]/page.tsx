@@ -248,7 +248,13 @@ export default function TeamDetailPage() {
 
             <div id="squad-top" />
             {players.length === 0 ? (
-              <p className="text-gray-400 text-center py-12">{locale === "en" ? "No squad data available" : "選手データがありません"}</p>
+              <div className="flex flex-col items-center justify-center py-16 px-4">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center mb-4">
+                  <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
+                </div>
+                <p className="text-gray-800 font-bold text-base mb-1">{locale === "en" ? "Squad Data Coming Soon" : "選手データ準備中"}</p>
+                <p className="text-gray-400 text-sm text-center max-w-xs">{locale === "en" ? "We're working on adding squad information for this team. Stay tuned!" : "現在、このチームの選手情報を準備しています。もうしばらくお待ちください。"}</p>
+              </div>
             ) : (
               <div className="space-y-6">
                 {POS_ORDER.map((pos) => {
@@ -350,7 +356,15 @@ export default function TeamDetailPage() {
                   </Link>
                 );
               })}
-              {teamMatches.length === 0 && <p className="text-gray-400 text-center py-12">{locale === "en" ? "No match data available" : "試合データがありません"}</p>}
+              {teamMatches.length === 0 && (
+                <div className="flex flex-col items-center justify-center py-16 px-4">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center mb-4">
+                    <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>
+                  </div>
+                  <p className="text-gray-800 font-bold text-base mb-1">{locale === "en" ? "Season Data Coming Soon" : "シーズンデータ準備中"}</p>
+                  <p className="text-gray-400 text-sm text-center max-w-xs">{locale === "en" ? "Match results and standings will be available once the season begins." : "試合結果・順位表はシーズン開始後に公開予定です。"}</p>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -423,7 +437,15 @@ export default function TeamDetailPage() {
                 </Link>
               );
             })}
-            {teamMatches.length === 0 && <p className="text-gray-400 text-center py-12">{locale === "en" ? "No match data available" : "試合データがありません"}</p>}
+            {teamMatches.length === 0 && (
+              <div className="flex flex-col items-center justify-center py-16 px-4">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center mb-4">
+                  <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                </div>
+                <p className="text-gray-800 font-bold text-base mb-1">{locale === "en" ? "Match Schedule Coming Soon" : "対戦カード準備中"}</p>
+                <p className="text-gray-400 text-sm text-center max-w-xs">{locale === "en" ? "The match schedule for this team will be updated shortly." : "対戦スケジュールは近日公開予定です。"}</p>
+              </div>
+            )}
           </div>
         )}
 
