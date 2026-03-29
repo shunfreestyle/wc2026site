@@ -152,7 +152,7 @@ export const articles: Article[] = [
 <div class="highlight-box">
 <span class="point-label">POINT 3</span>
 <span class="point-title">日本が取り組むべき3つの対策</span>
-<p class="point-body">（1）<strong>サカの右サイド対策</strong>：カットインを許さない守備。左WBと左CBのダブルチームが鍵。（2）<strong>ケインを孤立させるハイライン</strong>：ケインにボールが入る前の段階でプレッシャーをかけ、起点を潰す。（3）<strong>トランジションの速さで勝負</strong>：イングランドの弱点は被カウンター時のCB間のスペース。三笘・伊東の速攻がチャンスを生む。</p>
+<p class="point-body">（1）<strong>サカの右サイド対策</strong>：カットインを許さない守備。左WBと左CBのダブルチームが鍵。<br>（2）<strong>ケインを孤立させるハイライン</strong>：ケインにボールが入る前の段階でプレッシャーをかけ、起点を潰す。<br>（3）<strong>トランジションの速さで勝負</strong>：イングランドの弱点は被カウンター時のCB間のスペース。三笘・伊東の速攻がチャンスを生む。</p>
 </div>
 
 ## ウルグアイ戦から見えた課題
@@ -166,7 +166,7 @@ export const articles: Article[] = [
 <div class="takeaway-card">
 <span class="point-label">TAKEAWAY</span>
 <span class="point-title">イングランド戦で押さえるべきポイント</span>
-<p class="point-body">（1）トゥヘルは35人を「二部構成」で運用。日本戦にはケイン、サカ、ベリンガム、ライスら主力が合流し、W杯本番仕様のメンバーで臨む見込み。（2）ウルグアイ戦（1-1）は控え中心だったため、日本戦は攻撃の質が大幅に上がる。（3）日本はサカの右サイド、ケインのポストプレー、中盤のライスを警戒しつつ、トランジションの速さで勝負したい。</p>
+<p class="point-body">（1）トゥヘルは35人を「二部構成」で運用。日本戦にはケイン、サカ、ベリンガム、ライスら主力が合流し、W杯本番仕様のメンバーで臨む見込み。<br>（2）ウルグアイ戦（1-1）は控え中心だったため、日本戦は攻撃の質が大幅に上がる。<br>（3）日本はサカの右サイド、ケインのポストプレー、中盤のライスを警戒しつつ、トランジションの速さで勝負したい。</p>
 </div>`,
     contentEn: `On March 31 (local time), Japan will face England at Wembley Stadium in what promises to be a crucial World Cup warm-up for both sides. With just over two months until the 2026 World Cup kicks off, Thomas Tuchel has assembled a massive 35-man squad — and the best of English football will be on show against Japan. Here's the complete squad breakdown, tactical analysis, and key players to watch.
 
@@ -275,7 +275,7 @@ Throughout his career at Chelsea and Bayern, Tuchel has been known for his tacti
 <div class="highlight-box">
 <span class="point-label">POINT 3</span>
 <span class="point-title">Three Keys for Japan</span>
-<p class="point-body">(1) <strong>Neutralize Saka's right side</strong>: Japan's left wing-back and left center-back must double up to prevent cut-ins. (2) <strong>Press Kane early</strong>: Deny Kane service by pressing England's center-backs before the ball reaches the striker. (3) <strong>Counter-attack at speed</strong>: England's vulnerability lies in the spaces between their center-backs during transitions — Mitoma and Ito's pace can exploit this.</p>
+<p class="point-body">(1) <strong>Neutralize Saka's right side</strong>: Japan's left wing-back and left center-back must double up to prevent cut-ins.<br>(2) <strong>Press Kane early</strong>: Deny Kane service by pressing England's center-backs before the ball reaches the striker.<br>(3) <strong>Counter-attack at speed</strong>: England's vulnerability lies in the spaces between their center-backs during transitions — Mitoma and Ito's pace can exploit this.</p>
 </div>
 
 ## Lessons from the Uruguay Draw
@@ -289,7 +289,7 @@ Although Japan and England are not in the same World Cup group, both are targeti
 <div class="takeaway-card">
 <span class="point-label">TAKEAWAY</span>
 <span class="point-title">What to Watch in the England Match</span>
-<p class="point-body">(1) Tuchel's 35-man squad is split into two camps — Kane, Saka, Bellingham, and Rice will all be fresh for the Japan match, making it close to England's World Cup XI. (2) The Uruguay draw (1-1) featured a rotation squad; expect a massive quality jump against Japan. (3) Japan should target transitions and counter-attacks while managing Saka's right-side threat and Kane's aerial presence.</p>
+<p class="point-body">(1) Tuchel's 35-man squad is split into two camps — Kane, Saka, Bellingham, and Rice will all be fresh for the Japan match, making it close to England's World Cup XI.<br>(2) The Uruguay draw (1-1) featured a rotation squad; expect a massive quality jump against Japan.<br>(3) Japan should target transitions and counter-attacks while managing Saka's right-side threat and Kane's aerial presence.</p>
 </div>`,
   },
   {
@@ -404,7 +404,7 @@ GKのトラフォード（マンチェスター・C）とMFのガーナー（エ
 <div class="takeaway-card">
 <span class="point-label">TAKEAWAY</span>
 <span class="point-title">ウルグアイ戦から日本が学ぶべきこと</span>
-<p class="point-body">（1）<strong>イングランドの「控え」でもハイレベル</strong>：フォーデン、ラッシュフォード、マグワイアが控え組という選手層の厚さ。日本戦の主力組はさらに強力。（2）<strong>前半に仕掛ける価値あり</strong>：ウルグアイ戦の前半は攻撃が停滞。日本がハイプレスで主導権を握れば勝機が生まれる。（3）<strong>セットプレーとVARへの備え</strong>：PK献上の場面のように、VAR判定で試合が動く可能性。不用意なファウルは禁物。</p>
+<p class="point-body">（1）<strong>イングランドの「控え」でもハイレベル</strong>：フォーデン、ラッシュフォード、マグワイアが控え組という選手層の厚さ。日本戦の主力組はさらに強力。<br>（2）<strong>前半に仕掛ける価値あり</strong>：ウルグアイ戦の前半は攻撃が停滞。日本がハイプレスで主導権を握れば勝機が生まれる。<br>（3）<strong>セットプレーとVARへの備え</strong>：PK献上の場面のように、VAR判定で試合が動く可能性。不用意なファウルは禁物。</p>
 </div>`,
     contentEn: `England's 1-1 friendly draw with Uruguay at Wembley on March 27 will be remembered not for the scoreline, but for the drama surrounding one player. Ben White, making his first international appearance in four years, scored his maiden England goal, conceded the penalty that led to the equalizer, and was booed by his own fans throughout — all in one eventful 45-minute cameo.
 
@@ -498,7 +498,7 @@ Second, England's vulnerability in the first half was clear. Their attack lacked
 <div class="takeaway-card">
 <span class="point-label">TAKEAWAY</span>
 <span class="point-title">What Japan Should Take from the Uruguay Match</span>
-<p class="point-body">(1) <strong>England's depth is formidable</strong>: Foden, Rashford, and Maguire in the "rotation" squad underscores the Three Lions' strength in depth. Japan's opponents on match day will be even stronger. (2) <strong>Press early, press high</strong>: Uruguay's passive first-half approach allowed England to settle. Japan should look to disrupt from the start. (3) <strong>Beware set pieces and VAR</strong>: The penalty incident shows how VAR can swing matches. Discipline in the box will be crucial.</p>
+<p class="point-body">(1) <strong>England's depth is formidable</strong>: Foden, Rashford, and Maguire in the "rotation" squad underscores the Three Lions' strength in depth. Japan's opponents on match day will be even stronger.<br>(2) <strong>Press early, press high</strong>: Uruguay's passive first-half approach allowed England to settle. Japan should look to disrupt from the start.<br>(3) <strong>Beware set pieces and VAR</strong>: The penalty incident shows how VAR can swing matches. Discipline in the box will be crucial.</p>
 </div>`,
   },
   {
@@ -608,7 +608,7 @@ W杯グループFの初戦は6月14日のオランダ戦（ダラス）。残る
 <div class="takeaway-card">
 <span class="point-label">TAKEAWAY</span>
 <span class="point-title">スコットランド戦から見えた3つのポイント</span>
-<p class="point-body">（1）<strong>選手層の厚さ</strong>：若手中心の前半でもスコアレスに抑え、後半の主力投入で仕留める「二段構え」が機能。（2）<strong>伊東純也のジョーカー適性</strong>：62分からの途中出場で決勝点。先発・途中出場の両面で計算できる切り札。（3）<strong>鈴木彩艶の復帰</strong>：MVPに選出される好パフォーマンスでケガからの復帰を証明。W杯の正GK争いに大きなアピールを見せた。</p>
+<p class="point-body">（1）<strong>選手層の厚さ</strong>：若手中心の前半でもスコアレスに抑え、後半の主力投入で仕留める「二段構え」が機能。<br>（2）<strong>伊東純也のジョーカー適性</strong>：62分からの途中出場で決勝点。先発・途中出場の両面で計算できる切り札。<br>（3）<strong>鈴木彩艶の復帰</strong>：MVPに選出される好パフォーマンスでケガからの復帰を証明。W杯の正GK争いに大きなアピールを見せた。</p>
 </div>`,
     contentEn: `Japan defeated Scotland 1-0 at Hampden Park in Glasgow on March 28 (local time) in a Kirin World Challenge 2026 friendly. In front of 44,644 fans, substitute Junya Ito scored the decisive goal in the 84th minute, extending Japan's winning streak to four matches dating back to their victory over Brazil in November.
 
@@ -696,7 +696,7 @@ Japan's Group F opener is against the Netherlands in Dallas on June 14. The fina
 <div class="takeaway-card">
 <span class="point-label">TAKEAWAY</span>
 <span class="point-title">Three Key Takeaways from the Scotland Match</span>
-<p class="point-body">(1) <strong>Squad depth on display</strong>: Japan kept a clean sheet with a youth-heavy first half XI, then brought on starters to finish the job — a "two-phase" approach that worked perfectly. (2) <strong>Ito's super-sub credentials</strong>: Coming on in the 62nd minute and scoring the winner, Ito proved he can be equally effective as a starter or impact substitute. (3) <strong>Zion Suzuki's comeback</strong>: Named Man of the Match after a commanding display on his return from injury, Suzuki made a strong case for the No. 1 jersey at the World Cup.</p>
+<p class="point-body">(1) <strong>Squad depth on display</strong>: Japan kept a clean sheet with a youth-heavy first half XI, then brought on starters to finish the job — a "two-phase" approach that worked perfectly.<br>(2) <strong>Ito's super-sub credentials</strong>: Coming on in the 62nd minute and scoring the winner, Ito proved he can be equally effective as a starter or impact substitute.<br>(3) <strong>Zion Suzuki's comeback</strong>: Named Man of the Match after a commanding display on his return from injury, Suzuki made a strong case for the No. 1 jersey at the World Cup.</p>
 </div>`,
   },
   {
