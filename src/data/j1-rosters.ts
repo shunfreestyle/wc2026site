@@ -740,6 +740,12 @@ export const j1Rosters: JTeamRoster[] = [
 ];
 
 /* ── Helper ─────────────────────────────────── */
+import { j2j3EastBRosters } from "./j2j3-eastb-rosters";
+
 export function getRosterByTeamId(teamId: string): JRosterPlayer[] {
-  return j1Rosters.find((r) => r.teamId === teamId)?.players ?? [];
+  return (
+    j1Rosters.find((r) => r.teamId === teamId)?.players ??
+    j2j3EastBRosters.find((r) => r.teamId === teamId)?.players ??
+    []
+  );
 }
