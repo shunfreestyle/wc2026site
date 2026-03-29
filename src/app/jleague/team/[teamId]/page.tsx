@@ -7,6 +7,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { getJ1TeamById } from "@/data/j1-teams";
 import { getJ2J3TeamById } from "@/data/j2j3-teams";
 import { getRosterByTeamId } from "@/data/j1-rosters";
+import { getEastARosterByTeamId } from "@/data/j2j3-rosters-east-a";
 import { jMatches, jMatchDetails } from "@/data/jleague";
 import type { JRosterPlayer } from "@/data/j1-rosters";
 
@@ -57,11 +58,13 @@ export default function TeamDetailPage() {
   }
 
   // ── Data ────────────────────────────────────
-  const players = getRosterByTeamId(teamId);
+  const players = getRosterByTeamId(teamId).length > 0
+    ? getRosterByTeamId(teamId)
+    : getEastARosterByTeamId(teamId);
 
   const teamShort = team.shortName;
   const teamMatches = jMatches
-    .filter((m) => m.league === "J1" && (m.homeTeam === teamShort || m.awayTeam === teamShort) && m.status === "finished")
+    .filter((m) => (m.homeTeam === teamShort || m.awayTeam === teamShort) && m.status === "finished")
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
   // Season stats
