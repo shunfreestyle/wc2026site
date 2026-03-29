@@ -2115,6 +2115,188 @@ export const jMatchDetails: JMatchDetail[] = [
     { minute: 75, playerName: "トニー アンデルソン", teamSide: "home" },
     { minute: 91, playerName: "鹿沼 直生", teamSide: "home" },
   ] },
+  // ── J2/J3 EAST-A 得点者データ ──
+  { matchId: "ea-r1-tkvc-snd", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 12, playerName: "菅田 真啓", teamSide: "away" },
+    { minute: 34, playerName: "井上 詩音", teamSide: "away" },
+    { minute: 48, playerName: "田中 パウロ淳一", teamSide: "home" },
+    { minute: 50, playerName: "武田 英寿", teamSide: "away" },
+    { minute: 52, playerName: "古屋 歩夢", teamSide: "away" },
+  ] },
+  { matchId: "ea-r1-ykfc-ymgt", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 5, playerName: "ディサロ 燦シルヴァーノ", teamSide: "away" },
+    { minute: 8, playerName: "岡本 一真", teamSide: "away" },
+    { minute: 75, playerName: "村田 透馬", teamSide: "home" },
+  ] },
+  { matchId: "ea-r1-sho-aki", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 28, playerName: "梅田 魁人", teamSide: "away" },
+    { minute: 55, playerName: "渡邊 啓吾", teamSide: "home" },
+    { minute: 72, playerName: "鈴木 翔大", teamSide: "away" },
+  ] },
+  { matchId: "ea-r2-gmm-hcht", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 79, playerName: "佐藤 碧", teamSide: "away" },
+  ] },
+  { matchId: "ea-r2-ykfc-snd", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 73, playerName: "宮崎 鴻", teamSide: "away" },
+  ] },
+  { matchId: "ea-r2-sho-sgm", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 15, playerName: "石井 久継", teamSide: "home" },
+    { minute: 48, playerName: "石井 久継", teamSide: "home" },
+    { minute: 65, playerName: "オウンゴール", teamSide: "home" },
+    { minute: 90, playerName: "松本 大弥", teamSide: "home" },
+  ] },
+  { matchId: "ea-r2-tksc-ymgt", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 51, playerName: "土居 聖真", teamSide: "away" },
+    { minute: 55, playerName: "西野 太陽", teamSide: "home" },
+    { minute: 88, playerName: "堀金 峻明", teamSide: "away" },
+  ] },
+  { matchId: "ea-r2-tkvc-aki", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 47, playerName: "梅田 魁人", teamSide: "away" },
+  ] },
+  { matchId: "ea-r3-gmm-ymgt", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 8, playerName: "ディサロ 燦シルヴァーノ", teamSide: "away" },
+    { minute: 75, playerName: "オウンゴール", teamSide: "home" },
+  ] },
+  { matchId: "ea-r3-sho-hcht", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 70, playerName: "山田 寛人", teamSide: "home" },
+  ] },
+  { matchId: "ea-r3-sgm-aki", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 12, playerName: "土井 紅貴", teamSide: "away" },
+    { minute: 31, playerName: "沖田 空", teamSide: "home" },
+    { minute: 90, playerName: "高橋 秀典", teamSide: "away" },
+  ] },
+  { matchId: "ea-r3-tksc-snd", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 22, playerName: "中野 克哉", teamSide: "home" },
+    { minute: 69, playerName: "岩渕 弘人", teamSide: "away" },
+    { minute: 75, playerName: "杉山 耀建", teamSide: "away" },
+  ] },
+  { matchId: "ea-r3-ykfc-tkvc", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 15, playerName: "西谷 和希", teamSide: "away" },
+    { minute: 32, playerName: "駒沢 直哉", teamSide: "home" },
+    { minute: 34, playerName: "駒沢 直哉", teamSide: "home" },
+    { minute: 48, playerName: "駒沢 直哉", teamSide: "home" },
+    { minute: 52, playerName: "駒沢 直哉", teamSide: "home" },
+    { minute: 90, playerName: "ジョアン パウロ", teamSide: "home" },
+  ] },
+  { matchId: "ea-r4-tkvc-sho", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 12, playerName: "アルトゥール シルバ", teamSide: "away" },
+    { minute: 43, playerName: "藤井 智也", teamSide: "away" },
+    { minute: 50, playerName: "山田 寛人", teamSide: "away" },
+    { minute: 76, playerName: "齋藤 恵太", teamSide: "home" },
+  ] },
+  { matchId: "ea-r4-gmm-aki", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 6, playerName: "中島 大嘉", teamSide: "home" },
+    { minute: 35, playerName: "中島 大嘉", teamSide: "home" },
+    { minute: 45, playerName: "中島 大嘉", teamSide: "home" },
+    { minute: 52, playerName: "オウンゴール", teamSide: "away" },
+    { minute: 84, playerName: "佐川 洸介", teamSide: "away" },
+  ] },
+  { matchId: "ea-r4-tksc-ykfc", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 42, playerName: "食野 壮磨", teamSide: "home" },
+    { minute: 51, playerName: "吉野 陽翔", teamSide: "home" },
+    { minute: 53, playerName: "オタボー ケネス", teamSide: "home" },
+    { minute: 86, playerName: "矢野 貴章", teamSide: "home" },
+  ] },
+  { matchId: "ea-r4-sgm-ymgt", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 12, playerName: "佐々木 快", teamSide: "home" },
+    { minute: 48, playerName: "氣田 亮真", teamSide: "away" },
+    { minute: 79, playerName: "沖田 空", teamSide: "home" },
+  ] },
+  { matchId: "ea-r5-snd-sho", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 23, playerName: "小林 心", teamSide: "home" },
+    { minute: 83, playerName: "アルトゥール シルバ", teamSide: "away" },
+  ] },
+  { matchId: "ea-r5-hcht-ykfc", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 4, playerName: "オウンゴール", teamSide: "home" },
+    { minute: 81, playerName: "アダイウトン", teamSide: "away" },
+  ] },
+  { matchId: "ea-r5-ymgt-aki", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 58, playerName: "佐川 洸介", teamSide: "away" },
+  ] },
+  { matchId: "ea-r5-tkvc-gmm", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 23, playerName: "吉田 篤志", teamSide: "home" },
+    { minute: 39, playerName: "藤村 怜", teamSide: "away" },
+  ] },
+  { matchId: "ea-r5-sgm-tksc", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 37, playerName: "杉本 蓮", teamSide: "home" },
+    { minute: 45, playerName: "山内 琳太郎", teamSide: "home" },
+    { minute: 49, playerName: "島川 俊郎", teamSide: "home" },
+    { minute: 59, playerName: "中山 陸", teamSide: "home" },
+  ] },
+  { matchId: "ea-r6-snd-sgm", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 5, playerName: "五十嵐 聖己", teamSide: "home" },
+    { minute: 27, playerName: "武田 英寿", teamSide: "home" },
+    { minute: 44, playerName: "岩渕 弘人", teamSide: "home" },
+    { minute: 77, playerName: "杉本 蓮", teamSide: "away" },
+  ] },
+  { matchId: "ea-r6-sho-ymgt", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 19, playerName: "オウンゴール", teamSide: "home" },
+    { minute: 29, playerName: "寺山 翼", teamSide: "away" },
+    { minute: 96, playerName: "田村 蒼生", teamSide: "home" },
+  ] },
+  { matchId: "ea-r6-hcht-tkvc", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 11, playerName: "田中 パウロ淳一", teamSide: "away" },
+  ] },
+  { matchId: "ea-r6-aki-tksc", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 6, playerName: "佐藤 大樹", teamSide: "home" },
+    { minute: 56, playerName: "岩﨑 博", teamSide: "away" },
+    { minute: 83, playerName: "中村 亮太", teamSide: "home" },
+  ] },
+  { matchId: "ea-r6-ykfc-gmm", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 8, playerName: "貫 真郷", teamSide: "away" },
+    { minute: 26, playerName: "横山 暁之", teamSide: "home" },
+    { minute: 38, playerName: "野瀬 翔也", teamSide: "away" },
+    { minute: 42, playerName: "横山 暁之", teamSide: "home" },
+    { minute: 54, playerName: "オウンゴール", teamSide: "home" },
+  ] },
+  { matchId: "ea-r7-gmm-sho", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 6, playerName: "山田 寛人", teamSide: "away" },
+    { minute: 13, playerName: "山田 寛人", teamSide: "away" },
+  ] },
+  { matchId: "ea-r7-aki-hcht", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 68, playerName: "オウンゴール", teamSide: "home" },
+  ] },
+  { matchId: "ea-r7-sgm-ykfc", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 15, playerName: "棚橋 尭士", teamSide: "home" },
+    { minute: 41, playerName: "竹内 崇人", teamSide: "home" },
+    { minute: 48, playerName: "伊藤 槙人", teamSide: "away" },
+    { minute: 54, playerName: "アダイウトン", teamSide: "away" },
+    { minute: 90, playerName: "遠藤 貴成", teamSide: "away" },
+    { minute: 92, playerName: "アダイウトン", teamSide: "away" },
+  ] },
+  { matchId: "ea-r7-ymgt-snd", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 9, playerName: "井上 詩音", teamSide: "away" },
+  ] },
+  { matchId: "ea-r7-tksc-tkvc", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 23, playerName: "西野 太陽", teamSide: "home" },
+    { minute: 41, playerName: "西野 太陽", teamSide: "home" },
+    { minute: 50, playerName: "オウンゴール", teamSide: "home" },
+    { minute: 53, playerName: "鈴木 武蔵", teamSide: "away" },
+    { minute: 75, playerName: "田中 パウロ淳一", teamSide: "away" },
+  ] },
+  { matchId: "ea-r8-gmm-tksc", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 9, playerName: "西野 太陽", teamSide: "away" },
+    { minute: 15, playerName: "西野 太陽", teamSide: "away" },
+    { minute: 37, playerName: "永井 大士", teamSide: "away" },
+    { minute: 59, playerName: "百田 真登", teamSide: "home" },
+  ] },
+  { matchId: "ea-r8-ykfc-sho", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 25, playerName: "太田 修介", teamSide: "away" },
+    { minute: 65, playerName: "渡邊 啓吾", teamSide: "away" },
+    { minute: 88, playerName: "田村 蒼生", teamSide: "away" },
+    { minute: 90, playerName: "ジョアン パウロ", teamSide: "home" },
+  ] },
+  { matchId: "ea-r8-hcht-sgm", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 5, playerName: "島川 俊郎", teamSide: "away" },
+    { minute: 42, playerName: "鵜木 郁哉", teamSide: "home" },
+    { minute: 78, playerName: "杉本 蓮", teamSide: "away" },
+    { minute: 87, playerName: "澤上 竜二", teamSide: "home" },
+  ] },
+  { matchId: "ea-r8-ymgt-tkvc", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 7, playerName: "鈴木 武蔵", teamSide: "away" },
+    { minute: 69, playerName: "森 俊貴", teamSide: "away" },
+    { minute: 90, playerName: "熊本 雄太", teamSide: "home" },
+  ] },
 ];
 
 export function getMatchDetail(matchId: string): JMatchDetail | undefined {
@@ -2248,7 +2430,7 @@ export const jMatches: JMatchSimple[] = [
   // ══════════════════════════════════════════
   // ── EAST-A 第1節 ──
   { id:"ea-r1-gmm-sgm",   league:"J2J3", group:"EAST-A", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"群馬",  awayTeam:"相模原", homeScore:2, awayScore:0, status:"finished", stadium:"正田醤油スタジアム群馬", referenceNote:NOTE },
-  { id:"ea-r1-tksc-hcht",  league:"J2J3", group:"EAST-A", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"栃木SC", awayTeam:"八戸",  homeScore:3, awayScore:2, status:"finished", stadium:"カンセキスタジアムとちぎ", referenceNote:NOTE },
+  { id:"ea-r1-tksc-hcht",  league:"J2J3", group:"EAST-A", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"栃木SC", awayTeam:"八戸",  homeScore:null, awayScore:null, status:"scheduled", stadium:"カンセキスタジアムとちぎ", referenceNote:NOTE },
   { id:"ea-r1-tkvc-snd",   league:"J2J3", group:"EAST-A", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"栃木C", awayTeam:"仙台",   homeScore:1, awayScore:4, status:"finished", stadium:"栃木県グリーンスタジアム", referenceNote:NOTE },
   { id:"ea-r1-ykfc-ymgt",  league:"J2J3", group:"EAST-A", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"横浜FC", awayTeam:"山形",   homeScore:1, awayScore:2, status:"finished", stadium:"ニッパツ三ツ沢球技場",    referenceNote:NOTE },
   { id:"ea-r1-sho-aki",    league:"J2J3", group:"EAST-A", round:1, date:"2026-02-07", kickoff:"14:00", homeTeam:"湘南",  awayTeam:"秋田",   homeScore:1, awayScore:2, status:"finished", stadium:"レモンガススタジアム平塚", referenceNote:NOTE },
@@ -2259,7 +2441,7 @@ export const jMatches: JMatchSimple[] = [
   { id:"ea-r2-tksc-ymgt",  league:"J2J3", group:"EAST-A", round:2, date:"2026-02-15", kickoff:"14:00", homeTeam:"栃木SC", awayTeam:"山形",  homeScore:1, awayScore:2, status:"finished", stadium:"カンセキスタジアムとちぎ", referenceNote:NOTE },
   { id:"ea-r2-tkvc-aki",   league:"J2J3", group:"EAST-A", round:2, date:"2026-02-15", kickoff:"14:00", homeTeam:"栃木C", awayTeam:"秋田",   homeScore:0, awayScore:1, status:"finished", stadium:"栃木県グリーンスタジアム", referenceNote:NOTE },
   // ── EAST-A 第3節 ──
-  { id:"ea-r3-gmm-ymgt",   league:"J2J3", group:"EAST-A", round:3, date:"2026-02-21", kickoff:"14:00", homeTeam:"群馬",  awayTeam:"山形",   homeScore:0, awayScore:2, status:"finished", stadium:"正田醤油スタジアム群馬", referenceNote:NOTE },
+  { id:"ea-r3-gmm-ymgt",   league:"J2J3", group:"EAST-A", round:3, date:"2026-02-21", kickoff:"14:00", homeTeam:"群馬",  awayTeam:"山形",   homeScore:1, awayScore:1, pkWinner:"away", status:"finished", stadium:"正田醤油スタジアム群馬", referenceNote:NOTE },
   { id:"ea-r3-sho-hcht",   league:"J2J3", group:"EAST-A", round:3, date:"2026-02-21", kickoff:"14:00", homeTeam:"湘南",  awayTeam:"八戸",   homeScore:1, awayScore:0, status:"finished", stadium:"レモンガススタジアム平塚", referenceNote:NOTE },
   { id:"ea-r3-sgm-aki",    league:"J2J3", group:"EAST-A", round:3, date:"2026-02-21", kickoff:"14:00", homeTeam:"相模原", awayTeam:"秋田",  homeScore:1, awayScore:2, status:"finished", stadium:"ギオンスタジアム",         referenceNote:NOTE },
   { id:"ea-r3-tksc-snd",   league:"J2J3", group:"EAST-A", round:3, date:"2026-02-22", kickoff:"14:00", homeTeam:"栃木SC", awayTeam:"仙台",  homeScore:1, awayScore:2, status:"finished", stadium:"カンセキスタジアムとちぎ", referenceNote:NOTE },
@@ -2269,11 +2451,11 @@ export const jMatches: JMatchSimple[] = [
   { id:"ea-r4-tkvc-sho",   league:"J2J3", group:"EAST-A", round:4, date:"2026-02-28", kickoff:"14:00", homeTeam:"栃木C", awayTeam:"湘南",   homeScore:1, awayScore:3, status:"finished", stadium:"栃木県グリーンスタジアム", referenceNote:NOTE },
   { id:"ea-r4-gmm-aki",    league:"J2J3", group:"EAST-A", round:4, date:"2026-02-28", kickoff:"14:00", homeTeam:"群馬",  awayTeam:"秋田",   homeScore:3, awayScore:2, status:"finished", stadium:"正田醤油スタジアム群馬", referenceNote:NOTE },
   { id:"ea-r4-tksc-ykfc",  league:"J2J3", group:"EAST-A", round:4, date:"2026-03-01", kickoff:"14:00", homeTeam:"栃木SC", awayTeam:"横浜FC", homeScore:4, awayScore:0, status:"finished", stadium:"カンセキスタジアムとちぎ", referenceNote:NOTE },
-  { id:"ea-r4-sgm-ymgt",   league:"J2J3", group:"EAST-A", round:4, date:"2026-03-01", kickoff:"14:00", homeTeam:"相模原", awayTeam:"山形",  homeScore:0, awayScore:3, status:"finished", stadium:"ギオンスタジアム",         referenceNote:NOTE },
+  { id:"ea-r4-sgm-ymgt",   league:"J2J3", group:"EAST-A", round:4, date:"2026-03-01", kickoff:"14:00", homeTeam:"相模原", awayTeam:"山形",  homeScore:2, awayScore:1, status:"finished", stadium:"ギオンスタジアム",         referenceNote:NOTE },
   // ── EAST-A 第7節 ──
   { id:"ea-r7-gmm-sho",    league:"J2J3", group:"EAST-A", round:7, date:"2026-03-20", kickoff:"14:00", homeTeam:"群馬",  awayTeam:"湘南",   homeScore:0, awayScore:2, status:"finished", stadium:"正田醤油スタジアム群馬", referenceNote:NOTE },
   { id:"ea-r7-aki-hcht",   league:"J2J3", group:"EAST-A", round:7, date:"2026-03-21", kickoff:"14:00", homeTeam:"秋田",  awayTeam:"八戸",   homeScore:null, awayScore:null, status:"finished", stadium:"ソユースタジアム",         referenceNote:NOTE },
-  { id:"ea-r7-sgm-ykfc",   league:"J2J3", group:"EAST-A", round:7, date:"2026-03-21", kickoff:"14:00", homeTeam:"相模原", awayTeam:"横浜FC", homeScore:2, awayScore:3, status:"finished", stadium:"ギオンスタジアム",         referenceNote:NOTE },
+  { id:"ea-r7-sgm-ykfc",   league:"J2J3", group:"EAST-A", round:7, date:"2026-03-21", kickoff:"14:00", homeTeam:"相模原", awayTeam:"横浜FC", homeScore:2, awayScore:4, status:"finished", stadium:"ギオンスタジアム",         referenceNote:NOTE },
   { id:"ea-r7-ymgt-snd",   league:"J2J3", group:"EAST-A", round:7, date:"2026-03-22", kickoff:"14:00", homeTeam:"山形",  awayTeam:"仙台",   homeScore:0, awayScore:1, status:"finished", stadium:"NDソフトスタジアム山形",   referenceNote:NOTE },
   { id:"ea-r7-tksc-tkvc",  league:"J2J3", group:"EAST-A", round:7, date:"2026-03-22", kickoff:"14:00", homeTeam:"栃木SC", awayTeam:"栃木C", homeScore:3, awayScore:2, status:"finished", stadium:"カンセキスタジアムとちぎ", referenceNote:NOTE },
   // ── EAST-A 第5節 ──
@@ -2286,12 +2468,12 @@ export const jMatches: JMatchSimple[] = [
   { id:"ea-r6-snd-sgm",    league:"J2J3", group:"EAST-A", round:6, date:"2026-03-14", kickoff:"14:00", homeTeam:"仙台",  awayTeam:"相模原", homeScore:3, awayScore:1, status:"finished", stadium:"ユアテックスタジアム仙台", referenceNote:NOTE },
   { id:"ea-r6-sho-ymgt",   league:"J2J3", group:"EAST-A", round:6, date:"2026-03-14", kickoff:"14:00", homeTeam:"湘南",  awayTeam:"山形",   homeScore:2, awayScore:1, status:"finished", stadium:"レモンガススタジアム平塚", referenceNote:NOTE },
   { id:"ea-r6-hcht-tkvc",  league:"J2J3", group:"EAST-A", round:6, date:"2026-03-15", kickoff:"14:00", homeTeam:"八戸",  awayTeam:"栃木C",  homeScore:0, awayScore:1, status:"finished", stadium:"プライフーズスタジアム",   referenceNote:NOTE },
-  { id:"ea-r6-aki-tksc",   league:"J2J3", group:"EAST-A", round:6, date:"2026-03-15", kickoff:"14:00", homeTeam:"秋田",  awayTeam:"栃木SC", homeScore:2, awayScore:0, status:"finished", stadium:"ソユースタジアム",         referenceNote:NOTE },
-  { id:"ea-r6-ykfc-gmm",   league:"J2J3", group:"EAST-A", round:6, date:"2026-03-15", kickoff:"14:00", homeTeam:"横浜FC", awayTeam:"群馬",  homeScore:3, awayScore:0, status:"finished", stadium:"ニッパツ三ツ沢球技場",    referenceNote:NOTE },
+  { id:"ea-r6-aki-tksc",   league:"J2J3", group:"EAST-A", round:6, date:"2026-03-15", kickoff:"14:00", homeTeam:"秋田",  awayTeam:"栃木SC", homeScore:2, awayScore:1, status:"finished", stadium:"ソユースタジアム",         referenceNote:NOTE },
+  { id:"ea-r6-ykfc-gmm",   league:"J2J3", group:"EAST-A", round:6, date:"2026-03-15", kickoff:"14:00", homeTeam:"横浜FC", awayTeam:"群馬",  homeScore:3, awayScore:2, status:"finished", stadium:"ニッパツ三ツ沢球技場",    referenceNote:NOTE },
   // ── EAST-A 第8節 ──
   { id:"ea-r8-gmm-tksc",   league:"J2J3", group:"EAST-A", round:8, date:"2026-03-28", kickoff:"14:00", homeTeam:"群馬",  awayTeam:"栃木SC", homeScore:1, awayScore:3, status:"finished", stadium:"正田醤油スタジアム群馬", referenceNote:NOTE },
   { id:"ea-r8-ykfc-sho",   league:"J2J3", group:"EAST-A", round:8, date:"2026-03-28", kickoff:"14:00", homeTeam:"横浜FC", awayTeam:"湘南",  homeScore:1, awayScore:3, status:"finished", stadium:"ニッパツ三ツ沢球技場",    referenceNote:NOTE },
-  { id:"ea-r8-hcht-sgm",   league:"J2J3", group:"EAST-A", round:8, date:"2026-03-29", kickoff:"14:00", homeTeam:"八戸",  awayTeam:"相模原", homeScore:2, awayScore:2, pkHome:4, pkAway:5, pkWinner:"away", status:"finished", stadium:"プライフーズスタジアム",   referenceNote:NOTE },
+  { id:"ea-r8-hcht-sgm",   league:"J2J3", group:"EAST-A", round:8, date:"2026-03-29", kickoff:"14:00", homeTeam:"八戸",  awayTeam:"相模原", homeScore:2, awayScore:2, pkHome:4, pkAway:5, pkWinner:"home", status:"finished", stadium:"プライフーズスタジアム",   referenceNote:NOTE },
   { id:"ea-r8-aki-snd",    league:"J2J3", group:"EAST-A", round:8, date:"2026-03-29", kickoff:"14:00", homeTeam:"秋田",  awayTeam:"仙台",   homeScore:0, awayScore:0, pkHome:10, pkAway:11, pkWinner:"away", status:"finished", stadium:"ソユースタジアム",         referenceNote:NOTE },
   { id:"ea-r8-ymgt-tkvc",  league:"J2J3", group:"EAST-A", round:8, date:"2026-03-29", kickoff:"14:00", homeTeam:"山形",  awayTeam:"栃木C",  homeScore:1, awayScore:2, status:"finished", stadium:"NDソフトスタジアム山形",   referenceNote:NOTE },
 
