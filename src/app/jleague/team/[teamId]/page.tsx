@@ -332,7 +332,7 @@ export default function TeamDetailPage() {
                 const hasPK = m.pkWinner !== undefined;
 
                 return (
-                  <Link key={m.id} href={`/jleague/${m.id}`} className="flex items-center gap-3 bg-white rounded-xl border border-gray-100 p-3 sm:p-4 shadow-sm hover:shadow-md hover:border-gray-200 transition-all group">
+                  <Link key={m.id} href={`/jleague/${m.id}?team=${teamId}`} className="flex items-center gap-3 bg-white rounded-xl border border-gray-100 p-3 sm:p-4 shadow-sm hover:shadow-md hover:border-gray-200 transition-all group">
                     <span className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-xs font-extrabold text-white" style={{ backgroundColor: resultColor }}>
                       {result}
                     </span>
@@ -390,7 +390,7 @@ export default function TeamDetailPage() {
               const resultColor = result === "W" ? "#10B981" : result === "L" ? "#EF4444" : "#F59E0B";
 
               return (
-                <Link key={m.id} href={`/jleague/${m.id}`} className="block bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md hover:border-gray-200 transition-all">
+                <Link key={m.id} href={`/jleague/${m.id}?team=${teamId}`} className="block bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md hover:border-gray-200 transition-all">
                   {/* Header */}
                   <div className="flex items-center justify-between px-4 py-2 bg-gray-50 border-b border-gray-100">
                     <div className="flex items-center gap-2 text-xs text-gray-500 font-bold">

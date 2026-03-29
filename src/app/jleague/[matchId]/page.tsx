@@ -103,10 +103,13 @@ function PlayerRow({ player, teamColor }: { player: JPlayer; teamColor?: string 
 /* ── Page Component ────────────────────────────── */
 export default async function JLeagueMatchDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ matchId: string }>;
+  searchParams: Promise<{ team?: string }>;
 }) {
   const { matchId } = await params;
+  const { team: queryTeamId } = await searchParams;
   const match = getMatchById(matchId);
   if (!match) notFound();
 
@@ -117,18 +120,23 @@ export default async function JLeagueMatchDetailPage({
     (match.pkHome !== undefined && match.pkAway !== undefined) ||
     match.pkWinner !== undefined;
 
-  // Determine the "focus team" from referer or default to home team
-  const headersList = await headers();
-  const referer = headersList.get("referer") || "";
-  const refTeamMatch = referer.match(/\/jleague\/team\/([^/?]+)/);
-  const refTeamId = refTeamMatch ? refTeamMatch[1] : null;
-
   // Map teamId back to shortName
   const ID_TO_SHORT: Record<string, string> = {};
   for (const [short, id] of Object.entries(SHORT_TO_ID)) {
     ID_TO_SHORT[id] = short;
   }
-  const focusShort = refTeamId ? ID_TO_SHORT[refTeamId] : null;
+
+  // Determine the "focus team" from query param, then referer, then default to home
+  let focusShort: string | null = null;
+  if (queryTeamId && ID_TO_SHORT[queryTeamId]) {
+    focusShort = ID_TO_SHORT[queryTeamId];
+  } else {
+    const headersList = await headers();
+    const referer = headersList.get("referer") || "";
+    const refTeamMatch = referer.match(/\/jleague\/team\/([^/?]+)/);
+    const refTeamId = refTeamMatch ? refTeamMatch[1] : null;
+    focusShort = refTeamId ? ID_TO_SHORT[refTeamId] : null;
+  }
 
   // Use focus team if it's in this match, otherwise default to home team
   const navTeam =
@@ -243,7 +251,7 @@ export default async function JLeagueMatchDetailPage({
         <div className="flex items-center justify-between gap-2">
           {prevMatch ? (
             <Link
-              href={`/jleague/${prevMatch.id}`}
+              href={`/jleague/${prevMatch.id}?team=${navTeamId}`}
               className="group inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
             >
               <svg className="w-3.5 h-3.5 text-gray-300 group-hover:text-gray-500 shrink-0 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
@@ -261,7 +269,7 @@ export default async function JLeagueMatchDetailPage({
           </div>
           {nextMatch ? (
             <Link
-              href={`/jleague/${nextMatch.id}`}
+              href={`/jleague/${nextMatch.id}?team=${navTeamId}`}
               className="group inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
             >
               <div className="text-right">
