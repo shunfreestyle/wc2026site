@@ -7,12 +7,12 @@ import type { J2J3Team } from "@/data/j2j3-teams";
 
 function TeamCard({ team }: { team: J2J3Team }) {
   return (
-    <div className="group relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
+    <div className="group relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex flex-col">
       <div
-        className="h-1.5"
+        className="h-1.5 shrink-0"
         style={{ background: `linear-gradient(90deg, ${team.color} 60%, ${team.colorSecondary} 100%)` }}
       />
-      <div className="p-4 sm:p-5">
+      <div className="p-4 sm:p-5 flex flex-col flex-1">
         <div className="min-w-0 mb-3">
           <h3 className="text-base sm:text-lg font-bold text-gray-900 leading-tight truncate">
             {team.fullName}
@@ -20,7 +20,7 @@ function TeamCard({ team }: { team: J2J3Team }) {
           <p className="text-[11px] text-gray-400 mt-0.5">{team.fullNameEn}</p>
         </div>
 
-        <div className="space-y-1.5 text-xs sm:text-sm">
+        <div className="space-y-1.5 text-xs sm:text-sm flex-1">
           <div className="flex items-center gap-2 text-gray-600">
             <span className="text-gray-400 w-4 text-center text-xs">📍</span>
             <span>{team.prefecture} {team.city}</span>
@@ -35,17 +35,17 @@ function TeamCard({ team }: { team: J2J3Team }) {
           </div>
         </div>
 
-        <div className="flex gap-2 mt-4">
+        <div className="flex gap-2 mt-4 pt-4 border-t border-gray-100">
           <Link
             href={`/stamen?team=${team.id}`}
-            className="flex-1 flex items-center justify-center text-[11px] font-bold h-10 rounded-lg border-2 transition-colors text-center leading-tight"
+            className="flex-1 flex items-center justify-center text-xs font-bold h-10 rounded-lg border-2 transition-colors whitespace-nowrap"
             style={{ borderColor: team.color === "#FFFFFF" ? team.colorSecondary : team.color, color: team.color === "#FFFFFF" ? team.colorSecondary : team.color }}
           >
-            スタメン<br />メーカー
+            スタメンメーカー
           </Link>
           <Link
             href={`/jleague/team/${team.id}`}
-            className="flex-1 flex items-center justify-center text-xs font-bold h-9 rounded-lg text-white transition-opacity hover:opacity-90"
+            className="flex-1 flex items-center justify-center text-xs font-bold h-10 rounded-lg text-white transition-opacity hover:opacity-90 whitespace-nowrap"
             style={{ backgroundColor: team.color === "#FFFFFF" ? team.colorSecondary : team.color }}
           >
             チーム詳細
