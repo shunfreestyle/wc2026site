@@ -49,8 +49,22 @@ export default function Home() {
     { city: "トロント", country: "🇨🇦", venue: "BMOフィールド",                    id: "bmo" },
   ];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SAMURAI FOOTBALL",
+    "url": "https://samurai-football.jp",
+    "description": "2026 FIFA World Cup Japan National Team Fan Site",
+    "inLanguage": ["ja", "en"],
+  };
+
   return (
     <div>
+      {/* Organization JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative overflow-hidden text-white" style={{ background: "#1A1A2E" }}>
         {/* Decorative stripes */}

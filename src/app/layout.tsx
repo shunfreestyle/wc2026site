@@ -42,11 +42,22 @@ export const metadata: Metadata = {
     title: "SAMURAI FOOTBALL | Unofficial 2026 FIFA World Cup Fan Site",
     description:
       "Unofficial fan site covering Japan national team and all 48 nations at the 2026 FIFA World Cup. Not affiliated with FIFA or JFA.",
+    locale: "ja_JP",
+    images: [
+      {
+        url: "https://samurai-football.jp/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "SAMURAI FOOTBALL",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    site: "@samuraifootball",
     title: "SAMURAI FOOTBALL — Unofficial Fan Site",
     description: "Unofficial fan site covering Japan national team and the 2026 FIFA World Cup. Not affiliated with FIFA or JFA.",
+    images: ["https://samurai-football.jp/og-image.png"],
   },
   alternates: {
     canonical: "https://samurai-football.jp",
@@ -70,6 +81,7 @@ export const metadata: Metadata = {
     ],
     shortcut: "/favicon.ico",
   },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
