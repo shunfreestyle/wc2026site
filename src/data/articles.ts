@@ -26,15 +26,15 @@ export const articles: Article[] = [
   {
     id: "1775030400002",
     slug: "england-predicted-xi-vs-japan-march-31-2026",
-    title: "【イングランド予想スタメン】サカ・ライス・ストーンズら8名離脱でどう変わる？ケイン＆ベリンガム擁する「修正版ベストXI」を徹底予想",
-    titleEn: "England Predicted XI vs Japan: How Tuchel Reshapes His Side After Eight Withdrawals — Kane and Bellingham Lead a Revised Best XI",
-    excerpt: "日本戦を前にサカ、ライス、ストーンズら主力8名が離脱したイングランド代表。トゥヘル監督はケイン、ベリンガム、ゴードンら残る戦力で4-2-3-1を組む見込み。予想フォーメーション、全11人の解説、注目選手5名を徹底分析。",
-    excerptEn: "With Saka, Rice, Stones and five others withdrawn, Tuchel must rebuild his England XI for the Japan friendly. We predict a 4-2-3-1 featuring Kane, Bellingham, and Gordon, and profile five key players to watch.",
+    title: "【イングランド予想スタメン】サカ・ライス・ベリンガムら9名離脱でどう変わる？ケイン＆ゴードン擁する「修正版ベストXI」を徹底予想",
+    titleEn: "England Predicted XI vs Japan: How Tuchel Reshapes His Side After Nine Withdrawals — Kane and Gordon Lead a Revised Best XI",
+    excerpt: "日本戦を前にサカ、ライス、ストーンズに加え、ベリンガムも欠場が確定したイングランド代表。トゥヘル監督はケイン、ゴードン、ロジャーズら残る戦力で4-2-3-1を組む見込み。予想フォーメーション、全11人の解説、注目選手5名を徹底分析。",
+    excerptEn: "With Saka, Rice, Stones, Bellingham and five others withdrawn, Tuchel must rebuild his England XI for the Japan friendly. We predict a 4-2-3-1 featuring Kane, Gordon, and Rogers, and profile five key players to watch.",
     category: "日本代表" as const,
-    tags: ["イングランド", "日本代表", "予想スタメン", "ハリー・ケイン", "ジュード・ベリンガム", "アンソニー・ゴードン", "ベン・ホワイト", "トゥヘル", "W杯2026", "親善試合"],
-    tagsEn: ["England", "Japan", "Predicted XI", "Harry Kane", "Jude Bellingham", "Anthony Gordon", "Ben White", "Tuchel", "World Cup 2026", "Friendly"],
+    tags: ["イングランド", "日本代表", "予想スタメン", "ハリー・ケイン", "モーガン・ロジャーズ", "アンソニー・ゴードン", "ベン・ホワイト", "トゥヘル", "W杯2026", "親善試合"],
+    tagsEn: ["England", "Japan", "Predicted XI", "Harry Kane", "Morgan Rogers", "Anthony Gordon", "Ben White", "Tuchel", "World Cup 2026", "Friendly"],
     publishedAt: "2026-03-30",
-    updatedAt: "2026-03-30",
+    updatedAt: "2026-03-31",
     isPopular: true,
     sources: [
       { name: "Sports Mole", url: "https://www.sportsmole.co.uk/football/england/predicted-lineups/white-among-11-changes-predicted-england-xi-vs-japan_594674.html" },
@@ -52,11 +52,12 @@ export const articles: Article[] = [
 
 ## 主力8名が離脱——何が起きたか
 
-ウルグアイ戦（1-1）の翌日、イングランド代表から以下の8名の離脱が発表された。
+ウルグアイ戦（1-1）後に8名の離脱が発表されたのに続き、30日にはトゥヘル監督がベリンガムの欠場も明言。計9名が日本戦に出場できない事態となった。
 
 <table class="schedule-table">
   <thead><tr><th>選手</th><th>ポジション</th><th>所属</th><th>理由</th></tr></thead>
   <tbody>
+    <tr><td>ジュード・ベリンガム</td><td>MF</td><td>レアル・マドリード</td><td>筋肉系負傷からの復帰直後。「リスクは冒したくない」（トゥヘル）</td></tr>
     <tr><td>ブカヨ・サカ</td><td>FW</td><td>アーセナル</td><td>メディカルチェックのため帰還</td></tr>
     <tr><td>デクラン・ライス</td><td>MF</td><td>アーセナル</td><td>メディカルチェックのため帰還</td></tr>
     <tr><td>ノニ・マドゥエケ</td><td>FW</td><td>アーセナル</td><td>ウルグアイ戦で負傷</td></tr>
@@ -70,8 +71,8 @@ export const articles: Article[] = [
 
 <div class="highlight-box">
 <span class="point-label">POINT</span>
-<span class="point-title">離脱の影響——3つのポジションに穴</span>
-<p class="point-body">最も大きな影響を受けるのは<strong>右ウイング</strong>（サカ＆マドゥエケの両方が離脱）、<strong>アンカー</strong>（ライス不在）、<strong>センターバック</strong>（ストーンズ＆トモリの2枚が抜けた）の3ポジション。特にサカとマドゥエケの同時離脱により、スクワッドに残る自然な右ウイングはジャロッド・ボーウェン（ウェストハム）のみとなった。</p>
+<span class="point-title">離脱の影響——4つのポジションに穴</span>
+<p class="point-body">最も大きな影響を受けるのは<strong>トップ下</strong>（ベリンガム欠場で最大の切り札が不在）、<strong>右ウイング</strong>（サカ＆マドゥエケの両方が離脱）、<strong>アンカー</strong>（ライス不在）、<strong>センターバック</strong>（ストーンズ＆トモリの2枚が抜けた）の4ポジション。ベリンガムの欠場は前日に発表された最新の離脱で、サカ・ライス・ベリンガムというイングランドの「核」3人が揃わない異例の事態となった。</p>
 </div>
 
 ## 予想フォーメーション：4-2-3-1
@@ -89,7 +90,7 @@ export const articles: Article[] = [
     <tr><th>CM</th><td>エリオット・アンダーソン（ノッティンガム・フォレスト）</td></tr>
     <tr><th>CM</th><td>ジェームズ・ガーナー（エバートン）</td></tr>
     <tr><th>RW</th><td>ジャロッド・ボーウェン（ウェストハム）</td></tr>
-    <tr><th>AM</th><td>ジュード・ベリンガム（レアル・マドリード）or モーガン・ロジャーズ（アストン・ヴィラ）</td></tr>
+    <tr><th>AM</th><td>モーガン・ロジャーズ（アストン・ヴィラ）or コール・パーマー（チェルシー）</td></tr>
     <tr><th>LW</th><td>アンソニー・ゴードン（ニューカッスル）</td></tr>
     <tr><th>CF</th><td>ハリー・ケイン（バイエルン・ミュンヘン）</td></tr>
   </tbody>
@@ -109,7 +110,7 @@ export const articles: Article[] = [
 
 **RW ボーウェン**——サカとマドゥエケの同時離脱で、消去法的にスタメン入り。ウェストハムでは今季プレミア6ゴールと安定した数字を残しており、チャンスをモノにしたいところ。
 
-**AM ベリンガム or ロジャーズ**——最大の焦点。ベリンガムが入れば華のある攻撃が期待できるが、トゥヘルは「コンディションを念入りに確認する」と述べており、ロジャーズ（アストン・ヴィラ）の先発もあり得る。
+**AM ロジャーズ or パーマー**——ベリンガムの欠場確定により、トップ下はモーガン・ロジャーズ（アストン・ヴィラ）が最有力。ウルグアイ戦でベン・ホワイトのゴールをお膳立てしたコール・パーマー（チェルシー）がRWに入り、ロジャーズがトップ下に収まる形も考えられる。
 
 **LW ゴードン**——今季CL10ゴールの大ブレイク中。左サイドからカットインしてのシュートが持ち味。日本の右サイド（菅原由勢・橋岡大樹）との1対1は試合の鍵を握る。
 
@@ -117,8 +118,8 @@ export const articles: Article[] = [
 
 <div class="highlight-box">
 <span class="point-label">POINT</span>
-<span class="point-title">ウルグアイ戦からの「11人チェンジ」——異例の全員入れ替え</span>
-<p class="point-body">トゥヘル監督はウルグアイ戦とは全員を入れ替える方針。これは35人招集の「二部構成」戦略の集大成であり、日本戦メンバーが「W杯候補のファーストチョイス」に近い。ただし8名離脱により、ライトウイングと中盤アンカーは「ベストではない代替案」での臨戦となる。</p>
+<span class="point-title">ウルグアイ戦からの「11人チェンジ」——しかし9名離脱の痛手</span>
+<p class="point-body">トゥヘル監督はウルグアイ戦とは全員を入れ替える方針。当初は「W杯候補のファーストチョイス」を試す場だったが、サカ・ライス・ベリンガムという攻守の核3人を含む9名が離脱。右ウイング、トップ下、アンカー、CBの4ポジションが「代替案」での臨戦となる。それでもケイン・ゴードン・ギュエイら世界クラスの選手が並ぶ点は変わらない。</p>
 </div>
 
 ## 注目選手5名
@@ -136,18 +137,18 @@ export const articles: Article[] = [
 
 今季ブンデスリーガ31ゴールでレヴァンドフスキのシーズン最多記録（41ゴール）に迫る勢い。ポストプレーからのリンクアップとペナルティエリア内のフィニッシュは世界最高峰。日本のCB陣は90分間、一瞬たりとも集中を切らせない覚悟が必要だ。
 
-### 2. ジュード・ベリンガム（レアル・マドリード／AM）
+### 2. モーガン・ロジャーズ（アストン・ヴィラ／AM）
 
 <table class="schedule-table">
   <thead><tr><th>項目</th><th>データ</th></tr></thead>
   <tbody>
-    <tr><td>リーガ</td><td>18試合 4ゴール 3アシスト</td></tr>
-    <tr><td>CL</td><td>7試合 2ゴール 1アシスト</td></tr>
-    <tr><td>年齢</td><td>22歳（2003年6月生）</td></tr>
+    <tr><td>年齢</td><td>22歳</td></tr>
+    <tr><td>所属</td><td>アストン・ヴィラ</td></tr>
+    <tr><td>特徴</td><td>ドリブル突破、ライン間でのボール受け、推進力</td></tr>
   </tbody>
 </table>
 
-トップ下でのプレーが予想されるが、トゥヘルは「コンディションを確認する」と慎重。レアル・マドリードでは今季やや数字を落としているが、ボックス内への飛び出しとゴール前での冷静さは依然として脅威。田中碧・藤田譲瑠チマとのマッチアップが見どころ。
+ベリンガム欠場によりトップ下の最有力候補に浮上。アストン・ヴィラではウナイ・エメリの下で急成長を遂げ、ドリブルでの推進力とライン間でボールを受ける感覚に優れる。ベリンガムほどの知名度はないが、日本の中盤にとっては「未知数の脅威」となる。田中碧・藤田譲瑠チマとのマッチアップが見どころ。
 
 ### 3. アンソニー・ゴードン（ニューカッスル／LW）
 
@@ -199,7 +200,7 @@ export const articles: Article[] = [
 <div class="takeaway-card">
 <span class="point-label">TAKEAWAY</span>
 <span class="point-title">イングランド予想スタメンのポイント</span>
-<p class="point-body">（1）サカ・ライス・ストーンズら主力8名離脱で、当初想定の「ベストXI」からは大きく変更。ただしケイン・ベリンガム・ゴードンら世界クラスの攻撃陣は健在。<br>（2）予想フォーメーションは4-2-3-1。最大の焦点はトップ下（ベリンガム vs ロジャーズ）と右SB（コンサ vs ホワイト）の選択。<br>（3）日本にとっては「中盤のプレス」「左サイドの仕掛け」「CBへの圧力」が勝利の鍵。8名離脱で生まれた隙を突けるかが勝敗を分ける。</p>
+<p class="point-body">（1）サカ・ライス・ベリンガムら主力9名離脱で、当初想定の「ベストXI」からは大幅に変更。それでもケイン・ゴードンら世界クラスの攻撃陣は健在。<br>（2）予想フォーメーションは4-2-3-1。ベリンガム欠場でトップ下はロジャーズが最有力。右SBはコンサ vs ホワイトの争い。<br>（3）日本にとっては「中盤のプレス」「左サイドの仕掛け」「CBへの圧力」が勝利の鍵。9名離脱で生まれた隙を突けるかが勝敗を分ける。</p>
 </div>`,
     contentEn: `England face Japan at Wembley on March 31 (local time) in what was supposed to be a near-full-strength World Cup dress rehearsal. However, the withdrawal of eight key players after the Uruguay draw has forced Thomas Tuchel to significantly reshape his side. Here's our predicted XI, positional breakdown, and five key players to watch.
 
@@ -209,11 +210,12 @@ export const articles: Article[] = [
 
 ## Eight Key Players Withdrawn — What Happened?
 
-The day after the Uruguay draw, England confirmed the departure of eight squad members.
+Following the Uruguay draw, eight players were withdrawn. Then on March 30, Tuchel confirmed Bellingham would also miss the Japan match — bringing the total to nine absentees.
 
 <table class="schedule-table">
   <thead><tr><th>Player</th><th>Position</th><th>Club</th><th>Reason</th></tr></thead>
   <tbody>
+    <tr><td>Jude Bellingham</td><td>MF</td><td>Real Madrid</td><td>Muscle injury recovery. "I don't want to take risks" (Tuchel)</td></tr>
     <tr><td>Bukayo Saka</td><td>FW</td><td>Arsenal</td><td>Returned for medical assessment</td></tr>
     <tr><td>Declan Rice</td><td>MF</td><td>Arsenal</td><td>Returned for medical assessment</td></tr>
     <tr><td>Noni Madueke</td><td>FW</td><td>Arsenal</td><td>Injured vs Uruguay</td></tr>
@@ -227,8 +229,8 @@ The day after the Uruguay draw, England confirmed the departure of eight squad m
 
 <div class="highlight-box">
 <span class="point-label">POINT</span>
-<span class="point-title">Three Positions Hit Hardest</span>
-<p class="point-body">The biggest impact falls on <strong>right wing</strong> (both Saka and Madueke gone — only Jarrod Bowen remains), <strong>defensive midfield</strong> (Rice's absence leaves a void), and <strong>center-back</strong> (Stones and Tomori both withdrawn). The simultaneous loss of Saka and Madueke is particularly damaging to England's attacking variety.</p>
+<span class="point-title">Four Positions Hit Hardest</span>
+<p class="point-body">The biggest impact falls on <strong>attacking midfield</strong> (Bellingham ruled out — England's biggest creative threat is absent), <strong>right wing</strong> (both Saka and Madueke gone — only Jarrod Bowen remains), <strong>defensive midfield</strong> (Rice's absence leaves a void), and <strong>center-back</strong> (Stones and Tomori both withdrawn). The loss of Saka, Rice, and Bellingham — England's three most important outfield players — is an unprecedented blow.</p>
 </div>
 
 ## Predicted Formation: 4-2-3-1
@@ -246,7 +248,7 @@ Based on predictions from The Standard and Sports Mole, Tuchel is expected to ma
     <tr><th>CM</th><td>Elliot Anderson (Nottingham Forest)</td></tr>
     <tr><th>CM</th><td>James Garner (Everton)</td></tr>
     <tr><th>RW</th><td>Jarrod Bowen (West Ham United)</td></tr>
-    <tr><th>AM</th><td>Jude Bellingham (Real Madrid) or Morgan Rogers (Aston Villa)</td></tr>
+    <tr><th>AM</th><td>Morgan Rogers (Aston Villa) or Cole Palmer (Chelsea)</td></tr>
     <tr><th>LW</th><td>Anthony Gordon (Newcastle United)</td></tr>
     <tr><th>CF</th><td>Harry Kane (Bayern Munich)</td></tr>
   </tbody>
@@ -266,7 +268,7 @@ Based on predictions from The Standard and Sports Mole, Tuchel is expected to ma
 
 **RW Bowen** — Starts by default after Saka and Madueke's dual withdrawal. The West Ham forward has 6 Premier League goals this season and will be desperate to seize this opportunity.
 
-**AM Bellingham or Rogers** — The biggest selection question. Bellingham brings star quality, but Tuchel has flagged fitness concerns. Morgan Rogers (Aston Villa) is the alternative and has impressed in training.
+**AM Rogers or Palmer** — With Bellingham ruled out, Morgan Rogers (Aston Villa) is the frontrunner for the No. 10 role. Cole Palmer (Chelsea), who created White's goal against Uruguay, could play at right wing with Rogers moving centrally.
 
 **LW Gordon** — The breakout star of England's season with 10 Champions League goals at Newcastle. His cut-ins from the left are lethal. The battle against Japan's right-sided defenders will be pivotal.
 
@@ -274,8 +276,8 @@ Based on predictions from The Standard and Sports Mole, Tuchel is expected to ma
 
 <div class="highlight-box">
 <span class="point-label">POINT</span>
-<span class="point-title">11 Changes from Uruguay — An Unprecedented Full Rotation</span>
-<p class="point-body">Tuchel is expected to change all 11 players from the Uruguay match — the culmination of his "two-camp" strategy with the 35-man squad. While the Japan XI is closer to his World Cup first choice, the eight withdrawals mean the right wing and midfield anchor are "Plan B" selections rather than the ideal options.</p>
+<span class="point-title">11 Changes from Uruguay — But Nine Absentees Bite Hard</span>
+<p class="point-body">Tuchel is expected to change all 11 players from the Uruguay match, but the loss of Saka, Rice, and Bellingham — England's three most important outfield players — means this is far from the World Cup dress rehearsal originally planned. The right wing, No. 10, anchor, and center-back positions are all "Plan B" selections. Still, Kane, Gordon, and Guehi ensure world-class quality remains.</p>
 </div>
 
 ## Five Key Players to Watch
@@ -293,18 +295,18 @@ Based on predictions from The Standard and Sports Mole, Tuchel is expected to ma
 
 With 31 Bundesliga goals and counting, Kane is on course to challenge Lewandowski's single-season record. His combination of hold-up play, link-up passing, and lethal finishing makes him the most complete striker in world football. Japan's center-backs cannot afford a single lapse in concentration.
 
-### 2. Jude Bellingham (Real Madrid / AM)
+### 2. Morgan Rogers (Aston Villa / AM)
 
 <table class="schedule-table">
   <thead><tr><th>Stat</th><th>Data</th></tr></thead>
   <tbody>
-    <tr><td>La Liga</td><td>18 apps, 4 goals, 3 assists</td></tr>
-    <tr><td>Champions League</td><td>7 apps, 2 goals, 1 assist</td></tr>
-    <tr><td>Age</td><td>22 (born June 2003)</td></tr>
+    <tr><td>Age</td><td>22</td></tr>
+    <tr><td>Club</td><td>Aston Villa</td></tr>
+    <tr><td>Strengths</td><td>Dribbling, ball-carrying, receiving between lines</td></tr>
   </tbody>
 </table>
 
-Expected to play as the No. 10, though Tuchel has flagged fitness concerns. His numbers at Real Madrid are slightly down this season, but his ability to arrive in the box and score goals typically associated with strikers remains a constant threat.
+With Bellingham ruled out, Rogers emerges as the leading candidate for the No. 10 role. He has developed rapidly under Unai Emery at Aston Villa, combining explosive dribbling with intelligent movement between the lines. Less well-known than Bellingham, but Japan's midfield will face an "unknown threat" that is no less dangerous.
 
 ### 3. Anthony Gordon (Newcastle / LW)
 
@@ -356,7 +358,7 @@ With Stones withdrawn, Guehi becomes the senior figure in England's backline. Hi
 <div class="takeaway-card">
 <span class="point-label">TAKEAWAY</span>
 <span class="point-title">England's Predicted XI — Key Points</span>
-<p class="point-body">(1) Eight withdrawals — including Saka, Rice, and Stones — mean this is far from the "best XI" originally envisioned. However, Kane, Bellingham, and Gordon still provide world-class attacking firepower.<br>(2) Predicted formation: 4-2-3-1. The biggest selection battles are at No. 10 (Bellingham vs Rogers) and right-back (Konsa vs White).<br>(3) For Japan, the keys to victory are pressing the midfield, attacking down the left, and pressuring the unfamiliar CB pairing. The eight withdrawals have created genuine vulnerabilities to exploit.</p>
+<p class="point-body">(1) Nine withdrawals — including Saka, Rice, Bellingham, and Stones — mean this is far from the "best XI" originally envisioned. However, Kane and Gordon still provide world-class attacking firepower.<br>(2) Predicted formation: 4-2-3-1. With Bellingham out, Rogers is the frontrunner at No. 10. Right-back remains Konsa vs White.<br>(3) For Japan, the keys to victory are pressing the midfield, attacking down the left, and pressuring the unfamiliar CB pairing. Nine withdrawals have created genuine vulnerabilities to exploit.</p>
 </div>`,
   },
   {
