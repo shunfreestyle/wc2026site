@@ -24,6 +24,320 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    id: "1775200800002",
+    slug: "italy-fails-world-cup-2026-third-time-bosnia-penalties",
+    title: "イタリア、3大会連続W杯出場ならず——バストーニ退場、PK戦4-1でボスニアに敗れる。ガットゥーゾの夢は潰えた",
+    titleEn: "Italy Fail to Qualify for World Cup 2026: Bastoni Red Card, Penalty Heartbreak as Bosnia Advance",
+    excerpt: "W杯欧州予選プレーオフ・パスA決勝でイタリアはボスニア・ヘルツェゴビナに1-1（PK1-4）で敗戦。ケーンの先制後にバストーニが一発退場、10人で耐えるも79分に同点弾を許し、PK戦で力尽きた。2018年、2022年に続く3大会連続の予選敗退。",
+    excerptEn: "Italy's World Cup nightmare continues. After Bastoni's red card reduced them to 10 men, Bosnia equalized and won 4-1 on penalties. Italy fail to qualify for a third straight World Cup.",
+    category: "W杯" as const,
+    tags: ["イタリア", "ボスニア・ヘルツェゴビナ", "W杯2026", "欧州プレーオフ", "ガットゥーゾ", "バストーニ", "ケーン", "タバコビッチ", "PK戦"],
+    tagsEn: ["Italy", "Bosnia", "World Cup 2026", "UEFA Playoff", "Gattuso", "Bastoni", "Kean", "Tabakovic", "Penalties"],
+    publishedAt: "2026-04-01",
+    updatedAt: "2026-04-01",
+    isPopular: true,
+    sources: [
+      { name: "UEFA公式", url: "https://www.uefa.com/european-qualifiers/match/2047082--bosnia-and-herzegovina-vs-italy/" },
+      { name: "ESPN", url: "https://www.espn.com/soccer/match/_/gameId/761952/italy-bosnia-and-herzegovina" },
+      { name: "ゲキサカ", url: "https://web.gekisaka.jp/news/worldcup/detail/?448776-448776-fl=" },
+      { name: "サッカーキング", url: "https://www.soccer-king.jp/news/world/world_other/20260331/2143310.html" },
+      { name: "Al Jazeera", url: "https://www.aljazeera.com/sports/liveblog/2026/3/31/live-bosnia-vs-italy-world-cup-2026-qualifying-final" },
+    ],
+    content: `イタリア代表の悪夢が三度繰り返された。現地時間3月31日、W杯欧州予選プレーオフ・パスA決勝でボスニア・ヘルツェゴビナに1-1（PK1-4）で敗れ、3大会連続でW杯本大会出場を逃した。2018年ロシア大会、2022年カタール大会に続く屈辱——4度のW杯優勝を誇るアッズーリに、一体何が起きたのか。
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>大会</th><td>W杯欧州予選プレーオフ パスA 決勝</td></tr>
+    <tr><th>対戦</th><td>ボスニア・ヘルツェゴビナ 1 - 1 イタリア（PK 4-1）</td></tr>
+    <tr><th>日時</th><td>2026年3月31日</td></tr>
+    <tr><th>会場</th><td>ビリノ・ポリエ・スタジアム（ゼニツァ）</td></tr>
+    <tr><th>得点者</th><td>[伊] ケーン（15分）/ [ボ] タバコビッチ（79分）</td></tr>
+    <tr><th>退場</th><td>[伊] バストーニ（41分・一発退場）</td></tr>
+  </tbody>
+</table>
+
+## 試合展開——先制、退場、そしてPK戦の悲劇
+
+試合は理想的な形で始まった。15分、MFバレッラが相手GKのキックミスを奪い、FW**モイゼ・ケーン**へスルーパス。ケーンが右足ダイレクトで冷静にゴールネットを揺らし、イタリアが先制した。ケーンはこれで代表6戦連発という絶好調ぶりだった。
+
+しかし41分、暗転する。DF**アレッサンドロ・バストーニ**が抜け出したボスニアのFWメミッチをスライディングタックルで倒し、一発退場。イタリアは残り50分以上を10人で戦うことを強いられた。
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">バストーニの退場が全てを変えた</span>
+<p class="point-body">インテルで不動のCBを務めるバストーニの退場は、試合の流れを一変させた。1-0でリードしながらの退場は、守り切る戦術を取らざるを得ない状況を生み出した。ガットゥーゾ監督は5バックに切り替えて耐えたが、79分にFW<strong>ハリス・タバコビッチ</strong>に同点弾を許した。10人でここまで耐えたイタリアの粘りは称賛に値するが、バストーニの判断ミスが取り返しのつかない代償となった。</p>
+</div>
+
+後半はボスニアが10人のイタリアを押し込み、79分にタバコビッチがヘディングで同点に。その後もイタリアは懸命に守り、延長戦でも決着つかず。迎えたPK戦では、FW**ピオ・エスポジート**とMF**ブライアン・クリスタンテ**が失敗。ボスニアは4人全員が成功し、4-1でイタリアの夢を打ち砕いた。
+
+## 3大会連続敗退——データで見るイタリアの凋落
+
+<table class="schedule-table">
+  <thead><tr><th>大会</th><th>予選結果</th><th>敗退相手</th></tr></thead>
+  <tbody>
+    <tr><td>2018年ロシアW杯</td><td>プレーオフ敗退</td><td>スウェーデン（0-1/agg）</td></tr>
+    <tr><td>2022年カタールW杯</td><td>プレーオフ敗退</td><td>北マケドニア（0-1）</td></tr>
+    <tr><td>2026年北中米W杯</td><td>プレーオフ敗退</td><td>ボスニア（1-1、PK1-4）</td></tr>
+  </tbody>
+</table>
+
+2006年W杯優勝、2012年EURO準優勝、2021年EURO優勝と栄光の歴史を持つイタリアが、なぜW杯に出られないのか。予選グループでは2位に終わり、プレーオフに回った時点で既に危険信号だった。
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">ボスニアの歴史的快挙——2014年以来の本大会出場</span>
+<p class="point-body">一方で、ボスニア・ヘルツェゴビナにとっては国史上2度目のW杯出場という歴史的快挙だ。2014年ブラジル大会以来12年ぶり。ゼニツァのスタジアムは歓喜に包まれ、タバコビッチの同点弾は国民的英雄の瞬間となった。W杯ではグループEでスペイン、アルゼンチンと同組になる厳しい組み合わせだが、プレーオフでイタリアを倒した自信は大きい。</p>
+</div>
+
+## ガットゥーゾの敗北——「このような夜のために生きている」
+
+ガットゥーゾ監督は試合前に「監督キャリアで最も重要な試合」「このような夜のために生きている」と語っていた。しかし結末は残酷だった。2021年EURO優勝の栄光から5年——イタリアサッカーは深刻な構造的問題を抱えていることが改めて浮き彫りになった。
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">イタリア3大会連続敗退の衝撃</span>
+<p class="point-body">（1）<strong>ケーンの先制弾もバストーニの退場で暗転</strong>。10人で50分以上耐えたが、79分にタバコビッチに同点弾を許し、PK戦で力尽きた。<br>（2）<strong>3大会連続W杯不出場</strong>は4度優勝の歴史を持つイタリアにとって前代未聞の事態。2018年スウェーデン、2022年北マケドニアに続く悲劇。<br>（3）<strong>ボスニアは12年ぶり2度目のW杯出場</strong>。プレーオフでイタリアを倒した自信をW杯本番に持ち込む。</p>
+</div>`,
+    contentEn: `Italy's World Cup nightmare has struck for a third consecutive time. On March 31, the Azzurri fell to Bosnia and Herzegovina 1-1 (4-1 on penalties) in the UEFA Playoff Path A final, failing to qualify for the 2026 World Cup. After missing Russia 2018 and Qatar 2022, four-time champions Italy are now absent from a third straight tournament.
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>Competition</th><td>UEFA World Cup Playoff Path A Final</td></tr>
+    <tr><th>Match</th><td>Bosnia and Herzegovina 1 - 1 Italy (PK 4-1)</td></tr>
+    <tr><th>Date</th><td>March 31, 2026</td></tr>
+    <tr><th>Venue</th><td>Bilino Polje Stadium, Zenica</td></tr>
+    <tr><th>Scorers</th><td>[ITA] Kean (15') / [BIH] Tabakovic (79')</td></tr>
+    <tr><th>Red Card</th><td>[ITA] Bastoni (41')</td></tr>
+  </tbody>
+</table>
+
+## Match Report — A Goal, a Red Card, and Penalty Heartbreak
+
+It started perfectly. In the 15th minute, Barella intercepted a poor goal kick and slipped through **Moise Kean**, who finished coolly with his right foot — his sixth consecutive international goal.
+
+But in the 41st minute, everything changed. **Alessandro Bastoni** was sent off for a reckless sliding tackle on Bosnia's Amar Memic, leaving Italy to play the remaining 50+ minutes with 10 men.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">Bastoni's Red Card Changed Everything</span>
+<p class="point-body">Inter's first-choice center-back's dismissal forced Gattuso into a defensive reshuffle. Italy switched to a back five and dug in, but <strong>Haris Tabakovic</strong> headed home the equalizer in the 79th minute. Italy's resilience in holding on with 10 men for so long was admirable, but Bastoni's reckless challenge proved an irreversible turning point.</p>
+</div>
+
+Bosnia dominated the second half against 10-man Italy, and after Tabakovic's equalizer, the match went to extra time and then penalties. **Pio Esposito** and **Bryan Cristante** both missed for Italy, while Bosnia converted all four of their kicks to win 4-1 from the spot.
+
+## Three Consecutive Failures — Italy's Decline in Numbers
+
+<table class="schedule-table">
+  <thead><tr><th>Tournament</th><th>Qualifying Result</th><th>Eliminated By</th></tr></thead>
+  <tbody>
+    <tr><td>2018 World Cup</td><td>Playoff defeat</td><td>Sweden (0-1 agg.)</td></tr>
+    <tr><td>2022 World Cup</td><td>Playoff defeat</td><td>North Macedonia (0-1)</td></tr>
+    <tr><td>2026 World Cup</td><td>Playoff defeat</td><td>Bosnia (1-1, PK 1-4)</td></tr>
+  </tbody>
+</table>
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">Bosnia's Historic Achievement — Second-Ever World Cup</span>
+<p class="point-body">For Bosnia, this is a moment of national celebration. They qualify for only their second World Cup in history, 12 years after their debut at Brazil 2014. Tabakovic's equalizer will be remembered as one of the greatest moments in Bosnian football. They enter a tough group with Spain and Argentina, but the confidence from defeating Italy in Zenica will carry them far.</p>
+</div>
+
+## Gattuso's Defeat — "I Live for Nights Like This"
+
+Before the match, Gattuso declared it "the most important match of my coaching career" and said he "lives for nights like this." The ending was cruel. Five years removed from their Euro 2021 triumph, Italian football faces a deep structural crisis.
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">Italy's Third Consecutive World Cup Failure</span>
+<p class="point-body">(1) <strong>Kean's opener was undone by Bastoni's red card</strong>. Italy held on with 10 men for 50 minutes but conceded to Tabakovic in the 79th and lost on penalties.<br>(2) <strong>Three straight World Cup absences</strong> is unprecedented for a four-time champion. After Sweden in 2018 and North Macedonia in 2022, Bosnia delivers the latest blow.<br>(3) <strong>Bosnia qualify for their second-ever World Cup</strong>, 12 years after 2014. They carry the momentum of beating Italy into a tough group.</p>
+</div>`,
+  },
+  {
+    id: "1775200800001",
+    slug: "sweden-qualify-world-cup-group-f-gyokeres-winner-2026",
+    title: "スウェーデンがW杯グループF最後の1枠に！ギェケレシュ88分決勝弾でポーランド撃破——日本の対戦相手が確定",
+    titleEn: "Sweden Clinch World Cup Spot with Gyökeres' 88th-Minute Winner: Japan's Group F Opponents Now Complete",
+    excerpt: "欧州予選プレーオフ・パスB決勝でスウェーデンがポーランドを3-2で破り、2大会ぶりのW杯出場を決めた。88分のギェケレシュの劇的ゴールで決着。日本代表のグループFはオランダ、チュニジア、スウェーデンの構成が確定した。",
+    excerptEn: "Sweden defeated Poland 3-2 in the UEFA Playoff Path B final, with Viktor Gyökeres scoring an 88th-minute winner. Japan's World Cup Group F is now set: Netherlands, Tunisia, and Sweden.",
+    category: "W杯" as const,
+    tags: ["スウェーデン", "ポーランド", "W杯2026", "グループF", "ギェケレシュ", "エランガ", "レヴァンドフスキ", "日本代表", "欧州プレーオフ"],
+    tagsEn: ["Sweden", "Poland", "World Cup 2026", "Group F", "Gyokeres", "Elanga", "Lewandowski", "Japan", "UEFA Playoff"],
+    publishedAt: "2026-04-01",
+    updatedAt: "2026-04-01",
+    isPopular: true,
+    sources: [
+      { name: "UEFA公式", url: "https://www.uefa.com/european-qualifiers/news/02a3-204787cdd9bb-045ee7618426-1000--sweden-3-2-poland-world-cup-play-off-final-viktor-gyokeres/" },
+      { name: "ESPN", url: "https://www.espn.com/soccer/match/_/gameId/761954/poland-sweden" },
+      { name: "ゲキサカ", url: "https://web.gekisaka.jp/news/japan/detail/?448769-448769-fl=" },
+      { name: "NBC Sports", url: "https://www.nbcsports.com/soccer/news/sweden-vs-poland-recap-sweden-qualify-for-2026-world-cup-gyokeres-elanga" },
+      { name: "フットボールチャンネル", url: "https://www.footballchannel.jp/2026/04/01/post874671/" },
+    ],
+    content: `日本代表のW杯グループF最後の対戦相手が確定した。現地時間3月31日、欧州予選プレーオフ・パスB決勝でスウェーデンがポーランドを3-2で破り、2018年ロシア大会以来2大会ぶりとなるW杯出場を決めた。88分、アーセナルのFWビクトル・ギェケレシュが劇的な決勝ゴールを挙げ、ストロベリー・アレーナ（ソルナ）を歓喜の渦に包んだ。
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>大会</th><td>W杯欧州予選プレーオフ パスB 決勝</td></tr>
+    <tr><th>対戦</th><td>スウェーデン 3 - 2 ポーランド</td></tr>
+    <tr><th>日時</th><td>2026年3月31日</td></tr>
+    <tr><th>会場</th><td>ストロベリー・アレーナ（ソルナ）</td></tr>
+    <tr><th>得点者</th><td>[瑞] エランガ（20分）、ラガービエルケ（44分）、ギェケレシュ（88分）<br>[波] ザレフスキ（33分）、シフィデルスキ（55分）</td></tr>
+  </tbody>
+</table>
+
+## 激闘の90分——2度追いつかれても折れなかったスウェーデン
+
+### 前半：シーソーゲームの幕開け
+
+20分、**アンソニー・エランガ**（ノッティンガム・フォレスト）がペナルティエリア外から左足で鮮やかなカーリングショット。ボールはGKの手を弾き、ゴール右隅に突き刺さった。しかし33分、ポーランドのMF**ニコラ・ザレフスキ**がファーポストへのシュートで同点に。前半はこれで終わらない。44分、CKから**グスタフ・ラガービエルケ**がヘディングで叩き込み、スウェーデンが再びリードを奪って折り返した。
+
+### 後半：レヴァンドフスキの執念、そしてギェケレシュの一撃
+
+55分、ポーランドFW**カロル・シフィデルスキ**がこぼれ球を押し込んで2-2に。37歳の**レヴァンドフスキ**は「最後のW杯」への執念を見せ、チームを鼓舞し続けた。しかし試合を決めたのはスウェーデンだった。
+
+88分、カウンターから左サイドを突破したスウェーデンがゴール前に折り返すと、中央に走り込んだ**ギェケレシュ**が右足で叩き込んだ。3-2。ストロベリー・アレーナは爆発した。
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">予選グループ0勝・最下位からの「下剋上」</span>
+<p class="point-body">スウェーデンは予選グループで<strong>0勝・最下位</strong>という屈辱的な成績に終わっていた。しかしネーションズリーグの成績でプレーオフに回り、準決勝ではギェケレシュのハットトリックでウクライナを3-1で撃破。決勝でもポーランドを3-2で下し、「0勝からのW杯出場」という劇的なストーリーを完成させた。グレアム・ポッター監督の下で別チームのように蘇った。</p>
+</div>
+
+## グループF——日本の対戦相手が確定
+
+<table class="schedule-table">
+  <thead><tr><th>チーム</th><th>FIFAランク</th><th>W杯通算成績</th></tr></thead>
+  <tbody>
+    <tr><td>オランダ</td><td>7位</td><td>11回出場（準優勝3回）</td></tr>
+    <tr><td>日本</td><td>15位</td><td>7回連続出場</td></tr>
+    <tr><td>チュニジア</td><td>38位</td><td>6回出場</td></tr>
+    <tr><td>スウェーデン</td><td>32位</td><td>12回出場（準優勝1回）</td></tr>
+  </tbody>
+</table>
+
+日本vsスウェーデンは**6月25日（ダラス、AT&Tスタジアム）**で対戦する。W杯での対戦は史上初めて。
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">日本が警戒すべきスウェーデンの3つの武器</span>
+<p class="point-body">（1）<strong>ギェケレシュ＆イサクの2トップ</strong>：アーセナルのギェケレシュとニューカッスルのイサク。プレミアリーグで得点を量産する2人の共演は、W杯でも最強クラスの攻撃ユニットになる。<br>（2）<strong>エランガの左足</strong>：PO決勝で見せたカーリングショットの精度は脅威。日本の右サイドは要警戒。<br>（3）<strong>ポッター監督の戦術</strong>：チェルシーでは結果を残せなかったポッターだが、スウェーデン代表では守備の組織力を再構築。0勝からの下剋上を実現した戦術眼は侮れない。</p>
+</div>
+
+## 注目選手——スウェーデンのキーマン5人
+
+### 1. ビクトル・ギェケレシュ（アーセナル／CF）
+PO準決勝ハットトリック、決勝88分決勝弾。27歳の「北欧の怪物」がスウェーデンをW杯に導いた。アーセナルでもプレミアリーグ得点を量産しており、日本のCB陣にとって最大の脅威。
+
+### 2. アレクサンデル・イサク（ニューカッスル／CF）
+ギェケレシュとの2トップが実現すれば、プレミアリーグ最強クラスのストライクパートナーシップとなる。スピードとテクニックに優れ、裏への飛び出しが持ち味。
+
+### 3. アンソニー・エランガ（ノッティンガム・フォレスト／LW）
+PO決勝の先制弾はエランガの才能を世界に示した。左足から繰り出されるカーリングショットとドリブル突破は、対戦する日本の右サイドにとって大きな脅威。
+
+### 4. グスタフ・ラガービエルケ（所属不明確／CB）
+PO決勝でCKからのヘディングで2点目を記録。セットプレーでの得点力と空中戦の強さは、日本にとって警戒すべき武器だ。
+
+### 5. ロベルト・レヴァンドフスキ（バルセロナ／CF）※ポーランド
+敗れた側だが、37歳のレジェンドが見せた「最後のW杯」への執念は特筆すべき。チームを鼓舞し続けた姿は、サッカーの美しさそのものだった。W杯の舞台には立てなかったが、そのキャリアに傷はない。
+
+## 日本vsスウェーデン——W杯グループF展望
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">グループFの全日程</span>
+<p class="point-body"><strong>6月14日</strong>：日本 vs オランダ（ダラス）<br><strong>6月19日</strong>：日本 vs チュニジア（フィラデルフィア）<br><strong>6月25日</strong>：日本 vs スウェーデン（ダラス）</p>
+</div>
+
+スウェーデンは「予選グループ0勝」というデータだけ見れば格下に映るが、プレーオフで見せた爆発力は本物だ。ポッター監督の下で「ピークを大舞台に合わせる」チーム作りが機能しており、グループFは4チームとも侮れない激戦区となることが確定した。
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">スウェーデンのW杯出場が日本に意味すること</span>
+<p class="point-body">（1）<strong>ギェケレシュ88分決勝弾</strong>でスウェーデンがポーランドを3-2で撃破。予選グループ0勝からの下剋上でW杯出場。<br>（2）<strong>グループFが確定</strong>：オランダ、日本、チュニジア、スウェーデン。日本vsスウェーデンは6月25日ダラスで初のW杯対戦。<br>（3）<strong>ギェケレシュ＆イサクの2トップ</strong>はW杯屈指の破壊力。日本は「0勝の格下」という先入観を捨て、万全の準備で臨む必要がある。</p>
+</div>`,
+    contentEn: `Japan's final World Cup Group F opponent is confirmed. On March 31, Sweden defeated Poland 3-2 in the UEFA Playoff Path B final, securing their first World Cup appearance since Russia 2018. Arsenal striker Viktor Gyökeres scored the dramatic 88th-minute winner at Strawberry Arena in Solna.
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>Competition</th><td>UEFA World Cup Playoff Path B Final</td></tr>
+    <tr><th>Match</th><td>Sweden 3 - 2 Poland</td></tr>
+    <tr><th>Date</th><td>March 31, 2026</td></tr>
+    <tr><th>Venue</th><td>Strawberry Arena, Solna</td></tr>
+    <tr><th>Scorers</th><td>[SWE] Elanga (20'), Lagerbielke (44'), Gyökeres (88')<br>[POL] Zalewski (33'), Swiderski (55')</td></tr>
+  </tbody>
+</table>
+
+## A Thrilling 90 Minutes — Sweden Refused to Break
+
+### First Half: A Seesaw Battle
+
+In the 20th minute, **Anthony Elanga** (Nottingham Forest) unleashed a stunning curling left-footed strike from outside the box that flew into the top corner. Poland equalized through **Nicola Zalewski** in the 33rd minute, but Sweden restored their lead just before halftime when **Gustaf Lagerbielke** headed home from a corner.
+
+### Second Half: Lewandowski's Fight and Gyökeres' Killer Blow
+
+**Karol Swiderski** leveled for Poland at 2-2 in the 55th minute. 37-year-old **Lewandowski** drove his team forward in what was to be his final chance at a World Cup. But it was Sweden who had the last word.
+
+In the 88th minute, a swift counter-attack saw the ball worked to the left before being cut back to **Gyökeres**, who slammed home with his right foot. 3-2. Strawberry Arena erupted.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">From Zero Qualifying Wins to World Cup — The Ultimate Underdog Story</span>
+<p class="point-body">Sweden finished their qualifying group with <strong>zero wins and in last place</strong>. But their Nations League performance earned a playoff spot, and they destroyed Ukraine 3-1 in the semi-final with a Gyökeres hat-trick. The 3-2 defeat of Poland completed a remarkable "zero to hero" journey under manager Graham Potter.</p>
+</div>
+
+## Group F — Japan's Opponents Confirmed
+
+<table class="schedule-table">
+  <thead><tr><th>Team</th><th>FIFA Ranking</th><th>WC History</th></tr></thead>
+  <tbody>
+    <tr><td>Netherlands</td><td>7th</td><td>11 appearances (3 runners-up)</td></tr>
+    <tr><td>Japan</td><td>15th</td><td>7 consecutive appearances</td></tr>
+    <tr><td>Tunisia</td><td>38th</td><td>6 appearances</td></tr>
+    <tr><td>Sweden</td><td>32nd</td><td>12 appearances (1 runner-up)</td></tr>
+  </tbody>
+</table>
+
+Japan vs Sweden is scheduled for **June 25 in Dallas (AT&T Stadium)** — a first-ever World Cup meeting between the two nations.
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">Three Swedish Weapons Japan Must Respect</span>
+<p class="point-body">(1) <strong>Gyökeres & Isak strike partnership</strong>: Arsenal's Gyökeres and Newcastle's Isak form one of the Premier League's deadliest duos. Together at the World Cup, they could be devastating.<br>(2) <strong>Elanga's left foot</strong>: The curling opener in the playoff final demonstrated world-class technique. Japan's right side must be alert.<br>(3) <strong>Potter's tactical organization</strong>: The former Chelsea manager has rebuilt Sweden's defensive structure. His ability to peak for big occasions — turning a zero-win group into World Cup qualification — should not be underestimated.</p>
+</div>
+
+## Five Key Players — Sweden's Ones to Watch
+
+### 1. Viktor Gyökeres (Arsenal / CF)
+A playoff hat-trick in the semi-final and the 88th-minute winner in the final. The 27-year-old "Nordic Beast" single-handedly dragged Sweden to the World Cup. Prolific at Arsenal, he is the primary threat to Japan's defense.
+
+### 2. Alexander Isak (Newcastle / CF)
+If paired with Gyökeres up front, Sweden boast a strike partnership that would rival any in the tournament. Isak's pace and movement make him lethal on the counter.
+
+### 3. Anthony Elanga (Nottingham Forest / LW)
+His stunning opening goal in the final announced his arrival on the world stage. His left-footed technique and dribbling ability will trouble Japan's right-sided defenders.
+
+### 4. Gustaf Lagerbielke (CB)
+Headed home the second goal from a corner in the final. His set-piece threat and aerial dominance add another dimension to Sweden's attack.
+
+### 5. Robert Lewandowski (Barcelona / CF) *Poland*
+Though on the losing side, the 37-year-old legend's determination to reach "one last World Cup" was inspiring. He drove Poland forward relentlessly. He won't be at the World Cup, but his performance deserved recognition.
+
+## Japan vs Sweden — Group F Outlook
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">Group F Full Schedule</span>
+<p class="point-body"><strong>June 14</strong>: Japan vs Netherlands (Dallas)<br><strong>June 19</strong>: Japan vs Tunisia (Philadelphia)<br><strong>June 25</strong>: Japan vs Sweden (Dallas)</p>
+</div>
+
+Sweden's "zero qualifying wins" statistic makes them look like the weakest team in the group on paper, but their playoff form tells a different story. Under Potter, they have proven they can peak for the biggest moments. Group F is now confirmed as one of the most competitive groups in the tournament.
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">What Sweden's Qualification Means for Japan</span>
+<p class="point-body">(1) <strong>Gyökeres' 88th-minute winner</strong> sealed Sweden's 3-2 victory over Poland. A zero-to-hero story from last place in qualifying to World Cup qualification.<br>(2) <strong>Group F is set</strong>: Netherlands, Japan, Tunisia, Sweden. Japan vs Sweden on June 25 in Dallas will be a historic first World Cup meeting.<br>(3) <strong>Gyökeres and Isak</strong> form one of the tournament's most dangerous strike partnerships. Japan must not underestimate a Swedish side that peaked when it mattered most.</p>
+</div>`,
+  },
+  {
     id: "1775030400002",
     slug: "england-predicted-xi-vs-japan-march-31-2026",
     title: "【イングランド予想スタメン】サカ・ライス・ベリンガムら9名離脱でどう変わる？ケイン＆ゴードン擁する「修正版ベストXI」を徹底予想",
