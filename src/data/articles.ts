@@ -24,6 +24,363 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    id: "1775200800004",
+    slug: "endo-wataru-ankle-surgery-world-cup-2026-captain-recovery",
+    title: "遠藤航、左足首手術からW杯へ——キャプテンが挑む「時間との戦い」。受傷から49日、リハビリの現在地と過去の足首負傷事例を徹底分析",
+    titleEn: "Endo's Ankle Surgery and the Race to the World Cup: Japan's Captain Battles the Clock with 75 Days Remaining",
+    excerpt: "2026年2月のサンダーランド戦で左足首を負傷し手術を受けた日本代表キャプテン遠藤航。受傷から49日が経過した現在のリハビリ進捗、足首靭帯損傷からの復帰事例、そしてW杯最終メンバー発表に向けた展望を、スコットランド戦・イングランド戦での現地観戦エピソードとともに徹底検証する。",
+    excerptEn: "Japan captain Wataru Endo underwent ankle surgery after a devastating injury at Sunderland in February 2026. Now 49 days into recovery, we analyze his rehabilitation progress, compare ankle injury recovery timelines, and assess whether the Samurai Blue's spiritual leader can return in time for the World Cup.",
+    category: "コラム" as const,
+    tags: ["遠藤航", "足首負傷", "手術", "W杯2026", "日本代表", "リバプール", "怪我", "リハビリ", "キャプテン", "森保一"],
+    tagsEn: ["Wataru Endo", "Ankle Injury", "Surgery", "World Cup 2026", "Japan National Team", "Liverpool", "Injury", "Rehabilitation", "Captain", "Hajime Moriyasu"],
+    publishedAt: "2026-04-01",
+    updatedAt: "2026-04-01",
+    isPopular: true,
+    sources: [
+      { name: "FOOTBALL ZONE", url: "https://www.football-zone.net/archives/636628" },
+      { name: "サッカーキング", url: "https://www.soccer-king.jp/news/no_category/20260212/2124718.html" },
+      { name: "日本経済新聞", url: "https://www.nikkei.com/article/DGXZQOKC282LI0Y6A220C2000000/" },
+      { name: "スポーツ報知", url: "https://topics.smt.docomo.ne.jp/article/hochi/sports/hochi-20260329-OHT1T51045" },
+      { name: "リバプール公式", url: "https://www.liverpoolfc.com/news/wataru-endo-injury-update" },
+      { name: "This Is Anfield", url: "https://www.thisisanfield.com/2026/02/wataru-endo-injury-surgery-confirmed-return-date/" },
+      { name: "サッカーダイジェストWeb", url: "https://www.soccerdigestweb.com/news/detail/id=186122" },
+    ],
+    content: `スコットランドのグラスゴー、ハムデンパークのスタンドに、松葉杖なしで歩く遠藤航の姿があった。2026年3月29日、キリンワールドチャレンジのスコットランド戦。ピッチに立てない悔しさを飲み込みながら、日本代表のキャプテンはスタンドからチームを見守っていた。試合前には、キャプテンマークを託された前田大然から「コイントスのやり方を教えてほしい」と連絡が入り、丁寧にアドバイスを送ったという。
+
+2日後のウェンブリー、イングランド戦でも同じくスタンドから現地観戦。三笘薫の決勝弾による歴史的勝利を、ピッチの外から見届けた。「まだちょっと痛みがある」と本人が明かしたように、遠藤の左足首はまだ完全には癒えていない。しかし、「来週から走れたらと思っている」というその言葉には、W杯への確かな意志がにじんでいた。
+
+遠藤航、33歳。森保ジャパンのキャプテンにして、中盤の心臓。2月11日のサンダーランド戦で左足首を負傷してから49日——南野拓実のACL断裂と比較すれば怪我の深刻度は異なるが、33歳という年齢でのW杯出場を懸けた「時間との戦い」は、同じく予断を許さない状況にある。
+
+## 受傷の瞬間——2026年2月11日、サンダーランド戦の悲劇
+
+2026年2月11日、プレミアリーグ第26節。遠藤は今季リーグ戦初先発の機会を得て、スタジアム・オブ・ライトのピッチに立った。リバプールの首位快走を支えてきたベテランMFにとって、スロット監督からの信頼を改めて示す大事な一戦だった。
+
+アクシデントは後半17分に起きた。左サイドからのクロスをクリアしようと踏み込んだ瞬間、**左足が芝に引っかかり、足首が大きく外側に捻れた**。その瞬間、遠藤は崩れ落ちた。
+
+驚くべきことに、遠藤は一度立ち上がってプレーを続行。セットプレーの守備をもう一度こなそうとした。しかし後半19分、再びピッチに倒れ込み、腕で顔を覆った。後半24分、酸素吸入器をつけた状態で担架に乗せられ、涙を浮かべながらピッチを去った。
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">遠藤の負傷はどのタイプか——足首負傷の3分類</span>
+<p class="point-body">足首の負傷は大きく3つに分類される。遠藤の場合、負傷の映像と手術が行われた事実から、単純な外側靭帯損傷ではなく、より深刻な<strong>高位足首捻挫（シンデスモーシス損傷）</strong>または<strong>腓骨骨折を伴う複合損傷</strong>と推測される。<br><br>
+<strong>外側靭帯損傷（一般的な捻挫）</strong>：最も多い足首の怪我。軽度なら1〜3週間、重度でも6〜8週間で復帰可能。<br>
+<strong>高位足首捻挫（シンデスモーシス損傷）</strong>：脛骨と腓骨を繋ぐ靭帯の損傷。通常の捻挫の約2倍の回復期間（平均55日）を要する。手術が必要な場合は8〜12週間。<br>
+<strong>腓骨骨折を伴う複合損傷</strong>：骨折と靭帯損傷が同時に起きた場合。手術後12週間以上の離脱が一般的。<br><br>
+専門家の分析では「足首がぐにゃりと曲がった映像から、靭帯損傷の懸念がある」とされ、骨折の場合は「12週間以上」と指摘されている。</p>
+</div>
+
+スロット監督は試合後、「残念ながら、かなり長期間の離脱になるだろう」と沈痛な表情で語った。しかし同時に、「負傷後もピッチに残ってセットプレーの守備をこなそうとした。彼は真の戦士だ」と、遠藤のプロフェッショナリズムを称えた。
+
+現地メディアは「恐ろしい負傷」「日本代表に緊急事態」と報じ、リバプールの同僚たちからも心配の声が相次いだ。
+
+## 手術と決断——「W杯に出るために」
+
+2月21日、森保一監督はリバプール側が手術の可能性を検討していることを明かした。そして2月28日、**遠藤は日本に帰国し、左足首の手術を受けた**。
+
+森保監督は手術について「W杯に出るために受けた」と明言。遠藤自身も2月27日に自身の有料サイトで手術を受けたことを報告し、W杯出場への強い意志を示した。
+
+<div class="quote-box">
+<p>「W杯に出るために手術を受けた。本人もクラブも日本代表も、その認識を共有している」——森保一（日本代表監督、2026年2月28日）</p>
+</div>
+
+手術のタイミングは重要な判断だった。保存療法を選べば手術のリスクは避けられるが、回復が長期化し、W杯に間に合わない可能性が高まる。手術を選べば確実な修復は見込めるが、リハビリ期間との戦いになる。遠藤とチームは「W杯に出場するための最善策」として手術を選択した。
+
+## 受傷から49日——リハビリの現在地
+
+3月29日のスコットランド戦を現地観戦した遠藤は、メディアの取材に対し現在の状態をこう語った。
+
+<div class="quote-box">
+<p>「まだちょっと痛みがあるけど、来週から走れたらと思っている」——遠藤航（2026年3月29日、グラスゴーにて）</p>
+</div>
+
+この発言は極めて重要だ。手術から約4週間で「来週から走りたい」ということは、**リハビリが想定通り、あるいはそれ以上のペースで進んでいる**ことを示唆する。足首手術後のリハビリは一般的に以下のような段階を踏む。
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">足首手術後のリハビリ段階——遠藤はどこにいるのか</span>
+<p class="point-body">足首靭帯手術（シンデスモーシス固定術）後のリハビリは、概ね以下の流れで進行する。<br><br>
+<strong>第1段階（術後0〜2週）</strong>：安静・免荷。ギプスまたはブーツで固定。<br>
+<strong>第2段階（2〜4週）</strong>：部分荷重開始。可動域の回復訓練。<br>
+<strong>第3段階（4〜6週）</strong>：全荷重歩行。軽いジョギング開始 ← <strong>遠藤は現在このフェーズ</strong><br>
+<strong>第4段階（6〜8週）</strong>：方向転換・アジリティトレーニング。ボールワーク再開。<br>
+<strong>第5段階（8〜12週）</strong>：チーム練習合流。実戦復帰。<br><br>
+「来週から走りたい」という遠藤の発言は、術後約5週目でジョギングを開始する目標を示しており、これは標準的なタイムラインの中でも<strong>順調〜やや早いペース</strong>にあたる。南野のACL断裂（全治6〜9ヶ月）と比較すると、遠藤の怪我は回復見込みが格段に明るい。</p>
+</div>
+
+注目すべきは、遠藤がスコットランド戦の観戦のためにリバプールから約4時間かけてグラスゴーまで移動している点だ。長時間の移動が可能な身体状態にあること自体が、回復の順調さを物語っている。
+
+さらに、2日後の3月31日にはウェンブリーでイングランド戦も現地観戦。南野拓実と共にスタンドに姿を見せ、チームの歴史的勝利を見届けた。
+
+## 過去の事例——足首負傷から復帰した選手たち
+
+遠藤のW杯出場可能性を検証するため、過去に足首の重傷から復帰したサッカー選手の事例を見てみよう。
+
+<table class="schedule-table">
+  <thead><tr><th>選手名</th><th>所属（当時）</th><th>負傷内容</th><th>復帰までの期間</th><th>備考</th></tr></thead>
+  <tbody>
+    <tr><td>ネイマール</td><td>パリSG</td><td>右足首靭帯損傷（2023年）</td><td>約4ヶ月</td><td>手術を選択。復帰後は好パフォーマンス</td></tr>
+    <tr><td>ハリー・ケイン</td><td>トッテナム</td><td>左足首靭帯損傷（2019年）</td><td>約2.5ヶ月</td><td>CL決勝に間に合わせた</td></tr>
+    <tr><td>ソン・フンミン</td><td>トッテナム</td><td>右腕骨折＋足首負傷（2020年）</td><td>約3ヶ月</td><td>コロナ中断が回復に幸い</td></tr>
+    <tr><td>マルコ・ロイス</td><td>ドルトムント</td><td>足首靭帯部分断裂（2014年）</td><td>約3ヶ月</td><td>W杯直前に負傷し出場を断念</td></tr>
+    <tr><td>遠藤航（目標）</td><td>リバプール</td><td>左足首（手術済み）</td><td>約3〜3.5ヶ月（5月中旬〜下旬）</td><td>W杯初戦（6/15）まで約4ヶ月</td></tr>
+  </tbody>
+</table>
+
+遠藤の場合、2月末の手術から3ヶ月で5月末、W杯初戦の6月15日まで約3.5ヶ月。足首の手術からの復帰としては**標準的な範囲内**であり、南野のACL断裂と比べると圧倒的に現実味がある。
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">南野との決定的な違い——遠藤の「時間との戦い」は勝算がある</span>
+<p class="point-body">南野拓実のACL断裂（全治6〜9ヶ月）がW杯出場「奇跡的」と評されるのに対し、遠藤の足首手術（全治8〜12週間）は「現実的」な範囲にある。スロット監督も「シーズン終了までに復帰できると楽観視している」と発言しており、リバプールの最終節（5月24日）までの復帰が目標とされている。<br><br>ただし、33歳という年齢は回復速度に影響を与える要因だ。若い選手と比べて組織の修復スピードが遅く、筋力の回復にもより時間がかかる。加えて、足首はサッカー選手にとって最も負荷がかかる関節であり、完全な信頼が戻るまでには実戦経験が必要となる。<br><br>とはいえ、遠藤の場合は「間に合うかどうか」ではなく「どの程度のコンディションで臨めるか」が論点であり、これは南野とは質的に異なる楽観的な状況だ。</p>
+</div>
+
+## 遠藤不在の影響——中盤のアンカーを誰が務めるか
+
+遠藤は森保ジャパンにおいて、単なる1選手以上の存在感を持つ。その影響を整理しておきたい。
+
+<table class="schedule-table">
+  <thead><tr><th>項目</th><th>データ</th></tr></thead>
+  <tbody>
+    <tr><td>代表キャップ数</td><td>63試合（森保体制）</td></tr>
+    <tr><td>ポジション</td><td>アンカー（ボランチ）</td></tr>
+    <tr><td>代表での特長</td><td>デュエル勝率の高さ、ゲームコントロール、リーダーシップ</td></tr>
+    <tr><td>プレミアリーグ実績</td><td>リバプールで2シーズン。首位争いを支える</td></tr>
+    <tr><td>W杯経験</td><td>2022年カタール大会に出場。ドイツ戦・スペイン戦の勝利に貢献</td></tr>
+  </tbody>
+</table>
+
+3月の親善試合では守田英正（スポルティングCP）と田中碧（リーズ）がダブルボランチを形成し、遠藤不在でも機能することを証明した。しかし、遠藤が持つ**「プレミアリーグで毎週世界最高レベルの攻撃陣と対峙している経験値」**と**「キャプテンとしての精神的支柱」**は、代えが利かない。
+
+特にW杯グループステージの初戦・オランダ戦では、デパイ、シモンズ、ガクポといった強力な攻撃陣を相手にするため、遠藤のデュエル力とポジショニングが不可欠だ。
+
+## W杯メンバー選考——遠藤のタイムライン
+
+<table class="schedule-table">
+  <thead><tr><th>日程</th><th>イベント</th><th>遠藤に求められる状態</th></tr></thead>
+  <tbody>
+    <tr><td>4月上旬</td><td>ジョギング再開（目標）</td><td>痛みなく走れる状態の確認</td></tr>
+    <tr><td>4月中旬〜下旬</td><td>方向転換・アジリティ訓練</td><td>足首の安定性と可動域の完全回復</td></tr>
+    <tr><td>5月上旬</td><td>チーム練習合流（目標）</td><td>対人プレー・実戦形式の練習参加</td></tr>
+    <tr><td>5月11日</td><td>FIFA予備登録リスト提出（最大55名）</td><td>リストに入ることは確実</td></tr>
+    <tr><td>5月中旬〜24日</td><td>リバプール公式戦復帰（目標）</td><td>短時間でも試合出場が理想的</td></tr>
+    <tr><td>5月30日</td><td>最終26名メンバー発表</td><td>試合出場の実績が最大のアピール</td></tr>
+    <tr><td>6月15日</td><td>W杯初戦 vs オランダ</td><td>先発出場可能な状態</td></tr>
+  </tbody>
+</table>
+
+遠藤の場合、南野とは異なり**予備登録の55名はほぼ確実**であり、最終26名にもキャプテンとしての重要性から選出される可能性が非常に高い。問題は「26名に入るか」ではなく、**「初戦で先発できるコンディションにあるか」**だ。
+
+<div class="highlight-box">
+<span class="point-label">POINT 4</span>
+<span class="point-title">33歳の回復力——年齢は味方か敵か</span>
+<p class="point-body">遠藤は1993年2月9日生まれの33歳。一般的に、30代以降の選手は20代と比べて組織の修復スピードが低下し、筋力回復にもより長い時間を要する。一方で、遠藤のようなベテラン選手には、身体の声を聞く能力や、リハビリへの取り組み方における経験値がある。<br><br>リバプールでの2シーズンで培った世界最高レベルのメディカルスタッフのサポートも大きい。プレミアリーグのクラブは最先端のリハビリ施設と専門家を擁しており、回復の質という面では最高の環境にいる。<br><br>加えて、遠藤はキャリアを通じて大きな怪我が少なく、身体の耐久性には定評がある。この「タフネス」が33歳での回復を後押しする可能性は十分にある。</p>
+</div>
+
+## 結論——キャプテンの帰還は「いつ」ではなく「どの状態で」
+
+南野拓実のACL断裂が「奇跡を起こせるか」という問いだとすれば、遠藤航の足首手術は**「どれだけ高いコンディションで戻れるか」**という、より現実的な問いだ。
+
+現時点での状況を整理すると：
+
+**楽観材料：** リハビリは順調に進行中。3月末時点で松葉杖なしの歩行が可能で、4月上旬のジョギング再開を目指している。スロット監督もシーズン中の復帰に楽観的。手術を日本で受けたことで、リハビリ環境も整っている。
+
+**懸念材料：** 33歳という年齢による回復速度の低下。足首はサッカーにおいて最も負荷がかかる部位であり、完全な信頼回復には実戦が必要。さらに、今季リバプールでの出場機会が限られていたため、試合勘の問題もある。
+
+**最重要ポイント：** 5月中旬までにリバプールの公式戦に復帰できるかどうか。これが実現すれば、W杯でのパフォーマンスに対する不安は大幅に軽減される。
+
+ハムデンパークのスタンドから仲間を見守っていた遠藤の目は、悔しさと同時に、確かな決意に満ちていた。前田大然にキャプテンマークの作法を教え、スタンドからでもチームを支えようとするその姿勢こそ、森保監督が遠藤をキャプテンに選んだ理由だろう。
+
+**ピッチの外からチームを導いた49日間。その経験を携えて、遠藤航は6月のアメリカに立つ。**
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">遠藤航のW杯出場——3つの注目ポイント</span>
+<p class="point-body"><strong>1. 4月のジョギング再開が第一関門：</strong>「来週から走りたい」という3月末の発言通りに進めば、回復は標準〜やや早いペース。このマイルストーンが最重要。<br><strong>2. 5月のリバプール復帰がカギ：</strong>シーズン最終盤に短時間でも出場できれば、W杯での先発起用に向けた最大のアピールになる。<br><strong>3. 南野との決定的な違い：</strong>足首手術の全治8〜12週間はACL断裂の6〜9ヶ月と比較にならないほど短い。遠藤の論点は「間に合うか」ではなく「100%で臨めるか」。キャプテンとしてのW杯出場は現実的な目標だ。</p>
+</div>
+
+## よくある質問（FAQ）
+
+**Q. 遠藤航はいつ怪我をした？**
+A. 2026年2月11日、プレミアリーグ第26節のサンダーランド戦で左足首を負傷。クロスをクリアしようとした際に左足が芝に引っかかり、足首を大きく捻った。酸素吸入器をつけた状態で担架に乗せられ退場した。
+
+**Q. どんな手術を受けた？**
+A. 2月末に日本に帰国し、左足首の手術を受けた。正確な術式は公表されていないが、高位足首捻挫（シンデスモーシス損傷）に対する固定術、または腓骨骨折の整復固定と推測される。森保監督は「W杯に出るために手術を受けた」と説明している。
+
+**Q. 遠藤はW杯に間に合うのか？**
+A. 南野のACL断裂と比べると、遠藤の復帰見込みは格段に明るい。足首手術の一般的な全治は8〜12週間で、2月末の手術から3ヶ月の5月末には復帰可能な計算。W杯初戦（6月15日）まで約3.5ヶ月あり、現実的な範囲内。スロット監督も「シーズン中の復帰に楽観的」と発言している。
+
+**Q. 現在のリハビリ状況は？**
+A. 3月29日のスコットランド戦を現地観戦した際、「まだちょっと痛みがあるけど、来週から走れたらと思っている」とコメント。松葉杖なしでの歩行が可能で、4月上旬のジョギング再開を目指している段階。
+
+**Q. 遠藤不在時は誰が代役を務める？**
+A. 3月の親善試合では守田英正（スポルティングCP）と田中碧（リーズ）がダブルボランチを形成。チームは遠藤なしで2連勝を果たしたが、W杯のオランダ戦などの大一番では遠藤のデュエル力とリーダーシップが不可欠とされている。`,
+    contentEn: `At Hampden Park in Glasgow, Wataru Endo was spotted walking without crutches in the stands. March 29, 2026, Kirin World Challenge against Scotland. Unable to take the pitch, Japan's captain swallowed his frustration and watched from above. Before kickoff, Daizen Maeda — entrusted with the armband in Endo's absence — had called asking how to do the coin toss. Endo walked him through it, step by step.
+
+Two days later at Wembley, he was in the stands again for the England match. He watched Kaoru Mitoma's winner deliver a historic victory from the outside looking in. "There's still a bit of pain," he admitted to media, "but I'm hoping to start running next week." In those words lay an unmistakable resolve: the World Cup is not a dream — it's a deadline.
+
+Wataru Endo, 33 years old. Captain of the Samurai Blue and the midfield engine of Moriyasu's system. It has been 49 days since his left ankle buckled beneath him at Sunderland — and while the severity differs from Minamino's ACL tear, the race against time for a 33-year-old captain heading into a World Cup is no less fraught with uncertainty.
+
+## The Moment It Happened — February 11, 2026, at the Stadium of Light
+
+On February 11, 2026, Premier League Matchday 26. Endo earned his first league start of the season, a chance to reaffirm Arne Slot's trust in the veteran midfielder who had been a vital part of Liverpool's title charge.
+
+The accident came in the 62nd minute. Reaching to clear a cross from the left, **Endo's left foot caught on the turf, violently twisting his ankle outward**. He crumpled to the ground.
+
+Remarkably, Endo got back to his feet and attempted to continue. He completed one more defensive set piece before collapsing again in the 64th minute, covering his face with his arm. By the 69th minute, he was being stretchered off with an oxygen mask, tears visible as he left the pitch.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">Understanding Endo's Injury — Three Types of Ankle Damage</span>
+<p class="point-body">Ankle injuries fall into three broad categories. Given the footage and the fact that surgery was required, Endo's injury is believed to be more severe than a standard lateral ligament sprain — likely a <strong>high ankle sprain (syndesmosis injury)</strong> or a <strong>compound injury involving a fibula fracture</strong>.<br><br>
+<strong>Lateral ligament sprain (common ankle sprain):</strong> The most frequent ankle injury. Mild cases recover in 1-3 weeks; severe cases in 6-8 weeks.<br>
+<strong>High ankle sprain (syndesmosis injury):</strong> Damage to the ligaments connecting the tibia and fibula. Takes roughly twice as long as a standard sprain (average 55 days). Surgery cases require 8-12 weeks.<br>
+<strong>Compound injury with fibula fracture:</strong> When a fracture accompanies ligament damage. Post-surgery recovery typically exceeds 12 weeks.<br><br>
+Expert analysis noted that the footage showed "the ankle bending unnaturally," raising concerns about ligament damage, with fracture scenarios requiring "12 weeks or more."</p>
+</div>
+
+After the match, Slot spoke with a heavy expression: "Unfortunately, he will be out for quite a long time." But he also praised Endo's character: "Even after getting injured, he stayed on the pitch to defend one more set piece. He's a true warrior."
+
+English media reported a "horrific injury" and "an emergency for the Japan national team," while Liverpool teammates expressed widespread concern.
+
+## The Surgery Decision — "To Play in the World Cup"
+
+On February 21, Moriyasu revealed that Liverpool was considering surgery. On February 28, **Endo returned to Japan and underwent surgery on his left ankle**.
+
+Moriyasu was unequivocal about the reasoning: "He had the surgery in order to play in the World Cup." Endo himself confirmed the operation on February 27 via his personal subscription site, making clear his determination to be fit for June.
+
+<div class="quote-box">
+<p>"He had the surgery to play in the World Cup. He, the club, and the national team all share that understanding." — Hajime Moriyasu, Japan National Team Manager (February 28, 2026)</p>
+</div>
+
+The timing was a calculated gamble. Conservative treatment would avoid surgical risk but risked a longer, less certain recovery. Surgery offered definitive repair but meant a strict rehabilitation timeline. Endo and his team chose surgery as the best path to the World Cup.
+
+## 49 Days On — Where Endo's Recovery Stands
+
+At the Scotland match on March 29, Endo spoke to media about his current condition.
+
+<div class="quote-box">
+<p>"There's still a bit of pain, but I'm hoping to start running next week." — Wataru Endo (March 29, 2026, Glasgow)</p>
+</div>
+
+This statement is enormously significant. Targeting jogging at approximately five weeks post-surgery suggests **rehabilitation is proceeding on schedule or slightly ahead of expectations**. Post-ankle surgery rehabilitation generally follows these stages:
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">Ankle Surgery Rehabilitation Stages — Where Is Endo Now?</span>
+<p class="point-body">Recovery following ankle ligament surgery (syndesmosis fixation) generally progresses as follows:<br><br>
+<strong>Stage 1 (0-2 weeks):</strong> Rest and non-weight-bearing. Cast or boot immobilization.<br>
+<strong>Stage 2 (2-4 weeks):</strong> Partial weight-bearing begins. Range-of-motion exercises.<br>
+<strong>Stage 3 (4-6 weeks):</strong> Full weight-bearing walking. Light jogging begins ← <strong>Endo is currently here</strong><br>
+<strong>Stage 4 (6-8 weeks):</strong> Directional changes, agility training. Ball work resumes.<br>
+<strong>Stage 5 (8-12 weeks):</strong> Team training integration. Return to competitive play.<br><br>
+Endo's statement about wanting to run "next week" at approximately 5 weeks post-surgery indicates he's at the <strong>standard-to-slightly-ahead pace</strong>. Compared to Minamino's ACL tear (6-9 months recovery), Endo's outlook is dramatically more optimistic.</p>
+</div>
+
+Notably, Endo traveled approximately four hours from Liverpool to Glasgow for the Scotland match — the fact that he could manage extended travel speaks volumes about his physical condition.
+
+Two days later, on March 31, he was at Wembley for the England match, watching alongside Minamino as Japan secured their historic first win over the Three Lions.
+
+## Historical Comparisons — Ankle Injury Recovery in Football
+
+<table class="schedule-table">
+  <thead><tr><th>Player</th><th>Club (at time)</th><th>Injury</th><th>Recovery Period</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Neymar</td><td>Paris Saint-Germain</td><td>Right ankle ligament (2023)</td><td>~4 months</td><td>Opted for surgery; strong return</td></tr>
+    <tr><td>Harry Kane</td><td>Tottenham</td><td>Left ankle ligament (2019)</td><td>~2.5 months</td><td>Rushed back for Champions League final</td></tr>
+    <tr><td>Son Heung-min</td><td>Tottenham</td><td>Fractured arm + ankle (2020)</td><td>~3 months</td><td>COVID break aided recovery</td></tr>
+    <tr><td>Marco Reus</td><td>Borussia Dortmund</td><td>Partial ankle ligament tear (2014)</td><td>~3 months</td><td>Injured just before World Cup; missed tournament</td></tr>
+    <tr><td>Endo (target)</td><td>Liverpool</td><td>Left ankle (surgery completed)</td><td>~3-3.5 months (mid-late May)</td><td>~4 months to World Cup opener (June 15)</td></tr>
+  </tbody>
+</table>
+
+Endo's timeline — surgery in late February, approximately 3 months to late May recovery, with 3.5 months to the World Cup opener — falls well within **standard recovery parameters**. Unlike Minamino's ACL situation, this is not a question of miracles but of managing a realistic timeline.
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">The Crucial Difference from Minamino — Endo's Battle Is Winnable</span>
+<p class="point-body">While Minamino's ACL tear (6-9 months recovery) makes World Cup participation "miraculous," Endo's ankle surgery (8-12 weeks recovery) places it firmly in the "realistic" category. Slot himself has said he's "optimistic about a return before the season ends," targeting the final Premier League matchday (May 24).<br><br>However, age is a factor. At 33, tissue repair and muscle recovery proceed more slowly than for younger players. The ankle is also football's most stressed joint, and full confidence requires match experience. Endo's season has also been limited in playing time, raising match sharpness concerns.<br><br>Still, the question for Endo is not "can he make it?" but "what condition will he be in?" — a fundamentally different and more optimistic question than Minamino faces.</p>
+</div>
+
+## The Impact of Endo's Absence — Who Anchors the Midfield?
+
+Endo's significance extends beyond his on-pitch contributions.
+
+<table class="schedule-table">
+  <thead><tr><th>Category</th><th>Data</th></tr></thead>
+  <tbody>
+    <tr><td>Caps under Moriyasu</td><td>63 (among team leaders)</td></tr>
+    <tr><td>Position</td><td>Defensive midfielder / Anchor</td></tr>
+    <tr><td>Key strengths</td><td>Elite duel success rate, game management, leadership</td></tr>
+    <tr><td>Premier League pedigree</td><td>Two seasons at Liverpool, contributing to title challenges</td></tr>
+    <tr><td>World Cup experience</td><td>Played in Qatar 2022; instrumental in victories over Germany and Spain</td></tr>
+  </tbody>
+</table>
+
+In March friendlies, Hidemasa Morita (Sporting CP) and Ao Tanaka (Leeds United) formed the double pivot, proving functionality without Endo. But Endo's **weekly experience competing against the world's best attackers in the Premier League** and his **irreplaceable spiritual leadership as captain** cannot be replicated.
+
+Against the Netherlands in the World Cup opener, facing Depay, Simons, and Gakpo, Endo's duel-winning ability and positional intelligence will be essential.
+
+## The Selection Timeline — Endo's Road to June
+
+<table class="schedule-table">
+  <thead><tr><th>Date</th><th>Event</th><th>Required Status</th></tr></thead>
+  <tbody>
+    <tr><td>Early April</td><td>Jogging resumes (target)</td><td>Pain-free running confirmed</td></tr>
+    <tr><td>Mid-Late April</td><td>Agility and directional training</td><td>Full ankle stability and range of motion</td></tr>
+    <tr><td>Early May</td><td>Team training integration (target)</td><td>Contact play and match-format participation</td></tr>
+    <tr><td>May 11</td><td>FIFA preliminary squad (max 55)</td><td>Inclusion virtually guaranteed</td></tr>
+    <tr><td>Mid-May to May 24</td><td>Liverpool match return (target)</td><td>Even brief competitive minutes are ideal</td></tr>
+    <tr><td>May 30</td><td>Final 26-man squad</td><td>Match minutes as ultimate proof of fitness</td></tr>
+    <tr><td>June 15</td><td>World Cup opener vs Netherlands</td><td>Starting XI readiness</td></tr>
+  </tbody>
+</table>
+
+<div class="highlight-box">
+<span class="point-label">POINT 4</span>
+<span class="point-title">Recovery at 33 — Is Age Friend or Foe?</span>
+<p class="point-body">Born February 9, 1993, Endo is 33. Players over 30 generally experience slower tissue repair and muscle recovery compared to their 20s. However, veterans like Endo possess invaluable body awareness and rehabilitation discipline built over years of professional experience.<br><br>Liverpool's world-class medical staff also provides a significant advantage. Premier League clubs employ cutting-edge rehabilitation facilities and specialists, placing Endo in the optimal recovery environment.<br><br>Additionally, Endo has been remarkably durable throughout his career, with few significant injuries. This proven "toughness" could accelerate recovery even at 33.</p>
+</div>
+
+## Conclusion — The Captain Returns: Not "If" but "How Ready"
+
+If Minamino's ACL tear poses the question "can a miracle happen?", Endo's ankle surgery asks a more grounded one: **"How close to 100% can he be?"**
+
+The current picture:
+
+**Reasons for optimism:** Rehabilitation is progressing well. By late March, he's walking without crutches and targeting jogging in early April. Slot is optimistic about a return within the season. Having surgery in Japan ensured an optimal recovery environment.
+
+**Reasons for caution:** Age-related recovery deceleration at 33. The ankle bears maximum stress in football, and full confidence requires competitive action. Limited playing time this season raises match sharpness concerns.
+
+**The critical milestone:** Can he return to Liverpool's squad by mid-May? If achieved, concerns about World Cup readiness diminish dramatically.
+
+From the Hampden Park stands, the eyes of Japan's captain held both frustration and unwavering resolve. Teaching Maeda the coin-toss protocol, supporting the team from the stands — this is precisely why Moriyasu chose Endo as captain.
+
+**49 days guiding his team from beyond the touchline. In June, in America, the captain will carry that experience back onto the pitch.**
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">Three Key Factors in Endo's World Cup Return</span>
+<p class="point-body"><strong>1. April jogging as the first gate:</strong> His late-March statement about running "next week" suggests on-track or ahead-of-schedule recovery. This milestone is paramount.<br><strong>2. May Liverpool return is decisive:</strong> Even brief competitive minutes in the season's final weeks would be the ultimate proof of fitness for Moriyasu.<br><strong>3. The crucial difference from Minamino:</strong> Ankle surgery recovery (8-12 weeks) is incomparably shorter than ACL reconstruction (6-9 months). Endo's question isn't "can he make it?" but "can he be at 100%?" His World Cup participation is a realistic — not miraculous — goal.</p>
+</div>
+
+## Frequently Asked Questions (FAQ)
+
+**Q. When did Endo get injured?**
+A. On February 11, 2026, during Premier League Matchday 26 against Sunderland. His left foot caught on the turf while clearing a cross, severely twisting his ankle. He was stretchered off with an oxygen mask.
+
+**Q. What surgery did he have?**
+A. Endo returned to Japan in late February for left ankle surgery. The exact procedure hasn't been publicly disclosed, but it's believed to be a syndesmosis fixation or fibula fracture repair. Moriyasu confirmed: "He had the surgery to play in the World Cup."
+
+**Q. Will Endo make the World Cup?**
+A. His outlook is significantly more positive than Minamino's ACL situation. Standard ankle surgery recovery is 8-12 weeks; from his late-February surgery, that targets late May — well before the June 15 opener. Slot has expressed optimism about an in-season return.
+
+**Q. What is his current rehabilitation status?**
+A. As of March 29, he was walking without crutches and stated "there's still a bit of pain, but I'm hoping to start running next week." He traveled to Glasgow and London to watch Japan's March friendlies in person.
+
+**Q. Who plays in his position when he's absent?**
+A. Hidemasa Morita (Sporting CP) and Ao Tanaka (Leeds United) formed the double pivot in March friendlies, with Japan winning both matches. However, Endo's Premier League-level duel ability and captaincy remain irreplaceable for marquee World Cup matches.`,
+  },
+  {
     id: "1775200800003",
     slug: "minamino-acl-injury-world-cup-2026-recovery-timeline",
     title: "南野拓実、前十字靭帯断裂からW杯へ——受傷から100日、奇跡の復帰は実現するのか。回復の現在地と過去の事例を徹底検証",
