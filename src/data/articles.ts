@@ -24,6 +24,321 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    id: "1775200800003",
+    slug: "minamino-acl-injury-world-cup-2026-recovery-timeline",
+    title: "南野拓実、前十字靭帯断裂からW杯へ——受傷から100日、奇跡の復帰は実現するのか。回復の現在地と過去の事例を徹底検証",
+    titleEn: "Minamino's ACL Tear: Can Japan's Talisman Make a Miraculous World Cup Return? Recovery Progress and Historical Precedents",
+    excerpt: "2025年12月のオセール戦で左膝前十字靭帯断裂の重傷を負った南野拓実。受傷から約100日が経過した現在のリハビリ進捗、過去にACL断裂から早期復帰を果たした選手の事例、そしてW杯最終メンバー発表（5月30日）に向けた展望を、現地観戦の視点も交えて徹底分析する。",
+    excerptEn: "Takumi Minamino suffered a devastating ACL tear in December 2025. Now 100 days into his recovery, we analyze his rehabilitation progress, compare historical ACL recovery timelines, and assess whether Japan's all-time leading scorer under Moriyasu can defy the odds to make the World Cup squad.",
+    category: "コラム" as const,
+    tags: ["南野拓実", "前十字靭帯断裂", "ACL", "W杯2026", "日本代表", "モナコ", "怪我", "リハビリ", "イングランド戦", "森保一"],
+    tagsEn: ["Takumi Minamino", "ACL Tear", "World Cup 2026", "Japan National Team", "AS Monaco", "Injury", "Rehabilitation", "England Match", "Hajime Moriyasu"],
+    publishedAt: "2026-04-01",
+    updatedAt: "2026-04-01",
+    isPopular: true,
+    sources: [
+      { name: "サッカーキング", url: "https://www.soccer-king.jp/news/japan/national/20260220/2127867.html" },
+      { name: "ゲキサカ", url: "https://web.gekisaka.jp/news/world/detail/?443165-443165-fl=" },
+      { name: "サッカーダイジェストWeb", url: "https://www.soccerdigestweb.com/news/detail/id=184016" },
+      { name: "Goal.com", url: "https://www.goal.com/jp/%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9/minamino-takumi-monaco-japan-football-soccer-20251222/blt7748200655e323d1" },
+      { name: "ESPN", url: "https://www.espn.com/soccer/story/_/id/47391377/japan-takumi-minamino-tears-acl-miss-world-cup" },
+      { name: "RotoWire", url: "https://www.rotowire.com/soccer/headlines/takumi-minamino-injury-working-hard-on-rehab-507852" },
+      { name: "サッカーキング（リハビリ動画）", url: "https://www.soccer-king.jp/news/japan/national/20260328/2142126.html" },
+    ],
+    content: `3月31日の夜、ロンドンの気温は4度まで下がっていた。ウェンブリー・スタジアムのアウェイセクションに陣取った筆者の周囲には、日の丸を掲げた数百人の日本人サポーターがひしめき合っていた。前半、三笘薫がカウンターからイングランドのゴールネットを揺らした瞬間、9万人の静寂を切り裂くように日本サポーターの歓声が響いた。歴史的な初勝利——だが、その歓喜の中で、筆者の視線は何度もピッチの外へ向いていた。
+
+あの場所に立つはずだった男が、いない。
+
+南野拓実。森保ジャパン歴代最多71キャップ、26ゴールを誇る攻撃の心臓。約100日前、モナコのユニフォームを着たまま両手で顔を覆い、担架でピッチを去った30歳のアタッカーは今、フランス南部で膝のリハビリと格闘している。左膝前十字靭帯断裂——サッカー選手にとって最も過酷な宣告。W杯開幕まで残り75日、「奇跡の復帰」は本当にあり得るのか。事実とデータ、そして過去の事例から検証する。
+
+## 受傷の経緯——2025年12月21日、オセールの夜
+
+悲劇は2025年12月21日、クープ・ドゥ・フランス（フランス杯）ラウンド32のオセール戦で起きた。前半30分過ぎ、南野は相手選手との競り合いの中で左膝を捻るように倒れ込んだ。直後、両手で顔を覆い、数分間ピッチに横たわったまま動けなかった。担架で運び出される際、その表情は苦痛と絶望に満ちていた。
+
+翌22日、ASモナコは公式に**「左膝前十字靭帯（ACL）の断裂」**と発表。通常6〜9ヶ月の離脱を要する重傷であり、2026年6月開幕のW杯出場は絶望的とされた。
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">前十字靭帯（ACL）断裂とは——なぜサッカー選手に多いのか</span>
+<p class="point-body">前十字靭帯（ACL）は膝関節の安定性を保つ最重要の靭帯で、急激な方向転換・減速・着地時に損傷しやすい。欧州トップリーグの研究（British Journal of Sports Medicine, 2023）によると、プロサッカー選手のACL断裂発生率は年間1,000試合あたり約0.5〜0.6件で、近年は増加傾向にある。断裂した場合、自身のハムストリング腱や膝蓋腱を移植して再建する手術が必要で、靭帯が癒合し血流が再開するまでに約10〜12週間を要する。さらに、復帰後もパフォーマンス低下や再受傷のリスクが指摘されており、ACL再建後の再断裂率は約6〜25%とされる。</p>
+</div>
+
+ポコニョーリ監督は試合直後の会見で「最初の診断はあまり良くなかった」と沈痛な表情で語った。チームメイトのポグバは自身もACL断裂からの復帰経験を持つだけに、「強くあれ」と重みのある励ましを送った。W杯グループステージで対戦するオランダのメディアは「日本に衝撃のニュース」「大打撃だ」と報じ、「少なくとも9ヶ月の離脱が予想される」と伝えている。
+
+森保一監督も12月の会見で「本当に非常に残念。復帰に向けてサポートしていきたい」と語り、最後まで南野のドアを閉じない姿勢を示した。
+
+## 受傷から100日——リハビリの現在地と専門家の見解
+
+2026年3月28日、モナコは南野とチームメイトのモハメド・サリスがリハビリに励む動画を公式SNSで公開した。エアロバイクを25分間漕ぐトレーニングに取り組む南野は「見た目よりずっとキツい」とコメント。心拍数を高く維持しながらの有酸素運動は、受傷後の筋力回復フェーズから**心肺機能の再構築フェーズ**へ移行していることを示唆する重要なサインだ。
+
+南野自身もInstagramで「以前より強くなって戻る」とファンに向けてメッセージを発信。ACL断裂というキャリア最大の逆境に対する、強い意志が伝わってくる。
+
+スポーツ医学の専門家によると、ACLリハビリにおける「エアロバイクでの持続的有酸素運動」は第3段階（術後3〜4ヶ月）の典型的なメニューとされる。佐賀大学医学部整形外科のリハビリガイドラインでは、この時期から徐々に負荷を上げ、第4段階のランニング再開へ向かうとしている。
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">ACLリハビリの5段階——南野は今どこにいるのか</span>
+<p class="point-body">ACL再建術後のリハビリは一般的に以下の5段階に分かれる。<br>
+<strong>第1段階（術後0〜6週）</strong>：炎症管理と可動域の回復。松葉杖での生活。<br>
+<strong>第2段階（6〜12週）</strong>：筋力トレーニング開始。靭帯の癒合を待つ。<br>
+<strong>第3段階（3〜4ヶ月）</strong>：有酸素運動、バランストレーニング ← <strong>南野は現在このフェーズ</strong><br>
+<strong>第4段階（4〜6ヶ月）</strong>：ランニング再開、方向転換を含む動作訓練。ここが最大の壁。<br>
+<strong>第5段階（6ヶ月以降）</strong>：チーム練習合流、対人プレー、実戦復帰。<br><br>
+受傷から約100日（約3ヶ月半）が経過した3月末時点で、南野は第3段階に入っていると推測される。<strong>最大の注目ポイントは4月中にランニングを再開できるかどうか</strong>だ。ここを順調にクリアできれば、5月のボールトレーニング移行が現実味を帯びる。</p>
+</div>
+
+## 過去の事例から読む——ACL断裂から早期復帰した選手たち
+
+南野のW杯出場可能性を占う上で、過去にACL断裂から早期復帰を果たした選手たちの事例は不可欠な参考材料だ。以下の比較表は、主要な事例を復帰期間の短い順にまとめたものである。
+
+<table class="schedule-table">
+  <thead><tr><th>選手名</th><th>所属（当時）</th><th>受傷時期</th><th>復帰までの期間</th><th>備考</th></tr></thead>
+  <tbody>
+    <tr><td>パトリック・ヘアマン</td><td>ボルシアMG</td><td>—</td><td>約133日（約4.5ヶ月）</td><td>史上最速クラスの早期復帰例</td></tr>
+    <tr><td>サミ・ケディラ</td><td>レアル・マドリード</td><td>2013年11月</td><td>約6ヶ月未満</td><td>2014年ブラジルW杯に間に合い優勝に貢献</td></tr>
+    <tr><td>ズラタン・イブラヒモビッチ</td><td>ACミラン</td><td>2022年5月</td><td>約7ヶ月</td><td>40歳での復帰。年齢を考慮し慎重なアプローチ</td></tr>
+    <tr><td>ファン・ダイク</td><td>リバプール</td><td>2020年10月</td><td>約9ヶ月</td><td>EURO2020を辞退し、長期的な完全回復を優先</td></tr>
+    <tr><td>ガビ</td><td>バルセロナ</td><td>2023年11月</td><td>約10ヶ月</td><td>半月板損傷も併発。復帰後に再負傷の報告あり</td></tr>
+    <tr><td>南野拓実（目標）</td><td>モナコ</td><td>2025年12月</td><td>約5.5ヶ月（6月15日）</td><td>W杯初戦に間に合うための必要期間</td></tr>
+  </tbody>
+</table>
+
+最速クラスのヘアマンでさえ約4.5ヶ月を要しており、南野がW杯初戦（6月15日 vs オランダ）に間に合うには、受傷からおよそ**5ヶ月半**での復帰が必要だ。これは医学的に「不可能ではないが、上位5〜10%に入る早さ」である。
+
+<div class="quote-box">
+<p>「タキは真のプロフェッショナルだ。彼にとって、シーズン終了後に別の大会に出場できる希望があるかもしれない」——セバスチャン・ポコニョーリ（モナコ監督、2026年2月の記者会見にて）</p>
+</div>
+
+最も示唆に富むのは**サミ・ケディラの事例**だ。2013年11月にACLを断裂しながら約6ヶ月で実戦に復帰し、2014年ブラジルW杯でドイツ代表の優勝に貢献した。南野は12月21日の受傷であり、W杯初戦の6月15日まで約5ヶ月半。ケディラと同等かそれ以上のペースが求められるが、タイムライン的には「ギリギリ射程圏内」と言える。
+
+一方で、**ガビの事例は警鐘**を鳴らす。2023年11月にACLを断裂し約10ヶ月で復帰したガビは、その後再負傷に見舞われた。無理な早期復帰は再断裂のリスクを高めるという厳然たる事実がある。
+
+## 南野不在の影響——誰が「10番の穴」を埋めるのか
+
+南野の不在は、単に一人の選手がいないという以上の意味を持つ。森保ジャパンにおける南野の役割を確認しておきたい。
+
+<table class="schedule-table">
+  <thead><tr><th>項目</th><th>データ</th></tr></thead>
+  <tbody>
+    <tr><td>森保体制での出場数</td><td>71試合（チーム最多）</td></tr>
+    <tr><td>森保体制での得点数</td><td>26ゴール（チーム最多）</td></tr>
+    <tr><td>主なポジション</td><td>トップ下、左ウイング、セカンドトップ</td></tr>
+    <tr><td>代表での特長</td><td>前線からのプレス、裏への飛び出し、決定力</td></tr>
+  </tbody>
+</table>
+
+南野不在時の代役候補としては、**久保建英**（レアル・ソシエダ）がトップ下に入る形、あるいは**鎌田大地**（クリスタルパレス）が起用されるシナリオが考えられる。3月のスコットランド戦・イングランド戦では南野抜きで2連勝を果たしており、チームとしての機能性は証明済みだ。しかし、南野が持つ「大舞台での経験値」と「チームの精神的支柱」としての存在感は、数字だけでは測れない。
+
+## W杯メンバー選考——5月30日の「Xデー」に向けて
+
+<table class="schedule-table">
+  <thead><tr><th>日程</th><th>イベント</th><th>南野に求められる状態</th></tr></thead>
+  <tbody>
+    <tr><td>4月中旬〜下旬</td><td>ランニング再開（目標）</td><td>膝の安定性確認、直線走行の復帰</td></tr>
+    <tr><td>5月上旬</td><td>ボールトレーニング開始（目標）</td><td>方向転換を含む動作が可能に</td></tr>
+    <tr><td>5月11日</td><td>FIFA予備登録リスト提出（最大55名）</td><td>リストに入るための回復の見込み</td></tr>
+    <tr><td>5月中旬〜下旬</td><td>チーム練習への合流（目標）</td><td>対人プレーが可能な状態</td></tr>
+    <tr><td>5月30日</td><td>最終26名メンバー発表</td><td>実戦復帰の目処が明確に立っていること</td></tr>
+    <tr><td>6月15日</td><td>W杯初戦 vs オランダ（ソフィア）</td><td>試合出場が可能な状態</td></tr>
+  </tbody>
+</table>
+
+今大会からFIFAが導入した**「55名→26名」の段階的選考プロセス**が、南野にとっては救いとなる可能性がある。5月11日の予備登録（最大55名）に南野が含まれるハードルは低い。しかし、最終的に5月30日の26名に入るには、その時点で実戦レベルへの回復が見込めていなければならない。
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">森保監督が直面する究極のジレンマ</span>
+<p class="point-body">森保一監督にとって、南野の選考は極めて難しい判断となる。南野は森保体制での最多出場（71試合）・最多得点（26ゴール）を記録するチームの精神的支柱であり、戦術的にも替えの利かない存在だ。一方で、ACL断裂からわずか5ヶ月での選出は、コンディション面のリスクが大きい。<br><br>「実力は十分だが、体が100%ではない」状態の南野を26人枠に入れた場合、コンディション万全の別の選手を外すことになる。逆に南野を外せば、チームは精神的支柱を失う。<br><br>過去のW杯では、怪我明けの選手を「賭け」で招集して失敗した例も少なくない。2014年大会のドログバ（コートジボワール）は膝の故障を抱えながら出場し、本来の力を発揮できなかった。森保監督の決断が、日本のW杯の行方を左右すると言っても過言ではない。</p>
+</div>
+
+## 結論——「出られる」と「出るべき」の間にあるもの
+
+冷静に状況を整理すると、南野のW杯出場には以下の**3つの条件**が揃う必要がある。
+
+**第一に、リハビリが最速ペースで進行すること。** 現在の第3段階から、4月中にランニング再開、5月にボールトレーニングと対人プレーへ復帰する必要がある。過去の事例で見ても、これは上位5%に入る驚異的なペースだ。
+
+**第二に、5月30日までに実戦出場の目処が立つこと。** たとえチーム練習に合流できたとしても、実戦で90分プレーできるフィットネスとは別問題だ。モナコのリーグ・アン最終節（5月下旬）に短時間でも出場できれば、森保監督への大きなアピールになる。
+
+**第三に、森保監督が「不完全な南野」を選ぶ決断をすること。** コンディション100%でない南野を入れるか、代わりに好調な選手を入れるか——これはデータだけでは解けない、指揮官の哲学に関わる問いだ。
+
+ポコニョーリ監督が「タキには希望がある」と語ったように、医学的に不可能ではない。しかし、ファン・ダイクがEURO2020を辞退して長期的な回復を選んだように、**「出られる」と「出るべき」の間には大きな隔たりがある。** ガビの再負傷は、その隔たりを無視した代償の大きさを物語っている。
+
+あの夜、ウェンブリーのアウェイスタンドから見た景色は、確かに美しかった。三笘のゴール、板倉の壁のような守備、遠藤の冷静なゲームコントロール——南野なしでも日本は戦える。それをピッチが証明していた。だが、試合後にスタジアムを出て、3月のロンドンの冷たい夜風に打たれながら、筆者が考えていたのはただ一つだった。
+
+**6月のアメリカで、あの男がピッチに立つ姿を見たい。**
+
+残り75日。南野拓実の挑戦は、まだ終わっていない。
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">南野拓実のW杯出場を左右する3つの鍵</span>
+<p class="point-body"><strong>1. リハビリの進行速度：</strong>現在は有酸素トレーニングの第3段階。4月中のランニング再開が最重要マイルストーン。過去の事例では上位5%のペースが必要。<br><strong>2. 5月30日の最終選考：</strong>55名の予備登録は可能性大。26名の最終メンバーに入るには、実戦レベルの回復を証明する必要がある。<br><strong>3. 森保監督の哲学：</strong>不完全でも南野の経験値を取るか、コンディション重視で他選手を選ぶか。この判断がW杯の命運を握る。</p>
+</div>
+
+## よくある質問（FAQ）
+
+**Q. 南野拓実の怪我はいつ起きた？**
+A. 2025年12月21日、クープ・ドゥ・フランス（フランス杯）のオセール戦で左膝前十字靭帯（ACL）を断裂した。前半30分過ぎに相手との競り合いで負傷し、担架で退場した。
+
+**Q. 前十字靭帯断裂の一般的な復帰期間は？**
+A. 通常6〜9ヶ月とされ、欧州トップリーグの選手の平均復帰期間は約7ヶ月。ただし、完全な試合パフォーマンスの回復にはさらに数ヶ月を要するケースが多い。
+
+**Q. 南野はW杯に間に合うのか？**
+A. 医学的に不可能ではないが極めて困難。W杯初戦（6月15日）まで受傷から約5ヶ月半で、過去の早期復帰事例（ケディラ：約6ヶ月、ヘアマン：約4.5ヶ月）と比較するとギリギリの範囲。モナコのポコニョーリ監督は「希望がある」と発言している。
+
+**Q. W杯の最終メンバー発表はいつ？**
+A. FIFAの規定では5月11日までに最大55名の予備登録リスト提出、5月30日に最終26名が確定する。
+
+**Q. 南野の代わりに誰が起用される？**
+A. 久保建英（レアル・ソシエダ）のトップ下起用や鎌田大地（クリスタルパレス）の招集が有力候補。3月の親善試合2連勝で、南野不在時のチーム機能は一定の証明がなされている。`,
+    contentEn: `The temperature in London had dropped to 4°C on the night of March 31. Huddled in the away section of Wembley Stadium, surrounded by hundreds of Japanese supporters waving Hinomaru flags, I watched Kaoru Mitoma's counterattacking goal silence 90,000 English fans. A historic first victory over England — yet through the euphoria, my eyes kept drifting to the empty spaces on the pitch.
+
+The man who should have been there was missing.
+
+Takumi Minamino. Japan's all-time leading scorer under Hajime Moriyasu with 26 goals in 71 caps, the attacking heartbeat of the Samurai Blue. Approximately 100 days earlier, the 30-year-old attacker had been carried off on a stretcher in Monaco, covering his face with both hands. Left knee ACL rupture — the most devastating diagnosis in football. With 75 days until the World Cup kicks off, can the "miracle comeback" actually happen? We examine the facts, the data, and historical precedents.
+
+## How It Happened — December 21, 2025, A Dark Night in Auxerre
+
+The tragedy unfolded on December 21, 2025, during the Coupe de France Round of 32 match against Auxerre. Just past the 30-minute mark, Minamino twisted his left knee during a challenge and collapsed. He covered his face with both hands, lying motionless on the pitch for several minutes before being stretchered off, his expression a portrait of agony and despair.
+
+The following day, AS Monaco officially confirmed a **"rupture of the anterior cruciate ligament (ACL) in his left knee."** With a typical recovery period of 6-9 months, his participation in the June 2026 World Cup was deemed virtually impossible.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">Understanding ACL Tears — Why Are They So Common in Football?</span>
+<p class="point-body">The anterior cruciate ligament (ACL) is the most critical stabilizer of the knee joint, particularly vulnerable during sudden changes of direction, deceleration, and landing. Research published in the British Journal of Sports Medicine (2023) shows ACL rupture incidence among top-tier European footballers at approximately 0.5-0.6 per 1,000 match hours, with rates trending upward in recent years. Reconstruction surgery using the patient's own hamstring or patellar tendon is required, with the graft needing 10-12 weeks to heal. Re-rupture rates after reconstruction range from 6-25%, making rushed returns particularly risky.</p>
+</div>
+
+Manager Pocognoli said after the match that "the initial diagnosis was not positive." Teammate Pogba — himself an ACL survivor — sent a message carrying particular weight: "Stay strong." Dutch media, representing Japan's World Cup group-stage opponents, reported it as "shocking news for Japan" and "a major blow," estimating "at least nine months of absence."
+
+Japan manager Hajime Moriyasu also commented in December: "It's truly very unfortunate. We want to support him in his recovery" — signaling his intention to keep the door open for Minamino until the very end.
+
+## 100 Days On — Recovery Progress and Expert Analysis
+
+On March 28, 2026, Monaco published footage on social media showing Minamino and teammate Mohamed Salisu working through rehabilitation. Completing 25-minute sessions on the exercise bike, Minamino commented that the workout was "much harder than it looks." The sustained elevated heart rate during aerobic training represents a significant milestone — a transition from the **muscle rebuilding phase** to **cardiovascular reconditioning**.
+
+Minamino has also posted on Instagram, telling fans he wants to "come back stronger than before," demonstrating unwavering determination in the face of his career's greatest adversity.
+
+According to sports medicine experts, sustained aerobic exercise on a stationary bike is a hallmark of Stage 3 rehabilitation (3-4 months post-surgery). Rehabilitation guidelines from Saga University's orthopedic department indicate that patients at this stage gradually increase load before progressing to Stage 4: running.
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">The 5 Stages of ACL Rehabilitation — Where Is Minamino Now?</span>
+<p class="point-body">Post-ACL reconstruction rehabilitation follows five general stages:<br>
+<strong>Stage 1 (0-6 weeks):</strong> Inflammation management and range-of-motion recovery. Crutches required.<br>
+<strong>Stage 2 (6-12 weeks):</strong> Strength training begins. Waiting for ligament healing.<br>
+<strong>Stage 3 (3-4 months):</strong> Aerobic exercise, balance training ← <strong>Minamino is currently here</strong><br>
+<strong>Stage 4 (4-6 months):</strong> Running resumes, agility and directional change drills. This is the biggest hurdle.<br>
+<strong>Stage 5 (6+ months):</strong> Team training integration, contact play, competitive return.<br><br>
+At approximately 100 days (3.5 months) post-injury as of late March, Minamino is estimated to be in Stage 3. <strong>The critical milestone is whether he can resume running in April.</strong> If that goes smoothly, transitioning to ball work in May becomes realistic.</p>
+</div>
+
+## Historical Precedents — Players Who Defied ACL Recovery Timelines
+
+Comparing past cases of rapid ACL recovery is essential for assessing Minamino's chances. The table below ranks major examples by recovery time.
+
+<table class="schedule-table">
+  <thead><tr><th>Player</th><th>Club (at time)</th><th>Injury Date</th><th>Recovery Period</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Patrick Herrmann</td><td>Borussia M'gladbach</td><td>—</td><td>~133 days (~4.5 months)</td><td>Among the fastest ACL recoveries ever recorded</td></tr>
+    <tr><td>Sami Khedira</td><td>Real Madrid</td><td>Nov 2013</td><td>Under 6 months</td><td>Returned for 2014 World Cup; won the tournament with Germany</td></tr>
+    <tr><td>Zlatan Ibrahimovic</td><td>AC Milan</td><td>May 2022</td><td>~7 months</td><td>Returned at age 40; cautious approach taken</td></tr>
+    <tr><td>Virgil van Dijk</td><td>Liverpool</td><td>Oct 2020</td><td>~9 months</td><td>Voluntarily skipped Euro 2020 for full recovery</td></tr>
+    <tr><td>Gavi</td><td>FC Barcelona</td><td>Nov 2023</td><td>~10 months</td><td>Also suffered meniscus damage; re-injured after return</td></tr>
+    <tr><td>Minamino (target)</td><td>AS Monaco</td><td>Dec 2025</td><td>~5.5 months (June 15)</td><td>Required timeline for World Cup opener</td></tr>
+  </tbody>
+</table>
+
+Even Herrmann, the fastest case on record, needed approximately 4.5 months. For Minamino to be available for Japan's opener against the Netherlands on June 15, he needs to recover in roughly **5.5 months** — placing him in the **top 5-10%** of all ACL recovery timelines. Medically speaking: "not impossible, but extraordinarily difficult."
+
+<div class="quote-box">
+<p>"Taki is a true professional. Perhaps there is hope for him to participate in another competition after the season ends." — Sébastien Pocognoli, AS Monaco manager (February 2026 press conference)</p>
+</div>
+
+The most instructive precedent is **Sami Khedira**, who tore his ACL in November 2013, returned in under six months, and went on to help Germany win the 2014 Brazil World Cup. Minamino's December 21 injury gives him approximately 5.5 months until the June 15 opener — a timeline that falls within Khedira's range, albeit requiring equal or faster progress.
+
+Conversely, **Gavi's case serves as a cautionary tale.** The Barcelona midfielder returned after roughly 10 months only to suffer a re-injury. Premature returns carry a stark and well-documented risk of re-rupture.
+
+## The Impact of Minamino's Absence — Who Fills the Number 10's Void?
+
+Minamino's absence extends far beyond losing one player. His role in the Moriyasu system deserves examination.
+
+<table class="schedule-table">
+  <thead><tr><th>Category</th><th>Data</th></tr></thead>
+  <tbody>
+    <tr><td>Caps under Moriyasu</td><td>71 (team record)</td></tr>
+    <tr><td>Goals under Moriyasu</td><td>26 (team record)</td></tr>
+    <tr><td>Primary positions</td><td>Number 10, left wing, second striker</td></tr>
+    <tr><td>Key strengths</td><td>Pressing from the front, runs in behind, clinical finishing</td></tr>
+  </tbody>
+</table>
+
+Leading replacement candidates include **Takefusa Kubo** (Real Sociedad) shifting into a central number 10 role, or **Daichi Kamada** (Crystal Palace) earning a recall. Japan's 2-0 record in March friendlies (Scotland, England) without Minamino proved the team can function — but his irreplaceable big-game experience and spiritual leadership cannot be measured by statistics alone.
+
+## The Selection Equation — Countdown to "X-Day" on May 30
+
+<table class="schedule-table">
+  <thead><tr><th>Date</th><th>Event</th><th>Required Status for Minamino</th></tr></thead>
+  <tbody>
+    <tr><td>Mid-Late April</td><td>Running resumes (target)</td><td>Knee stability confirmed, straight-line running</td></tr>
+    <tr><td>Early May</td><td>Ball training begins (target)</td><td>Agility drills with directional changes</td></tr>
+    <tr><td>May 11</td><td>FIFA preliminary squad deadline (max 55)</td><td>Recovery trajectory supporting inclusion</td></tr>
+    <tr><td>Mid-Late May</td><td>Team training integration (target)</td><td>Contact training possible</td></tr>
+    <tr><td>May 30</td><td>Final 26-man squad announcement</td><td>Clear, demonstrable path to match fitness</td></tr>
+    <tr><td>June 15</td><td>World Cup opener vs Netherlands</td><td>Available for competitive action</td></tr>
+  </tbody>
+</table>
+
+FIFA's new **"55-to-26" phased selection process**, introduced for this tournament, could be Minamino's lifeline. The bar for inclusion in the May 11 preliminary squad of 55 is relatively low. The decisive question is whether he makes the final 26 on May 30, which requires demonstrable evidence of match-level recovery.
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">Moriyasu's Ultimate Dilemma</span>
+<p class="point-body">For manager Hajime Moriyasu, the Minamino selection presents an agonizing choice. As the all-time leader in both caps (71) and goals (26) under his tenure, Minamino is both a tactical weapon and the squad's spiritual cornerstone. However, selecting a player just five months removed from ACL surgery carries immense fitness risks.<br><br>Including a less-than-100% Minamino in the 26-man squad means leaving out a fully fit alternative. Excluding him means losing the team's emotional anchor.<br><br>History offers cautionary tales: Didier Drogba was rushed back for Ivory Coast at the 2014 World Cup while nursing a knee injury and failed to perform at his best. Moriyasu's decision may well define Japan's World Cup campaign.</p>
+</div>
+
+## Conclusion — The Gap Between "Can Play" and "Should Play"
+
+A clear-eyed assessment identifies **three conditions** that must all align for Minamino to make the squad.
+
+**First, rehabilitation must progress at maximum speed.** Advancing from Stage 3 to running in April and ball work in May would place him in the top 5% of ACL recovery timelines in football history.
+
+**Second, he must demonstrate match readiness by May 30.** Returning to team training and achieving match fitness for 90 minutes are entirely different things. Even a brief substitute appearance in Monaco's final Ligue 1 fixture in late May would serve as powerful proof of concept for Moriyasu.
+
+**Third, Moriyasu must decide that an "incomplete Minamino" is worth the gamble.** Whether to take a not-fully-fit talisman over a peak-condition alternative is a question data alone cannot answer — it's a matter of managerial conviction.
+
+As Pocognoli suggested, "there may be hope for Taki." The medical science doesn't rule it out entirely. But as Van Dijk demonstrated by voluntarily skipping Euro 2020, **the gap between "able to play" and "should play" is vast.** Gavi's re-injury stands as a stark reminder of the cost when that gap is ignored.
+
+The view from Wembley's away section that night was undeniably beautiful. Mitoma's goal, Itakura's wall-like defending, Endo's composed game management — the pitch proved Japan can fight without Minamino. But walking out of the stadium into the cold March London air, only one thought lingered.
+
+**In June, in America, I want to see that man on the pitch.**
+
+75 days remain. Takumi Minamino's fight is far from over.
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">Three Keys to Minamino's World Cup Fate</span>
+<p class="point-body"><strong>1. Rehabilitation pace:</strong> Currently in Stage 3 aerobic training. Resuming running in April is the most critical milestone — historically, this requires top-5% recovery speed.<br><strong>2. The May 30 deadline:</strong> Inclusion in the 55-man preliminary squad is likely. Making the final 26 demands proof of match-level recovery.<br><strong>3. Moriyasu's philosophy:</strong> Will he gamble on Minamino's irreplaceable experience despite fitness concerns, or prioritize fully fit alternatives? This decision could define Japan's entire World Cup campaign.</p>
+</div>
+
+## Frequently Asked Questions (FAQ)
+
+**Q. When did Minamino get injured?**
+A. On December 21, 2025, during the Coupe de France match against Auxerre. He ruptured the ACL in his left knee after a challenge just past the 30-minute mark and was stretchered off.
+
+**Q. How long does ACL recovery typically take?**
+A. Generally 6-9 months, with the average for top European league players being approximately 7 months. Full match-performance recovery often requires additional months beyond the initial return.
+
+**Q. Can Minamino make the World Cup?**
+A. It's not medically impossible but extremely challenging. The June 15 opener is approximately 5.5 months post-injury. Historical fast recoveries (Khedira: ~6 months, Herrmann: ~4.5 months) suggest it's within the outer edge of possibility. Monaco manager Pocognoli has stated "there may be hope."
+
+**Q. When is the final World Cup squad announced?**
+A. FIFA requires preliminary squads of up to 55 players by May 11, with the final 26-man roster confirmed by May 30.
+
+**Q. Who could replace Minamino?**
+A. Takefusa Kubo (Real Sociedad) moving into a central number 10 role and Daichi Kamada (Crystal Palace) are the leading candidates. Japan's 2-0 record in March friendlies without Minamino demonstrated the team can function, though his big-game experience remains irreplaceable.`,
+  },
+  {
     id: "1775200800002",
     slug: "italy-fails-world-cup-2026-third-time-bosnia-penalties",
     title: "イタリア、3大会連続W杯出場ならず——バストーニ退場、PK戦4-1でボスニアに敗れる。ガットゥーゾの夢は潰えた",
