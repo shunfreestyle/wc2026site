@@ -424,7 +424,7 @@ A. Ao Tanaka (Leeds United), Joel Fujita (Sint-Truiden), and Kaishu Sano (Mainz)
 
 ## 受傷から100日——リハビリの現在地と専門家の見解
 
-2026年3月28日、モナコは南野とチームメイトのモハメド・サリスがリハビリに励む動画を公式SNSで公開した。エアロバイクを25分間漕ぐトレーニングに取り組む南野は「見た目よりずっとキツい」とコメント。心拍数を高く維持しながらの有酸素運動は、受傷後の筋力回復フェーズから**心肺機能の再構築フェーズ**へ移行していることを示唆する重要なサインだ。
+2026年3月27日、モナコは南野とチームメイトのモハメド・サリス（サウサンプトン時代の元同僚でもある）がリハビリに励む密着動画を公式SNSで公開した。映像にはエアロバイク、**ランニングマシンでの走行**、ウエイトトレーニングに取り組む南野の姿が収められており、「見た目よりずっとキツい」とコメント。特にランニングマシンでの走行は、ACLリハビリにおいて大きな節目となるステップだ。心拍数を高く維持しながらの有酸素運動に加え、走行動作を再開していることは、受傷後の筋力回復フェーズから**心肺機能の再構築と走行動作の再獲得フェーズ**へ移行していることを示す重要なサインである。
 
 南野自身もInstagramで「以前より強くなって戻る」とファンに向けてメッセージを発信。ACL断裂というキャリア最大の逆境に対する、強い意志が伝わってくる。
 
@@ -436,10 +436,10 @@ A. Ao Tanaka (Leeds United), Joel Fujita (Sint-Truiden), and Kaishu Sano (Mainz)
 <p class="point-body">ACL再建術後のリハビリは一般的に以下の5段階に分かれる。<br>
 <strong>第1段階（術後0〜6週）</strong>：炎症管理と可動域の回復。松葉杖での生活。<br>
 <strong>第2段階（6〜12週）</strong>：筋力トレーニング開始。靭帯の癒合を待つ。<br>
-<strong>第3段階（3〜4ヶ月）</strong>：有酸素運動、バランストレーニング ← <strong>南野は現在このフェーズ</strong><br>
-<strong>第4段階（4〜6ヶ月）</strong>：ランニング再開、方向転換を含む動作訓練。ここが最大の壁。<br>
+<strong>第3段階（3〜4ヶ月）</strong>：有酸素運動、バランストレーニング、ランニングマシンでの走行開始<br>
+<strong>第4段階（4〜6ヶ月）</strong>：屋外ランニング再開、方向転換を含む動作訓練。ここが最大の壁。<br>
 <strong>第5段階（6ヶ月以降）</strong>：チーム練習合流、対人プレー、実戦復帰。<br><br>
-受傷から約100日（約3ヶ月半）が経過した3月末時点で、南野は第3段階に入っていると推測される。<strong>最大の注目ポイントは4月中にランニングを再開できるかどうか</strong>だ。ここを順調にクリアできれば、5月のボールトレーニング移行が現実味を帯びる。</p>
+受傷から約100日（約3ヶ月半）が経過した3月末時点で、南野はエアロバイクに加え<strong>ランニングマシンでの走行も開始</strong>しており、第3段階の後半に位置していると推測される。ランニングマシンでの走行開始は極めてポジティブなサインだ。<strong>次のマイルストーンは屋外グラウンドでのランニングと方向転換を含むアジリティトレーニング</strong>。ここを4月中にクリアできれば、5月のボールトレーニング移行が現実味を帯びる。</p>
 </div>
 
 ## 過去の事例から読む——ACL断裂から早期復帰した選手たち
@@ -527,7 +527,7 @@ A. Ao Tanaka (Leeds United), Joel Fujita (Sint-Truiden), and Kaishu Sano (Mainz)
 <div class="takeaway-card">
 <span class="point-label">TAKEAWAY</span>
 <span class="point-title">南野拓実のW杯出場を左右する3つの鍵</span>
-<p class="point-body"><strong>1. リハビリの進行速度：</strong>現在は有酸素トレーニングの第3段階。4月中のランニング再開が最重要マイルストーン。過去の事例では上位5%のペースが必要。<br><strong>2. 5月30日の最終選考：</strong>55名の予備登録は可能性大。26名の最終メンバーに入るには、実戦レベルの回復を証明する必要がある。<br><strong>3. 森保監督の哲学：</strong>不完全でも南野の経験値を取るか、コンディション重視で他選手を選ぶか。この判断がW杯の命運を握る。</p>
+<p class="point-body"><strong>1. リハビリの進行速度：</strong>ランニングマシンでの走行を開始し第3段階後半に到達。次の壁は屋外でのランニングと方向転換。過去の事例では上位5%のペースが必要。<br><strong>2. 5月30日の最終選考：</strong>55名の予備登録は可能性大。26名の最終メンバーに入るには、実戦レベルの回復を証明する必要がある。<br><strong>3. 森保監督の哲学：</strong>不完全でも南野の経験値を取るか、コンディション重視で他選手を選ぶか。この判断がW杯の命運を握る。</p>
 </div>
 
 ## よくある質問（FAQ）
@@ -570,7 +570,7 @@ Japan manager Hajime Moriyasu also commented in December: "It's truly very unfor
 
 ## 100 Days On — Recovery Progress and Expert Analysis
 
-On March 28, 2026, Monaco published footage on social media showing Minamino and teammate Mohamed Salisu working through rehabilitation. Completing 25-minute sessions on the exercise bike, Minamino commented that the workout was "much harder than it looks." The sustained elevated heart rate during aerobic training represents a significant milestone — a transition from the **muscle rebuilding phase** to **cardiovascular reconditioning**.
+On March 27, 2026, Monaco published behind-the-scenes rehabilitation footage on social media showing Minamino and teammate Mohamed Salisu — former Southampton colleagues reunited in recovery. The video captured Minamino working through sessions on the exercise bike, **running on a treadmill**, and performing weight training, commenting that the workouts were "much harder than they look." The treadmill running is a particularly significant milestone in ACL rehabilitation — representing a transition from the muscle rebuilding phase to **cardiovascular reconditioning and the reacquisition of running mechanics**.
 
 Minamino has also posted on Instagram, telling fans he wants to "come back stronger than before," demonstrating unwavering determination in the face of his career's greatest adversity.
 
@@ -582,10 +582,10 @@ According to sports medicine experts, sustained aerobic exercise on a stationary
 <p class="point-body">Post-ACL reconstruction rehabilitation follows five general stages:<br>
 <strong>Stage 1 (0-6 weeks):</strong> Inflammation management and range-of-motion recovery. Crutches required.<br>
 <strong>Stage 2 (6-12 weeks):</strong> Strength training begins. Waiting for ligament healing.<br>
-<strong>Stage 3 (3-4 months):</strong> Aerobic exercise, balance training ← <strong>Minamino is currently here</strong><br>
-<strong>Stage 4 (4-6 months):</strong> Running resumes, agility and directional change drills. This is the biggest hurdle.<br>
+<strong>Stage 3 (3-4 months):</strong> Aerobic exercise, balance training, treadmill running begins<br>
+<strong>Stage 4 (4-6 months):</strong> Outdoor running resumes, agility and directional change drills. This is the biggest hurdle.<br>
 <strong>Stage 5 (6+ months):</strong> Team training integration, contact play, competitive return.<br><br>
-At approximately 100 days (3.5 months) post-injury as of late March, Minamino is estimated to be in Stage 3. <strong>The critical milestone is whether he can resume running in April.</strong> If that goes smoothly, transitioning to ball work in May becomes realistic.</p>
+At approximately 100 days (3.5 months) post-injury as of late March, Minamino has progressed to <strong>treadmill running in addition to bike work</strong>, placing him in the latter half of Stage 3. This is an extremely positive sign. <strong>The next critical milestone is outdoor running on grass and agility drills involving directional changes.</strong> If achieved in April, transitioning to ball work in May becomes realistic.</p>
 </div>
 
 ## Historical Precedents — Players Who Defied ACL Recovery Timelines
@@ -673,7 +673,7 @@ The view from Wembley's away section that night was undeniably beautiful. Mitoma
 <div class="takeaway-card">
 <span class="point-label">TAKEAWAY</span>
 <span class="point-title">Three Keys to Minamino's World Cup Fate</span>
-<p class="point-body"><strong>1. Rehabilitation pace:</strong> Currently in Stage 3 aerobic training. Resuming running in April is the most critical milestone — historically, this requires top-5% recovery speed.<br><strong>2. The May 30 deadline:</strong> Inclusion in the 55-man preliminary squad is likely. Making the final 26 demands proof of match-level recovery.<br><strong>3. Moriyasu's philosophy:</strong> Will he gamble on Minamino's irreplaceable experience despite fitness concerns, or prioritize fully fit alternatives? This decision could define Japan's entire World Cup campaign.</p>
+<p class="point-body"><strong>1. Rehabilitation pace:</strong> Treadmill running has begun, placing Minamino in late Stage 3. The next hurdle is outdoor running and agility drills — historically, this requires top-5% recovery speed.<br><strong>2. The May 30 deadline:</strong> Inclusion in the 55-man preliminary squad is likely. Making the final 26 demands proof of match-level recovery.<br><strong>3. Moriyasu's philosophy:</strong> Will he gamble on Minamino's irreplaceable experience despite fitness concerns, or prioritize fully fit alternatives? This decision could define Japan's entire World Cup campaign.</p>
 </div>
 
 ## Frequently Asked Questions (FAQ)
