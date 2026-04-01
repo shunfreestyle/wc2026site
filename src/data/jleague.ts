@@ -8117,6 +8117,16 @@ export const jMatchDetails: JMatchDetail[] = [
     goals: [
     { minute: 56, playerName: "奈良坂 巧", teamSide: "home" },
   ] },
+  // ── J1 第11節（振替）得点者 ──
+  { matchId: "e-r11-mchd-fct", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 32, playerName: "遠藤 渓太", teamSide: "away" },
+    { minute: 64, playerName: "佐藤 恵允", teamSide: "away" },
+    { minute: 78, playerName: "佐藤 恵允", teamSide: "away" },
+  ] },
+  { matchId: "w-r11-kob-shm", homeLineup: { formation: "", players: [] }, awayLineup: { formation: "", players: [] }, goals: [
+    { minute: 28, playerName: "永戸 勝也", teamSide: "home" },
+    { minute: 61, playerName: "扇原 貴宏", teamSide: "home" },
+  ] },
 ];
 
 export function getMatchDetail(matchId: string): JMatchDetail | undefined {
@@ -8244,6 +8254,9 @@ export const jMatches: JMatchSimple[] = [
   { id:"w-r8-shm-hir",   league:"J1", group:"WEST", round:8, date:"2026-03-22", kickoff:"13:00", homeTeam:"清水",   awayTeam:"広島",   homeScore:3, awayScore:1, status:"finished", stadium:"IAIスタジアム日本平",    referenceNote:NOTE },
   { id:"w-r8-kyt-nag",   league:"J1", group:"WEST", round:8, date:"2026-03-22", kickoff:"14:00", homeTeam:"京都",   awayTeam:"名古屋", homeScore:1, awayScore:1, pkHome:5, pkAway:4, pkWinner:"home", status:"finished", stadium:"サンガスタジアム by KYOCERA", referenceNote:NOTE },
   { id:"w-r8-cos-kob",   league:"J1", group:"WEST", round:8, date:"2026-03-22", kickoff:"15:00", homeTeam:"C大阪",  awayTeam:"神戸",   homeScore:1, awayScore:1, pkHome:6, pkAway:5, pkWinner:"home", status:"finished", stadium:"ヨドコウ桜スタジアム",   referenceNote:NOTE },
+  // ── J1 第11節（ACL日程振替） ──
+  { id:"e-r11-mchd-fct",  league:"J1", group:"EAST", round:11, date:"2026-04-01", kickoff:"19:03", homeTeam:"町田",   awayTeam:"FC東京", homeScore:0, awayScore:3, status:"finished", stadium:"町田GIONスタジアム",       referenceNote:NOTE },
+  { id:"w-r11-kob-shm",   league:"J1", group:"WEST", round:11, date:"2026-04-01", kickoff:"19:03", homeTeam:"神戸",   awayTeam:"清水",   homeScore:2, awayScore:0, status:"finished", stadium:"ノエビアスタジアム神戸",     referenceNote:NOTE },
 
   // ══════════════════════════════════════════
   // J2・J3百年構想リーグ EAST-A
