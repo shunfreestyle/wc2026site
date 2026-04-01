@@ -134,14 +134,14 @@ function ko(
 const groupStage: Match[] = [
   // ── Jun 11 ──
   gs( 1, "2026-06-11", 15,  0, "azteca",   "mexico",       "south-africa",   "A"),
-  gs( 2, "2026-06-11", 22,  0, "akron",    "korea",        "playoff-uefa-d", "A"),
+  gs( 2, "2026-06-11", 22,  0, "akron",    "korea",        "czech-republic", "A"),
 
   // ── Jun 12 ──
-  gs( 3, "2026-06-12", 15,  0, "bmo",      "canada",       "playoff-uefa-a", "B"),
+  gs( 3, "2026-06-12", 15,  0, "bmo",      "canada",       "bosnia", "B"),
   gs( 4, "2026-06-12", 21,  0, "sofi",     "usa",          "paraguay",       "D"),
 
   // ── Jun 13 ──
-  gs( 5, "2026-06-13",  0,  0, "bc",       "australia",    "playoff-uefa-c", "D"),
+  gs( 5, "2026-06-13",  0,  0, "bc",       "australia",    "turkey", "D"),
   gs( 6, "2026-06-13", 15,  0, "levis",    "qatar",        "switzerland",    "B"),
   gs( 7, "2026-06-13", 18,  0, "metlife",  "brazil",       "morocco",        "C"),
   gs( 8, "2026-06-13", 21,  0, "gillette", "haiti",        "scotland",       "C"),
@@ -150,7 +150,7 @@ const groupStage: Match[] = [
   gs( 9, "2026-06-14", 13,  0, "nrg",      "germany",      "curacao",        "E"),
   gs(10, "2026-06-14", 16,  0, "att",      "netherlands",  "japan",          "F"),
   gs(11, "2026-06-14", 19,  0, "lincoln",  "ivory-coast",  "ecuador",        "E"),
-  gs(12, "2026-06-14", 22,  0, "bbva",     "playoff-uefa-b","tunisia",       "F"),
+  gs(12, "2026-06-14", 22,  0, "bbva",     "sweden","tunisia",       "F"),
 
   // ── Jun 15 ──
   gs(13, "2026-06-15", 12,  0, "mercedes", "spain",        "cape-verde",     "H"),
@@ -161,30 +161,30 @@ const groupStage: Match[] = [
   // ── Jun 16 ──
   gs(17, "2026-06-16",  0,  0, "levis",    "austria",      "jordan",         "J"),
   gs(18, "2026-06-16", 15,  0, "metlife",  "france",       "senegal",        "I"),
-  gs(19, "2026-06-16", 18,  0, "gillette", "playoff-ic-2", "norway",         "I"),
+  gs(19, "2026-06-16", 18,  0, "gillette", "iraq", "norway",         "I"),
   gs(20, "2026-06-16", 21,  0, "arrowhead","argentina",    "algeria",        "J"),
 
   // ── Jun 17 ──
-  gs(21, "2026-06-17", 13,  0, "nrg",      "portugal",     "playoff-ic-1",   "K"),
+  gs(21, "2026-06-17", 13,  0, "nrg",      "portugal",     "dr-congo",   "K"),
   gs(22, "2026-06-17", 16,  0, "att",      "england",      "croatia",        "L"),
   gs(23, "2026-06-17", 19,  0, "bmo",      "ghana",        "panama",         "L"),
   gs(24, "2026-06-17", 22,  0, "azteca",   "uzbekistan",   "colombia",       "K"),
 
   // ── Jun 18 (MD2) ──
-  gs(25, "2026-06-18", 12,  0, "mercedes", "playoff-uefa-d","south-africa",  "A"),
-  gs(26, "2026-06-18", 15,  0, "sofi",     "switzerland",  "playoff-uefa-a", "B"),
+  gs(25, "2026-06-18", 12,  0, "mercedes", "czech-republic","south-africa",  "A"),
+  gs(26, "2026-06-18", 15,  0, "sofi",     "switzerland",  "bosnia", "B"),
   gs(27, "2026-06-18", 18,  0, "bc",       "canada",       "qatar",          "B"),
   gs(28, "2026-06-18", 21,  0, "akron",    "mexico",       "korea",          "A"),
 
   // ── Jun 19 ──
-  gs(29, "2026-06-19",  0,  0, "levis",    "playoff-uefa-c","paraguay",      "D"),
+  gs(29, "2026-06-19",  0,  0, "levis",    "turkey","paraguay",      "D"),
   gs(30, "2026-06-19", 15,  0, "lumen",    "usa",          "australia",      "D"),
   gs(31, "2026-06-19", 18,  0, "gillette", "scotland",     "morocco",        "C"),
   gs(32, "2026-06-19", 21,  0, "lincoln",  "brazil",       "haiti",          "C"),
 
   // ── Jun 20 ──
   gs(33, "2026-06-20",  0,  0, "bbva",     "tunisia",      "japan",          "F"),
-  gs(34, "2026-06-20", 13,  0, "nrg",      "netherlands",  "playoff-uefa-b", "F"),
+  gs(34, "2026-06-20", 13,  0, "nrg",      "netherlands",  "sweden", "F"),
   gs(35, "2026-06-20", 16,  0, "bmo",      "germany",      "ivory-coast",    "E"),
   gs(36, "2026-06-20", 20,  0, "arrowhead","ecuador",      "curacao",        "E"),
 
@@ -196,7 +196,7 @@ const groupStage: Match[] = [
 
   // ── Jun 22 ──
   gs(41, "2026-06-22", 13,  0, "att",      "argentina",    "austria",        "J"),
-  gs(42, "2026-06-22", 17,  0, "lincoln",  "france",       "playoff-ic-2",   "I"),
+  gs(42, "2026-06-22", 17,  0, "lincoln",  "france",       "iraq",   "I"),
   gs(43, "2026-06-22", 20,  0, "metlife",  "norway",       "senegal",        "I"),
   gs(44, "2026-06-22", 23,  0, "levis",    "jordan",       "algeria",        "J"),
 
@@ -204,27 +204,27 @@ const groupStage: Match[] = [
   gs(45, "2026-06-23", 13,  0, "nrg",      "portugal",     "uzbekistan",     "K"),
   gs(46, "2026-06-23", 16,  0, "gillette", "england",      "ghana",          "L"),
   gs(47, "2026-06-23", 19,  0, "bmo",      "panama",       "croatia",        "L"),
-  gs(48, "2026-06-23", 22,  0, "akron",    "colombia",     "playoff-ic-1",   "K"),
+  gs(48, "2026-06-23", 22,  0, "akron",    "colombia",     "dr-congo",   "K"),
 
   // ── Jun 24 (MD3 – simultaneous kickoffs per group) ──
   gs(49, "2026-06-24", 15,  0, "bc",       "switzerland",  "canada",         "B"),
-  gs(50, "2026-06-24", 15,  0, "lumen",    "playoff-uefa-a","qatar",         "B"),
+  gs(50, "2026-06-24", 15,  0, "lumen",    "bosnia","qatar",         "B"),
   gs(51, "2026-06-24", 18,  0, "hardrock", "scotland",     "brazil",         "C"),
   gs(52, "2026-06-24", 18,  0, "mercedes", "morocco",      "haiti",          "C"),
-  gs(53, "2026-06-24", 21,  0, "azteca",   "playoff-uefa-d","mexico",        "A"),
+  gs(53, "2026-06-24", 21,  0, "azteca",   "czech-republic","mexico",        "A"),
   gs(54, "2026-06-24", 21,  0, "bbva",     "south-africa", "korea",          "A"),
 
   // ── Jun 25 ──
   gs(55, "2026-06-25", 16,  0, "metlife",  "ecuador",      "germany",        "E"),
   gs(56, "2026-06-25", 16,  0, "lincoln",  "curacao",      "ivory-coast",    "E"),
-  gs(57, "2026-06-25", 19,  0, "att",      "japan",        "playoff-uefa-b", "F"),
+  gs(57, "2026-06-25", 19,  0, "att",      "japan",        "sweden", "F"),
   gs(58, "2026-06-25", 19,  0, "arrowhead","tunisia",      "netherlands",    "F"),
-  gs(59, "2026-06-25", 22,  0, "sofi",     "playoff-uefa-c","usa",           "D"),
+  gs(59, "2026-06-25", 22,  0, "sofi",     "turkey","usa",           "D"),
   gs(60, "2026-06-25", 22,  0, "levis",    "paraguay",     "australia",      "D"),
 
   // ── Jun 26 ──
   gs(61, "2026-06-26", 15,  0, "gillette", "norway",       "france",         "I"),
-  gs(62, "2026-06-26", 15,  0, "bmo",      "senegal",      "playoff-ic-2",   "I"),
+  gs(62, "2026-06-26", 15,  0, "bmo",      "senegal",      "iraq",   "I"),
   gs(63, "2026-06-26", 20,  0, "nrg",      "cape-verde",   "saudi-arabia",   "H"),
   gs(64, "2026-06-26", 20,  0, "akron",    "uruguay",      "spain",          "H"),
   gs(65, "2026-06-26", 23,  0, "lumen",    "egypt",        "iran",           "G"),
@@ -234,7 +234,7 @@ const groupStage: Match[] = [
   gs(67, "2026-06-27", 17,  0, "metlife",  "panama",       "england",        "L"),
   gs(68, "2026-06-27", 17,  0, "lincoln",  "croatia",      "ghana",          "L"),
   gs(69, "2026-06-27", 19, 30, "hardrock", "colombia",     "portugal",       "K"),
-  gs(70, "2026-06-27", 19, 30, "mercedes", "playoff-ic-1", "uzbekistan",     "K"),
+  gs(70, "2026-06-27", 19, 30, "mercedes", "dr-congo", "uzbekistan",     "K"),
   gs(71, "2026-06-27", 22,  0, "arrowhead","algeria",      "austria",        "J"),
   gs(72, "2026-06-27", 22,  0, "att",      "jordan",       "argentina",      "J"),
 ];
