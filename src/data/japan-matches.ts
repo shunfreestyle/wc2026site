@@ -71,52 +71,6 @@ function f3421(p: {
   ];
 }
 
-/* ── Formation: 4-2-3-1 ─────────────────────────── */
-function f4231(p: {
-  gk: [number, string];
-  lb: [number, string]; lcb: [number, string]; rcb: [number, string]; rb: [number, string];
-  ldm: [number, string]; rdm: [number, string];
-  rw: [number, string]; am: [number, string]; lw: [number, string];
-  st: [number, string];
-}): FormationPosition[] {
-  return [
-    { nameJa: p.gk[1], number: p.gk[0], top: 90, left: 50 },
-    { nameJa: p.lb[1], number: p.lb[0], top: 73, left: 10 },
-    { nameJa: p.lcb[1], number: p.lcb[0], top: 73, left: 35 },
-    { nameJa: p.rcb[1], number: p.rcb[0], top: 73, left: 65 },
-    { nameJa: p.rb[1], number: p.rb[0], top: 73, left: 90 },
-    { nameJa: p.ldm[1], number: p.ldm[0], top: 55, left: 35 },
-    { nameJa: p.rdm[1], number: p.rdm[0], top: 55, left: 65 },
-    { nameJa: p.rw[1], number: p.rw[0], top: 35, left: 85 },
-    { nameJa: p.am[1], number: p.am[0], top: 35, left: 50 },
-    { nameJa: p.lw[1], number: p.lw[0], top: 35, left: 15 },
-    { nameJa: p.st[1], number: p.st[0], top: 12, left: 50 },
-  ];
-}
-
-/* ── Formation: 4-1-4-1 ─────────────────────────── */
-function f4141(p: {
-  gk: [number, string];
-  lb: [number, string]; lcb: [number, string]; rcb: [number, string]; rb: [number, string];
-  dm: [number, string];
-  lm: [number, string]; lcm: [number, string]; rcm: [number, string]; rm: [number, string];
-  st: [number, string];
-}): FormationPosition[] {
-  return [
-    { nameJa: p.gk[1], number: p.gk[0], top: 90, left: 50 },
-    { nameJa: p.lb[1], number: p.lb[0], top: 73, left: 10 },
-    { nameJa: p.lcb[1], number: p.lcb[0], top: 73, left: 35 },
-    { nameJa: p.rcb[1], number: p.rcb[0], top: 73, left: 65 },
-    { nameJa: p.rb[1], number: p.rb[0], top: 73, left: 90 },
-    { nameJa: p.dm[1], number: p.dm[0], top: 58, left: 50 },
-    { nameJa: p.lm[1], number: p.lm[0], top: 40, left: 10 },
-    { nameJa: p.lcm[1], number: p.lcm[0], top: 40, left: 35 },
-    { nameJa: p.rcm[1], number: p.rcm[0], top: 40, left: 65 },
-    { nameJa: p.rm[1], number: p.rm[0], top: 40, left: 90 },
-    { nameJa: p.st[1], number: p.st[0], top: 12, left: 50 },
-  ];
-}
-
 /* ── Match Data (newest → oldest) ──────────────── */
 export const japanMatches: JapanMatch[] = [
   // ── 1. イングランド 0-1 日本（親善試合）──
@@ -131,12 +85,12 @@ export const japanMatches: JapanMatch[] = [
     goals: [
       { minute: "23", player: "三笘薫", team: "away" },
     ],
-    formation: "4-2-3-1",
-    formationPositions: f4231({
+    formation: "3-4-2-1",
+    formationPositions: f3421({
       gk: [1, "鈴木彩艶"],
-      lb: [21, "伊藤洋輝"], lcb: [3, "谷口彰悟"], rcb: [5, "渡辺剛"], rb: [14, "伊東純也"],
-      ldm: [24, "佐野海舟"], rdm: [15, "鎌田大地"],
-      rw: [10, "堂安律"], am: [13, "中村敬斗"], lw: [7, "三笘薫"],
+      lcb: [3, "谷口彰悟"], ccb: [5, "渡辺剛"], rcb: [21, "伊藤洋輝"],
+      lwb: [13, "中村敬斗"], lcm: [15, "鎌田大地"], rcm: [24, "佐野海舟"], rwb: [14, "伊東純也"],
+      lss: [7, "三笘薫"], rss: [10, "堂安律"],
       st: [18, "上田綺世"],
     }),
     starting: [
@@ -196,12 +150,12 @@ export const japanMatches: JapanMatch[] = [
     goals: [
       { minute: "84", player: "伊東純也", team: "away" },
     ],
-    formation: "4-1-4-1",
-    formationPositions: f4141({
+    formation: "3-4-2-1",
+    formationPositions: f3421({
       gk: [1, "鈴木彩艶"],
-      lb: [21, "伊藤洋輝"], lcb: [4, "瀬古歩夢"], rcb: [5, "渡辺剛"], rb: [2, "菅原由勢"],
-      dm: [6, "藤田譲瑠チマ"],
-      lm: [20, "佐野航大"], lcm: [17, "田中碧"], rcm: [8, "鈴木唯人"], rm: [11, "前田大然"],
+      lcb: [21, "伊藤洋輝"], ccb: [5, "渡辺剛"], rcb: [4, "瀬古歩夢"],
+      lwb: [11, "前田大然"], lcm: [6, "藤田譲瑠チマ"], rcm: [17, "田中碧"], rwb: [2, "菅原由勢"],
+      lss: [20, "佐野航大"], rss: [8, "鈴木唯人"],
       st: [26, "後藤啓介"],
     }),
     starting: [
