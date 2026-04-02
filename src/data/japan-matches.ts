@@ -1,7 +1,7 @@
 /**
- * 日本代表 直近11試合の試合データ
+ * 日本代表 直近10試合の試合データ
  * ソース: JFA公式 / ESPN / FOX Sports
- * W杯アジア最終予選 グループC 全10試合
+ * W杯アジア最終予選 グループC 8試合 + 親善試合2試合
  */
 
 export type MatchPlayer = {
@@ -71,9 +71,187 @@ function f3421(p: {
   ];
 }
 
+/* ── Formation: 4-2-3-1 ─────────────────────────── */
+function f4231(p: {
+  gk: [number, string];
+  lb: [number, string]; lcb: [number, string]; rcb: [number, string]; rb: [number, string];
+  ldm: [number, string]; rdm: [number, string];
+  rw: [number, string]; am: [number, string]; lw: [number, string];
+  st: [number, string];
+}): FormationPosition[] {
+  return [
+    { nameJa: p.gk[1], number: p.gk[0], top: 90, left: 50 },
+    { nameJa: p.lb[1], number: p.lb[0], top: 73, left: 10 },
+    { nameJa: p.lcb[1], number: p.lcb[0], top: 73, left: 35 },
+    { nameJa: p.rcb[1], number: p.rcb[0], top: 73, left: 65 },
+    { nameJa: p.rb[1], number: p.rb[0], top: 73, left: 90 },
+    { nameJa: p.ldm[1], number: p.ldm[0], top: 55, left: 35 },
+    { nameJa: p.rdm[1], number: p.rdm[0], top: 55, left: 65 },
+    { nameJa: p.rw[1], number: p.rw[0], top: 35, left: 85 },
+    { nameJa: p.am[1], number: p.am[0], top: 35, left: 50 },
+    { nameJa: p.lw[1], number: p.lw[0], top: 35, left: 15 },
+    { nameJa: p.st[1], number: p.st[0], top: 12, left: 50 },
+  ];
+}
+
+/* ── Formation: 4-1-4-1 ─────────────────────────── */
+function f4141(p: {
+  gk: [number, string];
+  lb: [number, string]; lcb: [number, string]; rcb: [number, string]; rb: [number, string];
+  dm: [number, string];
+  lm: [number, string]; lcm: [number, string]; rcm: [number, string]; rm: [number, string];
+  st: [number, string];
+}): FormationPosition[] {
+  return [
+    { nameJa: p.gk[1], number: p.gk[0], top: 90, left: 50 },
+    { nameJa: p.lb[1], number: p.lb[0], top: 73, left: 10 },
+    { nameJa: p.lcb[1], number: p.lcb[0], top: 73, left: 35 },
+    { nameJa: p.rcb[1], number: p.rcb[0], top: 73, left: 65 },
+    { nameJa: p.rb[1], number: p.rb[0], top: 73, left: 90 },
+    { nameJa: p.dm[1], number: p.dm[0], top: 58, left: 50 },
+    { nameJa: p.lm[1], number: p.lm[0], top: 40, left: 10 },
+    { nameJa: p.lcm[1], number: p.lcm[0], top: 40, left: 35 },
+    { nameJa: p.rcm[1], number: p.rcm[0], top: 40, left: 65 },
+    { nameJa: p.rm[1], number: p.rm[0], top: 40, left: 90 },
+    { nameJa: p.st[1], number: p.st[0], top: 12, left: 50 },
+  ];
+}
+
 /* ── Match Data (newest → oldest) ──────────────── */
 export const japanMatches: JapanMatch[] = [
-  // ── 1. MD10 日本 6-0 インドネシア ──
+  // ── 1. イングランド 0-1 日本（親善試合）──
+  {
+    id: "20260331-england-a",
+    date: "2026-03-31",
+    competition: "キリンワールドチャレンジ2026",
+    venue: "ウェンブリー・スタジアム",
+    city: "ロンドン（イングランド）",
+    home: { name: "England", nameJa: "イングランド", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", score: 0 },
+    away: { name: "Japan", nameJa: "日本", flag: "🇯🇵", score: 1 },
+    goals: [
+      { minute: "23", player: "三笘薫", team: "away" },
+    ],
+    formation: "4-2-3-1",
+    formationPositions: f4231({
+      gk: [1, "鈴木彩艶"],
+      lb: [21, "伊藤洋輝"], lcb: [3, "谷口彰悟"], rcb: [5, "渡辺剛"], rb: [14, "伊東純也"],
+      ldm: [24, "佐野海舟"], rdm: [15, "鎌田大地"],
+      rw: [10, "堂安律"], am: [13, "中村敬斗"], lw: [7, "三笘薫"],
+      st: [18, "上田綺世"],
+    }),
+    starting: [
+      { number: 1, name: "Zion Suzuki", nameJa: "鈴木彩艶", position: "GK" },
+      { number: 3, name: "Shogo Taniguchi", nameJa: "谷口彰悟", position: "DF" },
+      { number: 5, name: "Tsuyoshi Watanabe", nameJa: "渡辺剛", position: "DF" },
+      { number: 21, name: "Hiroki Ito", nameJa: "伊藤洋輝", position: "DF" },
+      { number: 24, name: "Kaishu Sano", nameJa: "佐野海舟", position: "MF" },
+      { number: 15, name: "Daichi Kamada", nameJa: "鎌田大地", position: "MF" },
+      { number: 14, name: "Junya Ito", nameJa: "伊東純也", position: "MF" },
+      { number: 10, name: "Ritsu Doan", nameJa: "堂安律", position: "MF" },
+      { number: 13, name: "Keito Nakamura", nameJa: "中村敬斗", position: "MF" },
+      { number: 7, name: "Kaoru Mitoma", nameJa: "三笘薫", position: "MF" },
+      { number: 18, name: "Ayase Ueda", nameJa: "上田綺世", position: "FW" },
+    ],
+    bench: [
+      { number: 2, name: "Yukinari Sugawara", nameJa: "菅原由勢", position: "DF" },
+      { number: 4, name: "Ayumu Seko", nameJa: "瀬古歩夢", position: "DF" },
+      { number: 6, name: "Joel Chima Fujita", nameJa: "藤田譲瑠チマ", position: "MF" },
+      { number: 8, name: "Yuito Suzuki", nameJa: "鈴木唯人", position: "MF" },
+      { number: 9, name: "Koki Ogawa", nameJa: "小川航基", position: "FW" },
+      { number: 11, name: "Daizen Maeda", nameJa: "前田大然", position: "FW" },
+      { number: 12, name: "Kosei Tani", nameJa: "谷晃生", position: "GK" },
+      { number: 16, name: "Kodai Sano", nameJa: "佐野航大", position: "MF" },
+      { number: 17, name: "Ao Tanaka", nameJa: "田中碧", position: "MF" },
+      { number: 19, name: "Daiki Hashioka", nameJa: "橋岡大樹", position: "DF" },
+      { number: 20, name: "Junnosuke Suzuki", nameJa: "鈴木淳之介", position: "MF" },
+      { number: 22, name: "Keisuke Goto", nameJa: "後藤啓介", position: "FW" },
+      { number: 23, name: "Kento Shiogai", nameJa: "塩貝健人", position: "FW" },
+      { number: 25, name: "Ayumu Ohata", nameJa: "大畑歩夢", position: "DF" },
+      { number: 27, name: "Ryunosuke Sato", nameJa: "佐藤龍之介", position: "MF" },
+      { number: 28, name: "Shuto Machino", nameJa: "町野修斗", position: "FW" },
+      { number: 99, name: "Taishi Nozawa Brandon", nameJa: "野澤大志ブランドン", position: "GK" },
+    ],
+    substitutions: [
+      { minute: "66", playerIn: "瀬古歩夢", playerOut: "伊藤洋輝" },
+      { minute: "66", playerIn: "小川航基", playerOut: "上田綺世" },
+      { minute: "71", playerIn: "田中碧", playerOut: "堂安律" },
+      { minute: "71", playerIn: "鈴木淳之介", playerOut: "三笘薫" },
+      { minute: "80", playerIn: "菅原由勢", playerOut: "鎌田大地" },
+      { minute: "80", playerIn: "鈴木唯人", playerOut: "伊東純也" },
+      { minute: "80", playerIn: "町野修斗", playerOut: "中村敬斗" },
+    ],
+    highlights: [],
+    highlightUrl: "",
+  },
+
+  // ── 2. スコットランド 0-1 日本（親善試合）──
+  {
+    id: "20260328-scotland-a",
+    date: "2026-03-28",
+    competition: "キリンワールドチャレンジ2026",
+    venue: "ハムデン・パーク",
+    city: "グラスゴー（スコットランド）",
+    home: { name: "Scotland", nameJa: "スコットランド", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", score: 0 },
+    away: { name: "Japan", nameJa: "日本", flag: "🇯🇵", score: 1 },
+    goals: [
+      { minute: "84", player: "伊東純也", team: "away" },
+    ],
+    formation: "4-1-4-1",
+    formationPositions: f4141({
+      gk: [1, "鈴木彩艶"],
+      lb: [21, "伊藤洋輝"], lcb: [4, "瀬古歩夢"], rcb: [5, "渡辺剛"], rb: [2, "菅原由勢"],
+      dm: [6, "藤田譲瑠チマ"],
+      lm: [20, "佐野航大"], lcm: [17, "田中碧"], rcm: [8, "鈴木唯人"], rm: [11, "前田大然"],
+      st: [26, "後藤啓介"],
+    }),
+    starting: [
+      { number: 1, name: "Zion Suzuki", nameJa: "鈴木彩艶", position: "GK" },
+      { number: 2, name: "Yukinari Sugawara", nameJa: "菅原由勢", position: "DF" },
+      { number: 4, name: "Ayumu Seko", nameJa: "瀬古歩夢", position: "DF" },
+      { number: 5, name: "Tsuyoshi Watanabe", nameJa: "渡辺剛", position: "DF" },
+      { number: 21, name: "Hiroki Ito", nameJa: "伊藤洋輝", position: "DF" },
+      { number: 6, name: "Joel Chima Fujita", nameJa: "藤田譲瑠チマ", position: "MF" },
+      { number: 8, name: "Yuito Suzuki", nameJa: "鈴木唯人", position: "MF" },
+      { number: 17, name: "Ao Tanaka", nameJa: "田中碧", position: "MF" },
+      { number: 20, name: "Kodai Sano", nameJa: "佐野航大", position: "MF" },
+      { number: 11, name: "Daizen Maeda", nameJa: "前田大然", position: "FW" },
+      { number: 26, name: "Keisuke Goto", nameJa: "後藤啓介", position: "FW" },
+    ],
+    bench: [
+      { number: 3, name: "Shogo Taniguchi", nameJa: "谷口彰悟", position: "DF" },
+      { number: 7, name: "Kaoru Mitoma", nameJa: "三笘薫", position: "MF" },
+      { number: 9, name: "Koki Ogawa", nameJa: "小川航基", position: "FW" },
+      { number: 10, name: "Ritsu Doan", nameJa: "堂安律", position: "MF" },
+      { number: 12, name: "Kosei Tani", nameJa: "谷晃生", position: "GK" },
+      { number: 13, name: "Keito Nakamura", nameJa: "中村敬斗", position: "FW" },
+      { number: 14, name: "Junya Ito", nameJa: "伊東純也", position: "FW" },
+      { number: 15, name: "Daichi Kamada", nameJa: "鎌田大地", position: "MF" },
+      { number: 18, name: "Ayase Ueda", nameJa: "上田綺世", position: "FW" },
+      { number: 19, name: "Daiki Hashioka", nameJa: "橋岡大樹", position: "DF" },
+      { number: 23, name: "Kento Shiogai", nameJa: "塩貝健人", position: "FW" },
+      { number: 24, name: "Kaishu Sano", nameJa: "佐野海舟", position: "MF" },
+      { number: 25, name: "Ayumu Ohata", nameJa: "大畑歩夢", position: "DF" },
+      { number: 27, name: "Ryunosuke Sato", nameJa: "佐藤龍之介", position: "MF" },
+      { number: 28, name: "Shuto Machino", nameJa: "町野修斗", position: "FW" },
+      { number: 99, name: "Taishi Nozawa Brandon", nameJa: "野澤大志ブランドン", position: "GK" },
+    ],
+    substitutions: [
+      { minute: "46", playerIn: "谷口彰悟", playerOut: "渡辺剛" },
+      { minute: "46", playerIn: "鈴木淳之介", playerOut: "伊藤洋輝" },
+      { minute: "46", playerIn: "三笘薫", playerOut: "佐野航大" },
+      { minute: "62", playerIn: "伊東純也", playerOut: "菅原由勢" },
+      { minute: "62", playerIn: "中村敬斗", playerOut: "前田大然" },
+      { minute: "63", playerIn: "上田綺世", playerOut: "後藤啓介" },
+      { minute: "63", playerIn: "伊東純也", playerOut: "鈴木唯人" },
+      { minute: "77", playerIn: "橋岡大樹", playerOut: "瀬古歩夢" },
+      { minute: "78", playerIn: "塩貝健人", playerOut: "藤田譲瑠チマ" },
+      { minute: "78", playerIn: "鎌田大地", playerOut: "田中碧" },
+    ],
+    highlights: [],
+    highlightUrl: "",
+  },
+
+  // ── 3. MD10 日本 6-0 インドネシア ──
   {
     id: "20250610-indonesia-h",
     date: "2025-06-10",
@@ -570,137 +748,6 @@ export const japanMatches: JapanMatch[] = [
     highlightUrl: "",
   },
 
-  // ── 9. MD2 バーレーン 0-5 日本 ──
-  {
-    id: "20240910-bahrain-a",
-    date: "2024-09-10",
-    competition: "FIFAワールドカップ2026 アジア最終予選 第2節",
-    venue: "バーレーン・ナショナルスタジアム",
-    city: "リファー（バーレーン）",
-    home: { name: "Bahrain", nameJa: "バーレーン", flag: "🇧🇭", score: 0 },
-    away: { name: "Japan", nameJa: "日本", flag: "🇯🇵", score: 5 },
-    goals: [
-      { minute: "37", player: "上田綺世（PK）", team: "away" },
-      { minute: "47", player: "上田綺世", team: "away" },
-      { minute: "61", player: "守田英正", team: "away" },
-      { minute: "64", player: "守田英正", team: "away" },
-      { minute: "81", player: "小川航基", team: "away" },
-    ],
-    formation: "3-4-2-1",
-    formationPositions: f3421({
-      gk: [1, "鈴木彩艶"], lcb: [3, "谷口彰悟"], ccb: [16, "町田浩樹"], rcb: [4, "板倉滉"],
-      lwb: [7, "三笘薫"], lcm: [5, "守田英正"], rcm: [6, "遠藤航"], rwb: [10, "堂安律"],
-      lss: [15, "鎌田大地"], rss: [8, "南野拓実"], st: [9, "上田綺世"],
-    }),
-    starting: [
-      { number: 1, name: "Zion Suzuki", nameJa: "鈴木彩艶", position: "GK" },
-      { number: 3, name: "Shogo Taniguchi", nameJa: "谷口彰悟", position: "DF" },
-      { number: 16, name: "Koki Machida", nameJa: "町田浩樹", position: "DF" },
-      { number: 4, name: "Ko Itakura", nameJa: "板倉滉", position: "DF" },
-      { number: 7, name: "Kaoru Mitoma", nameJa: "三笘薫", position: "MF" },
-      { number: 5, name: "Hidemasa Morita", nameJa: "守田英正", position: "MF" },
-      { number: 6, name: "Wataru Endo", nameJa: "遠藤航", position: "MF" },
-      { number: 10, name: "Ritsu Doan", nameJa: "堂安律", position: "MF" },
-      { number: 15, name: "Daichi Kamada", nameJa: "鎌田大地", position: "FW" },
-      { number: 8, name: "Takumi Minamino", nameJa: "南野拓実", position: "FW" },
-      { number: 9, name: "Ayase Ueda", nameJa: "上田綺世", position: "FW" },
-    ],
-    bench: [
-      { number: 12, name: "Keisuke Osako", nameJa: "大迫敬介", position: "GK" },
-      { number: 2, name: "Yukinari Sugawara", nameJa: "菅原由勢", position: "DF" },
-      { number: 11, name: "Daizen Maeda", nameJa: "前田大然", position: "FW" },
-      { number: 13, name: "Keito Nakamura", nameJa: "中村敬斗", position: "FW" },
-      { number: 14, name: "Junya Ito", nameJa: "伊東純也", position: "FW" },
-      { number: 17, name: "Ao Tanaka", nameJa: "田中碧", position: "MF" },
-      { number: 18, name: "Takuma Asano", nameJa: "浅野拓磨", position: "FW" },
-      { number: 19, name: "Koki Ogawa", nameJa: "小川航基", position: "FW" },
-      { number: 20, name: "Takefusa Kubo", nameJa: "久保建英", position: "FW" },
-      { number: 21, name: "Kota Takai", nameJa: "高井幸大", position: "DF" },
-      { number: 22, name: "Yuta Nakayama", nameJa: "中山雄太", position: "DF" },
-      { number: 23, name: "Kosei Tani", nameJa: "谷晃生", position: "GK" },
-    ],
-    substitutions: [
-      { minute: "46", playerIn: "伊東純也", playerOut: "堂安律" },
-      { minute: "46", playerIn: "久保建英", playerOut: "南野拓実" },
-      { minute: "65", playerIn: "小川航基", playerOut: "上田綺世" },
-      { minute: "73", playerIn: "中村敬斗", playerOut: "三笘薫" },
-      { minute: "82", playerIn: "浅野拓磨", playerOut: "守田英正" },
-    ],
-    highlights: [
-      "バーレーンのアウェイで5-0の圧勝。日本の実力差を見せつけた",
-      "上田綺世が前半にPKと流れの中からの2ゴールで主役に",
-      "後半は守田英正が2ゴールの活躍。61分と64分に連続得点",
-      "81分に小川航基もダメ押しゴール。チーム全体の得点力の高さを証明した",
-    ],
-    highlightUrl: "",
-  },
-
-  // ── 10. MD1 日本 7-0 中国 ──
-  {
-    id: "20240905-china-h",
-    date: "2024-09-05",
-    competition: "FIFAワールドカップ2026 アジア最終予選 第1節",
-    venue: "埼玉スタジアム2002",
-    city: "さいたま",
-    home: { name: "Japan", nameJa: "日本", flag: "🇯🇵", score: 7 },
-    away: { name: "China", nameJa: "中国", flag: "🇨🇳", score: 0 },
-    goals: [
-      { minute: "12", player: "遠藤航", team: "home" },
-      { minute: "45+2", player: "三笘薫", team: "home" },
-      { minute: "52", player: "南野拓実", team: "home" },
-      { minute: "58", player: "南野拓実", team: "home" },
-      { minute: "77", player: "伊東純也", team: "home" },
-      { minute: "87", player: "前田大然", team: "home" },
-      { minute: "90+5", player: "久保建英", team: "home" },
-    ],
-    formation: "3-4-2-1",
-    formationPositions: f3421({
-      gk: [1, "鈴木彩艶"], lcb: [3, "谷口彰悟"], ccb: [16, "町田浩樹"], rcb: [4, "板倉滉"],
-      lwb: [7, "三笘薫"], lcm: [6, "遠藤航"], rcm: [5, "守田英正"], rwb: [10, "堂安律"],
-      lss: [8, "南野拓実"], rss: [20, "久保建英"], st: [9, "上田綺世"],
-    }),
-    starting: [
-      { number: 1, name: "Zion Suzuki", nameJa: "鈴木彩艶", position: "GK" },
-      { number: 3, name: "Shogo Taniguchi", nameJa: "谷口彰悟", position: "DF" },
-      { number: 16, name: "Koki Machida", nameJa: "町田浩樹", position: "DF" },
-      { number: 4, name: "Ko Itakura", nameJa: "板倉滉", position: "DF" },
-      { number: 7, name: "Kaoru Mitoma", nameJa: "三笘薫", position: "MF" },
-      { number: 6, name: "Wataru Endo", nameJa: "遠藤航", position: "MF" },
-      { number: 5, name: "Hidemasa Morita", nameJa: "守田英正", position: "MF" },
-      { number: 10, name: "Ritsu Doan", nameJa: "堂安律", position: "MF" },
-      { number: 8, name: "Takumi Minamino", nameJa: "南野拓実", position: "FW" },
-      { number: 20, name: "Takefusa Kubo", nameJa: "久保建英", position: "FW" },
-      { number: 9, name: "Ayase Ueda", nameJa: "上田綺世", position: "FW" },
-    ],
-    bench: [
-      { number: 12, name: "Keisuke Osako", nameJa: "大迫敬介", position: "GK" },
-      { number: 2, name: "Yukinari Sugawara", nameJa: "菅原由勢", position: "DF" },
-      { number: 11, name: "Daizen Maeda", nameJa: "前田大然", position: "FW" },
-      { number: 13, name: "Keito Nakamura", nameJa: "中村敬斗", position: "FW" },
-      { number: 14, name: "Junya Ito", nameJa: "伊東純也", position: "FW" },
-      { number: 15, name: "Daichi Kamada", nameJa: "鎌田大地", position: "MF" },
-      { number: 17, name: "Ao Tanaka", nameJa: "田中碧", position: "MF" },
-      { number: 18, name: "Takuma Asano", nameJa: "浅野拓磨", position: "FW" },
-      { number: 19, name: "Koki Ogawa", nameJa: "小川航基", position: "FW" },
-      { number: 21, name: "Kota Takai", nameJa: "高井幸大", position: "DF" },
-      { number: 22, name: "Yuta Nakayama", nameJa: "中山雄太", position: "DF" },
-      { number: 23, name: "Kosei Tani", nameJa: "谷晃生", position: "GK" },
-    ],
-    substitutions: [
-      { minute: "63", playerIn: "伊東純也", playerOut: "三笘薫" },
-      { minute: "63", playerIn: "前田大然", playerOut: "堂安律" },
-      { minute: "71", playerIn: "田中碧", playerOut: "遠藤航" },
-      { minute: "71", playerIn: "高井幸大", playerOut: "板倉滉" },
-      { minute: "79", playerIn: "小川航基", playerOut: "上田綺世" },
-    ],
-    highlights: [
-      "W杯アジア最終予選の開幕戦で7-0の衝撃的大勝",
-      "12分にキャプテン遠藤航が先制。45+2分には三笘薫が追加点",
-      "後半は南野拓実が2ゴール、伊東純也・前田大然・久保建英も得点し7ゴールの猛攻",
-      "日本サッカー史に残る圧勝劇。W杯予選の歴代最多得点差勝利を記録した",
-    ],
-    highlightUrl: "https://www.youtube.com/watch?v=os3jbnGjV_4",
-  },
 ];
 
 /* ── Helper functions ───────────────────────────── */

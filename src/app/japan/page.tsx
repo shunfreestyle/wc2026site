@@ -6,38 +6,6 @@ import { japanSquad2026March, type JapanSquadPlayer } from "@/data/japan-squad";
 
 
 /* ──────────────────────────────────────────────
-   親善試合（イギリス遠征）
-   ────────────────────────────────────────────── */
-const friendlyMatches = [
-  {
-    date: "3/28（土）",
-    jst: "3/29（日）02:00 キックオフ",
-    local: "17:00 GMT",
-    opponent: "🏴󠁧󠁢󠁳󠁣󠁴󠁿 スコットランド",
-    opponentEn: "Scotland",
-    opponentFlag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
-    opponentLink: "/teams/scotland",
-    venue: "ハムデン・パーク",
-    city: "グラスゴー（スコットランド）",
-    broadcast: "NHK総合 生中継 / U-NEXT配信",
-    label: "キリンワールドチャレンジ 2026",
-  },
-  {
-    date: "3/31（火）",
-    jst: "4/1（水）03:45 キックオフ",
-    local: "19:45 BST",
-    opponent: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 イングランド",
-    opponentEn: "England",
-    opponentFlag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    opponentLink: "/teams/england",
-    venue: "ウェンブリー・スタジアム",
-    city: "ロンドン（イングランド）",
-    broadcast: "NHK Eテレ 生中継 / U-NEXT配信",
-    label: "キリンワールドチャレンジ 2026",
-  },
-];
-
-/* ──────────────────────────────────────────────
    W杯グループステージ
    ────────────────────────────────────────────── */
 const wcMatches = [
@@ -136,30 +104,6 @@ export default function JapanPage() {
 
   const grouped = groupByPosition(squad);
 
-  const opponentCards = locale === 'en' ? [
-    { key: "scotland", color: "#003F87", flag: "\u{1F3F4}", name: "Scotland",
-      time: "Mar 29 (Sat) 17:00 GMT", venue: "Hampden Park, Glasgow",
-      badge: "Squad announced (26 players)",
-      footer: "Manager: Steve Clarke | Key: McTominay, Robertson, McGinn",
-      href: "/japan/opponents/scotland", cta: "Scotland details \u2192" },
-    { key: "england", color: "#CF2B37", flag: "\u{1F3F4}", name: "England",
-      time: "Mar 31 (Tue) 19:45 BST", venue: "Wembley Stadium, London",
-      badge: "Squad announced (35 players)",
-      footer: "Manager: Thomas Tuchel | Key: Kane, Bellingham, Saka",
-      href: "/japan/opponents/england", cta: "England details \u2192" },
-  ] : [
-    { key: "scotland", color: "#003F87", flag: "\u{1F3F4}", name: "スコットランド",
-      time: "3/29（日）02:00（日本時間）", venue: "ハムデン・パーク（グラスゴー）",
-      badge: "メンバー発表済み（26名）",
-      footer: "監督：スティーブ・クラーク | 注目選手：マクトミネイ、ロバートソン、マクギン",
-      href: "/japan/opponents/scotland", cta: "スコットランド詳細 →" },
-    { key: "england", color: "#CF2B37", flag: "\u{1F3F4}", name: "イングランド",
-      time: "4/1（水）03:45（日本時間）", venue: "ウェンブリー・スタジアム（ロンドン）",
-      badge: "メンバー発表済み（35名）",
-      footer: "監督：トーマス・トゥヘル | 注目選手：ケイン、ベリンガム、サカ",
-      href: "/japan/opponents/england", cta: "イングランド詳細 →" },
-  ];
-
   const sportsTeamJsonLd = {
     "@context": "https://schema.org",
     "@type": "SportsTeam",
@@ -240,7 +184,7 @@ export default function JapanPage() {
             SAMURAI BLUE
           </h1>
           <p className="text-xl sm:text-2xl font-light tracking-wide text-blue-200 mb-1">
-            {locale === 'en' ? "Japan National Team \u2014 UK Tour" : "\u65E5\u672C\u4EE3\u8868 \u30A4\u30AE\u30EA\u30B9\u9060\u5F81"}
+            {locale === 'en' ? "Japan National Team \u2014 World Cup 2026" : "\u65E5\u672C\u4EE3\u8868 W\u676F2026"}
           </p>
           <p className="text-sm text-blue-300/80 mb-8">
             {locale === 'en' ? "Manager: Hajime Moriyasu | FIFA Ranking: 18 | 7th consecutive World Cup" : "監督：森保一 ｜ FIFAランキング：18位 ｜ W杯出場：7大会連続7回目"}
@@ -253,7 +197,7 @@ export default function JapanPage() {
           </div>
 
           <p className="max-w-2xl mx-auto text-blue-100/80 text-sm sm:text-base leading-relaxed mb-8">
-            {locale === 'en' ? "SAMURAI BLUE stunned the world by beating Germany and Spain at the 2022 Qatar World Cup. On their final European tour before the World Cup, they take on Scotland and England." : "2022年カタール大会ではドイツ・スペインを撃破し世界を驚かせたSAMURAI BLUE。W杯本大会前最後の欧州遠征で、スコットランド・イングランドという強豪に挑む。"}
+            {locale === 'en' ? "SAMURAI BLUE stunned the world by beating Germany and Spain at the 2022 Qatar World Cup. Now preparing for the 2026 World Cup, they face Netherlands and Tunisia in Group F." : "2022年カタール大会ではドイツ・スペインを撃破し世界を驚かせたSAMURAI BLUE。W杯本大会に向けて準備を進めるSAMURAI BLUE。グループFでオランダ・チュニジアと激突する。"}
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -276,81 +220,6 @@ export default function JapanPage() {
               {locale === 'en' ? "⚽ Lineup Maker" : "⚽ スタメンメーカー"}
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
-          イギリス遠征 親善試合
-          ═══════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-          <span
-            className="inline-block w-1.5 h-8 rounded-full"
-            style={{ background: "#BC002D" }}
-          />
-          {locale === 'en' ? "UK Tour Friendlies" : "イギリス遠征 親善試合"}
-        </h2>
-        <p className="text-sm text-gray-500 mb-8">
-          {locale === 'en' ? "Kirin World Challenge 2026 \u2014 Final European test matches before the World Cup" : "キリンワールドチャレンジ 2026 — W杯前最後の欧州テストマッチ"}
-        </p>
-
-        <div className="grid gap-4 sm:grid-cols-2">
-          {friendlyMatches.map((m, i) => (
-            <div
-              key={i}
-              className="rounded-2xl border-2 border-[#003087]/20 bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden"
-            >
-              <div
-                className="px-4 py-2 text-white text-sm font-bold"
-                style={{ background: "linear-gradient(90deg, #003087, #001845)" }}
-              >
-                {m.label}
-              </div>
-              <div className="p-5">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="text-center flex-1">
-                    <p className="text-2xl mb-1">🇯🇵</p>
-                    <p className="text-sm font-bold text-gray-900">{locale === 'en' ? "Japan" : "日本"}</p>
-                  </div>
-                  <div className="px-4 text-center">
-                    <p className="text-lg font-black text-gray-300">VS</p>
-                  </div>
-                  <div className="text-center flex-1">
-                    <p className="text-2xl mb-1">{m.opponent.split(" ")[0]}</p>
-                    <p className="text-sm font-bold text-gray-900">
-                      {m.opponent.split(" ").slice(1).join(" ")}
-                    </p>
-                  </div>
-                </div>
-                <div className="space-y-1.5 text-xs text-gray-500 border-t pt-3">
-                  <p>📅 現地：{m.date} {m.local}</p>
-                  <p className="font-semibold text-[#BC002D] text-sm">
-                    🇯🇵 日本時間：{m.jst}
-                  </p>
-                  <p>🏟️ {m.venue}（{m.city}）</p>
-                  <p>📺 {m.broadcast}</p>
-                </div>
-                <div className="border-t pt-3 mt-3">
-                  <p className="text-xs text-gray-400 font-medium mb-2">{locale === 'en' ? "View squad" : "メンバーを確認"}</p>
-                  <div className="flex flex-col sm:flex-row gap-2">
-                    <button
-                      type="button"
-                      onClick={() => document.getElementById("squad")?.scrollIntoView({ behavior: "smooth", block: "start" })}
-                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#003087]/10 text-[#003087] text-xs font-bold hover:bg-[#003087]/20 transition-colors cursor-pointer"
-                    >
-                      {locale === 'en' ? "\u{1F1EF}\u{1F1F5} Japan squad" : "\u{1F1EF}\u{1F1F5} 日本代表メンバー"}
-                    </button>
-                    <Link
-                      href={m.opponentLink}
-                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-gray-100 text-gray-700 text-xs font-bold hover:bg-gray-200 transition-colors"
-                    >
-                      {m.opponentFlag} {m.opponent.split(" ").slice(1).join(" ")}
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -460,54 +329,6 @@ export default function JapanPage() {
             </div>
           </div>
         ))}
-      </section>
-
-      {/* ═══════════════════════════════════════
-          OPPONENT CARDS
-          ═══════════════════════════════════════ */}
-      <section className="bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span className="inline-block w-1.5 h-8 rounded-full bg-[#003087]" />
-            {locale === 'en' ? "Opponent Squads" : "対戦国メンバー情報"}
-          </h2>
-          <p className="text-sm text-gray-500 mb-8">
-            {locale === 'en' ? "Click a card to see squad details" : "対戦カードから詳細ページへ移動できます"}
-          </p>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {opponentCards.map((card) => (
-              <div key={card.key} className="rounded-2xl bg-white border border-gray-200 shadow-sm overflow-hidden">
-                <div className="flex">
-                  <div className="w-1.5 shrink-0" style={{ background: card.color }} />
-                  <div className="flex-1 p-5">
-                    <div className="flex items-start justify-between gap-3 mb-2">
-                      <div>
-                        <h3 className="text-lg font-bold text-gray-900">
-                          {card.flag} {card.name}
-                        </h3>
-                        <p className="text-xs text-gray-500 mt-1">📅 {card.time}</p>
-                        <p className="text-xs text-gray-500">🏟️ {card.venue}</p>
-                      </div>
-                      <span className="inline-block px-2 py-1 rounded-full text-[10px] font-bold bg-gray-100 text-gray-700">
-                        {card.badge}
-                      </span>
-                    </div>
-                    <p className="text-xs text-gray-600 mb-4">{card.footer}</p>
-                    <div className="text-right">
-                      <Link
-                        href={card.href}
-                        className="inline-flex items-center gap-1 text-sm font-bold hover:opacity-80 transition-opacity"
-                        style={{ color: card.color }}
-                      >
-                        {card.cta}
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* ═══════════════════════════════════════
