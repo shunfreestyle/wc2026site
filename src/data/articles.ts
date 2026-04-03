@@ -43,7 +43,7 @@ export const articles: Article[] = [
       { name: "JFA公式", url: "https://www.jfa.jp/samuraiblue/20260331/match_page.html" },
       { name: "サッカーキング", url: "https://www.soccer-king.jp/news/japan/national/fixed/2101065.html" },
     ],
-    content: `3月のイギリス遠征でスコットランドとイングランドを連破し、W杯前最後のテストマッチを5連勝で締めくくった森保ジャパン。通算成績は**103戦72勝**——この数字だけ見ても、森保一監督が日本サッカー史上最も結果を残している指揮官であることは疑いようがない。
+    content: `3月のイギリス遠征でスコットランドとイングランドを連破し、W杯前最後のテストマッチを5連勝で締めくくった森保ジャパン。Number Webの報道によれば通算成績は**103戦72勝**（勝率約70%）——この数字は、森保一監督が日本サッカー史上最も結果を残している指揮官であることを明確に示している。
 
 しかし、2連勝の裏で序列は大きく動いた。佐野海舟がボランチの定位置を奪い、遠藤航の立場が揺らいでいる。ACL断裂の南野拓実は55名の予備登録に入れるかどうかの瀬戸際。久保建英はハムストリング負傷から復帰途上——。W杯メンバー発表まで残り約2ヶ月、サムライフットボール編集部が26人を徹底予想する。
 
@@ -53,7 +53,7 @@ export const articles: Article[] = [
   <thead><tr><th>Pos</th><th>選手名</th><th>所属</th><th>年齢</th><th>備考</th></tr></thead>
   <tbody>
     <tr><td colspan="5" style="background:#fef3c7;font-weight:bold">GK（3名）</td></tr>
-    <tr><td>GK</td><td>鈴木彩艶</td><td>パルマ</td><td>24</td><td>正GK。イギリス遠征で2試合フル出場</td></tr>
+    <tr><td>GK</td><td>鈴木彩艶</td><td>パルマ</td><td>23</td><td>正GK。イギリス遠征で2試合フル出場</td></tr>
     <tr><td>GK</td><td>大迫敬介</td><td>サンフレッチェ広島</td><td>26</td><td>経験豊富な第2GK</td></tr>
     <tr><td>GK</td><td>早川友基</td><td>鹿島アントラーズ</td><td>23</td><td>Jリーグで安定感抜群。第3GK</td></tr>
     <tr><td colspan="5" style="background:#dbeafe;font-weight:bold">DF（8名）</td></tr>
@@ -63,22 +63,22 @@ export const articles: Article[] = [
     <tr><td>CB</td><td>谷口彰悟</td><td>シント・トロイデン</td><td>33</td><td>経験値。カタールW杯からの継続</td></tr>
     <tr><td>CB</td><td>渡辺剛</td><td>フェイエノールト</td><td>27</td><td>3月遠征で2試合先発、安定感を証明</td></tr>
     <tr><td>CB/WB</td><td>瀬古歩夢</td><td>レンヌ</td><td>25</td><td>CBとWBを兼任できるユーティリティ</td></tr>
-    <tr><td>WB</td><td>菅原由勢</td><td>サウサンプトン</td><td>24</td><td>右WBの第一候補。攻撃参加が武器</td></tr>
+    <tr><td>WB</td><td>菅原由勢</td><td>ブレーメン</td><td>24</td><td>右WBの第一候補。攻撃参加が武器</td></tr>
     <tr><td>WB</td><td>橋岡大樹</td><td>ルートン・タウン</td><td>27</td><td>右WBのバックアップ。対人守備に強み</td></tr>
     <tr><td colspan="5" style="background:#d1fae5;font-weight:bold">MF（8名）</td></tr>
     <tr><td>MF</td><td>鎌田大地</td><td>クリスタルパレス</td><td>30</td><td>ボランチの軸。攻守のバランサー</td></tr>
-    <tr><td>MF</td><td>佐野海舟</td><td>マインツ</td><td>24</td><td>イングランド戦先発。デュエル王</td></tr>
+    <tr><td>MF</td><td>佐野海舟</td><td>マインツ</td><td>25</td><td>イングランド戦先発。デュエル王</td></tr>
     <tr><td>MF</td><td>遠藤航</td><td>リバプール</td><td>33</td><td>足首手術中。5月復帰目標。キャプテン</td></tr>
     <tr><td>MF</td><td>田中碧</td><td>リーズ</td><td>27</td><td>スコットランド戦先発。パス精度高い</td></tr>
     <tr><td>MF</td><td>藤田譲瑠チマ</td><td>シント・トロイデン</td><td>24</td><td>守備的MFの新鋭。ボール奪取力</td></tr>
-    <tr><td>MF</td><td>堂安律</td><td>フライブルク</td><td>28</td><td>イングランド戦でキャプテン。右シャドー</td></tr>
+    <tr><td>MF</td><td>堂安律</td><td>フランクフルト</td><td>28</td><td>イングランド戦でキャプテン。右シャドー</td></tr>
     <tr><td>MF</td><td>久保建英</td><td>レアル・ソシエダ</td><td>25</td><td>ハムストリング回復中。5月復帰見込み</td></tr>
     <tr><td>MF</td><td>三笘薫</td><td>ブライトン</td><td>29</td><td>イングランド戦決勝弾。左シャドーの主</td></tr>
     <tr><td colspan="5" style="background:#fee2e2;font-weight:bold">FW（7名）</td></tr>
     <tr><td>FW</td><td>上田綺世</td><td>フェイエノールト</td><td>27</td><td>1トップの第一候補。得点力</td></tr>
-    <tr><td>FW</td><td>伊東純也</td><td>スタッド・ランス</td><td>33</td><td>スコットランド戦決勝弾。右WBも可</td></tr>
-    <tr><td>FW</td><td>中村敬斗</td><td>スタッド・ランス</td><td>25</td><td>左WBの主力。2試合出場で存在感</td></tr>
-    <tr><td>FW</td><td>小川航基</td><td>NEC</td><td>28</td><td>エールディヴィジ得点王。ポストプレー</td></tr>
+    <tr><td>FW</td><td>伊東純也</td><td>KRCゲンク</td><td>33</td><td>スコットランド戦決勝弾。右WBも可</td></tr>
+    <tr><td>FW</td><td>中村敬斗</td><td>スタッド・ランス</td><td>25</td><td>左WBの主力。2部でも主力として活躍</td></tr>
+    <tr><td>FW</td><td>小川航基</td><td>NEC</td><td>28</td><td>エールディヴィジ得点ランク上位。ポストプレー</td></tr>
     <tr><td>FW</td><td>前田大然</td><td>セルティック</td><td>28</td><td>スピードと運動量。スコットランド戦C</td></tr>
     <tr><td>FW</td><td>鈴木唯人</td><td>ジェノア</td><td>24</td><td>シャドーとWBを兼任。多機能型</td></tr>
     <tr><td>FW</td><td>佐野航大</td><td>フェイエノールト</td><td>23</td><td>テクニカルな新星。スコットランド戦先発</td></tr>
@@ -147,6 +147,33 @@ export const articles: Article[] = [
 <p class="point-body">Number Webの記事でブラジル人記者が絶賛したように、森保監督のW杯優勝経験国との対戦成績は<strong>6勝2分1敗</strong>という驚異的な数字だ。ドイツ、スペイン、ブラジル、アルゼンチン——いずれも格上とされる相手に結果を出してきた。3月のイングランド戦での初勝利もその系譜に連なる。<br><br>この実績は、W杯グループFでオランダと同組になった日本にとって心強い材料だ。「格上を食う」戦い方を知っている森保監督だからこそ、メンバー選考も「守り切る」ための布陣と「攻め勝つ」ための切り札を両立させるだろう。</p>
 </div>
 
+## グループF突破のカギ——対戦国別の戦い方
+
+この26人でW杯グループFをどう戦うのか。対戦国ごとに想定される戦い方を整理する。
+
+<table class="schedule-table">
+  <thead><tr><th>対戦</th><th>日程</th><th>相手の特徴</th><th>日本の戦い方（予想）</th></tr></thead>
+  <tbody>
+    <tr><td>🇳🇱 オランダ（第1節）</td><td>6/15</td><td>デパイ、シモンズ、ガクポの強力3トップ。ポゼッション志向</td><td>3-4-2-1でコンパクトに守り、カウンター。佐野海舟のデュエルが鍵</td></tr>
+    <tr><td>🇹🇳 チュニジア（第2節）</td><td>6/21</td><td>堅守速攻型。アフリカ特有のフィジカル</td><td>ボール保持で主導権。久保建英のクリエイティビティで崩す</td></tr>
+    <tr><td>🇸🇪 スウェーデン（第3節）</td><td>6/26</td><td>ギョケレスのパワーと高さ。セットプレーの脅威</td><td>冨安・板倉の高さで対抗。伊東純也のスピードで裏を突く</td></tr>
+  </tbody>
+</table>
+
+## 他メディアの予想との比較
+
+<table class="schedule-table">
+  <thead><tr><th>メディア</th><th>遠藤航</th><th>南野拓実</th><th>守田英正</th><th>瀬古歩夢</th><th>後藤啓介</th></tr></thead>
+  <tbody>
+    <tr><td>サムライフットボール</td><td>26人入り（控え）</td><td>選外</td><td>選外</td><td>26人入り</td><td>選外</td></tr>
+    <tr><td>Number Web（ボンテンポ記者）</td><td>26人入り（控え）</td><td>—</td><td>—</td><td>選外</td><td>26人入り</td></tr>
+    <tr><td>フットボールチャンネル</td><td>26人入り</td><td>当落線上</td><td>26人入り</td><td>当落線上</td><td>当落線上</td></tr>
+    <tr><td>サカノワ</td><td>当確</td><td>当落線上</td><td>当確</td><td>当落線上</td><td>選外</td></tr>
+  </tbody>
+</table>
+
+最大の意見の分かれ目は**守田英正**の扱いだ。フットボールチャンネルとサカノワは26人入りと予想するが、当編集部は3月の招集外という事実と、佐野海舟・鎌田大地・田中碧・藤田譲瑠チマの4人が順調にパフォーマンスを発揮している現状から、守田はボランチの5番手として26人枠には入らないと予想する。ただし、CLベスト8の実績は疑いなく、55人のリストには確実に入る。
+
 ## 結論——「史上最強」を証明する26人
 
 今回の26人予想で最も強調したいのは、**日本代表の選手層がかつてないほど厚い**という事実だ。守田英正のようなCLベスト8のMFですら選外になり得るほどの競争がある。後藤啓介や塩貝健人といった新星がA代表の舞台で結果を残し始めている。
@@ -187,7 +214,7 @@ But beneath the celebrations, the squad hierarchy has shifted dramatically. Kais
   <thead><tr><th>Pos</th><th>Player</th><th>Club</th><th>Age</th><th>Notes</th></tr></thead>
   <tbody>
     <tr><td colspan="5" style="background:#fef3c7;font-weight:bold">GK (3)</td></tr>
-    <tr><td>GK</td><td>Zion Suzuki</td><td>Parma</td><td>24</td><td>Undisputed No.1. Two clean sheets on UK tour</td></tr>
+    <tr><td>GK</td><td>Zion Suzuki</td><td>Parma</td><td>23</td><td>Undisputed No.1. Two clean sheets on UK tour</td></tr>
     <tr><td>GK</td><td>Keisuke Osako</td><td>Sanfrecce Hiroshima</td><td>26</td><td>Experienced backup</td></tr>
     <tr><td>GK</td><td>Tomoki Hayakawa</td><td>Kashima Antlers</td><td>23</td><td>Outstanding in J.League. Third choice</td></tr>
     <tr><td colspan="5" style="background:#dbeafe;font-weight:bold">DF (8)</td></tr>
@@ -197,22 +224,22 @@ But beneath the celebrations, the squad hierarchy has shifted dramatically. Kais
     <tr><td>CB</td><td>Shogo Taniguchi</td><td>Sint-Truiden</td><td>33</td><td>Experience. Qatar WC veteran</td></tr>
     <tr><td>CB</td><td>Tsuyoshi Watanabe</td><td>Feyenoord</td><td>27</td><td>Started both March matches. Proved his worth</td></tr>
     <tr><td>CB/WB</td><td>Ayumu Seko</td><td>Rennes</td><td>25</td><td>Versatile — can play CB and WB</td></tr>
-    <tr><td>WB</td><td>Yukinari Sugawara</td><td>Southampton</td><td>24</td><td>First-choice right WB. Attacking threat</td></tr>
+    <tr><td>WB</td><td>Yukinari Sugawara</td><td>Werder Bremen</td><td>24</td><td>First-choice right WB. Attacking threat</td></tr>
     <tr><td>WB</td><td>Hiroki Hashioka</td><td>Luton Town</td><td>27</td><td>Right WB backup. Strong in defensive duels</td></tr>
     <tr><td colspan="5" style="background:#d1fae5;font-weight:bold">MF (8)</td></tr>
     <tr><td>MF</td><td>Daichi Kamada</td><td>Crystal Palace</td><td>30</td><td>Midfield anchor. Two-way player</td></tr>
-    <tr><td>MF</td><td>Kaishu Sano</td><td>Mainz</td><td>24</td><td>Started vs England. Duel monster</td></tr>
+    <tr><td>MF</td><td>Kaishu Sano</td><td>Mainz</td><td>25</td><td>Started vs England. Duel monster</td></tr>
     <tr><td>MF</td><td>Wataru Endo</td><td>Liverpool</td><td>33</td><td>Ankle surgery. Targeting May return. Captain</td></tr>
     <tr><td>MF</td><td>Ao Tanaka</td><td>Leeds United</td><td>27</td><td>Started vs Scotland. Precise passing</td></tr>
     <tr><td>MF</td><td>Joel Fujita</td><td>Sint-Truiden</td><td>24</td><td>Rising defensive MF. Ball-winning specialist</td></tr>
-    <tr><td>MF</td><td>Ritsu Doan</td><td>Freiburg</td><td>28</td><td>Captained vs England. Right shadow striker</td></tr>
+    <tr><td>MF</td><td>Ritsu Doan</td><td>Eintracht Frankfurt</td><td>28</td><td>Captained vs England. Right shadow striker</td></tr>
     <tr><td>MF</td><td>Takefusa Kubo</td><td>Real Sociedad</td><td>25</td><td>Hamstring recovery. Expected back in May</td></tr>
     <tr><td>MF</td><td>Kaoru Mitoma</td><td>Brighton</td><td>29</td><td>England match winner. Left shadow striker</td></tr>
     <tr><td colspan="5" style="background:#fee2e2;font-weight:bold">FW (7)</td></tr>
     <tr><td>FW</td><td>Ayase Ueda</td><td>Feyenoord</td><td>27</td><td>First-choice striker. Clinical finisher</td></tr>
-    <tr><td>FW</td><td>Junya Ito</td><td>Stade de Reims</td><td>33</td><td>Scotland match winner. Can also play RWB</td></tr>
-    <tr><td>FW</td><td>Keito Nakamura</td><td>Stade de Reims</td><td>25</td><td>Left WB in main system. Both-way contributor</td></tr>
-    <tr><td>FW</td><td>Koki Ogawa</td><td>NEC</td><td>28</td><td>Eredivisie top scorer. Hold-up play</td></tr>
+    <tr><td>FW</td><td>Junya Ito</td><td>KRC Genk</td><td>33</td><td>Scotland match winner. Can also play RWB</td></tr>
+    <tr><td>FW</td><td>Keito Nakamura</td><td>Stade de Reims</td><td>25</td><td>Left WB starter. Key player despite Ligue 2</td></tr>
+    <tr><td>FW</td><td>Koki Ogawa</td><td>NEC</td><td>28</td><td>Among Eredivisie top scorers. Hold-up play</td></tr>
     <tr><td>FW</td><td>Daizen Maeda</td><td>Celtic</td><td>28</td><td>Pace and work rate. Captained vs Scotland</td></tr>
     <tr><td>FW</td><td>Yuito Suzuki</td><td>Genoa</td><td>24</td><td>Can play shadow and WB. Multi-functional</td></tr>
     <tr><td>FW</td><td>Kodai Sano</td><td>Feyenoord</td><td>23</td><td>Technical rising star. Started vs Scotland</td></tr>
@@ -280,6 +307,33 @@ Mitoma scored the winner against England. Doan captained the side at Wembley. It
 <span class="point-title">Moriyasu's Hidden Strength: 6W-2D-1L vs World Cup Winners</span>
 <p class="point-body">As Brazilian journalist Bontempo highlighted in Number Web, Moriyasu's record against World Cup-winning nations is an astonishing <strong>6 wins, 2 draws, 1 defeat</strong>. Germany, Spain, Brazil, Argentina, England — Japan have beaten them all under Moriyasu.<br><br>This track record is invaluable heading into Group F against the Netherlands. A manager who knows how to topple giants will construct a squad that balances defensive solidity with match-winning firepower off the bench.</p>
 </div>
+
+## How This Squad Tackles Group F
+
+How would this 26-man squad approach each Group F opponent?
+
+<table class="schedule-table">
+  <thead><tr><th>Opponent</th><th>Date</th><th>Their Strengths</th><th>Japan's Approach (Predicted)</th></tr></thead>
+  <tbody>
+    <tr><td>Netherlands (MD1)</td><td>Jun 15</td><td>Depay, Simons, Gakpo — elite attacking trio. Possession-based</td><td>Compact 3-4-2-1, counter-attacking. Sano's duels will be decisive</td></tr>
+    <tr><td>Tunisia (MD2)</td><td>Jun 21</td><td>Defensive solidity, physical counter-attacks</td><td>Ball dominance, Kubo's creativity to unlock tight spaces</td></tr>
+    <tr><td>Sweden (MD3)</td><td>Jun 26</td><td>Gyokeres' power and aerial threat. Set-piece danger</td><td>Tomiyasu and Itakura to match physicality. Ito's pace in behind</td></tr>
+  </tbody>
+</table>
+
+## How Other Media Predict the Squad
+
+<table class="schedule-table">
+  <thead><tr><th>Outlet</th><th>Endo</th><th>Minamino</th><th>Morita</th><th>Seko</th><th>Goto</th></tr></thead>
+  <tbody>
+    <tr><td>Samurai Football</td><td>In (bench)</td><td>Out</td><td>Out</td><td>In</td><td>Out</td></tr>
+    <tr><td>Number Web (Bontempo)</td><td>In (bench)</td><td>—</td><td>—</td><td>Out</td><td>In</td></tr>
+    <tr><td>Football Channel</td><td>In</td><td>Bubble</td><td>In</td><td>Bubble</td><td>Bubble</td></tr>
+    <tr><td>Sakanowa</td><td>Lock</td><td>Bubble</td><td>Lock</td><td>Bubble</td><td>Out</td></tr>
+  </tbody>
+</table>
+
+The most contentious call is **Hidemasa Morita**. Football Channel and Sakanowa predict his inclusion, but our editorial team believes the March omission and the strong performances of Sano, Kamada, Tanaka, and Fujita push Morita to fifth in the pecking order — outside the 26. His Champions League quarterfinal pedigree is undeniable, and he'll certainly make the 55-man preliminary list.
 
 ## Conclusion — The Strongest Squad in Japanese Football History
 
