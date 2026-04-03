@@ -24,6 +24,295 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    id: "1775200800005",
+    slug: "japan-world-cup-2026-predicted-26-man-squad",
+    title: "【編集部予想】W杯2026 日本代表26人メンバーを徹底予想——イギリス遠征2連勝で序列が激変。遠藤航は控え、南野拓実は選外か",
+    titleEn: "Our Predicted 26-Man Japan Squad for World Cup 2026: UK Tour Victories Reshape the Pecking Order",
+    excerpt: "スコットランド・イングランドを連破したSAMURAI BLUE。イギリス遠征の結果を踏まえ、サムライフットボール編集部がW杯本大会の26人メンバーとスタメンを大胆予想。佐野海舟の台頭、遠藤航の序列変動、南野拓実の選外予想まで徹底分析する。",
+    excerptEn: "After Japan's historic victories over Scotland and England, we predict the 26-man World Cup squad. Kaishu Sano's rise, Endo's demotion to the bench, and Minamino's likely omission — our editorial team breaks down every position.",
+    category: "コラム" as const,
+    tags: ["W杯2026", "日本代表", "26人メンバー", "メンバー予想", "森保一", "佐野海舟", "遠藤航", "南野拓実", "三笘薫", "スタメン予想"],
+    tagsEn: ["World Cup 2026", "Japan Squad", "26-Man Squad", "Squad Prediction", "Moriyasu", "Kaishu Sano", "Wataru Endo", "Takumi Minamino", "Kaoru Mitoma", "Starting XI"],
+    publishedAt: "2026-04-03",
+    updatedAt: "2026-04-03",
+    isPopular: true,
+    sources: [
+      { name: "Number Web", url: "https://number.bunshun.jp/articles/-/869918" },
+      { name: "フットボールチャンネル", url: "https://www.footballchannel.jp/2026/04/03/post875667/" },
+      { name: "サカノワ", url: "https://sakanowa.jp/topics/102580" },
+      { name: "JFA公式", url: "https://www.jfa.jp/samuraiblue/20260331/match_page.html" },
+      { name: "サッカーキング", url: "https://www.soccer-king.jp/news/japan/national/fixed/2101065.html" },
+    ],
+    content: `3月のイギリス遠征でスコットランドとイングランドを連破し、W杯前最後のテストマッチを5連勝で締めくくった森保ジャパン。通算成績は**103戦72勝**——この数字だけ見ても、森保一監督が日本サッカー史上最も結果を残している指揮官であることは疑いようがない。
+
+しかし、2連勝の裏で序列は大きく動いた。佐野海舟がボランチの定位置を奪い、遠藤航の立場が揺らいでいる。ACL断裂の南野拓実は55名の予備登録に入れるかどうかの瀬戸際。久保建英はハムストリング負傷から復帰途上——。W杯メンバー発表まで残り約2ヶ月、サムライフットボール編集部が26人を徹底予想する。
+
+## 編集部予想：W杯2026 日本代表26人
+
+<table class="schedule-table">
+  <thead><tr><th>Pos</th><th>選手名</th><th>所属</th><th>年齢</th><th>備考</th></tr></thead>
+  <tbody>
+    <tr><td colspan="5" style="background:#fef3c7;font-weight:bold">GK（3名）</td></tr>
+    <tr><td>GK</td><td>鈴木彩艶</td><td>パルマ</td><td>24</td><td>正GK。イギリス遠征で2試合フル出場</td></tr>
+    <tr><td>GK</td><td>大迫敬介</td><td>サンフレッチェ広島</td><td>26</td><td>経験豊富な第2GK</td></tr>
+    <tr><td>GK</td><td>早川友基</td><td>鹿島アントラーズ</td><td>23</td><td>Jリーグで安定感抜群。第3GK</td></tr>
+    <tr><td colspan="5" style="background:#dbeafe;font-weight:bold">DF（8名）</td></tr>
+    <tr><td>CB</td><td>冨安健洋</td><td>アヤックス</td><td>27</td><td>3バックの軸。対人戦最強</td></tr>
+    <tr><td>CB</td><td>板倉滉</td><td>ボルシアMG</td><td>29</td><td>ブンデスで安定。空中戦に強い</td></tr>
+    <tr><td>CB</td><td>伊藤洋輝</td><td>バイエルン</td><td>27</td><td>左CBの第一候補。ビルドアップ能力高い</td></tr>
+    <tr><td>CB</td><td>谷口彰悟</td><td>シント・トロイデン</td><td>33</td><td>経験値。カタールW杯からの継続</td></tr>
+    <tr><td>CB</td><td>渡辺剛</td><td>フェイエノールト</td><td>27</td><td>3月遠征で2試合先発、安定感を証明</td></tr>
+    <tr><td>CB/WB</td><td>瀬古歩夢</td><td>レンヌ</td><td>25</td><td>CBとWBを兼任できるユーティリティ</td></tr>
+    <tr><td>WB</td><td>菅原由勢</td><td>サウサンプトン</td><td>24</td><td>右WBの第一候補。攻撃参加が武器</td></tr>
+    <tr><td>WB</td><td>橋岡大樹</td><td>ルートン・タウン</td><td>27</td><td>右WBのバックアップ。対人守備に強み</td></tr>
+    <tr><td colspan="5" style="background:#d1fae5;font-weight:bold">MF（8名）</td></tr>
+    <tr><td>MF</td><td>鎌田大地</td><td>クリスタルパレス</td><td>30</td><td>ボランチの軸。攻守のバランサー</td></tr>
+    <tr><td>MF</td><td>佐野海舟</td><td>マインツ</td><td>24</td><td>イングランド戦先発。デュエル王</td></tr>
+    <tr><td>MF</td><td>遠藤航</td><td>リバプール</td><td>33</td><td>足首手術中。5月復帰目標。キャプテン</td></tr>
+    <tr><td>MF</td><td>田中碧</td><td>リーズ</td><td>27</td><td>スコットランド戦先発。パス精度高い</td></tr>
+    <tr><td>MF</td><td>藤田譲瑠チマ</td><td>シント・トロイデン</td><td>24</td><td>守備的MFの新鋭。ボール奪取力</td></tr>
+    <tr><td>MF</td><td>堂安律</td><td>フライブルク</td><td>28</td><td>イングランド戦でキャプテン。右シャドー</td></tr>
+    <tr><td>MF</td><td>久保建英</td><td>レアル・ソシエダ</td><td>25</td><td>ハムストリング回復中。5月復帰見込み</td></tr>
+    <tr><td>MF</td><td>三笘薫</td><td>ブライトン</td><td>29</td><td>イングランド戦決勝弾。左シャドーの主</td></tr>
+    <tr><td colspan="5" style="background:#fee2e2;font-weight:bold">FW（7名）</td></tr>
+    <tr><td>FW</td><td>上田綺世</td><td>フェイエノールト</td><td>27</td><td>1トップの第一候補。得点力</td></tr>
+    <tr><td>FW</td><td>伊東純也</td><td>スタッド・ランス</td><td>33</td><td>スコットランド戦決勝弾。右WBも可</td></tr>
+    <tr><td>FW</td><td>中村敬斗</td><td>スタッド・ランス</td><td>25</td><td>左WBの主力。2試合出場で存在感</td></tr>
+    <tr><td>FW</td><td>小川航基</td><td>NEC</td><td>28</td><td>エールディヴィジ得点王。ポストプレー</td></tr>
+    <tr><td>FW</td><td>前田大然</td><td>セルティック</td><td>28</td><td>スピードと運動量。スコットランド戦C</td></tr>
+    <tr><td>FW</td><td>鈴木唯人</td><td>ジェノア</td><td>24</td><td>シャドーとWBを兼任。多機能型</td></tr>
+    <tr><td>FW</td><td>佐野航大</td><td>フェイエノールト</td><td>23</td><td>テクニカルな新星。スコットランド戦先発</td></tr>
+  </tbody>
+</table>
+
+## 予想スタメン：3-4-2-1
+
+<div class="highlight-box">
+<span class="point-label">STARTING XI</span>
+<span class="point-title">編集部予想フォーメーション（vs オランダ想定）</span>
+<p class="point-body">
+<strong>GK：</strong>鈴木彩艶<br>
+<strong>3CB：</strong>伊藤洋輝 — 冨安健洋 — 板倉滉<br>
+<strong>LWB：</strong>中村敬斗　<strong>RWB：</strong>伊東純也<br>
+<strong>2ボランチ：</strong>鎌田大地 — 佐野海舟<br>
+<strong>2シャドー：</strong>三笘薫 — 堂安律<br>
+<strong>1トップ：</strong>上田綺世<br><br>
+<strong>ベンチ要員：</strong>遠藤航（後半投入想定）、久保建英（シャドー交代枠）、前田大然（スピード投入）、小川航基（パワープレー要員）
+</p>
+</div>
+
+## ポジション別分析
+
+### GK——鈴木彩艶の「絶対的守護神」は揺るがず
+
+3月のイギリス遠征で2試合をクリーンシートに抑えた鈴木彩艶は、もはや不動の正GK。特にスコットランド戦ではビッグセーブを連発し、チームを勝利に導いた。大迫敬介はカタールW杯から継続する信頼感があり、早川友基はJリーグでの安定感で第3GKの座を確保した。
+
+### DF——冨安・板倉不在でも崩れなかった3バック
+
+3月遠征では冨安健洋と板倉滉が招集外だったにもかかわらず、谷口彰悟・渡辺剛・伊藤洋輝の3バックがイングランドの攻撃を完封した。これは森保監督にとって大きな収穫であり、DF8名の選出は「本番で冨安・板倉が戻れば、さらに層が厚くなる」という自信につながる。
+
+瀬古歩夢はNumber Webのブラジル人記者チアゴ・ボンテンポ氏の予想では選外とされたが、CBとWBの両方をこなせるユーティリティ性は26人枠では貴重。編集部は選出と予想する。
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">最大の焦点——ボランチの序列変動</span>
+<p class="point-body">3月のイギリス遠征で最も大きな変化が起きたのはボランチだ。イングランド戦で<strong>佐野海舟</strong>が先発し、鎌田大地とのダブルボランチが機能。一方、足首手術中の<strong>遠藤航</strong>は4月上旬にランニング再開を目指している段階で、W杯初戦まで実戦復帰できるかは不透明だ。<br><br>Number Webの記事でブラジル人記者チアゴ・ボンテンポ氏が「遠藤航は控えですか？」と問いかけたように、佐野海舟の台頭で従来の「遠藤が絶対的スタメン」という構図は崩れつつある。編集部も、<strong>W杯初戦のスタメンは佐野海舟</strong>と予想する。ただし、遠藤の経験値とリーダーシップは唯一無二であり、26人枠からの除外は考えにくい。後半の「ゲームクローザー」として、あるいはコンディション次第では試合途中からの投入が最適解だろう。</p>
+</div>
+
+### MF/FW——攻撃陣は「選ぶ贅沢」
+
+三笘薫がイングランド戦で決勝弾を決め、堂安律がキャプテンマークを巻いてチームを牽引。伊東純也はスコットランド戦で途中出場から決勝ゴール。中村敬斗は左WBで攻守に貢献——攻撃のオプションは史上最も豊富だ。
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">負傷組の扱い——南野拓実と久保建英</span>
+<p class="point-body"><strong>南野拓実</strong>（ACL断裂・12月受傷）は、現時点ではランニングマシンでのリハビリ段階。W杯初戦（6/15）まで約5.5ヶ月で、過去の事例を見ても100%のコンディションでの出場は極めて困難。編集部は55人の予備登録には入る可能性があるものの、<strong>最終26人には含まれない</strong>と予想する。森保監督にとって最も辛い決断になるだろう。<br><br><strong>久保建英</strong>（ハムストリング負傷・1月受傷）は、3月は招集外だったものの5月には復帰見込み。ラ・リーガでの実績と攻撃のクリエイティビティは替えが利かず、<strong>26人にはギリギリ間に合う</strong>と判断する。コンディション次第ではシャドーのスタメン争いに加わる可能性もある。</p>
+</div>
+
+## 当確 vs 当落線上
+
+<table class="schedule-table">
+  <thead><tr><th>カテゴリ</th><th>選手</th><th>理由</th></tr></thead>
+  <tbody>
+    <tr><td style="color:green;font-weight:bold">当確</td><td>鈴木彩艶、冨安健洋、板倉滉、伊藤洋輝、鎌田大地、佐野海舟、三笘薫、堂安律、伊東純也、上田綺世</td><td>実力・実績ともに不動</td></tr>
+    <tr><td style="color:green;font-weight:bold">ほぼ当確</td><td>大迫敬介、谷口彰悟、渡辺剛、菅原由勢、田中碧、中村敬斗、前田大然</td><td>代表実績豊富。外れる可能性は低い</td></tr>
+    <tr><td style="color:orange;font-weight:bold">当落線上</td><td>遠藤航、久保建英、藤田譲瑠チマ、瀬古歩夢、橋岡大樹、小川航基、鈴木唯人、佐野航大</td><td>負傷・コンディション・競争の激しさ</td></tr>
+    <tr><td style="color:red;font-weight:bold">選外予想</td><td>南野拓実、守田英正、相馬勇紀、古橋亨梧、浅野拓磨、後藤啓介</td><td>負傷・序列・経験不足</td></tr>
+  </tbody>
+</table>
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">森保采配の「隠れた強み」——W杯優勝国に6勝2分1敗</span>
+<p class="point-body">Number Webの記事でブラジル人記者が絶賛したように、森保監督のW杯優勝経験国との対戦成績は<strong>6勝2分1敗</strong>という驚異的な数字だ。ドイツ、スペイン、ブラジル、アルゼンチン——いずれも格上とされる相手に結果を出してきた。3月のイングランド戦での初勝利もその系譜に連なる。<br><br>この実績は、W杯グループFでオランダと同組になった日本にとって心強い材料だ。「格上を食う」戦い方を知っている森保監督だからこそ、メンバー選考も「守り切る」ための布陣と「攻め勝つ」ための切り札を両立させるだろう。</p>
+</div>
+
+## 結論——「史上最強」を証明する26人
+
+今回の26人予想で最も強調したいのは、**日本代表の選手層がかつてないほど厚い**という事実だ。守田英正のようなCLベスト8のMFですら選外になり得るほどの競争がある。後藤啓介や塩貝健人といった新星がA代表の舞台で結果を残し始めている。
+
+森保監督が最終的にどのような26人を選ぶにせよ、一つだけ確かなことがある。**この代表チームには、世界を驚かせる力がある。** スコットランドとイングランドを連破した3月の夜がそれを証明した。
+
+5月30日のメンバー発表を、我々は楽しみに待ちたい。
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">編集部予想の要点</span>
+<p class="point-body"><strong>1. スタメンのボランチは佐野海舟＋鎌田大地：</strong>遠藤航は足首手術からの復帰途上。26人には入るが先発は佐野海舟と予想。<br><strong>2. 南野拓実は26人選外：</strong>ACL断裂からの回復が間に合わず。55人予備登録には入る可能性あり。久保建英は5月復帰見込みで26人入り。<br><strong>3. DF8名は冨安・板倉の復帰で最強に：</strong>3月に不在でもイングランドを完封した3バックに、本番で主力が戻る。選手層の厚さは史上最強。</p>
+</div>
+
+## よくある質問（FAQ）
+
+**Q. W杯メンバーはいつ発表される？**
+A. FIFAの規定では5月11日までに最大55名の予備登録リストを提出し、5月30日に最終26名が確定する。
+
+**Q. 遠藤航はW杯に出場できる？**
+A. 2月末に左足首の手術を受け、3月末時点で「来週からランニングを開始したい」と本人が発言。5月中のリバプール復帰を目標としており、26人入りは現実的。ただしスタメンは佐野海舟が有力。
+
+**Q. 南野拓実はなぜ選外予想？**
+A. 2025年12月にACL断裂。全治6〜9ヶ月で、W杯初戦（6/15）まで約5.5ヶ月。ランニングマシンでのリハビリは開始したが、実戦レベルへの回復は極めて困難と判断。
+
+**Q. 久保建英の状態は？**
+A. 1月にハムストリングを負傷し3月の代表は招集外。5月にはクラブでの復帰が見込まれており、26人入りはギリギリ間に合うと予想。
+
+**Q. 後藤啓介や塩貝健人は入らない？**
+A. 3月遠征で可能性を見せたが、経験値と実績の面で26人枠には入らないと予想。55人の予備登録に入り、大会期間中の緊急招集に備える形が現実的。`,
+    contentEn: `Japan's March UK tour ended in resounding fashion: 1-0 victories over both Scotland and England, extending the Samurai Blue's winning streak to five matches. Hajime Moriyasu's record now stands at an extraordinary **103 wins in 103 matches** — wait, even better: **103 matches, 72 wins**. Against World Cup-winning nations specifically, his record is a stunning 6 wins, 2 draws, and just 1 defeat.
+
+But beneath the celebrations, the squad hierarchy has shifted dramatically. Kaishu Sano has seized the anchor midfield role, pushing captain Wataru Endo toward the bench. Takumi Minamino's ACL tear may end his World Cup dream. Takefusa Kubo is racing against time to recover from a hamstring injury. With two months until the squad announcement, our editorial team presents our full 26-man prediction.
+
+## Our Predicted 26-Man Squad
+
+<table class="schedule-table">
+  <thead><tr><th>Pos</th><th>Player</th><th>Club</th><th>Age</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td colspan="5" style="background:#fef3c7;font-weight:bold">GK (3)</td></tr>
+    <tr><td>GK</td><td>Zion Suzuki</td><td>Parma</td><td>24</td><td>Undisputed No.1. Two clean sheets on UK tour</td></tr>
+    <tr><td>GK</td><td>Keisuke Osako</td><td>Sanfrecce Hiroshima</td><td>26</td><td>Experienced backup</td></tr>
+    <tr><td>GK</td><td>Tomoki Hayakawa</td><td>Kashima Antlers</td><td>23</td><td>Outstanding in J.League. Third choice</td></tr>
+    <tr><td colspan="5" style="background:#dbeafe;font-weight:bold">DF (8)</td></tr>
+    <tr><td>CB</td><td>Takehiro Tomiyasu</td><td>Ajax</td><td>27</td><td>Anchor of the back three. Elite in duels</td></tr>
+    <tr><td>CB</td><td>Ko Itakura</td><td>Borussia M'gladbach</td><td>29</td><td>Consistent in Bundesliga. Aerial dominance</td></tr>
+    <tr><td>CB</td><td>Hiroki Ito</td><td>Bayern Munich</td><td>27</td><td>Left CB first choice. Strong build-up play</td></tr>
+    <tr><td>CB</td><td>Shogo Taniguchi</td><td>Sint-Truiden</td><td>33</td><td>Experience. Qatar WC veteran</td></tr>
+    <tr><td>CB</td><td>Tsuyoshi Watanabe</td><td>Feyenoord</td><td>27</td><td>Started both March matches. Proved his worth</td></tr>
+    <tr><td>CB/WB</td><td>Ayumu Seko</td><td>Rennes</td><td>25</td><td>Versatile — can play CB and WB</td></tr>
+    <tr><td>WB</td><td>Yukinari Sugawara</td><td>Southampton</td><td>24</td><td>First-choice right WB. Attacking threat</td></tr>
+    <tr><td>WB</td><td>Hiroki Hashioka</td><td>Luton Town</td><td>27</td><td>Right WB backup. Strong in defensive duels</td></tr>
+    <tr><td colspan="5" style="background:#d1fae5;font-weight:bold">MF (8)</td></tr>
+    <tr><td>MF</td><td>Daichi Kamada</td><td>Crystal Palace</td><td>30</td><td>Midfield anchor. Two-way player</td></tr>
+    <tr><td>MF</td><td>Kaishu Sano</td><td>Mainz</td><td>24</td><td>Started vs England. Duel monster</td></tr>
+    <tr><td>MF</td><td>Wataru Endo</td><td>Liverpool</td><td>33</td><td>Ankle surgery. Targeting May return. Captain</td></tr>
+    <tr><td>MF</td><td>Ao Tanaka</td><td>Leeds United</td><td>27</td><td>Started vs Scotland. Precise passing</td></tr>
+    <tr><td>MF</td><td>Joel Fujita</td><td>Sint-Truiden</td><td>24</td><td>Rising defensive MF. Ball-winning specialist</td></tr>
+    <tr><td>MF</td><td>Ritsu Doan</td><td>Freiburg</td><td>28</td><td>Captained vs England. Right shadow striker</td></tr>
+    <tr><td>MF</td><td>Takefusa Kubo</td><td>Real Sociedad</td><td>25</td><td>Hamstring recovery. Expected back in May</td></tr>
+    <tr><td>MF</td><td>Kaoru Mitoma</td><td>Brighton</td><td>29</td><td>England match winner. Left shadow striker</td></tr>
+    <tr><td colspan="5" style="background:#fee2e2;font-weight:bold">FW (7)</td></tr>
+    <tr><td>FW</td><td>Ayase Ueda</td><td>Feyenoord</td><td>27</td><td>First-choice striker. Clinical finisher</td></tr>
+    <tr><td>FW</td><td>Junya Ito</td><td>Stade de Reims</td><td>33</td><td>Scotland match winner. Can also play RWB</td></tr>
+    <tr><td>FW</td><td>Keito Nakamura</td><td>Stade de Reims</td><td>25</td><td>Left WB in main system. Both-way contributor</td></tr>
+    <tr><td>FW</td><td>Koki Ogawa</td><td>NEC</td><td>28</td><td>Eredivisie top scorer. Hold-up play</td></tr>
+    <tr><td>FW</td><td>Daizen Maeda</td><td>Celtic</td><td>28</td><td>Pace and work rate. Captained vs Scotland</td></tr>
+    <tr><td>FW</td><td>Yuito Suzuki</td><td>Genoa</td><td>24</td><td>Can play shadow and WB. Multi-functional</td></tr>
+    <tr><td>FW</td><td>Kodai Sano</td><td>Feyenoord</td><td>23</td><td>Technical rising star. Started vs Scotland</td></tr>
+  </tbody>
+</table>
+
+## Predicted Starting XI: 3-4-2-1
+
+<div class="highlight-box">
+<span class="point-label">STARTING XI</span>
+<span class="point-title">Editorial Predicted Formation (vs Netherlands)</span>
+<p class="point-body">
+<strong>GK:</strong> Zion Suzuki<br>
+<strong>3 CB:</strong> Hiroki Ito — Takehiro Tomiyasu — Ko Itakura<br>
+<strong>LWB:</strong> Keito Nakamura | <strong>RWB:</strong> Junya Ito<br>
+<strong>Double Pivot:</strong> Daichi Kamada — Kaishu Sano<br>
+<strong>Shadow Strikers:</strong> Kaoru Mitoma — Ritsu Doan<br>
+<strong>Striker:</strong> Ayase Ueda<br><br>
+<strong>Key bench options:</strong> Wataru Endo (second-half closer), Takefusa Kubo (creative sub), Daizen Maeda (pace injection), Koki Ogawa (target man for set pieces)
+</p>
+</div>
+
+## Position-by-Position Analysis
+
+### Goalkeepers — Zion Suzuki's Throne Is Secure
+
+Two clean sheets against Scotland and England cemented Zion Suzuki as the undisputed No. 1. His spectacular saves against Scotland were particularly decisive. Keisuke Osako provides reliable Qatar World Cup-tested backup, while Tomoki Hayakawa's J.League excellence earns him the third spot.
+
+### Defenders — The Back Three Held Even Without Tomiyasu and Itakura
+
+Despite Tomiyasu and Itakura being absent in March, the Taniguchi-Watanabe-Ito back three shut out England at Wembley. This gives Moriyasu enormous confidence — when the first-choice CBs return for the World Cup, the defensive depth becomes arguably the strongest in Japanese football history.
+
+Brazilian journalist Thiago Bontempo predicted Seko would miss the cut in his Number Web column, but our editorial team disagrees. His ability to cover both CB and WB makes him invaluable in a 26-man tournament squad.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">The Biggest Story: Midfield Hierarchy Reshaped</span>
+<p class="point-body">The most significant shift from the March tour occurred in central midfield. <strong>Kaishu Sano</strong> started alongside Kamada against England and the pair dominated. Meanwhile, captain <strong>Wataru Endo</strong> is still recovering from ankle surgery, targeting a return to running in early April.<br><br>As Bontempo pointedly asked in Number Web: "Endo... on the bench?" The rise of Sano has disrupted the assumption that Endo is an automatic starter. <strong>Our prediction: Sano starts the World Cup opener.</strong> However, Endo's experience and leadership remain irreplaceable — he'll be in the squad as a second-half game manager and potential starter depending on fitness.</p>
+</div>
+
+### Attack — An Embarrassment of Riches
+
+Mitoma scored the winner against England. Doan captained the side at Wembley. Ito came off the bench to score the decisive goal against Scotland. Nakamura contributed at both ends as left wing-back. Japan's attacking options have never been this deep.
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">The Injured — Minamino Out, Kubo In</span>
+<p class="point-body"><strong>Takumi Minamino</strong> (ACL tear, December 2025) is currently at the treadmill running stage of rehabilitation. With approximately 5.5 months between injury and the World Cup opener, a return to full match fitness is extremely unlikely. <strong>Our prediction: Minamino misses the final 26</strong> but may make the 55-man preliminary squad. This will be Moriyasu's most painful decision.<br><br><strong>Takefusa Kubo</strong> (hamstring, January 2026) missed the March squad but is expected back in May. His La Liga creativity is irreplaceable, and <strong>we predict he makes the 26</strong> — just in time. Fitness permitting, he could challenge for a shadow striker starting spot.</p>
+</div>
+
+## Certainties vs Bubble Players
+
+<table class="schedule-table">
+  <thead><tr><th>Category</th><th>Players</th><th>Reasoning</th></tr></thead>
+  <tbody>
+    <tr><td style="color:green;font-weight:bold">Locks</td><td>Suzuki, Tomiyasu, Itakura, H. Ito, Kamada, K. Sano, Mitoma, Doan, J. Ito, Ueda</td><td>Undeniable quality and form</td></tr>
+    <tr><td style="color:green;font-weight:bold">Near-Locks</td><td>Osako, Taniguchi, Watanabe, Sugawara, Tanaka, Nakamura, Maeda</td><td>Extensive international experience</td></tr>
+    <tr><td style="color:orange;font-weight:bold">Bubble</td><td>Endo, Kubo, Fujita, Seko, Hashioka, Ogawa, Y. Suzuki, K. Sano</td><td>Fitness, form, or fierce competition</td></tr>
+    <tr><td style="color:red;font-weight:bold">Predicted Out</td><td>Minamino, Morita, Soma, Furuhashi, Asano, Goto</td><td>Injury, pecking order, or inexperience</td></tr>
+  </tbody>
+</table>
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">Moriyasu's Hidden Strength: 6W-2D-1L vs World Cup Winners</span>
+<p class="point-body">As Brazilian journalist Bontempo highlighted in Number Web, Moriyasu's record against World Cup-winning nations is an astonishing <strong>6 wins, 2 draws, 1 defeat</strong>. Germany, Spain, Brazil, Argentina, England — Japan have beaten them all under Moriyasu.<br><br>This track record is invaluable heading into Group F against the Netherlands. A manager who knows how to topple giants will construct a squad that balances defensive solidity with match-winning firepower off the bench.</p>
+</div>
+
+## Conclusion — The Strongest Squad in Japanese Football History
+
+The most striking aspect of this prediction exercise is the sheer **depth of talent available**. Hidemasa Morita — a midfielder who helped Sporting reach the Champions League quarterfinals — may not even make the squad. Keisuke Goto and Kento Shiogai showed flashes of brilliance on the UK tour but lack the experience for a 26-man World Cup roster.
+
+Whatever 26 names Moriyasu ultimately selects, one thing is certain: **this squad has the quality to shock the world.** The nights in Glasgow and London proved that.
+
+May 30 cannot come soon enough.
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">Key Predictions</span>
+<p class="point-body"><strong>1. Starting midfield: Sano + Kamada:</strong> Endo recovering from ankle surgery. He'll make the 26 but Sano starts the opener.<br><strong>2. Minamino out, Kubo in:</strong> ACL recovery timeline makes Minamino's inclusion unrealistic. Kubo's hamstring should heal in time for a May return.<br><strong>3. Defense reaches full strength for the World Cup:</strong> Tomiyasu and Itakura return to a back line that already shut out England without them. The deepest defensive squad Japan has ever assembled.</p>
+</div>
+
+## Frequently Asked Questions (FAQ)
+
+**Q. When is the World Cup squad announced?**
+A. FIFA requires a preliminary squad of up to 55 players by May 11, with the final 26-man roster confirmed by May 30.
+
+**Q. Will Wataru Endo make the World Cup?**
+A. Yes, in our prediction. He had ankle surgery in late February and targets a May return to Liverpool. He'll make the 26 but likely starts on the bench, with Kaishu Sano taking his starting role.
+
+**Q. Why is Minamino predicted to miss out?**
+A. His ACL tear in December 2025 requires 6-9 months recovery. With only 5.5 months to the opener, match-level fitness is extremely unlikely. He may make the 55-man preliminary list.
+
+**Q. What about Takefusa Kubo?**
+A. Hamstring injury in January kept him out of the March squad, but a May club return is expected. Our prediction: he makes the 26, potentially challenging for a starting shadow striker role.
+
+**Q. Why aren't Goto and Shiogai included?**
+A. Both impressed on the UK tour but lack the international experience for a 26-man World Cup roster. They'll likely make the 55-man preliminary squad as emergency options.`,
+  },
+  {
     id: "1775200800004",
     slug: "endo-wataru-ankle-surgery-world-cup-2026-captain-recovery",
     title: "遠藤航、左足首手術からW杯へ——キャプテンが挑む「時間との戦い」。受傷から49日、リハビリの現在地と過去の足首負傷事例を徹底分析",
