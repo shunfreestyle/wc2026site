@@ -24,6 +24,341 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    id: "1775462400001",
+    slug: "j1-centennial-vision-league-round-9-results",
+    title: "【J1百年構想リーグ第9節】神戸が岡山を4-1粉砕し首位堅持！川崎Fは浦和との5ゴールの撃ち合いを劇的決勝弾で制す",
+    titleEn: "J1 Centennial Vision League Matchday 9: Kobe Crush Okayama 4-1 to Stay Top, Kawasaki Frontale Edge Urawa in Five-Goal Thriller",
+    excerpt: "4月4〜5日に行われたJ1百年構想リーグ第9節。WEST首位の神戸が岡山に4-1と大勝し3連勝、EASTでは川崎Fが浦和との撃ち合いを3-2で制した。清水はオ・セフンの2発で長崎に完勝、水戸は茨城ダービーでPK戦の末に鹿島の連勝を8でストップ。",
+    excerptEn: "Matchday 9 of the J1 Centennial Vision League saw Vissel Kobe demolish Okayama 4-1 to extend their winning streak to three. Kawasaki Frontale edged Urawa 3-2 in a thriller, while Mito ended Kashima's eight-game winning run via penalties in the Ibaraki Derby.",
+    category: "Jリーグ" as const,
+    tags: ["J1百年構想リーグ", "第9節", "ヴィッセル神戸", "川崎フロンターレ", "浦和レッズ", "鹿島アントラーズ", "水戸ホーリーホック", "清水エスパルス", "2026Jリーグ"],
+    tagsEn: ["J1 Centennial Vision League", "Matchday 9", "Vissel Kobe", "Kawasaki Frontale", "Urawa Reds", "Kashima Antlers", "Mito Hollyhock", "Shimizu S-Pulse", "2026 J-League"],
+    publishedAt: "2026-04-06",
+    updatedAt: "2026-04-06",
+    isPopular: true,
+    sources: [
+      { name: "Jリーグ公式", url: "https://www.jleague.jp/sp/news/article/33677/" },
+      { name: "ゲキサカ", url: "https://web.gekisaka.jp/jscore/detail/?league=6&date=20260405" },
+      { name: "ゲキサカ（神戸）", url: "https://web.gekisaka.jp/news/jleague/detail/?449036-449036-fl=" },
+      { name: "浦和レッズ公式", url: "https://www.urawa-reds.co.jp/topteamtopics/239344/" },
+      { name: "ガンバ大阪公式", url: "https://www.gamba-osaka.net/gameinfo/index/no/1012/" },
+    ],
+    content: `4月4日（土）・5日（日）の2日間にわたり、明治安田J1百年構想リーグ 地域リーグラウンド第9節が各地で開催された。WEST首位のヴィッセル神戸が敵地・岡山で4-1と圧勝し今季初の3連勝を達成。EASTでは川崎フロンターレが浦和レッズとの壮絶な撃ち合いをアディショナルタイムの決勝弾で制した。そして何より注目を集めたのが、J1の舞台では史上初となる「茨城ダービー」——水戸ホーリーホックがPK戦で首位・鹿島アントラーズの8連勝を阻止する歴史的勝利を飾った。
+
+<div class="highlight-box">
+<span class="point-label">POINT</span>
+<span class="point-title">百年構想リーグの勝点制度をおさらい</span>
+<p class="point-body">2026年限定の特別大会である百年構想リーグでは、引き分けが存在しない「完全決着方式」を採用。90分で決着しない場合は延長戦なしでPK戦を実施し、勝点は90分勝利＝3、PK勝利＝2、PK敗戦＝1、90分敗戦＝0で計算される。PK戦での敗北でも勝点1を獲得できるため、順位表の「分」はPK決着の試合数を示している。</p>
+</div>
+
+## EAST 第9節 全試合結果
+
+<table class="schedule-table">
+  <thead><tr><th>日時</th><th>ホーム</th><th>スコア</th><th>アウェイ</th><th>得点者</th></tr></thead>
+  <tbody>
+    <tr><td>4/4 13:00</td><td>千葉</td><td>3-2</td><td>東京V</td><td>呉屋(19分,40分),日高(85分) / 福田(46分),吉田(62分)</td></tr>
+    <tr><td>4/4 14:00</td><td>水戸</td><td>1-1<br>(PK 4-2)</td><td>鹿島</td><td>渡邉新太(34分) / レオ・セアラ(90+6分)</td></tr>
+    <tr><td>4/5 14:00</td><td>柏</td><td>3-0</td><td>横浜FM</td><td>小見(18分),OG(80分),仲間(82分)</td></tr>
+    <tr><td>4/5 15:00</td><td>FC東京</td><td>0-0<br>(PK 2-4)</td><td>町田</td><td>―</td></tr>
+    <tr><td>4/5 16:00</td><td>川崎F</td><td>3-2</td><td>浦和</td><td>OG(9分),ロマニッチ(77分),河原(90+4分) / 根本(2分),金子(56分)</td></tr>
+  </tbody>
+</table>
+
+## WEST 第9節 全試合結果
+
+<table class="schedule-table">
+  <thead><tr><th>日時</th><th>ホーム</th><th>スコア</th><th>アウェイ</th><th>得点者</th></tr></thead>
+  <tbody>
+    <tr><td>4/4 15:00</td><td>名古屋</td><td>3-0</td><td>C大阪</td><td>山岸(46分,53分),和泉(61分)</td></tr>
+    <tr><td>4/4 16:00</td><td>G大阪</td><td>2-0</td><td>京都</td><td>ヒュメット(13分),食野(75分)</td></tr>
+    <tr><td>4/5 13:00</td><td>長崎</td><td>0-3</td><td>清水</td><td>オ・セフン(1分,45+3分),嶋本(4分)</td></tr>
+    <tr><td>4/5 14:00</td><td>岡山</td><td>1-4</td><td>神戸</td><td>木村(62分) / OG(8分),永戸(45分),扇原(65分),郷家(88分)</td></tr>
+    <tr><td>4/5 14:00</td><td>広島</td><td>0-1</td><td>福岡</td><td>橋本悠(16分)</td></tr>
+  </tbody>
+</table>
+
+## J1初の茨城ダービー：水戸が鹿島の8連勝を阻止する歴史的勝利
+
+第9節最大のトピックは、4日にケーズデンキスタジアム水戸で実現した**J1史上初の茨城ダービー**だ。J2から昇格した水戸ホーリーホックが、J1の舞台で初めて同県のライバル・鹿島アントラーズと対峙した。
+
+水戸は準備してきた戦術を忠実に遂行。前半34分、渡邉新太が鮮やかな右足ミドルシュートを突き刺し、スタジアムが揺れた。その後も水戸は集中した守備で鹿島の攻撃を跳ね返し続けたが、後半終了間際にPKを献上。レオ・セアラが90+6分に冷静に沈め、1-1の同点に追いつかれた。しかし、もつれ込んだPK戦で水戸は全員が成功し、4-2で制して歴史的勝利を手にした。
+
+<div class="quote-box">
+<p>「勝点3を取れず、悔しい思いもあるけど、PKだろうとダービーに勝ちきれたことに価値がある」——水戸・樹森大介監督</p>
+</div>
+
+EAST首位の鹿島は開幕戦以来の黒星。ただし90分間では無敗を継続しており、勝点23で依然として2位FC東京に3ポイント差をつけている。PK敗戦でも勝点1を獲得できる百年構想リーグの独自ルールが、ここで効いた形だ。
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">J1初の茨城ダービーで水戸が歴史を刻む</span>
+<p class="point-body">J2から昇格して百年構想リーグに参戦中の水戸が、J1では初対決となる鹿島との茨城ダービーをPK戦で制した。渡邉新太の会心のミドル弾と全員成功のPK戦で、首位・鹿島の8連勝をストップ。水戸にとってクラブ史に刻まれる一戦となった。</p>
+</div>
+
+## 神戸が岡山を4-1粉砕——WEST首位を盤石に
+
+5日の岡山戦で、ヴィッセル神戸は圧巻のゴールラッシュを見せた。開始8分、DF酒井高徳の右サイドからのグラウンダークロスが岡山DFに当たりオウンゴールで先制。45分には永戸勝也が相手のミスを見逃さず強烈な左足シュートを叩き込んだ。
+
+後半62分に木村太哉のヘディングで1点を返されたものの、65分に扇原貴宏がPKを確実に沈め、88分には郷家友太がダメ押しの4点目。4-1の大勝で今季初の3連勝を飾った。
+
+勝点22でWEST首位を堅持する神戸は、2位G大阪に5ポイント差をつけた。得失点差+11はWEST最多。ディフェンディングチャンピオンの底力が、序盤戦の不振を完全に払拭した格好だ。
+
+## 川崎F 3-2 浦和——「等々力劇場」に沸いた90+4分の劇的決勝弾
+
+Uvanceとどろきスタジアムで繰り広げられた川崎Fvs浦和は、今節屈指のエンターテインメントとなった。
+
+開始わずか2分、浦和の根本健太が先制点を奪い、スタジアムに衝撃が走る。しかし9分、川崎Fの攻撃からオウンゴールが生まれ1-1に。後半に入ると56分に金子拓郎が鮮やかな一撃で浦和が再びリードを奪ったが、77分にロマニッチのヘディングで川崎Fが追いつく。そして90+4分——途中出場の河原創が値千金の決勝ゴールを叩き込み、劇的な逆転勝利を完成させた。
+
+<div class="quote-box">
+<p>「交代の選手が結果を出してくれたっていうのは、勝ちがあまりなかった分、今日の一勝はすごいデカい一勝だった」——川崎F・三浦颯太</p>
+</div>
+
+川崎Fの脇坂泰斗も「途中出場の選手がこうやって結果を残すっていうところは、チームとしても次に繋がる」と語る一方、「ずっと等々力劇場みたいなゲームはできない」と冷静に課題を指摘。勝点14で4位に浮上した川崎Fだが、上位との差を詰めるには攻守の安定が求められる。
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">途中出場の河原創がヒーローに——川崎Fの選手層が勝利を呼んだ</span>
+<p class="point-body">2度のビハインドを跳ね返した川崎Fは、途中出場の選手が結果を残した点で大きな収穫を得た。河原創のAT決勝弾は、連敗中だったチームに勢いを取り戻す価値ある一撃。ただし脇坂が指摘するように、毎試合この展開では上位進出は厳しい。</p>
+</div>
+
+## 清水がオ・セフン2発で長崎を粉砕——開始4分で試合を決める
+
+5日のアウェイ・長崎戦で、清水エスパルスは衝撃的なスタートダッシュを見せた。開始わずか**1分**、オ・セフンが先制ゴール。さらに**4分**には嶋本悠大が追加点を挙げ、キックオフからわずか4分間で2-0とリードを広げた。
+
+長崎は立ち直る間もなく、前半45+3分にオ・セフンが再びネットを揺らし、この日2得点目。3-0の完勝で清水はWEST4位に浮上した。オ・セフンは今季の得点ランキングでも上位に位置しており、エースの好調ぶりがチームの躍進を支えている。
+
+## その他の注目試合
+
+**千葉 3-2 東京V（EAST）** — "オリジナル10"対決は千葉が制した。呉屋大翔が19分・40分と前半のうちに2ゴールを奪い主導権を握ると、後半に東京Vが福田湧矢（46分）・吉田泰授（62分）のゴールで追いつきかける。しかし85分、途中出場の日高大が劇的な決勝弾を挙げ、千葉が今季2勝目を飾った。
+
+**名古屋 3-0 C大阪（WEST）** — 後半開始直後から名古屋が一気に畳みかけた。46分に山岸祐也が先制すると、わずか7分後の53分にも山岸が追加点。61分には和泉竜司も加わり3-0の完封勝利。山岸の2試合連続ゴールで名古屋がWEST3位に浮上した。
+
+**G大阪 2-0 京都（WEST）** — 同勝点で迎えた関西ダービーは、G大阪が完勝。13分にヒュメットが先制し、75分に食野亮太郎の追加点で試合を決めた。G大阪はWEST2位に浮上し、ACL2を含む11連戦に好スタートを切った。
+
+**FC東京 0-0（PK 2-4）町田（EAST）** — 味の素スタジアムでの東京ダービーは互いに決め手を欠き、スコアレスのままPK戦へ。町田の守護神・谷晃生がPK戦で存在感を発揮し、町田が勝点2を獲得。EAST3位をキープした。
+
+**広島 0-1 福岡（WEST）** — 16分の橋本悠のゴールを福岡が守り切り、今大会初勝利。前年王者・広島は5敗目を喫し、WEST7位と苦しい戦いが続いている。
+
+## 最新順位表（第9節終了時点）
+
+### EAST
+
+<table class="schedule-table">
+  <thead><tr><th>順位</th><th>クラブ</th><th>勝点</th><th>試合</th><th>勝</th><th>PK</th><th>敗</th><th>得失差</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>鹿島</td><td>23</td><td>9</td><td>7</td><td>2</td><td>0</td><td>+11</td></tr>
+    <tr><td>2</td><td>FC東京</td><td>20</td><td>10</td><td>4</td><td>5</td><td>1</td><td>+6</td></tr>
+    <tr><td>3</td><td>町田</td><td>19</td><td>10</td><td>4</td><td>4</td><td>2</td><td>-2</td></tr>
+    <tr><td>4</td><td>川崎F</td><td>14</td><td>9</td><td>3</td><td>3</td><td>3</td><td>-2</td></tr>
+    <tr><td>5</td><td>東京V</td><td>13</td><td>9</td><td>3</td><td>2</td><td>4</td><td>-2</td></tr>
+    <tr><td>6</td><td>浦和</td><td>11</td><td>9</td><td>3</td><td>2</td><td>4</td><td>+2</td></tr>
+    <tr><td>7</td><td>柏</td><td>11</td><td>9</td><td>3</td><td>1</td><td>5</td><td>+1</td></tr>
+    <tr><td>8</td><td>水戸</td><td>10</td><td>9</td><td>1</td><td>4</td><td>3</td><td>-6</td></tr>
+    <tr><td>9</td><td>横浜FM</td><td>9</td><td>9</td><td>3</td><td>0</td><td>6</td><td>-3</td></tr>
+    <tr><td>10</td><td>千葉</td><td>8</td><td>9</td><td>2</td><td>2</td><td>5</td><td>-5</td></tr>
+  </tbody>
+</table>
+
+### WEST
+
+<table class="schedule-table">
+  <thead><tr><th>順位</th><th>クラブ</th><th>勝点</th><th>試合</th><th>勝</th><th>PK</th><th>敗</th><th>得失差</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>神戸</td><td>22</td><td>10</td><td>6</td><td>3</td><td>1</td><td>+11</td></tr>
+    <tr><td>2</td><td>G大阪</td><td>17</td><td>9</td><td>3</td><td>5</td><td>1</td><td>+2</td></tr>
+    <tr><td>3</td><td>名古屋</td><td>16</td><td>9</td><td>4</td><td>3</td><td>2</td><td>+4</td></tr>
+    <tr><td>4</td><td>清水</td><td>16</td><td>10</td><td>3</td><td>5</td><td>2</td><td>+3</td></tr>
+    <tr><td>5</td><td>京都</td><td>14</td><td>9</td><td>3</td><td>3</td><td>3</td><td>0</td></tr>
+    <tr><td>6</td><td>長崎</td><td>12</td><td>9</td><td>4</td><td>0</td><td>5</td><td>-4</td></tr>
+    <tr><td>7</td><td>広島</td><td>11</td><td>9</td><td>3</td><td>1</td><td>5</td><td>-1</td></tr>
+    <tr><td>8</td><td>岡山</td><td>11</td><td>9</td><td>2</td><td>2</td><td>3</td><td>-3</td></tr>
+    <tr><td>9</td><td>C大阪</td><td>11</td><td>9</td><td>2</td><td>3</td><td>4</td><td>-3</td></tr>
+    <tr><td>10</td><td>福岡</td><td>8</td><td>9</td><td>1</td><td>3</td><td>5</td><td>-9</td></tr>
+  </tbody>
+</table>
+
+## 数字で見る第9節
+
+<table class="schedule-table">
+  <thead><tr><th>項目</th><th>データ</th></tr></thead>
+  <tbody>
+    <tr><td>今節の総ゴール数</td><td>27得点（EAST 13・WEST 14）</td></tr>
+    <tr><td>90分決着</td><td>10試合中8試合</td></tr>
+    <tr><td>PK戦決着</td><td>2試合（水戸vs鹿島、FC東京vs町田）</td></tr>
+    <tr><td>無失点試合</td><td>3試合（柏、名古屋、G大阪）</td></tr>
+    <tr><td>複数得点者</td><td>呉屋大翔（千葉）、山岸祐也（名古屋）、オ・セフン（清水）</td></tr>
+  </tbody>
+</table>
+
+## W杯2026との接点：百年構想リーグが代表候補の最終オーディションに
+
+百年構想リーグの地域リーグラウンドは6月7日まで続くが、W杯2026の開幕（6月11日）まで残り約2ヶ月。森保一監督は5月中旬に55名の予備登録メンバーを提出し、6月上旬に最終26名を発表する見込みだ。
+
+国内組にとってこの百年構想リーグは、W杯メンバー入りへの最終アピールの場となっている。鹿島の正GK・早川友基はEAST首位を支える好セーブを連発しており、第3GKの座を確実なものにしつつある。また、WEST首位を独走する神戸からは複数の代表候補がコンスタントに出場しており、チームの好調がそのまま個人のアピールにつながっている。
+
+一方で、W杯代表候補選手のコンディション管理も重要なテーマだ。百年構想リーグは全18節を約4ヶ月で消化する過密日程。W杯本大会を見据えた負荷管理と、リーグ戦での結果を両立させるマネジメントが各クラブに求められている。
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">第9節のポイント</span>
+<p class="point-body">WEST首位・神戸が4-1大勝で3連勝を達成し、2位G大阪に5ポイント差。EAST首位・鹿島はJ1初の茨城ダービーでPK戦の末に水戸に敗れたが、勝点23でトップを堅持。川崎Fの劇的AT弾、清水の開始4分2ゴール、千葉の逆転勝利など全10試合で27ゴールが生まれた白熱の第9節。次節は4月11〜12日に開催される。</p>
+</div>`,
+    contentEn: `Matchday 9 of the J1 Centennial Vision League unfolded across April 4-5, delivering drama, history, and goals galore. WEST leaders Vissel Kobe demolished Fagiano Okayama 4-1 away to extend their winning streak to three. In the EAST, Kawasaki Frontale overcame Urawa Reds 3-2 with a stoppage-time winner in a breathless five-goal encounter. But the headline story was the first-ever J1-level Ibaraki Derby — Mito Hollyhock, promoted from J2, ended Kashima Antlers' eight-game winning run in a penalty shootout to write a new chapter in the rivalry's history.
+
+<div class="highlight-box">
+<span class="point-label">POINT</span>
+<span class="point-title">Understanding the Centennial Vision League Points System</span>
+<p class="point-body">The 2026-only Centennial Vision League uses a "complete settlement" format with no draws. If a match is level after 90 minutes, teams go straight to a penalty shootout (no extra time). Points are awarded as follows: 90-minute win = 3 pts, penalty shootout win = 2 pts, penalty shootout loss = 1 pt, 90-minute loss = 0 pts. This means even a penalty defeat earns a point, and the "PK" column in standings represents matches decided by shootout.</p>
+</div>
+
+## EAST Matchday 9 Results
+
+<table class="schedule-table">
+  <thead><tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th>Scorers</th></tr></thead>
+  <tbody>
+    <tr><td>4/4 13:00</td><td>Chiba</td><td>3-2</td><td>Tokyo V</td><td>Goya(19',40'),Hidaka(85') / Fukuda(46'),Yoshida(62')</td></tr>
+    <tr><td>4/4 14:00</td><td>Mito</td><td>1-1<br>(PK 4-2)</td><td>Kashima</td><td>Watanabe(34') / Leo Ceara(90+6')</td></tr>
+    <tr><td>4/5 14:00</td><td>Kashiwa</td><td>3-0</td><td>Yokohama FM</td><td>Komi(18'),OG(80'),Nakama(82')</td></tr>
+    <tr><td>4/5 15:00</td><td>FC Tokyo</td><td>0-0<br>(PK 2-4)</td><td>Machida</td><td>—</td></tr>
+    <tr><td>4/5 16:00</td><td>Kawasaki F</td><td>3-2</td><td>Urawa</td><td>OG(9'),Romanich(77'),Kawahara(90+4') / Nemoto(2'),Kaneko(56')</td></tr>
+  </tbody>
+</table>
+
+## WEST Matchday 9 Results
+
+<table class="schedule-table">
+  <thead><tr><th>Date</th><th>Home</th><th>Score</th><th>Away</th><th>Scorers</th></tr></thead>
+  <tbody>
+    <tr><td>4/4 15:00</td><td>Nagoya</td><td>3-0</td><td>C-Osaka</td><td>Yamagishi(46',53'),Izumi(61')</td></tr>
+    <tr><td>4/4 16:00</td><td>G-Osaka</td><td>2-0</td><td>Kyoto</td><td>Hummet(13'),Meshino(75')</td></tr>
+    <tr><td>4/5 13:00</td><td>Nagasaki</td><td>0-3</td><td>Shimizu</td><td>Oh Se-hun(1',45+3'),Shimamoto(4')</td></tr>
+    <tr><td>4/5 14:00</td><td>Okayama</td><td>1-4</td><td>Kobe</td><td>Kimura(62') / OG(8'),Nagato(45'),Ogihara(65'),Gonohe(88')</td></tr>
+    <tr><td>4/5 14:00</td><td>Hiroshima</td><td>0-1</td><td>Fukuoka</td><td>Hashimoto(16')</td></tr>
+  </tbody>
+</table>
+
+## First-Ever J1 Ibaraki Derby: Mito Make History by Toppling Kashima
+
+The biggest story of Matchday 9 was the **first-ever J1-level Ibaraki Derby** at K's Denki Stadium Mito. Newly-promoted Mito Hollyhock faced Ibaraki rivals Kashima Antlers in the top flight for the very first time — and delivered a performance their fans will never forget.
+
+Mito executed their tactical plan to perfection, and Watanabe Arata's superb right-footed strike from distance in the 34th minute sent the home crowd into raptures. Mito's defense held firm for most of the match, but heartbreak seemed imminent when a late penalty was conceded and Leo Ceara converted in the 96th minute to make it 1-1. In the shootout, however, Mito kept their composure — all four takers converted to seal a historic 4-2 penalty victory.
+
+<div class="quote-box">
+<p>"We couldn't get the full three points, and that's frustrating. But winning the derby — whether by penalty shootout or otherwise — has real value for this club." — Mito manager Daisuke Kimori</p>
+</div>
+
+EAST leaders Kashima suffered their first defeat since the opening round, though their 90-minute unbeaten run remains intact. They stay top on 23 points, three clear of FC Tokyo. The Centennial Vision League's unique rule — awarding one point for a penalty loss — cushioned the blow.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">Mito Write History in J1's First Ibaraki Derby</span>
+<p class="point-body">Promoted from J2, Mito Hollyhock toppled league leaders Kashima Antlers via penalties in the first-ever top-flight Ibaraki Derby. Watanabe Arata's thunderous long-range strike and a perfect penalty record in the shootout halted Kashima's eight-game winning streak — a result that will be etched in Mito's club history.</p>
+</div>
+
+## Kobe Crush Okayama 4-1 to Strengthen WEST Stranglehold
+
+Vissel Kobe produced a devastating attacking display away to Okayama on April 5. An own goal from a Sakai Takahiro cross gave them the lead after just eight minutes. Nagato Katsuya pounced on a defensive error to fire in a powerful left-footed shot before half-time, and Ogihara Takahiro converted a penalty on 65 minutes before Gonohe Yuta completed the rout in the 88th minute.
+
+At 22 points, Kobe have opened a five-point gap over second-placed Gamba Osaka in the WEST, with a league-best goal difference of +11. The defending champions have emphatically shaken off their early-season inconsistency with three consecutive victories.
+
+## Kawasaki 3-2 Urawa: Stoppage-Time Drama at Todoroki
+
+The contest at Uvance Todoroki Stadium produced the most entertaining 90 minutes of the round. Urawa's Nemoto Kenta stunned the home crowd with a goal inside two minutes. Kawasaki equalized through an own goal in the 9th minute, but Kaneko Takuro restored Urawa's lead with a fine strike on 56 minutes. Romanich headed home the equalizer in the 77th minute, and then, in the fourth minute of stoppage time, substitute Kawahara So hammered in the dramatic winner.
+
+<div class="quote-box">
+<p>"The subs coming on and making a difference — given that we haven't had many wins, today's victory is a really big one." — Kawasaki's Miura Sota</p>
+</div>
+
+Kawasaki captain Wakizaka Yasuto acknowledged the victory but cautioned: "We can't keep playing Todoroki Theater every week," highlighting the need for greater defensive stability. The win moves Kawasaki to fourth on 14 points, but closing the gap on the top three will require more consistency.
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">Substitute Kawahara the Hero as Kawasaki's Bench Strength Shines</span>
+<p class="point-body">Kawasaki twice came from behind before Kawahara So's stoppage-time winner sealed a thrilling 3-2 victory. The impact of substitutes was the key takeaway, but as Wakizaka noted, relying on late heroics is not sustainable for a title charge.</p>
+</div>
+
+## Shimizu's Four-Minute Blitz Demolishes Nagasaki
+
+Shimizu S-Pulse barely gave Nagasaki time to settle. Oh Se-hun scored after just **one minute**, Shimamoto Yudai made it 2-0 in the **fourth minute**, and Oh completed his brace before half-time to round off a comprehensive 3-0 away victory. The result lifted Shimizu to fourth in the WEST on 16 points, level with third-placed Nagoya.
+
+## Other Notable Matches
+
+**Chiba 3-2 Tokyo Verdy (EAST)** — Goya Taishi's first-half brace (19', 40') put Chiba in control, but Tokyo Verdy rallied through Fukuda Yuya (46') and Yoshida Taiju (62'). Substitute Hidaka Dai's 85th-minute winner sealed Chiba's second victory of the campaign.
+
+**Nagoya 3-0 Cerezo Osaka (WEST)** — Yamagishi Yuya scored twice within seven minutes of the restart (46', 53'), with Izumi Ryuji adding a third on 61 minutes. The emphatic win lifted Nagoya to third in the WEST.
+
+**Gamba Osaka 2-0 Kyoto (WEST)** — Hummet's early opener (13') and Meshino Ryotaro's second-half strike (75') gave Gamba a comfortable Kansai derby win. They climb to second in the WEST ahead of an 11-game stretch that includes ACL2 commitments.
+
+**FC Tokyo 0-0 (PK 2-4) Machida (EAST)** — The Tokyo Derby ended goalless, but Machida goalkeeper Tani Kosei was the hero in the shootout, keeping his side third in the EAST with the bonus two points.
+
+**Hiroshima 0-1 Fukuoka (WEST)** — Hashimoto Yu's 16th-minute goal proved decisive as Fukuoka claimed their first Centennial Vision League victory. Last year's champions Hiroshima slipped to seventh with a fifth defeat.
+
+## Matchday 9 by the Numbers
+
+<table class="schedule-table">
+  <thead><tr><th>Stat</th><th>Data</th></tr></thead>
+  <tbody>
+    <tr><td>Total goals</td><td>27 (EAST 13, WEST 14)</td></tr>
+    <tr><td>Decided in 90 mins</td><td>8 of 10 matches</td></tr>
+    <tr><td>Penalty shootouts</td><td>2 (Mito vs Kashima, FC Tokyo vs Machida)</td></tr>
+    <tr><td>Clean sheets</td><td>3 (Kashiwa, Nagoya, G-Osaka)</td></tr>
+    <tr><td>Multi-goal scorers</td><td>Goya (Chiba), Yamagishi (Nagoya), Oh Se-hun (Shimizu)</td></tr>
+  </tbody>
+</table>
+
+## Latest Standings (After Matchday 9)
+
+### EAST
+
+<table class="schedule-table">
+  <thead><tr><th>Pos</th><th>Club</th><th>Pts</th><th>P</th><th>W</th><th>PK</th><th>L</th><th>GD</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Kashima</td><td>23</td><td>9</td><td>7</td><td>2</td><td>0</td><td>+11</td></tr>
+    <tr><td>2</td><td>FC Tokyo</td><td>20</td><td>10</td><td>4</td><td>5</td><td>1</td><td>+6</td></tr>
+    <tr><td>3</td><td>Machida</td><td>19</td><td>10</td><td>4</td><td>4</td><td>2</td><td>-2</td></tr>
+    <tr><td>4</td><td>Kawasaki F</td><td>14</td><td>9</td><td>3</td><td>3</td><td>3</td><td>-2</td></tr>
+    <tr><td>5</td><td>Tokyo V</td><td>13</td><td>9</td><td>3</td><td>2</td><td>4</td><td>-2</td></tr>
+    <tr><td>6</td><td>Urawa</td><td>11</td><td>9</td><td>3</td><td>2</td><td>4</td><td>+2</td></tr>
+    <tr><td>7</td><td>Kashiwa</td><td>11</td><td>9</td><td>3</td><td>1</td><td>5</td><td>+1</td></tr>
+    <tr><td>8</td><td>Mito</td><td>10</td><td>9</td><td>1</td><td>4</td><td>3</td><td>-6</td></tr>
+    <tr><td>9</td><td>Yokohama FM</td><td>9</td><td>9</td><td>3</td><td>0</td><td>6</td><td>-3</td></tr>
+    <tr><td>10</td><td>Chiba</td><td>8</td><td>9</td><td>2</td><td>2</td><td>5</td><td>-5</td></tr>
+  </tbody>
+</table>
+
+### WEST
+
+<table class="schedule-table">
+  <thead><tr><th>Pos</th><th>Club</th><th>Pts</th><th>P</th><th>W</th><th>PK</th><th>L</th><th>GD</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Kobe</td><td>22</td><td>10</td><td>6</td><td>3</td><td>1</td><td>+11</td></tr>
+    <tr><td>2</td><td>G-Osaka</td><td>17</td><td>9</td><td>3</td><td>5</td><td>1</td><td>+2</td></tr>
+    <tr><td>3</td><td>Nagoya</td><td>16</td><td>9</td><td>4</td><td>3</td><td>2</td><td>+4</td></tr>
+    <tr><td>4</td><td>Shimizu</td><td>16</td><td>10</td><td>3</td><td>5</td><td>2</td><td>+3</td></tr>
+    <tr><td>5</td><td>Kyoto</td><td>14</td><td>9</td><td>3</td><td>3</td><td>3</td><td>0</td></tr>
+    <tr><td>6</td><td>Nagasaki</td><td>12</td><td>9</td><td>4</td><td>0</td><td>5</td><td>-4</td></tr>
+    <tr><td>7</td><td>Hiroshima</td><td>11</td><td>9</td><td>3</td><td>1</td><td>5</td><td>-1</td></tr>
+    <tr><td>8</td><td>Okayama</td><td>11</td><td>9</td><td>2</td><td>2</td><td>3</td><td>-3</td></tr>
+    <tr><td>9</td><td>C-Osaka</td><td>11</td><td>9</td><td>2</td><td>3</td><td>4</td><td>-3</td></tr>
+    <tr><td>10</td><td>Fukuoka</td><td>8</td><td>9</td><td>1</td><td>3</td><td>5</td><td>-9</td></tr>
+  </tbody>
+</table>
+
+## World Cup 2026 Connections: The League as a Final Audition
+
+The Centennial Vision League's regional round runs until June 7, just four days before the 2026 FIFA World Cup kicks off on June 11. Manager Hajime Moriyasu is expected to submit Japan's 55-man preliminary squad in mid-May, with the final 26 announced in early June.
+
+For domestically-based players, this league represents their last chance to force their way into World Cup contention. Kashima's goalkeeper Hayakawa Tomoki has been outstanding between the posts for EAST leaders, strengthening his case for the third-goalkeeper spot. Meanwhile, several World Cup hopefuls at league-leading Kobe are benefiting from consistent game time in a winning team.
+
+Fitness management is also emerging as a key concern. The Centennial Vision League packs 18 matchdays into roughly four months — a demanding schedule that requires clubs to balance league ambitions with protecting World Cup-bound players from overuse.
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">Matchday 9 Key Takeaways</span>
+<p class="point-body">WEST leaders Kobe won 4-1 for their third straight victory, opening a five-point gap over G-Osaka. EAST leaders Kashima fell to Mito on penalties in the historic first J1 Ibaraki Derby but remain top on 23 points. Kawasaki's stoppage-time drama, Shimizu's four-minute opening blitz, and Chiba's come-from-behind victory produced 27 goals across 10 matches in a white-hot Matchday 9. Next round: April 11-12.</p>
+</div>`,
+  },
+  {
     id: "1775200800005",
     slug: "japan-world-cup-2026-predicted-26-man-squad",
     title: "【編集部予想】W杯2026 日本代表26人メンバーを徹底予想——イギリス遠征2連勝で序列が激変。遠藤航は控え、南野拓実は選外か",
