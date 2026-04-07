@@ -24,6 +24,478 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    id: "1775721600001",
+    slug: "sweden-world-cup-2026-team-analysis-squad-tactics",
+    title: "【W杯グループF】スウェーデン代表を徹底分析——ギェケレシュ4発の衝撃、イサク復帰で\"世界最強2トップ\"誕生か。ポッター流3-4-2-1の全貌と日本が警戒すべき3つの鍵",
+    titleEn: "World Cup Group F: Sweden Team Analysis — Gyökeres' Four-Goal Playoff Blitz, Isak's Return to Form the 'World's Best Strike Duo', and Potter's Tactical Blueprint",
+    excerpt: "予選グループ最下位からプレーオフ2連勝で2大会ぶりのW杯切符を掴んだスウェーデン。ギェケレシュがプレーオフ2試合4ゴールと覚醒し、本大会ではイサクの復帰で\"世界最強2トップ\"が誕生する可能性も。グレアム・ポッター監督の3-4-2-1戦術、最新メンバー26名、日本戦の鍵を徹底解説。",
+    excerptEn: "Sweden defied the odds to qualify for their first World Cup in eight years, with Gyökeres scoring four goals across two playoff matches. With Isak set to return from injury, they could field the tournament's most lethal strike duo. We break down Potter's 3-4-2-1 tactics, the full squad, and what Japan must watch for.",
+    category: "W杯" as const,
+    tags: ["W杯2026", "スウェーデン代表", "グループF", "ギェケレシュ", "グレアム・ポッター", "日本代表", "戦術分析", "メンバー一覧", "ベルグヴァル", "イサク・ヒエン"],
+    tagsEn: ["World Cup 2026", "Sweden", "Group F", "Viktor Gyokeres", "Graham Potter", "Japan", "Tactical Analysis", "Squad List", "Lucas Bergvall", "Isak Hien"],
+    publishedAt: "2026-04-08",
+    updatedAt: "2026-04-08",
+    isPopular: true,
+    sources: [
+      { name: "Transfermarkt", url: "https://www.transfermarkt.us/sweden/kader/verein/3557" },
+      { name: "サッカーキング", url: "https://www.soccer-king.jp/news/world/wc/20260401/2143470.html" },
+      { name: "フットボールチャンネル", url: "https://www.footballchannel.jp/2026/03/27/post871383/" },
+      { name: "ESPN", url: "https://www.espn.com/soccer/match/_/gameId/761384/sweden-ukraine" },
+      { name: "Total Football Analysis", url: "https://totalfootballanalysis.com/match-analysis/tactical-preview/sweden-poland-tactical-preview-world-cup-qualifier-analysis" },
+      { name: "UEFA", url: "https://www.uefa.com/european-qualifiers/match/2047083--sweden-vs-poland/" },
+      { name: "This Is Anfield（イサク負傷情報）", url: "https://www.thisisanfield.com/2026/03/alexander-isak-sweden-squad-injury-recovery-update-2026/" },
+      { name: "FOX Sports（日程）", url: "https://www.foxsports.com/stories/soccer/sweden-world-cup-2026-schedule-locations-dates-times" },
+    ],
+    content: `W杯2026グループFで日本代表と対戦するスウェーデン代表。予選グループでは2分4敗の最下位に沈みながら、ネーションズリーグの成績でプレーオフに滑り込み、そこから2連勝で2大会ぶりの本大会出場を勝ち取った。その中心にいたのが、プレーオフ2試合で4ゴールを叩き出したエースFWヴィクトル・ギェケレシュだ。
+
+2025年10月に就任したグレアム・ポッター監督のもと、戦術的柔軟性を武器に生まれ変わったスウェーデン。本稿では最新の26人メンバー、フォーメーション、戦術的特徴、そして日本との対戦で鍵となるポイントを徹底分析する。
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>国名</th><td>スウェーデン王国（Konungariket Sverige）</td></tr>
+    <tr><th>監督</th><td>グレアム・ポッター（イングランド人、2025年10月就任）</td></tr>
+    <tr><th>W杯出場</th><td>13回目（2大会ぶり）</td></tr>
+    <tr><th>W杯最高成績</th><td>準優勝（1958年・自国開催）</td></tr>
+    <tr><th>基本フォーメーション</th><td>3-4-2-1（可変式）</td></tr>
+    <tr><th>グループF</th><td>オランダ、日本、チュニジア、スウェーデン</td></tr>
+    <tr><th>日本戦</th><td>6月25日（第3節）</td></tr>
+    <tr><th>チーム市場価値</th><td>約3億6,400万ユーロ</td></tr>
+    <tr><th>平均年齢</th><td>26.4歳</td></tr>
+  </tbody>
+</table>
+
+## 予選の軌跡：最下位からの"下剋上"
+
+スウェーデンのW杯への道は、決して平坦ではなかった。
+
+<table class="schedule-table">
+  <thead><tr><th>大会</th><th>対戦</th><th>結果</th><th>得点者</th></tr></thead>
+  <tbody>
+    <tr><td>欧州予選グループ</td><td>6試合</td><td>0勝2分4敗（最下位）</td><td>—</td></tr>
+    <tr><td>PO準決勝</td><td>vs ウクライナ（A）</td><td>3-1 勝利</td><td>ギェケレシュ(6分,51分,73分PK)</td></tr>
+    <tr><td>PO決勝</td><td>vs ポーランド（H）</td><td>3-2 勝利</td><td>エランガ(20分),ラーゲルビエルケ(44分),ギェケレシュ(88分)</td></tr>
+  </tbody>
+</table>
+
+予選グループではアゼルバイジャン、スロバキア、スペインなどと同組で**0勝**。通常なら敗退が確定するところだが、ネーションズリーグの成績がセーフティネットとなり、プレーオフへの出場権を確保した。
+
+プレーオフに入ると別チームに変貌。3月26日のウクライナ戦では、ギェケレシュが**ハットトリック**の大暴れ。6分に先制すると、51分に追加点、73分にはPKも確実に沈めて3-1の快勝でプレーオフ決勝に進出した。
+
+<div class="quote-box">
+<p>「彼がなぜアーセナルでプレーし、ヨーロッパ屈指のストライカーなのかを証明した」——ウクライナ・レブロフ監督もギェケレシュに脱帽</p>
+</div>
+
+3月31日のプレーオフ決勝・ポーランド戦はさらにドラマチックだった。2022年大会のプレーオフでポーランドに敗れた"リベンジマッチ"。20分にエランガが先制し、44分にはラーゲルビエルケのヘッドで2-0。しかしポーランドもザレフスキとシフィデルスキのゴールで追いつき、2-2の同点に。勝負は88分に決着した——ギェケレシュがストロベリー・アレーナを歓喜の渦に包む決勝弾を叩き込み、スウェーデンは**2大会ぶり13回目**のW杯出場を決めた。
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">予選0勝→プレーオフ2連勝、ギェケレシュの4ゴールが救った</span>
+<p class="point-body">予選グループ最下位（0勝2分4敗）という屈辱的な成績から、プレーオフではエースのギェケレシュが2試合4ゴールと完全に覚醒。ウクライナ戦のハットトリックとポーランド戦の88分決勝弾は、まさに"一人で切符を掴んだ"と言える圧巻のパフォーマンスだった。</p>
+</div>
+
+## グレアム・ポッター監督の戦術——柔軟な3-4-2-1
+
+### 監督プロフィール
+
+グレアム・ポッターは、スウェーデンのエステルスンドで指揮を執った経験を持つイングランド人指揮官だ。ブライトン、チェルシー、ウェストハムとプレミアリーグで監督を歴任し、2025年10月にスウェーデン代表監督に就任。当初はW杯予選プレーオフに向けた短期契約だったが、予選突破の功績が評価され、2026年3月に**2030年までの長期契約**に延長された。
+
+### 基本布陣：3-4-2-1
+
+ウクライナ戦で採用した**3-4-2-1**がポッター・スウェーデンの基本形だ。
+
+**守備時は5-4-1に変形**し、ウイングバックが最終ラインに下がることでコンパクトな5バックブロックを形成。攻撃時はウイングバックが高い位置を取り、2シャドーがギェケレシュの周囲で流動的にポジションを変える。
+
+ポーランド戦では状況に応じて4-4-2に可変するなど、試合中のシステム変更も厭わない。これはポッターがブライトン時代から得意としてきた「カメレオン戦術」の真骨頂だ。
+
+### 戦術的特徴
+
+<table class="schedule-table">
+  <thead><tr><th>項目</th><th>特徴</th></tr></thead>
+  <tbody>
+    <tr><td>守備</td><td>5バックブロックでスペースを消し、リトリート守備を徹底</td></tr>
+    <tr><td>ビルドアップ</td><td>GKからの丁寧な組み立てよりも、縦に速い展開を志向</td></tr>
+    <tr><td>攻撃</td><td>ギェケレシュへのロングフィードとカウンターが生命線</td></tr>
+    <tr><td>セットプレー</td><td>長身選手が多く、CKやFKからの得点力が高い</td></tr>
+    <tr><td>プレス</td><td>高い位置からのプレスと、ブロック守備を状況で使い分け</td></tr>
+    <tr><td>可変性</td><td>3-4-2-1→4-4-2→5-4-1と試合中にシステムを柔軟に変更</td></tr>
+  </tbody>
+</table>
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">ポッターの「カメレオン戦術」——試合中に形を変える柔軟性</span>
+<p class="point-body">ブライトン時代から一つのシステムに固執しないことで知られるポッター。スウェーデンでも3-4-2-1を基本としつつ、ポーランド戦では4-4-2に可変。守備時には5バックでスペースを消し、攻撃時にはギェケレシュを軸にした速い縦展開を見せる。対戦相手によってシステムを変えてくる可能性が高く、日本としてはスカウティングが難しい相手だ。</p>
+</div>
+
+## 最新メンバー26名——プレーオフ招集リスト
+
+<table class="schedule-table">
+  <thead><tr><th>Pos</th><th>選手名</th><th>所属クラブ</th><th>年齢</th><th>市場価値</th></tr></thead>
+  <tbody>
+    <tr><td colspan="5" style="background:#fef3c7;font-weight:bold">GK（3名）</td></tr>
+    <tr><td>GK</td><td>メルケル・エルボルグ</td><td>サンダーランド</td><td>22</td><td>€300万</td></tr>
+    <tr><td>GK</td><td>ノエル・テルンクヴィスト</td><td>コモ</td><td>24</td><td>€200万</td></tr>
+    <tr><td>GK</td><td>クリストッフェル・ノルドフェルト</td><td>AIK</td><td>36</td><td>€17.5万</td></tr>
+    <tr><td colspan="5" style="background:#dbeafe;font-weight:bold">DF（7名）</td></tr>
+    <tr><td>CB</td><td>イサク・ヒエン</td><td>アタランタ</td><td>27</td><td>€2,200万</td></tr>
+    <tr><td>CB</td><td>ヴィクトル・リンデレフ</td><td>アストン・ヴィラ</td><td>31</td><td>€600万</td></tr>
+    <tr><td>CB</td><td>グスタフ・ラーゲルビエルケ</td><td>ブラガ</td><td>25</td><td>€500万</td></tr>
+    <tr><td>CB</td><td>カール・スタルフェルト</td><td>セルタ</td><td>30</td><td>€500万</td></tr>
+    <tr><td>CB/SB</td><td>エリク・スミス</td><td>ザンクトパウリ</td><td>29</td><td>€500万</td></tr>
+    <tr><td>LWB</td><td>ダニエル・スヴェンソン</td><td>ドルトムント</td><td>24</td><td>€2,200万</td></tr>
+    <tr><td>LWB</td><td>ガブリエル・グドムンドソン</td><td>リーズ</td><td>26</td><td>€2,000万</td></tr>
+    <tr><td colspan="5" style="background:#d1fae5;font-weight:bold">MF（8名）</td></tr>
+    <tr><td>MF</td><td>ルーカス・ベルグヴァル</td><td>トッテナム</td><td>20</td><td>€4,000万</td></tr>
+    <tr><td>MF</td><td>フーゴ・ラーション</td><td>フランクフルト</td><td>21</td><td>€3,200万</td></tr>
+    <tr><td>MF</td><td>ヤシン・アヤリ</td><td>ブライトン</td><td>22</td><td>€3,000万</td></tr>
+    <tr><td>MF</td><td>イェスペル・カールストローム</td><td>ウディネーゼ</td><td>30</td><td>€400万</td></tr>
+    <tr><td>MF</td><td>マティアス・スヴァンベリ</td><td>ヴォルフスブルク</td><td>27</td><td>€900万</td></tr>
+    <tr><td>MF</td><td>ベスフォルト・ゼネリ</td><td>ユニオンSG</td><td>23</td><td>€450万</td></tr>
+    <tr><td>MF</td><td>ヘルマン・ヨハンソン</td><td>FCダラス</td><td>28</td><td>€180万</td></tr>
+    <tr><td>MF</td><td>エリオット・ストロウド</td><td>ミャルビーAIF</td><td>23</td><td>€300万</td></tr>
+    <tr><td colspan="5" style="background:#fee2e2;font-weight:bold">FW（8名）</td></tr>
+    <tr><td>FW</td><td>ヴィクトル・ギェケレシュ</td><td>アーセナル</td><td>27</td><td>€6,500万</td></tr>
+    <tr><td>FW</td><td>アントニー・エランガ</td><td>ニューカッスル</td><td>23</td><td>€4,000万</td></tr>
+    <tr><td>FW</td><td>ルーニー・バルドギ</td><td>バルセロナ</td><td>20</td><td>€1,500万</td></tr>
+    <tr><td>FW</td><td>ヴィリオット・スヴェドベリ</td><td>セルタ</td><td>22</td><td>€1,500万</td></tr>
+    <tr><td>FW</td><td>ベンヤミン・ニーグレン</td><td>セルティック</td><td>24</td><td>€1,000万</td></tr>
+    <tr><td>FW</td><td>グスタフ・ニルソン</td><td>クラブ・ブルッヘ</td><td>28</td><td>€200万</td></tr>
+    <tr><td>FW</td><td>グスタフ・ルンドグレン</td><td>GAIS</td><td>30</td><td>€130万</td></tr>
+    <tr><td>FW</td><td>タハ・アリ</td><td>マルメFF</td><td>27</td><td>€120万</td></tr>
+  </tbody>
+</table>
+
+## 本大会で合流か？——イサクとクルゼフスキの復帰問題
+
+プレーオフの26名には含まれなかったが、W杯本大会に向けて注目すべき"不在の大物"が2人いる。
+
+**アレクサンデル・イサク（FW / リバプール / 26歳）**——2025年9月にニューカッスルから英国移籍最高額の£1億2,500万でリバプールへ移籍したストライカー。12月のトッテナム戦で脛骨を骨折し長期離脱していたが、W杯本大会には復帰が見込まれている。ギェケレシュとイサクの2トップが実現すれば、大会屈指の破壊力を持つ攻撃陣が誕生する。
+
+**デヤン・クルゼフスキ（MF/FW / トッテナム / 25歳）**——2025年5月に膝蓋骨を手術し、約10ヶ月の長期離脱中。3月のプレーオフではチームに合流して精神的サポートを行ったが、プレーはできなかった。本大会への出場は不透明だが、復帰できれば右ウイングに圧倒的なクオリティが加わる。
+
+<div class="highlight-box">
+<span class="point-label">POINT</span>
+<span class="point-title">イサク復帰なら"世界最強2トップ"が誕生</span>
+<p class="point-body">ギェケレシュ（アーセナル）とイサク（リバプール）の2トップが実現すれば、プレミアリーグのトップクラブで主力を務めるストライカー2枚を同時に起用することになる。この組み合わせは、大会参加48カ国の中でも最も強力な2トップの一つとなる可能性がある。日本にとっては、プレーオフ時以上に警戒が必要な相手になる。</p>
+</div>
+
+## 注目選手5人——日本が警戒すべきキーマン
+
+### 1. ヴィクトル・ギェケレシュ（FW / アーセナル / 27歳）
+
+スウェーデンの絶対的エースにして、今大会のグループFで最も危険なストライカーの一人。2025年夏に€6,350万でスポルティングCPからアーセナルへ移籍し、プレミアリーグ1年目から**11ゴール**を記録。CLでも**4ゴール**を挙げている。
+
+188cmの長身と強靭なフィジカルを持ちながら、スピードとテクニックも兼備するコンプリートストライカー。プレーオフ2試合で4ゴールという数字が示す通り、大舞台での勝負強さは折り紙付きだ。ハーランドと比較される決定力は、日本のCB陣にとって最大の脅威となる。
+
+### 2. ルーカス・ベルグヴァル（MF / トッテナム / 20歳）
+
+スウェーデンの未来を担う20歳のセントラルMF。トッテナムでプレミアリーグ**1ゴール2アシスト**を記録し、市場価値€4,000万はチーム内でギェケレシュ、エランガと並ぶ最高額クラスだ。技術と戦術眼に優れ、ビルドアップの中心を担う。若さを感じさせない落ち着いたプレーが特徴。
+
+### 3. イサク・ヒエン（CB / アタランタ / 27歳）
+
+セリエA王者アタランタでレギュラーを務めるCB。188cmの高さに加え、対人守備の強さとカバーリング能力が持ち味。3バック中央でスウェーデンの守備の柱を担う。市場価値€2,200万はDF陣最高で、コパ・イタリアやCLの経験も豊富。
+
+### 4. ダニエル・スヴェンソン（LWB / ドルトムント / 24歳）
+
+ブンデスリーガのドルトムントで定位置を確保した左ウイングバック。今季**1ゴール1アシスト**に加え、FotMob平均レーティング**7.06**はチーム内でも高水準。攻守両面でダイナミックな上下動を見せ、左サイドからのクロスとドリブルで攻撃の幅を広げる。市場価値€2,200万はヒエンと並ぶDF陣最高額。
+
+### 5. アントニー・エランガ（FW / ニューカッスル / 23歳）
+
+2025年夏に£5,500万でニューカッスルへ移籍。スピードとドリブルが武器のウインガーで、ポーランド戦では先制ゴールを記録した。CLで2ゴールを挙げるなど大舞台での実績もある。右サイドからのカットインも左ウイングからの突破も可能で、ポッター監督の可変システムにおいて複数のポジションをこなせるユーティリティ性も魅力。
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">若手とベテランの融合——平均26.4歳のバランスの良さ</span>
+<p class="point-body">ベルグヴァル（20歳）、バルドギ（20歳）、ラーション（21歳）の次世代トリオに加え、リンデレフ（31歳）やカールストローム（30歳）のベテランが要所を締める。プレミアリーグ、ブンデスリーガ、セリエA、ラ・リーガの4大リーグに所属選手を抱え、欧州トップレベルの経験値は侮れない。</p>
+</div>
+
+## スウェーデンの強みと弱点
+
+### 強み
+
+**1. ギェケレシュという"個の力"**
+プレーオフの結果が証明する通り、ギェケレシュ一人でチームを救える決定力を持つ。空中戦、フィジカルコンタクト、シュート精度のすべてがトップクラス。
+
+**2. 守備の堅さ**
+3バック（5バック変形）による組織的守備が機能。ヒエン、リンデレフ、スタルフェルトの3CBは長身揃いで空中戦に強く、セットプレー時のゾーン守備も徹底されている。
+
+**3. ポッターの戦術的引き出し**
+試合中にシステムを変えられる柔軟性は、短期決戦のW杯で大きなアドバンテージ。対戦相手に合わせた"ゲームプラン"を準備できるのは、クラブチームの経験が豊富なポッターならではの強みだ。
+
+### 弱点
+
+**1. プレーオフ時の創造性不足（本大会では改善の可能性）**
+プレーオフではギェケレシュの4ゴール以外は、エランガとラーゲルビエルケの1ゴールずつのみとゴールソースが偏った。ただし、本大会でイサクが復帰すれば攻撃の幅は大幅に広がる。クルゼフスキの復帰可否もチームの上積みを左右する大きな変数だ。
+
+**2. 予選グループの低調なパフォーマンス**
+0勝2分4敗という予選成績は事実として残る。プレーオフで覚醒したとはいえ、チームとしての安定感には疑問符が付く。
+
+**3. GKの不安定さ**
+正GKのポジションが確立されていない。ウクライナ戦ではエルボルグ（22歳）、ポーランド戦ではノルドフェルト（36歳）と異なるGKを起用しており、守護神の定まらなさはW杯本大会に向けた不安材料だ。
+
+## W杯グループF日程とスウェーデンの戦い方
+
+<table class="schedule-table">
+  <thead><tr><th>節</th><th>日程</th><th>対戦</th><th>会場</th></tr></thead>
+  <tbody>
+    <tr><td>第1節</td><td>6月14日</td><td>スウェーデン vs チュニジア</td><td>モンテレイ・スタジアム（メキシコ）</td></tr>
+    <tr><td>第2節</td><td>6月20日</td><td>オランダ vs スウェーデン</td><td>NRGスタジアム（ヒューストン）</td></tr>
+    <tr><td>第3節</td><td>6月25日</td><td>日本 vs スウェーデン</td><td>AT&Tスタジアム（アーリントン）</td></tr>
+  </tbody>
+</table>
+
+初戦のチュニジア戦が最大のターニングポイント。ここで勝点3を確保できれば、第2節のオランダ戦で引き分け狙いの守備的布陣を敷く余裕が生まれる。第3節の日本戦は、グループステージの突破を懸けた直接対決になる可能性が高い。
+
+## 日本代表が警戒すべき3つのポイント
+
+<div class="highlight-box">
+<span class="point-label">POINT 4</span>
+<span class="point-title">日本 vs スウェーデン——3つの鍵</span>
+<p class="point-body"><strong>1. ギェケレシュの封じ方。</strong>188cmの大型FWに対し、冨安健洋と板倉滉のCBコンビがどこまで対抗できるか。空中戦だけでなく、背負ってからの反転シュートにも要注意。<br><strong>2. 5バックの崩し方。</strong>スウェーデンが守備的に構えた場合、日本のサイド攻撃（三笘・伊東）がウイングバックの背後を突けるかが鍵。中央が固いなら、サイドからのクロスとミドルシュートの使い分けが重要。<br><strong>3. セットプレーの対応。</strong>長身選手が多いスウェーデンはCKやFKが大きな武器。日本はゾーン守備の中でマーキングの精度を高める必要がある。</p>
+</div>
+
+## スウェーデンのW杯過去の成績
+
+<table class="schedule-table">
+  <thead><tr><th>大会</th><th>成績</th><th>備考</th></tr></thead>
+  <tbody>
+    <tr><td>1958年（自国開催）</td><td>準優勝</td><td>決勝でブラジルに2-5で敗戦</td></tr>
+    <tr><td>1994年アメリカ</td><td>3位</td><td>ブルガリアに勝利し銅メダル</td></tr>
+    <tr><td>2006年ドイツ</td><td>ラウンド16</td><td>ドイツに敗退</td></tr>
+    <tr><td>2018年ロシア</td><td>ベスト8</td><td>イングランドに0-2で敗退</td></tr>
+    <tr><td>2022年カタール</td><td>不出場</td><td>プレーオフでポーランドに敗退</td></tr>
+  </tbody>
+</table>
+
+1958年の自国開催では準優勝、1994年のアメリカ大会では3位と、W杯での実績は決して小さくない。2018年ロシア大会ではベスト8に進出しており、北欧のサッカー大国としての底力を侮るべきではない。
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">スウェーデン代表の全体像</span>
+<p class="point-body">予選最下位からの劇的なW杯出場は、エース・ギェケレシュの爆発力とポッター監督の戦術的手腕の賜物だ。3-4-2-1を基本にした柔軟な布陣、守備の堅さ、そして大舞台で結果を出す勝負強さが武器。一方で、ギェケレシュ依存の攻撃やGKの不安定さが弱点として残る。日本にとっては「ギェケレシュをいかに封じるか」がすべての鍵を握る対戦となるだろう。</p>
+</div>`,
+    contentEn: `Sweden, Japan's Group F opponents at the 2026 World Cup, pulled off one of the great qualification comebacks. After finishing bottom of their qualifying group with zero wins, they scraped into the playoffs via their Nations League record — and then won twice to secure their first World Cup berth in eight years. The driving force behind the turnaround? Viktor Gyökeres, who scored four goals in two playoff matches.
+
+Under Graham Potter, appointed in October 2025, Sweden have been reborn as a tactically flexible unit. This article provides a complete breakdown of their 26-man squad, formation, tactical identity, and the key factors Japan must consider ahead of their Group F meeting.
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>Country</th><td>Kingdom of Sweden</td></tr>
+    <tr><th>Manager</th><td>Graham Potter (English, appointed October 2025)</td></tr>
+    <tr><th>World Cup Appearances</th><td>13th (first since 2018)</td></tr>
+    <tr><th>Best World Cup Result</th><td>Runners-up (1958, as hosts)</td></tr>
+    <tr><th>Base Formation</th><td>3-4-2-1 (flexible)</td></tr>
+    <tr><th>Group F</th><td>Netherlands, Japan, Tunisia, Sweden</td></tr>
+    <tr><th>vs Japan</th><td>June 25 (Matchday 3)</td></tr>
+    <tr><th>Squad Market Value</th><td>Approx. €364 million</td></tr>
+    <tr><th>Average Age</th><td>26.4 years</td></tr>
+  </tbody>
+</table>
+
+## The Road to Qualification: From Bottom to Breakthrough
+
+Sweden's path to the World Cup was anything but straightforward.
+
+<table class="schedule-table">
+  <thead><tr><th>Stage</th><th>Match</th><th>Result</th><th>Scorers</th></tr></thead>
+  <tbody>
+    <tr><td>Qualifying Group</td><td>6 matches</td><td>0W 2D 4L (bottom)</td><td>—</td></tr>
+    <tr><td>Playoff Semi</td><td>vs Ukraine (A)</td><td>3-1 Win</td><td>Gyokeres (6', 51', 73' pen)</td></tr>
+    <tr><td>Playoff Final</td><td>vs Poland (H)</td><td>3-2 Win</td><td>Elanga (20'), Lagerbielke (44'), Gyokeres (88')</td></tr>
+  </tbody>
+</table>
+
+Sweden finished rock bottom of their qualifying group with zero wins from six matches. Normally, that would spell elimination, but their Nations League record served as a safety net, granting playoff access.
+
+Once in the playoffs, they became a different team. On March 26, Gyökeres produced a stunning **hat trick** against Ukraine — opening the scoring in the 6th minute, doubling the lead in the 51st, and converting a penalty in the 73rd for a commanding 3-1 win.
+
+<div class="quote-box">
+<p>"He proved why he plays for Arsenal and is one of the best strikers in Europe." — Ukraine manager Serhiy Rebrov on Gyökeres</p>
+</div>
+
+The playoff final against Poland on March 31 was even more dramatic — and carried the weight of revenge, as Poland had knocked Sweden out in the 2022 playoff. Elanga opened the scoring on 20 minutes, and Lagerbielke's header made it 2-0 before half-time. But Poland rallied through Zalewski and Swiderski to level at 2-2. Then, in the 88th minute, Gyökeres struck the winner that sent Strawberry Arena into delirium, securing Sweden's **13th World Cup appearance** and their first since 2018.
+
+<div class="highlight-box">
+<span class="point-label">POINT 1</span>
+<span class="point-title">Zero Wins in Qualifying, Four Goals in the Playoffs — Gyökeres Carried Sweden Through</span>
+<p class="point-body">From the ignominy of finishing bottom with 0W 2D 4L, Sweden were transformed by Gyökeres' extraordinary playoff run — a hat trick against Ukraine and an 88th-minute winner against Poland. He quite literally dragged his nation to the World Cup single-handedly.</p>
+</div>
+
+## Graham Potter's Tactics: The Flexible 3-4-2-1
+
+### Manager Profile
+
+Graham Potter is an English coach with deep ties to Swedish football, having managed Östersund in the country's top flight. After spells at Brighton, Chelsea, and West Ham in the Premier League, he was appointed Sweden manager in October 2025. Initially on a short-term playoff deal, his contract was extended to **2030** after securing World Cup qualification.
+
+### Base System: 3-4-2-1
+
+The **3-4-2-1** deployed against Ukraine represents Potter's preferred setup for Sweden.
+
+In **defensive phases**, the formation compresses into a 5-4-1, with wingbacks dropping to form a back five. In **attacking phases**, the wingbacks push high while the two shadow strikers interchange fluidly around Gyökeres.
+
+Against Poland, Potter shifted to a 4-4-2 mid-game, demonstrating the "chameleon tactics" he perfected at Brighton — the willingness to change shape during a match without losing identity.
+
+### Tactical Characteristics
+
+<table class="schedule-table">
+  <thead><tr><th>Aspect</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Defense</td><td>Compact 5-man block, disciplined zonal marking, effective retreat defense</td></tr>
+    <tr><td>Build-up</td><td>Prefers direct, vertical play over patient possession-based construction</td></tr>
+    <tr><td>Attack</td><td>Long balls to Gyokeres and quick transitions are the primary threat</td></tr>
+    <tr><td>Set pieces</td><td>Multiple tall players make corners and free kicks a genuine weapon</td></tr>
+    <tr><td>Pressing</td><td>Alternates between high press and mid-block depending on opponent</td></tr>
+    <tr><td>Flexibility</td><td>Switches between 3-4-2-1, 4-4-2, and 5-4-1 within matches</td></tr>
+  </tbody>
+</table>
+
+<div class="highlight-box">
+<span class="point-label">POINT 2</span>
+<span class="point-title">Potter's "Chameleon Tactics" — Shape-Shifting Mid-Match</span>
+<p class="point-body">Potter's hallmark is his refusal to be locked into one system. With Sweden, the 3-4-2-1 is the starting point, but it morphed into a 4-4-2 against Poland and collapsed into a 5-4-1 in defensive phases. This tactical adaptability, honed across multiple Premier League clubs, makes Sweden a difficult opponent to scout and plan for in a short World Cup tournament.</p>
+</div>
+
+## Full 26-Man Squad — Playoff Call-Up List
+
+<table class="schedule-table">
+  <thead><tr><th>Pos</th><th>Player</th><th>Club</th><th>Age</th><th>Market Value</th></tr></thead>
+  <tbody>
+    <tr><td colspan="5" style="background:#fef3c7;font-weight:bold">Goalkeepers (3)</td></tr>
+    <tr><td>GK</td><td>Melker Ellborg</td><td>Sunderland</td><td>22</td><td>€3.00m</td></tr>
+    <tr><td>GK</td><td>Noel Tornqvist</td><td>Como</td><td>24</td><td>€2.00m</td></tr>
+    <tr><td>GK</td><td>Kristoffer Nordfeldt</td><td>AIK</td><td>36</td><td>€0.18m</td></tr>
+    <tr><td colspan="5" style="background:#dbeafe;font-weight:bold">Defenders (7)</td></tr>
+    <tr><td>CB</td><td>Isak Hien</td><td>Atalanta</td><td>27</td><td>€22.00m</td></tr>
+    <tr><td>CB</td><td>Victor Lindelof</td><td>Aston Villa</td><td>31</td><td>€6.00m</td></tr>
+    <tr><td>CB</td><td>Gustaf Lagerbielke</td><td>SC Braga</td><td>25</td><td>€5.00m</td></tr>
+    <tr><td>CB</td><td>Carl Starfelt</td><td>Celta Vigo</td><td>30</td><td>€5.00m</td></tr>
+    <tr><td>CB/RB</td><td>Eric Smith</td><td>St. Pauli</td><td>29</td><td>€5.00m</td></tr>
+    <tr><td>LWB</td><td>Daniel Svensson</td><td>Borussia Dortmund</td><td>24</td><td>€22.00m</td></tr>
+    <tr><td>LWB</td><td>Gabriel Gudmundsson</td><td>Leeds United</td><td>26</td><td>€20.00m</td></tr>
+    <tr><td colspan="5" style="background:#d1fae5;font-weight:bold">Midfielders (8)</td></tr>
+    <tr><td>CM</td><td>Lucas Bergvall</td><td>Tottenham</td><td>20</td><td>€40.00m</td></tr>
+    <tr><td>CM</td><td>Hugo Larsson</td><td>Eintracht Frankfurt</td><td>21</td><td>€32.00m</td></tr>
+    <tr><td>CM</td><td>Yasin Ayari</td><td>Brighton</td><td>22</td><td>€30.00m</td></tr>
+    <tr><td>DM</td><td>Jesper Karlstrom</td><td>Udinese</td><td>30</td><td>€4.00m</td></tr>
+    <tr><td>CM</td><td>Mattias Svanberg</td><td>Wolfsburg</td><td>27</td><td>€9.00m</td></tr>
+    <tr><td>CM</td><td>Besfort Zeneli</td><td>Union SG</td><td>23</td><td>€4.50m</td></tr>
+    <tr><td>CM</td><td>Herman Johansson</td><td>FC Dallas</td><td>28</td><td>€1.80m</td></tr>
+    <tr><td>CM</td><td>Elliot Stroud</td><td>Mjallby AIF</td><td>23</td><td>€3.00m</td></tr>
+    <tr><td colspan="5" style="background:#fee2e2;font-weight:bold">Forwards (8)</td></tr>
+    <tr><td>CF</td><td>Viktor Gyokeres</td><td>Arsenal</td><td>27</td><td>€65.00m</td></tr>
+    <tr><td>LW/RW</td><td>Anthony Elanga</td><td>Newcastle</td><td>23</td><td>€40.00m</td></tr>
+    <tr><td>RW</td><td>Roony Bardghji</td><td>FC Barcelona</td><td>20</td><td>€15.00m</td></tr>
+    <tr><td>LW</td><td>Williot Swedberg</td><td>Celta Vigo</td><td>22</td><td>€15.00m</td></tr>
+    <tr><td>FW</td><td>Benjamin Nygren</td><td>Celtic</td><td>24</td><td>€10.00m</td></tr>
+    <tr><td>FW</td><td>Gustaf Nilsson</td><td>Club Brugge</td><td>28</td><td>€2.00m</td></tr>
+    <tr><td>FW</td><td>Gustav Lundgren</td><td>GAIS</td><td>30</td><td>€1.30m</td></tr>
+    <tr><td>FW</td><td>Taha Ali</td><td>Malmo FF</td><td>27</td><td>€1.20m</td></tr>
+  </tbody>
+</table>
+
+## The Absent Stars: Isak and Kulusevski's Return Could Change Everything
+
+Two high-profile players were missing from the playoff squad but could transform Sweden's World Cup prospects.
+
+**Alexander Isak (FW / Liverpool / 26)** — After a British-record £125m move from Newcastle to Liverpool in September 2025, Isak broke his tibia and fibula in December's match against Tottenham. He missed the entire playoff campaign but is expected to be fit for the World Cup. If Isak joins Gyökeres up front, Sweden would boast arguably the tournament's most devastating strike partnership — two Premier League elite strikers in tandem.
+
+**Dejan Kulusevski (MF/FW / Tottenham / 25)** — The creative winger has been sidelined since May 2025 following patella surgery and underwent a minor follow-up procedure in March. He joined the squad in a support role during the playoffs but could not play. His participation in the World Cup remains uncertain, but a fit Kulusevski would add immense quality on the right wing.
+
+<div class="highlight-box">
+<span class="point-label">POINT</span>
+<span class="point-title">Isak's Return Could Create the World's Most Lethal Strike Duo</span>
+<p class="point-body">A fit Gyökeres (Arsenal) and Isak (Liverpool) partnership would pair two strikers from Premier League elite clubs. This combination could rank among the most dangerous front pairings at the entire 48-team tournament. Japan's defensive preparations must account for a significantly stronger attacking lineup than what Sweden fielded in the playoffs.</p>
+</div>
+
+## Five Players to Watch
+
+### 1. Viktor Gyokeres (CF / Arsenal / 27)
+
+Sweden's talisman and the most dangerous striker in Group F. After a €63.5m move from Sporting CP to Arsenal in summer 2025, he has scored **11 Premier League goals** and **4 Champions League goals** in his debut season. At 188cm, he combines aerial dominance and physical power with surprising speed and technique — a complete striker in the mold of Erling Haaland. His four playoff goals underline his big-game mentality.
+
+### 2. Lucas Bergvall (CM / Tottenham / 20)
+
+The 20-year-old central midfielder is Sweden's brightest young talent. With **1 goal and 2 assists** at Tottenham, his €40m valuation matches Gyökeres and Elanga as the squad's joint-highest. Technically gifted with excellent spatial awareness, he brings composure and creativity to Sweden's midfield.
+
+### 3. Isak Hien (CB / Atalanta / 27)
+
+The defensive linchpin, Hien is a regular starter at Europa League-winning Atalanta. At 188cm, he combines aerial authority with sharp one-on-one defending and sweeping cover. His €22m valuation leads the backline, and his experience in Serie A and the Champions League provides Sweden with genuine pedigree at the back.
+
+### 4. Daniel Svensson (LWB / Borussia Dortmund / 24)
+
+Dortmund's first-choice left wingback has been one of Sweden's standout performers. With a **FotMob rating of 7.06** and 1 goal plus 1 assist in the Bundesliga, his dynamic two-way play on the left flank gives Sweden width and energy in their 3-4-2-1 shape.
+
+### 5. Anthony Elanga (FW / Newcastle / 23)
+
+A £55m summer signing for Newcastle, Elanga brings pace, directness, and dribbling quality. He scored the opener against Poland and has **2 Champions League goals** this season. His ability to play across the front line makes him a key piece in Potter's flexible system.
+
+<div class="highlight-box">
+<span class="point-label">POINT 3</span>
+<span class="point-title">Youth Meets Experience — A Well-Balanced Squad at 26.4 Years</span>
+<p class="point-body">Sweden's squad blends exciting youngsters — Bergvall (20), Bardghji (20), and Larsson (21) — with experienced heads like Lindelof (31) and Karlstrom (30). With players across the Premier League, Bundesliga, Serie A, and La Liga, their collective top-level European experience should not be underestimated.</p>
+</div>
+
+## Strengths and Weaknesses
+
+### Strengths
+
+**1. Gyokeres — A One-Man Wrecking Ball.** The playoff numbers speak for themselves: four goals in two matches. His combination of size, speed, and finishing makes him a nightmare for any defense.
+
+**2. Defensive Solidity.** The three-center-back system with Hien, Lindelof, and Starfelt provides height and physical presence. The 5-4-1 defensive shape is compact and organized, conceding few high-quality chances.
+
+**3. Potter's Tactical Toolkit.** The ability to switch systems mid-match is invaluable in a World Cup setting. Potter's extensive Premier League experience gives him the know-how to prepare bespoke game plans for each opponent.
+
+### Weaknesses
+
+**1. Creative Dependency in the Playoffs (May Improve for the Tournament).** In the playoffs, goal-scoring was heavily concentrated on Gyökeres (4 of 6 goals). However, Isak's expected return for the World Cup would dramatically broaden the attacking threat. Whether Kulusevski can also return remains the key variable.
+
+**2. Qualifying Group Form.** Zero wins in six qualifying matches is a red flag. The playoff resurgence was impressive, but long-term consistency remains unproven.
+
+**3. Goalkeeping Uncertainty.** Potter used Ellborg (22) against Ukraine and Nordfeldt (36) against Poland — two very different profiles. The lack of a settled No.1 is a concern heading into the tournament.
+
+## Group F Schedule
+
+<table class="schedule-table">
+  <thead><tr><th>MD</th><th>Date</th><th>Match</th><th>Venue</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>June 14</td><td>Sweden vs Tunisia</td><td>Monterrey Stadium, Mexico</td></tr>
+    <tr><td>2</td><td>June 20</td><td>Netherlands vs Sweden</td><td>NRG Stadium, Houston</td></tr>
+    <tr><td>3</td><td>June 25</td><td>Japan vs Sweden</td><td>AT&T Stadium, Arlington</td></tr>
+  </tbody>
+</table>
+
+The opening match against Tunisia is pivotal. Three points there would give Sweden the luxury of sitting deeper against the Netherlands in Matchday 2. The Japan match on Matchday 3 could easily become a straight shootout for second place in the group.
+
+## Three Things Japan Must Watch For
+
+<div class="highlight-box">
+<span class="point-label">POINT 4</span>
+<span class="point-title">Japan vs Sweden — The Three Keys</span>
+<p class="point-body"><strong>1. Neutralizing Gyokeres.</strong> At 188cm with elite finishing, he will test Tomiyasu and Itakura physically. Japan must deny service and avoid fouling in dangerous areas — set-piece delivery to a squad this tall is lethal.<br><strong>2. Breaking the 5-4-1 block.</strong> If Sweden sit deep, Japan's wide players (Mitoma, Ito) must exploit the space behind the wingbacks. Switching play quickly and combining through the half-spaces will be essential.<br><strong>3. Set-piece defense.</strong> Sweden's height advantage from corners and free kicks is significant. Japan will need disciplined zonal marking with man-markers assigned to the biggest aerial threats.</p>
+</div>
+
+## Sweden's World Cup History
+
+<table class="schedule-table">
+  <thead><tr><th>Tournament</th><th>Result</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td>1958 (Home)</td><td>Runners-up</td><td>Lost 2-5 to Brazil in the final</td></tr>
+    <tr><td>1994 USA</td><td>Third place</td><td>Bronze medal after beating Bulgaria</td></tr>
+    <tr><td>2006 Germany</td><td>Round of 16</td><td>Eliminated by Germany</td></tr>
+    <tr><td>2018 Russia</td><td>Quarter-finals</td><td>Lost 0-2 to England</td></tr>
+    <tr><td>2022 Qatar</td><td>Did not qualify</td><td>Lost playoff to Poland</td></tr>
+  </tbody>
+</table>
+
+Sweden are no World Cup novices. Runners-up on home soil in 1958, third in the USA in 1994, and quarter-finalists as recently as 2018 — their pedigree in this tournament is genuine. Now, with Gyökeres leading the line and Potter pulling the strings, they will fancy their chances of another deep run.
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">Sweden at a Glance</span>
+<p class="point-body">Sweden's dramatic qualification — from bottom of their group to playoff winners courtesy of Gyokeres' four goals — encapsulates both their greatest strength and vulnerability. The 3-4-2-1 system under Potter offers tactical flexibility, defensive resilience, and a clear focal point in attack. But the reliance on Gyokeres, an unsettled goalkeeper position, and a poor qualifying campaign raise legitimate questions about consistency. For Japan, the equation is simple: contain Gyokeres, and Sweden become beatable.</p>
+</div>`,
+  },
+  {
     id: "1775462400001",
     slug: "j1-centennial-vision-league-round-9-results",
     title: "【J1百年構想リーグ第9節】神戸が岡山を4-1粉砕し首位堅持！川崎Fは浦和との5ゴールの撃ち合いを劇的決勝弾で制す",
