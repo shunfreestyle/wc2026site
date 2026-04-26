@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Scotland National Team | SAMURAI FOOTBALL",
+  title: "スコットランド代表 | 2026年W杯グループF対戦相手",
   description:
-    "Scotland national team squad, players, and match info for the 2026 FIFA World Cup. Manager, FIFA ranking, and full squad list.",
+    "2026年FIFAワールドカップで日本と同組のスコットランド代表情報。監督・FIFAランキング・選手一覧・過去の対戦成績。",
   alternates: {
     canonical: "https://samurai-football.jp/japan/opponents/scotland",
-    languages: {
-      ja: "https://samurai-football.jp/japan/opponents/scotland",
-      en: "https://samurai-football.jp/japan/opponents/scotland",
-      "x-default": "https://samurai-football.jp/japan/opponents/scotland",
-    },
   },
 };
 

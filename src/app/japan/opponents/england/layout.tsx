@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "England National Team | SAMURAI FOOTBALL",
+  title: "イングランド代表 | 2026年W杯グループF対戦相手",
   description:
-    "England national team squad, players, and match info for the 2026 FIFA World Cup. Manager, FIFA ranking, and full squad list.",
+    "2026年FIFAワールドカップで日本と同組のイングランド代表情報。監督・FIFAランキング・選手一覧・過去の対戦成績。",
   alternates: {
     canonical: "https://samurai-football.jp/japan/opponents/england",
-    languages: {
-      ja: "https://samurai-football.jp/japan/opponents/england",
-      en: "https://samurai-football.jp/japan/opponents/england",
-      "x-default": "https://samurai-football.jp/japan/opponents/england",
-    },
   },
 };
 

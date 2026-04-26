@@ -48,6 +48,17 @@ function TeamDisplay({
   );
 }
 
+function formatLocalDate(dateStr: string, loc: Locale): string {
+  const d = new Date(dateStr + "T00:00:00");
+  if (loc === "en") {
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric", weekday: "short" });
+  }
+  const m = d.getMonth() + 1;
+  const day = d.getDate();
+  const wd = ["日", "月", "火", "水", "木", "金", "土"][d.getDay()];
+  return `${m}/${day}（${wd}）`;
+}
+
 export default function MatchCard({ match }: { match: Match }) {
   const { locale } = useLanguage();
   const stageStyles: Record<string, { bg: string; text: string; border: string; label: string }> = {
@@ -76,6 +87,7 @@ export default function MatchCard({ match }: { match: Match }) {
         <div className="flex items-center gap-2">{stageBadge}</div>
         <div className="text-right">
           <p className="text-xs font-medium text-gray-700">
+            <span className="text-gray-500">{formatLocalDate(match.date, locale)}</span>{" "}
             {match.localTime} <span className="text-gray-400">({match.timezone})</span>
           </p>
           <p className="text-[11px] text-gray-500">

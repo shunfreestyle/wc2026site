@@ -52,9 +52,10 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "SAMURAI FOOTBALL",
+    "name": "サムライフットボール",
+    "alternateName": "SAMURAI FOOTBALL",
     "url": "https://samurai-football.jp",
-    "description": "2026 FIFA World Cup Japan National Team Fan Site",
+    "description": "2026年FIFAワールドカップと日本代表（サムライブルー）の情報を網羅した非公式ファンサイト",
     "inLanguage": ["ja", "en"],
   };
 

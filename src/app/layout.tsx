@@ -21,51 +21,48 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "SAMURAI FOOTBALL | Unofficial 2026 World Cup Fan Site",
-    template: "%s | SAMURAI FOOTBALL",
+    default: "サムライフットボール | 2026年W杯 日本代表ファンサイト",
+    template: "%s | サムライフットボール",
   },
   description:
-    "Unofficial fan site covering Japan national team and the 2026 FIFA World Cup. Player profiles, match schedules, and team info. Not affiliated with FIFA or JFA.",
+    "2026年FIFAワールドカップと日本代表（サムライブルー）の最新情報をお届けする非公式ファンサイト。選手名鑑・試合日程・出場国情報を網羅。FIFA・JFAとは無関係です。",
   keywords: [
+    "サムライフットボール",
+    "日本代表",
+    "サムライブルー",
+    "2026ワールドカップ",
+    "W杯2026",
+    "FIFAワールドカップ",
     "Japan national team",
     "Samurai Blue",
     "2026 World Cup",
-    "FIFA World Cup",
-    "日本代表",
-    "サムライブルー",
-    "ワールドカップ",
   ],
   openGraph: {
-    siteName: "SAMURAI FOOTBALL",
+    siteName: "サムライフットボール",
     type: "website",
     url: "https://samurai-football.jp",
-    title: "SAMURAI FOOTBALL | Unofficial 2026 FIFA World Cup Fan Site",
+    title: "サムライフットボール | 2026年FIFAワールドカップ日本代表ファンサイト",
     description:
-      "Unofficial fan site covering Japan national team and all 48 nations at the 2026 FIFA World Cup. Not affiliated with FIFA or JFA.",
+      "2026年FIFAワールドカップ全48カ国と日本代表の情報を網羅した非公式ファンサイト。FIFA・JFAとは無関係です。",
     locale: "ja_JP",
     images: [
       {
         url: "https://samurai-football.jp/og-image.png",
         width: 1200,
         height: 630,
-        alt: "SAMURAI FOOTBALL",
+        alt: "サムライフットボール",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@samuraifootball",
-    title: "SAMURAI FOOTBALL — Unofficial Fan Site",
-    description: "Unofficial fan site covering Japan national team and the 2026 FIFA World Cup. Not affiliated with FIFA or JFA.",
+    title: "サムライフットボール — 2026年W杯ファンサイト",
+    description: "2026年FIFAワールドカップと日本代表の最新情報をお届けする非公式ファンサイト。FIFA・JFAとは無関係です。",
     images: ["https://samurai-football.jp/og-image.png"],
   },
   alternates: {
     canonical: "https://samurai-football.jp",
-    languages: {
-      ja: "https://samurai-football.jp",
-      en: "https://samurai-football.jp",
-      "x-default": "https://samurai-football.jp",
-    },
   },
   verification: {
     google: "OVov4qyr90K3Eb29v_zwIWa8R78SCkd6lBfMXKrGS24",

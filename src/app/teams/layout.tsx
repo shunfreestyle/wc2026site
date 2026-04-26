@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "All Teams — 48 Nations | SAMURAI FOOTBALL",
+  title: "出場国一覧（全48カ国）| 2026年FIFAワールドカップ",
   description:
-    "All 48 teams competing at the 2026 FIFA World Cup. Group stage draw, squads, coaches, and FIFA rankings.",
+    "2026年FIFAワールドカップ出場全48カ国の情報。グループステージ組み合わせ・監督・FIFAランキング・注目選手を網羅。",
   alternates: {
     canonical: "https://samurai-football.jp/teams",
-    languages: {
-      ja: "https://samurai-football.jp/teams",
-      en: "https://samurai-football.jp/teams",
-      "x-default": "https://samurai-football.jp/teams",
-    },
   },
 };
 

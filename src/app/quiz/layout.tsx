@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Football Quiz — Japan & World Cup 2026 | SAMURAI FOOTBALL",
+  title: "サッカークイズ | 日本代表・W杯2026",
   description:
-    "Test your knowledge of the Japan national team and the 2026 FIFA World Cup with our multilingual quiz.",
+    "日本代表と2026年FIFAワールドカップに関するクイズに挑戦！サッカー知識を試そう。",
   alternates: {
     canonical: "https://samurai-football.jp/quiz",
-    languages: {
-      ja: "https://samurai-football.jp/quiz",
-      en: "https://samurai-football.jp/quiz",
-      "x-default": "https://samurai-football.jp/quiz",
-    },
   },
 };
 
