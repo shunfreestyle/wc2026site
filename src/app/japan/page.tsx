@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { japanSquad2026March, type JapanSquadPlayer } from "@/data/japan-squad";
+import { japanSquad2026WC, type JapanSquadPlayer } from "@/data/japan-squad";
 
 
 /* ──────────────────────────────────────────────
@@ -44,7 +44,7 @@ const wcMatches = [
   },
 ];
 
-const squad = japanSquad2026March;
+const squad = japanSquad2026WC;
 
 /* Squad data moved to @/data/japan-squad.ts */
 
@@ -124,7 +124,7 @@ export default function JapanPage() {
       "https://en.wikipedia.org/wiki/Japan_national_football_team",
       "https://www.jfa.jp/samuraiblue/",
     ],
-    athlete: japanSquad2026March.slice(0, 10).map((p) => ({
+    athlete: japanSquad2026WC.slice(0, 10).map((p) => ({
       "@type": "Person",
       name: p.name,
       alternateName: p.nameJa,

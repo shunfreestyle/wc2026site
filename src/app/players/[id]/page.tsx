@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { getAllPlayers, getPlayerById, type Player } from "@/data/teams";
-import { japanSquad2026March } from "@/data/japan-squad";
+import { japanSquad2026WC } from "@/data/japan-squad";
 import PlayerAvatar from "@/components/PlayerAvatar";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getTeamName, getPlayerDescription, getBestResult } from "@/utils/teamName";
@@ -44,7 +44,7 @@ export default function PlayerDetailPage() {
   const { player, team } = result;
 
   // Check if this is a Japan squad player (from japan-squad.ts)
-  const japanSquadPlayer = japanSquad2026March.find((p) => p.id === id);
+  const japanSquadPlayer = japanSquad2026WC.find((p) => p.id === id);
   const isJapanSquad = !!japanSquadPlayer;
 
   // Find teammates (same team, different player)
@@ -52,7 +52,7 @@ export default function PlayerDetailPage() {
   const isJapanTeam = team.id === "japan";
   const currentPosition = japanSquadPlayer?.position ?? player.position;
   const teammates = isJapanTeam
-    ? japanSquad2026March
+    ? japanSquad2026WC
         .filter((p) => p.id !== id && p.position === currentPosition)
         .slice(0, 5)
         .map((p) => ({
@@ -487,7 +487,7 @@ export default function PlayerDetailPage() {
                     </Link>
                   ))}
                 </div>
-                {(isJapanTeam ? japanSquad2026March.length > 6 : team.players.length > 6) && (
+                {(isJapanTeam ? japanSquad2026WC.length > 6 : team.players.length > 6) && (
                   <Link
                     href={isJapanTeam ? "/japan#squad" : `/teams/${team.id}`}
                     className="block text-center text-xs font-medium text-[#E8192C] hover:underline mt-4 pt-3 border-t border-gray-100"

@@ -1,6 +1,6 @@
 /**
- * 日本代表 招集メンバー 28名 – JFA公式 3月19日発表
- * イギリス遠征（vs スコットランド / vs イングランド）
+ * 日本代表 FIFAワールドカップ2026 登録メンバー 26名 – JFA公式 5月15日発表
+ * ※三笘薫・南野拓実は負傷で選外。長友佑都は5大会連続のW杯メンバー入り。
  */
 
 export type JapanSquadPlayer = {
@@ -23,7 +23,7 @@ export type JapanSquadPlayer = {
   tournaments?: string[];
 };
 
-export const japanSquad2026March: JapanSquadPlayer[] = [
+export const japanSquad2026WC: JapanSquadPlayer[] = [
   // ── GK (3) ──
   {
     id: "japan-hayakawa",
@@ -90,7 +90,32 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     tournaments: ["アジア杯 2023"],
   },
 
-  // ── DF (8) ──
+  // ── DF (9) ──
+  {
+    id: "japan-nagatomo",
+    name: "Yuto Nagatomo",
+    nameJa: "長友佑都",
+    birthDate: "1986-09-12",
+    age: 39,
+    height: 170,
+    weight: 68,
+    position: "DF",
+    club: "FC東京",
+    note: "5大会連続W杯",
+    description:
+      "日本代表歴代最多5度目のW杯出場。39歳にして衰えない運動量と闘志は日本サッカーの象徴。インテル・ガラタサライなど名門クラブを渡り歩いた経験値で若いチームを精神的に支える。",
+    careerHistory: [
+      { club: "FC東京", period: "2007–10, 2021〜", note: "プロデビュー。2021年に古巣復帰" },
+      { club: "チェゼーナ（イタリア）", period: "2010–11" },
+      { club: "インテル（イタリア）", period: "2011–18", note: "セリエA通算7年。CLでも活躍" },
+      { club: "ガラタサライ（トルコ）", period: "2018–20" },
+      { club: "マルセイユ（フランス）", period: "2020–21" },
+    ],
+    caps: 142,
+    goals: 4,
+    debutYear: 2008,
+    tournaments: ["W杯 2010", "W杯 2014", "W杯 2018", "W杯 2022"],
+  },
   {
     id: "japan-taniguchi",
     name: "Shogo Taniguchi",
@@ -137,27 +162,53 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     tournaments: ["アジア杯 2023"],
   },
   {
-    name: "Daiki Hashioka",
-    nameJa: "橋岡大樹",
-    birthDate: "1999-05-17",
-    age: 26,
-    height: 180,
-    weight: 75,
+    id: "japan-itakura",
+    name: "Ko Itakura",
+    nameJa: "板倉滉",
+    birthDate: "1997-01-27",
+    age: 29,
+    height: 186,
+    weight: 78,
     position: "DF",
-    club: "KAAヘント（ベルギー）",
-    note: "追加招集",
-    id: "japan-hashioka",
+    club: "アヤックス（オランダ）",
+    note: "守備の要",
     description:
-      "ベルギー・KAAヘントで右SBとして活躍する橋岡大樹。安藤智哉の負傷離脱に伴い追加招集。対人守備の強さとスプリント力を活かしたアップダウンが武器で、守備陣の選手層を厚くする存在。",
+      "空中戦の強さとビルドアップ能力を兼ね備えたCB。カタールW杯ではスペイン戦でフル出場し守備の中核を担った。ボルシアMGからアヤックスに移籍し、オランダで新たなキャリアを築く。",
     careerHistory: [
-      { club: "浦和レッズ", period: "2018–22", note: "ユース出身。19歳から主力として活躍" },
-      { club: "シントトロイデン（ベルギー）", period: "2022–23" },
-      { club: "KAAヘント（ベルギー）", period: "2023〜", note: "右SBとして安定したパフォーマンスを発揮" },
+      { club: "川崎フロンターレ", period: "2015–19", note: "ユース出身" },
+      { club: "マンチェスター・シティ（イングランド）", period: "2019–22", note: "フローニンゲンにローン" },
+      { club: "ボルシアMG（ドイツ）", period: "2022–25", note: "ブンデスリーガで主力CB" },
+      { club: "アヤックス（オランダ）", period: "2025〜" },
     ],
-    caps: 10,
-    goals: 0,
-    debutYear: 2023,
-    tournaments: [],
+    caps: 30,
+    goals: 2,
+    debutYear: 2021,
+    tournaments: ["W杯 2022", "アジア杯 2023"],
+  },
+  {
+    id: "japan-tomiyasu",
+    name: "Takehiro Tomiyasu",
+    nameJa: "冨安健洋",
+    birthDate: "1998-11-05",
+    age: 27,
+    height: 188,
+    weight: 84,
+    position: "DF",
+    club: "アヤックス（オランダ）",
+    note: "万能DF",
+    description:
+      "右SBでもCBでも世界レベルのプレーを見せる万能型DF。アーセナルからアヤックスへ移籍し新天地で存在感を発揮。1年9ヶ月ぶりの代表復帰でW杯メンバー入りを勝ち取った。",
+    careerHistory: [
+      { club: "アビスパ福岡", period: "2016–19" },
+      { club: "シントトロイデン（ベルギー）", period: "2019–20" },
+      { club: "ボローニャ（イタリア）", period: "2020–21" },
+      { club: "アーセナル（イングランド）", period: "2021–25", note: "プレミアリーグ準優勝に貢献" },
+      { club: "アヤックス（オランダ）", period: "2025〜" },
+    ],
+    caps: 45,
+    goals: 2,
+    debutYear: 2018,
+    tournaments: ["W杯 2022", "アジア杯 2023"],
   },
   {
     id: "japan-ito-h",
@@ -248,7 +299,31 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     tournaments: [],
   },
 
-  // ── MF (9) ──
+  // ── MF / FW (14) ──
+  {
+    id: "japan-endo",
+    name: "Wataru Endo",
+    nameJa: "遠藤航",
+    birthDate: "1993-02-09",
+    age: 33,
+    height: 178,
+    weight: 76,
+    position: "MF",
+    club: "リバプール（イングランド）",
+    note: "キャプテン",
+    description:
+      "「デュエル王」の異名を持つ日本代表の主将。球際の強さとリーダーシップでチームの中盤を支配する。プレミアリーグの名門リバプールで世界最高峰の舞台を経験。",
+    careerHistory: [
+      { club: "湘南ベルマーレ", period: "2012–18" },
+      { club: "シントトロイデン（ベルギー）", period: "2018–19" },
+      { club: "シュトゥットガルト（ドイツ）", period: "2019–23", note: "ブンデスリーガ2季連続デュエル王" },
+      { club: "リバプール（イングランド）", period: "2023〜", note: "プレミアリーグの名門で中盤の要として貢献" },
+    ],
+    caps: 60,
+    goals: 3,
+    debutYear: 2015,
+    tournaments: ["W杯 2022", "アジア杯 2023"],
+  },
   {
     name: "Daichi Kamada",
     nameJa: "鎌田大地",
@@ -273,31 +348,6 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     caps: 50,
     goals: 8,
     debutYear: 2019,
-    tournaments: ["W杯 2022", "アジア杯 2023"],
-  },
-  {
-    name: "Kaoru Mitoma",
-    nameJa: "三笘薫",
-    birthDate: "1997-05-20",
-    age: 28,
-    height: 178,
-    weight: 73,
-    position: "MF",
-    club: "ブライトン（イングランド）",
-    note: "エース",
-    id: "japan-mitoma",
-    description:
-      "「1mmの奇跡」でおなじみ、世界が恐れるドリブラー。緩急自在のステップで相手を置き去りにする姿はまさに芸術。筑波大学院で研究したドリブル理論を武器に、プレミアリーグで無双する知性派アタッカー。",
-    careerHistory: [
-      { club: "川崎フロンターレ", period: "2020–21", note: "筑波大学院でドリブル理論を研究後、J1制覇に貢献" },
-      { club: "ロイヤル・ユニオン・サン=ジロワーズ（ベルギー）", period: "2021–22", note: "ローン移籍" },
-      { club: "ブライトン（イングランド）", period: "2022〜", note: "プレミア屈指のドリブラーとして世界的に評価を確立" },
-    ],
-    opponentConnection:
-      "ブライトン在籍時（2022〜2024年）、スコットランド代表・ビリー・ギルモアと同チームメイト。左サイドの三笘と守備的MFのギルモアとして日々練習し、プレミアリーグで共に戦った。今回は日本代表の左エースとスコットランド代表のボランチとして再び対峙する注目マッチアップ。",
-    caps: 35,
-    goals: 8,
-    debutYear: 2021,
     tournaments: ["W杯 2022", "アジア杯 2023"],
   },
   {
@@ -392,70 +442,30 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     tournaments: [],
   },
   {
-    id: "japan-fujita",
-    name: "Joel Chima Fujita",
-    nameJa: "藤田譲瑠チマ",
-    birthDate: "2002-02-16",
+    id: "japan-kubo",
+    name: "Takefusa Kubo",
+    nameJa: "久保建英",
+    birthDate: "2001-06-04",
     age: 24,
-    height: 181,
-    weight: 74,
+    height: 173,
+    weight: 67,
     position: "MF",
-    club: "ザンクトパウリ（ドイツ）",
+    club: "レアル・ソシエダ（スペイン）",
+    note: "ファンタジスタ",
     description:
-      "ナイジェリアにルーツを持つハイブリッドMF。フィジカルの強さとテクニックを兼ね備え、中盤で力強くボールを運べる推進力が魅力。ブンデスリーガで急成長中の期待株。",
+      "繊細なボールタッチと創造性豊かなプレーが持ち味のファンタジスタ。ラ・リーガのレアル・ソシエダで磨かれた技術は世界レベル。狭いスペースでの打開力とラストパスの精度で違いを生み出す。",
     careerHistory: [
-      { club: "横浜F・マリノス", period: "2020–23" },
-      { club: "ザンクトパウリ（ドイツ）", period: "2023〜", note: "1部昇格に貢献。フィジカルとテクニックを兼ね備えた次世代ボランチ" },
+      { club: "FCバルセロナ（カンテラ）", period: "2011–15", note: "10歳でバルサのカンテラに入団" },
+      { club: "FC東京", period: "2016–19" },
+      { club: "レアル・マドリード（スペイン）", period: "2019–23", note: "マジョルカ、ビジャレアル等にローン" },
+      { club: "レアル・ソシエダ（スペイン）", period: "2023〜", note: "ラ・リーガで攻撃の中心として活躍" },
     ],
-    caps: 10,
-    goals: 0,
-    debutYear: 2024,
-    tournaments: [],
-  },
-  {
-    id: "japan-sano-k2",
-    name: "Kodai Sano",
-    nameJa: "佐野航大",
-    birthDate: "2002-08-27",
-    age: 23,
-    height: 168,
-    weight: 62,
-    position: "MF",
-    club: "NEC（オランダ）",
-    description:
-      "168cmと小柄ながら、抜群のテクニックとゲームメイク能力で中盤を支配する技巧派。オランダで磨いたパスセンスと視野の広さは、攻撃のリズムを生み出す鍵。",
-    careerHistory: [
-      { club: "FC東京", period: "〜2022", note: "アカデミー出身" },
-      { club: "NEC（オランダ）", period: "2022〜", note: "168cmの小柄な体格ながらテクニックとゲームメイクで評価を確立" },
-    ],
-    caps: 3,
-    goals: 0,
-    debutYear: 2025,
-    tournaments: [],
-  },
-  {
-    name: "Ryunosuke Sato",
-    nameJa: "佐藤龍之介",
-    birthDate: "2006-07-24",
-    age: 19,
-    height: 174,
-    weight: 64,
-    position: "MF",
-    club: "FC東京",
-    note: "最年少・19歳",
-    id: "japan-sato-r",
-    description:
-      "19歳にしてA代表に招集された超新星。FC東京のアカデミーが生んだ天才肌のMFで、狭いスペースでもボールを失わない技術と創造性は、将来の日本代表の中心になれる才能。",
-    careerHistory: [
-      { club: "FC東京", period: "2024〜", note: "アカデミー出身。19歳でA代表に招集された超新星" },
-    ],
-    caps: 2,
-    goals: 0,
-    debutYear: 2025,
-    tournaments: [],
+    caps: 35,
+    goals: 5,
+    debutYear: 2019,
+    tournaments: ["W杯 2022", "アジア杯 2023"],
   },
 
-  // ── FW (8) ──
   {
     name: "Junya Ito",
     nameJa: "伊東純也",
@@ -546,28 +556,6 @@ export const japanSquad2026March: JapanSquadPlayer[] = [
     goals: 10,
     debutYear: 2022,
     tournaments: ["W杯 2022", "アジア杯 2023"],
-  },
-  {
-    id: "japan-machino",
-    name: "Shuto Machino",
-    nameJa: "町野修斗",
-    birthDate: "1999-09-30",
-    age: 26,
-    height: 185,
-    weight: 77,
-    position: "FW",
-    club: "ボルシアMG（ドイツ）",
-    description:
-      "ブンデスリーガのボルシアMGで出場機会を掴んだ万能型FW。ポストプレーから裏抜けまでこなせる器用さが武器。日本の前線に新たな選択肢を与える頼れるストライカー。",
-    careerHistory: [
-      { club: "湘南ベルマーレ", period: "2018–22", note: "J1得点王に輝く" },
-      { club: "ホルシュタイン・キール（ドイツ）", period: "2022–23", note: "ドイツ2部" },
-      { club: "ボルシアMG（ドイツ）", period: "2023〜", note: "ブンデスリーガでポジションを確立" },
-    ],
-    caps: 10,
-    goals: 3,
-    debutYear: 2022,
-    tournaments: ["W杯 2022"],
   },
   {
     id: "japan-nakamura-k",
