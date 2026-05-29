@@ -145,12 +145,12 @@ export default function TeamDetailPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
             <span className="w-1 h-6 bg-[#E8192C] rounded-full" />
             {t.teams.squad}
-            {(id === "scotland" || id === "england") && team.players.length > 0 && (
+            {team.players.length > 0 && (
               <span className="ml-2 text-sm font-normal text-gray-500">{team.players.length}名選出</span>
             )}
           </h2>
 
-          {(id === "scotland" || id === "england") && team.players.length > 0 ? (
+          {team.players.length > 0 ? (
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
               {/* Desktop Table */}
               <div className="hidden md:block overflow-x-auto">
