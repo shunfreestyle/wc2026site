@@ -99,6 +99,7 @@ const JST_FROM_ET = 13; // JST = ET + 13 hours (always, regardless of venue)
 function gs(
   num: number, etDate: string, etH: number, etM: number,
   vk: string, home: string, away: string, group: string,
+  result?: { h: number; a: number },
 ): Match {
   const v = V[vk];
   const local = shiftTime(etDate, etH, etM, v.etToLocal);
@@ -108,7 +109,8 @@ function gs(
     date: local.date, localTime: local.time, jstTime: jst.time, jstDate: jst.date,
     venue: v.nameJa, city: v.cityJa, country: v.country,
     venueEn: v.nameEn, cityEn: v.cityEn, countryEn: v.countryEn, timezone: v.tz,
-    homeTeamId: home, awayTeamId: away, stadiumId: v.stadiumId, status: "scheduled",
+    homeTeamId: home, awayTeamId: away, stadiumId: v.stadiumId,
+    ...(result ? { homeScore: result.h, awayScore: result.a, status: "finished" as const } : { status: "scheduled" as const }),
   };
 }
 
@@ -132,49 +134,49 @@ function ko(
 
 // ── GROUP STAGE (72 matches) ────────────────────────────────
 const groupStage: Match[] = [
-  // ── Jun 11 ──
-  gs( 1, "2026-06-11", 15,  0, "azteca",   "mexico",       "south-africa",   "A"),
-  gs( 2, "2026-06-11", 22,  0, "akron",    "korea",        "czech-republic", "A"),
+  // ── Jun 11 (MD1) ──
+  gs( 1, "2026-06-11", 15,  0, "azteca",   "mexico",       "south-africa",   "A", { h: 2, a: 0 }),
+  gs( 2, "2026-06-11", 22,  0, "akron",    "korea",        "czech-republic", "A", { h: 2, a: 1 }),
 
   // ── Jun 12 ──
-  gs( 3, "2026-06-12", 15,  0, "bmo",      "canada",       "bosnia", "B"),
-  gs( 4, "2026-06-12", 21,  0, "sofi",     "usa",          "paraguay",       "D"),
+  gs( 3, "2026-06-12", 15,  0, "bmo",      "canada",       "bosnia", "B", { h: 1, a: 1 }),
+  gs( 4, "2026-06-12", 21,  0, "sofi",     "usa",          "paraguay",       "D", { h: 4, a: 1 }),
 
   // ── Jun 13 ──
-  gs( 5, "2026-06-13",  0,  0, "bc",       "australia",    "turkey", "D"),
-  gs( 6, "2026-06-13", 15,  0, "levis",    "qatar",        "switzerland",    "B"),
-  gs( 7, "2026-06-13", 18,  0, "metlife",  "brazil",       "morocco",        "C"),
-  gs( 8, "2026-06-13", 21,  0, "gillette", "haiti",        "scotland",       "C"),
+  gs( 5, "2026-06-13",  0,  0, "bc",       "australia",    "turkey", "D", { h: 2, a: 0 }),
+  gs( 6, "2026-06-13", 15,  0, "levis",    "qatar",        "switzerland",    "B", { h: 1, a: 1 }),
+  gs( 7, "2026-06-13", 18,  0, "metlife",  "brazil",       "morocco",        "C", { h: 1, a: 1 }),
+  gs( 8, "2026-06-13", 21,  0, "gillette", "haiti",        "scotland",       "C", { h: 0, a: 1 }),
 
   // ── Jun 14 ──
-  gs( 9, "2026-06-14", 13,  0, "nrg",      "germany",      "curacao",        "E"),
-  gs(10, "2026-06-14", 16,  0, "att",      "netherlands",  "japan",          "F"),
-  gs(11, "2026-06-14", 19,  0, "lincoln",  "ivory-coast",  "ecuador",        "E"),
-  gs(12, "2026-06-14", 22,  0, "bbva",     "sweden","tunisia",       "F"),
+  gs( 9, "2026-06-14", 13,  0, "nrg",      "germany",      "curacao",        "E", { h: 7, a: 1 }),
+  gs(10, "2026-06-14", 16,  0, "att",      "netherlands",  "japan",          "F", { h: 2, a: 2 }),
+  gs(11, "2026-06-14", 19,  0, "lincoln",  "ivory-coast",  "ecuador",        "E", { h: 1, a: 0 }),
+  gs(12, "2026-06-14", 22,  0, "bbva",     "sweden","tunisia",       "F", { h: 5, a: 1 }),
 
   // ── Jun 15 ──
-  gs(13, "2026-06-15", 12,  0, "mercedes", "spain",        "cape-verde",     "H"),
-  gs(14, "2026-06-15", 15,  0, "lumen",    "belgium",      "egypt",          "G"),
-  gs(15, "2026-06-15", 18,  0, "hardrock", "saudi-arabia", "uruguay",        "H"),
-  gs(16, "2026-06-15", 21,  0, "sofi",     "iran",         "new-zealand",    "G"),
+  gs(13, "2026-06-15", 12,  0, "mercedes", "spain",        "cape-verde",     "H", { h: 0, a: 0 }),
+  gs(14, "2026-06-15", 15,  0, "lumen",    "belgium",      "egypt",          "G", { h: 1, a: 1 }),
+  gs(15, "2026-06-15", 18,  0, "hardrock", "saudi-arabia", "uruguay",        "H", { h: 1, a: 1 }),
+  gs(16, "2026-06-15", 21,  0, "sofi",     "iran",         "new-zealand",    "G", { h: 2, a: 2 }),
 
   // ── Jun 16 ──
-  gs(17, "2026-06-16",  0,  0, "levis",    "austria",      "jordan",         "J"),
-  gs(18, "2026-06-16", 15,  0, "metlife",  "france",       "senegal",        "I"),
-  gs(19, "2026-06-16", 18,  0, "gillette", "iraq", "norway",         "I"),
-  gs(20, "2026-06-16", 21,  0, "arrowhead","argentina",    "algeria",        "J"),
+  gs(17, "2026-06-16",  0,  0, "levis",    "austria",      "jordan",         "J", { h: 3, a: 1 }),
+  gs(18, "2026-06-16", 15,  0, "metlife",  "france",       "senegal",        "I", { h: 3, a: 1 }),
+  gs(19, "2026-06-16", 18,  0, "gillette", "iraq", "norway",         "I", { h: 1, a: 4 }),
+  gs(20, "2026-06-16", 21,  0, "arrowhead","argentina",    "algeria",        "J", { h: 3, a: 0 }),
 
   // ── Jun 17 ──
-  gs(21, "2026-06-17", 13,  0, "nrg",      "portugal",     "dr-congo",   "K"),
-  gs(22, "2026-06-17", 16,  0, "att",      "england",      "croatia",        "L"),
-  gs(23, "2026-06-17", 19,  0, "bmo",      "ghana",        "panama",         "L"),
-  gs(24, "2026-06-17", 22,  0, "azteca",   "uzbekistan",   "colombia",       "K"),
+  gs(21, "2026-06-17", 13,  0, "nrg",      "portugal",     "dr-congo",   "K", { h: 1, a: 1 }),
+  gs(22, "2026-06-17", 16,  0, "att",      "england",      "croatia",        "L", { h: 4, a: 2 }),
+  gs(23, "2026-06-17", 19,  0, "bmo",      "ghana",        "panama",         "L", { h: 1, a: 0 }),
+  gs(24, "2026-06-17", 22,  0, "azteca",   "uzbekistan",   "colombia",       "K", { h: 1, a: 3 }),
 
   // ── Jun 18 (MD2) ──
-  gs(25, "2026-06-18", 12,  0, "mercedes", "czech-republic","south-africa",  "A"),
-  gs(26, "2026-06-18", 15,  0, "sofi",     "switzerland",  "bosnia", "B"),
-  gs(27, "2026-06-18", 18,  0, "bc",       "canada",       "qatar",          "B"),
-  gs(28, "2026-06-18", 21,  0, "akron",    "mexico",       "korea",          "A"),
+  gs(25, "2026-06-18", 12,  0, "mercedes", "czech-republic","south-africa",  "A", { h: 1, a: 1 }),
+  gs(26, "2026-06-18", 15,  0, "sofi",     "switzerland",  "bosnia", "B", { h: 4, a: 1 }),
+  gs(27, "2026-06-18", 18,  0, "bc",       "canada",       "qatar",          "B", { h: 6, a: 0 }),
+  gs(28, "2026-06-18", 21,  0, "akron",    "mexico",       "korea",          "A", { h: 1, a: 0 }),
 
   // ── Jun 19 ──
   gs(29, "2026-06-19",  0,  0, "levis",    "turkey","paraguay",      "D"),

@@ -24,6 +24,216 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    id: "1748563200001",
+    slug: "trifa-esim-north-america-plan-world-cup-2026",
+    title: "【W杯2026遠征の必需品】海外eSIM「トリファ(trifa)」北米周遊プランが便利すぎる——アメリカ&メキシコを1枚でカバー、5分で設定完了【PR】",
+    titleEn: "Must-Have for World Cup 2026: trifa eSIM North America Plan Covers USA & Mexico with One eSIM, Setup in 5 Minutes [Sponsored]",
+    excerpt: "W杯2026の開催地アメリカ・メキシコを周遊する日本人サポーターにおすすめの海外eSIM「トリファ(trifa)」を紹介。北米周遊プランなら国をまたいでも1枚のeSIMでOK。アプリで5分で設定完了、24時間日本語サポート付き。フォロワー限定5%割引クーポンあり。",
+    excerptEn: "Introducing trifa, the overseas eSIM perfect for Japanese supporters traveling across the USA and Mexico for FIFA World Cup 2026. The North America multi-country plan covers both nations with a single eSIM — set up in just 5 minutes via the app, with 24/7 Japanese-language support.",
+    category: "W杯" as const,
+    tags: ["W杯2026", "eSIM", "トリファ", "trifa", "北米周遊", "アメリカ", "メキシコ", "海外旅行", "通信", "PR"],
+    tagsEn: ["World Cup 2026", "eSIM", "trifa", "North America", "USA", "Mexico", "Travel", "Connectivity", "Sponsored"],
+    publishedAt: "2026-05-30",
+    updatedAt: "2026-05-30",
+    isPopular: false,
+    sources: [
+      { name: "trifa公式サイト", url: "https://www.trifa.co/" },
+      { name: "trifa対応国一覧", url: "https://www.trifa.co/countries" },
+    ],
+    content: `W杯2026はアメリカ・メキシコ・カナダの3カ国で開催される。日本代表のグループステージの試合会場はアメリカ国内だが、ラウンド16以降やメキシコでの他国の試合も観たいというサポーターも多いはず。そんな北米周遊の遠征で頭を悩ませるのが「現地の通信環境」だ。
+
+本記事では、北米周遊に対応した海外eSIM「トリファ(trifa)」を紹介する。アメリカとメキシコの両方で使える周遊プランがあり、W杯遠征にぴったりのサービスだ。
+
+<div class="highlight-box">
+<span class="point-label">POINT</span>
+<span class="point-title">この記事はPR（タイアップ）記事です</span>
+<p class="point-body">本記事はtrifa様との提携により作成しています。記事内にはフォロワー限定の割引クーポン情報を掲載しています。</p>
+</div>
+
+## トリファ(trifa)とは？
+
+トリファは、世界200以上の国と地域に対応した海外eSIMサービス。日本国内利用者数No.1のeSIMアプリで、スマホにアプリをダウンロードするだけで、SIMカードの差し替えなしに海外でデータ通信が使えるようになる。
+
+レンタルWiFiのように空港での受け取り・返却の手間がなく、物理的なSIMカードの購入も不要。アプリ上でプランを購入し、eSIMをインストールするだけで準備完了だ。
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>サービス名</th><td>トリファ（trifa）</td></tr>
+    <tr><th>対応国・地域</th><td>世界200以上の国と地域</td></tr>
+    <tr><th>データ容量</th><td>1GB / 3GB / 5GB / 10GB / 20GB / 30GB / 80GB / 無制限から選択</td></tr>
+    <tr><th>利用期間</th><td>3日 / 7日 / 15日 / 31日 / 60日から選択</td></tr>
+    <tr><th>料金目安</th><td>1GBあたり790円〜（国・地域により異なる）</td></tr>
+    <tr><th>サポート</th><td>24時間対応・日本語チャットサポート</td></tr>
+    <tr><th>決済方法</th><td>クレジットカード、Apple Pay、Google Pay</td></tr>
+  </tbody>
+</table>
+
+<small>※ 時期により価格が変動する可能性あり。最新の料金はアプリでご確認ください。</small>
+
+## なぜW杯2026遠征にトリファがおすすめなのか
+
+### 1. 北米周遊プランでアメリカ&メキシコをカバー
+
+W杯2026の試合会場はアメリカ11都市、メキシコ3都市、カナダ2都市に分散している。国をまたぐ移動のたびにSIMカードを買い替えるのは面倒だし、それぞれの国のプランを個別に買うとコストもかさむ。
+
+トリファの北米周遊プランなら、1枚のeSIMでアメリカとメキシコの両方をカバーできる。国境を越えても再設定は不要で、シームレスにデータ通信を継続できるのが大きなメリットだ。
+
+<div class="highlight-box">
+<span class="point-label">POINT</span>
+<span class="point-title">複数国をまたぐ遠征に最適</span>
+<p class="point-body">北米周遊プランなら、アメリカでのグループステージ観戦後にメキシコへ移動しても、eSIMを買い直す必要なし。1枚で複数国をシームレスにカバーできる。</p>
+</div>
+
+### 2. たった5分で設定完了
+
+トリファの設定はとにかく簡単。以下の3ステップで完了する。
+
+<table class="schedule-table">
+  <thead><tr><th>ステップ</th><th>内容</th><th>所要時間</th></tr></thead>
+  <tbody>
+    <tr><td>STEP 1</td><td>アプリをダウンロード</td><td>約1分</td></tr>
+    <tr><td>STEP 2</td><td>渡航先のプランを検索・購入</td><td>約2分</td></tr>
+    <tr><td>STEP 3</td><td>eSIMをインストール・回線を切り替え</td><td>約2分</td></tr>
+  </tbody>
+</table>
+
+出発前に自宅で設定しておけば、現地に到着した瞬間からデータ通信が使える。空港でレンタルWiFiを受け取る行列に並ぶ必要もない。
+
+### 3. 24時間日本語サポートで安心
+
+海外で通信トラブルが起きたとき、英語でのサポート対応は不安という方も多いだろう。トリファはアプリ内チャットで24時間・日本語サポートを提供している。時差を気にせずいつでも相談でき、W杯の深夜キックオフの試合前でも安心だ。
+
+## W杯観戦で通信が必要な場面
+
+スタジアムでの観戦中はもちろん、それ以外にも現地での通信環境は欠かせない。
+
+<table class="schedule-table">
+  <thead><tr><th>場面</th><th>通信が必要な理由</th></tr></thead>
+  <tbody>
+    <tr><td>チケット提示</td><td>FIFAアプリでの電子チケット表示に通信が必要</td></tr>
+    <tr><td>スタジアムへの移動</td><td>Google MapsやUberでのナビ・配車</td></tr>
+    <tr><td>SNS投稿</td><td>試合の感動をリアルタイムで共有</td></tr>
+    <tr><td>情報収集</td><td>試合スケジュール変更、現地ニュースの確認</td></tr>
+    <tr><td>緊急連絡</td><td>同行者との連絡、日本の家族への連絡</td></tr>
+    <tr><td>翻訳</td><td>現地でのコミュニケーションに翻訳アプリを活用</td></tr>
+  </tbody>
+</table>
+
+## フォロワー限定5%割引クーポン
+
+当サイトのフォロワー様限定で、トリファのeSIMが5%割引になるクーポンコードを配布中。
+
+<div class="highlight-box">
+<span class="point-label">COUPON</span>
+<span class="point-title">フォロワー限定5%割引クーポン</span>
+<p class="point-body">Instagramフォロワー様：<strong>LIIBQZ</strong><br>TikTokフォロワー様：<strong>WIURLK</strong><br>※おひとり様一回まで利用可能</p>
+</div>
+
+W杯2026の遠征を計画しているなら、出発前にトリファのアプリをダウンロードして北米周遊プランをチェックしてみてほしい。5分の準備で、現地での通信ストレスがゼロになる。
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">まとめ</span>
+<p class="point-body">トリファ(trifa)の北米周遊プランは、W杯2026でアメリカ・メキシコを移動する日本人サポーターに最適なeSIMサービス。アプリで5分で設定完了、24時間日本語サポート、1枚で複数国カバーという3つの強みがある。フォロワー限定5%割引クーポンも活用して、お得に快適な遠征を楽しもう。</p>
+</div>\`,
+    contentEn: \`FIFA World Cup 2026 is being held across the United States, Mexico, and Canada. While Japan's group stage matches are in the USA, many supporters will want to catch games in Mexico too. One of the biggest concerns for fans traveling across North America is staying connected.
+
+This article introduces trifa, an overseas eSIM service with a North America multi-country plan that covers both the USA and Mexico — making it the perfect companion for your World Cup journey.
+
+<div class="highlight-box">
+<span class="point-label">POINT</span>
+<span class="point-title">This is a sponsored article</span>
+<p class="point-body">This article was created in partnership with trifa. It includes exclusive discount coupon codes for followers.</p>
+</div>
+
+## What is trifa?
+
+trifa is an overseas eSIM service covering over 200 countries and regions worldwide. It is Japan's most popular eSIM app by number of users. Simply download the app to your smartphone, and you can use mobile data abroad without swapping physical SIM cards.
+
+Unlike rental WiFi devices that require airport pickup and return, trifa requires no physical equipment. Just purchase a plan in the app, install the eSIM, and you are ready to go.
+
+<table class="profile-table">
+  <tbody>
+    <tr><th>Service</th><td>trifa</td></tr>
+    <tr><th>Coverage</th><td>200+ countries and regions</td></tr>
+    <tr><th>Data Options</th><td>1GB / 3GB / 5GB / 10GB / 20GB / 30GB / 80GB / Unlimited</td></tr>
+    <tr><th>Duration</th><td>3 / 7 / 15 / 31 / 60 days</td></tr>
+    <tr><th>Price</th><td>From approx. 790 yen per 1GB (varies by destination)</td></tr>
+    <tr><th>Support</th><td>24/7 Japanese-language chat support</td></tr>
+    <tr><th>Payment</th><td>Credit card, Apple Pay, Google Pay</td></tr>
+  </tbody>
+</table>
+
+<small>* Prices may vary depending on the period. Please check the app for the latest pricing.</small>
+
+## Why trifa is Perfect for World Cup 2026
+
+### 1. North America Plan Covers USA & Mexico
+
+World Cup 2026 venues are spread across 11 cities in the USA, 3 in Mexico, and 2 in Canada. Buying separate SIM cards for each country is inconvenient and costly.
+
+With trifa's North America multi-country plan, a single eSIM covers both the USA and Mexico. No reconfiguration is needed when crossing borders — your data connection continues seamlessly.
+
+<div class="highlight-box">
+<span class="point-label">POINT</span>
+<span class="point-title">Ideal for multi-country travel</span>
+<p class="point-body">The North America plan lets you watch group stage matches in the USA and then travel to Mexico without needing to buy another eSIM. One eSIM covers multiple countries seamlessly.</p>
+</div>
+
+### 2. Setup in Just 5 Minutes
+
+Setting up trifa is incredibly simple — just three steps:
+
+<table class="schedule-table">
+  <thead><tr><th>Step</th><th>Action</th><th>Time</th></tr></thead>
+  <tbody>
+    <tr><td>STEP 1</td><td>Download the app</td><td>~1 min</td></tr>
+    <tr><td>STEP 2</td><td>Search and purchase a plan</td><td>~2 min</td></tr>
+    <tr><td>STEP 3</td><td>Install eSIM and switch data line</td><td>~2 min</td></tr>
+  </tbody>
+</table>
+
+Set it up at home before departure, and you will have data connectivity the moment you land. No need to queue at the airport for a rental WiFi device.
+
+### 3. 24/7 Japanese-Language Support
+
+Worried about troubleshooting connectivity issues in English while abroad? trifa offers 24/7 in-app chat support in Japanese. You can get help anytime regardless of time zones — even before a late-night kickoff.
+
+## When You Need Connectivity at the World Cup
+
+Beyond watching matches in the stadium, reliable connectivity is essential throughout your trip:
+
+<table class="schedule-table">
+  <thead><tr><th>Situation</th><th>Why You Need Data</th></tr></thead>
+  <tbody>
+    <tr><td>Ticket Display</td><td>FIFA app requires data to show digital tickets</td></tr>
+    <tr><td>Getting to the Stadium</td><td>Google Maps navigation and Uber rides</td></tr>
+    <tr><td>Social Media</td><td>Share the excitement in real time</td></tr>
+    <tr><td>Information</td><td>Schedule changes, local news updates</td></tr>
+    <tr><td>Emergency Contact</td><td>Reach travel companions or family back home</td></tr>
+    <tr><td>Translation</td><td>Use translation apps for local communication</td></tr>
+  </tbody>
+</table>
+
+## Exclusive 5% Discount Coupon for Followers
+
+We have exclusive coupon codes for our followers to get 5% off trifa eSIM plans:
+
+<div class="highlight-box">
+<span class="point-label">COUPON</span>
+<span class="point-title">Follower-Exclusive 5% Discount</span>
+<p class="point-body">Instagram followers: <strong>LIIBQZ</strong><br>TikTok followers: <strong>WIURLK</strong><br>* One-time use per person</p>
+</div>
+
+If you are planning to travel for World Cup 2026, download the trifa app and check out the North America plan before you go. Just 5 minutes of preparation eliminates all connectivity stress on your trip.
+
+<div class="takeaway-card">
+<span class="point-label">TAKEAWAY</span>
+<span class="point-title">Summary</span>
+<p class="point-body">trifa's North America multi-country plan is the ideal eSIM service for Japanese supporters traveling across the USA and Mexico for World Cup 2026. Three key strengths: 5-minute setup via app, 24/7 Japanese support, and seamless multi-country coverage. Take advantage of the exclusive 5% follower discount coupon for a comfortable and affordable trip.</p>
+</div>\`,
+  },
+  {
     id: "1775721600001",
     slug: "sweden-world-cup-2026-team-analysis-squad-tactics",
     title: "【W杯グループF】スウェーデン代表を徹底分析——ギェケレシュ4発の衝撃、イサク復帰で\"世界最強2トップ\"誕生か。ポッター流3-4-2-1の全貌と日本が警戒すべき3つの鍵",

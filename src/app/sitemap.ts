@@ -1,8 +1,6 @@
 import { getAllPlayers, teams } from "@/data/teams";
 import { articles } from "@/data/articles";
 import { japanMatches } from "@/data/japan-matches";
-import { j1Teams } from "@/data/j1-teams";
-import { getAllMatchIds } from "@/data/jleague";
 import type { MetadataRoute } from "next";
 
 const BASE = "https://samurai-football.jp";
@@ -65,7 +63,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     staticUrl("/quiz", 0.7, "weekly"),
     staticUrl("/quiz/japan-squad", 0.7, "weekly"),
     staticUrl("/stamen", 0.7, "weekly"),
-    staticUrl("/jleague", 0.8, "daily"),
     staticUrl("/japan/matches", 0.8, "weekly"),
     staticUrl("/japan/opponents/scotland", 0.7, "weekly"),
     staticUrl("/japan/opponents/england", 0.7, "weekly"),
@@ -79,30 +76,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...playerUrls,
     ...articleUrls,
     ...matchUrls,
-    // J1リーグ: チーム詳細・監督・スタジアム・試合
-    ...j1Teams.map((t) => ({
-      url: `${BASE}/jleague/team/${t.id}`,
-      lastModified: SITE_UPDATED,
-      changeFrequency: "weekly" as const,
-      priority: 0.7,
-    })),
-    ...j1Teams.map((t) => ({
-      url: `${BASE}/jleague/team/${t.id}/manager`,
-      lastModified: SITE_UPDATED,
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    })),
-    ...j1Teams.map((t) => ({
-      url: `${BASE}/jleague/team/${t.id}/stadium`,
-      lastModified: SITE_UPDATED,
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    })),
-    ...getAllMatchIds().map((id) => ({
-      url: `${BASE}/jleague/${id}`,
-      lastModified: SITE_UPDATED,
-      changeFrequency: "weekly" as const,
-      priority: 0.6,
-    })),
   ];
 }
