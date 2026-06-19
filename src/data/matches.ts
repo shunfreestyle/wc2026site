@@ -143,7 +143,7 @@ const groupStage: Match[] = [
   gs( 4, "2026-06-12", 21,  0, "sofi",     "usa",          "paraguay",       "D", { h: 4, a: 1 }),
 
   // ── Jun 13 ──
-  gs( 5, "2026-06-13",  0,  0, "bc",       "australia",    "turkey", "D", { h: 2, a: 0 }),
+  gs( 5, "2026-06-13", 21,  0, "bc",       "australia",    "turkey", "D", { h: 2, a: 0 }),
   gs( 6, "2026-06-13", 15,  0, "levis",    "qatar",        "switzerland",    "B", { h: 1, a: 1 }),
   gs( 7, "2026-06-13", 18,  0, "metlife",  "brazil",       "morocco",        "C", { h: 1, a: 1 }),
   gs( 8, "2026-06-13", 21,  0, "gillette", "haiti",        "scotland",       "C", { h: 0, a: 1 }),
@@ -161,7 +161,7 @@ const groupStage: Match[] = [
   gs(16, "2026-06-15", 21,  0, "sofi",     "iran",         "new-zealand",    "G", { h: 2, a: 2 }),
 
   // ── Jun 16 ──
-  gs(17, "2026-06-16",  0,  0, "levis",    "austria",      "jordan",         "J", { h: 3, a: 1 }),
+  gs(17, "2026-06-17",  0,  0, "levis",    "austria",      "jordan",         "J", { h: 3, a: 1 }),
   gs(18, "2026-06-16", 15,  0, "metlife",  "france",       "senegal",        "I", { h: 3, a: 1 }),
   gs(19, "2026-06-16", 18,  0, "gillette", "iraq", "norway",         "I", { h: 1, a: 4 }),
   gs(20, "2026-06-16", 21,  0, "arrowhead","argentina",    "algeria",        "J", { h: 3, a: 0 }),
@@ -179,13 +179,13 @@ const groupStage: Match[] = [
   gs(28, "2026-06-18", 21,  0, "akron",    "mexico",       "korea",          "A", { h: 1, a: 0 }),
 
   // ── Jun 19 ──
-  gs(29, "2026-06-19",  0,  0, "levis",    "turkey","paraguay",      "D"),
+  gs(29, "2026-06-19", 23,  0, "levis",    "turkey","paraguay",      "D"),
   gs(30, "2026-06-19", 15,  0, "lumen",    "usa",          "australia",      "D"),
   gs(31, "2026-06-19", 18,  0, "gillette", "scotland",     "morocco",        "C"),
-  gs(32, "2026-06-19", 21,  0, "lincoln",  "brazil",       "haiti",          "C"),
+  gs(32, "2026-06-19", 20, 30, "lincoln",  "brazil",       "haiti",          "C"),
 
   // ── Jun 20 ──
-  gs(33, "2026-06-20",  0,  0, "bbva",     "tunisia",      "japan",          "F"),
+  gs(33, "2026-06-21",  0,  0, "bbva",     "tunisia",      "japan",          "F"),
   gs(34, "2026-06-20", 13,  0, "nrg",      "netherlands",  "sweden", "F"),
   gs(35, "2026-06-20", 16,  0, "bmo",      "germany",      "ivory-coast",    "E"),
   gs(36, "2026-06-20", 20,  0, "arrowhead","ecuador",      "curacao",        "E"),
