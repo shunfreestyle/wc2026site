@@ -135,7 +135,7 @@ W杯2026の遠征を計画しているなら、出発前にトリファのアプ
 <span class="point-label">TAKEAWAY</span>
 <span class="point-title">まとめ</span>
 <p class="point-body">トリファ(trifa)の北米周遊プランは、W杯2026でアメリカ・メキシコを移動する日本人サポーターに最適なeSIMサービス。アプリで5分で設定完了、24時間日本語サポート、1枚で複数国カバーという3つの強みがある。フォロワー限定5%割引クーポンも活用して、お得に快適な遠征を楽しもう。</p>
-</div>\`,
+</div>`,
     contentEn: \`FIFA World Cup 2026 is being held across the United States, Mexico, and Canada. While Japan's group stage matches are in the USA, many supporters will want to catch games in Mexico too. One of the biggest concerns for fans traveling across North America is staying connected.
 
 This article introduces trifa, an overseas eSIM service with a North America multi-country plan that covers both the USA and Mexico — making it the perfect companion for your World Cup journey.
@@ -231,7 +231,7 @@ If you are planning to travel for World Cup 2026, download the trifa app and che
 <span class="point-label">TAKEAWAY</span>
 <span class="point-title">Summary</span>
 <p class="point-body">trifa's North America multi-country plan is the ideal eSIM service for Japanese supporters traveling across the USA and Mexico for World Cup 2026. Three key strengths: 5-minute setup via app, 24/7 Japanese support, and seamless multi-country coverage. Take advantage of the exclusive 5% follower discount coupon for a comfortable and affordable trip.</p>
-</div>\`,
+</div>`,
   },
   {
     id: "1775721600001",
