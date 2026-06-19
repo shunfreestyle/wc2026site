@@ -31,6 +31,7 @@ export default function Header() {
   const navLinks = [
     { href: "/", label: t.nav.home },
     { href: "/matches", label: t.nav.matches },
+    { href: "/bracket", label: locale === "ja" ? "トーナメント表" : "Bracket" },
     { href: "/japan", label: t.nav.japan },
     { href: "/japan/uniform", label: t.nav.uniform },
 { href: "/articles", label: t.nav.articles },
