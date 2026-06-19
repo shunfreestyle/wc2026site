@@ -33,9 +33,7 @@ export default function Header() {
     { href: "/matches", label: t.nav.matches },
     { href: "/bracket", label: locale === "ja" ? "トーナメント表" : "Bracket" },
     { href: "/japan", label: t.nav.japan },
-    { href: "/japan/uniform", label: t.nav.uniform },
-{ href: "/articles", label: t.nav.articles },
-    { href: "/quiz", label: t.nav.quiz },
+    { href: "/articles", label: t.nav.articles },
   ];
 
   return (
