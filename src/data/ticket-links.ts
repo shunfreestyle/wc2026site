@@ -457,6 +457,15 @@ export const ticketMatches: TicketMatch[] = [
   },
 ];
 
+// Quick lookup by match number
+const ticketLinkMap = new Map<number, TicketLink>();
+for (const m of ticketMatches) {
+  ticketLinkMap.set(m.matchNumber, m.links);
+}
+export function getTicketLinks(matchNumber: number): TicketLink | undefined {
+  return ticketLinkMap.get(matchNumber);
+}
+
 // Stage round links (category pages)
 export const stageLinks = {
   "ラウンド32": {

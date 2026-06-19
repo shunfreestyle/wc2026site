@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { Match } from "@/data/matches";
 import { getTeamById } from "@/data/teams";
+import { getTicketLinks } from "@/data/ticket-links";
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getTeamName } from '@/utils/teamName';
 import type { Locale } from '@/types/i18n';
@@ -54,6 +55,7 @@ function formatLocalDate(dateStr: string): string {
 
 export default function MatchCard({ match }: { match: Match }) {
   const { locale } = useLanguage();
+  const tickets = match.matchNumber >= 73 ? getTicketLinks(match.matchNumber) : undefined;
   const stageStyles: Record<string, { bg: string; text: string; border: string; label: string }> = {
     "グループステージ": { bg: "#EEF2FF", text: "#3730A3", border: "#C7D2FE", label: "Group" },
     "ラウンド32":       { bg: "#FFF7ED", text: "#9A3412", border: "#FED7AA", label: "R32" },
@@ -126,6 +128,32 @@ export default function MatchCard({ match }: { match: Match }) {
         </Link>
         <span className="text-[11px] text-gray-500 shrink-0 ml-2">#{match.matchNumber}</span>
       </div>
+
+      {/* Resale ticket links (knockout matches only) */}
+      {tickets && (
+        <div className="mt-2 pt-2 border-t border-gray-100">
+          <p className="text-[10px] text-gray-400 font-medium mb-1.5">
+            {locale === 'en' ? 'Resale Tickets' : 'リセールチケット'}
+          </p>
+          <div className="flex gap-1.5">
+            <a href={tickets.stubhub} target="_blank" rel="noopener noreferrer"
+              className="flex-1 text-center px-2 py-1.5 rounded-md text-[10px] font-bold text-white transition-opacity hover:opacity-80"
+              style={{ background: '#3B1C8C' }}>
+              StubHub
+            </a>
+            <a href={tickets.seatgeek} target="_blank" rel="noopener noreferrer"
+              className="flex-1 text-center px-2 py-1.5 rounded-md text-[10px] font-bold text-white transition-opacity hover:opacity-80"
+              style={{ background: '#FF5722' }}>
+              SeatGeek
+            </a>
+            <a href={tickets.gametime} target="_blank" rel="noopener noreferrer"
+              className="flex-1 text-center px-2 py-1.5 rounded-md text-[10px] font-bold text-white transition-opacity hover:opacity-80"
+              style={{ background: '#00C853' }}>
+              Gametime
+            </a>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
