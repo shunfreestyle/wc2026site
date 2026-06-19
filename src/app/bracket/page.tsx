@@ -4,13 +4,13 @@ import { getTeamsByGroup } from "@/data/teams";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // ── Layout constants (compact) ───────────────────────────
-const TEAM_H = 20;
+const TEAM_H = 18;
 const MATCH_H = TEAM_H * 2;
-const HALF_H = 370;
-const R32_W = 122;
-const KO_W = 72;
-const CONN_W = 10;
-const FINAL_W = 96;
+const HALF_H = 340;
+const R32_W = 100;
+const KO_W = 44;
+const CONN_W = 8;
+const FINAL_W = 56;
 
 function centers(count: number): number[] {
   const slot = HALF_H / count;
@@ -127,12 +127,12 @@ function TeamSlot({ slot, gf, locale, pos, mir }: {
   const label = locale === "ja" ? slot.label : slot.labelEn;
   const border = pos === "h" ? "border-b border-gray-200" : "";
   return (
-    <div className={`flex items-center gap-0.5 px-1 ${border} ${mir ? "flex-row-reverse" : ""}`} style={{ height: TEAM_H }}>
-      {flags && <span className="text-[10px] leading-none shrink-0">{flags}</span>}
+    <div className={`flex items-center gap-px px-0.5 ${border} ${mir ? "flex-row-reverse" : ""}`} style={{ height: TEAM_H }}>
+      {flags && <span className="text-[9px] leading-none shrink-0">{flags}</span>}
       {slot.thirdGroups ? (
-        <span className="text-[9px] text-gray-500 truncate">3{locale === "ja" ? "位" : "rd"} {slot.thirdGroups}</span>
+        <span className="text-[8px] text-gray-500 truncate">3{locale === "ja" ? "位" : "rd"} {slot.thirdGroups}</span>
       ) : (
-        <span className="text-[10px] font-medium text-gray-700 truncate">{label}</span>
+        <span className="text-[9px] font-medium text-gray-700 truncate">{label}</span>
       )}
     </div>
   );
@@ -155,10 +155,10 @@ function KOBox({ m, locale, w, mir }: { m: KOMatch; locale: string; w: number; m
   const s = locale === "ja" ? "勝" : "W";
   return (
     <div className="bg-white border border-gray-300 rounded shadow-sm overflow-hidden" style={{ width: w, height: MATCH_H }}>
-      <div className={`flex items-center px-1 border-b border-gray-200 text-[10px] text-gray-600 ${mir ? "justify-end" : ""}`} style={{ height: TEAM_H }}>
+      <div className={`flex items-center px-0.5 border-b border-gray-200 text-[9px] text-gray-600 ${mir ? "justify-end" : ""}`} style={{ height: TEAM_H }}>
         {m.homeRef}{s}
       </div>
-      <div className={`flex items-center px-1 text-[10px] text-gray-600 ${mir ? "justify-end" : ""}`} style={{ height: TEAM_H }}>
+      <div className={`flex items-center px-0.5 text-[9px] text-gray-600 ${mir ? "justify-end" : ""}`} style={{ height: TEAM_H }}>
         {m.awayRef}{s}
       </div>
     </div>
@@ -173,12 +173,12 @@ function RoundCol({ r32, ko, yc, gf, locale, w, label, mir }: {
   const items = r32 || ko!;
   return (
     <div className="relative shrink-0" style={{ width: w, height: HALF_H }}>
-      <div className="absolute -top-6 left-0 right-0 text-center text-[9px] font-bold text-gray-400 uppercase tracking-wider whitespace-nowrap">
+      <div className="absolute -top-5 left-0 right-0 text-center text-[8px] font-bold text-gray-400 uppercase tracking-wider whitespace-nowrap">
         {label}
       </div>
       {items.map((m, i) => (
         <div key={m.num} className="absolute" style={{ top: yc[i] - MATCH_H / 2, [mir ? "right" : "left"]: 0 }}>
-          <div className={`absolute -top-2.5 ${mir ? "right-0.5" : "left-0.5"} text-[8px] font-semibold text-[#E8192C]`}>
+          <div className={`absolute -top-2 ${mir ? "right-0" : "left-0"} text-[7px] font-semibold text-[#E8192C]`}>
             {m.num}
           </div>
           {r32 ? (
@@ -259,37 +259,37 @@ export default function BracketPage() {
                 {locale === "ja" ? "決勝" : "FINAL"}
               </div>
               <div className="absolute" style={{ top: sfY[0] - MATCH_H / 2, left: 0 }}>
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 text-lg">🏆</div>
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 text-sm">🏆</div>
                 <div
                   className="bg-gradient-to-r from-amber-50 to-yellow-50 border-2 border-amber-400 rounded shadow-md overflow-hidden"
                   style={{ width: FINAL_W, height: MATCH_H }}
                 >
-                  <div className="flex items-center justify-center px-1 border-b border-amber-200 text-[10px] font-bold text-amber-800" style={{ height: TEAM_H }}>
+                  <div className="flex items-center justify-center border-b border-amber-200 text-[9px] font-bold text-amber-800" style={{ height: TEAM_H }}>
                     101{locale === "ja" ? "勝" : "W"}
                   </div>
-                  <div className="flex items-center justify-center px-1 text-[10px] font-bold text-amber-800" style={{ height: TEAM_H }}>
+                  <div className="flex items-center justify-center text-[9px] font-bold text-amber-800" style={{ height: TEAM_H }}>
                     102{locale === "ja" ? "勝" : "W"}
                   </div>
                 </div>
-                <div className="text-[8px] text-amber-600 text-center mt-0.5">M104</div>
+                <div className="text-[7px] text-amber-600 text-center">M104</div>
               </div>
               {/* 3rd Place */}
-              <div className="absolute" style={{ top: sfY[0] + MATCH_H / 2 + 16, left: 0 }}>
-                <div className="text-[9px] text-green-600 font-bold mb-0.5 text-center">
-                  {locale === "ja" ? "3位決定戦" : "3rd Place"}
+              <div className="absolute" style={{ top: sfY[0] + MATCH_H / 2 + 12, left: 0 }}>
+                <div className="text-[8px] text-green-600 font-bold mb-0.5 text-center">
+                  {locale === "ja" ? "3位決定戦" : "3rd"}
                 </div>
                 <div
                   className="bg-green-50 border border-green-300 rounded shadow-sm overflow-hidden"
                   style={{ width: FINAL_W, height: MATCH_H }}
                 >
-                  <div className="flex items-center justify-center px-1 border-b border-green-200 text-[10px] text-green-700" style={{ height: TEAM_H }}>
+                  <div className="flex items-center justify-center border-b border-green-200 text-[9px] text-green-700" style={{ height: TEAM_H }}>
                     101{locale === "ja" ? "敗" : "L"}
                   </div>
-                  <div className="flex items-center justify-center px-1 text-[10px] text-green-700" style={{ height: TEAM_H }}>
+                  <div className="flex items-center justify-center text-[9px] text-green-700" style={{ height: TEAM_H }}>
                     102{locale === "ja" ? "敗" : "L"}
                   </div>
                 </div>
-                <div className="text-[8px] text-green-500 text-center mt-0.5">M103</div>
+                <div className="text-[7px] text-green-500 text-center">M103</div>
               </div>
             </div>
 
