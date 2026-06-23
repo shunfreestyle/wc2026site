@@ -44,32 +44,6 @@ export const ticketMatches: TicketMatch[] = [
   },
   {
     matchNumber: 74, stage: "ラウンド32", stageEn: "Round of 32",
-    date: "2026-06-29", localTime: "16:30", timezone: "EDT",
-    venue: "ジレット・スタジアム", venueEn: "Gillette Stadium",
-    city: "ボストン", cityEn: "Boston",
-    homeLabel: "E組1位", homeLabelEn: "E 1st",
-    awayLabel: "3位(A/B/C/D/F)", awayLabelEn: "3rd (A/B/C/D/F)",
-    links: {
-      stubhub: "https://www.stubhub.com/world-cup-foxborough-tickets-6-29-2026/event/153023830/",
-      seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-06-29-3-30-am/17307562",
-      gametime: "https://gametime.co/fifa/fifa-world-cup-match-74-round-of-32-tickets/6-29-2026-foxborough-ma-gillette-stadium/events/66aa9291b418e74d23390f5d",
-    },
-  },
-  {
-    matchNumber: 75, stage: "ラウンド32", stageEn: "Round of 32",
-    date: "2026-06-29", localTime: "19:00", timezone: "CST",
-    venue: "エスタディオ・BBVA", venueEn: "Estadio BBVA",
-    city: "モンテレイ", cityEn: "Monterrey",
-    homeLabel: "F組1位", homeLabelEn: "F 1st",
-    awayLabel: "C組2位", awayLabelEn: "C 2nd",
-    links: {
-      stubhub: "https://www.stubhub.com/world-cup-monterrey-tickets-6-29-2026/event/153033502/",
-      seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-06-29-8-pm/17650348",
-      gametime: "https://gametime.co/soccer/fifa-world-cup-match-75-tickets/6-29-2026-monterrey-estadio-bbva-bancomer/events/66b12149a7cf418b15c9ebb1",
-    },
-  },
-  {
-    matchNumber: 76, stage: "ラウンド32", stageEn: "Round of 32",
     date: "2026-06-29", localTime: "12:00", timezone: "CDT",
     venue: "NRGスタジアム", venueEn: "NRG Stadium",
     city: "ヒューストン", cityEn: "Houston",
@@ -82,6 +56,32 @@ export const ticketMatches: TicketMatch[] = [
     },
   },
   {
+    matchNumber: 75, stage: "ラウンド32", stageEn: "Round of 32",
+    date: "2026-06-29", localTime: "16:30", timezone: "EDT",
+    venue: "ジレット・スタジアム", venueEn: "Gillette Stadium",
+    city: "ボストン", cityEn: "Boston",
+    homeLabel: "E組1位", homeLabelEn: "E 1st",
+    awayLabel: "3位(A/B/C/D/F)", awayLabelEn: "3rd (A/B/C/D/F)",
+    links: {
+      stubhub: "https://www.stubhub.com/world-cup-foxborough-tickets-6-29-2026/event/153023830/",
+      seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-06-29-3-30-am/17307562",
+      gametime: "https://gametime.co/fifa/fifa-world-cup-match-74-round-of-32-tickets/6-29-2026-foxborough-ma-gillette-stadium/events/66aa9291b418e74d23390f5d",
+    },
+  },
+  {
+    matchNumber: 76, stage: "ラウンド32", stageEn: "Round of 32",
+    date: "2026-06-29", localTime: "19:00", timezone: "CST",
+    venue: "エスタディオ・BBVA", venueEn: "Estadio BBVA",
+    city: "モンテレイ", cityEn: "Monterrey",
+    homeLabel: "F組1位", homeLabelEn: "F 1st",
+    awayLabel: "C組2位", awayLabelEn: "C 2nd",
+    links: {
+      stubhub: "https://www.stubhub.com/world-cup-monterrey-tickets-6-29-2026/event/153033502/",
+      seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-06-29-8-pm/17650348",
+      gametime: "https://gametime.co/soccer/fifa-world-cup-match-75-tickets/6-29-2026-monterrey-estadio-bbva-bancomer/events/66b12149a7cf418b15c9ebb1",
+    },
+  },
+  {
     matchNumber: 77, stage: "ラウンド32", stageEn: "Round of 32",
     date: "2026-06-30", localTime: "12:00", timezone: "CDT",
     venue: "AT&Tスタジアム", venueEn: "AT&T Stadium",
@@ -91,7 +91,7 @@ export const ticketMatches: TicketMatch[] = [
     links: {
       stubhub: "https://www.stubhub.com/world-cup-arlington-tickets-6-30-2026/event/153021470/",
       seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-06-30-12-pm/17385147",
-      gametime: "https://gametime.co/soccer/fifa-world-cup-match-77-round-of-32-tickets/6-30-2026-east-rutherford-nj-met-life-stadium/events/66a7ed47518ef7ae01c08518",
+      gametime: "https://gametime.co/soccer/fifa-world-cup-match-78-round-of-32-tickets/6-30-2026-arlington-tx-at-t-stadium/events/66ac2766c01625535d3803ff",
     },
   },
   {
@@ -104,7 +104,7 @@ export const ticketMatches: TicketMatch[] = [
     links: {
       stubhub: "https://www.stubhub.com/world-cup-east-rutherford-tickets-6-30-2026/event/153023840/",
       seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-06-30-5-pm/17269676",
-      gametime: "https://gametime.co/fifa/fifa-world-cup-match-78-round-of-32-tickets/6-30-2026-arlington-tx-at-t-stadium/events/66ac2766c01625535d3803ff",
+      gametime: "https://gametime.co/soccer/fifa-world-cup-match-77-round-of-32-tickets/6-30-2026-east-rutherford-nj-met-life-stadium/events/66a7ed47518ef7ae01c08518",
     },
   },
   {
@@ -117,7 +117,7 @@ export const ticketMatches: TicketMatch[] = [
     links: {
       stubhub: "https://www.stubhub.com/world-cup-ciudad-de-mexico-tickets-6-30-2026/event/153033506/",
       seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-06-30-8-pm/17650334",
-      gametime: "https://gametime.co/2026-fifa-world-cup-tickets/performers/soccerworldcup",
+      gametime: "https://gametime.co/soccer/fifa-world-cup-match-79-tickets/6-30-2026-ursula-coapa-estadio-azteca/events/66ac2d311f44768fae3d63e9",
     },
   },
   {
@@ -135,19 +135,6 @@ export const ticketMatches: TicketMatch[] = [
   },
   {
     matchNumber: 81, stage: "ラウンド32", stageEn: "Round of 32",
-    date: "2026-07-01", localTime: "14:00", timezone: "PDT",
-    venue: "リーバイス・スタジアム", venueEn: "Levi's Stadium",
-    city: "サンフランシスコ", cityEn: "San Francisco",
-    homeLabel: "D組1位", homeLabelEn: "D 1st",
-    awayLabel: "3位(B/E/F/I/J)", awayLabelEn: "3rd (B/E/F/I/J)",
-    links: {
-      stubhub: "https://www.stubhub.com/world-cup-santa-clara-tickets-7-1-2026/event/153020696/",
-      seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-07-01-5-pm/17171561",
-      gametime: "https://gametime.co/fifa/fifa-world-cup-match-81-round-of-32-tickets/7-1-2026-santa-clara-ca-levis-stadium/events/66a1789a8c1e27b4cd2eb166",
-    },
-  },
-  {
-    matchNumber: 82, stage: "ラウンド32", stageEn: "Round of 32",
     date: "2026-07-01", localTime: "13:00", timezone: "PDT",
     venue: "ルーメン・フィールド", venueEn: "Lumen Field",
     city: "シアトル", cityEn: "Seattle",
@@ -157,6 +144,19 @@ export const ticketMatches: TicketMatch[] = [
       stubhub: "https://www.stubhub.com/world-cup-seattle-tickets-7-1-2026/event/153020573/",
       seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-07-01-1-pm/17248699",
       gametime: "https://gametime.co/fifa/fifa-world-cup-match-82-round-of-32-tickets/7-1-2026-seattle-wa-lumen-field/events/66ac2cc859eb64be1a22d640",
+    },
+  },
+  {
+    matchNumber: 82, stage: "ラウンド32", stageEn: "Round of 32",
+    date: "2026-07-01", localTime: "17:00", timezone: "PDT",
+    venue: "リーバイス・スタジアム", venueEn: "Levi's Stadium",
+    city: "サンフランシスコ", cityEn: "San Francisco",
+    homeLabel: "D組1位", homeLabelEn: "D 1st",
+    awayLabel: "3位(B/E/F/I/J)", awayLabelEn: "3rd (B/E/F/I/J)",
+    links: {
+      stubhub: "https://www.stubhub.com/world-cup-santa-clara-tickets-7-1-2026/event/153020696/",
+      seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-07-01-5-pm/17171561",
+      gametime: "https://gametime.co/fifa/fifa-world-cup-match-81-round-of-32-tickets/7-1-2026-santa-clara-ca-levis-stadium/events/66a1789a8c1e27b4cd2eb166",
     },
   },
   {
@@ -221,7 +221,7 @@ export const ticketMatches: TicketMatch[] = [
     links: {
       stubhub: "https://www.stubhub.com/world-cup-miami-tickets-7-3-2026/event/153023861/",
       seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-07-03-6-pm/17164018",
-      gametime: "https://gametime.co/soccer/fifa-world-cup-match-87-tickets/7-3-2026-kansas-city-mo-arrowhead-stadium/events/66ac2a7f241602551887699f",
+      gametime: "https://gametime.co/soccer/fifa-world-cup-match-86-round-of-32-tickets/7-3-2026-miami-gardens-fl-hard-rock-stadium/events/66ac2300912362e10b6d7683",
     },
   },
   {
@@ -232,28 +232,15 @@ export const ticketMatches: TicketMatch[] = [
     homeLabel: "K組1位", homeLabelEn: "K 1st",
     awayLabel: "3位(D/E/I/J/L)", awayLabelEn: "3rd (D/E/I/J/L)",
     links: {
-      stubhub: "https://www.stubhub.com/world-cup-arlington-tickets-7-3-2026/event/153021509/",
+      stubhub: "https://www.stubhub.com/world-cup-kansas-city-tickets-7-3-2026/event/153021573/",
       seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-07-03-8-30-pm/17196237",
-      gametime: "https://gametime.co/soccer/fifa-world-cup-match-88-tickets/7-3-2026-arlington-tx-at-t-stadium/events/66b1208626b2aeaba0dbc094",
+      gametime: "https://gametime.co/fifa/fifa-world-cup-match-87-round-of-32-tickets/7-3-2026-kansas-city-mo-geha-field-at-arrowhead-stadium/events/66ac2a7f241602551887699f",
     },
   },
 
   // ── ROUND OF 16 ──────────────────────────────────────────
   {
     matchNumber: 89, stage: "ラウンド16", stageEn: "Round of 16",
-    date: "2026-07-04", localTime: "17:00", timezone: "EDT",
-    venue: "リンカーン・ファイナンシャル・フィールド", venueEn: "Lincoln Financial Field",
-    city: "フィラデルフィア", cityEn: "Philadelphia",
-    homeLabel: "M74勝者", homeLabelEn: "W74",
-    awayLabel: "M77勝者", awayLabelEn: "W77",
-    links: {
-      stubhub: "https://www.stubhub.com/world-cup-philadelphia-tickets-7-4-2026/event/153023863/",
-      seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-07-04-5-pm/17213264",
-      gametime: "https://gametime.co/soccer/fifa-world-cup-match-89-tickets/7-4-2026-philadelphia-pa-lincoln-financial-field/events/66b1237333f4650e2afaf109",
-    },
-  },
-  {
-    matchNumber: 90, stage: "ラウンド16", stageEn: "Round of 16",
     date: "2026-07-04", localTime: "12:00", timezone: "CDT",
     venue: "NRGスタジアム", venueEn: "NRG Stadium",
     city: "ヒューストン", cityEn: "Houston",
@@ -262,7 +249,20 @@ export const ticketMatches: TicketMatch[] = [
     links: {
       stubhub: "https://www.stubhub.com/world-cup-houston-tickets-7-4-2026/event/153021196",
       seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-07-04-12-pm/17307566",
-      gametime: "https://gametime.co/2026-fifa-world-cup-tickets/performers/soccerworldcup",
+      gametime: "https://gametime.co/soccer/fifa-world-cup-match-90-tickets/7-4-2026-houston-tx-nrg-stadium/events/66aa91686c4ed1182506573d",
+    },
+  },
+  {
+    matchNumber: 90, stage: "ラウンド16", stageEn: "Round of 16",
+    date: "2026-07-04", localTime: "17:00", timezone: "EDT",
+    venue: "リンカーン・ファイナンシャル・フィールド", venueEn: "Lincoln Financial Field",
+    city: "フィラデルフィア", cityEn: "Philadelphia",
+    homeLabel: "M75勝者", homeLabelEn: "W75",
+    awayLabel: "M78勝者", awayLabelEn: "W78",
+    links: {
+      stubhub: "https://www.stubhub.com/world-cup-philadelphia-tickets-7-4-2026/event/153023863/",
+      seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-07-04-5-pm/17213264",
+      gametime: "https://gametime.co/soccer/fifa-world-cup-match-89-tickets/7-4-2026-philadelphia-pa-lincoln-financial-field/events/66b1237333f4650e2afaf109",
     },
   },
   {
@@ -270,8 +270,8 @@ export const ticketMatches: TicketMatch[] = [
     date: "2026-07-05", localTime: "16:00", timezone: "EDT",
     venue: "メットライフ・スタジアム", venueEn: "MetLife Stadium",
     city: "ニューヨーク/NJ", cityEn: "New York/NJ",
-    homeLabel: "M76勝者", homeLabelEn: "W76",
-    awayLabel: "M78勝者", awayLabelEn: "W78",
+    homeLabel: "M74勝者", homeLabelEn: "W74",
+    awayLabel: "M77勝者", awayLabelEn: "W77",
     links: {
       stubhub: "https://www.stubhub.com/world-cup-east-rutherford-tickets-7-5-2026/event/153023886/",
       seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-07-05-4-pm/17269677",
@@ -306,7 +306,7 @@ export const ticketMatches: TicketMatch[] = [
   },
   {
     matchNumber: 94, stage: "ラウンド16", stageEn: "Round of 16",
-    date: "2026-07-06", localTime: "14:00", timezone: "PDT",
+    date: "2026-07-06", localTime: "17:00", timezone: "PDT",
     venue: "ルーメン・フィールド", venueEn: "Lumen Field",
     city: "シアトル", cityEn: "Seattle",
     homeLabel: "M81勝者", homeLabelEn: "W81",
@@ -381,7 +381,7 @@ export const ticketMatches: TicketMatch[] = [
     links: {
       stubhub: "https://www.stubhub.com/world-cup-miami-tickets-7-11-2026/event/153023896/",
       seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-07-11-5-pm/17164019",
-      gametime: "https://gametime.co/2026-fifa-world-cup-tickets/performers/soccerworldcup",
+      gametime: "https://gametime.co/soccer/fifa-world-cup-match-99-quarter-final-tickets/7-11-2026-miami-gardens-fl-hard-rock-stadium/events/66ac29b99878afb165f19707",
     },
   },
   {
@@ -394,7 +394,7 @@ export const ticketMatches: TicketMatch[] = [
     links: {
       stubhub: "https://www.stubhub.com/world-cup-kansas-city-tickets-7-11-2026/event/153021616/",
       seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-07-11-8-pm/17196238",
-      gametime: "https://gametime.co/2026-fifa-world-cup-tickets/performers/soccerworldcup",
+      gametime: "https://gametime.co/soccer/fifa-world-cup-match-100-quarter-final-tickets/7-11-2026-kansas-city-mo-arrowhead-stadium/events/66ac1f15ba6c613e111c87d3",
     },
   },
 
@@ -409,7 +409,7 @@ export const ticketMatches: TicketMatch[] = [
     links: {
       stubhub: "https://www.stubhub.com/world-cup-arlington-tickets-7-14-2026/event/153021542/",
       seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-07-14-2-pm/17385150",
-      gametime: "https://gametime.co/2026-fifa-world-cup-tickets/performers/soccerworldcup",
+      gametime: "https://gametime.co/fifa/fifa-world-cup-match-101-semi-final-tickets/7-14-2026-arlington-tx-at-t-stadium/events/66a17a7316885b26c912bff7",
     },
   },
   {
@@ -437,7 +437,7 @@ export const ticketMatches: TicketMatch[] = [
     links: {
       stubhub: "https://www.stubhub.com/world-cup-miami-tickets-7-18-2026/event/153023903/",
       seatgeek: "https://seatgeek.com/fifa-world-cup-tickets/international-soccer/2026-07-18-5-pm/17164020",
-      gametime: "https://gametime.co/2026-fifa-world-cup-tickets/performers/soccerworldcup",
+      gametime: "https://gametime.co/fifa/fifa-world-cup-match-103-bronze-medal-tickets/7-18-2026-miami-gardens-fl-hard-rock-stadium/events/66a179ef999f484d998f00c7",
     },
   },
 
