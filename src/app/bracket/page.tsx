@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { getTeamsByGroup } from "@/data/teams";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -155,11 +156,11 @@ function KOBox({ m, locale, w, mir }: { m: KOMatch; locale: string; w: number; m
   const s = locale === "ja" ? "勝" : "W";
   return (
     <div className="bg-white border border-gray-300 rounded shadow-sm overflow-hidden" style={{ width: w, height: MATCH_H }}>
-      <div className={`flex items-center px-0.5 border-b border-gray-200 text-[9px] text-gray-600 ${mir ? "justify-end" : ""}`} style={{ height: TEAM_H }}>
-        {m.homeRef}{s}
+      <div className={`flex items-center px-0.5 border-b border-gray-200 text-[9px] ${mir ? "justify-end" : ""}`} style={{ height: TEAM_H }}>
+        <Link href={`/matches#match-${m.homeRef}`} className="text-blue-600 hover:underline">{m.homeRef}{s}</Link>
       </div>
-      <div className={`flex items-center px-0.5 text-[9px] text-gray-600 ${mir ? "justify-end" : ""}`} style={{ height: TEAM_H }}>
-        {m.awayRef}{s}
+      <div className={`flex items-center px-0.5 text-[9px] ${mir ? "justify-end" : ""}`} style={{ height: TEAM_H }}>
+        <Link href={`/matches#match-${m.awayRef}`} className="text-blue-600 hover:underline">{m.awayRef}{s}</Link>
       </div>
     </div>
   );
@@ -178,9 +179,9 @@ function RoundCol({ r32, ko, yc, gf, locale, w, label, mir }: {
       </div>
       {items.map((m, i) => (
         <div key={m.num} className="absolute" style={{ top: yc[i] - MATCH_H / 2, [mir ? "right" : "left"]: 0 }}>
-          <div className={`absolute -top-2 ${mir ? "right-0" : "left-0"} text-[7px] font-semibold text-[#E8192C]`}>
+          <Link href={`/matches#match-${m.num}`} className={`absolute -top-2 ${mir ? "right-0" : "left-0"} text-[7px] font-semibold text-[#E8192C] hover:underline`}>
             {m.num}
-          </div>
+          </Link>
           {r32 ? (
             <R32Box m={m as MatchData} gf={gf} locale={locale} w={w} mir={mir} />
           ) : (
@@ -264,14 +265,14 @@ export default function BracketPage() {
                   className="bg-gradient-to-r from-amber-50 to-yellow-50 border-2 border-amber-400 rounded shadow-md overflow-hidden"
                   style={{ width: FINAL_W, height: MATCH_H }}
                 >
-                  <div className="flex items-center justify-center border-b border-amber-200 text-[9px] font-bold text-amber-800" style={{ height: TEAM_H }}>
-                    101{locale === "ja" ? "勝" : "W"}
+                  <div className="flex items-center justify-center border-b border-amber-200 text-[9px] font-bold" style={{ height: TEAM_H }}>
+                    <Link href="/matches#match-101" className="text-amber-800 hover:underline">101{locale === "ja" ? "勝" : "W"}</Link>
                   </div>
-                  <div className="flex items-center justify-center text-[9px] font-bold text-amber-800" style={{ height: TEAM_H }}>
-                    102{locale === "ja" ? "勝" : "W"}
+                  <div className="flex items-center justify-center text-[9px] font-bold" style={{ height: TEAM_H }}>
+                    <Link href="/matches#match-102" className="text-amber-800 hover:underline">102{locale === "ja" ? "勝" : "W"}</Link>
                   </div>
                 </div>
-                <div className="text-[7px] text-amber-600 text-center">M104</div>
+                <Link href="/matches#match-104" className="block text-[7px] text-amber-600 text-center hover:underline">M104</Link>
               </div>
               {/* 3rd Place */}
               <div className="absolute" style={{ top: sfY[0] + MATCH_H / 2 + 12, left: 0 }}>
@@ -282,14 +283,14 @@ export default function BracketPage() {
                   className="bg-green-50 border border-green-300 rounded shadow-sm overflow-hidden"
                   style={{ width: FINAL_W, height: MATCH_H }}
                 >
-                  <div className="flex items-center justify-center border-b border-green-200 text-[9px] text-green-700" style={{ height: TEAM_H }}>
-                    101{locale === "ja" ? "敗" : "L"}
+                  <div className="flex items-center justify-center border-b border-green-200 text-[9px]" style={{ height: TEAM_H }}>
+                    <Link href="/matches#match-101" className="text-green-700 hover:underline">101{locale === "ja" ? "敗" : "L"}</Link>
                   </div>
-                  <div className="flex items-center justify-center text-[9px] text-green-700" style={{ height: TEAM_H }}>
-                    102{locale === "ja" ? "敗" : "L"}
+                  <div className="flex items-center justify-center text-[9px]" style={{ height: TEAM_H }}>
+                    <Link href="/matches#match-102" className="text-green-700 hover:underline">102{locale === "ja" ? "敗" : "L"}</Link>
                   </div>
                 </div>
-                <div className="text-[7px] text-green-500 text-center">M103</div>
+                <Link href="/matches#match-103" className="block text-[7px] text-green-500 text-center hover:underline">M103</Link>
               </div>
             </div>
 

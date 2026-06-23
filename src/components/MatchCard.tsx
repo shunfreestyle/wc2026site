@@ -76,7 +76,7 @@ export default function MatchCard({ match }: { match: Match }) {
   );
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
+    <div id={`match-${match.matchNumber}`} className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow scroll-mt-20">
       {/* Header: stage badge + time */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">{stageBadge}</div>
