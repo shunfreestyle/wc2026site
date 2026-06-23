@@ -80,6 +80,15 @@ const rightQF: KOMatch[] = [
 
 const rightSF: KOMatch[] = [{ num: 102, homeRef: "99", awayRef: "100" }];
 
+// ── Match dates (ET base) ────────────────────────────────
+const matchDate: Record<number, string> = {
+  73:"6/28",74:"6/29",75:"6/29",76:"6/29",77:"6/30",78:"6/30",79:"6/30",
+  80:"7/1",81:"7/1",82:"7/1",83:"7/2",84:"7/2",85:"7/2",86:"7/3",87:"7/3",88:"7/3",
+  89:"7/4",90:"7/4",91:"7/5",92:"7/5",93:"7/6",94:"7/6",95:"7/7",96:"7/7",
+  97:"7/9",98:"7/10",99:"7/11",100:"7/11",
+  101:"7/14",102:"7/15",103:"7/18",104:"7/19",
+};
+
 // ── Connector left→right ─────────────────────────────────
 function ConnLR({ inY, outY }: { inY: number[]; outY: number[] }) {
   const mid = CONN_W / 2;
@@ -187,6 +196,9 @@ function RoundCol({ r32, ko, yc, gf, locale, w, label, mir }: {
           ) : (
             <KOBox m={m as KOMatch} locale={locale} w={w} mir={mir} />
           )}
+          {matchDate[m.num] && (
+            <div className={`text-[6px] text-gray-400 mt-px ${mir ? "text-right" : ""}`}>{matchDate[m.num]}</div>
+          )}
         </div>
       ))}
     </div>
@@ -272,7 +284,10 @@ export default function BracketPage() {
                     <Link href="/matches#match-102" className="text-amber-800 hover:underline">102{locale === "ja" ? "勝" : "W"}</Link>
                   </div>
                 </div>
-                <Link href="/matches#match-104" className="block text-[7px] text-amber-600 text-center hover:underline">M104</Link>
+                <div className="flex justify-center gap-1">
+                  <Link href="/matches#match-104" className="text-[7px] text-amber-600 hover:underline">M104</Link>
+                  <span className="text-[6px] text-gray-400">7/19</span>
+                </div>
               </div>
               {/* 3rd Place */}
               <div className="absolute" style={{ top: sfY[0] + MATCH_H / 2 + 12, left: 0 }}>
@@ -290,7 +305,10 @@ export default function BracketPage() {
                     <Link href="/matches#match-102" className="text-green-700 hover:underline">102{locale === "ja" ? "敗" : "L"}</Link>
                   </div>
                 </div>
-                <Link href="/matches#match-103" className="block text-[7px] text-green-500 text-center hover:underline">M103</Link>
+                <div className="flex justify-center gap-1">
+                  <Link href="/matches#match-103" className="text-[7px] text-green-500 hover:underline">M103</Link>
+                  <span className="text-[6px] text-gray-400">7/18</span>
+                </div>
               </div>
             </div>
 
