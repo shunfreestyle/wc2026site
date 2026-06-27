@@ -30,14 +30,14 @@ type KOMatch = { num: number; homeRef: string; awayRef: string };
 
 // ── Left half (SF M101) ──────────────────────────────────
 const leftR32: MatchData[] = [
-  { num: 73, home: { label: "A2位", labelEn: "A2", group: "A" }, away: { label: "B2位", labelEn: "B2", group: "B" } },
-  { num: 76, home: { label: "F1位", labelEn: "F1", group: "F" }, away: { label: "C2位", labelEn: "C2", group: "C" } },
-  { num: 75, home: { label: "E1位", labelEn: "E1", group: "E" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "ABCDF" } },
-  { num: 78, home: { label: "I1位", labelEn: "I1", group: "I" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "CDFGH" } },
-  { num: 83, home: { label: "H1位", labelEn: "H1", group: "H" }, away: { label: "J2位", labelEn: "J2", group: "J" } },
+  { num: 73, home: { label: "南アフリカ", labelEn: "S. Africa", group: "A" }, away: { label: "カナダ", labelEn: "Canada", group: "B" } },
+  { num: 76, home: { label: "オランダ", labelEn: "Netherlands", group: "F" }, away: { label: "モロッコ", labelEn: "Morocco", group: "C" } },
+  { num: 75, home: { label: "ドイツ", labelEn: "Germany", group: "E" }, away: { label: "パラグアイ", labelEn: "Paraguay", group: "D" } },
+  { num: 78, home: { label: "フランス", labelEn: "France", group: "I" }, away: { label: "スウェーデン", labelEn: "Sweden", group: "F" } },
+  { num: 83, home: { label: "スペイン", labelEn: "Spain", group: "H" }, away: { label: "J2位", labelEn: "J2", group: "J" } },
   { num: 84, home: { label: "K2位", labelEn: "K2", group: "K" }, away: { label: "L2位", labelEn: "L2", group: "L" } },
-  { num: 81, home: { label: "G1位", labelEn: "G1", group: "G" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "AEHIJ" } },
-  { num: 82, home: { label: "D1位", labelEn: "D1", group: "D" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "BEFIJ" } },
+  { num: 81, home: { label: "ベルギー", labelEn: "Belgium", group: "G" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "AEHIJ" } },
+  { num: 82, home: { label: "アメリカ", labelEn: "USA", group: "D" }, away: { label: "ボスニア", labelEn: "Bosnia", group: "B" } },
 ];
 
 const leftR16: KOMatch[] = [
@@ -56,13 +56,13 @@ const leftSF: KOMatch[] = [{ num: 101, homeRef: "97", awayRef: "98" }];
 
 // ── Right half (SF M102) ─────────────────────────────────
 const rightR32: MatchData[] = [
-  { num: 74, home: { label: "C1位", labelEn: "C1", group: "C" }, away: { label: "F2位", labelEn: "F2", group: "F" } },
-  { num: 77, home: { label: "E2位", labelEn: "E2", group: "E" }, away: { label: "I2位", labelEn: "I2", group: "I" } },
-  { num: 79, home: { label: "A1位", labelEn: "A1", group: "A" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "CEFHI" } },
+  { num: 74, home: { label: "ブラジル", labelEn: "Brazil", group: "C" }, away: { label: "日本", labelEn: "Japan", group: "F" } },
+  { num: 77, home: { label: "コートジボワール", labelEn: "Ivory Coast", group: "E" }, away: { label: "ノルウェー", labelEn: "Norway", group: "I" } },
+  { num: 79, home: { label: "メキシコ", labelEn: "Mexico", group: "A" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "CEFHI" } },
   { num: 80, home: { label: "L1位", labelEn: "L1", group: "L" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "EHIJK" } },
-  { num: 87, home: { label: "J1位", labelEn: "J1", group: "J" }, away: { label: "H2位", labelEn: "H2", group: "H" } },
-  { num: 86, home: { label: "D2位", labelEn: "D2", group: "D" }, away: { label: "G2位", labelEn: "G2", group: "G" } },
-  { num: 85, home: { label: "B1位", labelEn: "B1", group: "B" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "EFGIJ" } },
+  { num: 87, home: { label: "J1位", labelEn: "J1", group: "J" }, away: { label: "カーボベルデ", labelEn: "Cape Verde", group: "H" } },
+  { num: 86, home: { label: "オーストラリア", labelEn: "Australia", group: "D" }, away: { label: "エジプト", labelEn: "Egypt", group: "G" } },
+  { num: 85, home: { label: "スイス", labelEn: "Switzerland", group: "B" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "EFGIJ" } },
   { num: 88, home: { label: "K1位", labelEn: "K1", group: "K" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "DEIJL" } },
 ];
 

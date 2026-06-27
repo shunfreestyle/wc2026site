@@ -118,6 +118,7 @@ function gs(
 function ko(
   num: number, stage: string, etDate: string, etH: number, etM: number,
   vk: string, homeLabel: string, awayLabel: string,
+  teams?: { home: string; away: string },
 ): Match {
   const v = V[vk];
   const local = shiftTime(etDate, etH, etM, v.etToLocal);
@@ -127,7 +128,7 @@ function ko(
     date: local.date, localTime: local.time, jstTime: jst.time, jstDate: jst.date,
     venue: v.nameJa, city: v.cityJa, country: v.country,
     venueEn: v.nameEn, cityEn: v.cityEn, countryEn: v.countryEn, timezone: v.tz,
-    homeTeamId: "", awayTeamId: "",
+    homeTeamId: teams?.home ?? "", awayTeamId: teams?.away ?? "",
     homeLabel, awayLabel, stadiumId: v.stadiumId, status: "scheduled",
   };
 }
@@ -203,34 +204,34 @@ const groupStage: Match[] = [
   gs(44, "2026-06-22", 23,  0, "levis",    "jordan",       "algeria",        "J", { h: 1, a: 2 }),
 
   // ── Jun 23 ──
-  gs(45, "2026-06-23", 13,  0, "nrg",      "portugal",     "uzbekistan",     "K"),
-  gs(46, "2026-06-23", 16,  0, "gillette", "england",      "ghana",          "L"),
-  gs(47, "2026-06-23", 19,  0, "bmo",      "panama",       "croatia",        "L"),
-  gs(48, "2026-06-23", 22,  0, "akron",    "colombia",     "dr-congo",   "K"),
+  gs(45, "2026-06-23", 13,  0, "nrg",      "portugal",     "uzbekistan",     "K", { h: 5, a: 0 }),
+  gs(46, "2026-06-23", 16,  0, "gillette", "england",      "ghana",          "L", { h: 0, a: 0 }),
+  gs(47, "2026-06-23", 19,  0, "bmo",      "panama",       "croatia",        "L", { h: 0, a: 1 }),
+  gs(48, "2026-06-23", 22,  0, "akron",    "colombia",     "dr-congo",   "K", { h: 1, a: 0 }),
 
   // ── Jun 24 (MD3 – simultaneous kickoffs per group) ──
-  gs(49, "2026-06-24", 15,  0, "bc",       "switzerland",  "canada",         "B"),
-  gs(50, "2026-06-24", 15,  0, "lumen",    "bosnia","qatar",         "B"),
-  gs(51, "2026-06-24", 18,  0, "hardrock", "scotland",     "brazil",         "C"),
-  gs(52, "2026-06-24", 18,  0, "mercedes", "morocco",      "haiti",          "C"),
-  gs(53, "2026-06-24", 21,  0, "azteca",   "czech-republic","mexico",        "A"),
-  gs(54, "2026-06-24", 21,  0, "bbva",     "south-africa", "korea",          "A"),
+  gs(49, "2026-06-24", 15,  0, "bc",       "switzerland",  "canada",         "B", { h: 2, a: 1 }),
+  gs(50, "2026-06-24", 15,  0, "lumen",    "bosnia","qatar",         "B", { h: 3, a: 1 }),
+  gs(51, "2026-06-24", 18,  0, "hardrock", "scotland",     "brazil",         "C", { h: 0, a: 3 }),
+  gs(52, "2026-06-24", 18,  0, "mercedes", "morocco",      "haiti",          "C", { h: 4, a: 2 }),
+  gs(53, "2026-06-24", 21,  0, "azteca",   "czech-republic","mexico",        "A", { h: 0, a: 3 }),
+  gs(54, "2026-06-24", 21,  0, "bbva",     "south-africa", "korea",          "A", { h: 1, a: 0 }),
 
   // ── Jun 25 ──
-  gs(55, "2026-06-25", 16,  0, "metlife",  "ecuador",      "germany",        "E"),
-  gs(56, "2026-06-25", 16,  0, "lincoln",  "curacao",      "ivory-coast",    "E"),
-  gs(57, "2026-06-25", 19,  0, "att",      "japan",        "sweden", "F"),
-  gs(58, "2026-06-25", 19,  0, "arrowhead","tunisia",      "netherlands",    "F"),
-  gs(59, "2026-06-25", 22,  0, "sofi",     "turkey","usa",           "D"),
-  gs(60, "2026-06-25", 22,  0, "levis",    "paraguay",     "australia",      "D"),
+  gs(55, "2026-06-25", 16,  0, "metlife",  "ecuador",      "germany",        "E", { h: 2, a: 1 }),
+  gs(56, "2026-06-25", 16,  0, "lincoln",  "curacao",      "ivory-coast",    "E", { h: 0, a: 2 }),
+  gs(57, "2026-06-25", 19,  0, "att",      "japan",        "sweden", "F", { h: 1, a: 1 }),
+  gs(58, "2026-06-25", 19,  0, "arrowhead","tunisia",      "netherlands",    "F", { h: 1, a: 3 }),
+  gs(59, "2026-06-25", 22,  0, "sofi",     "turkey","usa",           "D", { h: 3, a: 2 }),
+  gs(60, "2026-06-25", 22,  0, "levis",    "paraguay",     "australia",      "D", { h: 0, a: 0 }),
 
   // ── Jun 26 ──
-  gs(61, "2026-06-26", 15,  0, "gillette", "norway",       "france",         "I"),
-  gs(62, "2026-06-26", 15,  0, "bmo",      "senegal",      "iraq",   "I"),
-  gs(63, "2026-06-26", 20,  0, "nrg",      "cape-verde",   "saudi-arabia",   "H"),
-  gs(64, "2026-06-26", 20,  0, "akron",    "uruguay",      "spain",          "H"),
-  gs(65, "2026-06-26", 23,  0, "lumen",    "egypt",        "iran",           "G"),
-  gs(66, "2026-06-26", 23,  0, "bc",       "new-zealand",  "belgium",        "G"),
+  gs(61, "2026-06-26", 15,  0, "gillette", "norway",       "france",         "I", { h: 1, a: 4 }),
+  gs(62, "2026-06-26", 15,  0, "bmo",      "senegal",      "iraq",   "I", { h: 5, a: 0 }),
+  gs(63, "2026-06-26", 20,  0, "nrg",      "cape-verde",   "saudi-arabia",   "H", { h: 0, a: 0 }),
+  gs(64, "2026-06-26", 20,  0, "akron",    "uruguay",      "spain",          "H", { h: 0, a: 1 }),
+  gs(65, "2026-06-26", 23,  0, "lumen",    "egypt",        "iran",           "G", { h: 1, a: 1 }),
+  gs(66, "2026-06-26", 23,  0, "bc",       "new-zealand",  "belgium",        "G", { h: 1, a: 5 }),
 
   // ── Jun 27 ──
   gs(67, "2026-06-27", 17,  0, "metlife",  "panama",       "england",        "L"),
@@ -244,22 +245,22 @@ const groupStage: Match[] = [
 // ── ROUND OF 32 (16 matches) ────────────────────────────────
 const R32 = "ラウンド32";
 const roundOf32: Match[] = [
-  ko(73, R32, "2026-06-28", 15,  0, "sofi",     "A組2位",   "B組2位"),
-  ko(74, R32, "2026-06-29", 13,  0, "nrg",      "C組1位",   "F組2位"),
-  ko(75, R32, "2026-06-29", 16, 30, "gillette",  "E組1位",   "3位(A/B/C/D/F)"),
-  ko(76, R32, "2026-06-29", 21,  0, "bbva",     "F組1位",   "C組2位"),
-  ko(77, R32, "2026-06-30", 13,  0, "att",      "E組2位",   "I組2位"),
-  ko(78, R32, "2026-06-30", 17,  0, "metlife",  "I組1位",   "3位(C/D/F/G/H)"),
-  ko(79, R32, "2026-06-30", 21,  0, "azteca",   "A組1位",   "3位(C/E/F/H/I)"),
-  ko(80, R32, "2026-07-01", 12,  0, "mercedes", "L組1位",   "3位(E/H/I/J/K)"),
-  ko(81, R32, "2026-07-01", 16,  0, "lumen",    "G組1位",   "3位(A/E/H/I/J)"),
-  ko(82, R32, "2026-07-01", 20,  0, "levis",    "D組1位",   "3位(B/E/F/I/J)"),
-  ko(83, R32, "2026-07-02", 15,  0, "sofi",     "H組1位",   "J組2位"),
-  ko(84, R32, "2026-07-02", 19,  0, "bmo",      "K組2位",   "L組2位"),
-  ko(85, R32, "2026-07-02", 23,  0, "bc",       "B組1位",   "3位(E/F/G/I/J)"),
-  ko(86, R32, "2026-07-03", 14,  0, "att",      "D組2位",   "G組2位"),
-  ko(87, R32, "2026-07-03", 18,  0, "hardrock", "J組1位",   "H組2位"),
-  ko(88, R32, "2026-07-03", 21, 30, "arrowhead","K組1位",   "3位(D/E/I/J/L)"),
+  ko(73, R32, "2026-06-28", 15,  0, "sofi",     "南アフリカ",   "カナダ", { home: "south-africa", away: "canada" }),
+  ko(74, R32, "2026-06-29", 13,  0, "nrg",      "ブラジル",     "日本", { home: "brazil", away: "japan" }),
+  ko(75, R32, "2026-06-29", 16, 30, "gillette",  "ドイツ",       "パラグアイ", { home: "germany", away: "paraguay" }),
+  ko(76, R32, "2026-06-29", 21,  0, "bbva",     "オランダ",     "モロッコ", { home: "netherlands", away: "morocco" }),
+  ko(77, R32, "2026-06-30", 13,  0, "att",      "コートジボワール", "ノルウェー", { home: "ivory-coast", away: "norway" }),
+  ko(78, R32, "2026-06-30", 17,  0, "metlife",  "フランス",     "スウェーデン", { home: "france", away: "sweden" }),
+  ko(79, R32, "2026-06-30", 21,  0, "azteca",   "メキシコ",     "3位(C/E/F/H/I)"),
+  ko(80, R32, "2026-07-01", 12,  0, "mercedes", "L組1位",       "3位(E/H/I/J/K)"),
+  ko(81, R32, "2026-07-01", 16,  0, "lumen",    "ベルギー",     "3位(A/E/H/I/J)"),
+  ko(82, R32, "2026-07-01", 20,  0, "levis",    "アメリカ",     "ボスニア", { home: "usa", away: "bosnia" }),
+  ko(83, R32, "2026-07-02", 15,  0, "sofi",     "スペイン",     "J組2位"),
+  ko(84, R32, "2026-07-02", 19,  0, "bmo",      "K組2位",       "L組2位"),
+  ko(85, R32, "2026-07-02", 23,  0, "bc",       "スイス",       "3位(E/F/G/I/J)"),
+  ko(86, R32, "2026-07-03", 14,  0, "att",      "オーストラリア", "エジプト", { home: "australia", away: "egypt" }),
+  ko(87, R32, "2026-07-03", 18,  0, "hardrock", "J組1位",       "カーボベルデ"),
+  ko(88, R32, "2026-07-03", 21, 30, "arrowhead","K組1位",       "3位(D/E/I/J/L)"),
 ];
 
 // ── ROUND OF 16 (8 matches) ─────────────────────────────────
