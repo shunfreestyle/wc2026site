@@ -34,9 +34,9 @@ const leftR32: MatchData[] = [
   { num: 76, home: { label: "オランダ", labelEn: "Netherlands", group: "F" }, away: { label: "モロッコ", labelEn: "Morocco", group: "C" } },
   { num: 75, home: { label: "ドイツ", labelEn: "Germany", group: "E" }, away: { label: "パラグアイ", labelEn: "Paraguay", group: "D" } },
   { num: 78, home: { label: "フランス", labelEn: "France", group: "I" }, away: { label: "スウェーデン", labelEn: "Sweden", group: "F" } },
-  { num: 83, home: { label: "スペイン", labelEn: "Spain", group: "H" }, away: { label: "J2位", labelEn: "J2", group: "J" } },
-  { num: 84, home: { label: "K2位", labelEn: "K2", group: "K" }, away: { label: "L2位", labelEn: "L2", group: "L" } },
-  { num: 81, home: { label: "ベルギー", labelEn: "Belgium", group: "G" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "AEHIJ" } },
+  { num: 83, home: { label: "スペイン", labelEn: "Spain", group: "H" }, away: { label: "オーストリア", labelEn: "Austria", group: "J" } },
+  { num: 84, home: { label: "ポルトガル", labelEn: "Portugal", group: "K" }, away: { label: "クロアチア", labelEn: "Croatia", group: "L" } },
+  { num: 81, home: { label: "ベルギー", labelEn: "Belgium", group: "G" }, away: { label: "セネガル", labelEn: "Senegal", group: "I" } },
   { num: 82, home: { label: "アメリカ", labelEn: "USA", group: "D" }, away: { label: "ボスニア", labelEn: "Bosnia", group: "B" } },
 ];
 
@@ -58,12 +58,12 @@ const leftSF: KOMatch[] = [{ num: 101, homeRef: "97", awayRef: "98" }];
 const rightR32: MatchData[] = [
   { num: 74, home: { label: "ブラジル", labelEn: "Brazil", group: "C" }, away: { label: "日本", labelEn: "Japan", group: "F" } },
   { num: 77, home: { label: "コートジボワール", labelEn: "Ivory Coast", group: "E" }, away: { label: "ノルウェー", labelEn: "Norway", group: "I" } },
-  { num: 79, home: { label: "メキシコ", labelEn: "Mexico", group: "A" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "CEFHI" } },
-  { num: 80, home: { label: "L1位", labelEn: "L1", group: "L" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "EHIJK" } },
-  { num: 87, home: { label: "J1位", labelEn: "J1", group: "J" }, away: { label: "カーボベルデ", labelEn: "Cape Verde", group: "H" } },
+  { num: 79, home: { label: "メキシコ", labelEn: "Mexico", group: "A" }, away: { label: "エクアドル", labelEn: "Ecuador", group: "E" } },
+  { num: 80, home: { label: "イングランド", labelEn: "England", group: "L" }, away: { label: "コンゴ民主", labelEn: "DR Congo", group: "K" } },
+  { num: 87, home: { label: "アルゼンチン", labelEn: "Argentina", group: "J" }, away: { label: "カーボベルデ", labelEn: "Cape Verde", group: "H" } },
   { num: 86, home: { label: "オーストラリア", labelEn: "Australia", group: "D" }, away: { label: "エジプト", labelEn: "Egypt", group: "G" } },
-  { num: 85, home: { label: "スイス", labelEn: "Switzerland", group: "B" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "EFGIJ" } },
-  { num: 88, home: { label: "K1位", labelEn: "K1", group: "K" }, away: { label: "3位", labelEn: "3rd", thirdGroups: "DEIJL" } },
+  { num: 85, home: { label: "スイス", labelEn: "Switzerland", group: "B" }, away: { label: "アルジェリア", labelEn: "Algeria", group: "J" } },
+  { num: 88, home: { label: "コロンビア", labelEn: "Colombia", group: "K" }, away: { label: "ガーナ", labelEn: "Ghana", group: "L" } },
 ];
 
 const rightR16: KOMatch[] = [

@@ -119,6 +119,7 @@ function ko(
   num: number, stage: string, etDate: string, etH: number, etM: number,
   vk: string, homeLabel: string, awayLabel: string,
   teams?: { home: string; away: string },
+  result?: { h: number; a: number },
 ): Match {
   const v = V[vk];
   const local = shiftTime(etDate, etH, etM, v.etToLocal);
@@ -129,7 +130,8 @@ function ko(
     venue: v.nameJa, city: v.cityJa, country: v.country,
     venueEn: v.nameEn, cityEn: v.cityEn, countryEn: v.countryEn, timezone: v.tz,
     homeTeamId: teams?.home ?? "", awayTeamId: teams?.away ?? "",
-    homeLabel, awayLabel, stadiumId: v.stadiumId, status: "scheduled",
+    homeLabel, awayLabel, stadiumId: v.stadiumId,
+    ...(result ? { homeScore: result.h, awayScore: result.a, status: "finished" as const } : { status: "scheduled" as const }),
   };
 }
 
@@ -234,33 +236,33 @@ const groupStage: Match[] = [
   gs(66, "2026-06-26", 23,  0, "bc",       "new-zealand",  "belgium",        "G", { h: 1, a: 5 }),
 
   // ── Jun 27 ──
-  gs(67, "2026-06-27", 17,  0, "metlife",  "panama",       "england",        "L"),
-  gs(68, "2026-06-27", 17,  0, "lincoln",  "croatia",      "ghana",          "L"),
-  gs(69, "2026-06-27", 19, 30, "hardrock", "colombia",     "portugal",       "K"),
-  gs(70, "2026-06-27", 19, 30, "mercedes", "dr-congo", "uzbekistan",     "K"),
-  gs(71, "2026-06-27", 22,  0, "arrowhead","algeria",      "austria",        "J"),
-  gs(72, "2026-06-27", 22,  0, "att",      "jordan",       "argentina",      "J"),
+  gs(67, "2026-06-27", 17,  0, "metlife",  "panama",       "england",        "L", { h: 0, a: 2 }),
+  gs(68, "2026-06-27", 17,  0, "lincoln",  "croatia",      "ghana",          "L", { h: 2, a: 1 }),
+  gs(69, "2026-06-27", 19, 30, "hardrock", "colombia",     "portugal",       "K", { h: 0, a: 0 }),
+  gs(70, "2026-06-27", 19, 30, "mercedes", "dr-congo", "uzbekistan",     "K", { h: 3, a: 1 }),
+  gs(71, "2026-06-27", 22,  0, "arrowhead","algeria",      "austria",        "J", { h: 3, a: 3 }),
+  gs(72, "2026-06-27", 22,  0, "att",      "jordan",       "argentina",      "J", { h: 1, a: 3 }),
 ];
 
 // ── ROUND OF 32 (16 matches) ────────────────────────────────
 const R32 = "ラウンド32";
 const roundOf32: Match[] = [
-  ko(73, R32, "2026-06-28", 15,  0, "sofi",     "南アフリカ",   "カナダ", { home: "south-africa", away: "canada" }),
-  ko(74, R32, "2026-06-29", 13,  0, "nrg",      "ブラジル",     "日本", { home: "brazil", away: "japan" }),
-  ko(75, R32, "2026-06-29", 16, 30, "gillette",  "ドイツ",       "パラグアイ", { home: "germany", away: "paraguay" }),
-  ko(76, R32, "2026-06-29", 21,  0, "bbva",     "オランダ",     "モロッコ", { home: "netherlands", away: "morocco" }),
+  ko(73, R32, "2026-06-28", 15,  0, "sofi",     "南アフリカ",   "カナダ", { home: "south-africa", away: "canada" }, { h: 0, a: 1 }),
+  ko(74, R32, "2026-06-29", 13,  0, "nrg",      "ブラジル",     "日本", { home: "brazil", away: "japan" }, { h: 2, a: 1 }),
+  ko(75, R32, "2026-06-29", 16, 30, "gillette",  "ドイツ",       "パラグアイ", { home: "germany", away: "paraguay" }, { h: 1, a: 1 }),
+  ko(76, R32, "2026-06-29", 21,  0, "bbva",     "オランダ",     "モロッコ", { home: "netherlands", away: "morocco" }, { h: 1, a: 1 }),
   ko(77, R32, "2026-06-30", 13,  0, "att",      "コートジボワール", "ノルウェー", { home: "ivory-coast", away: "norway" }),
   ko(78, R32, "2026-06-30", 17,  0, "metlife",  "フランス",     "スウェーデン", { home: "france", away: "sweden" }),
-  ko(79, R32, "2026-06-30", 21,  0, "azteca",   "メキシコ",     "3位(C/E/F/H/I)"),
-  ko(80, R32, "2026-07-01", 12,  0, "mercedes", "L組1位",       "3位(E/H/I/J/K)"),
-  ko(81, R32, "2026-07-01", 16,  0, "lumen",    "ベルギー",     "3位(A/E/H/I/J)"),
+  ko(79, R32, "2026-06-30", 21,  0, "azteca",   "メキシコ",     "エクアドル", { home: "mexico", away: "ecuador" }),
+  ko(80, R32, "2026-07-01", 12,  0, "mercedes", "イングランド", "コンゴ民主", { home: "england", away: "dr-congo" }),
+  ko(81, R32, "2026-07-01", 16,  0, "lumen",    "ベルギー",     "セネガル", { home: "belgium", away: "senegal" }),
   ko(82, R32, "2026-07-01", 20,  0, "levis",    "アメリカ",     "ボスニア", { home: "usa", away: "bosnia" }),
-  ko(83, R32, "2026-07-02", 15,  0, "sofi",     "スペイン",     "J組2位"),
-  ko(84, R32, "2026-07-02", 19,  0, "bmo",      "K組2位",       "L組2位"),
-  ko(85, R32, "2026-07-02", 23,  0, "bc",       "スイス",       "3位(E/F/G/I/J)"),
+  ko(83, R32, "2026-07-02", 15,  0, "sofi",     "スペイン",     "オーストリア", { home: "spain", away: "austria" }),
+  ko(84, R32, "2026-07-02", 19,  0, "bmo",      "ポルトガル",   "クロアチア", { home: "portugal", away: "croatia" }),
+  ko(85, R32, "2026-07-02", 23,  0, "bc",       "スイス",       "アルジェリア", { home: "switzerland", away: "algeria" }),
   ko(86, R32, "2026-07-03", 14,  0, "att",      "オーストラリア", "エジプト", { home: "australia", away: "egypt" }),
-  ko(87, R32, "2026-07-03", 18,  0, "hardrock", "J組1位",       "カーボベルデ"),
-  ko(88, R32, "2026-07-03", 21, 30, "arrowhead","K組1位",       "3位(D/E/I/J/L)"),
+  ko(87, R32, "2026-07-03", 18,  0, "hardrock", "アルゼンチン", "カーボベルデ", { home: "argentina", away: "cape-verde" }),
+  ko(88, R32, "2026-07-03", 21, 30, "arrowhead","コロンビア",   "ガーナ", { home: "colombia", away: "ghana" }),
 ];
 
 // ── ROUND OF 16 (8 matches) ─────────────────────────────────
