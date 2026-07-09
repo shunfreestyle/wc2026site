@@ -268,23 +268,23 @@ const roundOf32: Match[] = [
 // ── ROUND OF 16 (8 matches) ─────────────────────────────────
 const R16 = "ラウンド16";
 const roundOf16: Match[] = [
-  ko(89, R16, "2026-07-04", 13,  0, "nrg",      "カナダ",       "モロッコ", { home: "canada", away: "morocco" }),
-  ko(90, R16, "2026-07-04", 17,  0, "lincoln",  "パラグアイ",   "フランス", { home: "paraguay", away: "france" }),
-  ko(91, R16, "2026-07-05", 16,  0, "metlife",  "ブラジル",     "ノルウェー", { home: "brazil", away: "norway" }),
-  ko(92, R16, "2026-07-05", 20,  0, "azteca",   "メキシコ",     "イングランド", { home: "mexico", away: "england" }),
-  ko(93, R16, "2026-07-06", 15,  0, "att",      "ポルトガル",   "スペイン", { home: "portugal", away: "spain" }),
-  ko(94, R16, "2026-07-06", 20,  0, "lumen",    "アメリカ",     "ベルギー", { home: "usa", away: "belgium" }),
-  ko(95, R16, "2026-07-07", 12,  0, "mercedes", "アルゼンチン", "エジプト", { home: "argentina", away: "egypt" }),
-  ko(96, R16, "2026-07-07", 16,  0, "bc",       "スイス",       "コロンビア", { home: "switzerland", away: "colombia" }),
+  ko(89, R16, "2026-07-04", 13,  0, "nrg",      "カナダ",       "モロッコ", { home: "canada", away: "morocco" }, { h: 0, a: 3 }),
+  ko(90, R16, "2026-07-04", 17,  0, "lincoln",  "パラグアイ",   "フランス", { home: "paraguay", away: "france" }, { h: 0, a: 1 }),
+  ko(91, R16, "2026-07-05", 16,  0, "metlife",  "ブラジル",     "ノルウェー", { home: "brazil", away: "norway" }, { h: 1, a: 2 }),
+  ko(92, R16, "2026-07-05", 20,  0, "azteca",   "メキシコ",     "イングランド", { home: "mexico", away: "england" }, { h: 2, a: 3 }),
+  ko(93, R16, "2026-07-06", 15,  0, "att",      "ポルトガル",   "スペイン", { home: "portugal", away: "spain" }, { h: 0, a: 1 }),
+  ko(94, R16, "2026-07-06", 20,  0, "lumen",    "アメリカ",     "ベルギー", { home: "usa", away: "belgium" }, { h: 1, a: 4 }),
+  ko(95, R16, "2026-07-07", 12,  0, "mercedes", "アルゼンチン", "エジプト", { home: "argentina", away: "egypt" }, { h: 3, a: 2 }),
+  ko(96, R16, "2026-07-07", 16,  0, "bc",       "スイス",       "コロンビア", { home: "switzerland", away: "colombia" }, { h: 0, a: 0 }),
 ];
 
 // ── QUARTERFINALS (4 matches) ────────────────────────────────
 const QF = "準々決勝";
 const quarterFinals: Match[] = [
-  ko( 97, QF, "2026-07-09", 16,  0, "gillette",  "M89勝者",  "M90勝者"),
-  ko( 98, QF, "2026-07-10", 15,  0, "sofi",      "M93勝者",  "M94勝者"),
-  ko( 99, QF, "2026-07-11", 17,  0, "hardrock",  "M91勝者",  "M92勝者"),
-  ko(100, QF, "2026-07-11", 21,  0, "arrowhead", "M95勝者",  "M96勝者"),
+  ko( 97, QF, "2026-07-09", 16,  0, "gillette",  "フランス",     "モロッコ", { home: "france", away: "morocco" }),
+  ko( 98, QF, "2026-07-10", 15,  0, "sofi",      "スペイン",     "ベルギー", { home: "spain", away: "belgium" }),
+  ko( 99, QF, "2026-07-11", 17,  0, "hardrock",  "ノルウェー",   "イングランド", { home: "norway", away: "england" }),
+  ko(100, QF, "2026-07-11", 21,  0, "arrowhead", "アルゼンチン", "スイス", { home: "argentina", away: "switzerland" }),
 ];
 
 // ── SEMIFINALS (2 matches) ───────────────────────────────────
