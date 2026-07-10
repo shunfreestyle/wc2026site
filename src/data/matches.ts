@@ -281,7 +281,7 @@ const roundOf16: Match[] = [
 // ── QUARTERFINALS (4 matches) ────────────────────────────────
 const QF = "準々決勝";
 const quarterFinals: Match[] = [
-  ko( 97, QF, "2026-07-09", 16,  0, "gillette",  "フランス",     "モロッコ", { home: "france", away: "morocco" }),
+  ko( 97, QF, "2026-07-09", 16,  0, "gillette",  "フランス",     "モロッコ", { home: "france", away: "morocco" }, { h: 2, a: 0 }),
   ko( 98, QF, "2026-07-10", 15,  0, "sofi",      "スペイン",     "ベルギー", { home: "spain", away: "belgium" }),
   ko( 99, QF, "2026-07-11", 17,  0, "hardrock",  "ノルウェー",   "イングランド", { home: "norway", away: "england" }),
   ko(100, QF, "2026-07-11", 21,  0, "arrowhead", "アルゼンチン", "スイス", { home: "argentina", away: "switzerland" }),
