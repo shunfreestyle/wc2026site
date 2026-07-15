@@ -290,7 +290,7 @@ const quarterFinals: Match[] = [
 // ── SEMIFINALS (2 matches) ───────────────────────────────────
 const SF = "準決勝";
 const semiFinals: Match[] = [
-  ko(101, SF, "2026-07-14", 15,  0, "att",      "フランス",     "スペイン", { home: "france", away: "spain" }),
+  ko(101, SF, "2026-07-14", 15,  0, "att",      "フランス",     "スペイン", { home: "france", away: "spain" }, { h: 0, a: 2 }),
   ko(102, SF, "2026-07-15", 15,  0, "mercedes", "イングランド", "アルゼンチン", { home: "england", away: "argentina" }),
 ];
 
