@@ -21,29 +21,30 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "サムライフットボール | 2026年W杯 日本代表ファンサイト",
+    default: "サムライフットボール | Jリーグ & 日本サッカー情報サイト",
     template: "%s | サムライフットボール",
   },
   description:
-    "2026年FIFAワールドカップと日本代表（サムライブルー）の最新情報をお届けする非公式ファンサイト。選手名鑑・試合日程・出場国情報を網羅。FIFA・JFAとは無関係です。",
+    "Jリーグ（J1・J2・J3）の試合日程カレンダー、クラブ情報、日本サッカーの最新情報をお届けする情報サイト。",
   keywords: [
     "サムライフットボール",
+    "Jリーグ",
+    "J1リーグ",
+    "J2リーグ",
+    "J3リーグ",
+    "日本サッカー",
+    "試合日程",
+    "天皇杯",
+    "ルヴァンカップ",
     "日本代表",
-    "サムライブルー",
-    "2026ワールドカップ",
-    "W杯2026",
-    "FIFAワールドカップ",
-    "Japan national team",
-    "Samurai Blue",
-    "2026 World Cup",
   ],
   openGraph: {
     siteName: "サムライフットボール",
     type: "website",
     url: "https://samurai-football.jp",
-    title: "サムライフットボール | 2026年FIFAワールドカップ日本代表ファンサイト",
+    title: "サムライフットボール | Jリーグ & 日本サッカー情報サイト",
     description:
-      "2026年FIFAワールドカップ全48カ国と日本代表の情報を網羅した非公式ファンサイト。FIFA・JFAとは無関係です。",
+      "Jリーグの試合日程カレンダー、クラブ情報、日本サッカーの最新情報をお届けする情報サイト。",
     locale: "ja_JP",
     images: [
       {
@@ -57,8 +58,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@samuraifootball",
-    title: "サムライフットボール — 2026年W杯ファンサイト",
-    description: "2026年FIFAワールドカップと日本代表の最新情報をお届けする非公式ファンサイト。FIFA・JFAとは無関係です。",
+    title: "サムライフットボール — Jリーグ & 日本サッカー情報サイト",
+    description: "Jリーグの試合日程カレンダー、クラブ情報、日本サッカーの最新情報をお届けする情報サイト。",
     images: ["https://samurai-football.jp/og-image.png"],
   },
   alternates: {

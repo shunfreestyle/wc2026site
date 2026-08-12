@@ -56,22 +56,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   return [
+    // Jリーグ（メインコンテンツ）
     staticUrl("/", 1.0, "daily"),
-    staticUrl("/japan", 0.9, "daily"),
-    staticUrl("/teams", 0.8, "weekly"),
-    staticUrl("/articles", 0.9, "daily"),
-    staticUrl("/quiz", 0.7, "weekly"),
-    staticUrl("/quiz/japan-squad", 0.7, "weekly"),
-    staticUrl("/stamen", 0.7, "weekly"),
-    staticUrl("/japan/matches", 0.8, "weekly"),
-    staticUrl("/japan/opponents/scotland", 0.7, "weekly"),
-    staticUrl("/japan/opponents/england", 0.7, "weekly"),
-    staticUrl("/japan/uniform", 0.6, "monthly"),
-    staticUrl("/about", 0.5, "monthly"),
-    staticUrl("/privacy", 0.4, "monthly"),
-    staticUrl("/terms", 0.4, "monthly"),
-    staticUrl("/disclaimer", 0.4, "monthly"),
-    staticUrl("/contact", 0.4, "monthly"),
+    staticUrl("/jleague", 0.9, "weekly"),
+    staticUrl("/jleague/calendar", 0.9, "daily"),
+    staticUrl("/articles", 0.8, "daily"),
+
+    // W杯2026アーカイブ
+    staticUrl("/archive/wc2026", 0.7, "monthly"),
+    staticUrl("/matches", 0.7, "monthly"),
+    staticUrl("/bracket", 0.7, "monthly"),
+    staticUrl("/japan", 0.7, "monthly"),
+    staticUrl("/teams", 0.6, "monthly"),
+    staticUrl("/japan/matches", 0.6, "monthly"),
+    staticUrl("/japan/opponents/scotland", 0.5, "monthly"),
+    staticUrl("/japan/opponents/england", 0.5, "monthly"),
+
+    // その他
+    staticUrl("/about", 0.4, "monthly"),
+    staticUrl("/privacy", 0.3, "monthly"),
+    staticUrl("/terms", 0.3, "monthly"),
+    staticUrl("/disclaimer", 0.3, "monthly"),
+    staticUrl("/contact", 0.3, "monthly"),
     ...teamUrls,
     ...playerUrls,
     ...articleUrls,

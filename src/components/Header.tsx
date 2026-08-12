@@ -13,8 +13,11 @@ const LANGS: { code: Locale; flag: string; label: string }[] = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
   const { locale, t, setLocale } = useLanguage();
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -28,13 +31,15 @@ export default function Header() {
 
   const currentLang = LANGS.find((l) => l.code === locale);
 
-  const navLinks = [
-    { href: "/", label: t.nav.home },
-    { href: "/matches", label: t.nav.matches },
-    { href: "/bracket", label: locale === "ja" ? "トーナメント表" : "Bracket" },
-    { href: "/japan", label: t.nav.japan },
-    { href: "/articles", label: t.nav.articles },
-  ];
+  const navLinks = mounted
+    ? [
+        { href: "/", label: "ホーム" },
+        { href: "/jleague/calendar", label: "カレンダー" },
+        { href: "/jleague", label: "Jリーグ" },
+        { href: "/articles", label: "ニュース" },
+        { href: "/archive/wc2026", label: "W杯2026" },
+      ]
+    : [];
 
   return (
     <header className="bg-gradient-to-r from-[#1A1A2E] via-[#0057A8] to-[#1A1A2E] text-white shadow-lg sticky top-0 z-50">
@@ -45,53 +50,54 @@ export default function Header() {
             <span className="text-xl sm:text-2xl">⚽</span>
             <div>
               <h1 className="text-base sm:text-lg font-bold tracking-tight leading-none">SAMURAI FOOTBALL</h1>
-              <p className="text-[10px] sm:text-xs font-semibold tracking-widest">
-                <span className="text-[#E8192C]">USA</span> | <span className="text-[#00843D]">MEX</span> | <span className="text-white">CAN</span> 2026
-                <span className="text-white/40 ml-1">{locale === "en" ? "— Unofficial Fan Site" : "— 非公式ファンサイト"}</span>
+              <p className="text-[10px] sm:text-xs font-semibold tracking-widest text-white/60">
+                Jリーグ &amp; 日本サッカー情報サイト
               </p>
             </div>
           </Link>
 
-          {/* Desktop nav + lang dropdown */}
-          <div className="hidden md:flex items-center">
-            <nav className="flex items-center gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="px-3 py-2 rounded-lg text-sm font-medium hover:bg-white/10 transition-colors"
+          {/* Desktop nav + lang dropdown - only after mount */}
+          {mounted && (
+            <div className="hidden md:flex items-center">
+              <nav className="flex items-center gap-1">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="px-3 py-2 rounded-lg text-sm font-medium hover:bg-white/10 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+              <div ref={langRef} className="relative ml-3 border-l border-white/20 pl-3">
+                <button
+                  onClick={() => setLangOpen((v) => !v)}
+                  className="flex items-center gap-1 px-2 py-1 rounded text-xs font-bold hover:bg-white/10 transition-colors cursor-pointer"
                 >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-            <div ref={langRef} className="relative ml-3 border-l border-white/20 pl-3">
-              <button
-                onClick={() => setLangOpen((v) => !v)}
-                className="flex items-center gap-1 px-2 py-1 rounded text-xs font-bold hover:bg-white/10 transition-colors cursor-pointer"
-              >
-                <span>{currentLang?.flag}</span>
-                <span>{currentLang?.label}</span>
-                <span className="text-white/50 ml-0.5">{langOpen ? "▲" : "▼"}</span>
-              </button>
-              {langOpen && (
-                <div className="absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 py-1 min-w-[110px]">
-                  {LANGS.map(({ code, flag, label }) => (
-                    <button
-                      key={code}
-                      onClick={() => { setLocale(code); setLangOpen(false); }}
-                      className={`flex items-center gap-2 w-full px-3 py-1.5 text-xs hover:bg-gray-50 transition-colors cursor-pointer ${
-                        locale === code ? "font-semibold text-[#003087]" : "text-gray-700"
-                      }`}
-                    >
-                      <span>{flag}</span>
-                      <span>{label}</span>
-                    </button>
-                  ))}
-                </div>
-              )}
+                  <span>{currentLang?.flag}</span>
+                  <span>{currentLang?.label}</span>
+                  <span className="text-white/50 ml-0.5">{langOpen ? "▲" : "▼"}</span>
+                </button>
+                {langOpen && (
+                  <div className="absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 py-1 min-w-[110px]">
+                    {LANGS.map(({ code, flag, label }) => (
+                      <button
+                        key={code}
+                        onClick={() => { setLocale(code); setLangOpen(false); }}
+                        className={`flex items-center gap-2 w-full px-3 py-1.5 text-xs hover:bg-gray-50 transition-colors cursor-pointer ${
+                          locale === code ? "font-semibold text-[#003087]" : "text-gray-700"
+                        }`}
+                      >
+                        <span>{flag}</span>
+                        <span>{label}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Hamburger button */}
           <button
@@ -106,8 +112,8 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {menuOpen && (
+      {/* Mobile menu - only after mount */}
+      {mounted && menuOpen && (
         <div className="md:hidden border-t border-white/10">
           <nav className="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-1">
             {navLinks.map((link) => (

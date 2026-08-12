@@ -10,6 +10,8 @@ import { getRosterByTeamId } from "@/data/j1-rosters";
 import { getEastARosterByTeamId } from "@/data/j2j3-rosters-east-a";
 import { jMatches, jMatchDetails } from "@/data/jleague";
 import type { JRosterPlayer } from "@/data/j1-rosters";
+import ClubInfoTab from "@/components/jleague/ClubInfoTab";
+import TacticsTab from "@/components/jleague/TacticsTab";
 
 /* shortName → roster teamId mapping */
 const SHORT_TO_ID: Record<string, string> = {
@@ -40,7 +42,7 @@ function isLightColor(hex: string): boolean {
   return (r * 299 + g * 587 + b * 114) / 1000 > 180;
 }
 
-type TabKey = "squad" | "season" | "matches";
+type TabKey = "squad" | "season" | "matches" | "club" | "tactics";
 
 export default function TeamDetailPage() {
   const { teamId } = useParams<{ teamId: string }>();
@@ -114,6 +116,10 @@ export default function TeamDetailPage() {
     { key: "squad", labelJa: "選手一覧", labelEn: "Squad" },
     { key: "season", labelJa: "成績", labelEn: "Season" },
     { key: "matches", labelJa: "対戦カード", labelEn: "Matches" },
+    ...(isJ1 ? [
+      { key: "club" as TabKey, labelJa: "クラブ情報", labelEn: "Club Info" },
+      { key: "tactics" as TabKey, labelJa: "戦術", labelEn: "Tactics" },
+    ] : []),
   ];
 
   return (
@@ -456,6 +462,16 @@ export default function TeamDetailPage() {
               </div>
             )}
           </div>
+        )}
+
+        {/* ── Club Info Tab ── */}
+        {activeTab === "club" && isJ1 && (
+          <ClubInfoTab teamId={teamId} accentColor={accentColor} />
+        )}
+
+        {/* ── Tactics Tab ── */}
+        {activeTab === "tactics" && isJ1 && (
+          <TacticsTab teamId={teamId} accentColor={accentColor} />
         )}
 
         {/* CTA buttons */}
