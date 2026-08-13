@@ -291,17 +291,17 @@ const quarterFinals: Match[] = [
 const SF = "準決勝";
 const semiFinals: Match[] = [
   ko(101, SF, "2026-07-14", 15,  0, "att",      "フランス",     "スペイン", { home: "france", away: "spain" }, { h: 0, a: 2 }),
-  ko(102, SF, "2026-07-15", 15,  0, "mercedes", "イングランド", "アルゼンチン", { home: "england", away: "argentina" }),
+  ko(102, SF, "2026-07-15", 15,  0, "mercedes", "イングランド", "アルゼンチン", { home: "england", away: "argentina" }, { h: 1, a: 2 }),
 ];
 
 // ── THIRD PLACE (1 match) ────────────────────────────────────
 const thirdPlace: Match[] = [
-  ko(103, "3位決定戦", "2026-07-18", 17,  0, "hardrock", "M101敗者", "M102敗者"),
+  ko(103, "3位決定戦", "2026-07-18", 17,  0, "hardrock", "フランス", "イングランド", { home: "france", away: "england" }, { h: 4, a: 6 }),
 ];
 
 // ── FINAL (1 match) ──────────────────────────────────────────
 const final: Match[] = [
-  ko(104, "決勝", "2026-07-19", 15,  0, "metlife", "M101勝者", "M102勝者"),
+  ko(104, "決勝", "2026-07-19", 15,  0, "metlife", "スペイン", "アルゼンチン", { home: "spain", away: "argentina" }, { h: 1, a: 0 }),
 ];
 
 // ── Combined export ─────────────────────────────────────────

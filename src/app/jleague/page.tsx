@@ -1,212 +1,269 @@
 "use client";
 
 import Link from "next/link";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { j1Teams, getJ1TeamsByDivision } from "@/data/j1-teams";
-import type { J1Team } from "@/data/j1-teams";
+import { useMemo } from "react";
+import { j1Teams } from "@/data/j1-teams";
+import scheduleData from "@/data/jleague-schedule.json";
 
-function TeamCard({ team }: { team: J1Team }) {
-  return (
-    <div className="group relative bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
-      {/* Color accent bar */}
-      <div
-        className="h-1.5"
-        style={{ background: `linear-gradient(90deg, ${team.color} 60%, ${team.colorSecondary} 100%)` }}
-      />
-
-      <div className="p-5">
-        {/* Header: Team name */}
-        <div className="mb-3">
-          <h3 className="text-lg font-bold text-gray-900 leading-tight truncate">
-            {team.fullName}
-          </h3>
-          <p className="text-xs text-gray-400 mt-0.5">{team.fullNameEn}</p>
-        </div>
-
-        {/* Info grid */}
-        <div className="space-y-2 text-sm">
-          <div className="flex items-center gap-2 text-gray-600">
-            <span className="text-gray-400 w-4 text-center">📍</span>
-            <span>{team.prefecture} {team.city}</span>
-          </div>
-          <div className="flex items-center gap-2 text-gray-600">
-            <span className="text-gray-400 w-4 text-center">🏟</span>
-            <span className="truncate">{team.stadium}</span>
-          </div>
-          <div className="flex items-center gap-2 text-gray-600">
-            <span className="text-gray-400 w-4 text-center">📅</span>
-            <span>創設 {team.founded}年</span>
-          </div>
-          <div className="flex items-center gap-2 text-gray-600">
-            <span className="text-gray-400 w-4 text-center">👔</span>
-            <span>{team.manager}</span>
-          </div>
-        </div>
-
-        {/* Action buttons */}
-        <div className="flex gap-2 mt-4">
-          <Link
-            href={`/stamen?team=${team.id}`}
-            className="flex-1 flex items-center justify-center text-xs font-bold h-10 rounded-lg border-2 transition-colors"
-            style={{
-              borderColor: team.color,
-              color: team.color,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = team.color;
-              e.currentTarget.style.color = "#fff";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "transparent";
-              e.currentTarget.style.color = team.color;
-            }}
-          >
-            スタメンメーカー
-          </Link>
-          <Link
-            href={`/jleague/team/${team.id}`}
-            className="flex-1 flex items-center justify-center text-xs font-bold h-10 rounded-lg text-white transition-opacity hover:opacity-90"
-            style={{ backgroundColor: team.color }}
-          >
-            チーム詳細
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
+/* ---------- types ---------- */
+interface Match {
+  date: string;
+  kickoff: string;
+  home: string;
+  away: string;
+  stadium: string;
+  matchday: string;
+  category: string;
+  score?: { home: number; away: number };
 }
 
+interface TeamStanding {
+  rank: number;
+  teamId: string;
+  shortName: string;
+  fullName: string;
+  color: string;
+  played: number;
+  won: number;
+  drawn: number;
+  lost: number;
+  gf: number;
+  ga: number;
+  gd: number;
+  pts: number;
+  form: ("W" | "D" | "L")[];
+}
+
+/* ---------- short name → teamId mapping ---------- */
+const SHORT_TO_ID: Record<string, string> = {
+  "鹿島": "kashima", "水戸": "mito", "浦和": "urawa", "千葉": "chiba",
+  "柏": "kashiwa", "FC東京": "fctokyo", "東京V": "verdy", "町田": "machida",
+  "川崎F": "kawasaki", "横浜FM": "yokohamafm", "清水": "shimizu",
+  "名古屋": "nagoya", "京都": "kyoto", "G大阪": "gosaka", "C大阪": "cosaka",
+  "神戸": "kobe", "岡山": "okayama", "広島": "hiroshima", "福岡": "fukuoka",
+  "長崎": "nagasaki",
+};
+
+const FORM_COLORS: Record<string, string> = {
+  W: "#16a34a",
+  D: "#d97706",
+  L: "#dc2626",
+};
+
+/* ---------- compute standings from match data ---------- */
+function computeStandings(matches: Match[]): TeamStanding[] {
+  const j1Matches = matches.filter((m) => m.category === "J1" && m.score);
+  const stats: Record<string, { w: number; d: number; l: number; gf: number; ga: number; results: { date: string; result: "W" | "D" | "L" }[] }> = {};
+
+  // Initialize all J1 teams
+  for (const team of j1Teams) {
+    stats[team.shortName] = { w: 0, d: 0, l: 0, gf: 0, ga: 0, results: [] };
+  }
+
+  for (const m of j1Matches) {
+    const s = m.score!;
+    const homeStats = stats[m.home];
+    const awayStats = stats[m.away];
+    if (!homeStats || !awayStats) continue;
+
+    homeStats.gf += s.home;
+    homeStats.ga += s.away;
+    awayStats.gf += s.away;
+    awayStats.ga += s.home;
+
+    if (s.home > s.away) {
+      homeStats.w++;
+      awayStats.l++;
+      homeStats.results.push({ date: m.date, result: "W" });
+      awayStats.results.push({ date: m.date, result: "L" });
+    } else if (s.home < s.away) {
+      homeStats.l++;
+      awayStats.w++;
+      homeStats.results.push({ date: m.date, result: "L" });
+      awayStats.results.push({ date: m.date, result: "W" });
+    } else {
+      homeStats.d++;
+      awayStats.d++;
+      homeStats.results.push({ date: m.date, result: "D" });
+      awayStats.results.push({ date: m.date, result: "D" });
+    }
+  }
+
+  const standings: TeamStanding[] = Object.entries(stats).map(([shortName, s]) => {
+    const teamId = SHORT_TO_ID[shortName] || shortName;
+    const teamInfo = j1Teams.find((t) => t.id === teamId);
+    // Sort results by date and take last 5
+    const sorted = s.results.sort((a, b) => a.date.localeCompare(b.date));
+    const form = sorted.slice(-5).map((r) => r.result);
+
+    return {
+      rank: 0,
+      teamId,
+      shortName,
+      fullName: teamInfo?.fullName || shortName,
+      color: teamInfo?.color || "#666",
+      played: s.w + s.d + s.l,
+      won: s.w,
+      drawn: s.d,
+      lost: s.l,
+      gf: s.gf,
+      ga: s.ga,
+      gd: s.gf - s.ga,
+      pts: s.w * 3 + s.d,
+      form,
+    };
+  });
+
+  // Sort by points, then goal difference, then goals scored
+  standings.sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf);
+  standings.forEach((s, i) => { s.rank = i + 1; });
+
+  return standings;
+}
+
+/* ---------- component ---------- */
 export default function JLeaguePage() {
-  const { locale } = useLanguage();
-  const eastTeams = getJ1TeamsByDivision("EAST");
-  const westTeams = getJ1TeamsByDivision("WEST");
+  const standings = useMemo(
+    () => computeStandings(scheduleData.matches as Match[]),
+    []
+  );
 
   return (
     <>
-      {/* Hero section */}
-      <section className="relative bg-gradient-to-br from-[#1A1A2E] via-[#003087] to-[#1A1A2E] text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-white/20 blur-3xl" />
-          <div className="absolute bottom-10 right-20 w-60 h-60 rounded-full bg-white/10 blur-3xl" />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-            <div>
-              <p className="text-xs sm:text-sm font-bold tracking-widest text-white/60 mb-2">
-                MEIJI YASUDA J1 HYAKUNEN KŌSŌ LEAGUE
-              </p>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-                {locale === "en" ? "J1 League" : "J1リーグ"}
-                <span className="text-white/40 ml-3 text-xl sm:text-2xl font-bold">2026</span>
-              </h1>
-              <p className="text-white/70 mt-2 text-sm sm:text-base max-w-xl">
-                {locale === "en"
-                  ? "20 clubs competing in the top division of Japanese football. The Original 10 clubs reunite in J1 for the first time in 21 years."
-                  : "日本サッカーの頂点を争う20クラブ。2026年はオリジナル10が21年ぶりにJ1で揃い踏み。"}
-              </p>
-              <Link href="/jleague/j2j3" className="inline-flex items-center gap-1.5 text-xs font-bold text-white/60 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 mt-4 transition-all">
-                {locale === "en" ? "J2·J3 League" : "J2·J3リーグへ"}
-                <span className="text-[10px]">→</span>
-              </Link>
-            </div>
-          </div>
+      {/* Hero */}
+      <section className="bg-gradient-to-r from-[#1A1A2E] via-[#003087] to-[#1A1A2E] text-white">
+        <div className="max-w-5xl mx-auto px-4 py-8 sm:py-10">
+          <p className="text-xs font-bold tracking-widest text-white/50 mb-1">
+            MEIJI YASUDA J1 LEAGUE 2026/27
+          </p>
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            J1リーグ 順位表
+          </h1>
+          <p className="text-sm text-white/60 mt-1">
+            {scheduleData.season}シーズン
+          </p>
         </div>
       </section>
 
-      {/* Main content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        {/* EAST Division */}
-        <section className="mb-12">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="bg-[#003087] text-white text-sm font-bold px-4 py-1.5 rounded-lg tracking-wide">
-              EAST
-            </span>
-            <span className="text-sm text-gray-500">{locale === "en" ? "10 Clubs" : "10クラブ"}</span>
-            <div className="flex-1 h-px bg-gray-200" />
+      <div className="max-w-5xl mx-auto px-4 py-6">
+        {/* Standings table */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          {/* Desktop header */}
+          <div className="hidden sm:grid grid-cols-[40px_1fr_40px_40px_40px_40px_40px_40px_44px_48px_140px] gap-0 items-center px-4 py-2.5 bg-gray-50 border-b border-gray-200 text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+            <span className="text-center">#</span>
+            <span>クラブ</span>
+            <span className="text-center">試</span>
+            <span className="text-center">勝</span>
+            <span className="text-center">分</span>
+            <span className="text-center">敗</span>
+            <span className="text-center">得</span>
+            <span className="text-center">失</span>
+            <span className="text-center">差</span>
+            <span className="text-center">勝点</span>
+            <span className="text-center">直近5試合</span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {eastTeams.map((team) => (
-              <TeamCard key={team.id} team={team} />
-            ))}
-          </div>
-        </section>
 
-        {/* WEST Division */}
-        <section className="mb-12">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="bg-[#E8192C] text-white text-sm font-bold px-4 py-1.5 rounded-lg tracking-wide">
-              WEST
-            </span>
-            <span className="text-sm text-gray-500">{locale === "en" ? "10 Clubs" : "10クラブ"}</span>
-            <div className="flex-1 h-px bg-gray-200" />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {westTeams.map((team) => (
-              <TeamCard key={team.id} team={team} />
-            ))}
-          </div>
-        </section>
+          {/* Rows */}
+          {standings.map((team) => (
+            <Link
+              key={team.teamId}
+              href={`/jleague/team/${team.teamId}`}
+              className="block border-b border-gray-100 last:border-b-0 hover:bg-blue-50/30 transition-colors"
+            >
+              {/* Desktop row */}
+              <div className="hidden sm:grid grid-cols-[40px_1fr_40px_40px_40px_40px_40px_40px_44px_48px_140px] gap-0 items-center px-4 py-3 text-sm">
+                <span className={`text-center font-bold text-sm ${team.rank <= 3 ? "text-[#003087]" : team.rank >= 18 ? "text-red-500" : "text-gray-500"}`}>
+                  {team.rank}
+                </span>
+                <span className="flex items-center gap-2 min-w-0">
+                  <span className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: team.color }} />
+                  <span className="font-bold text-gray-900 truncate">{team.fullName}</span>
+                </span>
+                <span className="text-center text-gray-600">{team.played}</span>
+                <span className="text-center text-gray-600">{team.won}</span>
+                <span className="text-center text-gray-600">{team.drawn}</span>
+                <span className="text-center text-gray-600">{team.lost}</span>
+                <span className="text-center text-gray-600">{team.gf}</span>
+                <span className="text-center text-gray-600">{team.ga}</span>
+                <span className={`text-center font-bold ${team.gd > 0 ? "text-green-600" : team.gd < 0 ? "text-red-500" : "text-gray-400"}`}>
+                  {team.gd > 0 ? `+${team.gd}` : team.gd}
+                </span>
+                <span className="text-center font-extrabold text-gray-900 text-base">{team.pts}</span>
+                <span className="flex items-center justify-center gap-1">
+                  {team.form.map((f, i) => (
+                    <span
+                      key={i}
+                      className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold text-white"
+                      style={{ backgroundColor: FORM_COLORS[f] }}
+                    >
+                      {f}
+                    </span>
+                  ))}
+                  {/* Fill empty slots */}
+                  {Array.from({ length: 5 - team.form.length }).map((_, i) => (
+                    <span key={`e${i}`} className="w-5 h-5 rounded-full bg-gray-100" />
+                  ))}
+                </span>
+              </div>
 
-        {/* Original 10 highlight */}
-        <section className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-6 sm:p-8 text-white">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-2xl">🏆</span>
-            <h2 className="text-xl sm:text-2xl font-bold">
-              {locale === "en" ? "Original 10 — All reunited in J1" : "オリジナル10 ─ 21年ぶりJ1全クラブ揃い踏み"}
-            </h2>
-          </div>
-          <p className="text-white/70 text-sm mb-5 max-w-3xl">
-            {locale === "en"
-              ? "The 9 surviving clubs from the 10 that founded the J.League in 1993 are all competing in J1 for the first time since 2005. JEF United Chiba's return to J1 after 17 years completed the reunion."
-              : "1993年のJリーグ開幕時に参加した10クラブのうち、現存する9クラブが2005年以来21年ぶりにJ1に勢揃い。ジェフユナイテッド千葉の17年ぶりJ1復帰により実現しました。"}
-          </p>
-          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2">
-            {j1Teams
-              .filter((t) => t.isOriginal10)
-              .map((team) => (
-                <Link
-                  key={team.id}
-                  href={`/jleague/team/${team.id}`}
-                  className="bg-white/10 hover:bg-white/20 rounded-lg p-2.5 text-center transition-colors"
-                >
-                  <div
-                    className="w-6 h-6 rounded-full mx-auto mb-1.5"
-                    style={{ backgroundColor: team.color }}
-                  />
-                  <p className="text-[11px] font-bold leading-tight">{team.shortName}</p>
-                </Link>
-              ))}
-          </div>
-        </section>
+              {/* Mobile row */}
+              <div className="sm:hidden px-4 py-3">
+                <div className="flex items-center gap-3">
+                  <span className={`w-6 text-center font-bold text-sm shrink-0 ${team.rank <= 3 ? "text-[#003087]" : team.rank >= 18 ? "text-red-500" : "text-gray-400"}`}>
+                    {team.rank}
+                  </span>
+                  <span className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: team.color }} />
+                  <span className="font-bold text-gray-900 text-sm flex-1 truncate">{team.shortName}</span>
+                  <span className="font-extrabold text-gray-900 text-base shrink-0">{team.pts}</span>
+                  <span className="text-[10px] text-gray-400 shrink-0">pts</span>
+                </div>
+                <div className="flex items-center gap-3 mt-1.5 ml-9">
+                  <span className="text-[11px] text-gray-500">
+                    {team.played}試 {team.won}勝 {team.drawn}分 {team.lost}敗
+                  </span>
+                  <span className={`text-[11px] font-bold ${team.gd > 0 ? "text-green-600" : team.gd < 0 ? "text-red-500" : "text-gray-400"}`}>
+                    {team.gd > 0 ? `+${team.gd}` : team.gd}
+                  </span>
+                  <span className="flex items-center gap-0.5 ml-auto">
+                    {team.form.map((f, i) => (
+                      <span
+                        key={i}
+                        className="w-4 h-4 rounded-full flex items-center justify-center text-[8px] font-bold text-white"
+                        style={{ backgroundColor: FORM_COLORS[f] }}
+                      >
+                        {f}
+                      </span>
+                    ))}
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
 
-        {/* J2/J3 Link */}
-        <section className="mb-10">
+        {/* Legend */}
+        <div className="flex flex-wrap gap-4 mt-4 text-[10px] text-gray-400">
+          <span>試=試合数 勝=勝利 分=引分 敗=敗戦 得=得点 失=失点 差=得失点差</span>
+        </div>
+
+        {/* Links */}
+        <div className="flex flex-wrap gap-3 mt-6">
+          <Link
+            href="/jleague/calendar"
+            className="text-sm font-bold text-[#003087] hover:underline"
+          >
+            カレンダーで日程を見る →
+          </Link>
           <Link
             href="/jleague/j2j3"
-            className="group block bg-gradient-to-r from-[#2C3E50] to-[#34495E] rounded-2xl p-6 sm:p-8 text-white hover:shadow-xl transition-all"
+            className="text-sm font-bold text-gray-500 hover:underline"
           >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs font-bold text-white/50 tracking-widest mb-1">MEIJI YASUDA J2·J3 HYAKUNEN KŌSŌ LEAGUE</p>
-                <h2 className="text-xl sm:text-2xl font-bold">
-                  {locale === "en" ? "J2·J3 Centenary Vision League" : "J2·J3 百年構想リーグ"}
-                </h2>
-                <p className="text-white/60 text-sm mt-1">
-                  {locale === "en"
-                    ? "40 clubs in 4 groups — EAST-A, EAST-B, WEST-A, WEST-B"
-                    : "4グループ40クラブ ─ EAST-A / EAST-B / WEST-A / WEST-B"}
-                </p>
-              </div>
-              <svg className="w-6 h-6 text-white/40 group-hover:text-white/80 group-hover:translate-x-1 transition-all shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
-            </div>
+            J2・J3リーグへ →
           </Link>
-        </section>
+        </div>
 
-        {/* Data source */}
         <p className="text-xs text-gray-400 mt-8 text-center">
-          {locale === "en"
-            ? "Source: J.LEAGUE Official (jleague.jp) / Club official sites — Data as of March 2026"
-            : "出典: Jリーグ公式サイト (jleague.jp) / 各クラブ公式サイト ─ 2026年3月時点"}
+          出典: Jリーグ公式サイト (jleague.jp) ─ {new Date(scheduleData.updatedAt).toLocaleDateString("ja-JP")}時点
         </p>
       </div>
     </>
