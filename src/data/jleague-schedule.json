@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-12T15:03:28.168Z",
+  "updatedAt": "2026-08-16T05:07:09.684Z",
   "season": "2026/27",
-  "totalMatches": 1139,
+  "totalMatches": 1258,
   "matches": [
     {
       "date": "2026-08-07",
@@ -769,6 +769,270 @@
       "categoryColor": "#E8192C"
     },
     {
+      "date": "2026-08-19",
+      "kickoff": "17:00",
+      "home": "アルテリーヴォ和歌山",
+      "away": "沼津",
+      "stadium": "紀三井寺",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "18:00",
+      "home": "ラインメール青森",
+      "away": "秋田大",
+      "stadium": "カクスタ",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "18:00",
+      "home": "ベルガロッソいわみ",
+      "away": "長崎国際大",
+      "stadium": "みよし陸",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "18:30",
+      "home": "岩手",
+      "away": "札幌大",
+      "stadium": "いわスタ",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "18:30",
+      "home": "岐阜",
+      "away": "富山新庄クラブ",
+      "stadium": "ヒマスタ",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "18:30",
+      "home": "アトレチコ鈴鹿",
+      "away": "FC BASARA HYOGO",
+      "stadium": "三交鈴鹿",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "18:30",
+      "home": "SRC広島",
+      "away": "FCマルヤス岡崎",
+      "stadium": "Eピース",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "18:30",
+      "home": "FC徳島",
+      "away": "川副クラブ",
+      "stadium": "鳴門大塚",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "東北学院大",
+      "away": "群馬",
+      "stadium": "ユアスタ",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "福島",
+      "away": "大山サッカークラブ",
+      "stadium": "とうスタ",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "流通経済大",
+      "away": "クリアソン新宿",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "栃木SC",
+      "away": "ブリオベッカ浦安・市川",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "専修大",
+      "away": "筑波大",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "山梨学院大",
+      "away": "東京国際大FC",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "長野",
+      "away": "福井ユナイテッドFC",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "金沢星稜大",
+      "away": "京都産業大",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "レイラック滋賀FC",
+      "away": "JAPANサッカーカレッジ",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "奈良",
+      "away": "FC大阪",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "鳥取",
+      "away": "熊本",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "愛媛",
+      "away": "環太平洋大",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "北九州",
+      "away": "沖縄SV",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "ヴェルスパ大分",
+      "away": "高知",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "ヴェロスクロノス都農",
+      "away": "讃岐",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-19",
+      "kickoff": "19:00",
+      "home": "鹿児島",
+      "away": "山口",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
       "date": "2026-08-21",
       "kickoff": "19:00",
       "home": "柏",
@@ -1097,6 +1361,138 @@
       "competition": "J1",
       "category": "J1",
       "categoryColor": "#003087"
+    },
+    {
+      "date": "2026-08-26",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-26",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-26",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-26",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-26",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-26",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-26",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-26",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-26",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-26",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-26",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-08-26",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
     },
     {
       "date": "2026-08-29",
@@ -1539,6 +1935,171 @@
       "categoryColor": "#003087"
     },
     {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "ヴァンラーレ八戸",
+      "away": "栃木シティ",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "群馬",
+      "away": "新潟",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "金沢",
+      "away": "今治",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "宮崎",
+      "away": "富山",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "琉球",
+      "away": "横浜FC",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "岐阜",
+      "away": "徳島",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "鹿児島",
+      "away": "札幌",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "北九州",
+      "away": "いわき",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "熊本",
+      "away": "大分",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "相模原",
+      "away": "磐田",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "FC大阪",
+      "away": "甲府",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "奈良",
+      "away": "鳥栖",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "山口",
+      "away": "藤枝",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "鳥取",
+      "away": "大宮",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-02",
+      "kickoff": "19:00",
+      "home": "愛媛",
+      "away": "秋田",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
       "date": "2026-09-05",
       "kickoff": "18:00",
       "home": "相模原",
@@ -1878,6 +2439,83 @@
       "competition": "J3",
       "category": "J3",
       "categoryColor": "#E8192C"
+    },
+    {
+      "date": "2026-09-09",
+      "kickoff": "19:00",
+      "home": "松本",
+      "away": "湘南",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-09",
+      "kickoff": "19:00",
+      "home": "栃木SC",
+      "away": "山形",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-09",
+      "kickoff": "19:00",
+      "home": "讃岐",
+      "away": "千葉",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-09",
+      "kickoff": "19:00",
+      "home": "レイラック滋賀",
+      "away": "東京V",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-09",
+      "kickoff": "19:00",
+      "home": "高知",
+      "away": "長崎",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-09",
+      "kickoff": "19:00",
+      "home": "長野",
+      "away": "水戸",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-09",
+      "kickoff": "19:00",
+      "home": "福島",
+      "away": "仙台",
+      "stadium": "",
+      "matchday": "1回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
     },
     {
       "date": "2026-09-12",
@@ -2540,6 +3178,28 @@
       "categoryColor": "#E8192C"
     },
     {
+      "date": "2026-09-23",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-09-23",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
       "date": "2026-09-26",
       "kickoff": "13:00",
       "home": "金沢",
@@ -2760,6 +3420,127 @@
       "categoryColor": "#E8192C"
     },
     {
+      "date": "2026-09-29",
+      "kickoff": "",
+      "home": "1回戦勝者",
+      "away": "広島",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "",
+      "home": "1回戦勝者",
+      "away": "1回戦勝者",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "",
+      "home": "1回戦勝者",
+      "away": "清水",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "",
+      "home": "1回戦勝者",
+      "away": "横浜FM",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "",
+      "home": "1回戦勝者",
+      "away": "浦和",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "",
+      "home": "1回戦勝者",
+      "away": "岡山",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "",
+      "home": "1回戦勝者",
+      "away": "名古屋",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "",
+      "home": "1回戦勝者",
+      "away": "川崎F",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "",
+      "home": "1回戦勝者",
+      "away": "福岡",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "",
+      "home": "1回戦勝者",
+      "away": "C大阪",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "",
+      "home": "1回戦勝者",
+      "away": "FC東京",
+      "stadium": "",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
       "date": "2026-10-02",
       "kickoff": "19:00",
       "home": "滋賀",
@@ -2903,6 +3684,28 @@
       "categoryColor": "#E8192C"
     },
     {
+      "date": "2026-10-03",
+      "kickoff": "",
+      "home": "町田",
+      "away": "京都",
+      "stadium": "",
+      "matchday": "4回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-03",
+      "kickoff": "",
+      "home": "柏",
+      "away": "G大阪",
+      "stadium": "",
+      "matchday": "4回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
       "date": "2026-10-04",
       "kickoff": "13:00",
       "home": "札幌",
@@ -2978,6 +3781,72 @@
       "competition": "J2",
       "category": "J2",
       "categoryColor": "#00A651"
+    },
+    {
+      "date": "2026-10-07",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-10-07",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-10-07",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-10-07",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-10-07",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-10-07",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
     },
     {
       "date": "2026-10-09",
@@ -3308,6 +4177,94 @@
       "competition": "J2",
       "category": "J2",
       "categoryColor": "#00A651"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "3回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
     },
     {
       "date": "2026-10-17",
@@ -4298,6 +5255,50 @@
       "competition": "J2",
       "category": "J2",
       "categoryColor": "#00A651"
+    },
+    {
+      "date": "2026-10-28",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "4回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-28",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "4回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-28",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "4回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-28",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "4回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
     },
     {
       "date": "2026-10-31",
@@ -5180,6 +6181,50 @@
       "categoryColor": "#003087"
     },
     {
+      "date": "2026-11-11",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準々決勝 第1戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-11-11",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準々決勝 第1戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-11-11",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準々決勝 第1戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-11-11",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準々決勝 第1戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
       "date": "2026-11-14",
       "kickoff": "14:00",
       "home": "大宮",
@@ -5398,6 +6443,50 @@
       "competition": "J3",
       "category": "J3",
       "categoryColor": "#E8192C"
+    },
+    {
+      "date": "2026-11-15",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準々決勝 第2戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-11-15",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準々決勝 第2戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-11-15",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準々決勝 第2戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-11-15",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準々決勝 第2戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
     },
     {
       "date": "2026-11-20",
@@ -6687,6 +7776,94 @@
       "categoryColor": "#00A651"
     },
     {
+      "date": "2026-12-09",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "ラウンド16",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-12-09",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "ラウンド16",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-12-09",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "ラウンド16",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-12-09",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "ラウンド16",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-12-09",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "ラウンド16",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-12-09",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "ラウンド16",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-12-09",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "ラウンド16",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-12-09",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "ラウンド16",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
       "date": "2026-12-12",
       "kickoff": "",
       "home": "FC大阪",
@@ -7147,6 +8324,83 @@
       "competition": "J1",
       "category": "J1",
       "categoryColor": "#003087"
+    },
+    {
+      "date": "2026-12-23",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準々決勝",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-12-23",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準々決勝",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-12-23",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準々決勝",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-12-23",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準々決勝",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-12-27",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準決勝",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2026-12-27",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準決勝",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
+    },
+    {
+      "date": "2027-01-01",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "国立競技場",
+      "matchday": "決勝",
+      "competition": "天皇杯",
+      "category": "天皇杯",
+      "categoryColor": "#FFB800"
     },
     {
       "date": "2027-02-13",
@@ -9239,6 +10493,28 @@
       "categoryColor": "#003087"
     },
     {
+      "date": "2027-03-24",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準決勝 第1戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2027-03-24",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準決勝 第1戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
       "date": "2027-03-27",
       "kickoff": "",
       "home": "八戸",
@@ -9457,6 +10733,28 @@
       "competition": "J3",
       "category": "J3",
       "categoryColor": "#E8192C"
+    },
+    {
+      "date": "2027-03-28",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準決勝 第2戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2027-03-28",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "準決勝 第2戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
     },
     {
       "date": "2027-04-03",
@@ -11107,6 +12405,17 @@
       "competition": "J3",
       "category": "J3",
       "categoryColor": "#E8192C"
+    },
+    {
+      "date": "2027-05-01",
+      "kickoff": "",
+      "home": "TBD",
+      "away": "TBD",
+      "stadium": "",
+      "matchday": "決勝",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
     },
     {
       "date": "2027-05-03",

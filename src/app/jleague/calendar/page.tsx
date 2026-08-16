@@ -16,13 +16,15 @@ interface Match {
   score?: { home: number; away: number };
 }
 
-type Category = "J1" | "J2" | "J3";
+type Category = "J1" | "J2" | "J3" | "天皇杯" | "ルヴァン";
 
 /* ---------- constants ---------- */
 const CATEGORIES: { key: Category; label: string; color: string }[] = [
   { key: "J1", label: "J1", color: "#003087" },
   { key: "J2", label: "J2", color: "#00A651" },
   { key: "J3", label: "J3", color: "#E8192C" },
+  { key: "天皇杯", label: "天皇杯", color: "#FFB800" },
+  { key: "ルヴァン", label: "ルヴァン", color: "#8B5CF6" },
 ];
 
 const DAY_LABELS = ["日", "月", "火", "水", "木", "金", "土"];
@@ -112,7 +114,7 @@ export default function CalendarPage() {
 
   const [monthIdx, setMonthIdx] = useState(Math.max(0, initialMonthIdx));
   const [activeFilters, setActiveFilters] = useState<Set<Category>>(
-    new Set(["J1", "J2", "J3"])
+    new Set(["J1", "J2", "J3", "天皇杯", "ルヴァン"])
   );
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
 
@@ -259,8 +261,11 @@ export default function CalendarPage() {
                       return (
                         <span
                           key={cat}
-                          className="text-[9px] sm:text-[10px] font-bold px-1 py-0.5 rounded text-white leading-none"
-                          style={{ backgroundColor: catInfo?.color || "#666" }}
+                          className="text-[9px] sm:text-[10px] font-bold px-1 py-0.5 rounded leading-none"
+                          style={{
+                            backgroundColor: catInfo?.color || "#666",
+                            color: cat === "天皇杯" ? "#1a1a1a" : "#fff",
+                          }}
                         >
                           {cat}
                           <span className="opacity-70 ml-0.5">{count}</span>
