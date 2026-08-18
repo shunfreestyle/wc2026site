@@ -18,13 +18,15 @@ interface Match {
   score?: { home: number; away: number };
 }
 
-type Category = "J1" | "J2" | "J3";
+type Category = "J1" | "J2" | "J3" | "天皇杯" | "ルヴァン";
 
 /* ---------- constants ---------- */
 const CATEGORIES: { key: Category; label: string; color: string }[] = [
   { key: "J1", label: "J1", color: "#003087" },
   { key: "J2", label: "J2", color: "#00A651" },
   { key: "J3", label: "J3", color: "#E8192C" },
+  { key: "天皇杯", label: "天皇杯", color: "#FFB800" },
+  { key: "ルヴァン", label: "ルヴァン", color: "#8B5CF6" },
 ];
 
 const DAY_LABELS = ["日", "月", "火", "水", "木", "金", "土"];
@@ -72,7 +74,7 @@ export default function Home() {
   const today = todayStr();
   const currentMonday = getMonday(today);
   const [weekStart, setWeekStart] = useState(currentMonday);
-  const [activeFilters, setActiveFilters] = useState<Set<Category>>(new Set(["J1", "J2", "J3"]));
+  const [activeFilters, setActiveFilters] = useState<Set<Category>>(new Set(["J1", "J2", "J3", "天皇杯", "ルヴァン"]));
 
   const weekEnd = addDays(weekStart, 6);
   const isCurrentWeek = weekStart === currentMonday;
