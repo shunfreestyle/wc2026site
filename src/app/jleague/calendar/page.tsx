@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import scheduleData from "@/data/jleague-schedule.json";
+import { generateMatchId, getMatchDetailById } from "@/data/jleague-match-details";
 
 /* ---------- types ---------- */
 interface Match {
@@ -303,30 +305,50 @@ export default function CalendarPage() {
                       {cat.label} {catMatches[0].matchday}
                     </div>
                     <div className="border rounded-b rounded-tr border-gray-200 divide-y divide-gray-100">
-                      {catMatches.map((m, i) => (
-                        <div
-                          key={i}
-                          className="flex items-center px-3 py-2.5 text-sm"
-                        >
-                          <span className="text-xs text-gray-400 w-12 shrink-0">
-                            {m.kickoff}
-                          </span>
-                          <span className="font-bold text-gray-800 text-right flex-1 min-w-0 truncate">
-                            {m.home}
-                          </span>
-                          <span className="mx-2 text-xs text-gray-400 shrink-0">
-                            {m.score
-                              ? `${m.score.home} - ${m.score.away}`
-                              : "vs"}
-                          </span>
-                          <span className="font-bold text-gray-800 flex-1 min-w-0 truncate">
-                            {m.away}
-                          </span>
-                          <span className="text-xs text-gray-400 ml-2 hidden sm:block shrink-0 max-w-[120px] truncate">
-                            {m.stadium}
-                          </span>
-                        </div>
-                      ))}
+                      {catMatches.map((m, i) => {
+                        const mid = generateMatchId(m.date, m.home);
+                        const hasDetail = m.score && getMatchDetailById(mid);
+                        const inner = (
+                          <>
+                            <span className="text-xs text-gray-400 w-12 shrink-0">
+                              {m.kickoff}
+                            </span>
+                            <span className="font-bold text-gray-800 text-right flex-1 min-w-0 truncate">
+                              {m.home}
+                            </span>
+                            <span className="mx-2 text-xs text-gray-400 shrink-0">
+                              {m.score
+                                ? `${m.score.home} - ${m.score.away}`
+                                : "vs"}
+                            </span>
+                            <span className="font-bold text-gray-800 flex-1 min-w-0 truncate">
+                              {m.away}
+                            </span>
+                            <span className="text-xs text-gray-400 ml-2 hidden sm:block shrink-0 max-w-[120px] truncate">
+                              {m.stadium}
+                            </span>
+                            {hasDetail && (
+                              <span className="text-[9px] text-blue-500 ml-1 shrink-0">▶</span>
+                            )}
+                          </>
+                        );
+                        return hasDetail ? (
+                          <Link
+                            key={i}
+                            href={`/jleague/match/${mid}`}
+                            className="flex items-center px-3 py-2.5 text-sm hover:bg-blue-50/50 transition-colors"
+                          >
+                            {inner}
+                          </Link>
+                        ) : (
+                          <div
+                            key={i}
+                            className="flex items-center px-3 py-2.5 text-sm"
+                          >
+                            {inner}
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 );
