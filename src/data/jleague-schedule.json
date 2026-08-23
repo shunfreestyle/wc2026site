@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-16T22:00:00.000Z",
+  "updatedAt": "2026-08-23T22:00:00.000Z",
   "season": "2026/27",
   "totalMatches": 1258,
   "matches": [
@@ -897,7 +897,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 0,
+        "away": 6
+      }
     },
     {
       "date": "2026-08-19",
@@ -908,7 +912,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 15,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-19",
@@ -919,7 +927,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-19",
@@ -930,7 +942,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-19",
@@ -941,7 +957,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 3,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-19",
@@ -952,7 +972,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-19",
@@ -963,7 +987,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 1,
+        "away": 6
+      }
     },
     {
       "date": "2026-08-19",
@@ -974,7 +1002,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-19",
@@ -985,7 +1017,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 1,
+        "away": 3
+      }
     },
     {
       "date": "2026-08-19",
@@ -996,7 +1032,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 7,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-19",
@@ -1007,7 +1047,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
     },
     {
       "date": "2026-08-19",
@@ -1018,7 +1062,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-19",
@@ -1029,7 +1077,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-19",
@@ -1040,7 +1092,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-19",
@@ -1051,7 +1107,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-19",
@@ -1062,7 +1122,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 1,
+        "away": 4
+      }
     },
     {
       "date": "2026-08-19",
@@ -1073,7 +1137,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-19",
@@ -1084,7 +1152,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 1,
+        "away": 4
+      }
     },
     {
       "date": "2026-08-19",
@@ -1095,7 +1167,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 2,
+        "away": 2
+      }
     },
     {
       "date": "2026-08-19",
@@ -1106,7 +1182,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-19",
@@ -1117,7 +1197,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
     },
     {
       "date": "2026-08-19",
@@ -1128,7 +1212,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 3,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-19",
@@ -1139,7 +1227,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 3,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-19",
@@ -1150,7 +1242,11 @@
       "matchday": "1回戦",
       "competition": "天皇杯",
       "category": "天皇杯",
-      "categoryColor": "#FFB800"
+      "categoryColor": "#FFB800",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-21",
@@ -1161,7 +1257,11 @@
       "matchday": "第3節第1日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 4,
+        "away": 2
+      }
     },
     {
       "date": "2026-08-21",
@@ -1172,7 +1272,11 @@
       "matchday": "第3節第1日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-22",
@@ -1183,7 +1287,11 @@
       "matchday": "第3節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 1,
+        "away": 4
+      }
     },
     {
       "date": "2026-08-22",
@@ -1194,7 +1302,11 @@
       "matchday": "第3節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
     },
     {
       "date": "2026-08-22",
@@ -1205,7 +1317,11 @@
       "matchday": "第3節第2日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 3,
+        "away": 2
+      }
     },
     {
       "date": "2026-08-22",
@@ -1216,7 +1332,11 @@
       "matchday": "第3節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 3,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-22",
@@ -1227,7 +1347,11 @@
       "matchday": "第3節第1日",
       "competition": "J3",
       "category": "J3",
-      "categoryColor": "#E8192C"
+      "categoryColor": "#E8192C",
+      "score": {
+        "home": 2,
+        "away": 2
+      }
     },
     {
       "date": "2026-08-22",
@@ -1238,7 +1362,11 @@
       "matchday": "第3節第1日",
       "competition": "J3",
       "category": "J3",
-      "categoryColor": "#E8192C"
+      "categoryColor": "#E8192C",
+      "score": {
+        "home": 2,
+        "away": 2
+      }
     },
     {
       "date": "2026-08-22",
@@ -1249,7 +1377,11 @@
       "matchday": "第3節第1日",
       "competition": "J3",
       "category": "J3",
-      "categoryColor": "#E8192C"
+      "categoryColor": "#E8192C",
+      "score": {
+        "home": 3,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-22",
@@ -1260,7 +1392,11 @@
       "matchday": "第3節第2日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-22",
@@ -1271,7 +1407,11 @@
       "matchday": "第3節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 4,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-22",
@@ -1282,7 +1422,11 @@
       "matchday": "第3節第2日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 3,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-22",
@@ -1293,7 +1437,11 @@
       "matchday": "第3節第2日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 1,
+        "away": 3
+      }
     },
     {
       "date": "2026-08-22",
@@ -1304,7 +1452,11 @@
       "matchday": "第3節第2日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-22",
@@ -1315,7 +1467,11 @@
       "matchday": "第3節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-22",
@@ -1326,7 +1482,11 @@
       "matchday": "第3節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-22",
@@ -1337,7 +1497,11 @@
       "matchday": "第3節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-22",
@@ -1348,7 +1512,11 @@
       "matchday": "第3節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 1,
+        "away": 3
+      }
     },
     {
       "date": "2026-08-22",
@@ -1359,7 +1527,11 @@
       "matchday": "第3節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 4,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-22",
@@ -1370,7 +1542,11 @@
       "matchday": "第3節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-22",
@@ -1381,7 +1557,11 @@
       "matchday": "第3節第1日",
       "competition": "J3",
       "category": "J3",
-      "categoryColor": "#E8192C"
+      "categoryColor": "#E8192C",
+      "score": {
+        "home": 2,
+        "away": 2
+      }
     },
     {
       "date": "2026-08-22",
@@ -1392,7 +1572,11 @@
       "matchday": "第3節第1日",
       "competition": "J3",
       "category": "J3",
-      "categoryColor": "#E8192C"
+      "categoryColor": "#E8192C",
+      "score": {
+        "home": 2,
+        "away": 3
+      }
     },
     {
       "date": "2026-08-22",
@@ -1403,7 +1587,11 @@
       "matchday": "第3節第1日",
       "competition": "J3",
       "category": "J3",
-      "categoryColor": "#E8192C"
+      "categoryColor": "#E8192C",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-22",
@@ -1414,7 +1602,11 @@
       "matchday": "第3節第1日",
       "competition": "J3",
       "category": "J3",
-      "categoryColor": "#E8192C"
+      "categoryColor": "#E8192C",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-22",
@@ -1425,7 +1617,11 @@
       "matchday": "第3節第1日",
       "competition": "J3",
       "category": "J3",
-      "categoryColor": "#E8192C"
+      "categoryColor": "#E8192C",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-22",
@@ -1436,7 +1632,11 @@
       "matchday": "第3節第2日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-22",
@@ -1447,7 +1647,11 @@
       "matchday": "第3節第2日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
     },
     {
       "date": "2026-08-23",
@@ -1458,7 +1662,11 @@
       "matchday": "第3節第2日",
       "competition": "J3",
       "category": "J3",
-      "categoryColor": "#E8192C"
+      "categoryColor": "#E8192C",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-23",
@@ -1469,7 +1677,11 @@
       "matchday": "第3節第2日",
       "competition": "J3",
       "category": "J3",
-      "categoryColor": "#E8192C"
+      "categoryColor": "#E8192C",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-23",
@@ -1480,7 +1692,11 @@
       "matchday": "第3節第3日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 3,
+        "away": 1
+      }
     },
     {
       "date": "2026-08-26",

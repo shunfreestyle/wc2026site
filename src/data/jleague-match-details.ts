@@ -993,6 +993,217 @@ export const matchDetails: MatchDetail[] = [
     goals: [],
     cards: [],
   },
+
+  // ══════════════════════════════════════════
+  // J1 第3節 (8/21-8/23)
+  // ══════════════════════════════════════════
+
+  // ── 8/21 柏 4-2 長崎 ──
+  {
+    matchId: "20260821-kashiwa",
+    date: "2026-08-21",
+    home: "柏", away: "長崎",
+    score: { home: 4, away: 2 },
+    stadium: "三協フロンテア柏スタジアム",
+    kickoff: "19:00",
+    category: "J1",
+    matchday: "第3節",
+    goals: [
+      { minute: 6, playerName: "垣田 裕暉", teamSide: "home" },
+      { minute: 45, playerName: "小泉 佳穂", teamSide: "home" },
+      { minute: 51, playerName: "松本 天夢", teamSide: "away" },
+      { minute: 56, playerName: "岩崎 悠人", teamSide: "away" },
+      { minute: 77, playerName: "瀬川 祐輔", teamSide: "home" },
+      { minute: 83, playerName: "弓場 堅真", teamSide: "home" },
+    ],
+    cards: [],
+  },
+
+  // ── 8/21 FC東京 2-0 千葉 ──
+  {
+    matchId: "20260821-fctokyo",
+    date: "2026-08-21",
+    home: "FC東京", away: "千葉",
+    score: { home: 2, away: 0 },
+    stadium: "MUFGスタジアム(国立)",
+    kickoff: "19:30",
+    category: "J1",
+    matchday: "第3節",
+    goals: [
+      { minute: 47, playerName: "高 宇洋", teamSide: "home" },
+      { minute: 85, playerName: "安斎 颯馬", teamSide: "home" },
+    ],
+    cards: [],
+  },
+
+  // ── 8/22 鹿島 3-2 福岡 ──
+  {
+    matchId: "20260822-kashima",
+    date: "2026-08-22",
+    home: "鹿島", away: "福岡",
+    score: { home: 3, away: 2 },
+    stadium: "メルカリスタジアム",
+    kickoff: "18:00",
+    category: "J1",
+    matchday: "第3節",
+    goals: [
+      { minute: 31, playerName: "オウンゴール", teamSide: "home", isOwnGoal: true },
+      { minute: 43, playerName: "師岡 柊生", teamSide: "away" },
+      { minute: 45, playerName: "レオ セアラ", teamSide: "home" },
+      { minute: 49, playerName: "チャヴリッチ", teamSide: "home" },
+      { minute: 76, playerName: "オウンゴール", teamSide: "away", isOwnGoal: true },
+    ],
+    cards: [],
+  },
+
+  // ── 8/22 岡山 0-0 東京V ──
+  {
+    matchId: "20260822-okayama",
+    date: "2026-08-22",
+    home: "岡山", away: "東京V",
+    score: { home: 0, away: 0 },
+    stadium: "JFE晴れの国スタジアム",
+    kickoff: "18:30",
+    category: "J1",
+    matchday: "第3節",
+    goals: [],
+    cards: [],
+  },
+
+  // ── 8/22 名古屋 3-1 G大阪 ──
+  {
+    matchId: "20260822-nagoya",
+    date: "2026-08-22",
+    home: "名古屋", away: "G大阪",
+    score: { home: 3, away: 1 },
+    stadium: "豊田スタジアム",
+    kickoff: "19:00",
+    category: "J1",
+    matchday: "第3節",
+    goals: [
+      { minute: 7, playerName: "木村 勇大", teamSide: "home" },
+      { minute: 11, playerName: "庄野 駿之介", teamSide: "away" },
+      { minute: 38, playerName: "浅野 雄也", teamSide: "home" },
+      { minute: 52, playerName: "大野 真志", teamSide: "home" },
+    ],
+    cards: [],
+  },
+
+  // ── 8/22 京都 1-3 水戸 ──
+  {
+    matchId: "20260822-kyoto",
+    date: "2026-08-22",
+    home: "京都", away: "水戸",
+    score: { home: 1, away: 3 },
+    stadium: "サンガスタジアム by KYOCERA",
+    kickoff: "19:00",
+    category: "J1",
+    matchday: "第3節",
+    goals: [
+      { minute: 17, playerName: "真瀬 拓海", teamSide: "away" },
+      { minute: 31, playerName: "木本 恭生", teamSide: "away" },
+      { minute: 68, playerName: "加藤 千尋", teamSide: "away" },
+      { minute: 82, playerName: "中野 瑠馬", teamSide: "home" },
+    ],
+    cards: [],
+  },
+
+  // ── 8/22 C大阪 1-0 清水 ──
+  {
+    matchId: "20260822-cosaka",
+    date: "2026-08-22",
+    home: "C大阪", away: "清水",
+    score: { home: 1, away: 0 },
+    stadium: "ヨドコウ桜スタジアム",
+    kickoff: "19:00",
+    category: "J1",
+    matchday: "第3節",
+    goals: [
+      { minute: 57, playerName: "チアゴ アンドラーデ", teamSide: "home" },
+    ],
+    cards: [],
+  },
+
+  // ── 8/22 広島 1-1 川崎F ──
+  {
+    matchId: "20260822-hiroshima",
+    date: "2026-08-22",
+    home: "広島", away: "川崎F",
+    score: { home: 1, away: 1 },
+    stadium: "エディオンピースウイング広島",
+    kickoff: "19:15",
+    category: "J1",
+    matchday: "第3節",
+    goals: [
+      { minute: 28, playerName: "加藤 陸次樹", teamSide: "home" },
+      { minute: 53, playerName: "山本 悠樹", teamSide: "away" },
+    ],
+    cards: [],
+  },
+
+  // ── 8/22 横浜FM 1-0 神戸 ──
+  {
+    matchId: "20260822-yokohamafm",
+    date: "2026-08-22",
+    home: "横浜FM", away: "神戸",
+    score: { home: 1, away: 0 },
+    stadium: "日産スタジアム",
+    kickoff: "19:30",
+    category: "J1",
+    matchday: "第3節",
+    goals: [
+      { minute: 9, playerName: "三井寺 眞", teamSide: "home" },
+    ],
+    cards: [],
+  },
+
+  // ── 8/23 町田 3-1 浦和 ──
+  {
+    matchId: "20260823-machida",
+    date: "2026-08-23",
+    home: "町田", away: "浦和",
+    score: { home: 3, away: 1 },
+    stadium: "MUFGスタジアム(国立)",
+    kickoff: "19:30",
+    category: "J1",
+    matchday: "第3節",
+    attendance: 47781,
+    goals: [
+      { minute: 8, playerName: "中村 帆高", teamSide: "home" },
+      { minute: 47, playerName: "渡邊 凌磨", teamSide: "away" },
+      { minute: 54, playerName: "西村 拓真", teamSide: "home" },
+      { minute: 61, playerName: "ネタ ラヴィ", teamSide: "home" },
+    ],
+    cards: [],
+  },
+
+  // ══════════════════════════════════════════
+  // J2 第3節 (8/22)
+  // ══════════════════════════════════════════
+  { matchId: "20260822-sapporo", date: "2026-08-22", home: "札幌", away: "大宮", score: { home: 1, away: 4 }, stadium: "プレイバックドーム", kickoff: "15:00", category: "J2", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-hachinohe", date: "2026-08-22", home: "八戸", away: "仙台", score: { home: 0, away: 2 }, stadium: "ダイハツスタジアム", kickoff: "17:00", category: "J2", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-akita", date: "2026-08-22", home: "秋田", away: "甲府", score: { home: 3, away: 0 }, stadium: "ソユースタジアム", kickoff: "18:00", category: "J2", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-toyama", date: "2026-08-22", home: "富山", away: "今治", score: { home: 4, away: 0 }, stadium: "富山県総合運動公園", kickoff: "18:30", category: "J2", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-yamagata", date: "2026-08-22", home: "山形", away: "横浜FC", score: { home: 2, away: 0 }, stadium: "NDソフトスタジアム山形", kickoff: "19:00", category: "J2", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-niigata", date: "2026-08-22", home: "新潟", away: "藤枝", score: { home: 1, away: 0 }, stadium: "デンカビッグスワン", kickoff: "19:00", category: "J2", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-iwata", date: "2026-08-22", home: "磐田", away: "徳島", score: { home: 2, away: 1 }, stadium: "ヤマハスタジアム", kickoff: "19:00", category: "J2", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-tosu", date: "2026-08-22", home: "鳥栖", away: "栃木C", score: { home: 1, away: 3 }, stadium: "駅前不動産スタジアム", kickoff: "19:00", category: "J2", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-oita", date: "2026-08-22", home: "大分", away: "いわき", score: { home: 4, away: 1 }, stadium: "OBSスタジアム大分", kickoff: "19:00", category: "J2", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-miyazaki", date: "2026-08-22", home: "宮崎", away: "湘南", score: { home: 0, away: 0 }, stadium: "いちごスタジアム宮崎", kickoff: "19:00", category: "J2", matchday: "第3節", goals: [], cards: [] },
+
+  // ══════════════════════════════════════════
+  // J3 第3節 (8/22-8/23)
+  // ══════════════════════════════════════════
+  { matchId: "20260822-matsumoto", date: "2026-08-22", home: "松本", away: "愛媛", score: { home: 2, away: 2 }, stadium: "サンプロアルウィン", kickoff: "18:00", category: "J3", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-fcosaka", date: "2026-08-22", home: "FC大阪", away: "琉球", score: { home: 2, away: 2 }, stadium: "花園ラグビー場", kickoff: "18:00", category: "J3", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-nara", date: "2026-08-22", home: "奈良", away: "山口", score: { home: 3, away: 1 }, stadium: "ロートフィールド奈良", kickoff: "18:00", category: "J3", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-tochigiSC", date: "2026-08-22", home: "栃木SC", away: "北九州", score: { home: 2, away: 2 }, stadium: "カンセキスタジアムとちぎ", kickoff: "19:00", category: "J3", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-gunma", date: "2026-08-22", home: "群馬", away: "滋賀", score: { home: 2, away: 3 }, stadium: "正田醤油スタジアム群馬", kickoff: "19:00", category: "J3", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-tottori", date: "2026-08-22", home: "鳥取", away: "福島", score: { home: 2, away: 1 }, stadium: "Axisバードスタジアム", kickoff: "19:00", category: "J3", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-kumamoto", date: "2026-08-22", home: "熊本", away: "長野", score: { home: 0, away: 1 }, stadium: "えがお健康スタジアム", kickoff: "19:00", category: "J3", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260822-kagoshima", date: "2026-08-22", home: "鹿児島", away: "岐阜", score: { home: 0, away: 0 }, stadium: "白波スタジアム", kickoff: "19:00", category: "J3", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260823-sagamihara", date: "2026-08-23", home: "相模原", away: "金沢", score: { home: 2, away: 1 }, stadium: "相模原ギオンスタジアム", kickoff: "18:00", category: "J3", matchday: "第3節", goals: [], cards: [] },
+  { matchId: "20260823-kochi", date: "2026-08-23", home: "高知", away: "讃岐", score: { home: 2, away: 1 }, stadium: "GIKENスタジアム", kickoff: "19:00", category: "J3", matchday: "第3節", goals: [], cards: [] },
 ];
 
 export function getMatchDetailById(matchId: string): MatchDetail | undefined {
