@@ -1204,6 +1204,164 @@ export const matchDetails: MatchDetail[] = [
   { matchId: "20260822-kagoshima", date: "2026-08-22", home: "鹿児島", away: "岐阜", score: { home: 0, away: 0 }, stadium: "白波スタジアム", kickoff: "19:00", category: "J3", matchday: "第3節", goals: [], cards: [] },
   { matchId: "20260823-sagamihara", date: "2026-08-23", home: "相模原", away: "金沢", score: { home: 2, away: 1 }, stadium: "相模原ギオンスタジアム", kickoff: "18:00", category: "J3", matchday: "第3節", goals: [], cards: [] },
   { matchId: "20260823-kochi", date: "2026-08-23", home: "高知", away: "讃岐", score: { home: 2, away: 1 }, stadium: "GIKENスタジアム", kickoff: "19:00", category: "J3", matchday: "第3節", goals: [], cards: [] },
+
+  // ══════════════════════════════════════════
+  // J1 第4節 (8/29)
+  // ══════════════════════════════════════════
+
+  {
+    matchId: "20260829-mito",
+    date: "2026-08-29", home: "水戸", away: "町田",
+    score: { home: 1, away: 1 },
+    stadium: "水戸信用金庫スタジアム", kickoff: "18:00",
+    category: "J1", matchday: "第4節",
+    goals: [
+      { minute: 28, playerName: "渡邉 新太", teamSide: "home" },
+      { minute: 33, playerName: "相馬 勇紀", teamSide: "away" },
+    ],
+    cards: [],
+  },
+  {
+    matchId: "20260829-gosaka",
+    date: "2026-08-29", home: "G大阪", away: "広島",
+    score: { home: 0, away: 0 },
+    stadium: "パナソニックスタジアム吹田", kickoff: "18:00",
+    category: "J1", matchday: "第4節",
+    goals: [],
+    cards: [],
+  },
+  {
+    matchId: "20260829-shimizu",
+    date: "2026-08-29", home: "清水", away: "柏",
+    score: { home: 0, away: 1 },
+    stadium: "IAIスタジアム日本平", kickoff: "18:30",
+    category: "J1", matchday: "第4節",
+    goals: [
+      { minute: 71, playerName: "瀬川 祐輔", teamSide: "away" },
+    ],
+    cards: [],
+  },
+  {
+    matchId: "20260829-nagasaki",
+    date: "2026-08-29", home: "長崎", away: "FC東京",
+    score: { home: 0, away: 3 },
+    stadium: "PEACE STADIUM Connected by SoftBank", kickoff: "18:30",
+    category: "J1", matchday: "第4節",
+    goals: [
+      { minute: 38, playerName: "長倉 幹樹", teamSide: "away" },
+      { minute: 49, playerName: "本間 至恩", teamSide: "away" },
+      { minute: 90, playerName: "マルセロ ヒアン", teamSide: "away" },
+    ],
+    cards: [],
+  },
+  {
+    matchId: "20260829-urawa",
+    date: "2026-08-29", home: "浦和", away: "横浜FM",
+    score: { home: 3, away: 2 },
+    stadium: "埼玉スタジアム2002", kickoff: "19:00",
+    category: "J1", matchday: "第4節",
+    goals: [
+      { minute: 38, playerName: "谷村 海那", teamSide: "away" },
+      { minute: 40, playerName: "マテウス サヴィオ", teamSide: "home" },
+      { minute: 57, playerName: "谷村 海那", teamSide: "away" },
+      { minute: 64, playerName: "根本 健太", teamSide: "home" },
+      { minute: 71, playerName: "南野 遥海", teamSide: "home" },
+    ],
+    cards: [],
+  },
+  {
+    matchId: "20260829-tokyov",
+    date: "2026-08-29", home: "東京V", away: "鹿島",
+    score: { home: 0, away: 2 },
+    stadium: "味の素スタジアム", kickoff: "19:00",
+    category: "J1", matchday: "第4節",
+    goals: [
+      { minute: 42, playerName: "レオ セアラ", teamSide: "away" },
+      { minute: 50, playerName: "レオ セアラ", teamSide: "away" },
+    ],
+    cards: [],
+  },
+  {
+    matchId: "20260829-kawasaki",
+    date: "2026-08-29", home: "川崎F", away: "千葉",
+    score: { home: 4, away: 2 },
+    stadium: "Uvanceとどろきスタジアム by Fujitsu", kickoff: "19:00",
+    category: "J1", matchday: "第4節",
+    goals: [
+      { minute: 10, playerName: "デリケ ラセルダ", teamSide: "home" },
+      { minute: 26, playerName: "田中 一輝", teamSide: "away" },
+      { minute: 37, playerName: "伊藤 達哉", teamSide: "home" },
+      { minute: 38, playerName: "田中 一輝", teamSide: "away" },
+      { minute: 42, playerName: "マルシーニョ", teamSide: "home" },
+      { minute: 48, playerName: "脇坂 泰斗", teamSide: "home" },
+    ],
+    cards: [],
+  },
+  {
+    matchId: "20260829-nagoya",
+    date: "2026-08-29", home: "名古屋", away: "岡山",
+    score: { home: 2, away: 1 },
+    stadium: "豊田スタジアム", kickoff: "19:00",
+    category: "J1", matchday: "第4節",
+    goals: [
+      { minute: 38, playerName: "鈴木 善孝", teamSide: "away" },
+      { minute: 43, playerName: "稲垣 祥", teamSide: "home", isPenalty: true },
+      { minute: 46, playerName: "中山 克広", teamSide: "home" },
+    ],
+    cards: [],
+  },
+  {
+    matchId: "20260829-kyoto",
+    date: "2026-08-29", home: "京都", away: "福岡",
+    score: { home: 2, away: 1 },
+    stadium: "サンガスタジアム by KYOCERA", kickoff: "19:00",
+    category: "J1", matchday: "第4節",
+    goals: [
+      { minute: 8, playerName: "ラファエル エリアス", teamSide: "home" },
+      { minute: 63, playerName: "新井 晴樹", teamSide: "home" },
+      { minute: 86, playerName: "臼井 祥平", teamSide: "away" },
+    ],
+    cards: [],
+  },
+  {
+    matchId: "20260829-kobe",
+    date: "2026-08-29", home: "神戸", away: "C大阪",
+    score: { home: 1, away: 0 },
+    stadium: "ノエビアスタジアム神戸", kickoff: "19:00",
+    category: "J1", matchday: "第4節",
+    goals: [
+      { minute: 71, playerName: "小松 蓮", teamSide: "home", isPenalty: true },
+    ],
+    cards: [],
+  },
+
+  // ══════════════════════════════════════════
+  // J2 第4節 (8/29)
+  // ══════════════════════════════════════════
+  { matchId: "20260829-iwaki", date: "2026-08-29", home: "いわき", away: "新潟", score: { home: 2, away: 3 }, stadium: "ハワイアンズスタジアム", kickoff: "18:00", category: "J2", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260829-tochigiC", date: "2026-08-29", home: "栃木C", away: "磐田", score: { home: 1, away: 3 }, stadium: "カンセキスタジアム", kickoff: "18:00", category: "J2", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260829-hachinohe", date: "2026-08-29", home: "八戸", away: "秋田", score: { home: 1, away: 0 }, stadium: "プライフーズスタジアム", kickoff: "18:00", category: "J2", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260829-toyama", date: "2026-08-29", home: "富山", away: "藤枝", score: { home: 2, away: 3 }, stadium: "富山県総合運動公園", kickoff: "18:30", category: "J2", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260829-sendai", date: "2026-08-29", home: "仙台", away: "宮崎", score: { home: 4, away: 2 }, stadium: "ユアテックスタジアム仙台", kickoff: "19:00", category: "J2", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260829-omiya", date: "2026-08-29", home: "大宮", away: "湘南", score: { home: 2, away: 2 }, stadium: "NACK5スタジアム大宮", kickoff: "19:00", category: "J2", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260829-yokohamafc", date: "2026-08-29", home: "横浜FC", away: "鳥栖", score: { home: 2, away: 2 }, stadium: "ニッパツ三ツ沢", kickoff: "19:00", category: "J2", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260829-kofu", date: "2026-08-29", home: "甲府", away: "札幌", score: { home: 2, away: 1 }, stadium: "JITリサイクルインクスタジアム", kickoff: "19:00", category: "J2", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260829-tokushima", date: "2026-08-29", home: "徳島", away: "大分", score: { home: 1, away: 0 }, stadium: "鳴門・大塚スポーツパーク", kickoff: "19:00", category: "J2", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260829-imabari", date: "2026-08-29", home: "今治", away: "山形", score: { home: 0, away: 3 }, stadium: "アシックス里山スタジアム", kickoff: "19:00", category: "J2", matchday: "第4節", goals: [], cards: [] },
+
+  // ══════════════════════════════════════════
+  // J3 第4節 (8/29-8/30)
+  // ══════════════════════════════════════════
+  { matchId: "20260829-fukushima", date: "2026-08-29", home: "福島", away: "奈良", score: { home: 2, away: 2 }, stadium: "とうほうスタジアム", kickoff: "18:00", category: "J3", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260829-gifu", date: "2026-08-29", home: "岐阜", away: "栃木SC", score: { home: 4, away: 1 }, stadium: "ひまわりスタジアム", kickoff: "18:00", category: "J3", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260829-sanuki", date: "2026-08-29", home: "讃岐", away: "鹿児島", score: { home: 3, away: 4 }, stadium: "四国化成MEGLIOスタジアム", kickoff: "19:00", category: "J3", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260829-ryukyu", date: "2026-08-29", home: "琉球", away: "相模原", score: { home: 2, away: 1 }, stadium: "沖縄県総合運動公園", kickoff: "19:00", category: "J3", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260830-nagano", date: "2026-08-30", home: "長野", away: "群馬", score: { home: 1, away: 2 }, stadium: "サンプロアルウィン", kickoff: "18:00", category: "J3", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260830-kitakyushu", date: "2026-08-30", home: "北九州", away: "松本", score: { home: 1, away: 1 }, stadium: "ミクニワールドスタジアム北九州", kickoff: "18:00", category: "J3", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260830-shiga", date: "2026-08-30", home: "滋賀", away: "鳥取", score: { home: 0, away: 1 }, stadium: "平和堂HATOスタジアム", kickoff: "18:00", category: "J3", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260830-kanazawa", date: "2026-08-30", home: "金沢", away: "愛媛", score: { home: 0, away: 1 }, stadium: "石川県西部緑地公園", kickoff: "18:00", category: "J3", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260830-yamaguchi", date: "2026-08-30", home: "山口", away: "FC大阪", score: { home: 0, away: 0 }, stadium: "維新みらいふスタジアム", kickoff: "19:00", category: "J3", matchday: "第4節", goals: [], cards: [] },
+  { matchId: "20260830-kochi", date: "2026-08-30", home: "高知", away: "熊本", score: { home: 0, away: 2 }, stadium: "GIKENスタジアム", kickoff: "19:00", category: "J3", matchday: "第4節", goals: [], cards: [] },
 ];
 
 export function getMatchDetailById(matchId: string): MatchDetail | undefined {
