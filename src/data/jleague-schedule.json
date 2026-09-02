@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-01T10:00:00.000Z",
+  "updatedAt": "2026-09-03T10:00:00.000Z",
   "season": "2026/27",
   "totalMatches": 1258,
   "matches": [
@@ -2637,7 +2637,11 @@
       "matchday": "第5節第1日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 4,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-02",
@@ -2648,7 +2652,11 @@
       "matchday": "第5節第1日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-02",
@@ -2659,7 +2667,11 @@
       "matchday": "第5節第1日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-02",
@@ -2670,7 +2682,11 @@
       "matchday": "第5節第1日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-02",
@@ -2681,7 +2697,11 @@
       "matchday": "第5節第1日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-02",
@@ -2692,7 +2712,11 @@
       "matchday": "第5節第1日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-02",
@@ -2703,7 +2727,11 @@
       "matchday": "第5節第1日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-02",
@@ -2714,7 +2742,11 @@
       "matchday": "第5節第1日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 3,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-02",
@@ -2725,7 +2757,11 @@
       "matchday": "第5節第1日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 2,
+        "away": 3
+      }
     },
     {
       "date": "2026-09-02",
@@ -2736,7 +2772,11 @@
       "matchday": "第5節第1日",
       "competition": "J1",
       "category": "J1",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 2,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-02",
@@ -2747,7 +2787,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-02",
@@ -2758,7 +2802,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-02",
@@ -2769,7 +2817,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-02",
@@ -2780,7 +2832,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-02",
@@ -2791,7 +2847,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 2,
+        "away": 3
+      }
     },
     {
       "date": "2026-09-02",
@@ -2802,7 +2862,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-02",
@@ -2813,7 +2877,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-02",
@@ -2824,7 +2892,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-02",
@@ -2835,7 +2907,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-02",
@@ -2846,7 +2922,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 3
+      }
     },
     {
       "date": "2026-09-02",
@@ -2857,7 +2937,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 3,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-02",
@@ -2868,7 +2952,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-02",
@@ -2879,7 +2967,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-02",
@@ -2890,7 +2982,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 3,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-02",
@@ -2901,7 +2997,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-05",
