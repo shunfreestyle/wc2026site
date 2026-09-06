@@ -1480,6 +1480,21 @@ export const matchDetails: MatchDetail[] = [
     ],
     cards: [],
   },
+
+  // ══════════════════════════════════════════
+  // J1 第6節 (9/5-9/6)
+  // ══════════════════════════════════════════
+
+  { matchId: "20260905-fukuoka", date: "2026-09-05", home: "福岡", away: "水戸", score: { home: 1, away: 1 }, stadium: "ベスト電器スタジアム", kickoff: "19:00", category: "J1", matchday: "第6節", goals: [], cards: [] },
+  { matchId: "20260906-kashima", date: "2026-09-06", home: "鹿島", away: "浦和", score: { home: 0, away: 1 }, stadium: "メルカリスタジアム", kickoff: "18:00", category: "J1", matchday: "第6節", goals: [], cards: [] },
+  { matchId: "20260906-chiba", date: "2026-09-06", home: "千葉", away: "G大阪", score: { home: 2, away: 0 }, stadium: "フクダ電子アリーナ", kickoff: "18:00", category: "J1", matchday: "第6節", goals: [], cards: [] },
+  { matchId: "20260906-nagoya", date: "2026-09-06", home: "名古屋", away: "町田", score: { home: 1, away: 3 }, stadium: "豊田スタジアム", kickoff: "18:00", category: "J1", matchday: "第6節", goals: [], cards: [] },
+  { matchId: "20260906-okayama", date: "2026-09-06", home: "岡山", away: "広島", score: { home: 3, away: 2 }, stadium: "JFE晴れの国スタジアム", kickoff: "18:00", category: "J1", matchday: "第6節", goals: [], cards: [] },
+  { matchId: "20260906-kawasaki", date: "2026-09-06", home: "川崎F", away: "清水", score: { home: 3, away: 1 }, stadium: "MUFGスタジアム(国立)", kickoff: "19:00", category: "J1", matchday: "第6節", goals: [], cards: [] },
+  { matchId: "20260906-kashiwa", date: "2026-09-06", home: "柏", away: "横浜FM", score: { home: 0, away: 2 }, stadium: "三協フロンテア柏スタジアム", kickoff: "19:00", category: "J1", matchday: "第6節", goals: [], cards: [] },
+  { matchId: "20260906-cosaka", date: "2026-09-06", home: "C大阪", away: "東京V", score: { home: 0, away: 0 }, stadium: "ヨドコウ桜スタジアム", kickoff: "19:00", category: "J1", matchday: "第6節", goals: [], cards: [] },
+  { matchId: "20260906-kobe", date: "2026-09-06", home: "神戸", away: "長崎", score: { home: 3, away: 1 }, stadium: "ノエビアスタジアム神戸", kickoff: "19:00", category: "J1", matchday: "第6節", goals: [], cards: [] },
+  { matchId: "20260906-fctokyo", date: "2026-09-06", home: "FC東京", away: "京都", score: { home: 2, away: 0 }, stadium: "味の素スタジアム", kickoff: "19:30", category: "J1", matchday: "第6節", goals: [], cards: [] },
 ];
 
 export function getMatchDetailById(matchId: string): MatchDetail | undefined {

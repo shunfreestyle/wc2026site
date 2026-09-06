@@ -19,7 +19,7 @@ interface Match {
   score?: { home: number; away: number };
 }
 
-type Category = "J1" | "J2" | "J3" | "天皇杯" | "ルヴァン";
+type Category = "J1" | "J2" | "J3" | "天皇杯" | "ルヴァン" | "日本代表";
 
 /* ---------- constants ---------- */
 const CATEGORIES: { key: Category; label: string; color: string }[] = [
@@ -28,6 +28,7 @@ const CATEGORIES: { key: Category; label: string; color: string }[] = [
   { key: "J3", label: "J3", color: "#E8192C" },
   { key: "天皇杯", label: "天皇杯", color: "#FFB800" },
   { key: "ルヴァン", label: "ルヴァン", color: "#8B5CF6" },
+  { key: "日本代表", label: "代表", color: "#1E3A5F" },
 ];
 
 const DAY_LABELS = ["日", "月", "火", "水", "木", "金", "土"];
@@ -120,7 +121,7 @@ export default function Home() {
 
   const [monthIdx, setMonthIdx] = useState(Math.max(0, initialMonthIdx));
   const [activeFilters, setActiveFilters] = useState<Set<Category>>(
-    new Set(["J1", "J2", "J3", "天皇杯", "ルヴァン"])
+    new Set(["J1", "J2", "J3", "天皇杯", "ルヴァン", "日本代表"])
   );
   const [selectedDate, setSelectedDate] = useState<string | null>(today);
 
