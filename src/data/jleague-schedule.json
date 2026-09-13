@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-13T22:00:00.000Z",
+  "updatedAt": "2026-09-11T22:00:00.000Z",
   "season": "2026/27",
   "totalMatches": 1258,
   "matches": [
@@ -3462,7 +3462,11 @@
       "matchday": "第1節第3日",
       "competition": "J3",
       "category": "J3",
-      "categoryColor": "#E8192C"
+      "categoryColor": "#E8192C",
+      "score": {
+        "home": 3,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-09",
@@ -3473,7 +3477,13 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 3,
+        "away": 3,
+        "pk_home": 4,
+        "pk_away": 3
+      }
     },
     {
       "date": "2026-09-09",
@@ -3484,7 +3494,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-09",
@@ -3495,7 +3509,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-09",
@@ -3506,7 +3524,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-09",
@@ -3517,7 +3539,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-09",
@@ -3528,7 +3554,13 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 0,
+        "pk_home": 1,
+        "pk_away": 4
+      }
     },
     {
       "date": "2026-09-09",
@@ -3539,7 +3571,11 @@
       "matchday": "1回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 4,
+        "away": 3
+      }
     },
     {
       "date": "2026-09-12",
@@ -4547,10 +4583,10 @@
     },
     {
       "date": "2026-09-29",
-      "kickoff": "",
-      "home": "1回戦勝者",
+      "kickoff": "19:00",
+      "home": "栃木C",
       "away": "広島",
-      "stadium": "",
+      "stadium": "CFS",
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
@@ -4558,10 +4594,10 @@
     },
     {
       "date": "2026-09-29",
-      "kickoff": "",
-      "home": "1回戦勝者",
-      "away": "1回戦勝者",
-      "stadium": "",
+      "kickoff": "19:00",
+      "home": "松本",
+      "away": "新潟",
+      "stadium": "サンプロアルウィン",
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
@@ -4569,10 +4605,10 @@
     },
     {
       "date": "2026-09-29",
-      "kickoff": "",
-      "home": "1回戦勝者",
+      "kickoff": "19:00",
+      "home": "金沢",
       "away": "清水",
-      "stadium": "",
+      "stadium": "石川県西部緑地公園陸上競技場",
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
@@ -4580,10 +4616,10 @@
     },
     {
       "date": "2026-09-29",
-      "kickoff": "",
-      "home": "1回戦勝者",
+      "kickoff": "19:00",
+      "home": "山形",
       "away": "横浜FM",
-      "stadium": "",
+      "stadium": "NDスタ",
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
@@ -4591,10 +4627,10 @@
     },
     {
       "date": "2026-09-29",
-      "kickoff": "",
-      "home": "1回戦勝者",
+      "kickoff": "19:00",
+      "home": "富山",
       "away": "浦和",
-      "stadium": "",
+      "stadium": "富山",
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
@@ -4602,10 +4638,10 @@
     },
     {
       "date": "2026-09-29",
-      "kickoff": "",
-      "home": "1回戦勝者",
+      "kickoff": "19:00",
+      "home": "札幌",
       "away": "岡山",
-      "stadium": "",
+      "stadium": "プレド",
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
@@ -4613,10 +4649,10 @@
     },
     {
       "date": "2026-09-29",
-      "kickoff": "",
-      "home": "1回戦勝者",
+      "kickoff": "19:00",
+      "home": "北九州",
       "away": "名古屋",
-      "stadium": "",
+      "stadium": "ミクスタ",
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
@@ -4624,10 +4660,10 @@
     },
     {
       "date": "2026-09-29",
-      "kickoff": "",
-      "home": "1回戦勝者",
+      "kickoff": "19:00",
+      "home": "熊本",
       "away": "川崎F",
-      "stadium": "",
+      "stadium": "えがおS",
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
@@ -4635,10 +4671,10 @@
     },
     {
       "date": "2026-09-29",
-      "kickoff": "",
-      "home": "1回戦勝者",
+      "kickoff": "19:00",
+      "home": "FC大阪",
       "away": "福岡",
-      "stadium": "",
+      "stadium": "花園",
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
@@ -4646,10 +4682,10 @@
     },
     {
       "date": "2026-09-29",
-      "kickoff": "",
-      "home": "1回戦勝者",
+      "kickoff": "19:00",
+      "home": "藤枝",
       "away": "C大阪",
-      "stadium": "",
+      "stadium": "藤枝サ",
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
@@ -4657,10 +4693,65 @@
     },
     {
       "date": "2026-09-29",
-      "kickoff": "",
-      "home": "1回戦勝者",
+      "kickoff": "19:00",
+      "home": "愛媛",
       "away": "FC東京",
-      "stadium": "",
+      "stadium": "ニンスタ",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "19:00",
+      "home": "岐阜",
+      "away": "横浜FC",
+      "stadium": "ヒマスタ",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "19:00",
+      "home": "磐田",
+      "away": "千葉",
+      "stadium": "ヤマハ",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "19:00",
+      "home": "鳥栖",
+      "away": "東京V",
+      "stadium": "駅スタ",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "19:00",
+      "home": "鳥取",
+      "away": "長崎",
+      "stadium": "Axis",
+      "matchday": "2回戦",
+      "competition": "ルヴァン",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-09-29",
+      "kickoff": "19:00",
+      "home": "福島",
+      "away": "水戸",
+      "stadium": "とうスタ",
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
