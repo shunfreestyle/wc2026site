@@ -35,7 +35,7 @@ export default function Header() {
     ? [
         { href: "/", label: "ホーム" },
         { href: "/jleague/calendar", label: "カレンダー" },
-        { href: "/jleague", label: "Jリーグ" },
+        { href: "/jleague", label: "順位表" },
         { href: "/articles", label: "ニュース" },
         { href: "/archive/wc2026", label: "W杯2026" },
       ]
