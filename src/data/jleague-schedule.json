@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-06T22:00:00.000Z",
+  "updatedAt": "2026-09-13T22:00:00.000Z",
   "season": "2026/27",
   "totalMatches": 1258,
   "matches": [
@@ -3595,7 +3595,11 @@
       "matchday": "第6節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 4,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-12",
@@ -3606,7 +3610,11 @@
       "matchday": "第6節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-12",
@@ -3665,7 +3673,11 @@
       "matchday": "第6節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-12",
@@ -3676,7 +3688,11 @@
       "matchday": "第6節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-12",
@@ -3747,7 +3763,11 @@
       "matchday": "第6節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-12",
@@ -3758,7 +3778,11 @@
       "matchday": "第6節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-12",
@@ -3769,7 +3793,11 @@
       "matchday": "第6節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-12",
@@ -3780,7 +3808,11 @@
       "matchday": "第6節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 3,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-12",
@@ -3817,7 +3849,11 @@
       "matchday": "第6節第2日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-13",
@@ -3828,7 +3864,11 @@
       "matchday": "第6節第2日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-13",
