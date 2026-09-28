@@ -1,7 +1,7 @@
 {
   "updatedAt": "2026-09-27T12:00:00.000Z",
   "season": "2026/27",
-  "totalMatches": 1313,
+  "totalMatches": 1316,
   "matches": [
     {
       "date": "2026-08-07",
@@ -15460,7 +15460,7 @@
       "home": "U-21日本",
       "away": "U-23香港",
       "stadium": "豊田スタジアム",
-      "matchday": "GS第1戦",
+      "matchday": "男子GS第1戦",
       "competition": "アジア大会男子",
       "score": {
         "home": 2,
@@ -15475,7 +15475,7 @@
       "home": "U-21日本",
       "away": "U-23キルギス",
       "stadium": "豊田スタジアム",
-      "matchday": "GS第2戦",
+      "matchday": "男子GS第2戦",
       "competition": "アジア大会男子",
       "score": {
         "home": 7,
@@ -15490,7 +15490,7 @@
       "home": "U-21日本",
       "away": "U-23タイ",
       "stadium": "豊田スタジアム",
-      "matchday": "GS第3戦",
+      "matchday": "男子GS第3戦",
       "competition": "アジア大会男子",
       "score": {
         "home": 3,
@@ -15505,7 +15505,7 @@
       "home": "U-21日本",
       "away": "U-23北朝鮮",
       "stadium": "豊田スタジアム",
-      "matchday": "準々決勝",
+      "matchday": "男子準々決勝",
       "competition": "アジア大会男子",
       "score": {
         "home": 1,
@@ -15515,12 +15515,53 @@
       "categoryColor": "#E91E63"
     },
     {
+      "date": "2026-09-26",
+      "kickoff": "16:30",
+      "home": "U-23韓国",
+      "away": "U-23ベトナム",
+      "stadium": "刈谷",
+      "matchday": "男子準々決勝",
+      "competition": "アジア大会男子",
+      "score": {
+        "home": 4,
+        "away": 0
+      },
+      "category": "アジア大会",
+      "categoryColor": "#E91E63"
+    },
+    {
+      "date": "2026-09-26",
+      "kickoff": "19:30",
+      "home": "U-21ウズベキスタン",
+      "away": "U-21サウジアラビア",
+      "stadium": "名古屋",
+      "matchday": "男子準々決勝",
+      "competition": "アジア大会男子",
+      "category": "アジア大会",
+      "categoryColor": "#E91E63"
+    },
+    {
+      "date": "2026-09-26",
+      "kickoff": "16:30",
+      "home": "U-23中国",
+      "away": "U-23タイ",
+      "stadium": "名古屋",
+      "matchday": "男子準々決勝",
+      "competition": "アジア大会男子",
+      "score": {
+        "home": 3,
+        "away": 0
+      },
+      "category": "アジア大会",
+      "categoryColor": "#E91E63"
+    },
+    {
       "date": "2026-09-30",
       "kickoff": "19:30",
-      "home": "TBD",
-      "away": "TBD",
+      "home": "U-21日本",
+      "away": "U-21ウズベキスタン",
       "stadium": "豊田スタジアム",
-      "matchday": "準決勝",
+      "matchday": "男子準決勝",
       "competition": "アジア大会男子",
       "category": "アジア大会",
       "categoryColor": "#E91E63"
@@ -15528,10 +15569,10 @@
     {
       "date": "2026-09-30",
       "kickoff": "16:30",
-      "home": "TBD",
-      "away": "TBD",
+      "home": "U-23韓国",
+      "away": "U-23中国",
       "stadium": "刈谷",
-      "matchday": "準決勝",
+      "matchday": "男子準決勝",
       "competition": "アジア大会男子",
       "category": "アジア大会",
       "categoryColor": "#E91E63"
@@ -15539,10 +15580,10 @@
     {
       "date": "2026-10-03",
       "kickoff": "15:00",
-      "home": "TBD",
-      "away": "TBD",
+      "home": "準決勝敗者",
+      "away": "準決勝敗者",
       "stadium": "豊田スタジアム",
-      "matchday": "3位決定戦",
+      "matchday": "男子3位決定戦",
       "competition": "アジア大会男子",
       "category": "アジア大会",
       "categoryColor": "#E91E63"
@@ -15550,10 +15591,10 @@
     {
       "date": "2026-10-03",
       "kickoff": "19:30",
-      "home": "TBD",
-      "away": "TBD",
+      "home": "準決勝勝者",
+      "away": "準決勝勝者",
       "stadium": "豊田スタジアム",
-      "matchday": "決勝",
+      "matchday": "男子決勝",
       "competition": "アジア大会男子",
       "category": "アジア大会",
       "categoryColor": "#E91E63"
@@ -15564,7 +15605,7 @@
       "home": "日本女子",
       "away": "タイ女子",
       "stadium": "エコパスタジアム",
-      "matchday": "GS第1戦",
+      "matchday": "女子GS第1戦",
       "competition": "アジア大会女子",
       "score": {
         "home": 8,
@@ -15579,7 +15620,7 @@
       "home": "日本女子",
       "away": "ベトナム女子",
       "stadium": "エコパスタジアム",
-      "matchday": "GS第2戦",
+      "matchday": "女子GS第2戦",
       "competition": "アジア大会女子",
       "score": {
         "home": 8,
@@ -15594,7 +15635,7 @@
       "home": "日本女子",
       "away": "台湾女子",
       "stadium": "エコパスタジアム",
-      "matchday": "GS第3戦",
+      "matchday": "女子GS第3戦",
       "competition": "アジア大会女子",
       "score": {
         "home": 4,
@@ -15609,7 +15650,7 @@
       "home": "日本女子",
       "away": "フィリピン女子",
       "stadium": "エコパスタジアム",
-      "matchday": "準々決勝",
+      "matchday": "女子準々決勝",
       "competition": "アジア大会女子",
       "score": {
         "home": 4,
@@ -15621,10 +15662,10 @@
     {
       "date": "2026-09-29",
       "kickoff": "19:30",
-      "home": "TBD",
-      "away": "TBD",
+      "home": "日本女子",
+      "away": "韓国女子",
       "stadium": "エコパスタジアム",
-      "matchday": "準決勝",
+      "matchday": "女子準決勝",
       "competition": "アジア大会女子",
       "category": "アジア大会",
       "categoryColor": "#E91E63"
@@ -15632,10 +15673,10 @@
     {
       "date": "2026-09-29",
       "kickoff": "16:30",
-      "home": "TBD",
-      "away": "TBD",
+      "home": "北朝鮮女子",
+      "away": "中国女子",
       "stadium": "",
-      "matchday": "準決勝",
+      "matchday": "女子準決勝",
       "competition": "アジア大会女子",
       "category": "アジア大会",
       "categoryColor": "#E91E63"
@@ -15643,10 +15684,10 @@
     {
       "date": "2026-10-02",
       "kickoff": "15:00",
-      "home": "TBD",
-      "away": "TBD",
+      "home": "準決勝敗者",
+      "away": "準決勝敗者",
       "stadium": "エコパスタジアム",
-      "matchday": "3位決定戦",
+      "matchday": "女子3位決定戦",
       "competition": "アジア大会女子",
       "category": "アジア大会",
       "categoryColor": "#E91E63"
@@ -15654,10 +15695,10 @@
     {
       "date": "2026-10-02",
       "kickoff": "19:30",
-      "home": "TBD",
-      "away": "TBD",
+      "home": "準決勝勝者",
+      "away": "準決勝勝者",
       "stadium": "エコパスタジアム",
-      "matchday": "決勝",
+      "matchday": "女子決勝",
       "competition": "アジア大会女子",
       "category": "アジア大会",
       "categoryColor": "#E91E63"

@@ -118,7 +118,7 @@ export default function CalendarPage() {
 
   const [monthIdx, setMonthIdx] = useState(Math.max(0, initialMonthIdx));
   const [activeFilters, setActiveFilters] = useState<Set<Category>>(
-    new Set(["J1", "J2", "J3", "天皇杯", "ルヴァン", "日本代表"])
+    new Set(["J1", "J2", "J3", "天皇杯", "ルヴァン", "日本代表", "アジア大会"])
   );
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
 
