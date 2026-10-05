@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-05T12:00:00.000Z",
+  "updatedAt": "2026-10-05T18:00:00.000Z",
   "season": "2026/27",
   "totalMatches": 1316,
   "matches": [
@@ -5772,94 +5772,6 @@
       "competition": "J2",
       "category": "J2",
       "categoryColor": "#00A651"
-    },
-    {
-      "date": "2026-10-14",
-      "kickoff": "",
-      "home": "TBD",
-      "away": "TBD",
-      "stadium": "",
-      "matchday": "3回戦",
-      "competition": "ルヴァン",
-      "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
-    },
-    {
-      "date": "2026-10-14",
-      "kickoff": "",
-      "home": "TBD",
-      "away": "TBD",
-      "stadium": "",
-      "matchday": "3回戦",
-      "competition": "ルヴァン",
-      "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
-    },
-    {
-      "date": "2026-10-14",
-      "kickoff": "",
-      "home": "TBD",
-      "away": "TBD",
-      "stadium": "",
-      "matchday": "3回戦",
-      "competition": "ルヴァン",
-      "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
-    },
-    {
-      "date": "2026-10-14",
-      "kickoff": "",
-      "home": "TBD",
-      "away": "TBD",
-      "stadium": "",
-      "matchday": "3回戦",
-      "competition": "ルヴァン",
-      "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
-    },
-    {
-      "date": "2026-10-14",
-      "kickoff": "",
-      "home": "TBD",
-      "away": "TBD",
-      "stadium": "",
-      "matchday": "3回戦",
-      "competition": "ルヴァン",
-      "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
-    },
-    {
-      "date": "2026-10-14",
-      "kickoff": "",
-      "home": "TBD",
-      "away": "TBD",
-      "stadium": "",
-      "matchday": "3回戦",
-      "competition": "ルヴァン",
-      "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
-    },
-    {
-      "date": "2026-10-14",
-      "kickoff": "",
-      "home": "TBD",
-      "away": "TBD",
-      "stadium": "",
-      "matchday": "3回戦",
-      "competition": "ルヴァン",
-      "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
-    },
-    {
-      "date": "2026-10-14",
-      "kickoff": "",
-      "home": "TBD",
-      "away": "TBD",
-      "stadium": "",
-      "matchday": "3回戦",
-      "competition": "ルヴァン",
-      "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
     },
     {
       "date": "2026-10-17",
@@ -15850,6 +15762,94 @@
         "home": 2,
         "away": 2
       }
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "18:30",
+      "home": "横浜FM",
+      "away": "清水",
+      "stadium": "日産スタジアム",
+      "matchday": "3回戦",
+      "competition": "ルヴァンカップ",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "19:00",
+      "home": "松本",
+      "away": "広島",
+      "stadium": "サンアル",
+      "matchday": "3回戦",
+      "competition": "ルヴァンカップ",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "19:00",
+      "home": "横浜FC",
+      "away": "浦和",
+      "stadium": "ニッパツ",
+      "matchday": "3回戦",
+      "competition": "ルヴァンカップ",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "19:00",
+      "home": "名古屋",
+      "away": "岡山",
+      "stadium": "豊田",
+      "matchday": "3回戦",
+      "competition": "ルヴァンカップ",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "19:00",
+      "home": "磐田",
+      "away": "川崎F",
+      "stadium": "ヤマハ",
+      "matchday": "3回戦",
+      "competition": "ルヴァンカップ",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "19:00",
+      "home": "鳥栖",
+      "away": "福岡",
+      "stadium": "駅スタ",
+      "matchday": "3回戦",
+      "competition": "ルヴァンカップ",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "19:00",
+      "home": "鳥取",
+      "away": "C大阪",
+      "stadium": "Axis",
+      "matchday": "3回戦",
+      "competition": "ルヴァンカップ",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
+    },
+    {
+      "date": "2026-10-14",
+      "kickoff": "19:00",
+      "home": "FC東京",
+      "away": "水戸",
+      "stadium": "味スタ",
+      "matchday": "3回戦",
+      "competition": "ルヴァンカップ",
+      "category": "ルヴァン",
+      "categoryColor": "#8B5CF6"
     }
   ]
 }
