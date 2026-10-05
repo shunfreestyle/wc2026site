@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-27T12:00:00.000Z",
+  "updatedAt": "2026-10-05T12:00:00.000Z",
   "season": "2026/27",
   "totalMatches": 1316,
   "matches": [
@@ -4707,7 +4707,11 @@
       "matchday": "国際親善試合",
       "competition": "日本代表",
       "category": "日本代表",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-29",
@@ -4718,7 +4722,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-29",
@@ -4729,7 +4737,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-29",
@@ -4740,7 +4752,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-29",
@@ -4751,7 +4767,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-29",
@@ -4762,7 +4782,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 2,
+        "away": 3
+      }
     },
     {
       "date": "2026-09-29",
@@ -4773,7 +4797,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-29",
@@ -4784,7 +4812,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 1,
+        "away": 3
+      }
     },
     {
       "date": "2026-09-29",
@@ -4795,7 +4827,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-29",
@@ -4806,7 +4842,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-29",
@@ -4817,7 +4857,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-29",
@@ -4828,7 +4872,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-29",
@@ -4839,7 +4887,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-29",
@@ -4850,7 +4902,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 4,
+        "away": 2
+      }
     },
     {
       "date": "2026-09-29",
@@ -4861,7 +4917,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-29",
@@ -4872,7 +4932,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-29",
@@ -4883,7 +4947,11 @@
       "matchday": "2回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 7
+      }
     },
     {
       "date": "2026-10-01",
@@ -4894,7 +4962,11 @@
       "matchday": "国際親善試合",
       "competition": "日本代表",
       "category": "日本代表",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
     },
     {
       "date": "2026-10-02",
@@ -4916,7 +4988,11 @@
       "matchday": "4回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 0,
+        "away": 0
+      }
     },
     {
       "date": "2026-10-03",
@@ -4927,7 +5003,11 @@
       "matchday": "4回戦",
       "competition": "ルヴァン",
       "category": "ルヴァン",
-      "categoryColor": "#8B5CF6"
+      "categoryColor": "#8B5CF6",
+      "score": {
+        "home": 5,
+        "away": 4
+      }
     },
     {
       "date": "2026-10-03",
@@ -4938,7 +5018,11 @@
       "matchday": "第9節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-10-03",
@@ -4949,7 +5033,11 @@
       "matchday": "第9節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
     },
     {
       "date": "2026-10-03",
@@ -5004,7 +5092,11 @@
       "matchday": "第9節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
     },
     {
       "date": "2026-10-03",
@@ -5015,7 +5107,11 @@
       "matchday": "第9節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 1,
+        "away": 2
+      }
     },
     {
       "date": "2026-10-03",
@@ -5026,7 +5122,11 @@
       "matchday": "第9節第1日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-10-03",
@@ -5070,7 +5170,11 @@
       "matchday": "第9節第2日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-10-04",
@@ -5081,7 +5185,11 @@
       "matchday": "第9節第2日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 0,
+        "away": 2
+      }
     },
     {
       "date": "2026-10-04",
@@ -5092,7 +5200,11 @@
       "matchday": "第9節第2日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
     },
     {
       "date": "2026-10-04",
@@ -5114,7 +5226,11 @@
       "matchday": "第9節第2日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-10-04",
@@ -5136,15 +5252,19 @@
       "matchday": "第9節第2日",
       "competition": "J2",
       "category": "J2",
-      "categoryColor": "#00A651"
+      "categoryColor": "#00A651",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
     },
     {
       "date": "2026-10-05",
       "kickoff": "19:00",
       "home": "日本",
-      "away": "未定",
+      "away": "ニュージーランド",
       "stadium": "国立競技場",
-      "matchday": "国際親善試合",
+      "matchday": "キリンカップ決勝",
       "competition": "日本代表",
       "category": "日本代表",
       "categoryColor": "#003087"
@@ -15564,7 +15684,11 @@
       "matchday": "男子準決勝",
       "competition": "アジア大会男子",
       "category": "アジア大会",
-      "categoryColor": "#E91E63"
+      "categoryColor": "#E91E63",
+      "score": {
+        "home": 1,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-30",
@@ -15575,13 +15699,17 @@
       "matchday": "男子準決勝",
       "competition": "アジア大会男子",
       "category": "アジア大会",
-      "categoryColor": "#E91E63"
+      "categoryColor": "#E91E63",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-10-03",
       "kickoff": "15:00",
-      "home": "準決勝敗者",
-      "away": "準決勝敗者",
+      "home": "U-21ウズベキスタン",
+      "away": "U-23中国",
       "stadium": "豊田スタジアム",
       "matchday": "男子3位決定戦",
       "competition": "アジア大会男子",
@@ -15591,13 +15719,17 @@
     {
       "date": "2026-10-03",
       "kickoff": "19:30",
-      "home": "準決勝勝者",
-      "away": "準決勝勝者",
+      "home": "U-23韓国",
+      "away": "U-21日本",
       "stadium": "豊田スタジアム",
       "matchday": "男子決勝",
       "competition": "アジア大会男子",
       "category": "アジア大会",
-      "categoryColor": "#E91E63"
+      "categoryColor": "#E91E63",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-14",
@@ -15668,7 +15800,11 @@
       "matchday": "女子準決勝",
       "competition": "アジア大会女子",
       "category": "アジア大会",
-      "categoryColor": "#E91E63"
+      "categoryColor": "#E91E63",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
     },
     {
       "date": "2026-09-29",
@@ -15679,29 +15815,41 @@
       "matchday": "女子準決勝",
       "competition": "アジア大会女子",
       "category": "アジア大会",
-      "categoryColor": "#E91E63"
+      "categoryColor": "#E91E63",
+      "score": {
+        "home": 2,
+        "away": 0
+      }
     },
     {
       "date": "2026-10-02",
       "kickoff": "15:00",
-      "home": "準決勝敗者",
-      "away": "準決勝敗者",
+      "home": "中国女子",
+      "away": "韓国女子",
       "stadium": "エコパスタジアム",
       "matchday": "女子3位決定戦",
       "competition": "アジア大会女子",
       "category": "アジア大会",
-      "categoryColor": "#E91E63"
+      "categoryColor": "#E91E63",
+      "score": {
+        "home": 1,
+        "away": 0
+      }
     },
     {
       "date": "2026-10-02",
       "kickoff": "19:30",
-      "home": "準決勝勝者",
-      "away": "準決勝勝者",
+      "home": "日本女子",
+      "away": "北朝鮮女子",
       "stadium": "エコパスタジアム",
       "matchday": "女子決勝",
       "competition": "アジア大会女子",
       "category": "アジア大会",
-      "categoryColor": "#E91E63"
+      "categoryColor": "#E91E63",
+      "score": {
+        "home": 2,
+        "away": 2
+      }
     }
   ]
 }
