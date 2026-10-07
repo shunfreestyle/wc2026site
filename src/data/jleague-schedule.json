@@ -5647,7 +5647,7 @@
     },
     {
       "date": "2026-10-11",
-      "kickoff": "13:00",
+      "kickoff": "13:05",
       "home": "山形",
       "away": "仙台",
       "stadium": "NDスタ",
@@ -6439,7 +6439,7 @@
     },
     {
       "date": "2026-10-24",
-      "kickoff": "",
+      "kickoff": "15:00",
       "home": "神戸",
       "away": "町田",
       "stadium": "ノエスタ",
@@ -15847,9 +15847,9 @@
     {
       "date": "2026-10-14",
       "kickoff": "19:00",
-      "home": "FC東京",
-      "away": "水戸",
-      "stadium": "味スタ",
+      "home": "水戸",
+      "away": "FC東京",
+      "stadium": "Ksスタ",
       "matchday": "3回戦",
       "competition": "ルヴァンカップ",
       "category": "ルヴァン",
