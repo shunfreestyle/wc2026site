@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-05T18:00:00.000Z",
+  "updatedAt": "2026-10-07T12:00:00.000Z",
   "season": "2026/27",
   "totalMatches": 1316,
   "matches": [
@@ -5267,7 +5267,11 @@
       "matchday": "キリンカップ決勝",
       "competition": "日本代表",
       "category": "日本代表",
-      "categoryColor": "#003087"
+      "categoryColor": "#003087",
+      "score": {
+        "home": 2,
+        "away": 1
+      }
     },
     {
       "date": "2026-09-23",
@@ -5466,19 +5470,19 @@
       "categoryColor": "#003087"
     },
     {
-      "date": "2026-10-10",
-      "kickoff": "",
+      "date": "2026-10-09",
+      "kickoff": "19:00",
       "home": "鹿島",
       "away": "G大阪",
       "stadium": "メルスタ",
-      "matchday": "第9節第2日",
+      "matchday": "第9節第1日",
       "competition": "J1",
       "category": "J1",
       "categoryColor": "#003087"
     },
     {
       "date": "2026-10-10",
-      "kickoff": "",
+      "kickoff": "19:00",
       "home": "京都",
       "away": "町田",
       "stadium": "サンガS",
@@ -5775,7 +5779,7 @@
     },
     {
       "date": "2026-10-17",
-      "kickoff": "",
+      "kickoff": "19:00",
       "home": "柏",
       "away": "名古屋",
       "stadium": "三協F柏",
@@ -5786,7 +5790,7 @@
     },
     {
       "date": "2026-10-17",
-      "kickoff": "",
+      "kickoff": "13:00",
       "home": "清水",
       "away": "G大阪",
       "stadium": "アイスタ",
@@ -5796,12 +5800,12 @@
       "categoryColor": "#003087"
     },
     {
-      "date": "2026-10-17",
-      "kickoff": "",
+      "date": "2026-10-18",
+      "kickoff": "13:55",
       "home": "岡山",
       "away": "神戸",
       "stadium": "JFEス",
-      "matchday": "第10節第1日",
+      "matchday": "第10節第2日",
       "competition": "J1",
       "category": "J1",
       "categoryColor": "#003087"
@@ -5829,12 +5833,12 @@
       "categoryColor": "#003087"
     },
     {
-      "date": "2026-10-17",
-      "kickoff": "14:00",
+      "date": "2026-10-18",
+      "kickoff": "16:00",
       "home": "町田",
       "away": "福岡",
       "stadium": "Gスタ",
-      "matchday": "第10節第1日",
+      "matchday": "第10節第2日",
       "competition": "J1",
       "category": "J1",
       "categoryColor": "#003087"
